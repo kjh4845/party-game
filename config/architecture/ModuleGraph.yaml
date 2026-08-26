@@ -1,27 +1,32 @@
 ModuleGraph:
   schemaVersion: 1
-  revision: "fdn-003-r01"
+  revision: "fdn-004-r02"
   runtimeRoot: "Project hotfix/Assets/ProjectHotfix/Runtime"
   modules:
     - name: "ProjectHotfix.Contracts"
       role: "Read-only/value contracts shared at module boundaries"
       allowedProjectReferences: []
+      externalPackageReferences: []
       noEngineReferences: true
     - name: "ProjectHotfix.Simulation"
       role: "Authority state and mutation implementation"
       allowedProjectReferences: ["ProjectHotfix.Contracts"]
+      externalPackageReferences: []
       noEngineReferences: false
     - name: "ProjectHotfix.Presentation"
       role: "Read-only visual and UI consumers"
       allowedProjectReferences: ["ProjectHotfix.Contracts"]
+      externalPackageReferences: []
       noEngineReferences: false
     - name: "ProjectHotfix.Input"
       role: "Local input collection boundary"
       allowedProjectReferences: ["ProjectHotfix.Contracts"]
+      externalPackageReferences: ["Unity.InputSystem"]
       noEngineReferences: false
     - name: "ProjectHotfix.Transport"
       role: "Replaceable peer transport boundary"
       allowedProjectReferences: ["ProjectHotfix.Contracts"]
+      externalPackageReferences: []
       noEngineReferences: false
   rules:
     projectReferenceCyclesAllowed: false

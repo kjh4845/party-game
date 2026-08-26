@@ -1,0 +1,43 @@
+InputPackageDecision:
+  schemaVersion: 1
+  decisionId: "FDN-004-r01"
+  status: "ADOPTED"
+  recordedAtUtc: "2026-08-26T12:04:18Z"
+
+  adopted:
+    package: "com.unity.inputsystem"
+    version: "1.18.0"
+    source: "Unity Registry"
+    runtimeAssembly: "Unity.InputSystem"
+    projectModule: "ProjectHotfix.Input"
+    activeInputHandlerValue: 1
+    activeInputHandlerMeaning: "New Input System enabled; Legacy Input Manager disabled"
+
+  rejected:
+    - option: "Legacy Input Manager only"
+      activeInputHandlerValue: 0
+      reason: "Does not provide the selected action-map/rebinding path and would create a second API surface."
+    - option: "Both backends"
+      activeInputHandlerValue: 2
+      reason: "Can compile both input paths and permits duplicate polling/callback handling."
+
+  currentTemplateAsset:
+    path: "Project hotfix/Assets/InputSystem_Actions.inputactions"
+    status: "TEMPLATE_ONLY_NOT_PRODUCT_CONTRACT"
+    observedMaps: ["Player", "UI"]
+    productActionMapOwner: "INP-001"
+    generatedCSharpWrapperAllowedNow: false
+
+  guardPolicy:
+    legacyRuntimeApiAllowed: false
+    bothBackendDefinesAllowed: false
+    productInputCallbacksAllowedNow: false
+    directDevicePollingAllowedNow: false
+    packageOrActionMapChangeRequiresDecisionRevision: true
+    playerBuildRequiredForThisDecision: false
+
+  rationale:
+    - "The package is already locked by the Unity 6.3 LTS project and compiles with the current Editor."
+    - "Action maps and later rebinding support the approved Lobby/Match/UI context separation."
+    - "A single backend keeps press/release edges from being observed by parallel input APIs."
+    - "Gameplay mappings, thresholds and callback ownership remain deferred to INP-001..005."

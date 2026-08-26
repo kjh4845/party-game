@@ -1,0 +1,82 @@
+EvidenceManifest:
+  evidenceId: "EV-FDN-004-20260826-r01"
+  taskId: "FDN-004"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "InputDecision=138d24018fab3ce06fb2d30800da41eeaf8823953e656e1afd39a57008a559de; ModuleGraph=75f3f1bdd27a52c4d34f2887a12efa4ff982b1d7f3b32526cd9fe29e04cec42e; InputAsmdef=9469ae9957b875b80fb551f267e769129b172fc6157a55e9e022ba2a19abe8c9; InputGuardTest=3f1e70f60310c1c33ba70966c6f7962418ba3105b1a75b7a6c66df72a41f983f; TemplateActionAsset=1c6cbb519d65ecfe19a29231735b7f54741a20ac1a8ad4f46a18e1bfb28a3c39; Plan=1aee2869729daeab9ce8281c44b2ed3871c7e03ccf103e90af33486658b6e7f3; ProjectSettings=7cb3bda6a91685d19d2a3552f692e79269aec554e91b93641bb07c4be6b6422f; Manifest=52fc9c6f97b8c0f62ed441b5fd108b8db0c89598af3617cc648d7a085843ee80; PackageLock=2da59839fc473daa97b5c5c8537033c1bc217aea8678564d64dadbc33f344efe"
+  buildKind: "EditorCompileAndEditModeTest"
+  buildVersion: null
+  environment: "macOS arm64; Unity 6000.3.9f1; Input System 1.18.0; Test Framework 1.6.0"
+  profileVersions: ["InputPackageDecision-FDN-004-r01", "InputSystem-1.18.0", "ModuleGraph-fdn-004-r02"]
+  requirementIds: ["FDN-004", "SRS-SYS-011", "SRS-INPUT-001"]
+  commandsOrManualSteps:
+    - "Input System local package source로 activeInputHandler value mapping과 Both backend 위험 확인"
+    - "manifest/packages-lock의 1.18.0 Registry direct dependency와 ProjectSettings activeInputHandler=1 검사"
+    - "ProjectHotfix.Input만 Unity.InputSystem assembly를 소유하도록 asmdef/ModuleGraph 갱신"
+    - "Legacy/Both define, 모든 Runtime assembly owner, legacy API regex와 PackageInfo exact version EditMode 검사"
+    - "Input 전용 NUnit XML 4/4 및 전체 Architecture XML 8/8, failed/skipped 0 확인"
+    - "template action asset·generated wrapper·product callbacks 불변과 package lock hash 불변 확인"
+    - "민감한 local path·PID·licensing 정보가 포함된 임시 Unity log/XML 제거"
+  observedMetrics:
+    activeInputHandler: 1
+    newInputSystemEnabled: true
+    legacyInputManagerEnabled: false
+    bothBackendsEnabled: false
+    inputPackageVersion: "1.18.0"
+    inputPackageRegistrySource: true
+    inputPackageDirectDependency: true
+    inputSystemRuntimeAssemblyOwners: 1
+    otherRuntimeInputSystemReferences: 0
+    legacyRuntimeApiHits: 0
+    generatedInputWrappers: 0
+    templateActionAssetChanges: 0
+    productActionMapImplementations: 0
+    productInputCallbackImplementations: 0
+    inputEditModeTestsTotal: 4
+    inputEditModeTestsPassed: 4
+    inputEditModeTestsFailed: 0
+    inputEditModeTestsSkipped: 0
+    allArchitectureTestsTotal: 8
+    allArchitectureTestsPassed: 8
+    packageLockHashChanges: 0
+    independentReviewFindingsResolved: 3
+    tempLogsOrXmlRetained: false
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  expectedThresholds:
+    activeInputHandler: 1
+    newInputSystemEnabled: true
+    legacyInputManagerEnabled: false
+    bothBackendsEnabled: false
+    inputPackageVersion: "1.18.0"
+    inputPackageDirectDependency: true
+    inputSystemRuntimeAssemblyOwners: 1
+    otherRuntimeInputSystemReferences: 0
+    legacyRuntimeApiHits: 0
+    generatedInputWrappers: 0
+    templateActionAssetChanges: 0
+    productActionMapImplementations: 0
+    productInputCallbackImplementations: 0
+    inputEditModeTestsPassed: 4
+    inputEditModeTestsFailed: 0
+    inputEditModeTestsSkipped: 0
+    packageLockHashChanges: 0
+    playerBuildsExecuted: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/FDN-004/EV-FDN-004-20260826-r01.txt"
+    - "config/input/InputPackageDecision.yaml"
+    - "config/architecture/ModuleGraph.yaml"
+    - "Project hotfix/Assets/ProjectHotfix/Runtime/Input/ProjectHotfix.Input.asmdef"
+    - "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/InputPackageBoundaryTests.cs"
+    - "Project hotfix/ProjectSettings/ProjectSettings.asset"
+    - "Project hotfix/Packages/manifest.json"
+    - "Project hotfix/Packages/packages-lock.json"
+  failures: []
+  limitations:
+    - "Legacy source guard는 일반적인 API/공백 변형을 막는 lexical guard이며 Roslyn semantic analyzer 또는 hostile alias sandbox가 아니다."
+    - "기존 InputSystem_Actions.inputactions는 Unity template reference일 뿐 제품 action map 계약이 아니다. 제품 map/callback/edge resolver는 INP-001..005에서 구현한다."
+    - "Input update timing, fixed-step consumption, rebinding persistence와 gameplay controls는 아직 결정·구현하지 않았다."
+    - "Unity 임시 log/XML은 민감 정보 때문에 요약 후 삭제했다. Player Build는 실행하지 않았다."
+  userDecision: "구현 계획대로 진행"
+  recordedAtUtc: "2026-08-26T12:11:39Z"

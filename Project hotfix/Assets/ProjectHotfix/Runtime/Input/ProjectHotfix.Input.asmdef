@@ -2,7 +2,8 @@
   "name": "ProjectHotfix.Input",
   "rootNamespace": "ProjectHotfix.Input",
   "references": [
-    "ProjectHotfix.Contracts"
+    "ProjectHotfix.Contracts",
+    "Unity.InputSystem"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],
