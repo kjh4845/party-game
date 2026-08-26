@@ -1,0 +1,16 @@
+{
+  "name": "ProjectHotfix.Simulation",
+  "rootNamespace": "ProjectHotfix.Simulation",
+  "references": [
+    "ProjectHotfix.Contracts"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

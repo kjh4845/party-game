@@ -1,0 +1,34 @@
+ModuleGraph:
+  schemaVersion: 1
+  revision: "fdn-003-r01"
+  runtimeRoot: "Project hotfix/Assets/ProjectHotfix/Runtime"
+  modules:
+    - name: "ProjectHotfix.Contracts"
+      role: "Read-only/value contracts shared at module boundaries"
+      allowedProjectReferences: []
+      noEngineReferences: true
+    - name: "ProjectHotfix.Simulation"
+      role: "Authority state and mutation implementation"
+      allowedProjectReferences: ["ProjectHotfix.Contracts"]
+      noEngineReferences: false
+    - name: "ProjectHotfix.Presentation"
+      role: "Read-only visual and UI consumers"
+      allowedProjectReferences: ["ProjectHotfix.Contracts"]
+      noEngineReferences: false
+    - name: "ProjectHotfix.Input"
+      role: "Local input collection boundary"
+      allowedProjectReferences: ["ProjectHotfix.Contracts"]
+      noEngineReferences: false
+    - name: "ProjectHotfix.Transport"
+      role: "Replaceable peer transport boundary"
+      allowedProjectReferences: ["ProjectHotfix.Contracts"]
+      noEngineReferences: false
+  rules:
+    projectReferenceCyclesAllowed: false
+    presentationMayReferenceSimulation: false
+    authorityMutationOutsideSimulationAllowed: false
+    contractsMayExposeAuthorityMutationPorts: false
+    inputSystemPackageReferenceOwnedBy: "FDN-004"
+    physicsPackageReferenceOwnedBy: "FDN-005"
+    transportPackageReferenceOwnedBy: "FDN-006"
+    compositionRoot: "Deferred until a runtime task needs module wiring"

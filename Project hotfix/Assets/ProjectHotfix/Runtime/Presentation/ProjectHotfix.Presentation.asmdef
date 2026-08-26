@@ -1,0 +1,16 @@
+{
+  "name": "ProjectHotfix.Presentation",
+  "rootNamespace": "ProjectHotfix.Presentation",
+  "references": [
+    "ProjectHotfix.Contracts"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

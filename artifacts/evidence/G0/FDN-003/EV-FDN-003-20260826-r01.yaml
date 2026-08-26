@@ -1,0 +1,74 @@
+EvidenceManifest:
+  evidenceId: "EV-FDN-003-20260826-r01"
+  taskId: "FDN-003"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "ModuleGraph=5b9c24f948976b51f8bb89a98fd9f0639929cca9b32cefde66e3eb096e35202d; RuntimeAsmdefs=47e13eb6f38134fba4058ff2ce846e28bede913e7079407a953e395f2936b338; RuntimeSources=0000b2f7cf96fdd0949f58b4bb55129595e76131c6452c0c0f8fca97de87bc0d; ArchitectureTest=859a1e533f37ca42bde13d0b309dc26ba28fd78468794b7c7d185c913954ed65; ArchitectureTestAsmdef=b3f62192ad4da06c3419138e75d8ab1322b56c57157880fdf0fdf791383a2669; ProjectHotfixTree=0358b03b0574baa02c5043fdc4cc72405b17f09b4e78939cd3df91a969e4ed0f; Plan=dfa131e5b9e63e5342ddadbf486dd6eda07b8de3ff415195170bcc1f58374488"
+  buildKind: "EditorCompileAndEditModeTest"
+  buildVersion: null
+  environment: "macOS arm64; Unity 6000.3.9f1 batchmode; Test Framework 1.6.0; no Player Build"
+  profileVersions: ["ModuleGraph-fdn-003-r01", "Unity-6000.3.9f1", "TestFramework-1.6.0"]
+  requirementIds: ["FDN-003", "SRS-SYS-011", "SRS-SYS-012"]
+  commandsOrManualSteps:
+    - "ModuleGraph.yaml과 5 runtime asmdef의 exact node/reference/flag/cycle 정적 검사"
+    - "Unity Editor import/C# compile에서 6개 assembly와 meta 생성 확인"
+    - "EditMode filter ProjectHotfix.Architecture.Tests 실행"
+    - "NUnit XML에서 total 4, passed 4, failed/skipped/inconclusive 0을 직접 검사"
+    - "모든 Assets-owned assembly edge, Runtime folder exact owner와 Presentation→Simulation transitive path 검사"
+    - "ProjectVersion·manifest·packages-lock hash 불변과 Player Build 0 확인"
+    - "로컬 경로·PID·licensing 식별자가 포함된 임시 Unity log/XML 제거"
+  observedMetrics:
+    runtimeAssemblies: 5
+    testAssemblies: 1
+    projectReferenceEdges: 4
+    projectReferenceCycles: 0
+    presentationToSimulationPaths: 0
+    runtimeFolderOwnershipMismatches: 0
+    unknownRuntimeModules: 0
+    asmrefs: 0
+    autoReferencedRuntimeAssemblies: 0
+    unsafeRuntimeAssemblies: 0
+    contractsNoEngineReferences: true
+    runtimeGameplayTypes: 0
+    csCompilerErrors: 0
+    editModeTestsTotal: 4
+    editModeTestsPassed: 4
+    editModeTestsFailed: 0
+    editModeTestsSkipped: 0
+    editModeTestsInconclusive: 0
+    packageLockHashChanges: 0
+    independentReviewFindingsResolved: 3
+    tempLogsOrXmlRetained: false
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  expectedThresholds:
+    runtimeAssemblies: 5
+    projectReferenceEdges: 4
+    projectReferenceCycles: 0
+    presentationToSimulationPaths: 0
+    runtimeFolderOwnershipMismatches: 0
+    unknownRuntimeModules: 0
+    asmrefs: 0
+    autoReferencedRuntimeAssemblies: 0
+    unsafeRuntimeAssemblies: 0
+    contractsNoEngineReferences: true
+    csCompilerErrors: 0
+    editModeTestsPassed: 4
+    editModeTestsFailed: 0
+    editModeTestsSkipped: 0
+    packageLockHashChanges: 0
+    playerBuildsExecuted: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/FDN-003/EV-FDN-003-20260826-r01.txt"
+    - "config/architecture/ModuleGraph.yaml"
+    - "Project hotfix/Assets/ProjectHotfix/Runtime"
+    - "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/ModuleBoundaryTests.cs"
+  failures: []
+  limitations:
+    - "현재 source-based compile-time module boundary만 증명한다. Reflection, precompiled/embedded external code 또는 security sandbox를 증명하지 않는다."
+    - "Contracts는 현재 internal marker만 가진다. 미래 public read model/command contract의 의미론은 해당 구현 Task에서 다시 검토해야 한다."
+    - "SimulationHarness·일반 EditMode/PlayMode test 기반은 FDN-007 범위이며 Gameplay, Input System, Physics와 Transport 구현은 아직 0이다."
+    - "Unity 임시 log/XML은 민감한 local path·PID·licensing 식별자 때문에 요약 후 삭제했다. 같은 검사로 재생성할 수 있다."
+  userDecision: "구현 계획대로 하나씩 진행"
+  recordedAtUtc: "2026-08-26T11:16:12Z"

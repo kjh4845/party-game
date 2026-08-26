@@ -8,7 +8,7 @@
 | 기준일 | 2026-08-26 |
 | 현재 목표 | Alpha에서 2·3·4인 전체 흐름과 실제 무기 전투를 검증한 뒤 Steam 통합 |
 | 기준 문서 | PRD 1.8.0, SRS 1.8.0, PATCH_DESIGN 0.5.0과 현행 분야별 사양 |
-| 현재 구현 상태 | FDN-001·002·010·011 완료: root Git, locked ToolchainProfile/policy와 Unity6.3 URP Project compile 기준선 존재. 게임 코드·Player Build 없음 |
+| 현재 구현 상태 | FDN-001·002·003·010·011 완료: Git/toolchain/repository policy, Unity6.3 URP compile과 5-module boundary 존재. Gameplay code·Player Build 없음 |
 | 계획 규모 | 173 Task, 251.0 집중 개발일 |
 | 자동화 금지 | Unity Player Build, Steam 배포, 외부 서비스 배포 |
 
@@ -167,7 +167,7 @@ BLOCKED, DEFERRED를 사용한다.
 | FDN-010 | 1 | Unity6.3 LTS·Blender5.2 LTS·Package exact version lock | FDN-001 | SYS,ART | ToolchainProfile | Unity6000.3.9f1·Blender5.2.0 LTS, ProjectVersion.txt·manifest/lock hash 고정, 자동 upgrade 0; package 채택은 FDN-004..006 소유 | — | PASSED |
 | FDN-011 | 1 | Repository ignore·attribute·large binary policy 구성 | FDN-001 | SYS,ART | `.gitignore`·`.gitattributes`·binary policy/inventory | Unity 생성물 제외·source/meta/lock 추적, binary20 hash 일치; Git LFS 미설치·remote0에서 LFS 후보 commit 금지 | — | PASSED |
 | FDN-002 | 1.5 | Unity URP project 생성·검증 | FDN-010..011 | SYS,NFR | `Project hotfix` Unity client | Unity6000.3.9f1·URP17.3.0 import/C# compile error0, package/source change0, Player Build0 | — | PASSED |
-| FDN-003 | 1.5 | Simulation·Presentation·Input·Transport 모듈 경계 생성 | FDN-002 | SYS | module graph | 순환 0, Presentation의 authority mutation 0 | — | NOT_STARTED |
+| FDN-003 | 1.5 | Simulation·Presentation·Input·Transport 모듈 경계 생성 | FDN-002 | SYS | Contracts leaf + 4 runtime asmdef graph | project edge4·cycle0, Presentation→Simulation path0, folder ownership 일치, Unity compile0·EditMode4/4, gameplay code0 | — | PASSED |
 | FDN-004 | 1 | Input package 선택 | FDN-002..003 | INPUT | decision record | 입력 중복 0, 채택·폐기 근거 | — | NOT_STARTED |
 | FDN-005 | 1 | Physics package와 fixed-step 선택 | FDN-002..003 | PHYS | decision record | 기본 Rigidbody·joint·contact smoke 통과 | — | NOT_STARTED |
 | FDN-006 | 1.5 | P2P transport adapter와 Alpha direct 구현 방향 선택 | FDN-002..003 | NET | adapter decision | LAN/direct·Steam 교체 가능, public discovery 0 | — | NOT_STARTED |

@@ -1,0 +1,28 @@
+{
+  "name": "ProjectHotfix.Architecture.Tests.Editor",
+  "rootNamespace": "ProjectHotfix.Architecture.Tests",
+  "references": [
+    "UnityEngine.TestRunner",
+    "UnityEditor.TestRunner",
+    "ProjectHotfix.Contracts",
+    "ProjectHotfix.Simulation",
+    "ProjectHotfix.Presentation",
+    "ProjectHotfix.Input",
+    "ProjectHotfix.Transport"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": true,
+  "precompiledReferences": [
+    "nunit.framework.dll"
+  ],
+  "autoReferenced": false,
+  "defineConstraints": [
+    "UNITY_INCLUDE_TESTS"
+  ],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
