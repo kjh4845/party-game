@@ -1,0 +1,19 @@
+EvidenceManifest:
+  evidenceId: "EV-DOC-002-20260823-r04"
+  taskId: "DOC-002"
+  goalId: "DOC"
+  status: "PASS"
+  sourceRevision: "PRD=e858a7dc7f95b2ee0de8f35d548678d2f5fefbabba4dac0d93a803c952ebcc97; SRS=707fe392609528283b1b7d59524c41b283e37e33a4ebc9abb6834627e2beeac0; Plan=7c78bdb7cc4f7ccfafbbfb28fe4f9c08403642071b086f41dcee1a54be67b44e; Trace=77c4607295688a1508efdc94a42094ce50143c8ddd91281091a90e998148b4be"
+  buildKind: "Harness"
+  buildVersion: null
+  environment: "macOS arm64; documentation-only; Docker/OCI/Compose 실행 없음"
+  profileVersions: ["DecisionConflictMatrix-r03", "PlanSplit-r01", "NoContainerContract-r01"]
+  requirementIds: ["DOC-002", "DOC-004"]
+  commandsOrManualSteps: ["container 허용 오표기를 전 범위 사용 0 계약으로 교정", "Steam invite와 code join이 같은 AuthorityHost P2P/SDR session으로 수렴하는지 재검사", "과밀 integration parent 8개를 독립 산출물 기준으로 재분할"]
+  observedMetrics: {resolvedDecisionRows: 21, unresolvedP0P1Conflicts: 0, dockerOciComposeContainerUse: 0, splitParents: 8, addedChildTasks: 19, unresolvedOwnershipOverlaps: 0}
+  expectedThresholds: {unresolvedP0P1Conflicts: 0, dockerOciComposeContainerUse: 0, unresolvedOwnershipOverlaps: 0}
+  rawEvidencePaths: ["artifacts/evidence/docs/DOC-002/EV-DOC-002-DECISION-CONFLICT-MATRIX.md", "docs/03_IMPLEMENTATION_PLAN.md", "artifacts/evidence/docs/EV-DOC-RAW-VALIDATION-20260823-r05.txt"]
+  failures: []
+  limitations: ["추정일은 구현 전 capacity estimate이며 실제 첫 실행 뒤 재추정할 수 있다."]
+  userDecision: "도커 안쓴다. Steam에서도 방장 P2P로 친구끼리 플레이한다."
+  recordedAtUtc: "2026-08-23T11:36:08Z"

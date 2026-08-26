@@ -1,0 +1,42 @@
+EvidenceManifest:
+  evidenceId: "EV-DOC-BASELINE-20260825-r03"
+  taskIds: ["DOC-001", "DOC-002", "DOC-003", "DOC-004"]
+  goalId: "DOC"
+  status: "PASS"
+  sourceRevision: "Index=f07fa1e7abffc1aa4931cf775ceba04f9967657a031728ec1e47c1c960440876; PRD=4a04f2969a49deaac893564dd36c5363f2b7be4e307faedcada8cbc007e72930; SRS=4654ec1f2a05831ec04933a82e68240fc1b17d4b9987e7ee86303319a3a93c57; PatchDesign=a4fb318a8c9ece6d9584fd563303b74069d3916cb6cb917caffa7f6875cdb125; Character=a6cb230c40e88c8dd46f03e50fab7988ea46fe0cfc54e47ab1a9d030cc25e406; Art=b5845892418bcce4e9ad28c854b353461dda2e62abde694612fa88f45d43f2ad; UI=052b5732c6bae50a505deb1bc328fcfff36c09d8382063fa1172c5274e407d3c; Map=335c1c83f2134634332303983de3a22245f5e02eb85b9f2d330a76f307778f13; P00=d6e00668adcc171b28dc2cb8ef39e673499cb153ee8c83dbcb6e3d227e1b246c; Weapon=517be7459b2023426fb27f8ccd88f1c3eebdbaaf9f07cd987000a8af4e35c632; Plan=b20ba009b88fb753578b2c891d8552d2fb7de1765ac92b421d3c8a34e2ded973; Trace=10fb6d9319b8c9dae9e8359b2e857283958ce6222f67a98e09880e086c8c30cf"
+  environment: "macOS arm64; documentation-only; implementation/build/deploy 0"
+  profileVersions: ["Index-2026-08-25", "PRD-1.5.0", "SRS-1.5.0", "PatchDesign-0.2.0", "Character-0.8.0", "Art-1.5.0", "UI-1.5.0", "MapGuide-1.5.0", "P00-0.4.0", "Weapon-0.4.0", "Plan-2.2", "Trace-1.2"]
+  observedMetrics:
+    activeDocuments: 12
+    prdRequirements: 31
+    srsRequirements: 166
+    acceptanceScenarios: 33
+    prototypePatchDefinitions: 12
+    planTasks: 153
+    focusedEffortDays: 221.0
+    missingDependencies: 0
+    dependencyCycleNodes: 0
+    traceMismatches: 0
+    unusedArchiveFiles: 0
+    containerArtifacts: 0
+    forbiddenPatchProductNames: 0
+    stalePatchScopeTokens: 0
+  expectedThresholds:
+    missingDependencies: 0
+    dependencyCycleNodes: 0
+    traceMismatches: 0
+    unusedArchiveFiles: 0
+    containerArtifacts: 0
+    forbiddenPatchProductNames: 0
+    stalePatchScopeTokens: 0
+  commandsOrManualSteps:
+    - "python3 artifacts/evidence/docs/verify_doc_baseline.py"
+    - "Patch12 exact binding, 2/3/4 Round-frozen supply, cap/shuffle/clearance/cleanup/reset/reconnect 계약 정합성 검사"
+  rawEvidencePaths:
+    - "artifacts/evidence/docs/EV-DOC-RAW-VALIDATION-20260825-r03.txt"
+    - "artifacts/evidence/docs/EV-DOC-BASELINE.md"
+  failures: []
+  limitations:
+    - "문서 구조 증거이며 Unity runtime, Player Build, 실제 2/3/4 playtest, Steam 통합 또는 UG-DOC 사용자 승인을 증명하지 않는다."
+  userDecision: "라운드당 무기 1개 제한을 폐기하고 2인 10/22/cap2, 3인 8/16/cap2, 4인 6/12/cap3 반복 supply와 초기 Patch12를 승인"
+  recordedAtUtc: "2026-08-25T10:35:57Z"

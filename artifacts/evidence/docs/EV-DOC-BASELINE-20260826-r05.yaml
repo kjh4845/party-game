@@ -1,0 +1,44 @@
+EvidenceManifest:
+  evidenceId: "EV-DOC-BASELINE-20260826-r05"
+  taskIds: ["DOC-001", "DOC-002", "DOC-003", "DOC-004"]
+  goalId: "DOC"
+  status: "PASS"
+  sourceRevision: "Index=a3449adcb1f4fbd97fc13d6c6ff49b1bdea2d82d373f0ed755df8559b11954be; PRD=54511049b49b93bc1abb743d756f2be8ee33fddc0bff9a743b8e188371b1aee8; SRS=ad93bde94584c525e447c2b505ecfafd18f3fc35bd26c53e8d121020edf1463a; PatchDesign=f0e28a930da7905bcf3faf4678a41dc160cccf8d91a091313181929227fcecfe; Character=bdecc6311be802e833e6941bdb97ad5385c61012b4fee779ae669bbc80515cdf; Art=8db2fa8af9f90dc75fd05155bcd784fbd2783afbec3773b6ea4c2b879fd58ec4; UI=03b6a3d4c50f705a8008e475b72c6f726edb983315c1bc85cd6e5f1428953641; Map=29c9f6e26a0aa28cd95f39153447893d3ea5a8caac1b163687adf0474fad0fd9; P00=4e5cc70de1e8dd239c3381d421204f1ba0d23157d69ec20dfc9d2c778a00ef2d; Weapon=bf09b60bacbaa605cb6c6a68005c328a7e55becadc68c751e4fa4604e955952b; Plan=22e643e1270a3d59cb53e4755bd1095b3bf51be6e27bf5713b5eb887868a5dd1; Trace=3a92f51ef40769e14f033f99918f4ea6a482ec0cedefe020764db4a2be17401f"
+  environment: "macOS arm64; documentation-only; implementation/build/deploy 0"
+  profileVersions: ["Index-2026-08-26", "PRD-1.7.0", "SRS-1.7.0", "PatchDesign-0.4.0", "Character-0.10.0", "Art-1.7.0", "UI-1.7.0", "MapGuide-1.7.0", "P00-0.6.0", "Weapon-0.6.0", "Plan-2.4", "Trace-1.4"]
+  observedMetrics:
+    activeDocuments: 12
+    prdRequirements: 31
+    srsRequirements: 178
+    acceptanceScenarios: 40
+    prototypePatchDefinitions: 12
+    planTasks: 164
+    focusedEffortDays: 239.5
+    missingDependencies: 0
+    dependencyCycleNodes: 0
+    traceMismatches: 0
+    unusedArchiveFiles: 0
+    containerArtifacts: 0
+    forbiddenPatchProductNames: 0
+    stalePatchScopeTokens: 0
+    staleActiveReferences: 0
+  expectedThresholds:
+    missingDependencies: 0
+    dependencyCycleNodes: 0
+    traceMismatches: 0
+    unusedArchiveFiles: 0
+    containerArtifacts: 0
+    forbiddenPatchProductNames: 0
+    stalePatchScopeTokens: 0
+    staleActiveReferences: 0
+  commandsOrManualSteps:
+    - "python3 artifacts/evidence/docs/verify_doc_baseline.py"
+    - "Pistol7/LongGun30 no-reload, Spent deadline/next-pulse, Host Projectile, recoil/spread와 FIR 계획 정합성 검사"
+  rawEvidencePaths:
+    - "artifacts/evidence/docs/EV-DOC-RAW-VALIDATION-20260826-r05.txt"
+    - "artifacts/evidence/docs/EV-DOC-BASELINE.md"
+  failures: []
+  limitations:
+    - "문서 구조 증거이며 Unity runtime, 실제 Projectile/Recoil, Player Build, 2/3/4 playtest, Steam 통합 또는 UG-DOC 승인을 증명하지 않는다."
+  userDecision: "Pistol total7 semi-auto, LongGun total30 full-auto, no reload, Spent cleanup, Host Projectile와 Hybrid Unity recoil/spread 방향 승인"
+  recordedAtUtc: "2026-08-25T15:45:51Z"

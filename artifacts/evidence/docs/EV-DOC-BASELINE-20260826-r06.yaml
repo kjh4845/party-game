@@ -1,0 +1,72 @@
+EvidenceManifest:
+  evidenceId: "EV-DOC-BASELINE-20260826-r06"
+  taskIds: ["DOC-001", "DOC-002", "DOC-003", "DOC-004", "DOC-005"]
+  goalId: "DOC"
+  status: "PASS"
+  approvalGate: "UG-DOC PASSED"
+  sourceRevision: "Index=925f658fab12a793efbb18a9929729d9602c499b125b518f26d7963c58ec09ca; PRD=2e079f53559846ff66d69af90ec139ee6278b95315ad0e31fa38b893a02b805f; SRS=577bf0f13c819c6658e2582b31241f51a727b5f736904853bdb54a06d6736b39; PatchDesign=711f832e53e85c4bbc8b02809afb4e8f018cbe1ce29e560fbca0e091048e37e9; Character=87979bbaf1cb9c8adcc3886b24302664b81525d489cb56319c80373edbc8bc7c; Art=e9cb61e038ce04168243dd7b8f7ae015b3df7ddb77e59b1fa9967164e815a11a; UI=8d3bec50a939b5cf85a911ddc80e7fbbe1c192ea67d69ec03efa243370a74c4d; MapGuide=4ed341618e7bbf9b98040062e19c59c418f06f9c9a7deef2b0e7a597be8f5ad8; P00=cb4a280b1d0c9f23645e14b9b6c876598b70d078236144487da2581fbce2da36; Weapon=7eaf969179f98c362fef195c9d2da2ad9065e627dbf99c0591c4d190177eb6a7; Plan=88e0f7a7a70d32a1b9452579ad5b051dce237ad03429c06c3600887440841708; Trace=2c7525ccce59bb4ff3155151f6045fe36d34925b551079f5a8b9d2ab7892da1e"
+  validatorSha256: "17468ceaa5439479fc8c60ba37ce14b3e4b0aae078039516bca589c73afd452e"
+  decisionMatrixSha256: "640dd61980f6d1a4ad6b88d8b0289d2c1a7333ed88b9c0ad4b7019937680049d"
+  rawValidationSha256: "204b110cc8511753bfa2b965530e9774f17bf16ee995aa15a9586f567a8f760c"
+  environment: "macOS arm64; documentation-only; implementation/build/deploy 0"
+  profileVersions:
+    - "Index-2026-08-26"
+    - "PRD-1.8.0"
+    - "SRS-1.8.0"
+    - "PatchDesign-0.5.0"
+    - "Character-0.11.0"
+    - "Art-1.8.0"
+    - "UI-1.8.0"
+    - "MapGuide-1.8.0"
+    - "P00-0.7.0"
+    - "Weapon-0.7.0"
+    - "Plan-2.5"
+    - "Trace-1.5"
+  observedMetrics:
+    activeDocuments: 12
+    prdRequirements: 31
+    srsRequirements: 186
+    acceptanceScenarios: 44
+    prototypePatchDefinitions: 12
+    planTasks: 173
+    focusedEffortDays: 251.0
+    missingDependencies: 0
+    dependencyCycleNodes: 0
+    traceMismatches: 0
+    markdownProblems: 0
+    unusedArchiveFiles: 0
+    containerArtifacts: 0
+    forbiddenLegacyArchitectureHits: 0
+    forbiddenPatchProductNames: 0
+    stalePatchScopeTokens: 0
+    staleActiveReferences: 0
+    implementationChanges: 0
+    playerBuildExecutions: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  expectedThresholds:
+    missingDependencies: 0
+    dependencyCycleNodes: 0
+    traceMismatches: 0
+    markdownProblems: 0
+    unusedArchiveFiles: 0
+    containerArtifacts: 0
+    forbiddenLegacyArchitectureHits: 0
+    staleActiveReferences: 0
+  independentAudits:
+    - "Semantic policy audit: PASS; residual findings 0"
+    - "WBS/dependency audit: PASS; residual actionable gaps 0"
+  commandsOrManualSteps:
+    - "python3 artifacts/evidence/docs/verify_doc_baseline.py"
+    - "Independent semantic audit of all 12 active documents"
+    - "Independent WBS ancestry, dependency, ownership and over-spec audit"
+  rawEvidencePaths:
+    - "artifacts/evidence/docs/EV-DOC-RAW-VALIDATION-20260826-r06.txt"
+    - "artifacts/evidence/docs/EV-DOC-BASELINE.md"
+    - "artifacts/evidence/docs/DOC-002/EV-DOC-002-DECISION-CONFLICT-MATRIX.md"
+  failures: []
+  limitations:
+    - "문서 구조·정책·소유권 증거이며 Unity runtime, Player Build, 실제 2/3/4 playtest, Steam/SDR/NAT 또는 시각 결과를 증명하지 않는다."
+    - "Unity 6.3 LTS와 Blender 5.2 LTS의 exact installed patch 및 Unity package lock은 FDN-010에서 고정한다."
+  userDecision: "Minimal Match UI, non-pausing Match Esc, Guest Leave/disconnect/Forfeit/HostLoss, Alpha Greybox/placeholder/Korean/basic SFX/BGM0와 Unity 6.3 LTS/Blender 5.2 LTS 범위를 확정하고 UG-DOC 승인"
+  recordedAtUtc: "2026-08-26T07:55:29Z"

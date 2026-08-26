@@ -1,0 +1,30 @@
+EV-DOC-RAW-VALIDATION 2026-08-15 r02
+COMMAND=python3 artifacts/evidence/docs/verify_doc_baseline.py
+COMMAND_KIND=read-only Python parser + SHA-256; PlayerBuild=0 Docker=0 Deploy=0
+ACTIVE_DOCS
+docs/00_DOCUMENT_INDEX.md|sha256=e623ed18cd41e60815ecd30308e89f270f5fc4a20300a85d06b472e91457cfbd|lines=141
+docs/01_PRD.md|sha256=d76345889f6d8318633f8b7b1091d0992e28a91bfce028c268ecc5bdb61277ef|lines=1078
+docs/02_SRS.md|sha256=42422d009325258bf20e733553e9991684b6817bedfcf6f261eee76f5e459e4e|lines=2573
+docs/CHARACTER_TECHNICAL_SPEC.md|sha256=9a82a47d24d69c5fa569afa757260fc3d3c377f3f54ff3815ec19f4075466794|lines=930
+docs/ART_DIRECTION.md|sha256=46c1a69dd46046ab874640bd5028b87798ce429b3d759fb08437a10672062088|lines=722
+docs/UI_UX_FLOW.md|sha256=134d0036a28518892a49d845ed5616e0d7ba45709a1ad799dba8c0bcdd36fb8c|lines=752
+docs/MAP_DESIGN_GUIDE.md|sha256=aabd5b7f7a2d4984e3e52de08aff5eda3326220a42258db87eb8179f4020495f|lines=720
+docs/MAP_P00_CONSTRUCTION_DROP.md|sha256=0fb260242b207e0d0f4df0a4056ec29b2b7fc738b8891a3756843a154aa6898b|lines=818
+docs/WEAPON_DESIGN.md|sha256=b8b1822f725f509a7b31bbefec28986c1b8142df667f9fb8cfff06efb73e4a4d|lines=126
+docs/03_IMPLEMENTATION_PLAN.md|sha256=b9ec52a7275eca83dd30ced5abde9b0f64e7a483eca0e3dc3985981cfbb76013|lines=945
+docs/04_IMPLEMENTATION_TRACEABILITY.md|sha256=282edfa923bf9163a9a77c3631ef971df491c14876a84f12c0c5f4063f153fdb|lines=585
+SRS_DEFINITIONS rows=405 unique=405 duplicates=0
+AT_DEFINITIONS rows=78 unique=78 duplicates=0
+VALIDATOR_SELF_TEST positive_boundary_invalid=6 failures=0
+PLAN_TASKS rows=264 unique=264 effort_days=386.0 invalid_effort=0 column_errors=0 deferred_aliases=6
+PLAN_STATUS NOT_STARTED=258,PASSED=5,USER_REVIEW=1
+PLAN_DEPS missing=0 cycle_nodes=0
+TRACE_SRS rows=405 missing=0 extra=0
+TRACE_AT rows=78 missing=0 extra=0
+TRACE_INVARIANTS priority_mismatch=0 primary_missing=0 goal_mismatch=0 def_missing=0 reverse_srs=0 tail_reverse=0 at_owner_missing=0 at_goal_mismatch=0 reverse_at=0
+TRACE_SOURCE_HASH mismatch=0
+EVIDENCE_MANIFESTS files=5/5 missing_files=0 missing_required_fields=0
+MARKDOWN fence_odd=0 conflict_markers=0 missing_local_links=0
+C1A_ARTIFACT exists=True sha256=c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616
+FINAL_RESULT=PASS
+EXIT_CODE=0

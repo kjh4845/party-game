@@ -1,0 +1,34 @@
+EvidenceManifest:
+  evidenceId: "EV-DOC-001-20260823-r02"
+  taskId: "DOC-001"
+  goalId: "DOC"
+  status: "PASS"
+  sourceRevision: "pre-repository SHA-256 set: Index=9ecae771858f1ff1043f4edb795bf3dfef0b2437686593098ce305bf798da2de; PRD=6e592614ff5c9888d5c70184a17077d1bcc35bd36b8c257586c221ab885f5181; SRS=ba5c7af3339ab9fb49d8a21513a26d8c4e770439cd8a39f82303652b93427baa; Character=ee27b4876a307ec1f5eb7ab27b2e08e41e4f5309ae575cd2b8b4002b71240d7a; Art=cd2ffae37a27ad6fda1bde1af180ac8c7d8768f934011edde29e2ddcdd7ff0f6; UI=c46f3314be7ac24d06aec69af3f9227aa753694d9b6ec33fc8419d4c99470f58; MapGuide=c62a58ca2241e08141d598dacccdda9bc4b188e31609f4c133c0959d20ffc3c2; P00=87b11e07f1d49f0dd3fd6f3abef69f02b8056cff2f70dd2249d640657879ff65; Weapon=0ec7fa08037b887e0067ed8864a635c0554b0ffd0e3a0a870828d982f81f7fba; Plan=6fd0b14d3f70bec0f13c653fc4ccd28cc1e0c86a7ffe69b34cc25d5d5aba867e; Trace=890e9c8ba7d5658ddbf49d5aff696310d7dd5803751f2d0086659d61a9ac545d"
+  buildKind: "Harness"
+  buildVersion: null
+  environment: "macOS arm64; Python 3.9.6; documentation-only; Unity Project 없음"
+  profileVersions: ["DocumentBaseline-20260823", "Plan-v1.2", "Trace-v0.5"]
+  requirementIds: ["DOC-001"]
+  commandsOrManualSteps:
+    - "현행 11개 문서를 EOF까지 읽고 SHA-256과 line count를 동일 실행에서 계산"
+    - "python3 artifacts/evidence/docs/verify_doc_baseline.py"
+  observedMetrics:
+    activeDocuments: 11
+    missingDocuments: 0
+    hashRecords: 11
+    lineCountRecords: 11
+  expectedThresholds:
+    activeDocuments: 11
+    missingDocuments: 0
+    hashRecords: 11
+    lineCountRecords: 11
+  rawEvidencePaths:
+    - "artifacts/evidence/docs/EV-DOC-RAW-VALIDATION-20260823-r03.txt"
+    - "artifacts/evidence/docs/verify_doc_baseline.py"
+    - "artifacts/evidence/docs/EV-DOC-BASELINE.md"
+  failures: []
+  limitations:
+    - "Git repository가 없어 sourceRevision은 commit이 아닌 pre-repository SHA-256 set이다."
+    - "문서 존재·정합성을 증명하며 구현·Build·runtime 동작은 증명하지 않는다."
+  userDecision: null
+  recordedAtUtc: "2026-08-23T06:57:35Z"

@@ -1,0 +1,238 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1400" viewBox="0 0 2400 1400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111419"/>
+      <stop offset="1" stop-color="#20242b"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.58" stop-color="#e8e8e3"/>
+      <stop offset="1" stop-color="#bbbdb9"/>
+    </linearGradient>
+    <linearGradient id="bodyDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e2e4e0"/>
+      <stop offset="1" stop-color="#a5aaa8"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#000000" flood-opacity="0.42"/>
+    </filter>
+    <style>
+      .ui { font-family: Inter, "Apple SD Gothic Neo", "Noto Sans KR", Arial, sans-serif; }
+      .title { font-size: 46px; font-weight: 760; fill: #f4f2eb; letter-spacing: -0.8px; }
+      .subtitle { font-size: 22px; font-weight: 470; fill: #aeb4bd; }
+      .panelTitle { font-size: 30px; font-weight: 760; fill: #f5f3ec; }
+      .panelSub { font-size: 18px; font-weight: 550; fill: #c4c9cf; }
+      .metric { font-size: 18px; font-weight: 570; fill: #d6d8da; }
+      .metricDim { font-size: 17px; font-weight: 480; fill: #9da4ac; }
+      .tiny { font-size: 15px; font-weight: 540; fill: #8f969f; }
+      .badge { font-size: 15px; font-weight: 720; fill: #16181c; letter-spacing: 0.3px; }
+      .grid { stroke: #59606a; stroke-width: 1; opacity: 0.32; stroke-dasharray: 5 8; }
+      .guide { stroke: #d2953d; stroke-width: 2; opacity: 0.82; stroke-dasharray: 8 8; }
+      .dim { stroke: #727a84; stroke-width: 1.4; opacity: 0.76; }
+      .joint { fill: #e3a54b; opacity: 0.95; }
+      .jointMinor { fill: #e3a54b; opacity: 0.82; }
+      .colliderRef { fill: #62c8cf; fill-opacity: 0.045; stroke: #62c8cf; stroke-width: 2; stroke-dasharray: 7 5; opacity: 0.62; }
+      .colliderJoint { fill: #62c8cf; opacity: 0.72; }
+      .panel { fill: #20242a; stroke: #343a43; stroke-width: 2; }
+    </style>
+    <g id="referenceCollider">
+      <rect x="-70" y="236" width="140" height="140" rx="70" class="colliderRef"/>
+      <rect x="-94" y="384" width="188" height="221" rx="94" class="colliderRef"/>
+      <rect x="-90" y="564" width="180" height="115" rx="12" class="colliderRef"/>
+      <rect x="-142" y="384" width="71" height="139" rx="35" class="colliderRef"/>
+      <rect x="71" y="384" width="71" height="139" rx="35" class="colliderRef"/>
+      <rect x="-139" y="523" width="66" height="115" rx="33" class="colliderRef"/>
+      <rect x="73" y="523" width="66" height="115" rx="33" class="colliderRef"/>
+      <circle cx="-107" cy="712" r="45" class="colliderRef"/>
+      <circle cx="107" cy="712" r="45" class="colliderRef"/>
+      <rect x="-119" y="622" width="98" height="185" rx="49" class="colliderRef"/>
+      <rect x="21" y="622" width="98" height="185" rx="49" class="colliderRef"/>
+      <rect x="-102" y="806" width="82" height="172" rx="41" class="colliderRef"/>
+      <rect x="20" y="806" width="82" height="172" rx="41" class="colliderRef"/>
+      <rect x="-94" y="991" width="66" height="49" rx="10" class="colliderRef"/>
+      <rect x="28" y="991" width="66" height="49" rx="10" class="colliderRef"/>
+      <circle cx="0" cy="622" r="4" class="colliderJoint"/>
+    </g>
+  </defs>
+
+  <rect width="2400" height="1400" fill="url(#bg)"/>
+  <g class="ui">
+    <text x="72" y="70" class="title">MASTER CHARACTER · C1a 정면 방향 비교</text>
+    <text x="72" y="108" class="subtitle">세 안 모두 nominal H = 1.65 m · 실측·승인된 gameplay scale 아님 · 특정 참고작의 측정값이 아닌 START 후보</text>
+    <rect x="2002" y="46" width="326" height="46" rx="23" fill="#e3a54b"/>
+    <text x="2165" y="76" text-anchor="middle" class="badge">C1b 최종 비율 승인 아님</text>
+
+    <!-- panels -->
+    <rect x="58" y="140" width="724" height="1190" rx="24" class="panel"/>
+    <rect x="838" y="140" width="724" height="1190" rx="24" class="panel"/>
+    <rect x="1618" y="140" width="724" height="1190" rx="24" class="panel"/>
+
+    <!-- common grid, top 220 / ground 1040 = H 820 -->
+    <g>
+      <line x1="80" y1="220" x2="760" y2="220" class="guide"/>
+      <line x1="80" y1="425" x2="760" y2="425" class="grid"/>
+      <line x1="80" y1="630" x2="760" y2="630" class="grid"/>
+      <line x1="80" y1="835" x2="760" y2="835" class="grid"/>
+      <line x1="80" y1="1040" x2="760" y2="1040" class="guide"/>
+      <line x1="860" y1="220" x2="1540" y2="220" class="guide"/>
+      <line x1="860" y1="425" x2="1540" y2="425" class="grid"/>
+      <line x1="860" y1="630" x2="1540" y2="630" class="grid"/>
+      <line x1="860" y1="835" x2="1540" y2="835" class="grid"/>
+      <line x1="860" y1="1040" x2="1540" y2="1040" class="guide"/>
+      <line x1="1640" y1="220" x2="2320" y2="220" class="guide"/>
+      <line x1="1640" y1="425" x2="2320" y2="425" class="grid"/>
+      <line x1="1640" y1="630" x2="2320" y2="630" class="grid"/>
+      <line x1="1640" y1="835" x2="2320" y2="835" class="grid"/>
+      <line x1="1640" y1="1040" x2="2320" y2="1040" class="guide"/>
+      <text x="92" y="213" class="tiny">1.00H</text><text x="92" y="1033" class="tiny">0.00H</text>
+      <text x="872" y="213" class="tiny">1.00H</text><text x="872" y="1033" class="tiny">0.00H</text>
+      <text x="1652" y="213" class="tiny">1.00H</text><text x="1652" y="1033" class="tiny">0.00H</text>
+    </g>
+
+    <!-- A: Long Canvas -->
+    <g>
+      <text x="88" y="184" class="panelTitle">A · LONG CANVAS</text>
+      <text x="552" y="182" class="panelSub" fill="#e3a54b">첫 우선 검증안</text>
+      <text x="88" y="1174" class="panelSub">짧은 몸통 · 긴 팔다리 · 좁은 역삼각</text>
+
+      <g filter="url(#shadow)">
+        <!-- legs: hip .540H → knee .300H → ankle .075H; crotch .450H -->
+        <path d="M359 597 L359 794 L367 979 L367 1008" fill="none" stroke="url(#bodyDark)" stroke-width="62" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M481 597 L481 794 L473 979 L473 1008" fill="none" stroke="url(#body)" stroke-width="62" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="336" y="997" width="62" height="43" rx="20" fill="url(#bodyDark)"/>
+        <rect x="442" y="997" width="62" height="43" rx="20" fill="url(#body)"/>
+
+        <!-- arms: shoulder to hand center .42H -->
+        <path d="M326 376 L326 523 L326 646 L326 720" fill="none" stroke="url(#bodyDark)" stroke-width="54" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M514 376 L514 523 L514 646 L514 720" fill="none" stroke="url(#body)" stroke-width="54" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- torso -->
+        <path d="M305 376 Q420 350 535 376 L514 487 L502 597 L488 650 Q420 676 352 650 L338 597 L326 487Z" fill="url(#body)"/>
+        <!-- head .19H -->
+        <ellipse cx="420" cy="298" rx="63.5" ry="78" fill="url(#body)"/>
+        <path d="M395 368 Q420 386 445 368 L448 402 Q420 420 392 402Z" fill="url(#bodyDark)"/>
+        <!-- no-finger hands .105H -->
+        <circle cx="326" cy="720" r="43" fill="url(#bodyDark)"/>
+        <circle cx="514" cy="720" r="43" fill="url(#body)"/>
+      </g>
+      <use href="#referenceCollider" transform="translate(420 0)"/>
+      <circle cx="326" cy="376" r="6" class="joint"/><circle cx="514" cy="376" r="6" class="joint"/>
+      <circle cx="326" cy="523" r="4" class="jointMinor"/><circle cx="514" cy="523" r="4" class="jointMinor"/>
+      <circle cx="326" cy="646" r="4" class="jointMinor"/><circle cx="514" cy="646" r="4" class="jointMinor"/>
+      <circle cx="326" cy="720" r="4" class="jointMinor"/><circle cx="514" cy="720" r="4" class="jointMinor"/>
+      <circle cx="420" cy="597" r="4" class="jointMinor"/>
+      <circle cx="359" cy="597" r="6" class="joint"/><circle cx="481" cy="597" r="6" class="joint"/>
+      <circle cx="359" cy="794" r="4" class="jointMinor"/><circle cx="481" cy="794" r="4" class="jointMinor"/>
+      <circle cx="367" cy="979" r="4" class="jointMinor"/><circle cx="473" cy="979" r="4" class="jointMinor"/>
+
+      <line x1="305" y1="390" x2="535" y2="390" class="dim"/>
+      <text x="420" y="382" text-anchor="middle" class="tiny">어깨 0.28H</text>
+      <line x1="684" y1="220" x2="684" y2="1040" class="dim"/>
+      <line x1="674" y1="220" x2="694" y2="220" class="dim"/><line x1="674" y1="1040" x2="694" y2="1040" class="dim"/>
+      <text x="703" y="636" class="tiny" transform="rotate(90 703 636)">nominal H = 1.65 m</text>
+
+      <text x="88" y="1213" class="metric">머리 0.19H · 팔 0.42H · 다리 0.45H</text>
+      <text x="88" y="1243" class="metricDim">몸통 0.27H · 손 Ø 0.105H · 발 0.145H</text>
+      <rect x="88" y="1273" width="235" height="34" rx="17" fill="#e3a54b"/>
+      <text x="205" y="1296" text-anchor="middle" class="badge">원하는 방향에 가장 가까운지</text>
+    </g>
+
+    <!-- B: Balanced Canvas -->
+    <g>
+      <text x="868" y="184" class="panelTitle">B · BALANCED CANVAS</text>
+      <text x="868" y="1174" class="panelSub">사람형·Paint 면적·팔다리의 중간 균형</text>
+
+      <g filter="url(#shadow)">
+        <!-- legs: hip .510H → knee .285H → ankle .075H; crotch .430H -->
+        <path d="M1130 622 L1130 806 L1138 979 L1138 1008" fill="none" stroke="url(#bodyDark)" stroke-width="68" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M1270 622 L1270 806 L1262 979 L1262 1008" fill="none" stroke="url(#body)" stroke-width="68" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="1105" y="997" width="66" height="43" rx="20" fill="url(#bodyDark)"/>
+        <rect x="1229" y="997" width="66" height="43" rx="20" fill="url(#body)"/>
+
+        <!-- arms .40H -->
+        <path d="M1093 384 L1093 523 L1093 638 L1093 712" fill="none" stroke="url(#bodyDark)" stroke-width="59" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M1307 384 L1307 523 L1307 638 L1307 712" fill="none" stroke="url(#body)" stroke-width="59" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- torso -->
+        <path d="M1073 384 Q1200 354 1327 384 L1307 503 L1294 622 L1280 660 Q1200 692 1120 660 L1106 622 L1093 503Z" fill="url(#body)"/>
+        <!-- head .20H -->
+        <ellipse cx="1200" cy="302" rx="70" ry="82" fill="url(#body)"/>
+        <path d="M1174 374 Q1200 392 1226 374 L1230 410 Q1200 428 1170 410Z" fill="url(#bodyDark)"/>
+        <!-- hands .11H -->
+        <circle cx="1093" cy="712" r="45" fill="url(#bodyDark)"/>
+        <circle cx="1307" cy="712" r="45" fill="url(#body)"/>
+      </g>
+      <use href="#referenceCollider" transform="translate(1200 0)"/>
+      <circle cx="1093" cy="384" r="6" class="joint"/><circle cx="1307" cy="384" r="6" class="joint"/>
+      <circle cx="1093" cy="523" r="4" class="jointMinor"/><circle cx="1307" cy="523" r="4" class="jointMinor"/>
+      <circle cx="1093" cy="638" r="4" class="jointMinor"/><circle cx="1307" cy="638" r="4" class="jointMinor"/>
+      <circle cx="1093" cy="712" r="4" class="jointMinor"/><circle cx="1307" cy="712" r="4" class="jointMinor"/>
+      <circle cx="1200" cy="622" r="4" class="jointMinor"/>
+      <circle cx="1130" cy="622" r="6" class="joint"/><circle cx="1270" cy="622" r="6" class="joint"/>
+      <circle cx="1130" cy="806" r="4" class="jointMinor"/><circle cx="1270" cy="806" r="4" class="jointMinor"/>
+      <circle cx="1138" cy="979" r="4" class="jointMinor"/><circle cx="1262" cy="979" r="4" class="jointMinor"/>
+
+      <line x1="1073" y1="400" x2="1327" y2="400" class="dim"/>
+      <text x="1200" y="392" text-anchor="middle" class="tiny">어깨 0.31H</text>
+      <line x1="1464" y1="220" x2="1464" y2="1040" class="dim"/>
+      <line x1="1454" y1="220" x2="1474" y2="220" class="dim"/><line x1="1454" y1="1040" x2="1474" y2="1040" class="dim"/>
+      <text x="1483" y="636" class="tiny" transform="rotate(90 1483 636)">nominal H = 1.65 m</text>
+
+      <text x="868" y="1213" class="metric">머리 0.20H · 팔 0.40H · 다리 0.43H</text>
+      <text x="868" y="1243" class="metricDim">몸통 0.29H · 손 Ø 0.11H · 발 0.15H</text>
+      <rect x="868" y="1273" width="235" height="34" rx="17" fill="#aab1b9"/>
+      <text x="985" y="1296" text-anchor="middle" class="badge">A가 너무 길 때의 완화안</text>
+    </g>
+
+    <!-- C: Grounded Canvas -->
+    <g>
+      <text x="1648" y="184" class="panelTitle">C · GROUNDED CANVAS</text>
+      <text x="1648" y="1174" class="panelSub">넓은 하부 · 큰 손·발 · 근접전 안정감</text>
+
+      <g filter="url(#shadow)">
+        <!-- legs: hip .490H → knee .275H → ankle .080H; crotch .410H -->
+        <path d="M1902 638 L1902 815 L1910 974 L1910 1007" fill="none" stroke="url(#bodyDark)" stroke-width="74" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M2058 638 L2058 815 L2050 974 L2050 1007" fill="none" stroke="url(#body)" stroke-width="74" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="1875" y="995" width="70" height="45" rx="21" fill="url(#bodyDark)"/>
+        <rect x="2015" y="995" width="70" height="45" rx="21" fill="url(#body)"/>
+
+        <!-- arms .38H -->
+        <path d="M1861 392 L1861 523 L1861 634 L1861 704" fill="none" stroke="url(#bodyDark)" stroke-width="64" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M2099 392 L2099 523 L2099 634 L2099 704" fill="none" stroke="url(#body)" stroke-width="64" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- torso -->
+        <path d="M1841 392 Q1980 358 2119 392 L2099 515 L2087 638 L2071 676 Q1980 716 1889 676 L1873 638 L1861 515Z" fill="url(#body)"/>
+        <!-- head .21H -->
+        <ellipse cx="1980" cy="306" rx="76" ry="86" fill="url(#body)"/>
+        <path d="M1952 382 Q1980 401 2008 382 L2012 417 Q1980 436 1948 417Z" fill="url(#bodyDark)"/>
+        <!-- hands .12H -->
+        <circle cx="1861" cy="704" r="49" fill="url(#bodyDark)"/>
+        <circle cx="2099" cy="704" r="49" fill="url(#body)"/>
+      </g>
+      <use href="#referenceCollider" transform="translate(1980 0)"/>
+      <circle cx="1861" cy="392" r="6" class="joint"/><circle cx="2099" cy="392" r="6" class="joint"/>
+      <circle cx="1861" cy="523" r="4" class="jointMinor"/><circle cx="2099" cy="523" r="4" class="jointMinor"/>
+      <circle cx="1861" cy="634" r="4" class="jointMinor"/><circle cx="2099" cy="634" r="4" class="jointMinor"/>
+      <circle cx="1861" cy="704" r="4" class="jointMinor"/><circle cx="2099" cy="704" r="4" class="jointMinor"/>
+      <circle cx="1980" cy="638" r="4" class="jointMinor"/>
+      <circle cx="1902" cy="638" r="6" class="joint"/><circle cx="2058" cy="638" r="6" class="joint"/>
+      <circle cx="1902" cy="815" r="4" class="jointMinor"/><circle cx="2058" cy="815" r="4" class="jointMinor"/>
+      <circle cx="1910" cy="974" r="4" class="jointMinor"/><circle cx="2050" cy="974" r="4" class="jointMinor"/>
+
+      <line x1="1841" y1="407" x2="2119" y2="407" class="dim"/>
+      <text x="1980" y="399" text-anchor="middle" class="tiny">어깨 0.34H</text>
+      <line x1="2244" y1="220" x2="2244" y2="1040" class="dim"/>
+      <line x1="2234" y1="220" x2="2254" y2="220" class="dim"/><line x1="2234" y1="1040" x2="2254" y2="1040" class="dim"/>
+      <text x="2263" y="636" class="tiny" transform="rotate(90 2263 636)">nominal H = 1.65 m</text>
+
+      <text x="1648" y="1213" class="metric">머리 0.21H · 팔 0.38H · 다리 0.41H</text>
+      <text x="1648" y="1243" class="metricDim">몸통 0.30H · 손 Ø 0.12H · 발 0.16H</text>
+      <rect x="1648" y="1273" width="251" height="34" rx="17" fill="#aab1b9"/>
+      <text x="1774" y="1296" text-anchor="middle" class="badge">안정적이지만 묵직해질 수 있음</text>
+    </g>
+
+    <!-- footer -->
+    <text x="72" y="1370" class="metricDim">CharacterConstructionProfile_START · Orange = 후보 landmark · Cyan dash = 동일 reference collider(physics 아님)</text>
+    <text x="2328" y="1370" text-anchor="end" class="tiny">C1a v0.4 · 2026-08-12 · Reference, not replica</text>
+  </g>
+</svg>

@@ -1,0 +1,37 @@
+ToolchainProfile:
+  schemaVersion: 1
+  profileId: "project-hotfix-alpha-toolchain-r01"
+  status: "LOCKED"
+  projectPath: "Project hotfix"
+  recordedAtUtc: "2026-08-26T10:47:59Z"
+
+  unity:
+    releaseFamily: "Unity 6.3 LTS"
+    editorVersion: "6000.3.9f1"
+    editorRevision: "7a9955a4f2fa"
+    projectVersionPath: "Project hotfix/ProjectSettings/ProjectVersion.txt"
+    projectVersionSha256: "ee06b66c6e48dc22fe4771812f37f3817b17f9459d44b61202d45e2a44ea3509"
+    automaticUpgrade: false
+
+  blender:
+    releaseFamily: "Blender 5.2 LTS"
+    version: "5.2.0 LTS"
+    buildDate: "2026-07-14"
+    automaticUpgrade: false
+
+  packageBaseline:
+    purpose: "Unity URP template snapshot; individual package adoption remains owned by FDN-004..006"
+    manifestPath: "Project hotfix/Packages/manifest.json"
+    manifestSha256: "52fc9c6f97b8c0f62ed441b5fd108b8db0c89598af3617cc648d7a085843ee80"
+    lockPath: "Project hotfix/Packages/packages-lock.json"
+    lockSha256: "2da59839fc473daa97b5c5c8537033c1bc217aea8678564d64dadbc33f344efe"
+    directDependencyCount: 45
+    lockedPackageEntryCount: 57
+    universalRenderPipeline: "17.3.0"
+    inputSystem: "1.18.0"
+
+  changePolicy:
+    editorOrBlenderUpgradeRequiresProfileRevision: true
+    packageChangeRequiresManifestAndLockTogether: true
+    packageSelectionOwners: ["FDN-004", "FDN-005", "FDN-006"]
+    silentOrAutomaticUpgradeAllowed: false

@@ -1,0 +1,36 @@
+EV-DOC-RAW-VALIDATION 2026-08-26 r05
+COMMAND_KIND=read-only documentation parser; Build=0 Docker=0 Deploy=0
+ACTIVE_DOCS files=12/12
+docs/00_DOCUMENT_INDEX.md|sha256=a3449adcb1f4fbd97fc13d6c6ff49b1bdea2d82d373f0ed755df8559b11954be|lines=163
+docs/01_PRD.md|sha256=54511049b49b93bc1abb743d756f2be8ee33fddc0bff9a743b8e188371b1aee8|lines=811
+docs/02_SRS.md|sha256=ad93bde94584c525e447c2b505ecfafd18f3fc35bd26c53e8d121020edf1463a|lines=383
+docs/PATCH_DESIGN.md|sha256=f0e28a930da7905bcf3faf4678a41dc160cccf8d91a091313181929227fcecfe|lines=851
+docs/CHARACTER_TECHNICAL_SPEC.md|sha256=bdecc6311be802e833e6941bdb97ad5385c61012b4fee779ae669bbc80515cdf|lines=596
+docs/ART_DIRECTION.md|sha256=8db2fa8af9f90dc75fd05155bcd784fbd2783afbec3773b6ea4c2b879fd58ec4|lines=443
+docs/UI_UX_FLOW.md|sha256=03b6a3d4c50f705a8008e475b72c6f726edb983315c1bc85cd6e5f1428953641|lines=669
+docs/MAP_DESIGN_GUIDE.md|sha256=29c9f6e26a0aa28cd95f39153447893d3ea5a8caac1b163687adf0474fad0fd9|lines=479
+docs/MAP_P00_CONSTRUCTION_DROP.md|sha256=4e5cc70de1e8dd239c3381d421204f1ba0d23157d69ec20dfc9d2c778a00ef2d|lines=646
+docs/WEAPON_DESIGN.md|sha256=bf09b60bacbaa605cb6c6a68005c328a7e55becadc68c751e4fa4604e955952b|lines=585
+docs/03_IMPLEMENTATION_PLAN.md|sha256=22e643e1270a3d59cb53e4755bd1095b3bf51be6e27bf5713b5eb887868a5dd1|lines=402
+docs/04_IMPLEMENTATION_TRACEABILITY.md|sha256=3a92f51ef40769e14f033f99918f4ea6a482ec0cedefe020764db4a2be17401f|lines=169
+VERSIONS mismatch=0
+PRD_IDS rows=31 unique=31
+SRS_IDS rows=178 unique=178
+AT_IDS rows=40 unique=40
+PATCH_IDS rows=12 unique=12
+PATCH_EXACT_IDS missing=0 extra=0
+PATCH_BINDINGS mismatch=0
+PLAN_TASKS rows=164 unique=164 effort_days=239.5 duplicate=0 column_errors=0
+PLAN_DEPS missing=0 cycle_nodes=0
+TRACE prd_missing=0 prd_extra=0 srs_missing=0 srs_extra=0 at_missing=0 at_duplicate=0 task_missing=0
+MARKDOWN problems=0
+UNUSED_ARCHIVE files=0
+ARCHIVE_REFERENCES files=0
+FORBIDDEN_CONTAINER_ARTIFACTS files=0
+LEGACY_ARCHITECTURE token_hits=0 forbidden_task_prefixes=0
+CONTRACT_MARKERS missing=0
+PATCH_PRODUCT_NAME forbidden_hits=0
+STALE_PATCH_SCOPE token_hits=0
+STALE_ACTIVE_REFS token_hits=0
+C1A_ARTIFACT exists=True sha256=c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616
+FINAL_RESULT=PASS

@@ -1,0 +1,33 @@
+EvidenceManifest:
+  evidenceId: "EV-DOC-002-20260815-r01"
+  taskId: "DOC-002"
+  goalId: "DOC"
+  status: "PASS"
+  sourceRevision: "pre-repository SHA-256 set: PRD=d76345889f6d8318633f8b7b1091d0992e28a91bfce028c268ecc5bdb61277ef; SRS=42422d009325258bf20e733553e9991684b6817bedfcf6f261eee76f5e459e4e; Plan=b9ec52a7275eca83dd30ced5abde9b0f64e7a483eca0e3dc3985981cfbb76013; Trace=282edfa923bf9163a9a77c3631ef971df491c14876a84f12c0c5f4063f153fdb"
+  buildKind: "Harness"
+  buildVersion: null
+  environment: "macOS 26.5.2; Darwin 25.5.0 arm64; Python 3.9.6; documentation-only; Unity Project 없음"
+  profileVersions: ["DecisionConflictMatrix-r01", "PRD-v1.2.6", "SRS-v1.2.6"]
+  requirementIds: ["DOC-002", "UG-C1A", "UG-BUILD", "UG-ALPHA"]
+  commandsOrManualSteps:
+    - "현행 11개 문서와 확정 사용자 결정을 영역별로 대조"
+    - "충돌마다 이전 상태, 확정 해소, 권위 source와 상태를 기록"
+    - "해결 17행과 미해결 P0/P1 수를 재계산"
+  observedMetrics:
+    resolvedConflictRows: 17
+    unresolvedP0P1Conflicts: 0
+    hiddenDecisionSubstitutions: 0
+  expectedThresholds:
+    resolvedConflictRowsMinimum: 17
+    unresolvedP0P1Conflicts: 0
+    hiddenDecisionSubstitutions: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/docs/DOC-002/EV-DOC-002-DECISION-CONFLICT-MATRIX.md"
+    - "artifacts/evidence/docs/EV-DOC-RAW-VALIDATION-20260815-r02.txt"
+    - "artifacts/evidence/docs/EV-DOC-BASELINE.md"
+  failures: []
+  limitations:
+    - "Git repository가 없어 과거 revision과의 machine diff는 없다."
+    - "미승인 사용자 Gate는 충돌 0으로 숨기지 않고 matrix 판정 아래에 별도로 보존한다."
+  userDecision: null
+  recordedAtUtc: "2026-08-15T12:10:34Z"

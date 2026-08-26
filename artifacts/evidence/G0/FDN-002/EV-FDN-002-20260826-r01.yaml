@@ -1,0 +1,63 @@
+EvidenceManifest:
+  evidenceId: "EV-FDN-002-20260826-r01"
+  taskId: "FDN-002"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "Plan=e151cea7f52101a1cb73e97be9fcc8cb1b97661095b2dfeec248caf7e66561f3; ProjectVersion=ee06b66c6e48dc22fe4771812f37f3817b17f9459d44b61202d45e2a44ea3509; Manifest=52fc9c6f97b8c0f62ed441b5fd108b8db0c89598af3617cc648d7a085843ee80; PackageLock=2da59839fc473daa97b5c5c8537033c1bc217aea8678564d64dadbc33f344efe; GraphicsSettings=6736f33dc62c35b0e7a88e275242080bc7a1d94c91154d18fceb332b661a6bce; QualitySettings=6814d6cc3eb850dd7d2a069a8b17ba9f7591deba8b1758a855978bd9c8627643; EditorSettings=32d6a9be4c9aa9795a96bd951820a2d9be1bfefab82ed05a5db111af0863938f"
+  buildKind: "EditorImportCompile"
+  buildVersion: null
+  environment: "macOS arm64; Unity 6000.3.9f1 batchmode -nographics -quit; no BuildPipeline invocation"
+  profileVersions: ["Unity-6000.3.9f1", "URP-17.3.0", "ToolchainProfile-r01", "Unity-ForceText"]
+  requirementIds: ["FDN-002"]
+  commandsOrManualSteps:
+    - "Unity Editor batchmode에서 기존 Project hotfix를 import하고 C# script compile 후 정상 종료"
+    - "compiler failure/CS error/aborting/success exit pattern count 검사"
+    - "ProjectVersion·manifest·packages-lock SHA-256이 FDN-010 lock과 동일한지 검사"
+    - "Graphics/Quality URP assignment와 Editor ForceText serialization 검사"
+    - "민감한 local endpoint/machine/licensing 식별자가 포함된 원본 Editor log 제거"
+  observedMetrics:
+    unityExitCode: 0
+    scriptCompilationSeconds: 1.330939
+    scriptAssets: 1237
+    nonScriptAssets: 2285
+    sourceAssetChanges: 0
+    csCompilerErrors: 0
+    compilationFailures: 0
+    abortingBatchmode: 0
+    successfulBatchmodeExits: 1
+    lockHashChanges: 0
+    urpGraphicsPipelineAssigned: true
+    pcQualityPipelineAssigned: true
+    forceTextSerialization: true
+    licenseEntitlementResolved: true
+    nonBlockingAccessTokenWarnings: 1
+    nonBlockingCurl42Warnings: 1
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  expectedThresholds:
+    unityExitCode: 0
+    csCompilerErrors: 0
+    compilationFailures: 0
+    abortingBatchmode: 0
+    successfulBatchmodeExits: 1
+    lockHashChanges: 0
+    urpGraphicsPipelineAssigned: true
+    pcQualityPipelineAssigned: true
+    forceTextSerialization: true
+    playerBuildsExecuted: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/FDN-002/EV-FDN-002-20260826-r01.txt"
+    - "Project hotfix/ProjectSettings/ProjectVersion.txt"
+    - "Project hotfix/Packages/manifest.json"
+    - "Project hotfix/Packages/packages-lock.json"
+    - "Project hotfix/ProjectSettings/GraphicsSettings.asset"
+    - "Project hotfix/ProjectSettings/QualitySettings.asset"
+    - "Project hotfix/ProjectSettings/EditorSettings.asset"
+  failures: []
+  limitations:
+    - "Unity Personal entitlement는 정상 해석됐지만 token refresh와 shutdown 중 Curl 42 경고가 각 1회 있었다. compile/import 결과에는 영향이 없었다."
+    - "원본 Editor log는 local IP·machine/licensing 식별자 때문에 Evidence에 보존하지 않았다. 위 요약은 비밀값을 포함하지 않는다."
+    - "PlayMode/EditMode test, game code, Player Build와 실행 화면은 아직 없다."
+  userDecision: "생성한 Unity Project를 기준으로 계획 진행"
+  recordedAtUtc: "2026-08-26T10:55:44Z"

@@ -1,0 +1,41 @@
+EvidenceManifest:
+  evidenceId: "EV-DOC-003-20260815-r01"
+  taskId: "DOC-003"
+  goalId: "DOC"
+  status: "PASS"
+  sourceRevision: "pre-repository SHA-256 set: SRS=42422d009325258bf20e733553e9991684b6817bedfcf6f261eee76f5e459e4e; Plan=b9ec52a7275eca83dd30ced5abde9b0f64e7a483eca0e3dc3985981cfbb76013; Trace=282edfa923bf9163a9a77c3631ef971df491c14876a84f12c0c5f4063f153fdb"
+  buildKind: "Harness"
+  buildVersion: null
+  environment: "macOS 26.5.2; Darwin 25.5.0 arm64; Python 3.9.6; documentation-only; Unity Project 없음"
+  profileVersions: ["Trace-v0.4", "TraceVerifier-r02"]
+  requirementIds: ["DOC-003", "SRS-all", "AT-all"]
+  commandsOrManualSteps:
+    - "python3 artifacts/evidence/docs/verify_doc_baseline.py"
+    - "SRS·AT source ID와 Trace ID의 exact set, priority, task existence, Goal, reverse membership를 검사"
+    - "validator positive/boundary/invalid self-test 6개를 실행"
+  observedMetrics:
+    srsDefinitionsUnique: 405
+    acceptanceTestsUnique: 78
+    missingOrExtraMappings: 0
+    priorityMismatches: 0
+    primaryTaskOrGoalMismatches: 0
+    reverseMembershipMismatches: 0
+    validatorSelfTestFailures: 0
+  expectedThresholds:
+    srsDefinitionsUnique: 405
+    acceptanceTestsUnique: 78
+    missingOrExtraMappings: 0
+    priorityMismatches: 0
+    primaryTaskOrGoalMismatches: 0
+    reverseMembershipMismatches: 0
+    validatorSelfTestFailures: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/docs/EV-DOC-RAW-VALIDATION-20260815-r02.txt"
+    - "artifacts/evidence/docs/verify_doc_baseline.py"
+    - "docs/04_IMPLEMENTATION_TRACEABILITY.md"
+  failures: []
+  limitations:
+    - "Verifier는 구조·추적 불변식을 검사하며 구현 의미의 runtime 충족을 증명하지 않는다."
+    - "분야 의미 감사는 DecisionConflictMatrix와 별도 read-through 결과에 의존한다."
+  userDecision: null
+  recordedAtUtc: "2026-08-15T12:10:34Z"

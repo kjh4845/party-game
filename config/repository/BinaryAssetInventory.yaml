@@ -1,0 +1,37 @@
+BinaryAssetInventory:
+  schemaVersion: 1
+  revision: "r01"
+  recordedAtUtc: "2026-08-26T10:50:53Z"
+  policyPath: "config/repository/BinaryAssetPolicy.md"
+  excludedGeneratedRoots:
+    - "Project hotfix/Library"
+    - "Project hotfix/Logs"
+    - "Project hotfix/UserSettings"
+    - "Project hotfix/.vscode"
+  summary:
+    fileCount: 20
+    totalBytes: 27722987
+    uniqueContentHashes: 15
+    filesOver10MiB: 0
+    currentLfsRequiredCandidates: 0
+  files:
+    - {path: "Project hotfix/Assets/TutorialInfo/Icons/URP.png", bytes: 24069, sha256: "1d17a9ff3537859abe2c008603d29d90cf43191ae77aa386167cc65e53ba03d9"}
+    - {path: "artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.10_ROUND_HEAD_REVIEW.png", bytes: 1382831, sha256: "0948d8cb89489eb4eccf486ff39815029418de3e9e1cd861b118a69d22a1eb5c"}
+    - {path: "artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.11_GANG_PARTY_ARM_REVIEW.png", bytes: 1311579, sha256: "5d987c2ff1e9e38d14a1a22f1b7c614e61a877672d921dd45d5a9ad9febbb66a"}
+    - {path: "artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.12_APPEAL_REVIEW.png", bytes: 1300878, sha256: "ac25362280cc8f9f0205c6ab70ee7dc9850a85b122040bddfed035071faf7803"}
+    - {path: "artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.13_BELLY_CORRECTED_REVIEW.png", bytes: 1286254, sha256: "c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616"}
+    - {path: "artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.8.png", bytes: 1351443, sha256: "585d2781f197b1232401a654a97b54dee211ae06710998945b7280d3a7a3f7f1"}
+    - {path: "artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.9_CUTE_REVIEW.png", bytes: 1381936, sha256: "e16020ae2c1adba5e6e5e11036558cf5654461efbfd2e9fd74cb4775b54f60e1"}
+    - {path: "artifacts/review/character/C1_CHARACTER_PROPORTION_COMPARISON.png", bytes: 1351443, sha256: "585d2781f197b1232401a654a97b54dee211ae06710998945b7280d3a7a3f7f1"}
+    - {path: "artifacts/review/character/rejected/C1_CHARACTER_HYBRID_CORE_v0.7_ACTIVE_COPY_REJECTED.png", bytes: 1393088, sha256: "d1a905cfad4d6991759be60233a8fc486cd325183d267c60cd204fa9d8ecd874"}
+    - {path: "artifacts/review/character/rejected/C1_CHARACTER_HYBRID_CORE_v0.7_REJECTED.png", bytes: 1393088, sha256: "d1a905cfad4d6991759be60233a8fc486cd325183d267c60cd204fa9d8ecd874"}
+    - {path: "artifacts/review/character/rejected/C1_CHARACTER_MECCHA_GANGBEASTS_HYBRID_v0.6_ACTIVE_COPY_REJECTED.png", bytes: 1545405, sha256: "0cc75425f3e60ccad26bc69ce9276dc45782f8c14623485a7ae46db94c594e08"}
+    - {path: "artifacts/review/character/rejected/C1_CHARACTER_MECCHA_GANGBEASTS_HYBRID_v0.6_REJECTED.png", bytes: 1545405, sha256: "0cc75425f3e60ccad26bc69ce9276dc45782f8c14623485a7ae46db94c594e08"}
+    - {path: "artifacts/review/character/rejected/C1_CHARACTER_PROPORTION_COMPARISON_v0.4_REJECTED.png", bytes: 708755, sha256: "c3ed5f400a2018823e48be3f0401916526c4703a66be998bf7340d21db338aec"}
+    - {path: "artifacts/review/character/rejected/C1_CHARACTER_PROPORTION_COMPARISON_v0.5_REJECTED.png", bytes: 1495969, sha256: "f174c09589ff3b2bac7438f900ac171d40431ff7638614f40921ff70acfeecbd"}
+    - {path: "artifacts/review/character/rejected/C1_CHARACTER_PROPORTION_CONCEPT_v0.5_ACTIVE_COPY_REJECTED.png", bytes: 1495969, sha256: "f174c09589ff3b2bac7438f900ac171d40431ff7638614f40921ff70acfeecbd"}
+    - {path: "artifacts/review/character/rejected/C1_CHARACTER_PROPORTION_CONCEPT_v0.5_REJECTED.png", bytes: 1495969, sha256: "f174c09589ff3b2bac7438f900ac171d40431ff7638614f40921ff70acfeecbd"}
+    - {path: "docs/assets/ui/character-customizer-approved-v1.png", bytes: 1732054, sha256: "df48a0a1f3710e4c7f7413ca0fff5bce4045d56efc9f8bc66db7d694e7a14c05"}
+    - {path: "docs/assets/ui/interactive-lobby-concept-v2.png", bytes: 1864812, sha256: "b682dbee822f55919064e9ef5050d8ca3dd3d82f152903bbd88fdcae5da7e4b2"}
+    - {path: "docs/assets/ui/main-menu-approved-v1.png", bytes: 1698108, sha256: "af108d5201aeab108d7395aaa1862c6dfe9b74173fae3d007c0796ed95c682c8"}
+    - {path: "docs/assets/ui/private-lobby-approved-v1.png", bytes: 1963932, sha256: "b962f1758f8de60b26cbfea8e1915b4d8a355aae1da769f61f6e43c1ee351995"}

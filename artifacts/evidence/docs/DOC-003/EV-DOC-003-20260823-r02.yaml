@@ -1,0 +1,40 @@
+EvidenceManifest:
+  evidenceId: "EV-DOC-003-20260823-r02"
+  taskId: "DOC-003"
+  goalId: "DOC"
+  status: "PASS"
+  sourceRevision: "pre-repository SHA-256 set: SRS=ba5c7af3339ab9fb49d8a21513a26d8c4e770439cd8a39f82303652b93427baa; Plan=6fd0b14d3f70bec0f13c653fc4ccd28cc1e0c86a7ffe69b34cc25d5d5aba867e; Trace=890e9c8ba7d5658ddbf49d5aff696310d7dd5803751f2d0086659d61a9ac545d"
+  buildKind: "Harness"
+  buildVersion: null
+  environment: "macOS arm64; Python 3.9.6; documentation-only; Unity Project 없음"
+  profileVersions: ["Trace-v0.5", "TraceVerifier-r03"]
+  requirementIds: ["DOC-003", "SRS-all", "AT-all"]
+  commandsOrManualSteps:
+    - "python3 artifacts/evidence/docs/verify_doc_baseline.py"
+    - "SRS·AT exact set, priority, task/Goal, reverse membership와 deferred tail을 검사"
+    - "P2P/Party API/Steam tail과 SRS-CHAR-003/006 mapping을 의미 대조"
+  observedMetrics:
+    srsDefinitionsUnique: 405
+    acceptanceTestsUnique: 78
+    missingOrExtraMappings: 0
+    priorityMismatches: 0
+    primaryTaskOrGoalMismatches: 0
+    reverseMembershipMismatches: 0
+    validatorSelfTestFailures: 0
+  expectedThresholds:
+    srsDefinitionsUnique: 405
+    acceptanceTestsUnique: 78
+    missingOrExtraMappings: 0
+    priorityMismatches: 0
+    primaryTaskOrGoalMismatches: 0
+    reverseMembershipMismatches: 0
+    validatorSelfTestFailures: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/docs/EV-DOC-RAW-VALIDATION-20260823-r03.txt"
+    - "artifacts/evidence/docs/verify_doc_baseline.py"
+    - "docs/04_IMPLEMENTATION_TRACEABILITY.md"
+  failures: []
+  limitations:
+    - "Verifier는 문서 구조·추적 불변식을 검사하며 구현의 runtime 충족을 증명하지 않는다."
+  userDecision: null
+  recordedAtUtc: "2026-08-23T06:57:35Z"

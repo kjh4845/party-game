@@ -1,0 +1,40 @@
+EvidenceManifest:
+  evidenceId: "EV-DOC-BASELINE-20260825-r02"
+  taskIds: ["DOC-001", "DOC-002", "DOC-003", "DOC-004"]
+  goalId: "DOC"
+  status: "PASS"
+  sourceRevision: "Index=c84e3530ea78ae3ff4aac1c8c4e5dc4a46b1abfdb4af19279fba632084f41ead; PRD=1571068e5d400202c574cfb9be8b0c5df6099ed861f6103806a3d14180678d38; SRS=492c5b9fa2e23ce40bf5ac4deddbca6e18a26591db2407a2f3635fdbd912f3da; PatchDesign=6871bfce3e6bbaf0b1be8a54f6ccc48e0d49715848f67413035de4a6d4f8a99b; Character=cb6ccf43445e4a2d4558f03719f7aea523a69fcb94382a55b9881597a7b84c81; Art=a92c5f263730d41736ae6c74045e76675bf7ce2cf4520fec3864936ea22b45dc; UI=22abc4c0c5c7bc46ddf499cef2d47903e55e840718dec20f0ccb909fc5773504; Map=322bc835cd9bc62f18ea8b4cbbaeb1f8fef7f6fc01d728fdc3b6d71c84d0c932; P00=eb18bc7af9c976346286967c76bae5a2557beb375be456efeb46559feb16e658; Weapon=f216fe9eb2ede2cd4ee1a4e8dbdd1acd5fb49435f70a53794f9c15d4a805967e; Plan=e70663a209aa9a9c367c56a06dfc35ac1343bd28877bf0903527f3b9c5ea696d; Trace=3b4ff2c575938a2c37223656743acab1dc9d7281c415d1838d0b32353f3b8cf5"
+  environment: "macOS arm64; documentation-only; implementation/build/deploy 0"
+  profileVersions: ["Index-2026-08-25", "PRD-1.4.0", "SRS-1.4.0", "PatchDesign-0.1.0", "Character-0.7.0", "Art-1.4.0", "UI-1.4.0", "MapGuide-1.4.0", "P00-0.3.0", "Weapon-0.3.0", "Plan-2.1", "Trace-1.1"]
+  observedMetrics:
+    activeDocuments: 12
+    prdRequirements: 31
+    srsRequirements: 162
+    acceptanceScenarios: 33
+    prototypePatchDefinitions: 8
+    planTasks: 152
+    focusedEffortDays: 219.0
+    missingDependencies: 0
+    dependencyCycleNodes: 0
+    traceMismatches: 0
+    unusedArchiveFiles: 0
+    containerArtifacts: 0
+    forbiddenPatchProductNames: 0
+  expectedThresholds:
+    missingDependencies: 0
+    dependencyCycleNodes: 0
+    traceMismatches: 0
+    unusedArchiveFiles: 0
+    containerArtifacts: 0
+    forbiddenPatchProductNames: 0
+  commandsOrManualSteps:
+    - "python3 artifacts/evidence/docs/verify_doc_baseline.py"
+    - "ReadyTeal·check icon·state label, Alpha plain-text Patch UI, Patch8 occupancy·projected-set 계약 정합성 검사"
+  rawEvidencePaths:
+    - "artifacts/evidence/docs/EV-DOC-RAW-VALIDATION-20260825-r02.txt"
+    - "artifacts/evidence/docs/EV-DOC-BASELINE.md"
+  failures: []
+  limitations:
+    - "문서 구조 증거이며 Unity runtime, Player Build, Steam 통합 또는 UG-PATCH8-DESIGN 사용자 승인을 증명하지 않는다."
+  userDecision: "Alpha에서는 패치 선택·발동·효과 적용만 평문 UI로 검증하고 최종 UI·연출은 후속 Presentation 구조로 분리"
+  recordedAtUtc: "2026-08-25T09:31:49Z"

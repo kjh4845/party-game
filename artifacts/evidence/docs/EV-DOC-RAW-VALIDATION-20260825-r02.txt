@@ -1,0 +1,32 @@
+EV-DOC-RAW-VALIDATION 2026-08-25 r02
+COMMAND_KIND=read-only documentation parser; Build=0 Docker=0 Deploy=0
+ACTIVE_DOCS files=12/12
+docs/00_DOCUMENT_INDEX.md|sha256=c84e3530ea78ae3ff4aac1c8c4e5dc4a46b1abfdb4af19279fba632084f41ead|lines=147
+docs/01_PRD.md|sha256=1571068e5d400202c574cfb9be8b0c5df6099ed861f6103806a3d14180678d38|lines=603
+docs/02_SRS.md|sha256=492c5b9fa2e23ce40bf5ac4deddbca6e18a26591db2407a2f3635fdbd912f3da|lines=345
+docs/PATCH_DESIGN.md|sha256=6871bfce3e6bbaf0b1be8a54f6ccc48e0d49715848f67413035de4a6d4f8a99b|lines=543
+docs/CHARACTER_TECHNICAL_SPEC.md|sha256=cb6ccf43445e4a2d4558f03719f7aea523a69fcb94382a55b9881597a7b84c81|lines=368
+docs/ART_DIRECTION.md|sha256=a92c5f263730d41736ae6c74045e76675bf7ce2cf4520fec3864936ea22b45dc|lines=301
+docs/UI_UX_FLOW.md|sha256=22abc4c0c5c7bc46ddf499cef2d47903e55e840718dec20f0ccb909fc5773504|lines=529
+docs/MAP_DESIGN_GUIDE.md|sha256=322bc835cd9bc62f18ea8b4cbbaeb1f8fef7f6fc01d728fdc3b6d71c84d0c932|lines=351
+docs/MAP_P00_CONSTRUCTION_DROP.md|sha256=eb18bc7af9c976346286967c76bae5a2557beb375be456efeb46559feb16e658|lines=479
+docs/WEAPON_DESIGN.md|sha256=f216fe9eb2ede2cd4ee1a4e8dbdd1acd5fb49435f70a53794f9c15d4a805967e|lines=313
+docs/03_IMPLEMENTATION_PLAN.md|sha256=e70663a209aa9a9c367c56a06dfc35ac1343bd28877bf0903527f3b9c5ea696d|lines=351
+docs/04_IMPLEMENTATION_TRACEABILITY.md|sha256=3b4ff2c575938a2c37223656743acab1dc9d7281c415d1838d0b32353f3b8cf5|lines=148
+VERSIONS mismatch=0
+PRD_IDS rows=31 unique=31
+SRS_IDS rows=162 unique=162
+AT_IDS rows=33 unique=33
+PATCH_IDS rows=8 unique=8
+PLAN_TASKS rows=152 unique=152 effort_days=219.0 duplicate=0 column_errors=0
+PLAN_DEPS missing=0 cycle_nodes=0
+TRACE prd_missing=0 prd_extra=0 srs_missing=0 srs_extra=0 at_missing=0 at_duplicate=0 task_missing=0
+MARKDOWN problems=0
+UNUSED_ARCHIVE files=0
+ARCHIVE_REFERENCES files=0
+FORBIDDEN_CONTAINER_ARTIFACTS files=0
+LEGACY_ARCHITECTURE token_hits=0 forbidden_task_prefixes=0
+CONTRACT_MARKERS missing=0
+PATCH_PRODUCT_NAME forbidden_hits=0
+C1A_ARTIFACT exists=True sha256=c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616
+FINAL_RESULT=PASS

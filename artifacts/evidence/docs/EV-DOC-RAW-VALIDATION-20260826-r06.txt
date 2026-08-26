@@ -1,0 +1,38 @@
+EV-DOC-RAW-VALIDATION 2026-08-26 r06
+COMMAND_KIND=read-only documentation parser; Build=0 Docker=0 Deploy=0
+ACTIVE_DOCS files=12/12
+docs/00_DOCUMENT_INDEX.md|sha256=925f658fab12a793efbb18a9929729d9602c499b125b518f26d7963c58ec09ca|lines=176
+docs/01_PRD.md|sha256=2e079f53559846ff66d69af90ec139ee6278b95315ad0e31fa38b893a02b805f|lines=878
+docs/02_SRS.md|sha256=577bf0f13c819c6658e2582b31241f51a727b5f736904853bdb54a06d6736b39|lines=403
+docs/PATCH_DESIGN.md|sha256=711f832e53e85c4bbc8b02809afb4e8f018cbe1ce29e560fbca0e091048e37e9|lines=913
+docs/CHARACTER_TECHNICAL_SPEC.md|sha256=87979bbaf1cb9c8adcc3886b24302664b81525d489cb56319c80373edbc8bc7c|lines=641
+docs/ART_DIRECTION.md|sha256=e9cb61e038ce04168243dd7b8f7ae015b3df7ddb77e59b1fa9967164e815a11a|lines=503
+docs/UI_UX_FLOW.md|sha256=8d3bec50a939b5cf85a911ddc80e7fbbe1c192ea67d69ec03efa243370a74c4d|lines=764
+docs/MAP_DESIGN_GUIDE.md|sha256=4ed341618e7bbf9b98040062e19c59c418f06f9c9a7deef2b0e7a597be8f5ad8|lines=543
+docs/MAP_P00_CONSTRUCTION_DROP.md|sha256=cb4a280b1d0c9f23645e14b9b6c876598b70d078236144487da2581fbce2da36|lines=711
+docs/WEAPON_DESIGN.md|sha256=7eaf969179f98c362fef195c9d2da2ad9065e627dbf99c0591c4d190177eb6a7|lines=633
+docs/03_IMPLEMENTATION_PLAN.md|sha256=88e0f7a7a70d32a1b9452579ad5b051dce237ad03429c06c3600887440841708|lines=438
+docs/04_IMPLEMENTATION_TRACEABILITY.md|sha256=2c7525ccce59bb4ff3155151f6045fe36d34925b551079f5a8b9d2ab7892da1e|lines=184
+VERSIONS mismatch=0
+PRD_IDS rows=31 unique=31
+SRS_IDS rows=186 unique=186
+AT_IDS rows=44 unique=44
+POLICY_IDS srs_missing=0 at_missing=0
+PATCH_IDS rows=12 unique=12
+PATCH_EXACT_IDS missing=0 extra=0
+PATCH_BINDINGS mismatch=0
+PLAN_TASKS rows=173 unique=173 effort_days=251.0 duplicate=0 column_errors=0
+POLICY_TASKS missing=0
+PLAN_DEPS missing=0 cycle_nodes=0
+TRACE prd_missing=0 prd_extra=0 srs_missing=0 srs_extra=0 at_missing=0 at_duplicate=0 task_missing=0
+MARKDOWN problems=0
+UNUSED_ARCHIVE files=0
+ARCHIVE_REFERENCES files=0
+FORBIDDEN_CONTAINER_ARTIFACTS files=0
+LEGACY_ARCHITECTURE token_hits=0 forbidden_task_prefixes=0
+CONTRACT_MARKERS missing=0
+PATCH_PRODUCT_NAME forbidden_hits=0
+STALE_PATCH_SCOPE token_hits=0
+STALE_ACTIVE_REFS token_hits=0
+C1A_ARTIFACT exists=True sha256=c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616
+FINAL_RESULT=PASS

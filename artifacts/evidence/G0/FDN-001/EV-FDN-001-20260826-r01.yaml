@@ -1,0 +1,48 @@
+EvidenceManifest:
+  evidenceId: "EV-FDN-001-20260826-r01"
+  taskId: "FDN-001"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "HEAD=UNBORN; Plan=12f0f3d6d644350e5ce9e08ef54da74fe8d8941fb8d1d21ac9b9b7b5a4e1a115; PreservedTree=53db513f362c0b6a2c31c801ffa017278843b36065fb4dc247bef3394a3e8ddb"
+  buildKind: null
+  buildVersion: null
+  environment: "macOS arm64; Git 2.52.0; repository initialization only"
+  profileVersions: ["Plan-2.5", "Git-root-main-unborn"]
+  requirementIds: ["FDN-001"]
+  commandsOrManualSteps:
+    - "초기 파일 수·총 바이트·경로+내용 집계 SHA-256 측정"
+    - "git init -b main ."
+    - "root·branch·remote·nested repository와 초기화 전후 보존값 확인"
+  observedMetrics:
+    rootGitRepositories: 1
+    nestedGitRepositories: 0
+    remotes: 0
+    preExistingFiles: 75
+    postInitExistingFiles: 75
+    preExistingBytes: 28352603
+    postInitExistingBytes: 28352603
+    preTreeSha256: "53db513f362c0b6a2c31c801ffa017278843b36065fb4dc247bef3394a3e8ddb"
+    postInitTreeSha256: "53db513f362c0b6a2c31c801ffa017278843b36065fb4dc247bef3394a3e8ddb"
+    preservationMatch: true
+    assetsRootExistedBeforeInit: false
+    unityProjectsCreated: 0
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  expectedThresholds:
+    rootGitRepositories: 1
+    nestedGitRepositories: 0
+    remotes: 0
+    preservationMatch: true
+    unityProjectsCreated: 0
+    playerBuildsExecuted: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/FDN-001/EV-FDN-001-20260826-r01.txt"
+    - "docs/03_IMPLEMENTATION_PLAN.md"
+  failures: []
+  limitations:
+    - "착수 시 root assets/ directory는 존재하지 않아 기존 docs·artifacts와 .DS_Store 75개를 보존 대상으로 검증했다."
+    - ".gitignore, .gitattributes, LFS/binary policy는 FDN-011 범위이며 아직 만들지 않았다."
+    - "Initial commit, remote, Unity Project, code와 Player Build는 이 Task 범위가 아니다."
+  userDecision: "구현 계획대로 하나씩 진행"
+  recordedAtUtc: "2026-08-26T10:37:26Z"

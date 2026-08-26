@@ -1,0 +1,19 @@
+EvidenceManifest:
+  evidenceId: "EV-DOC-001-20260823-r04"
+  taskId: "DOC-001"
+  goalId: "DOC"
+  status: "PASS"
+  sourceRevision: "Index=a636e0afe800aab58ba3782feed1f62dff36bd462253669cb2513af017091672; PRD=e858a7dc7f95b2ee0de8f35d548678d2f5fefbabba4dac0d93a803c952ebcc97; SRS=707fe392609528283b1b7d59524c41b283e37e33a4ebc9abb6834627e2beeac0; Plan=7c78bdb7cc4f7ccfafbbfb28fe4f9c08403642071b086f41dcee1a54be67b44e; Trace=77c4607295688a1508efdc94a42094ce50143c8ddd91281091a90e998148b4be"
+  buildKind: "Harness"
+  buildVersion: null
+  environment: "macOS arm64; Python 3.9.6; documentation-only; Unity Project 없음; Docker/OCI/Compose 실행 없음"
+  profileVersions: ["DocumentBaseline-20260823-r04", "Plan-v1.3", "Trace-v0.6"]
+  requirementIds: ["DOC-001"]
+  commandsOrManualSteps: ["python3 artifacts/evidence/docs/verify_doc_baseline.py", "활성 문서 SHA-256·line count 재계산"]
+  observedMetrics: {activeDocuments: 11, missingDocuments: 0, hashRecords: 11, lineCountRecords: 11}
+  expectedThresholds: {activeDocuments: 11, missingDocuments: 0, hashRecords: 11, lineCountRecords: 11}
+  rawEvidencePaths: ["artifacts/evidence/docs/EV-DOC-RAW-VALIDATION-20260823-r05.txt", "artifacts/evidence/docs/verify_doc_baseline.py", "artifacts/evidence/docs/EV-DOC-BASELINE.md"]
+  failures: []
+  limitations: ["pre-repository SHA set이며 구현·Build·runtime을 증명하지 않는다."]
+  userDecision: null
+  recordedAtUtc: "2026-08-23T11:36:08Z"

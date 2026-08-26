@@ -1,0 +1,19 @@
+EvidenceManifest:
+  evidenceId: "EV-C1B-001-20260823-r03"
+  taskId: "C1B-001"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "artifact=c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616; Index=9ecae771858f1ff1043f4edb795bf3dfef0b2437686593098ce305bf798da2de; Plan=9e6eb5c178f728c543baf7867df597109a953c22cc8a91d80f2c30a06cf9cd4b"
+  buildKind: "Harness"
+  buildVersion: null
+  environment: "macOS arm64; PNG hash inspection; Unity Project 없음"
+  profileVersions: ["C1a-Hybrid-Core-v0.13"]
+  requirementIds: ["PRD-S-007", "SRS-CHAR-001", "UG-C1A"]
+  commandsOrManualSteps: ["v0.13 artifact SHA-256 재검증"]
+  observedMetrics: {artifactExists: true, sha256: "c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616"}
+  expectedThresholds: {artifactExists: true, sha256: "c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616"}
+  rawEvidencePaths: ["artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.13_BELLY_CORRECTED_REVIEW.png", "docs/03_IMPLEMENTATION_PLAN.md"]
+  failures: []
+  limitations: ["C1a 방향 승인만 증명하며 C1b·Mesh·physics 승인이 아니다."]
+  userDecision: "0.13으로 가자"
+  recordedAtUtc: "2026-08-23T10:18:51Z"

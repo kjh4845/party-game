@@ -1,0 +1,19 @@
+EvidenceManifest:
+  evidenceId: "EV-DOC-003-20260823-r04"
+  taskId: "DOC-003"
+  goalId: "DOC"
+  status: "PASS"
+  sourceRevision: "SRS=707fe392609528283b1b7d59524c41b283e37e33a4ebc9abb6834627e2beeac0; Plan=7c78bdb7cc4f7ccfafbbfb28fe4f9c08403642071b086f41dcee1a54be67b44e; Trace=77c4607295688a1508efdc94a42094ce50143c8ddd91281091a90e998148b4be"
+  buildKind: "Harness"
+  buildVersion: null
+  environment: "macOS arm64; Python 3.9.6; documentation-only"
+  profileVersions: ["Trace-v0.6", "TraceVerifier-r05"]
+  requirementIds: ["DOC-003", "SRS-all", "AT-all"]
+  commandsOrManualSteps: ["python3 artifacts/evidence/docs/verify_doc_baseline.py", "parent integration ID 유지 후 exact/reverse mapping 검사", "PRD·SRS·Plan source SHA 재잠금"]
+  observedMetrics: {srsDefinitionsUnique: 405, acceptanceTestsUnique: 78, mappingMismatches: 0, reverseMismatches: 0, sourceHashMismatches: 0}
+  expectedThresholds: {srsDefinitionsUnique: 405, acceptanceTestsUnique: 78, mappingMismatches: 0, reverseMismatches: 0, sourceHashMismatches: 0}
+  rawEvidencePaths: ["artifacts/evidence/docs/EV-DOC-RAW-VALIDATION-20260823-r05.txt", "docs/04_IMPLEMENTATION_TRACEABILITY.md"]
+  failures: []
+  limitations: ["문서 추적 불변식이며 runtime 충족 증거가 아니다."]
+  userDecision: null
+  recordedAtUtc: "2026-08-23T11:36:08Z"

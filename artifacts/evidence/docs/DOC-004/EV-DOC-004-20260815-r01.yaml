@@ -1,0 +1,40 @@
+EvidenceManifest:
+  evidenceId: "EV-DOC-004-20260815-r01"
+  taskId: "DOC-004"
+  goalId: "DOC"
+  status: "PASS"
+  sourceRevision: "pre-repository SHA-256 set: Plan=b9ec52a7275eca83dd30ced5abde9b0f64e7a483eca0e3dc3985981cfbb76013; Trace=282edfa923bf9163a9a77c3631ef971df491c14876a84f12c0c5f4063f153fdb"
+  buildKind: "Harness"
+  buildVersion: null
+  environment: "macOS 26.5.2; Darwin 25.5.0 arm64; Python 3.9.6; documentation-only; Unity Project 없음"
+  profileVersions: ["Plan-v1.1", "EvidenceSchema-v1", "TraceVerifier-r02"]
+  requirementIds: ["DOC-004"]
+  commandsOrManualSteps:
+    - "python3 artifacts/evidence/docs/verify_doc_baseline.py"
+    - "WBS 10열, 허용 effort, Task ID, dependency 존재와 DAG cycle을 파싱"
+    - "Goal 합계와 20% buffer를 WBS 행 합계로 재계산"
+  observedMetrics:
+    implementationTasks: 266
+    focusedEffortDays: 389.0
+    invalidEffortRows: 0
+    invalidColumnRows: 0
+    missingDependencies: 0
+    dependencyCycleNodes: 0
+  expectedThresholds:
+    implementationTasks: 266
+    focusedEffortDays: 389.0
+    invalidEffortRows: 0
+    invalidColumnRows: 0
+    missingDependencies: 0
+    dependencyCycleNodes: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/docs/EV-DOC-RAW-VALIDATION-20260815-r02.txt"
+    - "artifacts/evidence/docs/verify_doc_baseline.py"
+    - "docs/03_IMPLEMENTATION_PLAN.md"
+    - "docs/04_IMPLEMENTATION_TRACEABILITY.md"
+  failures: []
+  limitations:
+    - "집중일은 capacity estimate이며 달력 일정·완료 약속이 아니다."
+    - "Player Build, Unity compile, runtime test와 Steam 검증은 실행하지 않았다."
+  userDecision: null
+  recordedAtUtc: "2026-08-15T12:10:34Z"

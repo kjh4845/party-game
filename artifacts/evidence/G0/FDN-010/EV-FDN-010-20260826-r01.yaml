@@ -1,0 +1,56 @@
+EvidenceManifest:
+  evidenceId: "EV-FDN-010-20260826-r01"
+  taskId: "FDN-010"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "ToolchainProfile=8bf636d41002b0034c180fe7b698efc480a1e4092ba4ec1f6bab019b4c56b9ba; Plan=2e9a08318580c6d613027d929a93fc501d445ac070f17188cea9a9d1d07bf5e2; ProjectVersion=ee06b66c6e48dc22fe4771812f37f3817b17f9459d44b61202d45e2a44ea3509; Manifest=52fc9c6f97b8c0f62ed441b5fd108b8db0c89598af3617cc648d7a085843ee80; PackageLock=2da59839fc473daa97b5c5c8537033c1bc217aea8678564d64dadbc33f344efe"
+  buildKind: null
+  buildVersion: null
+  environment: "macOS arm64; installed Unity/Blender and existing Unity Project inspected without Editor launch"
+  profileVersions:
+    - "ToolchainProfile-project-hotfix-alpha-toolchain-r01"
+    - "Unity-6000.3.9f1-7a9955a4f2fa"
+    - "Blender-5.2.0-LTS"
+    - "URP-17.3.0"
+    - "InputSystem-1.18.0"
+  requirementIds: ["FDN-010"]
+  commandsOrManualSteps:
+    - "Unity app Info.plist와 ProjectVersion.txt exact version/revision 대조"
+    - "Blender --version으로 5.2.0 LTS 확인"
+    - "manifest.json/packages-lock.json JSON·entry count·URP/InputSystem version·SHA-256 확인"
+    - "ToolchainProfile.yaml schema/value/hash/automatic-upgrade policy 검사"
+  observedMetrics:
+    unityInstalledVersion: "6000.3.9f1"
+    unityProjectVersion: "6000.3.9f1"
+    unityVersionMatch: true
+    unityRevision: "7a9955a4f2fa"
+    blenderInstalledVersion: "5.2.0 LTS"
+    directPackageDependencies: 45
+    lockedPackageEntries: 57
+    universalRenderPipelineVersion: "17.3.0"
+    inputSystemVersion: "1.18.0"
+    automaticUpgradeAllowed: false
+    unityEditorExecutions: 0
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  expectedThresholds:
+    unityVersionMatch: true
+    blenderInstalledVersion: "5.2.0 LTS"
+    universalRenderPipelinePresent: true
+    packageManifestAndLockPresent: true
+    automaticUpgradeAllowed: false
+    playerBuildsExecuted: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/FDN-010/EV-FDN-010-20260826-r01.txt"
+    - "config/toolchain/ToolchainProfile.yaml"
+    - "Project hotfix/ProjectSettings/ProjectVersion.txt"
+    - "Project hotfix/Packages/manifest.json"
+    - "Project hotfix/Packages/packages-lock.json"
+  failures: []
+  limitations:
+    - "현재 package lock은 사용자가 생성한 URP template snapshot이며 개별 Input/Physics/Transport package 채택은 FDN-004..006에서 결정한다."
+    - "FDN-002의 Unity Editor compile, Scene와 ProjectSettings 검증은 아직 수행하지 않았다."
+    - "Unity Editor, Player Build, Steam, Docker와 외부 배포는 실행하지 않았다."
+  userDecision: "Unity Project를 생성했으므로 구현 계획 진행"
+  recordedAtUtc: "2026-08-26T10:47:59Z"

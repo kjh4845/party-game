@@ -1,0 +1,42 @@
+# macOS and local editors
+.DS_Store
+**/.DS_Store
+.idea/
+.vscode/
+
+# Unity generated directories (the project lives below the repository root)
+**/[Ll]ibrary/
+**/[Tt]emp/
+**/[Oo]bj/
+**/[Ll]ogs/
+**/[Uu]ser[Ss]ettings/
+**/[Mm]emoryCaptures/
+**/[Rr]ecordings/
+
+# Unity/IDE generated solution files
+*.csproj
+*.sln
+*.slnx
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Local build outputs. Player Builds remain user-run only.
+**/[Bb]uild/
+**/[Bb]uilds/
+
+# Crash and profiler output
+sysinfo.txt
+*.stacktrace
+
+# Never ignore Unity source metadata, project settings, or package locks.
+!**/Assets/**/*.meta
+!**/ProjectSettings/**
+!**/Packages/manifest.json
+!**/Packages/packages-lock.json

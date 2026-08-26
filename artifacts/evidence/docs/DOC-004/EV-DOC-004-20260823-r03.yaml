@@ -1,0 +1,19 @@
+EvidenceManifest:
+  evidenceId: "EV-DOC-004-20260823-r03"
+  taskId: "DOC-004"
+  goalId: "DOC"
+  status: "PASS"
+  sourceRevision: "Plan=9e6eb5c178f728c543baf7867df597109a953c22cc8a91d80f2c30a06cf9cd4b; Trace=cca0b19d47aafc7f96285b555485beb2bdecf840c5fbf5092ce929eb3a3df1d7"
+  buildKind: "Harness"
+  buildVersion: null
+  environment: "macOS arm64; Python 3.9.6; documentation-only"
+  profileVersions: ["Plan-v1.2-split-r01", "EvidenceSchema-v1", "TraceVerifier-r04"]
+  requirementIds: ["DOC-004"]
+  commandsOrManualSteps: ["WBS 10열·effort·ID·dependency·cycle 재검사", "integration parent 8개와 child 19개 ownership 확인"]
+  observedMetrics: {implementationTasks: 284, focusedEffortDays: 409.5, invalidEffortRows: 0, invalidColumnRows: 0, missingDependencies: 0, dependencyCycleNodes: 0}
+  expectedThresholds: {implementationTasks: 284, focusedEffortDays: 409.5, invalidEffortRows: 0, invalidColumnRows: 0, missingDependencies: 0, dependencyCycleNodes: 0}
+  rawEvidencePaths: ["artifacts/evidence/docs/EV-DOC-RAW-VALIDATION-20260823-r04.txt", "docs/03_IMPLEMENTATION_PLAN.md", "docs/04_IMPLEMENTATION_TRACEABILITY.md"]
+  failures: []
+  limitations: ["Player Build·Unity compile·Steam 시험은 실행하지 않았다."]
+  userDecision: null
+  recordedAtUtc: "2026-08-23T10:18:51Z"

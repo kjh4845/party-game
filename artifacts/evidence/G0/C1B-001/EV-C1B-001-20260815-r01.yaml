@@ -1,0 +1,37 @@
+EvidenceManifest:
+  evidenceId: "EV-C1B-001-20260815-r01"
+  taskId: "C1B-001"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "artifact SHA-256 c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616; Index=e623ed18cd41e60815ecd30308e89f270f5fc4a20300a85d06b472e91457cfbd; Plan=b9ec52a7275eca83dd30ced5abde9b0f64e7a483eca0e3dc3985981cfbb76013"
+  buildKind: "Harness"
+  buildVersion: null
+  environment: "macOS 26.5.2; Darwin 25.5.0 arm64; SHA-256 and PNG metadata inspection; Unity Project 없음"
+  profileVersions: ["C1a-Hybrid-Core-v0.13"]
+  requirementIds: ["PRD-S-007", "SRS-CHAR-001", "UG-C1A"]
+  commandsOrManualSteps:
+    - "shasum -a 256 artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.13_BELLY_CORRECTED_REVIEW.png"
+    - "sips -g pixelWidth -g pixelHeight -g format artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.13_BELLY_CORRECTED_REVIEW.png"
+    - "사용자 발화 '0.13으로 가자'를 C1a 방향 승인으로 기록"
+  observedMetrics:
+    artifactExists: true
+    sha256: "c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616"
+    bytes: 1286254
+    pixelWidth: 1672
+    pixelHeight: 941
+    format: "PNG"
+  expectedThresholds:
+    artifactExists: true
+    sha256: "c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616"
+    userDirectionDecisionPresent: true
+  rawEvidencePaths:
+    - "artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.13_BELLY_CORRECTED_REVIEW.png"
+    - "docs/CHARACTER_TECHNICAL_SPEC.md"
+    - "docs/00_DOCUMENT_INDEX.md"
+    - "docs/03_IMPLEMENTATION_PLAN.md"
+  failures: []
+  limitations:
+    - "C1a 큰 방향 승인만 증명한다. C1b exact 치수, Mesh, Rig, collider, physics 또는 production 승인이 아니다."
+    - "생성 이미지 pixel을 exact gameplay scale이나 normalized landmark로 사용하지 않는다."
+  userDecision: "0.13으로 가자"
+  recordedAtUtc: "2026-08-15T12:10:34Z"
