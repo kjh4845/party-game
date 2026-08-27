@@ -1,0 +1,119 @@
+LicensePolicy:
+  schemaVersion: 1
+  profileId: "project-hotfix-license-policy-r01"
+  status: "APPROVED"
+  approvedAtUtc: "2026-08-27T17:09:43Z"
+  approvalBasis: "User approved the review-only image disposition, deletion of three source-unproven review files, removal of Unity tutorial/readme files, and the license policy on 2026-08-28 KST. Deferring the final Player-content audit follows the separately fixed no-automatic-build rule and BLD-001/ALP-001 ownership."
+
+  scope:
+    packageManifest: "Project hotfix/Packages/manifest.json"
+    packageLock: "Project hotfix/Packages/packages-lock.json"
+    packageInventory: "config/licenses/ThirdPartyInventory.yaml"
+    distributedNoticeIndex: "THIRD_PARTY_NOTICES.md"
+    directPackageCount: 46
+    lockedPackageCount: 58
+    packageChangesPerformedByLic001: 0
+    reviewOnlyC2paImageCount: 18
+
+  sourceOfTruth:
+    - "Resolved package id, version, source and dependency depth come from Project hotfix/Packages/packages-lock.json."
+    - "Direct-versus-transitive classification is the intersection of manifest.json and packages-lock.json."
+    - "Package license families and notice components come from the resolved package LICENSE/NOTICE files, recorded by logical package-relative locator rather than a machine-specific PackageCache path."
+    - "Unity built-in modules have no per-package notice in Unity 6000.3.9f1; their current basis is the Unity Editor Software Terms plus the installed editor's aggregate legal notice."
+    - "An embedded C2PA claim is provenance evidence only and is not a copyright license or redistribution grant."
+
+  evaluationOrder:
+    - "BLOCKED license or missing rights evidence wins over every allow rule."
+    - "Review-only content may remain in the repository only while shippingAllowed is false."
+    - "Official Unity packages and their bundled dependencies may be used under the applicable Unity terms when bundled NOTICE material is preserved."
+    - "A final Windows Player audit may narrow the source inventory to files actually distributed, but may not silently remove a required notice."
+
+  officialUnityPackageRule:
+    decision: "ALLOW_WITH_CONDITIONS"
+    conditions:
+      - "The package must resolve from the approved Unity registry or the locked Unity editor built-in source."
+      - "The exact resolved version and source must be present in ThirdPartyInventory.yaml."
+      - "Bundled LICENSE and Third Party Notice material must remain discoverable through the recorded source locator."
+      - "Any package NOTICE selected by the final Windows Player audit must be preserved in the release notice bundle or an equivalent user-visible notice surface."
+      - "A package update invalidates the previous license review and requires a new inventory revision."
+
+  generallyAllowedWithObligations:
+    - family: "MIT"
+      obligations: "Retain the applicable copyright and permission notice when redistribution requires it."
+    - family: "0BSD/BSD-2-Clause/BSD-3-Clause/NCSA"
+      obligations: "Retain the applicable notice and attribution conditions."
+    - family: "Apache-2.0 and Apache-2.0 with LLVM exceptions"
+      obligations: "Retain license and applicable NOTICE/attribution material."
+    - family: "Zlib"
+      obligations: "Retain source notices and do not misrepresent origin or altered source."
+    - family: "Boost-1.0"
+      obligations: "Retain the license where the bundled text requires it."
+    - family: "Public Domain"
+      obligations: "Keep the package's provenance record and bundled notice."
+    - family: "Microsoft Public License, CC-BY, or a non-ambiguous bundled bespoke notice"
+      obligations: "Allowed only as an official Unity package-bundled dependency with its complete bundled notice preserved; this is not a blanket approval for newly sourced content."
+
+  blockedFamilies:
+    - "GPL of any version or later-version form"
+    - "AGPL of any version or later-version form"
+    - "SSPL of any version"
+    - "Non-commercial or NC restrictions"
+    - "No-derivatives or ND restrictions"
+    - "Unknown license for content proposed for shipping"
+    - "Custom or bespoke terms whose commercial-use or redistribution grant is ambiguous"
+    - "No license or rights evidence for newly sourced external content"
+
+  newExternalAssetRule:
+    decision: "FAIL_CLOSED"
+    requiredEvidence:
+      - "Stable source or author locator"
+      - "Version, acquisition date, or immutable content hash"
+      - "Commercial-use grant"
+      - "Redistribution or embedding grant appropriate to the intended shipping form"
+      - "Attribution and NOTICE requirements"
+    failureDisposition: "shippingAllowed must remain false until every required evidence field is reviewed."
+
+  reviewOnlyContentRule:
+    allowedRepositoryPurpose: "Design reference and decision history only"
+    allowedHumanReferenceUse: "A human artist may use an approved design image as visual reference while creating a new original production asset."
+    shippingAllowed: false
+    prohibitedUses:
+      - "Direct import, copy, or re-encoding of the original review image into a Player build"
+      - "Use of the original review image as a production texture, sprite, UI image, Steam store image, or marketing image"
+      - "Redistribution of the original review image in a source-art bundle"
+      - "Shipping a mechanically or automatically generated derivative of the original review image"
+    promotionRequirement: "Moving the original review file, a re-encoded copy, or a mechanically generated derivative into shipping scope requires a new source/rights review and an inventory revision; C2PA metadata alone is insufficient. Human reconstruction from an approved design reference remains allowed."
+
+  evidenceRules:
+    normativePathsMustBeRepositoryRelative: true
+    machineSpecificAbsolutePathsAllowedInNormativeFields: false
+    packageCacheHashesAllowedInNormativeFields: false
+    packageCacheObservationsAllowedOnlyUnderAuditNotes: true
+    emptyRequiredFieldsAllowed: false
+    requiredPackageFields:
+      - "packageId"
+      - "resolvedVersion"
+      - "source"
+      - "relationship"
+      - "usageClass"
+      - "licenseFamily"
+      - "noticeDisposition"
+      - "sourceEvidence"
+
+  releaseAudit:
+    automaticBuildAllowed: false
+    currentScope: "Source package and review-only asset inventory"
+    finalTarget: "Windows x64 Player"
+    finalAuditOwners: ["BLD-001", "ALP-001"]
+    trigger: "After the user performs the Windows Player build"
+    requiredChecks:
+      - "Compare actual Player files and managed/native assemblies with this source inventory."
+      - "Include all applicable Unity engine and package notices in the final release notice set."
+      - "Confirm editor/test-only material is absent before excluding its notice from the release bundle."
+      - "Record the user-built artifact identity and audit result without running an automatic build."
+
+  limitations:
+    - "This policy records engineering evidence and does not provide a legal opinion."
+    - "Unity 6000.3.9f1 currently has MacStandaloneSupport only on the audited machine; Windows Player contents are not yet observable."
+    - "Unity package stripping and shader compilation can change the final redistributed component set."
+    - "The installed Unity aggregate legal notice is not a per-package or per-module mapping."

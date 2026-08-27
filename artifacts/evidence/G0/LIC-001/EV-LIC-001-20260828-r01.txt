@@ -1,0 +1,97 @@
+EV-LIC-001-20260828-r01
+TASK=LIC-001
+COMMAND_KIND=source license inventory, repository asset audit, fail-closed mutation tests; Player Build=0 Docker=0 Deploy=0
+BASE_REVISION=e29f05e5aece088d5f4f718e9c50356726a28830
+
+USER_DECISION_2026-08-28_KST
+- Keep the 18 approved C2PA images outside Player shipping scope; a human artist may use them as visual design references.
+- Delete three source-unproven rejected review files.
+- Remove Unity template Readme/TutorialInfo files.
+- Approve the fail-closed license policy for official Unity packages, bundled notices and future external assets.
+
+APPROVED_REMOVALS
+- SOURCE_UNPROVEN_REVIEW_FILES=3
+- UNITY_TEMPLATE_README_TUTORIAL_FILES=14
+- TOTAL_REMOVED_TRACKED_FILES=17
+- CURRENT_ACTIVE_REFERENCES_TO_REMOVED_PATHS=0
+- GIT_HISTORY_RECOVERY=AVAILABLE
+
+SOURCE_PACKAGE_INVENTORY
+- DIRECT_PACKAGES=46
+- TRANSITIVE_PACKAGES=12
+- LOCKED_PACKAGES=58
+- REGISTRY_PACKAGES=14
+- BUILTIN_PACKAGES=44
+- BUILTIN_MODULE_PACKAGES=36
+- NON_MODULE_ROOT_LICENSE_FILES=22
+- ROOT_THIRD_PARTY_NOTICE_FILES=10
+- RESOLVED_PACKAGE_LOGICAL_EVIDENCE_LOCATORS=40
+- PACKAGE_CACHE_MATCHES=58
+- PACKAGE_CHANGES_PERFORMED=0
+- MANIFEST_SHA256=88a1d01cf3abd14843cb3638a7692552e54f62a6d5de003c458a47a869edd741
+- LOCK_SHA256=8708528393a5fce3dd9110fc14815ad2dbc21cefd0efec6102b79d86a62404aa
+
+REPOSITORY_ASSET_INVENTORY
+- REVIEW_ONLY_C2PA_IMAGES=18
+- REVIEW_ONLY_PATHS_MATCH_BINARY_INVENTORY=18
+- REVIEW_ONLY_SHIPPING_ALLOWED_TRUE=0
+- PLAYER_SHIPPING_EXTERNAL_IMAGE_FONT_AUDIO_MODEL_PROJECT_SHADER_NATIVE_PLUGIN=0
+- BINARY_INVENTORY_FILES=18
+- BINARY_INVENTORY_BYTES=26990163
+- BINARY_INVENTORY_UNIQUE_SHA256=13
+- CURRENT_LFS_REQUIRED_CANDIDATES=0
+
+COMMAND=ruby tools/verify_license_inventory.rb
+LICENSE_INVENTORY_AUDIT=LIC-001
+PACKAGE_INVENTORY_COUNT=58
+REVIEW_ASSET_COUNT=18
+PACKAGE_CACHE_VERIFIED=false
+TOTAL_VIOLATIONS=0
+FINAL_RESULT=PASS
+
+COMMAND=ruby tools/verify_license_inventory.rb --verify-package-cache
+LICENSE_INVENTORY_AUDIT=LIC-001
+PACKAGE_INVENTORY_COUNT=58
+REVIEW_ASSET_COUNT=18
+PACKAGE_CACHE_VERIFIED=true
+PACKAGE_CACHE_MATCHES=58
+PACKAGE_CACHE_EVIDENCE_LOCATORS=40
+TOTAL_VIOLATIONS=0
+FINAL_RESULT=PASS
+
+COMMAND=ruby tools/tests/verify_license_inventory_test.rb
+TEST_RUNS=16
+TEST_ASSERTIONS=142
+TEST_FAILURES=0
+TEST_ERRORS=0
+TEST_SKIPS=0
+FINAL_RESULT=PASS
+
+COMMAND=python3 artifacts/evidence/docs/verify_doc_baseline.py
+ACTIVE_DOCS=12/12
+PLAN_TASKS=173
+PLAN_EFFORT_DAYS=251.0
+MARKDOWN_PROBLEMS=0
+FINAL_RESULT=PASS
+
+COMMAND=ruby tools/verify_forbidden_infrastructure.rb
+GIT_VISIBLE_INVENTORY_FILES=257
+CONTENT_FILES_SCANNED=89
+PACKAGE_MANIFESTS_SCANNED=2
+BACKEND_DATABASE_DEDICATED_CONTAINER_AUDIT_VIOLATIONS=0
+FINAL_RESULT=PASS
+
+COMMAND=ruby tools/verify_art_profiles.rb
+PROFILE_FILES_LOADED=3
+TOTAL_VIOLATIONS=0
+FINAL_RESULT=PASS
+
+COMMAND=ruby tools/verify_evidence_manifest.rb --strict artifacts/evidence/G0/LIC-001/EV-LIC-001-20260828-r01.yaml
+EVIDENCE_MANIFEST_VALIDATION=PASS files=1
+
+BOUNDARY
+- This is a complete source-package and repository-asset inventory for the current locked project, not a final Windows Player notice bundle.
+- Unity built-in module directories do not provide per-package notices; the installed editor aggregate legal notice is not treated as a per-module mapping.
+- The current machine has MacStandaloneSupport but not WindowsStandaloneSupport.
+- Final managed/native assembly, engine-module, compiled-shader and NOTICE selection requires the user-run Windows x64 Player artifact in BLD-001/ALP-001.
+- No Unity Player Build, package install/removal/upgrade, network upload, Docker command or deployment was executed.

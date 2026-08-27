@@ -1,0 +1,134 @@
+EvidenceManifest:
+  schemaVersion: 1
+  evidenceProfile: "EvidenceProfile-r01"
+  evidenceId: "EV-LIC-001-20260828-r01"
+  taskId: "LIC-001"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "Base=e29f05e5aece088d5f4f718e9c50356726a28830; LicensePolicy=c0c5c493e8b64bcf8de1a24dbecaeed7a4dbeed43106df1af8976d2f77aae8ce; Inventory=8fc3a2918a80b410fd0127d8b5cb4a1986a9302388a50212712c1dc1217da333; NoticeIndex=09c2127667818e36188983309afad1399cf383c4a692223d99923b54349c0f3b; Validator=7901a2b820bc4ab2d25934b62d2578aa0dd2befdd7ac9f0cb3e527388851704c; Test=da9de9174cb4b12621a190419c0bcb375c8180f1b5249bab38b278f18a1d22b3; BinaryPolicy=2ad2f9acf3432b6a5d4875262e3b4588dfafe3c2ee2ea569e2a27f08b98d229c; BinaryInventory=799d7c9b3cfd04eef8b721526e71a7d5702caa218da68408e46de9d88e331bcb; Manifest=88a1d01cf3abd14843cb3638a7692552e54f62a6d5de003c458a47a869edd741; PackageLock=8708528393a5fce3dd9110fc14815ad2dbc21cefd0efec6102b79d86a62404aa; ProjectSettings=7cb3bda6a91685d19d2a3552f692e79269aec554e91b93641bb07c4be6b6422f; Plan=bbee246fa2853df0cf71964097044aa3dc0fe1263c17f734199bcbcdbce937f1"
+  buildKind: "SourceLicenseInventoryAndRepositoryAuditNoPlayerBuild"
+  buildVersion: "NotBuilt"
+  environment: "macOS arm64; Ruby 2.6.10; Git inventory; Unity 6000.3.9f1 PackageCache read-only; WindowsStandaloneSupport not installed"
+  profileVersions: ["project-hotfix-license-policy-r01", "project-hotfix-third-party-inventory-r01", "RepositoryPolicy-r02", "BinaryAssetInventory-r02", "EvidenceProfile-r01"]
+  requirementIds: ["LIC-001", "BLD-001", "ALP-001"]
+  commandsOrManualSteps:
+    - "manifest direct46와 lock58을 전수 대조해 direct/transitive, version, registry/builtin source, usage, license family, NOTICE disposition과 logical evidence locator를 기록"
+    - "PackageCache를 읽기 전용으로 대조해 resolved package58/58, non-module root LICENSE22, root Third Party Notice10과 nested/inline 포함 locator40의 regular non-empty file을 확인"
+    - "Unity built-in module36은 per-package notice 부재와 aggregate legal notice의 module mapping 한계를 숨기지 않고 final Windows Player audit를 BLD-001/ALP-001에 남김"
+    - "C2PA review image18을 Binary inventory path·SHA-256과 맞추고 모두 reviewOnly true, shippingAllowed false, Unity Assets 밖으로 고정"
+    - "사람이 승인 디자인을 참고해 새 원본 production asset을 제작하는 것은 허용하고 원본 직접 import/copy/re-encode·Steam media·기계적 파생 shipping은 차단"
+    - "사용자 승인에 따라 source-unproven rejected file3과 Unity template Readme/TutorialInfo file14를 제거하고 active path/GUID reference0 확인"
+    - "새 image/font/audio/model/project shader/native binary가 미등록이면 실패하고 blocked/unknown rights entry가 shipping true이면 실패하는 Git inventory guard 작성"
+    - "version/source/depth/relationship drift, missing/duplicate package, manifest/lock hash drift, asset path/SHA/size drift, Unity Assets 이동, duplicate/invalid/oversize YAML, symlink, NOTICE 누락과 PackageCache 변조 mutation16종 검증"
+    - "default/cache verifier, mutation tests, active docs12, forbidden infrastructure, art profile, strict Evidence와 staged diff를 검증"
+    - "Package install/remove/upgrade, Unity Player Build, Windows module install, network upload, Docker command와 Deploy 실행0"
+  observedMetrics:
+    directPackages: 46
+    transitivePackages: 12
+    lockedPackages: 58
+    registryPackages: 14
+    builtinPackages: 44
+    builtinModulePackages: 36
+    packageInventoryMatches: 58
+    packageCacheMatches: 58
+    nonModuleRootLicenseFiles: 22
+    rootThirdPartyNoticeFiles: 10
+    resolvedPackageEvidenceLocators: 40
+    packageSourceVersionRelationshipMissing: 0
+    packageChangesPerformed: 0
+    reviewOnlyC2paImages: 18
+    reviewAssetsMatchedToBinaryInventory: 18
+    reviewAssetsShippingAllowed: 0
+    playerShippingForbiddenOrUnlicensedExternalAssets: 0
+    externalFonts: 0
+    externalAudioAssets: 0
+    external3dModels: 0
+    projectShaders: 0
+    nativeOrManagedPluginBinaries: 0
+    sourceUnprovenFilesRemoved: 3
+    unityTutorialReadmeFilesRemoved: 14
+    activeReferencesToRemovedFiles: 0
+    binaryInventoryFiles: 18
+    binaryInventoryBytes: 26990163
+    binaryInventoryUniqueHashes: 13
+    currentLfsRequiredCandidates: 0
+    defaultVerifierViolations: 0
+    packageCacheVerifierViolations: 0
+    mutationTestRuns: 16
+    mutationTestAssertions: 142
+    mutationTestFailures: 0
+    mutationTestErrors: 0
+    mutationTestSkips: 0
+    finalGitVisibleInventoryFiles: 257
+    finalForbiddenInfrastructureContentFiles: 89
+    finalForbiddenInfrastructurePackageManifests: 2
+    finalForbiddenInfrastructureViolations: 0
+    activeDocsValidated: 12
+    evidenceManifestsAfterLic001: 40
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+    independentReviewFinalBlockers: 0
+  expectedThresholds:
+    directPackages: 46
+    transitivePackages: 12
+    lockedPackages: 58
+    packageInventoryMatches: 58
+    packageCacheMatches: 58
+    nonModuleRootLicenseFiles: 22
+    rootThirdPartyNoticeFiles: 10
+    resolvedPackageEvidenceLocators: 40
+    packageSourceVersionRelationshipMissing: 0
+    packageChangesPerformed: 0
+    reviewOnlyC2paImages: 18
+    reviewAssetsMatchedToBinaryInventory: 18
+    reviewAssetsShippingAllowed: 0
+    playerShippingForbiddenOrUnlicensedExternalAssets: 0
+    sourceUnprovenFilesRemoved: 3
+    unityTutorialReadmeFilesRemoved: 14
+    activeReferencesToRemovedFiles: 0
+    binaryInventoryFiles: 18
+    binaryInventoryBytes: 26990163
+    binaryInventoryUniqueHashes: 13
+    currentLfsRequiredCandidates: 0
+    defaultVerifierViolations: 0
+    packageCacheVerifierViolations: 0
+    mutationTestRuns: 16
+    mutationTestAssertions: 142
+    mutationTestFailures: 0
+    mutationTestErrors: 0
+    mutationTestSkips: 0
+    finalGitVisibleInventoryFiles: 257
+    finalForbiddenInfrastructureContentFiles: 89
+    finalForbiddenInfrastructurePackageManifests: 2
+    finalForbiddenInfrastructureViolations: 0
+    activeDocsValidated: 12
+    evidenceManifestsAfterLic001: 40
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+    independentReviewFinalBlockers: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/LIC-001/EV-LIC-001-20260828-r01.txt"
+    - "config/licenses/LicensePolicy.yaml"
+    - "config/licenses/ThirdPartyInventory.yaml"
+    - "THIRD_PARTY_NOTICES.md"
+    - "tools/verify_license_inventory.rb"
+    - "tools/tests/verify_license_inventory_test.rb"
+    - "config/repository/BinaryAssetPolicy.md"
+    - "config/repository/BinaryAssetInventory.yaml"
+    - "Project hotfix/Packages/manifest.json"
+    - "Project hotfix/Packages/packages-lock.json"
+    - "docs/03_IMPLEMENTATION_PLAN.md"
+    - "artifacts/reports/FOUNDATION_DECISION_RATIONALE.md"
+  failures: []
+  limitations:
+    - "이 PASS는 현재 lock58과 Git-visible repository asset의 source inventory가 완전하고 Player-shipping forbidden/unlicensed external asset이 0이라는 뜻이다. 권리가 shipping에 미확정인 review-only image18은 의도적으로 repository에 남지만 전부 shippingAllowed false다."
+    - "PackageCache는 Unity-generated ignored state다. 규범 inventory는 package id/version과 package-relative locator를 쓰며 Machine-specific cache directory hash를 source of truth로 사용하지 않는다."
+    - "Unity built-in module36에는 per-package LICENSE/NOTICE가 없고 aggregate editor legal notice는 module별 mapping이 아니다. 실제 Windows Player engine notice는 사용자 Build 뒤 확인한다."
+    - "현재 설치에는 WindowsStandaloneSupport가 없어 Windows managed/native assembly, compiled shader와 platform module 포함물을 검사하지 않았다."
+    - "THIRD_PARTY_NOTICES.md는 source notice index이지 final release notice bundle이나 full license text 복제본이 아니다."
+    - "License 분류와 policy는 engineering evidence이며 법률 의견을 제공하지 않는다. 새 외부 Asset과 Package update는 inventory revision과 재검증이 필요하다."
+    - "Unity C# runtime source를 바꾸지 않아 Unity EditMode/PlayMode suite는 재실행하지 않았다. Player Build는 사용자 요청에 따라 실행하지 않았다."
+  userDecision: "C2PA image18은 승인 디자인 제작 참고로만 사용하고 Build에는 포함하지 않음; source-unproven file3 삭제; Unity Readme/TutorialInfo 제거; fail-closed license policy 승인; 자동 Player Build 금지"
+  recordedAtUtc: "2026-08-27T17:34:58Z"
