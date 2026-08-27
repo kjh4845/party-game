@@ -1,0 +1,33 @@
+TestFoundation:
+  schemaVersion: 1
+  profileId: "FDN-007-r01"
+  recordedAtUtc: "2026-08-27T07:47:01Z"
+  layers:
+    - id: "renderless-unit"
+      runner: "Unity EditMode-hosted NUnit"
+      filter: "ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests"
+      requiredTests:
+        - "ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.KernelStep_AdvancesTheReadOnlySnapshot"
+        - "ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.EquivalentCycleSequences_ProduceTheSameFingerprint"
+        - "ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.NegativeCycleCount_IsRejectedWithoutMutation"
+    - id: "editmode"
+      runner: "Unity EditMode"
+      filter: "ProjectHotfix.SimulationHarness.Tests.EditMode.SimulationHarnessEditModeTests"
+      requiredTests:
+        - "ProjectHotfix.SimulationHarness.Tests.EditMode.SimulationHarnessEditModeTests.Harness_ExecutesTheRuntimeOwnedSimulationKernel"
+        - "ProjectHotfix.SimulationHarness.Tests.EditMode.SimulationHarnessEditModeTests.SimulationAndHarness_HaveNoPresentationRenderingOrUiDependency"
+    - id: "playmode"
+      runner: "Unity Editor PlayMode"
+      filter: "ProjectHotfix.SimulationHarness.Tests.PlayMode.SimulationHarnessPlayModeTests"
+      requiredTests:
+        - "ProjectHotfix.SimulationHarness.Tests.PlayMode.SimulationHarnessPlayModeTests.SameRuntimeKernel_RunsInPlayModeWithoutSceneObjects"
+  acceptance:
+    eachLayerMinimumDiscoveredTests: 1
+    failed: 0
+    skipped: 0
+    inconclusive: 0
+    notRun: 0
+    playerBuilds: 0
+  claimsBoundary:
+    proves: "Foundation SimulationKernel path runs without Presentation/UI in unit, EditMode and Editor PlayMode."
+    doesNotProve: "Gameplay, multiplayer, Unity Physics determinism, impairment, Player Build or Steam."

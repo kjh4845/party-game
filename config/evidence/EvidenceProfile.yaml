@@ -1,0 +1,27 @@
+EvidenceProfile:
+  schemaVersion: 1
+  profileId: "EvidenceProfile-r01"
+  requiredLegacyFields:
+    - evidenceId
+    - goalId
+    - status
+    - sourceRevision
+    - environment
+    - profileVersions
+    - commandsOrManualSteps
+    - observedMetrics
+    - expectedThresholds
+    - rawEvidencePaths
+    - failures
+    - limitations
+    - userDecision
+    - recordedAtUtc
+  exactlyOneTaskSelector: ["taskId", "taskIds"]
+  requiredForSchemaVersion1: ["buildKind", "buildVersion", "requirementIds", "evidenceProfile"]
+  allowedStatuses: ["PASS", "FAIL", "BLOCKED"]
+  passRequiresEmptyFailures: true
+  rawEvidencePathsMustExist: true
+  recordedAtUtcPattern: '\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z\z'
+  compatibility:
+    validateLegacyStructureWithoutRewriting: true
+    compareAllExpectedThresholdsToObservedMetrics: false

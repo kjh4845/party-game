@@ -1,19 +1,12 @@
 {
-  "name": "ProjectHotfix.Architecture.Tests.Editor",
-  "rootNamespace": "ProjectHotfix.Architecture.Tests",
+  "name": "ProjectHotfix.SimulationHarness.Tests.PlayMode",
+  "rootNamespace": "ProjectHotfix.SimulationHarness.Tests.PlayMode",
   "references": [
     "UnityEngine.TestRunner",
-    "UnityEditor.TestRunner",
     "ProjectHotfix.Contracts",
-    "ProjectHotfix.Simulation",
-    "ProjectHotfix.Simulation.TestSupport",
-    "ProjectHotfix.Presentation",
-    "ProjectHotfix.Input",
-    "ProjectHotfix.Transport"
+    "ProjectHotfix.Simulation.TestSupport"
   ],
-  "includePlatforms": [
-    "Editor"
-  ],
+  "includePlatforms": [],
   "excludePlatforms": [],
   "allowUnsafeCode": false,
   "overrideReferences": true,

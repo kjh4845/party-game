@@ -1,0 +1,100 @@
+EvidenceManifest:
+  schemaVersion: 1
+  evidenceProfile: "EvidenceProfile-r01"
+  evidenceId: "EV-FDN-007-20260827-r01"
+  taskId: "FDN-007"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "SimulationSnapshot=c43db5e416b19aeae27afcb57daeebb886755075bceadd30aed60db24fa5c334; SimulationKernel=7261f7eadb14d64c8459d700320a361371a9862363c0ef6fe6a94d680f029d17; RenderlessHarness=80fff2f4f6aa6e8c1e9b4625980a1c1fcb180b36cb129425506f54152ecb5dcd; TestSupportAsmdef=48c03166bafb73e88a7c60ea847eb145a69ca31f1569993c85a9f491b63e3811; UnitTest=7dc4b9ef8d86e48c2d91494d5025ec4b9cbc0405503e7f08a364c61034f10ff4; EditModeHarnessTest=eb6401a8ba1939efb2d6c6371d59cb7f391bd8a4aa2c65c5493e9b8224eb588d; EditModeTestAsmdef=253b48d31f7d30d1a9b0ce7fdbe33ed39d93f7fc9a0dde4907cb9adf2c935e2a; PlayModeHarnessTest=a40c0cd230392cb55db9da0012afdd3f5da0953e4ce1c3940dfba5527670beea; PlayModeTestAsmdef=59652ed241168b627ecc8fb1f837277797e7f06ee0b2571729b584cfc2e6beb9; TestFoundation=e35924b149abc0c12bb09c83a53b71d9e6fe167b0daa21ffa5e8abc2a7566076; EvidenceProfile=80a801e4a9353608be5a97d010a67046128eeaeaa10ff1bb7d1f1d9c604d41dc; EvidenceValidator=78d6c3ada556d7240f08ecbf54a861a7cf6407d75b37b6157cae4007e3c54d96; NUnitValidator=eecd55e3a1e182a65bd9a4e6c3c4c2c9f605ec2a294224c053f7967290ea24c6; Plan=7972e23edd0de4cc9f650cf58faf7d50a96c59ad6924b24183c73b58e4777aa0"
+  buildKind: "UnitEditModePlayModeFoundation"
+  buildVersion: null
+  environment: "macOS arm64; Unity 6000.3.9f1 batchmode; Test Framework 1.6.0; Ruby stdlib YAML/REXML"
+  profileVersions: ["TestFoundation-FDN-007-r01", "EvidenceProfile-r01", "SimulationKernel-r01"]
+  requirementIds: ["FDN-007", "SRS-SYS-012"]
+  commandsOrManualSteps:
+    - "실제 ProjectHotfix.Simulation runtime kernel과 read-only Contracts snapshot 생성"
+    - "noEngine test-support RenderlessSimulationHarness가 같은 runtime kernel을 두 번 120 cycle 실행해 fingerprint 일치 확인"
+    - "Unit3, EditMode harness2, PlayMode harness1을 별도 filter/XML로 실행하고 required full test name 검증"
+    - "PlayMode에서 격리 empty scene을 active로 만들고 root0 유지, 이전 scene 복원과 unload 완료 확인"
+    - "전체 EditMode21/21과 전체 PlayMode3/3 regression 실행"
+    - "EvidenceProfile/manifest validator로 기존35와 strict FDN-007 manifest 구조·raw path 검증"
+    - "NUnit validator의 zero/missing required/missing counter/not-run/strict mismatch negative fixture를 실패시키는지 확인"
+    - "민감한 local path·PID·licensing 정보가 포함된 임시 Unity log/XML 제거, package lock 불변·Player Build0 확인"
+  observedMetrics:
+    productSimulationTypesExecuted: 1
+    readOnlySnapshotTypes: 1
+    renderlessRuns: 2
+    authorityCyclesPerDeterminismRun: 120
+    deterministicFingerprintMatches: 1
+    presentationReferences: 0
+    renderingOrUiDependencies: 0
+    playModeIsolatedSceneRootsBefore: 0
+    playModeIsolatedSceneRootsAfter: 0
+    playModeScenesUnloaded: 1
+    unitTotal: 3
+    unitPassed: 3
+    editModeHarnessTotal: 2
+    editModeHarnessPassed: 2
+    playModeHarnessTotal: 1
+    playModeHarnessPassed: 1
+    coreFailed: 0
+    coreSkipped: 0
+    coreInconclusive: 0
+    coreNotRun: 0
+    allEditModeTotal: 21
+    allEditModePassed: 21
+    allPlayModeTotal: 3
+    allPlayModePassed: 3
+    legacyEvidenceManifestsValidated: 35
+    strictEvidenceManifestsValidated: 1
+    manifestValidationErrors: 0
+    nunitNegativeFixturesRejected: 5
+    independentReviewFindingsResolved: 10
+    packageLockHashChanges: 0
+    tempLogsOrXmlRetained: false
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  expectedThresholds:
+    productSimulationTypesExecuted: 1
+    renderlessRuns: 2
+    deterministicFingerprintMatches: 1
+    presentationReferences: 0
+    renderingOrUiDependencies: 0
+    playModeIsolatedSceneRootsBefore: 0
+    playModeIsolatedSceneRootsAfter: 0
+    playModeScenesUnloaded: 1
+    unitPassed: 3
+    editModeHarnessPassed: 2
+    playModeHarnessPassed: 1
+    coreFailed: 0
+    coreSkipped: 0
+    coreInconclusive: 0
+    coreNotRun: 0
+    allEditModePassed: 21
+    allPlayModePassed: 3
+    manifestValidationErrors: 0
+    packageLockHashChanges: 0
+    playerBuildsExecuted: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/FDN-007/EV-FDN-007-20260827-r01.txt"
+    - "config/testing/TestFoundation.yaml"
+    - "config/evidence/EvidenceProfile.yaml"
+    - "tools/verify_evidence_manifest.rb"
+    - "tools/verify_nunit_result.rb"
+    - "Project hotfix/Assets/ProjectHotfix/Runtime/Contracts/SimulationSnapshot.cs"
+    - "Project hotfix/Assets/ProjectHotfix/Runtime/Simulation/SimulationKernel.cs"
+    - "Project hotfix/Assets/ProjectHotfix/Tests/Shared/Simulation/RenderlessSimulationHarness.cs"
+    - "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/SimulationKernelUnitTests.cs"
+    - "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/SimulationHarnessEditModeTests.cs"
+    - "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/SimulationHarness/SimulationHarnessPlayModeTests.cs"
+    - "docs/03_IMPLEMENTATION_PLAN.md"
+  failures: []
+  limitations:
+    - "Unit layer is pure NUnit hosted by the Unity EditMode runner; it is not a separate native executable."
+    - "This proves only the foundation authority-cycle kernel path. Gameplay, multiplayer, Physics determinism, impairment, Player Build and Steam are not proven."
+    - "The foundation fingerprint is the authority-cycle state only; future gameplay state requires versioned snapshots and stronger deterministic fixtures."
+    - "Evidence/NUnit validators are structural/path/count guards and do not replace task-specific semantic assertions or hostile-code security review."
+    - "Unity temporary logs/XML were deleted after summary because they contained local path/PID/licensing identifiers. Player Build was not executed."
+  userDecision: "구현 계획대로 진행"
+  recordedAtUtc: "2026-08-27T08:07:26Z"

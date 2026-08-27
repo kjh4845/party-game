@@ -1,0 +1,19 @@
+{
+  "name": "ProjectHotfix.Simulation.TestSupport",
+  "rootNamespace": "ProjectHotfix.Simulation.TestSupport",
+  "references": [
+    "ProjectHotfix.Contracts",
+    "ProjectHotfix.Simulation"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [
+    "UNITY_INCLUDE_TESTS"
+  ],
+  "versionDefines": [],
+  "noEngineReferences": true
+}

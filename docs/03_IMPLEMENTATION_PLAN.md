@@ -8,7 +8,7 @@
 | 기준일 | 2026-08-26 |
 | 현재 목표 | Alpha에서 2·3·4인 전체 흐름과 실제 무기 전투를 검증한 뒤 Steam 통합 |
 | 기준 문서 | PRD 1.8.0, SRS 1.8.0, PATCH_DESIGN 0.5.0과 현행 분야별 사양 |
-| 현재 구현 상태 | FDN-001..006·010·011 완료: Git/toolchain/policy, Unity6.3 URP, module/Input/Physics와 UTP2.6 adapter 방향 기준선 존재. Gameplay/Network code·Player Build 없음 |
+| 현재 구현 상태 | FDN-001..007·010·011 완료: Git/toolchain/policy, Unity6.3 URP, module/Input/Physics/UTP와 renderless SimulationHarness/test-evidence 기반 존재. Gameplay/Network code·Player Build 없음 |
 | 계획 규모 | 173 Task, 251.0 집중 개발일 |
 | 자동화 금지 | Unity Player Build, Steam 배포, 외부 서비스 배포 |
 
@@ -175,7 +175,7 @@ BLOCKED, DEFERRED를 사용한다.
 | FDN-004 | 1 | Input package 선택 | FDN-002..003 | INPUT | InputPackageDecision | InputSystem1.18.0 Registry/direct·New-only 채택, Legacy/Both·다른 module ref0, Input test4/4·전체8/8; action map은 INP-001 소유 | — | PASSED |
 | FDN-005 | 1 | Physics package와 fixed-step 선택 | FDN-002..003 | PHYS | PhysicsPackageDecision | built-in PhysX·Physics60Hz/Authority30Hz, guard4/4·isolated PlayMode contact/joint2/2·전체 EditMode12/12, Player Build0 | — | PASSED |
 | FDN-006 | 1.5 | P2P transport adapter와 Alpha direct 구현 방향 선택 | FDN-002..003 | NET | TransportPackageDecision | UTP2.6 Registry/direct·Transport sole owner, NGO/Services/Relay/Lobby0, adapter seam, Transport4/4·전체16/16 | — | PASSED |
-| FDN-007 | 1 | Renderless SimulationHarness·EditMode·PlayMode·Evidence 기반 생성 | FDN-002..003 | SYS,NFR | harness + test/evidence tools | 제품 Simulation code를 Render/UI 없이 실행, 세 test 계층 smoke·skipped core 0 | — | NOT_STARTED |
+| FDN-007 | 1 | Renderless SimulationHarness·EditMode·PlayMode·Evidence 기반 생성 | FDN-002..003 | SYS,NFR | kernel+harness+strict validators | 동일 runtime kernel Unit3/Edit2/Play1, 전체 Edit21/Play3·core skip0, legacy Evidence35+strict schema 검증 | — | PASSED |
 | FDN-008 | 1 | Settings·Preset local atomic storage 기반 생성 | FDN-001 | APPEAR,UI | local repository | 손상 시 last-good 복구, server dependency 0 | — | NOT_STARTED |
 | FDN-009 | 0.5 | 금지 인프라 guard 생성 | FDN-001 | SYS,SEC | repository audit | Backend·DB·Docker·Dedicated artifact 0 | — | NOT_STARTED |
 | ART-001 | 1.5 | LowPolyStyle·ModelInterop·AlphaVisualQA Profile 최초 작성 | FDN-002,FDN-010 | ART,NFR | versioned art profiles | unit/axis/palette/bevel/import/capture 기준·owner/version 누락 0 | — | NOT_STARTED |
