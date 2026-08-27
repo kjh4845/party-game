@@ -1,0 +1,297 @@
+ModelInteropProfile:
+  schemaVersion: 1
+  profileId: "ModelInteropProfile-ART-001-r01"
+  version: "0.1.0-start"
+  revision: "r01"
+  state: "START"
+  ownerTask: "ART-001"
+  visualApprovalClaimed: false
+  lockedValueCount: 0
+  sourceDocuments:
+    - path: "docs/ART_DIRECTION.md"
+      version: "1.8.0"
+    - path: "docs/CHARACTER_TECHNICAL_SPEC.md"
+      version: "0.11.0"
+    - path: "docs/WEAPON_DESIGN.md"
+      version: "0.7.0"
+    - path: "docs/MAP_DESIGN_GUIDE.md"
+      version: "1.8.0"
+  toolchainReference:
+    profileId: "project-hotfix-alpha-toolchain-r02"
+    path: "config/toolchain/ToolchainProfile.yaml"
+    unityEditorVersion: "6000.3.9f1"
+    unityEditorRevision: "7a9955a4f2fa"
+    blenderVersion: "5.2.0 LTS"
+    blenderBuildDate: "2026-07-14"
+    urpVersion: "17.3.0"
+    projectVersionSha256: "ee06b66c6e48dc22fe4771812f37f3817b17f9459d44b61202d45e2a44ea3509"
+    packageManifestSha256: "88a1d01cf3abd14843cb3638a7692552e54f62a6d5de003c458a47a869edd741"
+    packageLockSha256: "8708528393a5fce3dd9110fc14815ad2dbc21cefd0efec6102b79d86a62404aa"
+
+  ownershipClarification:
+    toolchainProfileOwns: ["installed tool versions", "Unity package versions", "project/package hashes"]
+    modelInteropProfileOwns: ["Blender FBX export preset revision", "Unity ModelImporter preset revision", "preset setting digests"]
+
+  coordinateContract:
+    state: "START"
+    sourceAndTargetAxesState: "DECIDED"
+    fbxTransportMappingState: "START"
+    blender:
+      lengthUnit: "meter"
+      unitScale: 1.0
+      upAxis: "+Z"
+      characterForwardAxis: "-Y"
+    fbx:
+      forwardAxis: "-Z"
+      upAxis: "+Y"
+      globalScale: 1.0
+    unity:
+      lengthUnit: "meter"
+      unityUnitsPerMeter: 1.0
+      upAxis: "+Y"
+      forwardAxis: "+Z"
+      rightAxis: "+X"
+    equality: "1 Blender meter = 1 Unity unit = 1 meter"
+
+  transformContract:
+    state: "DECIDED"
+    exportedObjectScale: [1.0, 1.0, 1.0]
+    unityRootScale: [1.0, 1.0, 1.0]
+    negativeScaleAllowed: false
+    sceneRootScaleCorrectionAllowed: false
+    perFilePostImportRotationCorrectionAllowed: false
+    perFilePostImportScaleCorrectionAllowed: false
+    perFilePostImportNormalCorrectionAllowed: false
+    sourceTransformRule: "Apply object rotation and scale before model export; preserve authored moving-part and skeleton transforms"
+
+  pivotAndSocketContract:
+    character:
+      state: "DECIDED"
+      sourcePivot: "Neutral pose midpoint between both feet at ground contact"
+    weapon:
+      state: "DEFERRED"
+      globalPivotValue: null
+      ownerTasks: ["WPA-001"]
+      unlockGates: ["UG-WEAPON-ART"]
+      requiredMarkers: ["GripSocket_Main", "CombatSocket", "CenterOfMassSocket"]
+      optionalMarkers: ["GripSocket_Support"]
+      rule: "AssetBrief records the root pivot and every socket purpose; importer must not repair them"
+    mapModule:
+      state: "DEFERRED"
+      globalPivotValue: null
+      ownerTasks: ["P00-020"]
+      unlockGates: ["UG-P00-ART"]
+      rule: "MapSpec records assembly origin; each MovingPart uses its physical hinge or travel axis"
+
+  blenderExportPreset:
+    presetId: "PHX-FBX-MODEL-r01"
+    revision: "r01"
+    state: "START"
+    operator: "bpy.ops.export_scene.fbx"
+    verifiedAgainstLocalRnaVersion: "5.2.0 LTS"
+    settings:
+      global_scale: 1.0
+      apply_unit_scale: true
+      apply_scale_options: "FBX_SCALE_UNITS"
+      use_space_transform: true
+      bake_space_transform: false
+      axis_forward: "-Z"
+      axis_up: "Y"
+      use_selection: true
+      object_types: ["ARMATURE", "EMPTY", "MESH"]
+      use_mesh_modifiers: true
+      mesh_smooth_type: "FACE"
+      use_tspace: true
+      add_leaf_bones: false
+      use_armature_deform_only: true
+      primary_bone_axis: "Y"
+      secondary_bone_axis: "X"
+      bake_anim: false
+      path_mode: "STRIP"
+      embed_textures: false
+      colors_type: "SRGB"
+    settingsSha256: "5707996b33f8ac6773e309c60d05b236655bb4b17e4cc3261642f142a0062ce4"
+    limitations:
+      - "Model export does not define production animation clip export; ANM tasks own clip baking"
+      - "START settings require first C1b source-to-Unity parity before revision approval"
+
+  unityImporterPreset:
+    presetId: "PHX-UNITY-MODEL-IMPORT-r01"
+    revision: "r01"
+    state: "START"
+    importerType: "UnityEditor.ModelImporter"
+    verifiedAgainstEditorVersion: "6000.3.9f1"
+    settings:
+      globalScale: 1.0
+      useFileScale: true
+      bakeAxisConversion: false
+      importNormals: "Import"
+      importTangents: "Import"
+      meshCompression: "Off"
+      isReadable: false
+      optimizeMeshPolygons: false
+      optimizeMeshVertices: false
+      weldVertices: true
+      preserveHierarchy: true
+      addCollider: false
+      importCameras: false
+      importLights: false
+      generateSecondaryUV: false
+      importMaterials: false
+      materialImportMode: "None"
+      importAnimation: false
+    settingsSha256: "4a00f7ea259ef98d17a932948ca2ebfde7bc7173e632ac5f5b4ddc81fba94cf9"
+    assetClassOverrides:
+      StaticMesh:
+        animationType: "None"
+        importBlendShapes: false
+      SkinnedCharacter:
+        animationType: "Generic"
+        avatarSetup: "CreateFromThisModel"
+        importBlendShapes:
+          state: "START"
+          value: false
+        skinWeights:
+          state: "START"
+          value: "Standard"
+        maxBonesPerVertex:
+          state: "START"
+          value: 4
+
+  meshDataContract:
+    state: "START"
+    invariants:
+      state: "DECIDED"
+      uv0Required: true
+      invalidOrReversedNormalCount: 0
+      dynamicMeshColliderAllowed: false
+      automaticColliderGenerationAllowed: false
+    r01TechnicalSettings:
+      state: "START"
+      authoredNormalsRequired: true
+      tangentPolicy: "Import FBX tangents for r01; a revision is required to calculate them in Unity"
+      lodsAreSeparateAuthoredMeshInputs: true
+
+  skeletonContract:
+    state: "START"
+    requiredLogicalBones:
+      - "Root"
+      - "Pelvis"
+      - "Spine"
+      - "Chest"
+      - "Neck"
+      - "Head"
+      - "Clavicle_L"
+      - "Clavicle_R"
+      - "UpperArm_L"
+      - "UpperArm_R"
+      - "Forearm_L"
+      - "Forearm_R"
+      - "HandLogical_L"
+      - "HandLogical_R"
+      - "Thigh_L"
+      - "Thigh_R"
+      - "Calf_L"
+      - "Calf_R"
+      - "Foot_L"
+      - "Foot_R"
+    fingerBoneCount: 0
+    toeBoneCount: 0
+    extraLeafBonesAllowed: false
+    boneNamesParentsAndBindPoseMustMatch: true
+    helperBoneException:
+      state: "DEFERRED"
+      value: null
+      ownerTasks: ["C4-002", "C4-004"]
+      unlockGates: ["UG-C4-LOCK"]
+      reason: "A helper bone requires deformation evidence and a profile revision"
+    maximumWeightsPerVertex:
+      state: "START"
+      value: 4
+
+  materialContract:
+    state: "START"
+    invariants:
+      state: "DECIDED"
+      allowedMaterialFamilyIds:
+        - "MAT_Character_Paintable"
+        - "MAT_Environment_Matte"
+        - "MAT_Hazard_Active"
+        - "MAT_Interactable"
+        - "MAT_Glass_Restricted"
+        - "MAT_Decal"
+    r01TechnicalSettings:
+      state: "START"
+      embeddedTexturesAllowed: false
+      automaticFbxMaterialImportAllowed: false
+      remapRequired: true
+
+  artifactTraceContract:
+    requiredStages: ["blend-source", "fbx-export", "reference-render", "unity-prefab"]
+    generationManifestRequired: true
+    requiredIdentityFields:
+      - "assetId"
+      - "assetVersion"
+      - "toolchainProfileId"
+      - "projectVersionSha256"
+      - "packageManifestSha256"
+      - "packageLockSha256"
+      - "lowPolyStyleProfileId"
+      - "lowPolyStyleProfileRevision"
+      - "modelInteropProfileId"
+      - "modelInteropProfileRevision"
+      - "blenderExportPresetId"
+      - "blenderExportPresetRevision"
+      - "blenderExportSettingsSha256"
+      - "unityImporterPresetId"
+      - "unityImporterPresetRevision"
+      - "unityImporterSettingsSha256"
+      - "sourceSha256"
+      - "fbxSha256"
+      - "referenceRenderSha256"
+      - "unityPrefabRevision"
+    manualCorrectionLogMaySubstituteForProfileRevision: false
+
+  parityGate:
+    views: ["Front", "Side", "Back", "ThreeQuarter"]
+    requiredOverlays: ["silhouette", "landmarks", "bounds", "pivot", "sockets", "collider", "material", "bevel-class", "normal-class"]
+    characterStartingTargets:
+      scope: "CharacterOnly"
+      state: "START"
+      silhouetteLandmarkBoundsMaximumHeightRatio: 0.005
+      groundPivotMaximumHeightRatio: 0.005
+      invalidVertexOrNormalCount: 0
+      axisReversalCount: 0
+      negativeScaleCount: 0
+      boneHierarchyOrBindPoseMismatchCount: 0
+    weaponAndMapNumericTolerance:
+      state: "DEFERRED"
+      value: null
+      ownerTasks: ["WPA-003", "P00-021"]
+      unlockGates: ["UG-WEAPON-ART", "UG-P00-ART-LOCK"]
+      reason: "Character H-relative targets cannot be applied to every asset class"
+
+  deferredDecisions:
+    - field: "characterHeightMetersAndCuConversion"
+      state: "DEFERRED"
+      ownerTasks: ["C1B-002", "C1B-006"]
+      unlockGates: ["UG-C1B"]
+      reason: "C1b must establish the measured Character height"
+    - field: "animationClipExportPreset"
+      state: "DEFERRED"
+      ownerTasks: ["ANM-001", "ANM-002", "ANM-003"]
+      unlockGates: ["UG-C4-LOCK"]
+      reason: "ART-001 only defines model interchange"
+    - field: "productionMeshOptimizationAndReadWriteOverrides"
+      state: "DEFERRED"
+      ownerTasks: ["C4-001", "P00-020"]
+      unlockGates: ["UG-C4-LOCK", "UG-P00-ART"]
+      reason: "Worst-case performance and Paint implementation are not measured"
+
+  execution:
+    blenderExportExecuted: false
+    unityImportExecuted: false
+    generatedBlendCount: 0
+    generatedFbxCount: 0
+    generatedUnityAssetCount: 0
+    parityCaptureCount: 0

@@ -1,0 +1,268 @@
+LowPolyStyleProfile:
+  schemaVersion: 1
+  profileId: "LowPolyStyleProfile-ART-001-r01"
+  version: "0.1.0-start"
+  revision: "r01"
+  state: "START"
+  ownerTask: "ART-001"
+  visualApprovalClaimed: false
+  lockedValueCount: 0
+  sourceDocuments:
+    - path: "docs/ART_DIRECTION.md"
+      version: "1.8.0"
+    - path: "docs/CHARACTER_TECHNICAL_SPEC.md"
+      version: "0.11.0"
+    - path: "docs/WEAPON_DESIGN.md"
+      version: "0.7.0"
+    - path: "docs/MAP_DESIGN_GUIDE.md"
+      version: "1.8.0"
+    - path: "docs/UI_UX_FLOW.md"
+      version: "1.8.0"
+  toolchainReference:
+    profileId: "project-hotfix-alpha-toolchain-r02"
+    path: "config/toolchain/ToolchainProfile.yaml"
+
+  statePolicy:
+    allowed: ["DECIDED", "START", "DEFERRED", "LOCKED"]
+    startMeaning: "Reversible comparison baseline; not a visual approval"
+    lockedRequiresRecordedUserGate: true
+
+  principles:
+    - "SilhouetteFirst"
+    - "MotionFirst"
+    - "OneSharedWorld"
+    - "ReadableDanger"
+    - "ConstrainedExpression"
+    - "ReusableProduction"
+    - "ReferenceNotReplica"
+
+  shapeLanguage:
+    character:
+      state: "DECIDED"
+      rules:
+        - "Faceless paintable base remains complete without cosmetics"
+        - "Rounded oval head, short wide torso, short thick limbs and low center"
+        - "Forearm and lower-leg terminal caps read without separate visible hands, fingers or toes"
+        - "Visual squash, lag and pose never alter gameplay colliders, anchors or bounds"
+      exactProportions:
+        state: "DEFERRED"
+        value: null
+        ownerTasks: ["C1B-002", "C1B-006"]
+        unlockGates: ["UG-C1B"]
+        reason: "v0.13 is an approved direction, not the exact C1b measurement profile"
+    environment:
+      state: "DECIDED"
+      rules:
+        - "Large toy-like forms before photo texture, realistic wear or micro detail"
+        - "Render mesh and simple collision mesh remain separate"
+        - "StaticFrame and MovingPart remain separate modules with authored pivots"
+        - "Background decoration has no gameplay collider"
+        - "Maps are assembled from Blender modules as Unity prefabs, never one monolithic scene"
+    weapons:
+      state: "DECIDED"
+      rules:
+        - "Pistol is a generic brand-free M1911-inspired compact silhouette"
+        - "LongGun is a generic brand-free AK-inspired long two-hand silhouette"
+        - "Bat reads as a baseball bat and Hammer reads as a construction sledgehammer"
+        - "Front/back direction, grip and impact or muzzle direction read at maximum gameplay camera distance"
+        - "Render mesh, simple collider, grip/combat sockets and center-of-mass marker remain separate"
+
+  bevelClasses:
+    B0_INTENTIONAL_NONE:
+      state: "DECIDED"
+      purpose: "Collision proxies, intentionally sharp gameplay planes and silhouette edges"
+      widthMeters: 0.0
+      segmentCount: 0
+    B1_RIGID_READABILITY:
+      state: "START"
+      purpose: "Weapons, environment modules, panels and rigid props"
+      widthMeters:
+        state: "DEFERRED"
+        value: null
+        assignmentRule: "AssetBrief records one width per scale class before modeling"
+        ownerTasks: ["WPA-001", "P00-020"]
+        unlockGates: ["UG-WEAPON-ART", "UG-P00-ART"]
+      segmentCount:
+        state: "START"
+        comparisonCandidates: [1, 2]
+    B2_SOFT_HERO:
+      state: "START"
+      purpose: "Character, authored cosmetics and selected large soft-form props"
+      widthMeters:
+        state: "DEFERRED"
+        value: null
+        assignmentRule: "C1b or AssetBrief records width after orthographic silhouette comparison"
+        ownerTasks: ["C4-002", "APT-007"]
+        unlockGates: ["UG-C4-LOCK", "UG-ALPHA"]
+      segmentCount:
+        state: "START"
+        comparisonCandidates: [2, 3]
+    commonRules:
+      - "One asset class uses one bevel class unless AssetBrief records an explicit boundary"
+      - "Bevel never changes gameplay collider, socket, reach or camera bounds"
+      - "No global final bevel width is claimed by ART-001"
+
+  normalClasses:
+    N0_FLAT:
+      state: "DECIDED"
+      use: "Intentional planar low-poly facets"
+    N1_HARD_EDGE:
+      state: "DECIDED"
+      use: "Rigid silhouette breaks, UV seams and mechanical direction changes"
+    N2_AUTHORED_SMOOTH:
+      state: "START"
+      use: "Rounded character forms and selected hero surfaces with authored split normals"
+    rules:
+      - "Normal class follows bevel and silhouette intent; blanket smoothing is prohibited"
+      - "Invalid, reversed or silently recalculated normals cannot be accepted as style"
+
+  materialFamilies:
+    - "MAT_Character_Paintable"
+    - "MAT_Environment_Matte"
+    - "MAT_Hazard_Active"
+    - "MAT_Interactable"
+    - "MAT_Glass_Restricted"
+    - "MAT_Decal"
+  materialRules:
+    state: "DECIDED"
+    photoTexturePriority: false
+    preferredSurfaceInputs: ["solid-color", "gradient", "mask", "decal"]
+    glassRestrictedToAuthoredExceptions: true
+    finalShaderMapping:
+      state: "DEFERRED"
+      value: null
+      ownerTasks: ["C4-001", "P00-020", "WPA-001"]
+      unlockGates: ["UG-C4-LOCK", "UG-P00-ART", "UG-WEAPON-ART"]
+
+  palette:
+    state: "START"
+    valueFormat: "sRGB #RRGGBB after downstream visual approval"
+    roles:
+      WorldNeutralBase:
+        state: "DEFERRED"
+        value: null
+        ownerTasks: ["P00-020"]
+        unlockGates: ["UG-P00-ART"]
+      WorldNeutralLift:
+        state: "DEFERRED"
+        value: null
+        ownerTasks: ["P00-020"]
+        unlockGates: ["UG-P00-ART"]
+      Warning:
+        state: "DEFERRED"
+        value: null
+        ownerTasks: ["P00-020"]
+        unlockGates: ["UG-P00-ART"]
+      HazardActive:
+        state: "DEFERRED"
+        value: null
+        ownerTasks: ["P00-020"]
+        unlockGates: ["UG-P00-ART"]
+      Interactable:
+        state: "DEFERRED"
+        value: null
+        ownerTasks: ["P00-020"]
+        unlockGates: ["UG-P00-ART"]
+      SafeRecovery:
+        state: "DEFERRED"
+        value: null
+        ownerTasks: ["P00-020"]
+        unlockGates: ["UG-P00-ART"]
+      PlayerIdentityReserved:
+        state: "DEFERRED"
+        value: null
+        ownerTasks: ["C1B-002", "UI-001", "P00-020"]
+        unlockGates: ["UG-C1B", "UG-ALPHA", "UG-P00-ART"]
+      UiGraphite:
+        state: "DEFERRED"
+        value: null
+        ownerTasks: ["UI-001"]
+        unlockGates: ["UG-ALPHA"]
+      UiOffWhite:
+        state: "DEFERRED"
+        value: null
+        ownerTasks: ["UI-001"]
+        unlockGates: ["UG-ALPHA"]
+      ActionAmber:
+        state: "DEFERRED"
+        value: null
+        ownerTasks: ["UI-001"]
+        unlockGates: ["UG-ALPHA"]
+      ReadyTeal:
+        state: "DEFERRED"
+        value: null
+        ownerTasks: ["UI-001"]
+        unlockGates: ["UG-ALPHA"]
+      ErrorCoral:
+        state: "DEFERRED"
+        value: null
+        ownerTasks: ["UI-001"]
+        unlockGates: ["UG-ALPHA"]
+    rules:
+      mapPrimaryAndSecondaryAccentMaximum: 2
+      playerIdentityOnBroadBackgroundAllowed: false
+      semanticColorMeaningMayChangePerMap: false
+      colorOnlyStateCueAllowed: false
+      requiredCompanionCues: ["shape", "value", "motion-or-audio"]
+      greyboxColorsAreFinalPalette: false
+
+  alphaStartingRanges:
+    characterLod0TriangleCandidates: [6000, 10000, 14000]
+    characterLod1RatioRange: [0.50, 0.60]
+    characterLod2RatioRange: [0.20, 0.30]
+    paintTexture:
+      dimensions: [512, 512]
+      format: "RGBA8"
+      colorSpace: "sRGB"
+      state: "START"
+
+  forbiddenDetails:
+    - "Photo scan or realistic wear used as the primary style"
+    - "Visible separate fingers, toes or hands on the base character"
+    - "Dynamic MeshCollider on moving gameplay bodies"
+    - "Weapon logo, manufacturer, model name, serial, selector marking or exact replica"
+    - "Micro detail that weakens action, hazard or weapon silhouette"
+    - "Art deformation that changes collider, mass, reach, socket or camera bounds"
+
+  deferredDecisions:
+    - field: "finalPaletteValues"
+      state: "DEFERRED"
+      ownerTasks: ["UI-001", "P00-020", "WPA-001", "C4-001"]
+      unlockGates: ["UG-ALPHA", "UG-P00-ART", "UG-WEAPON-ART", "UG-C4-LOCK"]
+      reason: "No approved production swatches exist"
+    - field: "characterFinalBevelAndNormalTreatment"
+      state: "DEFERRED"
+      ownerTasks: ["C4-002", "C4-004"]
+      unlockGates: ["UG-C4-LOCK"]
+      reason: "C1b is a blockout measurement gate; production topology and normals lock at C4"
+    - field: "weaponFinalBevelAndNormalTreatment"
+      state: "DEFERRED"
+      ownerTasks: ["WPA-001", "WPA-003"]
+      unlockGates: ["UG-WEAPON-ART"]
+      reason: "Weapon scale lineup and imported Camera readability are required"
+    - field: "mapFinalBevelAndNormalTreatment"
+      state: "DEFERRED"
+      ownerTasks: ["P00-020", "P00-023"]
+      unlockGates: ["UG-P00-ART", "UG-P00-ART-LOCK"]
+      reason: "Map StylePreflight starts the class and final P00 capture locks it"
+    - field: "alphaPlaceholderCosmeticExactShapeAndSize"
+      state: "DEFERRED"
+      ownerTasks: ["APT-007"]
+      unlockGates: ["UG-ALPHA"]
+      reason: "APT-007 creates functional START placeholders, not a production catalog lock"
+    - field: "weaponExactProportionsMaterialsPaletteAndBevel"
+      state: "DEFERRED"
+      ownerTasks: ["WPA-001", "WPA-003"]
+      unlockGates: ["UG-WEAPON-ART"]
+      reason: "Only brand-free archetype and readability direction are decided"
+    - field: "finalPolygonTextureMaterialLodGpuBudgets"
+      state: "DEFERRED"
+      ownerTasks: ["WPA-002", "C4-001", "P00-020"]
+      unlockGates: ["UG-WEAPON-ART", "UG-C4-LOCK", "UG-P00-ART-LOCK"]
+      reason: "Only comparison ranges exist before worst-case measurement"
+
+  execution:
+    generatedBlendCount: 0
+    generatedFbxCount: 0
+    generatedUnityAssetCount: 0
+    captureCount: 0

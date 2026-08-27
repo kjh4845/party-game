@@ -1,0 +1,138 @@
+EvidenceManifest:
+  schemaVersion: 1
+  evidenceProfile: "EvidenceProfile-r01"
+  evidenceId: "EV-ART-001-20260827-r01"
+  taskId: "ART-001"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "Base=9a7018d716db6e3bb947504ffcd4842610f788a6; LowPolyStyle=1a50465fc86ed3625602d88e4f5f5db835986f335a38892b16f63eb68474918b; ModelInterop=b86e90502ead6d0a3b2a86a26d0f0dae364aa8c4488176f6792a8b6ef5edd8e3; AlphaVisualQA=1049f20a162f334a628deecaf8237da77d57e07cbe1786d55a2d925be8bd2640; Validator=a004ee9a704839f77e2bed1959d7a5b7cf5fa836be72af9eb53e38b05c5671f6; Test=796e2f78c3032a1af8b6af3f3736fa5ccc91fa00efc2e39c85ea18b282f9c25e; Toolchain=3443405648230628b8711a8b028c159402233e70123258ecd56dd9e7f0d0a7da; Manifest=88a1d01cf3abd14843cb3638a7692552e54f62a6d5de003c458a47a869edd741; PackageLock=8708528393a5fce3dd9110fc14815ad2dbc21cefd0efec6102b79d86a62404aa; ProjectSettings=7cb3bda6a91685d19d2a3552f692e79269aec554e91b93641bb07c4be6b6422f; Plan=1943c2e0ab6eac3d3d2b3544d9c2630b9626ae673a850af168fa2264c0538bce"
+  buildKind: "ArtProfileSchemaAndInstalledOptionInspectionNoAssetBuild"
+  buildVersion: "NotBuilt"
+  environment: "macOS arm64; Blender 5.2.0 LTS background RNA; Unity 6000.3.9f1 assemblies and batchmode tests; URP 17.3.0; Ruby 2.6.10"
+  profileVersions: ["LowPolyStyleProfile-ART-001-r01", "ModelInteropProfile-ART-001-r01", "AlphaVisualQAProfile-ART-001-r01", "ToolchainProfile-r02", "EvidenceProfile-r01"]
+  requirementIds: ["ART-001", "SRS-APPEAR-016", "SRS-APPEAR-017", "SRS-APPEAR-018", "SRS-APPEAR-020", "SRS-NFR-006", "SRS-NFR-009", "SRS-NFR-010"]
+  commandsOrManualSteps:
+    - "현행 Art·Character·Weapon·Map·UI 문서를 전부 대조해 DECIDED invariant, reversible START 기술값과 후속 Gate DEFERRED 값을 분리"
+    - "LowPolyStyleProfile에 silhouette/motion 원칙, B0/B1/B2 bevel class, normal class, material family6, palette role12와 금지 detail·START LOD/Paint 범위 작성"
+    - "ModelInteropProfile에 1m=1 Blender meter=1 Unity unit, Blender -Y/+Z에서 FBX -Z/+Y와 Unity +Z/+Y 변환, scale1·negative/manual correction0 계약 작성"
+    - "Blender FBX model export20 option과 Unity ModelImporter18 property, Standard skinWeights+maxBonesPerVertex4, preset setting digest를 versioned START로 고정"
+    - "AlphaVisualQAProfile에 URP Lit QA-only reference, Linear color space, neutral START light/tone/camera와 source/import four-view 및 2/3/4×16:9/16:10/21:9×Min/Max capture matrix 작성"
+    - "최종 palette swatch, bevel width, product shader/lighting, gameplay camera, Character/Weapon proportion과 performance budget은 owner/gate가 있는 DEFERRED/null로 유지"
+    - "profile file/root/source/deferred set, Toolchain/hash, unit/axis, full export/import/override, pivot/skeleton/material/manifest, parity, QA semantic contract와 execution0 검증"
+    - "mutation test24 run·206 assertion으로 illegal LOCK/approval, redigested setting drift, semantic shrink, bogus owner/gate, non-null deferred, extra profile/generated FBX를 거부"
+    - "ART-001 Git scope8 path가 profile3+validator/test+Plan+Evidence2뿐이고 art asset/capture output0임을 확인"
+    - "Blender background RNA에서 FBX option20/missing0/invalid enum0과 축 mapping을 확인하고 Unity assembly reflection에서 importer property18/missing0·skin enum Standard,Custom 확인"
+    - "전체 Unity EditMode42/42·PlayMode4/4, 금지 인프라 최종 inventory266/content88/manifests2/violation0, active docs12와 Evidence39 검증"
+    - "Unity log/XML과 temporary reflection source/executable은 요약 후 제거; Blender export·Unity import·Player Build·Docker·Deploy 실행0"
+  observedMetrics:
+    profileFiles: 3
+    uniqueProfileIds: 3
+    profilesOwnedByArt001: 3
+    profilesInStartState: 3
+    decidedStateNodes: 12
+    startStateNodes: 31
+    deferredStateNodes: 36
+    notExecutedStateNodes: 1
+    lockedStateNodes: 0
+    visualApprovalsClaimed: 0
+    lockedValues: 0
+    artProfileTestRuns: 24
+    artProfileTestAssertions: 206
+    artProfileTestFailures: 0
+    artProfileTestErrors: 0
+    artProfileTestSkips: 0
+    finalArt001ScopePaths: 8
+    art001ScopeViolations: 0
+    generatedBlendFiles: 0
+    generatedFbxFiles: 0
+    generatedUnityArtAssets: 0
+    generatedQaScenes: 0
+    generatedCaptures: 0
+    blenderExportsExecuted: 0
+    unityImportsExecuted: 0
+    blenderRendersExecuted: 0
+    sideBySideComparisonsExecuted: 0
+    blenderFbxExpectedOptions: 20
+    blenderFbxMissingOptions: 0
+    blenderFbxInvalidEnumValues: 0
+    unityModelImporterExpectedProperties: 18
+    unityModelImporterMissingProperties: 0
+    urpLitShadersFound: 1
+    unityLinearColorSpaceSettingsFound: 1
+    allEditModeTotal: 42
+    allEditModePassed: 42
+    allPlayModeTotal: 4
+    allPlayModePassed: 4
+    finalForbiddenInfrastructureInventory: 266
+    finalForbiddenInfrastructureContentFiles: 88
+    finalForbiddenInfrastructurePackageManifests: 2
+    finalForbiddenInfrastructureViolations: 0
+    activeDocsValidated: 12
+    existingEvidenceManifestsValidated: 38
+    packageHashChanges: 0
+    projectSettingsHashChanges: 0
+    tempLogsXmlOrReflectionFilesRetained: false
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+    independentReviewFinalBlockers: 0
+  expectedThresholds:
+    profileFiles: 3
+    uniqueProfileIds: 3
+    profilesOwnedByArt001: 3
+    profilesInStartState: 3
+    lockedStateNodes: 0
+    visualApprovalsClaimed: 0
+    lockedValues: 0
+    artProfileTestRuns: 24
+    artProfileTestAssertions: 206
+    artProfileTestFailures: 0
+    artProfileTestErrors: 0
+    artProfileTestSkips: 0
+    finalArt001ScopePaths: 8
+    art001ScopeViolations: 0
+    generatedBlendFiles: 0
+    generatedFbxFiles: 0
+    generatedUnityArtAssets: 0
+    generatedQaScenes: 0
+    generatedCaptures: 0
+    blenderExportsExecuted: 0
+    unityImportsExecuted: 0
+    blenderRendersExecuted: 0
+    sideBySideComparisonsExecuted: 0
+    blenderFbxMissingOptions: 0
+    blenderFbxInvalidEnumValues: 0
+    unityModelImporterMissingProperties: 0
+    allEditModePassed: 42
+    allPlayModePassed: 4
+    finalForbiddenInfrastructureViolations: 0
+    packageHashChanges: 0
+    projectSettingsHashChanges: 0
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+    independentReviewFinalBlockers: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/ART-001/EV-ART-001-20260827-r01.txt"
+    - "config/art/LowPolyStyleProfile.yaml"
+    - "config/art/ModelInteropProfile.yaml"
+    - "config/art/AlphaVisualQAProfile.yaml"
+    - "tools/verify_art_profiles.rb"
+    - "tools/tests/verify_art_profiles_test.rb"
+    - "config/toolchain/ToolchainProfile.yaml"
+    - "Project hotfix/Packages/manifest.json"
+    - "Project hotfix/Packages/packages-lock.json"
+    - "Project hotfix/ProjectSettings/ProjectSettings.asset"
+    - "docs/03_IMPLEMENTATION_PLAN.md"
+  failures: []
+  limitations:
+    - "세 파일은 START/Foundation contract다. 최종 palette 값·bevel width·product shader/lighting·gameplay camera·proportion·LOD/GPU budget을 승인하거나 LOCK하지 않았다."
+    - "Blender RNA와 Unity assembly reflection은 option/property 존재와 enum·축 계약을 확인했을 뿐 실제 `.blend` export, FBX 내용, Unity ModelImporter 동작 또는 Prefab parity를 증명하지 않는다."
+    - "QA-only URP Lit/neutral stage/tone/camera START 값은 production look이 아니며 Blender와 Unity의 pixel-perfect 또는 arbitrary DeltaE 일치를 요구하지 않는다."
+    - "Blender render, Unity capture, source→FBX→Prefab side-by-side, 2·3·4인 visual QA와 사용자 시각 승인은 실행하지 않았다. 해당 Evidence는 C1B/WPA/C4/P00/CAM task가 소유한다."
+    - "Character 0.005H·ground pivot0.5%H와 LOD/Paint 범위는 문서의 START target이며 Weapon/Map에 자동 적용하거나 final tolerance/budget으로 주장하지 않는다."
+    - "ART-001 scope guard는 현재 Git diff/untracked path를 검사하며 commit 이후 과거 변경이나 후속 task asset을 영구 금지하는 release guard가 아니다."
+    - "Unity Test 결과는 기존 gameplay foundation 회귀이며 art asset import나 visual quality test가 아니다. Player Build는 실행하지 않았다."
+    - "임시 Unity log/XML과 reflection source/executable은 local path·PID·installation detail을 포함할 수 있어 제거했다."
+  userDecision: "구현 계획대로 진행하되 모호하거나 승인이 필요하면 중단; 최종 미술값은 후속 시각 Gate에서 승인"
+  recordedAtUtc: "2026-08-27T14:22:14Z"
