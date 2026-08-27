@@ -1,0 +1,59 @@
+TransportPackageDecision:
+  schemaVersion: 1
+  decisionId: "FDN-006-r01"
+  status: "APPROVED"
+  recordedAtUtc: "2026-08-27T07:25:11Z"
+
+  adopted:
+    package: "com.unity.transport"
+    version: "2.6.0"
+    source: "Unity Registry"
+    runtimeAssembly: "Unity.Networking.Transport"
+    projectModule: "ProjectHotfix.Transport"
+    role: "Low-level connection and packet transport only"
+    resolvedTransitiveDependencies:
+      com.unity.burst: "1.8.28"
+      com.unity.collections: "2.6.2"
+      com.unity.mathematics: "1.3.3"
+
+  topology:
+    alpha:
+      adapterOwner: "NET-001"
+      topology: "Guest 1..3 connect directly to the AuthorityHost Unity process"
+      allowedEnvironment: "Trusted LAN or explicitly shared development endpoint"
+      publicDiscovery: false
+      natTraversalClaim: false
+      relayService: false
+      separateServerProcess: false
+    steam:
+      adapterOwner: "STM-006"
+      transport: "Steam Networking Sockets P2P/SDR"
+      reusesProtocolAboveAdapter: true
+      directTransportReleaseFallback: false
+
+  rejected:
+    - option: "Netcode for GameObjects"
+      reason: "Its high-level NetworkObject/RPC/ownership model overlaps the approved custom Host simulation, protocol and recovery layers."
+    - option: "Netcode for Entities"
+      reason: "The project uses GameObject/Rigidbody workflows and has no DOTS migration requirement."
+    - option: "Unity Multiplayer Services, Relay or Lobby Service"
+      reason: "Alpha is controlled direct transport and the product path later uses Steam Lobby/P2P/SDR without a separate backend."
+    - option: "Third-party high-level netcode"
+      reason: "No Alpha requirement justifies another replication/ownership framework."
+
+  deferredToImplementation:
+    directBindAddressAndPort: "NET-001"
+    reliableAndUnreliablePipelineMapping: "NET-003"
+    packetSchemaAndSerialization: "NET-003"
+    connectionApprovalAndRosterLifecycle: "NET-002..006"
+    reconnectAndRecovery: "NET-008/NET-015"
+    steamWrapperAndTransport: "STM-001/STM-006"
+
+  guardPolicy:
+    ngoAllowed: false
+    unityMultiplayerRelayOrLobbyServiceAllowed: false
+    publicDiscoveryAllowed: false
+    transportMayMutateSimulationDirectly: false
+    productTransportAdapterImplementationAllowedNow: false
+    customCryptoAllowed: false
+    playerBuildRequiredForThisDecision: false

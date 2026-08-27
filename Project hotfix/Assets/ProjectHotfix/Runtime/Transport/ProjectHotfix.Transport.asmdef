@@ -2,7 +2,8 @@
   "name": "ProjectHotfix.Transport",
   "rootNamespace": "ProjectHotfix.Transport",
   "references": [
-    "ProjectHotfix.Contracts"
+    "ProjectHotfix.Contracts",
+    "Unity.Networking.Transport"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],

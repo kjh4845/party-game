@@ -1,9 +1,9 @@
 ToolchainProfile:
   schemaVersion: 1
-  profileId: "project-hotfix-alpha-toolchain-r01"
+  profileId: "project-hotfix-alpha-toolchain-r02"
   status: "LOCKED"
   projectPath: "Project hotfix"
-  recordedAtUtc: "2026-08-26T10:47:59Z"
+  recordedAtUtc: "2026-08-27T07:27:24Z"
 
   unity:
     releaseFamily: "Unity 6.3 LTS"
@@ -20,15 +20,16 @@ ToolchainProfile:
     automaticUpgrade: false
 
   packageBaseline:
-    purpose: "Unity URP template snapshot; individual package adoption remains owned by FDN-004..006"
+    purpose: "Unity URP baseline after approved FDN-004..006 Input, Physics and Transport selections"
     manifestPath: "Project hotfix/Packages/manifest.json"
-    manifestSha256: "52fc9c6f97b8c0f62ed441b5fd108b8db0c89598af3617cc648d7a085843ee80"
+    manifestSha256: "88a1d01cf3abd14843cb3638a7692552e54f62a6d5de003c458a47a869edd741"
     lockPath: "Project hotfix/Packages/packages-lock.json"
-    lockSha256: "2da59839fc473daa97b5c5c8537033c1bc217aea8678564d64dadbc33f344efe"
-    directDependencyCount: 45
-    lockedPackageEntryCount: 57
+    lockSha256: "8708528393a5fce3dd9110fc14815ad2dbc21cefd0efec6102b79d86a62404aa"
+    directDependencyCount: 46
+    lockedPackageEntryCount: 58
     universalRenderPipeline: "17.3.0"
     inputSystem: "1.18.0"
+    unityTransport: "2.6.0"
 
   changePolicy:
     editorOrBlenderUpgradeRequiresProfileRevision: true

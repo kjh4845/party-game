@@ -1,0 +1,86 @@
+EvidenceManifest:
+  evidenceId: "EV-FDN-006-20260827-r01"
+  taskId: "FDN-006"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "TransportDecision=97cbf7473538e2767c8769e56b8af8800dc448e415b713500625ab6d6a67dc9c; ToolchainProfile=3443405648230628b8711a8b028c159402233e70123258ecd56dd9e7f0d0a7da; ModuleGraph=0c1543f8416a5d53c75e086e39b702651614b04c2da91b23e8a0710d5ce7fbf5; TransportAsmdef=24fd2fa926693452717d936fc3d0bcb00ad12bb8b5bff568466a68ac23b90e1c; TransportGuardTest=dac4135694ff3049190cb2f2e7397912c5d12d3da150f7cda0e638c7ac674682; Manifest=88a1d01cf3abd14843cb3638a7692552e54f62a6d5de003c458a47a869edd741; PackageLock=8708528393a5fce3dd9110fc14815ad2dbc21cefd0efec6102b79d86a62404aa; Plan=6165e24d80c582f11d890f077331b84d6c439de9264c6f3941b7c4b559bdc2da"
+  buildKind: "EditorCompileAndEditModeTest"
+  buildVersion: null
+  environment: "macOS arm64; Unity 6000.3.9f1; Unity Transport 2.6.0; Test Framework 1.6.0"
+  profileVersions: ["TransportPackageDecision-FDN-006-r01", "UnityTransport-2.6.0", "ModuleGraph-fdn-006-r03", "ToolchainProfile-r02"]
+  requirementIds: ["FDN-006", "SRS-SYS-008", "SRS-SYS-010", "SRS-NET-012"]
+  commandsOrManualSteps:
+    - "현재 network package/code 0과 Alpha direct/G4 Steam adapter 요구 감사"
+    - "사용자 승인에 따라 manifest에 com.unity.transport 2.6.0만 추가하고 Unity에서 packages-lock 해석"
+    - "ProjectHotfix.Transport sole UTP owner와 marker-only/NET-001 implementation0을 asmdef/CompilationPipeline로 검사"
+    - "PackageInfo에서 UTP2.6 Registry direct, NGO/Netcode/Multiplayer Services/Relay/Lobby package0 검사"
+    - "Transport 전용 NUnit XML4/4와 전체 EditMode16/16, failed/skipped0 확인"
+    - "ToolchainProfile package hash/count와 UTP version을 r02로 갱신"
+    - "민감한 local path·PID·licensing 정보를 포함한 임시 Unity log/XML 제거, Player Build0 확인"
+  observedMetrics:
+    unityTransportVersion: "2.6.0"
+    unityTransportRegistrySource: true
+    unityTransportDirectDependency: true
+    directPackageCount: 46
+    lockedPackageCount: 58
+    resolvedBurstVersion: "1.8.28"
+    resolvedCollectionsVersion: "2.6.2"
+    resolvedMathematicsVersion: "1.3.3"
+    transportRuntimeAssemblyOwners: 1
+    transportRuntimeSources: 1
+    transportAdapterImplementations: 0
+    ngoPackages: 0
+    multiplayerServicesPackages: 0
+    relayPackages: 0
+    lobbyPackages: 0
+    publicDiscoveryImplementations: 0
+    natTraversalImplementations: 0
+    separateServerProcesses: 0
+    transportEditModeTestsTotal: 4
+    transportEditModeTestsPassed: 4
+    transportEditModeTestsFailed: 0
+    transportEditModeTestsSkipped: 0
+    allEditModeTotal: 16
+    allEditModePassed: 16
+    independentReviewFindingsResolved: 1
+    tempLogsOrXmlRetained: false
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  expectedThresholds:
+    unityTransportVersion: "2.6.0"
+    unityTransportRegistrySource: true
+    unityTransportDirectDependency: true
+    transportRuntimeAssemblyOwners: 1
+    transportRuntimeSources: 1
+    transportAdapterImplementations: 0
+    ngoPackages: 0
+    multiplayerServicesPackages: 0
+    relayPackages: 0
+    lobbyPackages: 0
+    publicDiscoveryImplementations: 0
+    natTraversalImplementations: 0
+    separateServerProcesses: 0
+    transportEditModeTestsPassed: 4
+    transportEditModeTestsFailed: 0
+    transportEditModeTestsSkipped: 0
+    allEditModePassed: 16
+    playerBuildsExecuted: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/FDN-006/EV-FDN-006-20260827-r01.txt"
+    - "config/transport/TransportPackageDecision.yaml"
+    - "config/toolchain/ToolchainProfile.yaml"
+    - "config/architecture/ModuleGraph.yaml"
+    - "Project hotfix/Assets/ProjectHotfix/Runtime/Transport/ProjectHotfix.Transport.asmdef"
+    - "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/TransportPackageBoundaryTests.cs"
+    - "Project hotfix/Packages/manifest.json"
+    - "Project hotfix/Packages/packages-lock.json"
+    - "docs/03_IMPLEMENTATION_PLAN.md"
+  failures: []
+  limitations:
+    - "FDN-006 proves package choice and compile-time ownership only. It does not implement or prove socket bind, loopback, LAN connectivity, protocol, impairment, NAT traversal or Steam transport."
+    - "Alpha UTP direct is restricted to trusted LAN/explicit development endpoints and must not ship as a Steam release fallback."
+    - "Steam Networking Sockets/SDR adapter and maintained wrapper selection remain STM-001/STM-006 user-manual product work."
+    - "Unity temporary log/XML was deleted after summary because it contained local path/PID/licensing identifiers. Player Build was not executed."
+  userDecision: "Unity Transport 2.6.0 단독 채택, NGO 미사용"
+  recordedAtUtc: "2026-08-27T07:33:21Z"

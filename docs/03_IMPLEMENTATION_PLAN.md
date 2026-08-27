@@ -8,7 +8,7 @@
 | 기준일 | 2026-08-26 |
 | 현재 목표 | Alpha에서 2·3·4인 전체 흐름과 실제 무기 전투를 검증한 뒤 Steam 통합 |
 | 기준 문서 | PRD 1.8.0, SRS 1.8.0, PATCH_DESIGN 0.5.0과 현행 분야별 사양 |
-| 현재 구현 상태 | FDN-001..005·010·011 완료: Git/toolchain/policy, Unity6.3 URP, module/Input과 Physics60Hz·Authority30Hz 기준선 존재. Gameplay code·Player Build 없음 |
+| 현재 구현 상태 | FDN-001..006·010·011 완료: Git/toolchain/policy, Unity6.3 URP, module/Input/Physics와 UTP2.6 adapter 방향 기준선 존재. Gameplay/Network code·Player Build 없음 |
 | 계획 규모 | 173 Task, 251.0 집중 개발일 |
 | 자동화 금지 | Unity Player Build, Steam 배포, 외부 서비스 배포 |
 
@@ -26,6 +26,8 @@
 - Docker·OCI·Compose·container image를 만들거나 사용하지 않는다.
 - 방장 Client가 AuthorityHost 역할을 맡고 Guest 1~3명과 직접 연결한다.
 - Alpha는 같은 LAN 또는 사용자가 전달한 Host endpoint를 사용하는 Development direct 연결만 검증한다.
+- Alpha direct 전송은 Unity Transport 2.6.0을 low-level adapter 뒤에서 사용하고 NGO·Unity Relay/Lobby
+  Service는 사용하지 않는다. 실제 adapter/protocol은 NET-001..003, Steam 교체 adapter는 STM-006이 소유한다.
 - Alpha가 통과한 뒤 Steam auth·친구 전용 Lobby·친구 초대·코드·P2P/SDR을 붙인다.
 - 제품 코드는 SteamLobbyId를 checksum과 함께 가역적으로 표현하며 server lookup을 요구하지 않는다.
 - 공개 매칭, 서버 목록, MMR과 Rank는 현재와 향후 범위에 없다.
@@ -172,7 +174,7 @@ BLOCKED, DEFERRED를 사용한다.
 | FDN-003 | 1.5 | Simulation·Presentation·Input·Transport 모듈 경계 생성 | FDN-002 | SYS | Contracts leaf + 4 runtime asmdef graph | project edge4·cycle0, Presentation→Simulation path0, folder ownership 일치, Unity compile0·EditMode4/4, gameplay code0 | — | PASSED |
 | FDN-004 | 1 | Input package 선택 | FDN-002..003 | INPUT | InputPackageDecision | InputSystem1.18.0 Registry/direct·New-only 채택, Legacy/Both·다른 module ref0, Input test4/4·전체8/8; action map은 INP-001 소유 | — | PASSED |
 | FDN-005 | 1 | Physics package와 fixed-step 선택 | FDN-002..003 | PHYS | PhysicsPackageDecision | built-in PhysX·Physics60Hz/Authority30Hz, guard4/4·isolated PlayMode contact/joint2/2·전체 EditMode12/12, Player Build0 | — | PASSED |
-| FDN-006 | 1.5 | P2P transport adapter와 Alpha direct 구현 방향 선택 | FDN-002..003 | NET | adapter decision | LAN/direct·Steam 교체 가능, public discovery 0 | — | NOT_STARTED |
+| FDN-006 | 1.5 | P2P transport adapter와 Alpha direct 구현 방향 선택 | FDN-002..003 | NET | TransportPackageDecision | UTP2.6 Registry/direct·Transport sole owner, NGO/Services/Relay/Lobby0, adapter seam, Transport4/4·전체16/16 | — | PASSED |
 | FDN-007 | 1 | Renderless SimulationHarness·EditMode·PlayMode·Evidence 기반 생성 | FDN-002..003 | SYS,NFR | harness + test/evidence tools | 제품 Simulation code를 Render/UI 없이 실행, 세 test 계층 smoke·skipped core 0 | — | NOT_STARTED |
 | FDN-008 | 1 | Settings·Preset local atomic storage 기반 생성 | FDN-001 | APPEAR,UI | local repository | 손상 시 last-good 복구, server dependency 0 | — | NOT_STARTED |
 | FDN-009 | 0.5 | 금지 인프라 guard 생성 | FDN-001 | SYS,SEC | repository audit | Backend·DB·Docker·Dedicated artifact 0 | — | NOT_STARTED |

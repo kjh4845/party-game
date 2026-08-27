@@ -1,6 +1,6 @@
 ModuleGraph:
   schemaVersion: 1
-  revision: "fdn-004-r02"
+  revision: "fdn-006-r03"
   runtimeRoot: "Project hotfix/Assets/ProjectHotfix/Runtime"
   modules:
     - name: "ProjectHotfix.Contracts"
@@ -26,7 +26,7 @@ ModuleGraph:
     - name: "ProjectHotfix.Transport"
       role: "Replaceable peer transport boundary"
       allowedProjectReferences: ["ProjectHotfix.Contracts"]
-      externalPackageReferences: []
+      externalPackageReferences: ["Unity.Networking.Transport"]
       noEngineReferences: false
   rules:
     projectReferenceCyclesAllowed: false
