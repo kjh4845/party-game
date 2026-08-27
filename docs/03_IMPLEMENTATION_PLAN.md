@@ -8,7 +8,7 @@
 | 기준일 | 2026-08-26 |
 | 현재 목표 | Alpha에서 2·3·4인 전체 흐름과 실제 무기 전투를 검증한 뒤 Steam 통합 |
 | 기준 문서 | PRD 1.8.0, SRS 1.8.0, PATCH_DESIGN 0.5.0과 현행 분야별 사양 |
-| 현재 구현 상태 | FDN-001..004·010·011 완료: Git/toolchain/policy, Unity6.3 URP compile, 5-module boundary와 Input System 단일 backend 기준선 존재. Gameplay code·Player Build 없음 |
+| 현재 구현 상태 | FDN-001..005·010·011 완료: Git/toolchain/policy, Unity6.3 URP, module/Input과 Physics60Hz·Authority30Hz 기준선 존재. Gameplay code·Player Build 없음 |
 | 계획 규모 | 173 Task, 251.0 집중 개발일 |
 | 자동화 금지 | Unity Player Build, Steam 배포, 외부 서비스 배포 |
 
@@ -82,6 +82,8 @@
 - 무기 입력은 W1 비교와 사용자 결정 뒤 구현하며 발사·근접 impact·drop·damage·knockback까지 검증한다.
 - Unity Authority는 Rigidbody 이동·Action phase·Hit sweep·impulse를 소유하고 Animator·procedural pose는
   semantic state를 표현한다. Gameplay displacement를 만드는 Root Motion은 0이다.
+- Unity 3D Physics fixed-step은 60Hz다. Authority/Network cadence는 Physics 두 step마다 30Hz,
+  Snapshot 20Hz는 세 step마다·15Hz는 네 step마다 실행하며 같은 tick으로 합치지 않는다.
 - Alpha action matrix는 locomotion·Jump phase, L/R Punch, L/R Air Kick, Dropkick·Recovery,
   Grab·Lift·Throw, 네 Weapon fire/swing와 Ragdoll·GetUp을 포함한다. 후속 ANM은 이를 production polish한다.
 
@@ -169,7 +171,7 @@ BLOCKED, DEFERRED를 사용한다.
 | FDN-002 | 1.5 | Unity URP project 생성·검증 | FDN-010..011 | SYS,NFR | `Project hotfix` Unity client | Unity6000.3.9f1·URP17.3.0 import/C# compile error0, package/source change0, Player Build0 | — | PASSED |
 | FDN-003 | 1.5 | Simulation·Presentation·Input·Transport 모듈 경계 생성 | FDN-002 | SYS | Contracts leaf + 4 runtime asmdef graph | project edge4·cycle0, Presentation→Simulation path0, folder ownership 일치, Unity compile0·EditMode4/4, gameplay code0 | — | PASSED |
 | FDN-004 | 1 | Input package 선택 | FDN-002..003 | INPUT | InputPackageDecision | InputSystem1.18.0 Registry/direct·New-only 채택, Legacy/Both·다른 module ref0, Input test4/4·전체8/8; action map은 INP-001 소유 | — | PASSED |
-| FDN-005 | 1 | Physics package와 fixed-step 선택 | FDN-002..003 | PHYS | decision record | 기본 Rigidbody·joint·contact smoke 통과 | — | NOT_STARTED |
+| FDN-005 | 1 | Physics package와 fixed-step 선택 | FDN-002..003 | PHYS | PhysicsPackageDecision | built-in PhysX·Physics60Hz/Authority30Hz, guard4/4·isolated PlayMode contact/joint2/2·전체 EditMode12/12, Player Build0 | — | PASSED |
 | FDN-006 | 1.5 | P2P transport adapter와 Alpha direct 구현 방향 선택 | FDN-002..003 | NET | adapter decision | LAN/direct·Steam 교체 가능, public discovery 0 | — | NOT_STARTED |
 | FDN-007 | 1 | Renderless SimulationHarness·EditMode·PlayMode·Evidence 기반 생성 | FDN-002..003 | SYS,NFR | harness + test/evidence tools | 제품 Simulation code를 Render/UI 없이 실행, 세 test 계층 smoke·skipped core 0 | — | NOT_STARTED |
 | FDN-008 | 1 | Settings·Preset local atomic storage 기반 생성 | FDN-001 | APPEAR,UI | local repository | 손상 시 last-good 복구, server dependency 0 | — | NOT_STARTED |

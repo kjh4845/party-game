@@ -1,0 +1,102 @@
+EvidenceManifest:
+  evidenceId: "EV-FDN-005-20260827-r01"
+  taskId: "FDN-005"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "PhysicsDecision=e2bbce932d053b6689dbf1f7618f15d702c017bae689b8262ddba8da68c10ab8; TimeManager=8fa4333ac4e99d3c522b512e4f9ec78d73401504ac0efaece4aeaafa0e45dfff; DynamicsManager=53cf96c365b85eefe78b3cda76af21f68246744277ae6ca21ffd6a67bdb72a1c; SceneTemplateSettings=bb9098b3bfcde78d93e264b96f7b77b5430e64e8c57a7aad7f5a5d9c3945e16a; PhysicsGuardTest=1599971e3d9fe635437970854336290a57c072a41a15b6803f5c6615bc54fdbf; PhysicsSmokeTest=968257f470039945f5d74d25a043c14460b5c75b999b6ca2b2a88a2b1cd814ff; PhysicsPlayModeAsmdef=10be0ab25b6aca86076cad98753b649209f021098cf87bc6fe024f38ca9bcc8a; SRS=eae53f9f097ee34fa8c419c1091c5dfe1a882d2d49fbc79877d59ee889df0aa2; Plan=fc9250eb12cab88eb0364ad1ab7c36177bd1a1de5f73b789a4b48767a9268195"
+  buildKind: "EditorAndPlayModeTests"
+  buildVersion: null
+  environment: "macOS arm64; Unity 6000.3.9f1; built-in PhysX; Test Framework 1.6.0; no Player Build"
+  profileVersions: ["PhysicsPackageDecision-FDN-005-r01", "UnityPhysics-1.0.0", "Physics-60Hz", "AuthorityNetwork-30Hz"]
+  requirementIds: ["FDN-005", "SRS-NET-001", "SRS-NFR-001"]
+  commandsOrManualSteps:
+    - "현재 TimeManager/DynamicsManager와 built-in Physics package/lock 감사"
+    - "사용자 승인 Physics60Hz·Authority30Hz·Snapshot20/15Hz integer cadence를 config/SRS/Plan에 기록"
+    - "Time.fixedDeltaTime=1/60 적용 후 Unity 6.3 PhysicsSettings schema 13→23 migration 확인"
+    - "EditMode에서 settings/package/second-stack/runtime-mutation와 guard self-test 7종 검증"
+    - "PlayMode LocalPhysicsMode.Physics3D scene에서 Rigidbody contact와 ConfigurableJoint-vs-control smoke 실행"
+    - "NUnit XML에서 Physics guard4/4, 전체 EditMode12/12, PlayMode2/2와 failed/skipped 0 확인"
+    - "실패한 harness run 5개와 invalidated pass 1개의 원인을 분류하고 최종 guard로 재검증"
+    - "로컬 경로·PID·licensing 정보를 포함한 임시 log/XML 제거, package lock 불변·Player Build0 확인"
+  observedMetrics:
+    physicsPackageVersion: "1.0.0"
+    physicsPackageBuiltInDirect: true
+    secondPhysicsStacks: 0
+    physicsHz: 60
+    fixedDeltaTimeSeconds: 0.016666668
+    authorityNetworkHz: 30
+    physicsStepsPerAuthorityCycle: 2
+    physicsStepsPer20HzSnapshot: 3
+    physicsStepsPer15HzSnapshot: 4
+    physicsSettingsSchemaBefore: 13
+    physicsSettingsSchemaAfter: 23
+    simulationModeFixedUpdate: true
+    autoSyncTransforms: false
+    runtimePhysicsMutationHits: 0
+    mutationGuardSelfTestSamples: 7
+    physicsEditModeGuardTotal: 4
+    physicsEditModeGuardPassed: 4
+    allEditModeTotal: 12
+    allEditModePassed: 12
+    physicsPlayModeSmokeTotal: 2
+    physicsPlayModeSmokePassed: 2
+    physicsPlayModeSmokeFailed: 0
+    physicsPlayModeSmokeSkipped: 0
+    isolatedLocalPhysicsScenes: 2
+    isolatedScenesUnloaded: 2
+    supersededFailedRuns: 5
+    supersededFailedTestCases: 6
+    supersededCompilerErrors: 2
+    supersededInvalidatedPassingRuns: 1
+    independentReviewFindingsResolved: 4
+    packageLockHashChanges: 0
+    tempLogsOrXmlRetained: false
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  expectedThresholds:
+    physicsPackageVersion: "1.0.0"
+    physicsPackageBuiltInDirect: true
+    secondPhysicsStacks: 0
+    physicsHz: 60
+    authorityNetworkHz: 30
+    physicsStepsPerAuthorityCycle: 2
+    physicsStepsPer20HzSnapshot: 3
+    physicsStepsPer15HzSnapshot: 4
+    simulationModeFixedUpdate: true
+    autoSyncTransforms: false
+    runtimePhysicsMutationHits: 0
+    mutationGuardSelfTestSamples: 7
+    physicsEditModeGuardPassed: 4
+    allEditModePassed: 12
+    physicsPlayModeSmokePassed: 2
+    physicsPlayModeSmokeFailed: 0
+    physicsPlayModeSmokeSkipped: 0
+    isolatedScenesUnloaded: 2
+    packageLockHashChanges: 0
+    playerBuildsExecuted: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/FDN-005/EV-FDN-005-20260827-r01.txt"
+    - "config/physics/PhysicsPackageDecision.yaml"
+    - "Project hotfix/ProjectSettings/TimeManager.asset"
+    - "Project hotfix/ProjectSettings/DynamicsManager.asset"
+    - "Project hotfix/ProjectSettings/SceneTemplateSettings.json"
+    - "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/PhysicsPackageBoundaryTests.cs"
+    - "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicsPackageSmokeTests.cs"
+    - "docs/02_SRS.md"
+    - "docs/03_IMPLEMENTATION_PLAN.md"
+  failures: []
+  supersededFailures:
+    - "EditMode LocalPhysicsMode scene creation was invalid outside PlayMode: 2 failed cases."
+    - "EditMode additive scene creation was blocked by the test runner's unsaved scene: 2 failed cases."
+    - "Bundled NUnit lacked NonParallelizable: 2 compile errors before test execution."
+    - "A global PhysicsScene 3/3 pass was invalidated because it could mutate pre-existing bodies."
+    - "First isolated PlayMode joint setup connected bodies before moving both into the local scene: 1 failed case."
+    - "Second isolated PlayMode joint check asserted VelocityChange before the first simulation step: 1 failed case."
+  limitations:
+    - "Rigidbody/contact/joint tests are foundation smoke only; Character mass, joint limits, solver tuning, ragdoll and gameplay feel remain CHR-002 and later user gates."
+    - "Runtime mutation guard is a lexical regression guard with seven self-tests, not a hostile Roslyn/reflection sandbox."
+    - "Network scheduler is not implemented here. NET-001..003 must enforce 30Hz authority cadence and 15/20Hz snapshots over 60Hz Physics."
+    - "Unity temporary logs/XML were deleted after summary because they contained local path/PID/licensing identifiers. Player Build was not executed."
+  userDecision: "Physics 60Hz + Authority/Network 30Hz 분리안 확정"
+  recordedAtUtc: "2026-08-27T07:03:25Z"

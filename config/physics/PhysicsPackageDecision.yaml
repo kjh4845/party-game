@@ -1,0 +1,60 @@
+PhysicsPackageDecision:
+  schemaVersion: 1
+  decisionId: "FDN-005-r01"
+  status: "APPROVED"
+  recordedAtUtc: "2026-08-27T06:36:49Z"
+
+  adopted:
+    package: "com.unity.modules.physics"
+    packageVersion: "1.0.0"
+    packageSource: "BuiltIn"
+    engineBackend: "NVIDIA PhysX"
+    observedSdkVersion: "4.1.2"
+    serializedPhysicsSettingsVersion: 23
+    serializedSimulationMode: 0
+    simulationMode: "FixedUpdate"
+    automaticSimulation: true
+    autoSyncTransforms: false
+
+  cadence:
+    physicsHz: 60
+    fixedDeltaTimeSeconds: 0.016666668
+    authorityNetworkHz: 30
+    physicsStepsPerAuthorityCycle: 2
+    snapshotProfiles:
+      - {snapshotHz: 20, physicsStepsPerSnapshot: 3}
+      - {snapshotHz: 15, physicsStepsPerSnapshot: 4}
+
+  rejected:
+    - option: "30Hz Physics and Authority in one tick"
+      reason: "Simpler scheduling but too coarse for the approved Rigidbody ragdoll, grab and joint-heavy interaction target."
+    - option: "Unity default 50Hz Physics with 30/20/15Hz network cadences"
+      reason: "The approved network and snapshot rates do not divide the Physics cadence into stable integer step counts."
+    - option: "DOTS Physics, Havok or third-party Physics"
+      reason: "Adds a second simulation stack without an Alpha requirement or migration evidence."
+
+  unchangedStartValues:
+    gravity: {x: 0.0, y: -9.81, z: 0.0}
+    defaultSolverIterations: 6
+    defaultSolverVelocityIterations: 1
+    defaultContactOffset: 0.01
+    enhancedDeterminism: false
+
+  ownership:
+    physicsPackageAndStep: "FDN-005"
+    characterMassJointColliderTuning: "CHR-002"
+    gameplayMovementAndActionPhysics: "CHR-003..011/AIR-002"
+    authorityNetworkScheduler: "NET-001..003"
+    performanceAndImpairmentGate: "NET-014"
+
+  guardPolicy:
+    secondPhysicsStackAllowed: false
+    runtimeManualPhysicsSimulationAllowed: false
+    editModeSmokeManualSimulationAllowed: true
+    runtimeFixedDeltaMutationAllowed: false
+    playerBuildRequiredForThisDecision: false
+
+  unityGeneratedSettingsBaseline:
+    retained:
+      - "Project hotfix/ProjectSettings/SceneTemplateSettings.json"
+    reason: "Standard Unity 6.3 ProjectSettings output generated during isolated scene test setup; contains no user path or product decision."

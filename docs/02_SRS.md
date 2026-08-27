@@ -213,7 +213,7 @@ InteractiveLobby 또는 Closed다.
 
 | ID | 요구사항 | 우선순위 | 검증 | 근거 |
 |---|---|---:|---|---|
-| SRS-NET-001 | Host Simulation은 30Hz Fixed Tick을 목표로 하고 제한된 Snapshot을 설정 가능한 15~20Hz로 보내야 한다. | P1 | T/A | PRD 1.8.0 |
+| SRS-NET-001 | Host는 Unity 3D Physics를 60Hz fixed-step으로 실행하고 Authority/Network cadence는 정확히 두 Physics step마다 1회인 30Hz를 목표로 해야 한다. 제한된 Snapshot은 20Hz면 세 Physics step마다, 15Hz면 네 step마다 보내며 Physics와 Network cadence를 같은 값으로 가장해서는 안 된다. | P1 | T/A | 사용자 결정 2026-08-27, PRD 1.8.0 |
 | SRS-NET-002 | Input, Snapshot, 신뢰성이 필요한 상태 전이와 Recovery Data는 Loss·Ordering 필요에 맞는 Transport Semantic을 사용해야 한다. | P1 | T/I | PRD 1.8.0 |
 | SRS-NET-003 | Input은 단조 Sequence와 제한된 값을 사용하고 중복·과거·불가능·과도한 Input은 권한 State 변경 없이 거부해야 한다. | P1 | T | PRD 1.8.0 |
 | SRS-NET-004 | Client는 Local Presentation을 Prediction할 수 있지만 크거나 불가능한 차이는 Host State로 수렴해야 한다. | P1 | T/M | PRD 1.8.0 |
@@ -290,7 +290,7 @@ InteractiveLobby 또는 Closed다.
 
 | ID | 요구사항 | 우선순위 | 검증 | 근거 |
 |---|---|---:|---|---|
-| SRS-NFR-001 | 4인·Active Patch 3개·Supply cap3의 Incoming/Loose/Held/Spent Weapon과 승인 cadence의 bounded Projectile worst case에서 Host Simulation Tick p95는 20ms 이하를 목표로 하고 p99는 33.3ms Tick Budget을 지속 초과하지 않아야 한다. | P1 | T/A | PRD 1.8.0 |
+| SRS-NFR-001 | 4인·Active Patch 3개·Supply cap3의 Incoming/Loose/Held/Spent Weapon과 승인 cadence의 bounded Projectile worst case에서 두 60Hz Physics step을 포함한 30Hz Authority/Network cycle p95는 20ms 이하를 목표로 하고 p99는 33.3ms cycle budget을 지속 초과하지 않아야 한다. | P1 | T/A | 사용자 결정 2026-08-27, PRD 1.8.0 |
 | SRS-NFR-002 | RTT 120ms, Jitter 20ms, Packet Loss 5%에서 2·3·4인 10분 Run은 인원별 완료율 95% 이상과 완료 Run의 Critical Authority Divergence 0건을 목표로 해야 한다. | P1 | T/A | 사용자 결정 2026-08-24 |
 | SRS-NFR-003 | 느리거나 Malformed인 Guest 하나가 설정 예산을 넘어 Host Simulation 또는 다른 Guest Snapshot Stream을 지연시키지 않아야 한다. | P1 | T/A | PRD 1.8.0 |
 | SRS-NFR-004 | 지원 Preset 상한에서 Local Preset Save·Load·Delete p95는 각각 500ms 이하를 목표로 해야 한다. | P1 | T/A | PRD 1.8.0 |
