@@ -1,0 +1,184 @@
+ForbiddenInfrastructurePolicy:
+  schemaVersion: 1
+  profileId: "ForbiddenInfrastructurePolicy-FDN-009-r01"
+  ownerTask: "FDN-009"
+  inventory:
+    command: "git ls-files --cached --others --exclude-standard -z"
+    includeTrackedAndNonIgnoredUntracked: true
+    followSymlinks: false
+    failWhenGitInventoryFails: true
+  scope:
+    prohibited:
+      - "Separate Backend, Coordinator, Allocation, Blob or Bake Worker"
+      - "Database runtime, client, schema or data artifact"
+      - "Dedicated or headless game-server build path"
+      - "Docker, OCI, Compose or container deployment workflow"
+    explicitlyAllowed:
+      - "AuthorityHost inside the host player's Unity client"
+      - "Unity Transport host bind/listen behind the P2P adapter"
+      - "Steam Lobby, friend invite and Steam P2P/SDR after Alpha"
+      - "com.unity.multiplayer.center, collab-proxy and built-in UnityWebRequest modules"
+      - "Narrative documentation and Evidence that state prohibited counts are zero"
+    deferredReleaseAudit: "ALP-002 and STM-013 inspect user-produced release artifacts separately"
+  artifactRules:
+    forbiddenBasenameGroups:
+      - id: "CONTAINER_ENTRY_FILE"
+        category: "container"
+        values: ["dockerfile", "containerfile", ".dockerignore", ".containerignore", "docker-compose.yml", "docker-compose.yaml", "compose.yml", "compose.yaml", "oci-layout"]
+    forbiddenDirectorySegmentGroups:
+      - id: "EXTERNAL_SERVICE_DIRECTORY"
+        category: "backend"
+        values: ["game-coordinator", "coordinator-service", "allocation-service", "blob-store", "bake-worker"]
+      - id: "DEDICATED_DIRECTORY"
+        category: "dedicated"
+        values: ["dedicated-server", "dedicatedserver", "headless-server"]
+      - id: "CONTAINER_DIRECTORY"
+        category: "container"
+        values: ["docker", "kubernetes", "k8s", "helm", "terraform"]
+    forbiddenExtensionGroups:
+      - id: "DATABASE_FILE"
+        category: "database"
+        values: [".db", ".sql", ".sqlite", ".sqlite3"]
+      - id: "INFRASTRUCTURE_AS_CODE_FILE"
+        category: "container"
+        values: [".tf", ".tfvars"]
+      - id: "OCI_IMAGE_FILE"
+        category: "container"
+        values: [".oci"]
+    forbiddenPathPatterns:
+      - id: "CONTAINER_VARIANT_FILE"
+        category: "container"
+        pattern: '(^|/)(dockerfile|containerfile)([._-][^/]*)?$|(^|/)(docker-compose|compose)([._-][^/]*)?\.(ya?ml)$|\.(dockerfile|containerfile)$'
+      - id: "CONTAINER_ORCHESTRATION_FILE"
+        category: "container"
+        pattern: '(^|/)(kustomization\.ya?ml|serverless\.ya?ml)$|(^|/)(docker-image|container-image|oci-layout)(/|$)'
+      - id: "DEDICATED_BUILD_ARTIFACT"
+        category: "dedicated"
+        narrativeExempt: true
+        pattern: '(^|/)(build|builds)/.*(dedicated[-_. /]*server|server[-_. /]*build|headless[-_. /]*server)|(^|/)(dedicated[-_. ]*server|headless[-_. ]*server).*\.buildprofile$'
+      - id: "BACKEND_DEPLOY_DIRECTORY"
+        category: "backend"
+        narrativeExempt: true
+        pattern: '^(backend|backends)/|^Project hotfix/(backend|backends)/|(^|/)(deploy|ops|infrastructure)/(backend|backends)(/|$)'
+      - id: "STANDALONE_GAME_SERVER_PROJECT"
+        category: "dedicated"
+        narrativeExempt: true
+        pattern: '(^|/)(game-server|gameserver)/[^/]+\.(csproj|sln|buildprofile)$|(^|/)(build|builds|deploy|release|ops)/(game-server|gameserver)(/|$)'
+      - id: "STANDALONE_SERVER_PROJECT"
+        category: "dedicated"
+        narrativeExempt: true
+        pattern: '(^|/)(server|servers)/[^/]+\.(csproj|sln|buildprofile)$|(^|/)(server|game-server|gameserver)[^/]*\.(csproj|sln|buildprofile)$|(^|/)(build|builds|deploy|release|ops)/(server|servers)(/|$)'
+    forbiddenFileNamePatterns:
+      - id: "BACKEND_SDK_ARTIFACT"
+        category: "backend"
+        applicableExtensions: [".aar", ".dll", ".dylib", ".jar", ".so", ".tgz", ".unitypackage"]
+        pattern: '(^|[._-])(playfab|firebase|supabase|nakama|photon|agones)(sdk|client)?([._-]|$)|(^|[._-])(aspnetcore|kestrel)([._-]|$)|(^|[._-])unity[._-]services[._-](authentication|cloudcode|lobby|relay)([._-]|$)'
+      - id: "DATABASE_SDK_ARTIFACT"
+        category: "database"
+        applicableExtensions: [".aar", ".dll", ".dylib", ".jar", ".so", ".tgz", ".unitypackage"]
+        pattern: '(^|[._-])(sqlite|npgsql|mysql|mongodb|redis|entityframework|prisma|dapper)(core|connector|client|driver)?([._-]|$)'
+      - id: "DEDICATED_NAMED_ARTIFACT"
+        category: "dedicated"
+        applicableExtensions: [".app", ".buildprofile", ".dll", ".dylib", ".exe", ".so", ".x86_64"]
+        pattern: '(dedicated[-_. ]*server|server[-_. ]*build|headless[-_. ]*server)'
+  contentScan:
+    roots: ["."]
+    excludedPathPrefixes:
+      - "tools/verify_forbidden_infrastructure.rb"
+      - "tools/tests/verify_forbidden_infrastructure_test.rb"
+      - "config/infrastructure/ForbiddenInfrastructurePolicy.yaml"
+    narrativePathPatterns:
+      - '^docs/.*\.md$'
+      - '^artifacts/evidence/.*/EV-[^/]+\.(txt|ya?ml)$'
+    extensions: [".asset", ".asmdef", ".asmref", ".bat", ".buildprofile", ".cjs", ".cmd", ".cs", ".csproj", ".gradle", ".js", ".json", ".mjs", ".prefab", ".props", ".ps1", ".py", ".rb", ".sh", ".targets", ".toml", ".ts", ".unity", ".xml", ".yaml", ".yml", ".zsh"]
+    basenames: ["gemfile", "jenkinsfile", "makefile", "package.json", "pipfile", "pyproject.toml", "requirements.txt", "requirements-dev.txt"]
+    maxBytesPerFile: 1048576
+    rules:
+      - id: "CONTAINER_COMMAND"
+        category: "container"
+        pattern: '(^\s*|[;&|`]\s*|\$\(\s*|\brun\s*:\s*)(sudo\s+)?(docker(-compose)?|podman|buildah|nerdctl)\s+[a-z][a-z0-9_-]*\b|\buses\s*:\s*docker/'
+      - id: "WORKFLOW_CONTAINER_JOB"
+        category: "container"
+        pathPattern: '(^|/)(\.github/workflows|ci|pipelines)(/|$)|(^|/)\.gitlab-ci\.ya?ml$'
+        pattern: '^\s*(container|services)\s*:'
+      - id: "KUBERNETES_MANIFEST"
+        category: "container"
+        pattern: '\bapiVersion\s*:\s*(v1|apps/v\d+|batch/v\d+|networking\.k8s\.io/v\d+)\b[\s\S]{0,2000}\bkind\s*:\s*(Pod|Deployment|StatefulSet|DaemonSet|Job|CronJob|ReplicaSet|Service|Ingress|ConfigMap|Secret|Namespace)\b|\bkind\s*:\s*(Pod|Deployment|StatefulSet|DaemonSet|Job|CronJob|ReplicaSet|Service|Ingress|ConfigMap|Secret|Namespace)\b[\s\S]{0,2000}\bapiVersion\s*:\s*(v1|apps/v\d+|batch/v\d+|networking\.k8s\.io/v\d+)\b'
+      - id: "KUBERNETES_OR_TERRAFORM_COMMAND"
+        category: "container"
+        pattern: '(^\s*|[;&|`]\s*|\$\(\s*|\brun\s*:\s*)(kubectl|helm|terraform)\s+[a-z][a-z0-9_-]*\b'
+      - id: "DEDICATED_BUILD_SIGNATURE"
+        category: "dedicated"
+        pattern: '^\s*#\s*(if|elif)\s+[^\r\n]*\bUNITY_SERVER\b|StandaloneBuildSubtarget\s*\.\s*Server\b|BuildOptions\s*\.\s*EnableHeadlessMode\b|-standaloneBuildSubtarget\s+Server\b|m_(Subtarget|BuildTarget)\s*:\s*Server\b'
+      - id: "DEDICATED_MULTIPLAYER_ROLE"
+        category: "dedicated"
+        pattern: '^\s*m_EnableMultiplayerRoles\s*:\s*[1-9]\d*\s*$'
+      - id: "DEDICATED_BUILDPROFILE_SUBTARGET"
+        category: "dedicated"
+        pathPattern: '\.buildprofile$'
+        pattern: '^\s*m_Subtarget\s*:\s*1\s*$'
+      - id: "DEDICATED_BUILDPROFILE_ASSET"
+        category: "dedicated"
+        pathPattern: '\.asset$'
+        pattern: '\bBuildProfile\b[\s\S]{0,2000}^\s*m_Subtarget\s*:\s*1\s*$|^\s*m_Subtarget\s*:\s*1\s*$[\s\S]{0,2000}\bBuildProfile\b'
+      - id: "DEDICATED_PROCESS_ENTRYPOINT"
+        category: "dedicated"
+        pathPattern: '(^|/)(server|servers|game-server|gameserver)(/|$)'
+        pattern: '\bstatic\s+(async\s+)?(void|Task|Task<int>)\s+Main\s*\(|new\s+TcpListener\s*\(|TcpListener\s*\.\s*Start\s*\('
+      - id: "BACKEND_SERVER_FRAMEWORK"
+        category: "backend"
+        pattern: '(using|namespace)\s+(Microsoft\.AspNetCore|PlayFab|Firebase|Supabase|Nakama|Photon|Agones)(\.|;)|\b(HttpListener|KestrelServerOptions|WebApplication\s*\.\s*CreateBuilder)\b'
+      - id: "REMOTE_BACKEND_CLIENT_API"
+        category: "backend"
+        pathPattern: '^Project hotfix/Assets/ProjectHotfix/'
+        pattern: 'using\s+System\.Net\.Http\s*;|new\s+HttpClient\s*\(|UnityWebRequest\s*\.\s*(Get|Post|Put|Delete)\s*\('
+      - id: "BACKEND_SCRIPT_FRAMEWORK"
+        category: "backend"
+        pattern: '(^|[\r\n])\s*(from|import)\s+(fastapi|django|flask|firebase_admin|supabase)(\.|\s|$)|\b(require\s*\(|from\s+)["''](express|fastify|@nestjs/|firebase-admin|@supabase/)|["''](express|fastify|@nestjs/core|socket\.io|fastapi|django|flask|uvicorn|gunicorn)["'']\s*:'
+      - id: "REMOTE_BLOB_SDK"
+        category: "backend"
+        pattern: '(using|namespace)\s+(Amazon\.S3|Azure\.Storage\.Blobs|Google\.Cloud\.Storage)(\.|;)'
+      - id: "DATABASE_RUNTIME_API"
+        category: "database"
+        pattern: '(using|namespace)\s+(Microsoft\.Data\.Sqlite|Microsoft\.EntityFrameworkCore|System\.Data(\.SqlClient)?|Npgsql|MySqlConnector|MongoDB\.Driver|StackExchange\.Redis)(\.|;)|\b(CREATE\s+TABLE|DATABASE_URL|ConnectionStrings\s*:|DbConnection)\b'
+      - id: "DATABASE_SCRIPT_API"
+        category: "database"
+        pattern: '(^|[\r\n])\s*(from|import)\s+(sqlalchemy|psycopg|redis|pymongo|sqlite3)(\.|\s|$)|\b(require\s*\(|from\s+)["''](pg|sequelize|typeorm|mongoose|redis|prisma)["'']|["''](pg|sequelize|typeorm|mongoose|redis|prisma|sqlalchemy|psycopg)["'']\s*:'
+      - id: "UNITY_CLOUD_BACKEND_API"
+        category: "backend"
+        pattern: '(using|namespace)\s+Unity\.Services(\.|;)'
+      - id: "STEAM_DEDICATED_SERVER_API"
+        category: "dedicated"
+        pathPattern: '^Project hotfix/Assets/ProjectHotfix/'
+        pattern: 'SteamGameServer\s*\.|\bISteamGameServer\b'
+  packageScan:
+    required: true
+    maxBytesPerManifest: 1048576
+    manifests:
+      - "Project hotfix/Packages/manifest.json"
+      - "Project hotfix/Packages/packages-lock.json"
+    rules:
+      - id: "UNITY_HOSTED_BACKEND_PACKAGE"
+        category: "backend"
+        pattern: '^com\.unity\.services\.(?!core(\.|$))'
+      - id: "THIRD_PARTY_BACKEND_PACKAGE"
+        category: "backend"
+        pattern: '(playfab|firebase|supabase|nakama|photon|agones|gamesparks)'
+      - id: "DATABASE_PACKAGE"
+        category: "database"
+        pattern: '(entityframework|sqlite|npgsql|mysql|mongodb|redis|dapper|prisma|sqlalchemy)'
+      - id: "DEDICATED_SERVER_PACKAGE"
+        category: "dedicated"
+        pattern: '(dedicated[-.]?server|game[-.]?server|(^|[._-])multiplay([._-]|$))'
+  reporting:
+    categories: ["backend", "database", "dedicated", "container", "audit"]
+    printRelativePathsOnly: true
+    printMatchedContent: false
+    passExitCode: 0
+    violationExitCode: 1
+    usageOrPolicyErrorExitCode: 2
+  limitations:
+    - "The guard audits current Git tracked and non-ignored untracked files, not Git history or remote systems."
+    - "Ignored Unity caches, PackageCache, IDE output and user-produced ignored Build directories are outside FDN-009 inventory."
+    - "Rule-based inspection cannot prove the absence of intentionally obfuscated code or a prohibited SDK embedded inside an unrelated binary."
+    - "The exact verifier, policy and verifier-test sources are trusted content-signature exemptions; their artifact paths remain audited."

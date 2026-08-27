@@ -1,0 +1,107 @@
+EvidenceManifest:
+  schemaVersion: 1
+  evidenceProfile: "EvidenceProfile-r01"
+  evidenceId: "EV-FDN-009-20260827-r01"
+  taskId: "FDN-009"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "Base=9e3ce6ca62f0e06481fac37123a5cae3a2337c9a; Policy=a7b1085d6cd6898d8a170781c88be0264f2f252b33cec5b5115f4cd599001af8; Verifier=b54e801698e493e0f2aeb52d41b33b919c8fb77c8f9b0dc1e24417fa4495ee08; Test=5c828500654018249e194b127a4a11bebcbe5ed6984d6ca95c91559514780324; Manifest=88a1d01cf3abd14843cb3638a7692552e54f62a6d5de003c458a47a869edd741; PackageLock=8708528393a5fce3dd9110fc14815ad2dbc21cefd0efec6102b79d86a62404aa; ProjectSettings=7cb3bda6a91685d19d2a3552f692e79269aec554e91b93641bb07c4be6b6422f; Plan=00e0376f5d1714d5ff23c191360af70e8c07ff6287c4d25da8b98178aa0a63c3"
+  buildKind: "RepositoryAuditAndUnityRegressionNoPlayerBuild"
+  buildVersion: "NotBuilt"
+  environment: "macOS arm64; Ruby 2.6.10p210 stdlib; Git inventory; Unity 6000.3.9f1 batchmode; Test Framework 1.6.0"
+  profileVersions: ["ForbiddenInfrastructurePolicy-FDN-009-r01", "EvidenceProfile-r01", "ToolchainProfile-r02"]
+  requirementIds: ["FDN-009", "SRS-SYS-006", "SRS-SYS-007", "SRS-SYS-026", "AT-032"]
+  commandsOrManualSteps:
+    - "Git tracked와 non-ignored untracked file을 NUL 구분 inventory로 수집하고 Git 실패·tracked missing·symlink·필수 manifest 누락을 fail-closed 처리"
+    - "모든 inventory artifact path와 repository-wide eligible source/workflow/config, Unity manifest·lock의 dependency key/value를 versioned policy37개 rule로 감사"
+    - "문서·Evidence는 제한된 narrative path만 content signature에서 제외하고 Dockerfile·Compose·DB/IaC 같은 artifact path rule은 모든 위치에 적용"
+    - "Host client의 UTP Bind/Listen, Steam Lobby·P2P/SDR, Steamworks SDK 선언, Unity 기본 setting/core package와 client BuildProfile은 positive fixture로 허용 확인"
+    - "Docker·buildx·docker-compose·Kubernetes, DB/backend SDK와 script framework, remote HTTP backend client, SteamGameServer, standalone raw server process/package, 두 Unity Server BuildProfile 형식을 negative fixture로 거부 확인"
+    - "정책 rule ID37개 전부가 negative fixture에 연결되고 minitest14 run·245 assertion, failure/error/skip0 확인"
+    - "두 독립 검토가 재생한 adversarial fixture12개를 모두 status1/FAIL로 확인하고 최종 blocker0 판정"
+    - "Evidence와 계획 변경을 포함한 최종 Git-visible inventory259/content83/package manifest2를 재감사해 category별 violation0 확인"
+    - "전체 Unity EditMode42/42·PlayMode4/4와 active docs12/12·Evidence manifest38개 검증, package/ProjectSettings hash 불변 확인"
+    - "Unity 임시 log/XML은 local path·PID·licensing identifier를 포함해 수치 요약 후 제거; Player Build·Docker command·Deploy 실행0"
+  observedMetrics:
+    policySchemaVersion: 1
+    policyRuleIds: 37
+    uniquePolicyRuleIds: 37
+    exercisedPolicyRuleIds: 37
+    selfTestRuns: 14
+    selfTestAssertions: 245
+    selfTestFailures: 0
+    selfTestErrors: 0
+    selfTestSkips: 0
+    independentAdversarialFixturesRejected: 12
+    finalGitVisibleInventoryFiles: 259
+    finalContentFilesScanned: 83
+    finalPackageManifestsScanned: 2
+    backendViolations: 0
+    databaseViolations: 0
+    dedicatedViolations: 0
+    containerViolations: 0
+    auditViolations: 0
+    totalViolations: 0
+    trackedMissingSilentSkips: 0
+    requiredManifestSilentSkips: 0
+    symlinkTargetsFollowed: 0
+    matchedContentPrinted: 0
+    absolutePathsPrinted: 0
+    allEditModeTotal: 42
+    allEditModePassed: 42
+    allPlayModeTotal: 4
+    allPlayModePassed: 4
+    activeDocsValidated: 12
+    existingEvidenceManifestsValidated: 37
+    packageHashChanges: 0
+    projectSettingsHashChanges: 0
+    tempLogsOrXmlRetained: false
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+    independentReviewFinalBlockers: 0
+  expectedThresholds:
+    uniquePolicyRuleIds: 37
+    exercisedPolicyRuleIds: 37
+    selfTestRuns: 14
+    selfTestAssertions: 245
+    selfTestFailures: 0
+    selfTestErrors: 0
+    selfTestSkips: 0
+    finalGitVisibleInventoryFiles: 259
+    finalContentFilesScanned: 83
+    finalPackageManifestsScanned: 2
+    backendViolations: 0
+    databaseViolations: 0
+    dedicatedViolations: 0
+    containerViolations: 0
+    auditViolations: 0
+    totalViolations: 0
+    allEditModePassed: 42
+    allPlayModePassed: 4
+    packageHashChanges: 0
+    projectSettingsHashChanges: 0
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+    independentReviewFinalBlockers: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/FDN-009/EV-FDN-009-20260827-r01.txt"
+    - "config/infrastructure/ForbiddenInfrastructurePolicy.yaml"
+    - "tools/verify_forbidden_infrastructure.rb"
+    - "tools/tests/verify_forbidden_infrastructure_test.rb"
+    - "Project hotfix/Packages/manifest.json"
+    - "Project hotfix/Packages/packages-lock.json"
+    - "Project hotfix/ProjectSettings/ProjectSettings.asset"
+    - "docs/03_IMPLEMENTATION_PLAN.md"
+  failures: []
+  limitations:
+    - "검사 분모는 현재 Git tracked와 non-ignored untracked inventory다. Git history, remote repository, submodule 내부와 외부 실행 system은 검사하지 않는다."
+    - "`.gitignore`로 제외된 Unity Library/PackageCache/Temp/Logs, IDE output와 사용자 생성 Build/Builds는 FDN-009 분모 밖이며 ALP-002·STM-013 release audit가 별도로 검사해야 한다."
+    - "Rule 기반 검사는 의도적으로 난독화한 source, 알려지지 않은 custom protocol, 이름을 바꾼 binary 내부의 Backend/DB/Dedicated SDK 부재를 증명하지 않는다."
+    - "정확한 verifier·policy·verifier-test 세 파일은 negative signature 정의를 포함하므로 content scan의 trusted exact-path exemption이다. 이 파일들의 artifact path는 계속 감사한다."
+    - "일반 server/listen/socket/relay 단어와 UTP AuthorityHost·Steam P2P/SDR·Steamworks SDK 선언은 의도적으로 허용한다. first-party remote backend API나 Steam Dedicated API 호출만 strong signature로 차단한다."
+    - "Unity client BuildProfile과 기본 dedicatedServerOptimizations 값은 허용하며 Multiplayer role nonzero와 server subtarget1 조합만 차단한다."
+    - "Unity 임시 log/XML은 local path·PID·licensing identifier를 포함해 삭제했다. Player Build와 실제 Docker/container command는 실행하지 않았다."
+  userDecision: "Docker와 별도 server/backend/database를 사용하지 않고 host-client P2P로 진행"
+  recordedAtUtc: "2026-08-27T13:02:47Z"

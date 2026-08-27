@@ -8,7 +8,7 @@
 | 기준일 | 2026-08-26 |
 | 현재 목표 | Alpha에서 2·3·4인 전체 흐름과 실제 무기 전투를 검증한 뒤 Steam 통합 |
 | 기준 문서 | PRD 1.8.0, SRS 1.8.0, PATCH_DESIGN 0.5.0과 현행 분야별 사양 |
-| 현재 구현 상태 | FDN-001..008·010·011 완료: Git/toolchain/policy, Unity6.3 URP, module/Input/Physics/UTP, renderless SimulationHarness/test-evidence와 bounded local atomic storage 기반 존재. Gameplay/Network code·Player Build 없음 |
+| 현재 구현 상태 | FDN-001..011 완료: Git/toolchain/policy, Unity6.3 URP, module/Input/Physics/UTP, renderless SimulationHarness/test-evidence, bounded local atomic storage와 금지 인프라 repository guard 기반 존재. Gameplay/Network code·Player Build 없음 |
 | 계획 규모 | 173 Task, 251.0 집중 개발일 |
 | 자동화 금지 | Unity Player Build, Steam 배포, 외부 서비스 배포 |
 
@@ -177,7 +177,7 @@ BLOCKED, DEFERRED를 사용한다.
 | FDN-006 | 1.5 | P2P transport adapter와 Alpha direct 구현 방향 선택 | FDN-002..003 | NET | TransportPackageDecision | UTP2.6 Registry/direct·Transport sole owner, NGO/Services/Relay/Lobby0, adapter seam, Transport4/4·전체16/16 | — | PASSED |
 | FDN-007 | 1 | Renderless SimulationHarness·EditMode·PlayMode·Evidence 기반 생성 | FDN-002..003 | SYS,NFR | kernel+harness+strict validators | 동일 runtime kernel Unit3/Edit2/Play1, 전체 Edit21/Play3·core skip0, legacy Evidence35+strict schema 검증 | — | PASSED |
 | FDN-008 | 1 | Settings·Preset local atomic storage 기반 생성 | FDN-001 | APPEAR,UI | bounded byte envelope/current·last-good·pending repository + LocalStorageProfile | version·length·SHA-256와 validator-aware 복구, 동일 process 다중 instance 직렬화, storage Edit19·boundary2·Play1/전체 Edit42·Play4, server dependency 0 | — | PASSED |
-| FDN-009 | 0.5 | 금지 인프라 guard 생성 | FDN-001 | SYS,SEC | repository audit | Backend·DB·Docker·Dedicated artifact 0 | — | NOT_STARTED |
+| FDN-009 | 0.5 | 금지 인프라 guard 생성 | FDN-001 | SYS,SEC | versioned policy + Git inventory/content/package audit + adversarial fixtures | 최종 inventory259·content83·manifest2에서 Backend·DB·Docker/Container·Dedicated·audit 위반0, self-test14/245·전체 Edit42/Play4 | — | PASSED |
 | ART-001 | 1.5 | LowPolyStyle·ModelInterop·AlphaVisualQA Profile 최초 작성 | FDN-002,FDN-010 | ART,NFR | versioned art profiles | unit/axis/palette/bevel/import/capture 기준·owner/version 누락 0 | — | NOT_STARTED |
 | LIC-001 | 1 | Third-party package·font·audio·asset license/NOTICE inventory 생성 | FDN-004..006,ART-001 | SYS,SEC,ART | living license manifest | source/version/license/NOTICE 누락·금지 asset 0 | — | NOT_STARTED |
 | BLD-001 | 1.5 | Windows x64 Build Profile·PlayerSettings·Scene list 준비 | FDN-002..003,LIC-001 | SYS,NFR | development/Steam build profiles + manual guide | profile·define·scene·company/product ID 분리, Build 실행 0·사용자 수동 절차 명시 | — | NOT_STARTED |
