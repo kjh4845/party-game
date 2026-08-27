@@ -5,15 +5,16 @@
 | 항목 | 내용 |
 |---|---|
 | 문서 목적 | 기초 구현에서 무엇을 선택했고 왜 그렇게 선택했는지, 배제한 대안과 검증 근거를 한 문서에서 설명 |
-| 기준 Git revision | `2faee33` (`chore: establish art pipeline profiles`) |
-| 포함 범위 | `FDN-001..011`, `ART-001` |
+| 기준 Git revision | `d5f19a9` (`chore: establish license inventory guard`) |
+| 포함 범위 | `FDN-001..011`, `ART-001`, `LIC-001` |
 | 작성 기준 | 실제 repository, versioned config, test 결과와 Evidence를 우선 사용. 직접 기록되지 않은 선택 연결은 `추론/설계 해석`으로 표시 |
 | 문서 성격 | 설명용 결정 근거서. PRD/SRS/분야별 사양을 대체하거나 새 제품 계약을 만들지 않음 |
 
-> **범위 주의:** 핵심 기술 Foundation인 `FDN-001..011`과 첫 Art Profile인 `ART-001`은 완료됐다.
-> 그러나 구현계획의 Foundation 표 전체는 아직 닫히지 않았다. `LIC-001` 라이선스/NOTICE inventory와
-> `BLD-001` Windows x64 수동 Build Profile이 남아 있다. 따라서 이 문서는 “G0 전체 완료”나
-> “게임을 빌드할 수 있음”을 선언하지 않는다.
+> **범위 주의:** 핵심 기술 Foundation인 `FDN-001..011`, 첫 Art Profile `ART-001`과 source 기준
+> 라이선스/NOTICE inventory `LIC-001`은 완료됐다. 그러나 구현계획의 Foundation 표 전체는 아직 닫히지
+> 않았다. `BLD-001` Windows x64 수동 Build Profile이 남아 있고, 실제 Player 포함물 기준 최종 NOTICE
+> 감사는 사용자가 Build한 뒤에만 가능하다. 따라서 이 문서는 “G0 전체 완료”나 “게임을 빌드할 수 있음”을
+> 선언하지 않는다.
 
 규범적 우선순위는 계속 [문서 인덱스](../../docs/00_DOCUMENT_INDEX.md)의
 `최신 사용자 결정 → PRD → SRS → 분야별 사양 → 구현계획 → Evidence` 순서를 따른다.
@@ -40,6 +41,7 @@ Foundation의 핵심 방향은 다음 한 문장으로 정리된다.
 | 2·3·4인과 UI 없는 Simulation 검증 | 같은 runtime kernel을 Unit/EditMode/PlayMode에서 실행 | 화면이나 Scene 없이 Authority 로직 회귀 검증 |
 | Blender와 Unity 결과의 품질 일치 | Toolchain exact lock + ModelInterop/VisualQA START profile | 에셋별 수동 보정과 품질 편차 방지 |
 | Docker·Dedicated·자체 Backend 영구 제외 | 경로·코드·Package 기반 금지 인프라 Guard | 시간이 지나며 금지 구조가 조용히 재유입되는 것 방지 |
+| 외부 Package·Asset의 출처/권리 누락 금지 | 58 Package와 18 review image의 fail-closed license inventory | 미등록 에셋의 빌드 반입과 NOTICE 누락 방지 |
 | 사용자가 직접 Build | Foundation 자동화에서 Player Build를 계속 0으로 유지 | 코드 검증과 배포 권한을 분리 |
 
 ---
@@ -76,6 +78,9 @@ Foundation의 핵심 방향은 다음 한 문장으로 정리된다.
 - Unity `6000.3.9f1`, Blender `5.2.0 LTS`, URP `17.3.0`을 기준으로 한다.
 - `1 Blender meter = 1 Unity unit = 1 meter`다.
 - Character·Weapon·Map asset은 같은 Style/Interop/QA Profile을 사용한다.
+- 승인된 C2PA review image는 사람이 디자인을 참고해 새 원본 Asset을 제작하는 용도로만 사용하고, 원본
+  파일·재인코딩본·기계적 파생물을 Player/Steam media에 넣지 않는다.
+- 새 외부 Asset은 source, 상업적 사용권과 의도한 형태의 재배포 권리를 증명하기 전까지 shipping을 차단한다.
 - 최종 Palette, Bevel 폭, Product Shader/Lighting, Camera와 성능 예산은 실제 비교와 사용자 Gate 전에는
   `LOCKED`로 만들지 않는다.
 - Player Build와 Steam 배포는 사용자가 직접 수행한다.
@@ -239,6 +244,10 @@ Unity의 `Library`와 Cache는 재생성 가능하고 Machine마다 달라지지
 - Git LFS unavailable, Remote `0`, LFS 후보 commit 허용 `false`
 
 [FDN-011 Evidence](../evidence/G0/FDN-011/EV-FDN-011-20260826-r01.yaml)
+
+위 `20개 / 27,722,987 bytes / unique hash 15`는 FDN-011 완료 당시의 r01 역사값이다. `LIC-001`에서
+Unity Tutorial icon과 출처 불명 review PNG를 제거한 현재 living Binary inventory r02는 `18개 / 26,990,163
+bytes / unique hash 13 / LFS-required 후보 0`이다. 과거 Evidence는 당시 사실이므로 덮어쓰지 않는다.
 
 ### 아직 증명하지 않은 것
 
@@ -755,6 +764,69 @@ Profile을 먼저 만든 이유는 최종 미술 취향을 조기에 확정하�
 
 ---
 
+## 4.13 `LIC-001` — Source Inventory와 Player Release Audit의 분리
+
+### 선택
+
+- 공식 Unity Package와 bundled dependency는 적용 조건과 NOTICE를 보존하는 조건으로 사용한다.
+- `manifest.json` direct `46개`와 lock의 transitive `12개`, 합계 `58개`를 전수 inventory한다.
+- Version, registry/builtin source, direct/transitive 관계, usage class, license family, NOTICE disposition과
+  source evidence를 Package마다 기록한다.
+- Unity built-in module `36개`는 존재하지 않는 per-package NOTICE를 꾸며내지 않고, Unity Editor Terms와
+  aggregate legal notice가 현재 근거지만 module별 mapping은 없다는 한계를 남긴다.
+- C2PA claim이 있는 review image `18개`는 경로·SHA-256별로 기록하고 모두 `shippingAllowed: false`로 둔다.
+  사람이 사용자 승인 디자인을 보고 새 원본 Asset을 제작하는 것은 허용하지만, 원본·재인코딩본·기계적
+  파생물을 Player asset이나 Steam media로 사용하지 않는다.
+- 출처를 증명하지 못한 review 파일 `3개`와 제품에 필요 없는 Unity Tutorial/Readme 파일 `14개`는
+  사용자 승인에 따라 제거했다.
+- 현재 Package를 제거·추가·Upgrade하지 않았고 Player Build도 실행하지 않았다.
+- 실제 Windows Player에 포함된 engine/package component와 최종 배포 NOTICE는 사용자가 Build한 뒤
+  `BLD-001`/`ALP-001`에서 다시 대조한다.
+
+[License Policy](../../config/licenses/LicensePolicy.yaml) ·
+[전수 Inventory](../../config/licenses/ThirdPartyInventory.yaml) ·
+[사람이 읽는 NOTICE index](../../THIRD_PARTY_NOTICES.md)
+
+### 이유
+
+Package가 Unity Editor에서 동작하는 것과 게임에 재배포할 권리·고지 의무가 정리됐다는 것은 다르다.
+또한 `Library/PackageCache`는 Git에서 제외되므로, 한 개발 Machine의 절대 cache path나 hash만 기록하면 새
+checkout에서 living inventory로 사용할 수 없다. 그래서 lock file과 repository-relative logical locator를
+규범값으로 삼고, 현재 Machine의 PackageCache 검사는 Evidence observation으로 분리했다.
+
+반대로 source package `58개`를 모두 최종 Player 포함물이라고 선언하는 것도 정확하지 않다. Unity stripping,
+compiled shader와 platform module 구성은 실제 Build에 따라 달라진다. 사용자의 자동 Build 금지 결정을 지키면서
+누락을 숨기지 않기 위해 source 분모를 먼저 완전하게 고정하고, 최종 배포 분모는 사용자 Build 뒤 좁히도록 했다.
+
+### 배제한 대안
+
+- 공식 Unity Package라는 이유만으로 license/NOTICE 검토를 생략
+- PackageCache root LICENSE만 보고 nested/inline third-party notice를 없다고 판정
+- C2PA provenance를 상업적 사용·재배포 license로 간주
+- 출처 불명 파일을 “나중에 확인” 상태로 Unity `Assets`에 유지
+- Editor/Test Package를 Build evidence 없이 최종 NOTICE에서 미리 제외
+- LIC-001에서 Windows Player를 자동 Build하거나, Build 없이 final release NOTICE 완료를 주장
+
+### 실제 근거
+
+- Package `58/58`: direct `46`, transitive `12`, registry `14`, builtin `44`, builtin module `36`
+- non-module resolved Package `22개`의 root license evidence와 root Third Party Notice `10개` 확인
+- resolved-package file locator `40개`와 built-in module metadata logical locator `36개`,
+  version/source/relationship 누락 `0`
+- review-only image `18개`, Binary inventory 일치 `18/18`, `shippingAllowed: true` `0`
+- Font `0`, Audio `0`, 3D model `0`, project shader `0`, DLL/native plugin `0`
+- 출처 불명 파일 `3개`와 Unity Tutorial/Readme 파일 `14개` 제거
+- Package manifest/lock 변경 `0`, Player Build `0`, Docker/Deploy `0`
+
+### 아직 증명하지 않은 것
+
+- 실제 Windows x64 Player에 포함된 managed/native assembly, engine module과 compiled shader 집합
+- 그 실제 배포물에 필요한 최종 Unity engine/package NOTICE bundle
+- 새로 제작할 Character·Weapon·Map·Audio Asset의 미래 license 상태
+- 법률 의견 또는 출시 국가별 법적 적합성
+
+---
+
 ## 5. 왜 이 선택들이 함께 있어야 하는가
 
 ### 5.1 UTP 선택만으로 P2P 구조가 안전해지지는 않는다
@@ -777,23 +849,30 @@ Unity와 Blender version이 같아도 exporter/importer option, material remap, 
 `Passed` XML에 skip/not-run이 섞이거나, mock kernel이 제품 kernel과 다르면 숫자는 의미가 없다.
 그래서 같은 Runtime code 실행, strict NUnit parser, task-specific Evidence와 독립 adversarial review를 함께 사용했다.
 
+### 5.5 Art Profile만으로 Shipping Asset의 권리가 보장되지는 않는다
+
+승인된 silhouette, palette role과 Blender→Unity preset을 그대로 따라도 사용한 source image, font, audio 또는
+model의 권리가 불명확하면 배포할 수 없다. 반대로 review image를 Player에서 제외한다고 그 디자인 방향까지
+버릴 필요는 없다. 그래서 Art Profile은 “무엇을 어떻게 재현할지”를, License Policy는 “어떤 source file을
+어디까지 사용할 수 있는지”를 각각 소유하고 SHA inventory로 연결했다.
+
 ---
 
 ## 6. 검증 결과를 해석하는 방법
 
-Foundation 마지막 ART-001 Evidence snapshot의 핵심 수치는 다음과 같다.
+현재 마지막 완료 Task인 LIC-001 Evidence snapshot의 핵심 수치는 다음과 같다. ART-001 Evidence의
+Forbidden-infra `266/88/2`와 Unity EditMode `42/42`·PlayMode `4/4`는 당시 역사값이다. LIC-001은 C# Runtime을
+바꾸지 않아 Unity suite를 다시 실행하지 않았고, 대신 현재 Git source/license 분모와 PackageCache를 검증했다.
 
-이 보고서 파일을 추가한 뒤 금지 인프라 검증기를 다시 실행한 현재 값은 Git-visible inventory `267`,
-content file `88`, package manifest `2`, 전체 violation `0`이다. 아래 `266`은 보고서 작성 직전
-ART-001 Evidence에 고정된 재현 snapshot이므로 서로 충돌하지 않는다.
-
-| 항목 | 결과 | 해석 경계 |
+| 항목 | 결과 | 이 결과가 증명하지 않는 것 |
 |---|---:|---|
-| Unity EditMode | `42/42` | 실제 Match Gameplay 완성 |
-| Unity PlayMode | `4/4` | Windows Player Build·LAN P2P 성공 |
-| Art Profile mutation | `24/24`, `206 assertions` | 시각 품질 승인 |
-| Forbidden infra | inventory `266`, violation `0` | Git history·ignored Build·외부 서비스 전체 부재 |
-| Evidence manifest | `39`개 구조 검증 | 각 미래 Feature의 수동 체감 승인 |
+| Package source inventory | `58/58` | 실제 Windows Player에 58개가 모두 포함됨 |
+| PackageCache audit | package `58/58`, root license `22`, root notice `10`, locator `40` | 최종 release NOTICE가 완성됨 |
+| Review image | `18/18`, shipping 허용 `0` | 승인 디자인을 사람이 참고해 새 원본 Asset을 제작하는 것까지 금지됨 |
+| License mutation | `16 runs`, `142 assertions`, 실패 `0` | 법률 자문 또는 미래 외부 Asset 자동 승인 |
+| Forbidden infra | inventory `257`, content `89`, manifest `2`, violation `0` | Git history·ignored Build·외부 서비스 전체 부재 |
+| Evidence manifest | `40`개 구조 검증 | 각 미래 Feature의 수동 체감 승인 |
+| 마지막 Unity 회귀(ART-001) | EditMode `42/42`, PlayMode `4/4` | LIC-001에서 Unity C# suite를 재실행함 |
 | Player Build | `0` | Build 불가능을 뜻하지 않음. 사용자 요청에 따라 실행하지 않았음 |
 | Blender export / Unity art import | `0 / 0` | Profile 정의 실패를 뜻하지 않음. 실제 source/import parity 검증이 후속임 |
 | Docker / Deploy | `0 / 0` | 실제 명령은 실행하지 않았지만 ignored 영역·외부 System 전체 부재까지 증명하지는 않음 |
@@ -805,13 +884,7 @@ smoke를 뜻하지 Character combat feel 승인을 뜻하지 않는다. UTP pack
 
 ## 7. 아직 남아 있는 Foundation·G0 작업
 
-### 7.1 `LIC-001`
-
-외부 Package, Font, Audio와 Asset의 source/version/license/NOTICE inventory가 아직 없다.
-현재 Package가 동작한다는 사실과 출시 시 재배포 권리가 있다는 사실은 다르기 때문에 반드시 별도로 닫아야 한다.
-금지되거나 불명확한 License가 발견되면 제거·대체를 임의 결정하지 않고 사용자에게 선택을 요청해야 한다.
-
-### 7.2 `BLD-001`
+### 7.1 `BLD-001`
 
 Windows x64 Development/Steam Build Profile, Company/Product ID, Scene list와 수동 Build 안내가 아직 없다.
 이 Task도 Profile만 준비하고 Player Build 자체는 실행하지 않는다.
@@ -822,7 +895,11 @@ Application Identifier도 `com.Unity-Technologies.com.unity.template.urp-blank` 
 제품값으로 고정하기 전 사용자 승인이 필요하다. 현재 Build Scene도 Template `SampleScene` 한 개뿐이므로
 BLD-001의 Scene list는 `START/placeholder`일 뿐 release-ready 목록으로 표시하면 안 된다.
 
-### 7.3 C1b
+`LIC-001`의 `58개` source inventory는 이 Task에서 Build Profile과 Scene list를 준비하더라도 final Player
+NOTICE로 바뀌지 않는다. 사용자가 실제 Windows Player를 만든 뒤 그 산출물의 managed/native assembly,
+engine module과 compiled shader를 대조해야 release NOTICE를 확정할 수 있다.
+
+### 7.2 C1b
 
 `Hybrid Core v0.13`은 Character 방향 승인이지 exact 비율·Collider·Reach·Mesh 승인이 아니다.
 다음 실제 제작 단계는 `C1B-002..006`의 orthographic measurement와 사용자 `UG-C1B`다.
@@ -832,7 +909,7 @@ production binary가 생긴다. 현재 Git LFS는 설치되지 않았고 Remote�
 commit을 금지한다. 따라서 C1B-003을 시작하기 전 Git LFS 설치, Remote 선택과 Binary policy 변경을
 사용자에게 승인받아야 한다.
 
-### 7.4 구현되지 않은 핵심 Runtime
+### 7.3 구현되지 않은 핵심 Runtime
 
 - 제품 Action Map과 tap/hold/chord resolver
 - Character Rigidbody controller, Grab, Ragdoll, Down 누적
@@ -851,13 +928,14 @@ Foundation 선택은 영원히 수정 불가한 코드가 아니라, 변경 비�
 | 변경 | 필요한 조치 |
 |---|---|
 | Unity/Blender patch 변경 | ToolchainProfile revision, Package/Project hash 재기록, compile·Physics·Interop 회귀 |
-| Package 추가·교체 | 소유 module 명시, manifest/lock 동시 변경, LIC-001 갱신, Architecture test |
+| Package 추가·교체 | 소유 module 명시, manifest/lock 동시 변경, License inventory revision, Architecture·license test |
 | Physics cadence 변경 | PhysicsProfile revision, Contact/Joint와 Gameplay·Network cadence 전체 재검증 |
 | UTP 이외 Alpha transport | Transport Adapter 계약과 trusted-direct 범위 재검토 |
 | Steam transport 도입 | Alpha UTP fallback과 분리, 실제 Steam 계정 2·3·4인 수동 검증 |
 | Backend·DB·Docker·Dedicated 도입 | 단순 구현 변경이 아니라 제품 범위 변경. 사용자 승인과 PRD/SRS 선행 수정 필요 |
 | 최종 Palette/Bevel/Shader/Camera Lock | 해당 downstream 사용자 Gate와 실제 Unity capture 필요 |
-| 큰 Binary 추가 | Binary inventory·license 갱신, LFS 설치/Remote 확인 전 commit 금지 정책 적용 |
+| 새 외부 Asset 추가 | source·version/hash·상업사용·재배포·NOTICE 증명, 미충족 시 shipping 차단 |
+| 큰 Binary 추가 | Binary inventory·license inventory 갱신, LFS 설치/Remote 확인 전 commit 금지 정책 적용 |
 
 특히 금지 인프라를 도입하는 변경은 “개발 편의를 위한 내부 구현”으로 조용히 처리할 수 없다.
 현재 제품의 운영비·접속 구조·보안 경계를 바꾸므로 상위 계약을 먼저 변경해야 한다.
@@ -881,6 +959,7 @@ Foundation 선택은 영원히 수정 불가한 코드가 아니라, 변경 비�
 | `FDN-008` | `9e3ce6c` | [Local Storage Evidence](../evidence/G0/FDN-008/EV-FDN-008-20260827-r01.yaml) |
 | `FDN-009` | `9a7018d` | [Infrastructure Guard Evidence](../evidence/G0/FDN-009/EV-FDN-009-20260827-r01.yaml) |
 | `ART-001` | `2faee33` | [Art Profile Evidence](../evidence/G0/ART-001/EV-ART-001-20260827-r01.yaml) |
+| `LIC-001` | `d5f19a9` | [License Inventory Evidence](../evidence/G0/LIC-001/EV-LIC-001-20260828-r01.yaml) |
 
 ---
 
@@ -895,7 +974,7 @@ Foundation 선택은 영원히 수정 불가한 코드가 아니라, 변경 비�
 - Blender와 Unity 에셋 품질을 수동 보정으로 숨기지 않게 했다.
 - 아직 하지 않은 Build, Steam, Gameplay와 시각 승인을 완료했다고 과장하지 않게 했다.
 
-따라서 다음 작업은 Foundation을 다시 넓히는 것이 아니라 `LIC-001`을 먼저 닫는 것이다. 그 다음
-`BLD-001`에서는 Company/Product/Application ID 승인을 받고, `C1B-002` 후보 문서화 뒤
+따라서 다음 작업은 Foundation을 다시 넓히는 것이 아니라 `BLD-001`에서 Build Profile을 준비하는 것이다.
+그 전에 Company/Product/Application ID 승인을 받고, `C1B-002` 후보 문서화 뒤
 `C1B-003` 전에는 Git LFS·Remote 정책 승인을 받아야 한다. 이 승인 경계 안에서 C1b와 실제 Gameplay를
 구현한다.
