@@ -9,7 +9,8 @@
     "ProjectHotfix.Simulation.TestSupport",
     "ProjectHotfix.Presentation",
     "ProjectHotfix.Input",
-    "ProjectHotfix.Transport"
+    "ProjectHotfix.Transport",
+    "ProjectHotfix.LocalStorage"
   ],
   "includePlatforms": [
     "Editor"

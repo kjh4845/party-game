@@ -1,0 +1,111 @@
+EvidenceManifest:
+  schemaVersion: 1
+  evidenceProfile: "EvidenceProfile-r01"
+  evidenceId: "EV-FDN-008-20260827-r01"
+  taskId: "FDN-008"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "Base=e46f2203c8b68bf412bf1c9dde8fad44dd962133; AtomicStore=253bd2b9ef44479e28c38c11a5b7c2d0ea6b45cf1809b65f4595bcbcb0309a07; Results=faa40e065062d24d56f230df48ace129548375dd51a42baca2af053ce747d2f8; Committer=10918e308e2e86180c0fd984cb9a3f9c8e46090e8728174618113c8b1bb41709; RuntimeAsmdef=b720f4e6b384a9f5e5fb54cdbb5f5d1282a23cf6202cfcdad2d050f1cdb8a991; EditTest=94bfc17074c7918135018c8648ad9719a5d6f9cb323b5874a132652221f959ff; BoundaryTest=d2da0a201363589e628b9f60c504fa10b57ae5262fda2701a96be50adb80802e; PlayTest=673beb96549f73d2aa79e1e8c7fe240bc9c0d4b1b9a05e744068acd38c72be0a; PlayAsmdef=809c7178f7e04fddd4aa0c00f47eefd07c4b71fc07637f17fbc3ba366e9f1ac2; StorageProfile=735eee0af0ff45f962e851523d7b2b746998618f8c29f79ef750f53ef34fda6f; ModuleGraph=d2762156a6d18fd9942780dc786cff16582a2400616636a5160b3dfec5b89ee1; Manifest=88a1d01cf3abd14843cb3638a7692552e54f62a6d5de003c458a47a869edd741; PackageLock=8708528393a5fce3dd9110fc14815ad2dbc21cefd0efec6102b79d86a62404aa; Plan=beaa6d7e3ff9b9ba6fec819663f73164c9b8642b1ca2e594696607e0636d4933"
+  buildKind: "UnityEditorEditModePlayModeTestsNoPlayerBuild"
+  buildVersion: "NotBuilt"
+  environment: "macOS arm64; Unity 6000.3.9f1 batchmode; Test Framework 1.6.0; local temporary filesystem"
+  profileVersions: ["LocalStorageProfile-FDN-008-r01", "ModuleGraph-fdn-008-r04", "EvidenceProfile-r01"]
+  requirementIds: ["FDN-008", "SRS-APPEAR-001", "SRS-SYS-016", "SRS-SYS-017", "SRS-SYS-018"]
+  commandsOrManualSteps:
+    - "ProjectHotfix.LocalStorage noEngine leaf에 bounded raw-byte envelope, current/last-good/pending commit과 typed read/write 결과 구현"
+    - "magic/version/declared length/physical length/SHA-256를 payload 할당과 선택 전에 검증하고 손상 current를 자동 덮어쓰지 않는 fallback 확인"
+    - "동일 payload validator를 Read/Write에 적용해 schema 비호환 current가 호환 last-good을 덮지 않는 회귀 검사"
+    - "64개 bounded process-wide striped lock과 blocking committer fixture로 서로 다른 repository instance의 동일 address write 직렬화 확인"
+    - "첫 저장, 기존 backup이 있는 세 번째 저장, stale pending, pre-commit Replace fault, lexical traversal, non-regular target, exact/max+1 payload와 동시 write 검사"
+    - "저장 전용 EditMode19/19, boundary2/2, PlayMode repository recreation1/1과 전체 EditMode42/42·PlayMode4/4, failed/skipped/not-run0 확인"
+    - "최초 Unity 실행은 -quit가 test scheduling 전에 종료되어 XML0이었고, 옵션 제거 후 동일 범위를 정상 실행; 코드 compile error와 test failure는 0"
+    - "두 독립 검토의 multi-instance pending race와 validator-aware last-good 손실 blocker를 수정하고 최종 blocker0 확인"
+    - "기존 Evidence36과 신규 strict manifest를 검증하고 임시 Unity log/XML 제거; package lock 불변, Player Build·Docker·Deploy0 확인"
+  observedMetrics:
+    envelopeFormatVersion: 1
+    envelopeHeaderBytes: 48
+    sha256Bytes: 32
+    localStorageRuntimeSources: 4
+    localStorageProjectReferences: 0
+    localStorageUnityReferences: 0
+    localStorageNetworkReferences: 0
+    serverBackendDatabaseCloudDependencies: 0
+    pathSegmentMaxCharacters: 64
+    processWideLockStripes: 64
+    storageEditModeTotal: 19
+    storageEditModePassed: 19
+    storageEditModeFailed: 0
+    storageEditModeSkipped: 0
+    storageBoundaryTotal: 2
+    storageBoundaryPassed: 2
+    storagePlayModeTotal: 1
+    storagePlayModePassed: 1
+    allEditModeTotal: 42
+    allEditModePassed: 42
+    allPlayModeTotal: 4
+    allPlayModePassed: 4
+    currentCorruptionVariantsWithLastGood: 4
+    declaredLengthBoundFixtures: 1
+    physicalFileLengthBoundFixtures: 1
+    thirdWriteExistingBackupRotations: 1
+    validatorAwareLastGoodPreservations: 1
+    crossInstanceSameAddressSerializations: 1
+    preCommitReplaceFailurePreservations: 1
+    testRunsWithoutResultXml: 1
+    independentReviewP1FindingsResolved: 2
+    independentReviewFinalBlockers: 0
+    existingEvidenceManifestsValidated: 36
+    packageLockHashChanges: 0
+    tempLogsOrXmlRetained: false
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  expectedThresholds:
+    envelopeFormatVersion: 1
+    localStorageProjectReferences: 0
+    localStorageUnityReferences: 0
+    localStorageNetworkReferences: 0
+    serverBackendDatabaseCloudDependencies: 0
+    storageEditModePassed: 19
+    storageEditModeFailed: 0
+    storageEditModeSkipped: 0
+    storageBoundaryPassed: 2
+    storagePlayModePassed: 1
+    allEditModePassed: 42
+    allPlayModePassed: 4
+    validatorAwareLastGoodPreservations: 1
+    crossInstanceSameAddressSerializations: 1
+    independentReviewFinalBlockers: 0
+    packageLockHashChanges: 0
+    tempLogsOrXmlRetained: false
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/FDN-008/EV-FDN-008-20260827-r01.txt"
+    - "config/storage/LocalStorageProfile.yaml"
+    - "config/architecture/ModuleGraph.yaml"
+    - "Project hotfix/Assets/ProjectHotfix/Runtime/LocalStorage/AtomicLocalFileStore.cs"
+    - "Project hotfix/Assets/ProjectHotfix/Runtime/LocalStorage/AtomicStorageResults.cs"
+    - "Project hotfix/Assets/ProjectHotfix/Runtime/LocalStorage/IAtomicCommitter.cs"
+    - "Project hotfix/Assets/ProjectHotfix/Runtime/LocalStorage/ProjectHotfix.LocalStorage.asmdef"
+    - "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/AtomicLocalFileStoreTests.cs"
+    - "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/LocalStorageBoundaryTests.cs"
+    - "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/LocalStorage/AtomicLocalFileStorePlayModeTests.cs"
+    - "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/LocalStorage/ProjectHotfix.LocalStorage.Tests.PlayMode.asmdef"
+    - "Project hotfix/Packages/manifest.json"
+    - "Project hotfix/Packages/packages-lock.json"
+    - "docs/03_IMPLEMENTATION_PLAN.md"
+  failures: []
+  limitations:
+    - "PlayMode는 temporary root와 새 repository object/frame boundary를 검증했을 뿐 Application.persistentDataPath binding, domain reload, 실제 Unity/client process restart를 검증하지 않았다. 해당 binding은 첫 product repository composition task가 소유한다."
+    - "동시성 보장은 동일 game process 안의 repository instance에 한정된다. cross-process writer와 같은 사용자로 두 Player를 동시에 실행하는 경우는 검증하지 않았다."
+    - "실제 filesystem 검증 환경은 macOS Editor다. Windows x64 File.Move/File.Replace/FileStream.Flush(true) 동작은 후속 Windows QA가 필요하다."
+    - "Flush(true)와 same-directory atomic replace는 process crash·전원 손실·directory fsync의 절대 durability를 증명하지 않는다. fault seam은 commit 전 예외에서 이전 파일 보존만 검증한다."
+    - "final root/collection/target reparse entry는 거부하지만 ancestor symlink, hard link와 check/open 사이 TOCTOU를 방어하거나 실행 시험하지 않았다. storage root와 local filesystem은 trusted composition 범위다."
+    - "public constructor의 OS 예외는 local path를 포함할 수 있으므로 향후 composition이 catch/map해야 하며 UI나 network payload로 직접 노출하면 안 된다."
+    - "SHA-256은 accidental corruption detection 전용이며 encryption, authenticity 또는 hostile local tamper protection이 아니다."
+    - "Preset/Settings DTO·schema·migration·최대10·list/rename/delete·recovery UI와 persistentDataPath binding은 후속 task이며 FDN-008에서 구현하거나 검증하지 않았다."
+    - "Unity 임시 log/XML은 local path·PID·licensing 식별자를 포함하므로 수치 요약 후 삭제했다. Player Build는 실행하지 않았다."
+  userDecision: "구현 계획서대로 하나씩 진행; 모호하거나 승인이 필요한 경우 중단"
+  recordedAtUtc: "2026-08-27T09:31:54Z"

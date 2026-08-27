@@ -13,6 +13,7 @@ namespace ProjectHotfix.Architecture.Tests
         private const string Presentation = "ProjectHotfix.Presentation";
         private const string Input = "ProjectHotfix.Input";
         private const string Transport = "ProjectHotfix.Transport";
+        private const string LocalStorage = "ProjectHotfix.LocalStorage";
 
         private static readonly IReadOnlyDictionary<string, string[]> ExpectedReferences =
             new Dictionary<string, string[]>
@@ -22,6 +23,7 @@ namespace ProjectHotfix.Architecture.Tests
                 [Presentation] = new[] { Contracts },
                 [Input] = new[] { Contracts },
                 [Transport] = new[] { Contracts },
+                [LocalStorage] = Array.Empty<string>(),
             };
 
         private static readonly IReadOnlyDictionary<string, string> ExpectedFolderAssemblies =
@@ -32,6 +34,7 @@ namespace ProjectHotfix.Architecture.Tests
                 ["Presentation"] = Presentation,
                 ["Input"] = Input,
                 ["Transport"] = Transport,
+                ["LocalStorage"] = LocalStorage,
             };
 
         [Test]

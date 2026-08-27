@@ -1,6 +1,6 @@
 ModuleGraph:
   schemaVersion: 1
-  revision: "fdn-006-r03"
+  revision: "fdn-008-r04"
   runtimeRoot: "Project hotfix/Assets/ProjectHotfix/Runtime"
   modules:
     - name: "ProjectHotfix.Contracts"
@@ -28,6 +28,11 @@ ModuleGraph:
       allowedProjectReferences: ["ProjectHotfix.Contracts"]
       externalPackageReferences: ["Unity.Networking.Transport"]
       noEngineReferences: false
+    - name: "ProjectHotfix.LocalStorage"
+      role: "Bounded local atomic byte storage and last-good recovery"
+      allowedProjectReferences: []
+      externalPackageReferences: []
+      noEngineReferences: true
   rules:
     projectReferenceCyclesAllowed: false
     presentationMayReferenceSimulation: false
@@ -36,4 +41,5 @@ ModuleGraph:
     inputSystemPackageReferenceOwnedBy: "FDN-004"
     physicsPackageReferenceOwnedBy: "FDN-005"
     transportPackageReferenceOwnedBy: "FDN-006"
+    localStorageFoundationOwnedBy: "FDN-008"
     compositionRoot: "Deferred until a runtime task needs module wiring"

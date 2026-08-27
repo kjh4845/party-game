@@ -1,0 +1,42 @@
+LocalStorageProfile:
+  schemaVersion: 1
+  profileId: "LocalStorageProfile-FDN-008-r01"
+  ownerTask: "FDN-008"
+  scope:
+    included: "Bounded raw-byte persistence, atomic commit and explicit last-good fallback"
+    deferred: ["Settings schema", "Preset schema", "migration", "preset limit", "list/rename/delete", "recovery UI"]
+  root:
+    source: "Absolute path injected by a future composition root"
+    unityPersistentDataPathBinding: "Deferred until the first product repository is composed"
+    constructionErrors: "Trusted composition must catch/map constructor failures and never display local paths"
+    serverDependencyCount: 0
+  address:
+    collectionAndKey: "lower ASCII [a-z0-9][a-z0-9_-]{0,63}"
+    layout:
+      current: "<root>/<collection>/entry-<key>.bin"
+      lastGood: "<root>/<collection>/entry-<key>.last-good"
+      pending: "<root>/<collection>/entry-<key>.pending"
+  envelope:
+    byteOrder: "BinaryWriter little-endian integers"
+    fields: ["8-byte magic", "int32 formatVersion", "int32 payloadLength", "32-byte SHA-256", "payload"]
+    formatVersion: 1
+    payloadLimit: "Positive constructor argument, checked before allocation and commit"
+    checksumPurpose: "Accidental corruption detection only; not encryption or hostile-tamper authentication"
+  commit:
+    pendingPlacement: "Same directory as current"
+    firstWrite: "Flush(true), verify pending, then File.Move"
+    validCurrentWrite: "Flush(true), verify pending, then File.Replace with prior current as last-good"
+    corruptCurrentWrite: "Replace current without rotating it over an existing last-good"
+    schemaAwareWrite: "Caller passes the same payload validator to Read and Write so a rejected current never replaces a compatible last-good"
+    inProcessConcurrency: "Canonical current path maps to one of 64 bounded process-wide locks shared by repository instances"
+    nonAtomicFallbackAllowed: false
+  recovery:
+    selection: "Current when valid; otherwise last-good when valid; otherwise none"
+    automaticRewriteAllowed: false
+    slotStatuses: ["Missing", "Valid", "Corrupt", "TooLarge", "Rejected", "IoFailure"]
+  dependencies:
+    unityEngine: 0
+    transport: 0
+    backend: 0
+    database: 0
+    cloud: 0
