@@ -1,0 +1,901 @@
+# Project Hotfix 핵심 Foundation 선택 근거서
+
+## 0. 문서 정보
+
+| 항목 | 내용 |
+|---|---|
+| 문서 목적 | 기초 구현에서 무엇을 선택했고 왜 그렇게 선택했는지, 배제한 대안과 검증 근거를 한 문서에서 설명 |
+| 기준 Git revision | `2faee33` (`chore: establish art pipeline profiles`) |
+| 포함 범위 | `FDN-001..011`, `ART-001` |
+| 작성 기준 | 실제 repository, versioned config, test 결과와 Evidence를 우선 사용. 직접 기록되지 않은 선택 연결은 `추론/설계 해석`으로 표시 |
+| 문서 성격 | 설명용 결정 근거서. PRD/SRS/분야별 사양을 대체하거나 새 제품 계약을 만들지 않음 |
+
+> **범위 주의:** 핵심 기술 Foundation인 `FDN-001..011`과 첫 Art Profile인 `ART-001`은 완료됐다.
+> 그러나 구현계획의 Foundation 표 전체는 아직 닫히지 않았다. `LIC-001` 라이선스/NOTICE inventory와
+> `BLD-001` Windows x64 수동 Build Profile이 남아 있다. 따라서 이 문서는 “G0 전체 완료”나
+> “게임을 빌드할 수 있음”을 선언하지 않는다.
+
+규범적 우선순위는 계속 [문서 인덱스](../../docs/00_DOCUMENT_INDEX.md)의
+`최신 사용자 결정 → PRD → SRS → 분야별 사양 → 구현계획 → Evidence` 순서를 따른다.
+
+---
+
+## 1. 결론부터 요약
+
+Foundation의 핵심 방향은 다음 한 문장으로 정리된다.
+
+> **하나의 Unity 게임 클라이언트가 방장일 때 AuthorityHost가 되고, 별도 서버·Backend·DB·Docker 없이
+> 친구 2~4명이 P2P로 플레이하도록 만들되, Gameplay 권한·물리·입력·전송·표현·로컬 저장·Art 반입을
+> 서로 교체하고 검증할 수 있는 경계로 분리한다.**
+
+이 방향 때문에 다음 선택이 서로 연결됐다.
+
+| 제품 제약 | Foundation 선택 | 보호하려는 결과 |
+|---|---|---|
+| 방장 Client가 권한 Host | Simulation을 독립 모듈로 두고 Presentation이 직접 변경하지 못하게 함 | Host 판정의 단일 소유권 |
+| Alpha는 LAN/direct, 이후 Steam P2P/SDR | low-level Unity Transport를 교체 가능한 Adapter 경계 뒤에 둠 | Alpha용 전송을 Steam 제품 경로로 교체 가능 |
+| 별도 Backend·DB·Cloud 없음 | 향후 Settings/Preset이 사용할 bounded local atomic storage primitive 마련 | 서버 운영 없이 손상 복구 가능한 로컬 저장 기반 |
+| Rigidbody·Ragdoll 중심 물리 난투 | Unity built-in PhysX와 60Hz fixed-step 사용 | Contact·Joint·Ragdoll을 동일 Physics stack에서 검증 |
+| 복잡한 tap/hold/chord·Esc rearm 입력 | New Input System만 활성화 | 중복 Backend 없이 명시적 Action/Context 구현 가능 |
+| 2·3·4인과 UI 없는 Simulation 검증 | 같은 runtime kernel을 Unit/EditMode/PlayMode에서 실행 | 화면이나 Scene 없이 Authority 로직 회귀 검증 |
+| Blender와 Unity 결과의 품질 일치 | Toolchain exact lock + ModelInterop/VisualQA START profile | 에셋별 수동 보정과 품질 편차 방지 |
+| Docker·Dedicated·자체 Backend 영구 제외 | 경로·코드·Package 기반 금지 인프라 Guard | 시간이 지나며 금지 구조가 조용히 재유입되는 것 방지 |
+| 사용자가 직접 Build | Foundation 자동화에서 Player Build를 계속 0으로 유지 | 코드 검증과 배포 권한을 분리 |
+
+---
+
+## 2. Foundation이 따라야 했던 고정 제품 계약
+
+### 2.1 네트워크와 실행 구조
+
+- 별도 Dedicated Server는 없다.
+- 별도 Backend, Coordinator, Database, Blob Store, Bake Worker도 없다.
+- Docker, OCI, Compose, Container Image를 개발·시험·배포 경로에 사용하지 않는다.
+- 방장 Unity Client 안의 `AuthorityHost`가 Lobby와 Match의 최종 판정을 소유한다.
+- Alpha는 통제된 LAN 또는 명시적 direct endpoint만 검증한다.
+- Alpha 승인 뒤 Steam Auth, Friends Lobby, 친구 초대, 방 코드와 Steam P2P/SDR을 붙인다.
+- 공개 매칭, Server Browser, Rank와 MMR은 후속 후보가 아니라 영구 비범위다.
+
+이 계약 때문에 “일단 전용 서버나 Relay로 쉽게 만들고 나중에 P2P로 바꾸기”는 선택하지 않았다.
+그렇게 시작하면 Authority 수명주기, 접속 식별자, Lobby와 배포 구조가 서버 중심으로 굳어져
+나중에 제거하는 비용이 커진다.
+
+### 2.2 게임 Simulation
+
+- 게임은 Rigidbody, Collider, Joint, Grab, Throw, Ragdoll, Weapon recoil을 사용하는 물리 난투다.
+- Host가 Position, Hit, Damage, Down, Score, Patch와 Weapon 결과를 확정한다.
+- Input과 Presentation은 결과를 요청하거나 보여줄 수 있지만 권한 결과를 직접 만들지 않는다.
+- 2인뿐 아니라 3인과 4인을 별도 검증해야 한다.
+- Match UI가 없어도 Simulation이 실행돼야 한다.
+
+따라서 Foundation에서부터 Rendering과 Authority logic을 한 Assembly에 섞지 않았고,
+물리 tick과 Network cadence를 같은 수치로 가장하지 않았다.
+
+### 2.3 제작·품질
+
+- Unity `6000.3.9f1`, Blender `5.2.0 LTS`, URP `17.3.0`을 기준으로 한다.
+- `1 Blender meter = 1 Unity unit = 1 meter`다.
+- Character·Weapon·Map asset은 같은 Style/Interop/QA Profile을 사용한다.
+- 최종 Palette, Bevel 폭, Product Shader/Lighting, Camera와 성능 예산은 실제 비교와 사용자 Gate 전에는
+  `LOCKED`로 만들지 않는다.
+- Player Build와 Steam 배포는 사용자가 직접 수행한다.
+
+즉, “FBX가 생성됐다”거나 “Unity가 Import했다”는 사실만으로 Art 품질을 통과 처리하지 않는다.
+
+---
+
+## 3. 최종 모듈 경계와 의도
+
+현재 Runtime Assembly 관계는 다음과 같다.
+
+```text
+ProjectHotfix.Contracts  (read-only/value boundary, no UnityEngine)
+    ↑          ↑          ↑          ↑
+Simulation  Presentation  Input      Transport
+                              \        /
+                     package ownership only
+                     InputSystem     Unity Transport
+
+ProjectHotfix.LocalStorage  (독립 leaf, Unity/Network 참조 0)
+```
+
+정확한 의미는 다음과 같다.
+
+- `Simulation`, `Presentation`, `Input`, `Transport`는 `Contracts`만 Project reference로 가진다.
+- `Presentation → Simulation` 직접·간접 경로는 없다.
+- `LocalStorage`는 다른 Project Assembly와 UnityEngine, Transport를 참조하지 않는다.
+- 현재 Composition Root는 아직 만들지 않았다. 실제 wiring은 첫 Runtime 기능 Task가 소유한다.
+- 현재 `Transport`는 package 선택과 marker 경계만 있고 실제 socket Adapter는 `NET-001..003` 범위다.
+- 현재 `SimulationKernel`은 Foundation cycle 경로를 검증하는 최소 kernel이다. 완성된 Gameplay가 아니다.
+
+이 구조를 선택한 가장 큰 이유는 Alpha direct UTP를 나중에 Steam Networking Sockets/SDR로 바꾸더라도
+Gameplay Simulation과 Presentation 계약을 다시 작성하지 않기 위해서다.
+
+[현재 ModuleGraph](../../config/architecture/ModuleGraph.yaml)
+
+---
+
+## 4. Task별 선택 이유와 근거
+
+## 4.1 `FDN-001` — 기존 자료를 보존한 단일 Root Repository
+
+### 선택
+
+- `party game` root에 Git repository를 하나만 둔다.
+- Unity Project는 그 아래 `Project hotfix/`에 둔다.
+- 초기화 전에 존재하던 문서·Evidence·Review 자료를 이동하거나 삭제하지 않는다.
+- Remote, Unity Project 생성, Build는 이 Task에서 하지 않는다.
+
+### 이유
+
+다음은 별도 후보 비교 실험이 아니라 repository 추적 요구에서 도출한 **설계 해석**이다.
+기획 문서, 승인 이미지, Evidence와 Unity Project가 서로 다른 Git repository로 갈리면
+코드 revision과 결정 revision을 함께 추적하기 어렵다. 특히 Blender source, Unity Prefab과 승인 capture를
+나중에 한 GenerationManifest로 연결하려면 최상위 repository가 하나여야 한다.
+
+### 배제한 대안
+
+- Unity Project 안에 중첩 `.git`을 두는 방식
+- 기존 자료를 새 구조에 맞추기 위해 먼저 이동·정리하는 방식
+- 초기화와 동시에 Remote나 LFS를 임의 구성하는 방식
+
+### 실제 근거
+
+- 초기·이후 파일 `75/75` 보존
+- byte 수 `28,352,603` 동일
+- tree SHA-256 동일
+- root Git repository `1`, nested repository `0`, Remote `0`
+
+[FDN-001 Evidence](../evidence/G0/FDN-001/EV-FDN-001-20260826-r01.yaml)
+
+### 아직 증명하지 않은 것
+
+Remote backup, 협업 workflow, LFS fetch/push와 Unity Project 동작은 이 Task의 범위가 아니었다.
+
+---
+
+## 4.2 `FDN-010` — Unity·Blender·Package Exact Version Lock
+
+### 선택
+
+- Unity `6000.3.9f1`, revision `7a9955a4f2fa`
+- Blender `5.2.0 LTS`
+- URP `17.3.0`
+- 현재 채택 Package를 `manifest.json`과 `packages-lock.json` hash로 고정
+- 자동·조용한 Upgrade 금지
+
+[현재 ToolchainProfile](../../config/toolchain/ToolchainProfile.yaml)
+
+### 이유
+
+이 프로젝트는 물리와 Blender→Unity 반입 품질에 민감하다. “Unity 6 계열”, “Blender 5 계열”처럼
+Family만 기록하면 다음 항목이 조용히 달라질 수 있다.
+
+- ModelImporter option과 기본값
+- PhysX 동작과 ProjectSettings schema
+- Input/Transport package API
+- URP Shader와 Material 동작
+- Blender FBX Export option과 axis 처리
+
+Exact patch와 lock hash를 기준으로 잡으면 Upgrade가 생겼을 때 “원인 불명의 품질 변화”가 아니라
+명시적인 Profile revision으로 다룰 수 있다.
+
+### 배제한 대안
+
+- 항상 최신 LTS patch를 자동 적용
+- `Unity 6.3 LTS`, `Blender 5.2 LTS` Family 문자열만 기록
+- Package version은 manifest만 보고 transitive lock은 추적하지 않음
+
+### 실제 근거
+
+초기 Evidence는 이미 Input System `1.18.0`을 포함한 URP template의 direct package `45`, lock entry `57`을
+기록했다. `FDN-004`는 이 기존 Input package를 New-only Backend로 채택했지만 lock hash를 바꾸지 않았고,
+`FDN-005`도 built-in Physics를 선택해 package lock 변화가 `0`이었다. direct `46`, lock `58`과 새 hash가 된
+직접 원인은 `FDN-006`에서 Unity Transport `2.6.0`을 추가한 것이다. 현재 ToolchainProfile r02는 이
+명시적 UTP 추가 결과를 반영한다.
+
+[FDN-010 Evidence](../evidence/G0/FDN-010/EV-FDN-010-20260826-r01.yaml)
+
+### 아직 증명하지 않은 것
+
+Windows Player, 실제 FBX Import parity와 향후 Package 호환성은 별도 Task에서 검증한다.
+
+---
+
+## 4.3 `FDN-011` — Unity 친화적 Repository·Binary 정책
+
+### 선택
+
+- Unity 생성 폴더 `Library`, `Temp`, `Obj`, `Logs`, `UserSettings`, Build output은 Git에서 제외
+- `Assets/**/*.meta`, ProjectSettings와 Package lock은 추적
+- Unity serialization은 text 기반으로 유지
+- 현재 binary를 hash inventory로 기록
+- Git LFS가 설치·연결되지 않은 현재 상태에서는 LFS 후보의 commit을 금지
+
+[Binary 정책](../../config/repository/BinaryAssetPolicy.md) ·
+[Binary inventory](../../config/repository/BinaryAssetInventory.yaml)
+
+### 이유
+
+Unity의 `Library`와 Cache는 재생성 가능하고 Machine마다 달라지지만, `.meta` GUID는 Asset reference의 일부다.
+따라서 생성물을 commit하면 noise와 용량이 커지고, `.meta`를 무시하면 Scene·Prefab reference가 깨진다.
+
+큰 `.blend`, `.fbx`, `.glb`를 LFS 설정 없이 먼저 commit하면 나중에 LFS를 붙여도 Git history가 이미
+무거워진다. 그래서 “LFS가 없으니 그냥 일반 Git에 넣기”가 아니라 “연결되기 전 후보 commit 금지”를 택했다.
+
+### 배제한 대안
+
+- `Library`와 Build 결과까지 모두 commit
+- `.meta` 전체 ignore
+- 설치되지 않은 Git LFS filter를 설정 파일에만 적어 사용 가능한 것처럼 처리
+- Binary file을 이름만 기록하고 hash는 남기지 않음
+
+### 실제 근거
+
+- ignore boundary test `7/7`, tracked boundary test `7/7`
+- generated status leak `0`
+- binary `20개`, 총 `27,722,987 bytes`, unique hash `15`
+- `10 MiB` 초과 binary `0`, 현재 LFS-required 후보 `0`
+- Git LFS unavailable, Remote `0`, LFS 후보 commit 허용 `false`
+
+[FDN-011 Evidence](../evidence/G0/FDN-011/EV-FDN-011-20260826-r01.yaml)
+
+### 아직 증명하지 않은 것
+
+실제 Git LFS filter·Remote·fetch/push, production `.blend/.fbx/.glb`의 저장 방식과 Player Build는
+검증하지 않았다. 현재 정책은 LFS와 Remote가 준비되기 전 production binary commit을 막는 경계다.
+
+---
+
+## 4.4 `FDN-002` — Unity 6.3 LTS URP Project 유지
+
+### 선택
+
+- 사용자가 만든 Unity Project를 `6000.3.9f1`로 Import
+- URP `17.3.0` 유지
+- PC Quality에 URP Pipeline Asset 연결
+- Force Text serialization 유지
+- Player Build는 실행하지 않고 Editor Import/C# compile만 검증
+
+### 이유
+
+Unity 사용은 사용자 확정 사항이다. 저폴리 Character·Weapon·Environment와 하나의 Shared Camera를 사용하는
+Alpha에서 URP는 이미 생성된 Template과 일치하며, 필요한 Lit/Unlit·Decal·제한된 Post Effect를 제공한다.
+
+다음은 실제 benchmark 후보 비교가 아니라, 승인 Toolchain과 Alpha 범위에서 도출한 **설계 해석상
+채택하지 않은 대안**이다.
+
+- HDRP: 저폴리 Party Game Alpha에 필요하지 않은 고급 Rendering·설정 복잡도 증가
+- Built-in Render Pipeline로 회귀: 이미 해결된 URP Project와 Material 경계를 버리고 별도 Migration 발생
+- 다른 Engine으로 변경: 승인된 Unity physics·toolchain·문서 전체와 충돌
+
+### 실제 근거
+
+- Unity batchmode exit `0`
+- C# compiler error `0`, compile failure `0`
+- URP Graphics/PC Quality Pipeline 연결 확인
+- Source asset change `0`, Package lock hash change `0`
+- Player Build `0`
+
+[FDN-002 Evidence](../evidence/G0/FDN-002/EV-FDN-002-20260826-r01.yaml)
+
+### 아직 증명하지 않은 것
+
+실행 화면 품질, Player 성능, Windows Build와 Gameplay Scene은 검증하지 않았다.
+Unity Personal entitlement는 정상 해석됐지만 token refresh와 종료 중 Curl 42 비차단 경고가 각각 `1회`
+있었다. 원본 Editor log는 local IP·Machine·Licensing 식별자를 포함해 보존하지 않고 요약만 남겼다.
+
+---
+
+## 4.5 `FDN-003` — Compile-time Module Boundary
+
+### 선택
+
+초기에는 다음 다섯 Runtime Assembly를 만들었다.
+
+- `ProjectHotfix.Contracts`
+- `ProjectHotfix.Simulation`
+- `ProjectHotfix.Presentation`
+- `ProjectHotfix.Input`
+- `ProjectHotfix.Transport`
+
+이후 `FDN-008`이 독립 leaf인 `ProjectHotfix.LocalStorage`를 추가했다.
+
+### 이유
+
+- `Contracts`를 read-only/value 경계로 두면 Presentation과 Transport가 Simulation 구현에 결합하지 않는다.
+- Presentation이 Simulation을 직접 참조하지 않으면 VFX/UI가 권한 상태를 변경하는 실수를 compile-time에 줄인다.
+- Transport가 독립이면 Alpha UTP와 Steam Adapter가 같은 상위 Protocol/Simulation 계약을 사용할 수 있다.
+- Input을 독립시키면 Lobby, Match, UI, Cursor, tap/hold/chord 상태가 Gameplay 구현과 뒤엉키지 않는다.
+
+### 배제한 대안
+
+FDN-003 Evidence에 정식 후보 비교표는 없다. 아래 항목은 확정된 ModuleGraph와 Guard가 막도록 설계된
+경로를 역으로 정리한 **설계 해석**이다.
+
+- 모든 코드를 하나의 Assembly-CSharp에 두는 방식
+- Presentation이 Simulation concrete type을 직접 참조
+- 모든 asmdef를 `autoReferenced:true`로 두고 실제 의존성을 숨기는 방식
+- Foundation 단계에서 Gameplay interface를 추측해 미리 대량 생성
+
+### 실제 근거
+
+FDN-003 시점:
+
+- Runtime Assembly `5`, Project reference edge `4`
+- Cycle `0`
+- Presentation→Simulation path `0`
+- Runtime folder ownership mismatch `0`
+- EditMode architecture test `4/4`
+- Gameplay type `0`
+
+현재 ModuleGraph는 LocalStorage를 포함한 `6`개 Runtime module을 추적한다.
+
+[FDN-003 Evidence](../evidence/G0/FDN-003/EV-FDN-003-20260826-r01.yaml)
+
+### 아직 증명하지 않은 것
+
+향후 Command/ReadModel의 의미가 안전하다는 것까지 자동 증명하지 않는다. 새 public contract는 해당 Task에서
+다시 검토해야 한다.
+
+---
+
+## 4.6 `FDN-004` — New Input System만 사용
+
+### 선택
+
+- `com.unity.inputsystem 1.18.0`
+- Project Input backend를 `Input System Package (New)`로 고정
+- Legacy Input Manager와 Both mode 비활성
+- Input System package reference는 `ProjectHotfix.Input`만 소유
+- 제품 Action Map은 아직 만들지 않음
+
+[Input 결정](../../config/input/InputPackageDecision.yaml)
+
+### 이유
+
+이 게임은 단순 WASD만 필요한 것이 아니다.
+
+- Lobby/Match/UI Context 전환
+- L/R Mouse tap Punch와 hold Grab
+- 공중 L/R Kick과 dual-click Dropkick chord
+- Esc Cursor open/close와 Mouse all-up rearm
+- Tab Hold/Toggle
+- local-only non-pausing Match menu
+
+두 Input backend를 같이 켜면 같은 물리 입력이 중복 처리되거나 Context별 edge가 달라질 수 있다.
+New Input System 하나로 고정하고 Action Map과 resolver를 후속 Task에서 명시적으로 만드는 편이 안전하다.
+
+### 배제한 대안
+
+- Legacy Input API 유지
+- Both mode로 전환 기간을 길게 가져감
+- Template Action Asset을 곧바로 제품 Action Map으로 간주
+- Foundation에서 tap/hold threshold와 모든 binding을 조기 확정
+
+### 실제 근거
+
+- New backend `true`, Legacy `false`, Both `false`
+- Package direct Registry dependency 확인
+- Runtime package owner `1`, 다른 module reference `0`
+- Legacy runtime API hit `0`
+- Input EditMode test `4/4`, 전체 Architecture test `8/8`
+- 제품 Action Map·callback 구현 `0`
+
+[FDN-004 Evidence](../evidence/G0/FDN-004/EV-FDN-004-20260826-r01.yaml)
+
+### 아직 증명하지 않은 것
+
+Legacy API 검사는 lexical guard이며 hostile alias를 해석하는 semantic analyzer가 아니다. 제품 Action Map,
+callback, Input update timing, fixed-step 소비, rebinding 저장과 실제 Gameplay control·Player Build는 아직 없다.
+
+---
+
+## 4.7 `FDN-005` — Built-in PhysX, Physics 60Hz와 Authority 30Hz
+
+### 선택
+
+- Unity built-in 3D Physics/PhysX 사용
+- Physics fixed-step `60Hz` (`1/60s`)
+- Authority/Network cycle은 Physics `2 step`마다 `30Hz`
+- Snapshot `20Hz`는 `3 step`, `15Hz`는 `4 step`
+- `FixedUpdate` simulation, `autoSyncTransforms=false`
+- DOTS Physics나 Havok 같은 두 번째 Physics stack 없음
+
+[Physics 결정](../../config/physics/PhysicsPackageDecision.yaml)
+
+### 이유
+
+Character와 Weapon이 Rigidbody, Collider, ConfigurableJoint, Grab constraint와 Ragdoll을 함께 사용한다.
+Unity GameObject 기반 PhysX는 이 요구와 직접 맞고, 이미 선택한 Unity Client 구조 안에서 Authoring과 Debug가 쉽다.
+
+60Hz를 선택한 이유는 다음과 같다.
+
+- 빠른 Punch/Kick/Weapon contact와 Joint를 50Hz보다 촘촘하게 관찰
+- 30Hz Authority cycle을 정확히 `2` Physics step으로 구성
+- 20Hz/15Hz Snapshot도 각각 `3`/`4` step으로 나눠 cadence를 섞지 않음
+
+이것은 “네트워크 결정론”을 보장하려는 선택이 아니다. Host Authority에서 Contact와 Control의 기준 tick을
+명확히 하기 위한 선택이다.
+
+### 배제한 대안
+
+다음 세 항목은 PhysicsPackageDecision에 기록된 공식 rejected option이다.
+
+- Unity default 50Hz를 문서의 60Hz 계약과 다르게 유지
+- Physics와 Network를 모두 30Hz로 낮춤
+- DOTS/Havok을 추가해 두 Physics 세계를 유지
+
+추가로 60Hz Snapshot을 기본 전송 cadence로 삼지 않고 Runtime의 임의 `fixedDeltaTime` 변경을 막은 것은
+승인 cadence를 보호하기 위한 **Guard 설계 해석**이다.
+
+- 60Hz Snapshot을 보내 Bandwidth와 전송 결합을 키움
+- Runtime code가 `Time.fixedDeltaTime`을 임의 변경하도록 허용
+
+### 실제 근거
+
+- built-in Physics direct package, second stack `0`
+- fixed delta `0.016666668`, simulation mode FixedUpdate
+- cadence `60/30`, step ratio `2/3/4`
+- Physics guard `4/4`, 전체 EditMode `12/12`
+- 격리 PlayMode Contact/Joint smoke `2/2`, Scene unload `2/2`
+
+초기 실패 run은 PhysicsScene 구성·API 사용 문제를 드러냈고 최종 Evidence에는 superseded failure도 요약돼 있다.
+
+[FDN-005 Evidence](../evidence/G0/FDN-005/EV-FDN-005-20260827-r01.yaml)
+
+### 아직 증명하지 않은 것
+
+Ragdoll feel, Character mass·joint limit, 실제 hit stability와 Network scheduler는 후속 Gameplay/NET Task다.
+
+---
+
+## 4.8 `FDN-006` — Low-level Unity Transport 2.6 Adapter 방향
+
+### 선택
+
+- `com.unity.transport 2.6.0`
+- `ProjectHotfix.Transport`만 package를 참조
+- NGO, Unity Relay, Unity Lobby, Multiplayer Services 사용 안 함
+- Alpha는 UTP direct endpoint
+- Steam 단계에서는 Adapter를 Steam Networking Sockets/SDR로 교체
+- 이 Task에서는 Adapter 구현을 시작하지 않고 package·ownership만 확정
+
+[Transport 결정](../../config/transport/TransportPackageDecision.yaml)
+
+### 이유
+
+UTP는 low-level transport이므로 Host-authoritative Protocol과 Replication을 직접 소유하면서도 socket backend를
+나중에 교체할 수 있다. 반면 NGO를 먼저 채택하면 Object lifecycle과 RPC 의미가 Gameplay 구조에 빨리 스며들고,
+Unity Relay/Lobby를 붙이면 사용자가 명시적으로 제외한 Hosted Service 의존성이 생긴다.
+
+Alpha의 목적은 인터넷 제품 경로를 완성하는 것이 아니라, 같은 Simulation 계약으로 2·3·4인 direct P2P
+vertical slice를 검증하는 것이다. 그래서 NAT traversal을 어설프게 자체 구현하거나 Alpha UTP를 Steam 출시
+fallback으로 남기지 않는다.
+
+### 배제한 대안
+
+- NGO를 상위 Gameplay 구조까지 함께 채택
+- Unity Relay/Lobby/Authentication으로 Alpha 연결을 구성
+- 자체 NAT traversal, public server list나 coordinator 구현
+- Steam SDK를 Alpha 기능 검증 전에 바로 통합
+- raw socket 구현을 Gameplay module에 직접 넣음
+
+### 실제 근거
+
+- UTP `2.6.0`, Registry/direct dependency
+- UTP Runtime owner `1`
+- NGO/Multiplayer Services/Relay/Lobby package `0`
+- public discovery, NAT traversal, 별도 server process 구현 `0`
+- Transport EditMode test `4/4`, 전체 EditMode `16/16`
+- Adapter implementation source `0`
+
+[FDN-006 Evidence](../evidence/G0/FDN-006/EV-FDN-006-20260827-r01.yaml)
+
+### 아직 증명하지 않은 것
+
+Socket bind, Loopback, LAN, Packet protocol, loss/reorder, NAT와 Steam P2P/SDR은 아직 검증하지 않았다.
+
+---
+
+## 4.9 `FDN-007` — 같은 Runtime Kernel을 쓰는 Renderless Test/Evidence 기반
+
+### 선택
+
+- 최소 `SimulationKernel`과 read-only `SimulationSnapshot` 생성
+- Unit/EditMode/PlayMode가 같은 Runtime kernel을 실행
+- PlayMode는 빈 격리 Scene에서 root object `0`으로 실행
+- Evidence manifest와 NUnit XML을 strict validator로 검증
+- 실패·skip·not-run을 성공으로 취급하지 않음
+
+[TestFoundation](../../config/testing/TestFoundation.yaml) ·
+[EvidenceProfile](../../config/evidence/EvidenceProfile.yaml)
+
+### 이유
+
+Gameplay를 테스트 전용 모형으로 다시 구현하면 제품 코드와 테스트 코드가 서로 다른 결과를 낼 수 있다.
+Foundation부터 같은 kernel을 UI·Rendering 없이 실행하면 다음 Gameplay Task가 같은 경로에 상태를 추가할 수 있다.
+
+Evidence도 사람이 “통과한 것 같다”고 적는 방식 대신, 필수 field·raw path·UTC·test count를 구조적으로 검사해야
+나중에 2·3·4인 결과와 Steam/Build 결과를 과장하지 않는다.
+
+### 배제한 대안
+
+- Scene/MonoBehaviour 안에서만 Simulation 실행
+- 테스트 전용 Gameplay 복사본 사용
+- Test 결과 XML의 `result=Passed`만 보고 skip/not-run을 무시
+- 임시 Unity log 전체를 민감정보와 함께 repository에 보존
+
+### 실제 근거
+
+- 같은 Runtime kernel Unit `3/3`, EditMode harness `2/2`, PlayMode harness `1/1`
+- 두 번의 `120` Authority cycle fingerprint 일치
+- Presentation reference `0`, Rendering/UI dependency `0`
+- 전체 EditMode `21/21`, PlayMode `3/3`
+- 기존 Evidence `35`개와 strict manifest 구조 검증
+- NUnit negative fixture `5`종 거부
+
+[FDN-007 Evidence](../evidence/G0/FDN-007/EV-FDN-007-20260827-r01.yaml)
+
+### 아직 증명하지 않은 것
+
+현재 fingerprint는 Foundation counter 수준이다. Gameplay determinism, Physics determinism, Network impairment,
+Player Build와 Steam을 증명하지 않는다.
+Unit layer도 별도 native executable이 아니라 Unity EditMode runner가 실행한 순수 NUnit 경로다.
+Evidence/NUnit validator는 schema·path·count를 확인하는 구조 Guard이며, 미래 Gameplay 의미 검증이나
+적대적 Security review를 대신하지 않는다.
+
+---
+
+## 4.10 `FDN-008` — Backend 없는 Local Atomic Storage
+
+### 선택
+
+- `ProjectHotfix.LocalStorage`를 Unity/Network 참조 없는 leaf Assembly로 구성
+- caller가 최대 payload byte를 명시하는 bounded raw-byte storage
+- Envelope: magic `8 bytes` + format version + payload length + SHA-256 `32 bytes` + payload
+- `current`, `last-good`, 같은 directory의 `pending` 파일
+- 첫 저장은 flush+검증 뒤 move, 이후 정상 저장은 `File.Replace`
+- current가 손상됐으면 기존 last-good을 덮지 않고 current만 교체
+- Read는 current와 last-good 상태를 따로 반환하고 자동 self-heal write를 하지 않음
+- 같은 schema validator를 Read/Write에 사용해 비호환 current가 정상 last-good을 덮지 않게 함
+- 같은 process의 여러 repository instance는 `64`개 bounded striped lock으로 같은 주소를 직렬화
+
+[LocalStorageProfile](../../config/storage/LocalStorageProfile.yaml)
+
+### 이유
+
+이 게임은 자체 계정·Cloud Save·Match History가 없고 친구 P2P만 사용한다. Settings와 Appearance Preset은
+로컬 파일이면 충분하다. 다만 “그냥 JSON 파일 한 개 덮어쓰기”는 중간 종료나 손상 때 정상본을 잃을 수 있다.
+
+SHA-256과 version/length envelope를 사용한 이유는 암호화가 아니라 손상·잘린 파일·과대 길이를 allocation 전에
+검출하기 위해서다. `last-good`을 자동으로 current에 복사하지 않는 이유는 원본 손상을 보존해 사용자 복구·삭제
+선택을 가능하게 하기 위해서다.
+
+### 배제한 대안
+
+- Backend/Cloud/Database에 Preset 저장
+- Docker로 로컬 DB나 저장 Service 실행
+- PlayerPrefs만 사용해 version/length/last-good 없이 저장
+- `Delete + Move` 같은 비원자적 fallback
+- Read 시 손상 파일을 조용히 자동 덮어쓰기
+- FDN-008에서 Preset JSON schema, 최대 10개, list/rename/delete/UI까지 한꺼번에 구현
+
+### 실제 근거
+
+- Runtime source `4`, Project/Unity/Network reference `0`
+- Storage EditMode `19/19`, boundary `2/2`, PlayMode `1/1`
+- 전체 EditMode `42/42`, PlayMode `4/4`
+- current 손상 variant `4`, declared/physical length bound fixture 각 `1`
+- 기존 backup이 있는 세 번째 write rotation, validator-aware last-good 보존, cross-instance 직렬화 검증
+- pre-commit Replace failure에서 current/last-good 보존
+
+[FDN-008 Evidence](../evidence/G0/FDN-008/EV-FDN-008-20260827-r01.yaml)
+
+### 아직 증명하지 않은 것
+
+- 실제 Client process 재시작과 `Application.persistentDataPath` binding
+- Windows filesystem, 전원 손실과 directory fsync
+- cross-process writer
+- hostile local symlink/TOCTOU와 악의적 변조 방지
+- Preset/Settings schema·migration·최대 10개·list/delete/UI
+
+또한 public constructor에서 발생하는 OS 예외는 local absolute path를 포함할 수 있다. 향후 Composition은
+이를 catch해 사용자용 오류로 mapping해야 하며, 원문 예외나 local path를 UI 또는 Network payload에
+직접 노출하면 안 된다.
+
+SHA-256은 인증·암호화가 아니라 accidental corruption 검출용이다.
+
+---
+
+## 4.11 `FDN-009` — 금지 인프라 재유입 방지 Guard
+
+### 선택
+
+- Git tracked + non-ignored untracked inventory를 검사
+- Docker/Compose/OCI, DB artifact/dependency/API, Backend SDK/API, Dedicated build/profile/process를
+  path·content·package rule로 검사
+- 모든 policy rule을 negative fixture와 연결
+- tracked missing, required manifest missing, symlink, oversized/invalid input을 fail-closed 처리
+- UTP AuthorityHost, Steam P2P/SDR 표현과 Unity 기본 설정은 허용
+- 일반 `server`, `listen`, `relay`, `socket` 단어 자체는 금지하지 않음
+
+[금지 인프라 정책](../../config/infrastructure/ForbiddenInfrastructurePolicy.yaml) ·
+[검증기](../../tools/verify_forbidden_infrastructure.rb)
+
+### 이유
+
+“서버 안 쓴다”는 문서만으로는 시간이 지나며 SDK, BuildProfile, CI workflow나 DB 파일이 다시 들어오는 것을
+막지 못한다. 반대로 단순 금지어 grep은 다음 정상 항목을 오탐한다.
+
+- 방장 `AuthorityHost`의 Bind/Listen
+- Steam P2P/SDR와 Steamworks SDK 선언
+- Unity의 `dedicatedServerOptimizations` 기본 field
+- 문서와 Evidence의 `Docker=0`, `Backend=0` 설명
+- Input/Physics/AssetDatabase에서 쓰는 일반적인 backend 용어
+
+그래서 의미가 강한 artifact와 API signature만 검사하고, 정상 Host P2P 경계는 positive fixture로 고정했다.
+
+### 배제한 대안
+
+- repository 전체에서 `server`, `backend`, `docker` 단어를 무조건 금지
+- 문서만 확인하고 실행 가능 파일·Package는 검사하지 않음
+- Unity generated `Library/PackageCache`까지 current repository source인 것처럼 검사
+- 금지 infra가 발견돼도 경고만 출력하고 성공 종료
+
+### 실제 근거
+
+FDN-009 자체 완료 Evidence snapshot은 Git-visible inventory `259`, content file `83`, package manifest `2`였다.
+이후 ART-001 산출물을 포함해 같은 검증기를 다시 실행한 snapshot은 inventory `266`, content `88`, manifest `2`였다.
+두 시점 모두 다음 결과가 같았다.
+
+- Backend/Database/Dedicated/Container/Audit violation 모두 `0`
+- Policy self-test `14/14`, assertion `245`
+- Rule ID `37/37` unique·exercised
+- 독립 adversarial fixture `12`종 거부
+- matched content·absolute path 출력 `0`
+
+[FDN-009 Evidence](../evidence/G0/FDN-009/EV-FDN-009-20260827-r01.yaml) ·
+[ART-001 시점 재검사 Evidence](../evidence/G0/ART-001/EV-ART-001-20260827-r01.yaml)
+
+### 아직 증명하지 않은 것
+
+Git history, Remote, submodule 내부, ignored Build/Library, 외부 실행 System, 난독화 code와 이름을 바꾼 binary
+내부 SDK까지 증명하지 않는다. Release artifact는 `ALP-002`, `STM-013`에서 다시 검사한다.
+
+---
+
+## 4.12 `ART-001` — Asset보다 먼저 고정한 Style·Interop·Visual QA Profile
+
+### 선택
+
+세 개의 versioned Foundation Profile을 만들었다.
+
+1. [LowPolyStyleProfile](../../config/art/LowPolyStyleProfile.yaml)
+2. [ModelInteropProfile](../../config/art/ModelInteropProfile.yaml)
+3. [AlphaVisualQAProfile](../../config/art/AlphaVisualQAProfile.yaml)
+
+모든 Profile은 `START/Foundation` 상태다.
+
+- 문서에서 이미 확정된 invariant는 `DECIDED`
+- 첫 비교를 위한 가역적 기술값은 `START`
+- 사용자 시각 Gate가 필요한 최종값은 owner와 Gate를 가진 `DEFERRED/null`
+- `LOCKED` 값, 시각 승인 claim과 실제 Asset 생성은 `0`
+
+### 이유
+
+Character, Weapon과 Map을 먼저 개별 제작하면 Blender file마다 scale, axis, bevel, normal, material import와
+QA light가 달라질 수 있다. 그 상태에서 Unity 결과를 수동 rotation/scale/normal 보정하면 source 문제를
+숨기고 Prefab 간 품질이 흔들린다.
+
+Profile을 먼저 만든 이유는 최종 미술 취향을 조기에 확정하기 위해서가 아니라, 비교 방법과 책임자를 먼저
+고정하기 위해서다.
+
+### 주요 기술 선택
+
+#### LowPolyStyle
+
+- Silhouette/Motion 우선, 하나의 World scale·material 언어
+- Bevel class `B0 intentional none`, `B1 rigid readability`, `B2 soft hero`
+- 실제 final Bevel 폭은 AssetBrief와 후속 Gate 전까지 null
+- Normal class `Flat`, `Hard Edge`, `Authored Smooth`
+- Material family `6종`
+- Palette는 semantic role만 고정하고 최종 swatch 값은 null
+- Photo scan, exact weapon replica, logo/serial/marking, gameplay bounds를 바꾸는 deformation 금지
+
+#### ModelInterop
+
+- Blender source: `+Z Up`, Character `-Y Forward`
+- FBX export mapping: `-Z Forward`, `+Y Up`
+- Unity: `+Y Up`, `+Z Forward`, `+X Right`
+- `1 meter = 1 Unity unit`, root scale `(1,1,1)`, negative/manual post-import correction `0`
+- FBX Model export option `20개`를 preset digest로 고정
+- Leaf bone `0`, explicit L/R logical bone, Finger/Toe bone `0`
+- Unity material auto-import `0`, 승인 Material family remap
+- GenerationManifest가 Toolchain/Profile/Preset/source/FBX/Prefab identity를 추적
+
+#### AlphaVisualQA
+
+- URP Lit을 **제품 최종 Shader가 아닌 QA reference START**로 사용
+- Unity Linear color space, tone mapping/auto exposure 없이 neutral comparison
+- Front/Side/Back/ThreeQuarter orthographic view
+- `2/3/4인 × 16:9/16:10/21:9 × Min/Max gameplay camera` capture matrix
+- L/R Punch/Kick, Grab/Lift/Throw, Dropkick, Ragdoll/GetUp, 4 Weapon과 전체 lifecycle, Lobby/Disconnect/Menu,
+  Cosmetic/Hazard/Patch12/worst-case scenario ID 고정
+- pixel-perfect·임의 DeltaE 자동 승인 대신 의미 있는 hue/value/specular/silhouette drift를 사람 Gate에서 검토
+
+### 배제한 대안
+
+- Profile 없이 Character/Weapon/Map을 먼저 양산
+- FBX별 수동 rotation/scale/normal 보정
+- Rejected image의 색이나 임의 Hex를 최종 Palette로 복사
+- QA light/camera를 Product Lighting/Gameplay Camera로 확정
+- Blender export 또는 Unity import 성공을 시각 승인으로 간주
+- C1b 전 Character 비율, Weapon exact silhouette, final LOD/GPU budget을 `LOCKED` 처리
+
+### 실제 근거
+
+- Profile `3`, unique ID `3`, ART-001 owner `3`
+- `LOCKED` state `0`, visual approval claim `0`, generated Asset/Capture `0`
+- Semantic mutation test `24/24`, assertion `206`
+- ART-001 Git scope path `8`, 범위·asset output violation `0`
+- Blender `5.2.0 LTS` FBX option `20`, missing `0`, invalid enum `0`
+- Unity ModelImporter property `18`, missing `0`; SkinWeights enum `Standard/Custom`
+- Unity 전체 EditMode `42/42`, PlayMode `4/4`
+
+[ART-001 Evidence](../evidence/G0/ART-001/EV-ART-001-20260827-r01.yaml)
+
+### 아직 증명하지 않은 것
+
+- `.blend` export, 실제 FBX 내용, Unity Importer 실행과 Prefab
+- Blender↔Unity side-by-side render parity
+- 2·3·4인 실제 Camera capture
+- 사용자 시각 승인
+- 최종 Palette, Bevel 폭, Product Shader/Lighting, gameplay Camera와 성능 예산
+
+---
+
+## 5. 왜 이 선택들이 함께 있어야 하는가
+
+### 5.1 UTP 선택만으로 P2P 구조가 안전해지지는 않는다
+
+Transport를 UTP로 골라도 Presentation이 Simulation을 바꾸거나 Input이 직접 Rigidbody를 움직이면 Host Authority가
+흐려진다. 그래서 Transport Adapter, ModuleGraph, renderless kernel과 Physics cadence를 함께 고정했다.
+
+### 5.2 Local 저장만으로 Backend 0이 보장되지는 않는다
+
+Preset을 local file로 저장해도 나중에 Firebase SDK, Docker Compose나 Dedicated BuildProfile이 들어오면 제품 구조가
+바뀐다. 그래서 AtomicLocalStorage와 ForbiddenInfrastructure Guard가 한 쌍이다.
+
+### 5.3 Exact Toolchain만으로 Art 품질이 보장되지는 않는다
+
+Unity와 Blender version이 같아도 exporter/importer option, material remap, camera framing이 다르면 결과가 달라진다.
+그래서 ToolchainProfile 위에 LowPolyStyle, ModelInterop과 AlphaVisualQA Profile을 추가했다.
+
+### 5.4 Test 개수만으로 완료를 증명할 수는 없다
+
+`Passed` XML에 skip/not-run이 섞이거나, mock kernel이 제품 kernel과 다르면 숫자는 의미가 없다.
+그래서 같은 Runtime code 실행, strict NUnit parser, task-specific Evidence와 독립 adversarial review를 함께 사용했다.
+
+---
+
+## 6. 검증 결과를 해석하는 방법
+
+Foundation 마지막 ART-001 Evidence snapshot의 핵심 수치는 다음과 같다.
+
+이 보고서 파일을 추가한 뒤 금지 인프라 검증기를 다시 실행한 현재 값은 Git-visible inventory `267`,
+content file `88`, package manifest `2`, 전체 violation `0`이다. 아래 `266`은 보고서 작성 직전
+ART-001 Evidence에 고정된 재현 snapshot이므로 서로 충돌하지 않는다.
+
+| 항목 | 결과 | 해석 경계 |
+|---|---:|---|
+| Unity EditMode | `42/42` | 실제 Match Gameplay 완성 |
+| Unity PlayMode | `4/4` | Windows Player Build·LAN P2P 성공 |
+| Art Profile mutation | `24/24`, `206 assertions` | 시각 품질 승인 |
+| Forbidden infra | inventory `266`, violation `0` | Git history·ignored Build·외부 서비스 전체 부재 |
+| Evidence manifest | `39`개 구조 검증 | 각 미래 Feature의 수동 체감 승인 |
+| Player Build | `0` | Build 불가능을 뜻하지 않음. 사용자 요청에 따라 실행하지 않았음 |
+| Blender export / Unity art import | `0 / 0` | Profile 정의 실패를 뜻하지 않음. 실제 source/import parity 검증이 후속임 |
+| Docker / Deploy | `0 / 0` | 실제 명령은 실행하지 않았지만 ignored 영역·외부 System 전체 부재까지 증명하지는 않음 |
+
+수치는 해당 Task가 주장한 범위 안에서만 읽어야 한다. 예를 들어 Physics PlayMode `2/2`는 Contact와 Joint
+smoke를 뜻하지 Character combat feel 승인을 뜻하지 않는다. UTP package test `4/4`도 실제 LAN 연결 성공이 아니다.
+
+---
+
+## 7. 아직 남아 있는 Foundation·G0 작업
+
+### 7.1 `LIC-001`
+
+외부 Package, Font, Audio와 Asset의 source/version/license/NOTICE inventory가 아직 없다.
+현재 Package가 동작한다는 사실과 출시 시 재배포 권리가 있다는 사실은 다르기 때문에 반드시 별도로 닫아야 한다.
+금지되거나 불명확한 License가 발견되면 제거·대체를 임의 결정하지 않고 사용자에게 선택을 요청해야 한다.
+
+### 7.2 `BLD-001`
+
+Windows x64 Development/Steam Build Profile, Company/Product ID, Scene list와 수동 Build 안내가 아직 없다.
+이 Task도 Profile만 준비하고 Player Build 자체는 실행하지 않는다.
+
+현재 ProjectSettings는 `companyName: DefaultCompany`, `productName: Project hotfix`이고
+Application Identifier도 `com.Unity-Technologies.com.unity.template.urp-blank` 계열 Template 값이다.
+`Project Hotfix` 자체도 가칭이므로 Company Name·Product Name·플랫폼 Application Identifier를 실제
+제품값으로 고정하기 전 사용자 승인이 필요하다. 현재 Build Scene도 Template `SampleScene` 한 개뿐이므로
+BLD-001의 Scene list는 `START/placeholder`일 뿐 release-ready 목록으로 표시하면 안 된다.
+
+### 7.3 C1b
+
+`Hybrid Core v0.13`은 Character 방향 승인이지 exact 비율·Collider·Reach·Mesh 승인이 아니다.
+다음 실제 제작 단계는 `C1B-002..006`의 orthographic measurement와 사용자 `UG-C1B`다.
+
+`C1B-002`의 수치 후보 문서화는 현재 Profile 안에서 진행할 수 있다. 하지만 `C1B-003`부터 `.blend/.fbx`
+production binary가 생긴다. 현재 Git LFS는 설치되지 않았고 Remote도 `0`이며 Binary 정책은 해당 파일의
+commit을 금지한다. 따라서 C1B-003을 시작하기 전 Git LFS 설치, Remote 선택과 Binary policy 변경을
+사용자에게 승인받아야 한다.
+
+### 7.4 구현되지 않은 핵심 Runtime
+
+- 제품 Action Map과 tap/hold/chord resolver
+- Character Rigidbody controller, Grab, Ragdoll, Down 누적
+- Shared Camera
+- Round, Score, Patch12, Weapon combat와 Supply
+- 실제 UTP Adapter, Protocol, Lobby와 reconnect
+- Steam Auth/Friends Lobby/Invite/Code/P2P/SDR
+- Preset schema·migration·UI와 persistentDataPath composition
+
+---
+
+## 8. 결정 변경이 필요한 경우
+
+Foundation 선택은 영원히 수정 불가한 코드가 아니라, 변경 비용과 검증 책임을 명확히 만든 기준선이다.
+
+| 변경 | 필요한 조치 |
+|---|---|
+| Unity/Blender patch 변경 | ToolchainProfile revision, Package/Project hash 재기록, compile·Physics·Interop 회귀 |
+| Package 추가·교체 | 소유 module 명시, manifest/lock 동시 변경, LIC-001 갱신, Architecture test |
+| Physics cadence 변경 | PhysicsProfile revision, Contact/Joint와 Gameplay·Network cadence 전체 재검증 |
+| UTP 이외 Alpha transport | Transport Adapter 계약과 trusted-direct 범위 재검토 |
+| Steam transport 도입 | Alpha UTP fallback과 분리, 실제 Steam 계정 2·3·4인 수동 검증 |
+| Backend·DB·Docker·Dedicated 도입 | 단순 구현 변경이 아니라 제품 범위 변경. 사용자 승인과 PRD/SRS 선행 수정 필요 |
+| 최종 Palette/Bevel/Shader/Camera Lock | 해당 downstream 사용자 Gate와 실제 Unity capture 필요 |
+| 큰 Binary 추가 | Binary inventory·license 갱신, LFS 설치/Remote 확인 전 commit 금지 정책 적용 |
+
+특히 금지 인프라를 도입하는 변경은 “개발 편의를 위한 내부 구현”으로 조용히 처리할 수 없다.
+현재 제품의 운영비·접속 구조·보안 경계를 바꾸므로 상위 계약을 먼저 변경해야 한다.
+
+---
+
+## 9. Commit·Evidence 빠른 색인
+
+아래 Commit은 Task 실행 중 Evidence가 가리킨 임시 revision이 아니라, 해당 Task 산출물이 현재 Git history에
+최초 포함된 Commit의 축약 hash다. `FDN-001` Evidence 작성 시점의 Git 상태는 아직 `UNBORN`이었고,
+그 산출물은 뒤이은 `b36bceb` 초기 Commit에 함께 포함됐다.
+
+| 범위 | Commit | 주요 근거 |
+|---|---|---|
+| `FDN-001`, `010`, `011`, `002` | `b36bceb` | [FDN-001](../evidence/G0/FDN-001/EV-FDN-001-20260826-r01.yaml), [FDN-010](../evidence/G0/FDN-010/EV-FDN-010-20260826-r01.yaml), [FDN-011](../evidence/G0/FDN-011/EV-FDN-011-20260826-r01.yaml), [FDN-002](../evidence/G0/FDN-002/EV-FDN-002-20260826-r01.yaml) |
+| `FDN-003` | `6ce290f` | [Module Evidence](../evidence/G0/FDN-003/EV-FDN-003-20260826-r01.yaml) |
+| `FDN-004` | `093022d` | [Input Evidence](../evidence/G0/FDN-004/EV-FDN-004-20260826-r01.yaml) |
+| `FDN-005` | `38f583b` | [Physics Evidence](../evidence/G0/FDN-005/EV-FDN-005-20260827-r01.yaml) |
+| `FDN-006` | `6256a40` | [Transport Evidence](../evidence/G0/FDN-006/EV-FDN-006-20260827-r01.yaml) |
+| `FDN-007` | `e46f220` | [Test Foundation Evidence](../evidence/G0/FDN-007/EV-FDN-007-20260827-r01.yaml) |
+| `FDN-008` | `9e3ce6c` | [Local Storage Evidence](../evidence/G0/FDN-008/EV-FDN-008-20260827-r01.yaml) |
+| `FDN-009` | `9a7018d` | [Infrastructure Guard Evidence](../evidence/G0/FDN-009/EV-FDN-009-20260827-r01.yaml) |
+| `ART-001` | `2faee33` | [Art Profile Evidence](../evidence/G0/ART-001/EV-ART-001-20260827-r01.yaml) |
+
+---
+
+## 10. 최종 판단
+
+현재까지의 Foundation은 기능을 많이 만든 단계가 아니라 **앞으로 기능을 잘못된 방향으로 만들지 않게 한 단계**다.
+
+- Server 중심 구조로 미끄러지지 않게 했다.
+- Authority, Input, Physics, Transport와 Presentation 책임을 분리했다.
+- 손상 가능한 로컬 저장에 복구 경계를 만들었다.
+- Test가 제품 코드와 분리된 모형이 되지 않게 했다.
+- Blender와 Unity 에셋 품질을 수동 보정으로 숨기지 않게 했다.
+- 아직 하지 않은 Build, Steam, Gameplay와 시각 승인을 완료했다고 과장하지 않게 했다.
+
+따라서 다음 작업은 Foundation을 다시 넓히는 것이 아니라 `LIC-001`을 먼저 닫는 것이다. 그 다음
+`BLD-001`에서는 Company/Product/Application ID 승인을 받고, `C1B-002` 후보 문서화 뒤
+`C1B-003` 전에는 Git LFS·Remote 정책 승인을 받아야 한다. 이 승인 경계 안에서 C1b와 실제 Gameplay를
+구현한다.
