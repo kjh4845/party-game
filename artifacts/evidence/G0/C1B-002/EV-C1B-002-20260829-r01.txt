@@ -1,0 +1,84 @@
+EV-C1B-002-20260829-r01
+TASK=C1B-002 normalized exact proportion candidate
+CORE_REVISION=06299d53a874c9d4b035d86ceb17820c7b339957
+PLAYER_BUILD=0 BLENDER_EXPORT=0 FBX_EXPORT=0 UNITY_IMPORT=0 CAPTURE=0 DOCKER=0 DEPLOY=0
+
+DIRECTION_SOURCE
+- PROFILE=C1a-Hybrid-Core-v0.13
+- PATH=artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.13_BELLY_CORRECTED_REVIEW.png
+- SHA256=c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616
+- ROLE=DIRECTION_ONLY
+- PIXEL_MEASUREMENT_USED=false
+- REFERENCE_REPLICA_ALLOWED=false
+- The review image is not a Player asset and does not grant exact geometry, collider, reach or production rights.
+
+CANDIDATE_PROFILE
+- PROFILE_ID=CharacterProportionProfile-C1B-002-r01
+- VERSION=0.1.0-start
+- STATE=START
+- CANDIDATE_STATUS=CANDIDATE
+- USER_APPROVAL_RECORDED=false
+- VISUAL_APPROVAL_CLAIMED=false
+- LOCKED_VALUE_COUNT=0
+- NORMALIZED_HEIGHT_H=1.0
+- GAMEPLAY_CHARACTER_HEIGHT_METERS=null
+- NEUTRAL_BOUNDS_WIDTH_H=0.58
+- NEUTRAL_BOUNDS_DEPTH_H=0.265
+- HEAD_HEIGHT_H=0.20
+- FOREARM_TERMINAL_BOTTOM_ABOVE_CROTCH_H=0.045
+- LOWER_LEG_TERMINAL_BOTTOM_H=0.0
+- LANDMARK_COUNT=17
+- LANDMARK_EXACT_HEIGHT_CROSS_SECTION_COUNT=17
+- SILHOUETTE_ENVELOPE_COUNT=11
+- DEFERRED_DECISION_FIELDS=10
+- MEASUREMENT_SET_SHA256=76c98acfe8cfbf01b51936b29c2f6ba2e78c26222dfd53c033fe84233e562722
+- VISIBLE_SEPARATE_HAND_FINGER_FIST_FOOT_SHOE_TOE=0
+
+COMMAND=ruby tools/verify_character_proportion_profile.rb --check-c1b002-scope
+PROFILE_LOADED=true
+LANDMARK_COUNT=17
+ENVELOPE_COUNT=11
+SOURCE_HASH_MATCH=true
+PIXEL_MEASUREMENT_USED=false
+USER_APPROVAL_RECORDED=false
+LOCKED_VALUE_COUNT=0
+GENERATED_OR_EXECUTED_COUNT=0
+TOTAL_VIOLATIONS=0
+FINAL_RESULT=PASS
+
+COMMAND=ruby tools/tests/verify_character_proportion_profile_test.rb
+TEST_RUNS=22
+TEST_ASSERTIONS=152
+TEST_FAILURES=0
+TEST_ERRORS=0
+TEST_SKIPS=0
+FINAL_RESULT=PASS
+
+COMMAND=ruby tools/verify_art_profiles.rb && ruby tools/tests/verify_art_profiles_test.rb
+ART_PROFILE_VIOLATIONS=0
+ART_TEST_RUNS=24
+ART_TEST_ASSERTIONS=206
+FINAL_RESULT=PASS
+
+COMMAND=ruby tools/verify_forbidden_infrastructure.rb
+GIT_VISIBLE_INVENTORY_FILES=281
+CONTENT_FILES_SCANNED=100
+PACKAGE_MANIFESTS_SCANNED=2
+TOTAL_VIOLATIONS=0
+FINAL_RESULT=PASS
+
+COMMAND=find artifacts/evidence -name '*.yaml' ... | ruby tools/verify_evidence_manifest.rb
+EVIDENCE_MANIFEST_VALIDATION=PASS files=44
+
+COMMAND=python3 artifacts/evidence/docs/verify_doc_baseline.py
+ACTIVE_DOCS=12/12
+PLAN_TASKS=173
+PLAN_EFFORT_DAYS=251.0
+FINAL_RESULT=PASS
+
+BOUNDARY
+- C1B-002 completes one reproducible numeric candidate, not UG-C1B approval.
+- Actual Blender source/render belongs to C1B-003, action poses and four-player lineup to C1B-004, Unity parity to C1B-005, and numeric approval to C1B-006.
+- Gameplay height meters, collider, reach, mass, joint, ragdoll, rig, topology, UV, LOD, material, camera and animation values remain null and owned by their explicit downstream tasks.
+- The 0.005H comparison thresholds are START targets, not final visual approval.
+- Before C1B-003, the first-party sourceOwner label requires explicit user confirmation.

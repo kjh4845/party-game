@@ -8,7 +8,7 @@
 | 기준일 | 2026-08-26 |
 | 현재 목표 | Alpha에서 2·3·4인 전체 흐름과 실제 무기 전투를 검증한 뒤 Steam 통합 |
 | 기준 문서 | PRD 1.8.0, SRS 1.8.0, PATCH_DESIGN 0.5.0과 현행 분야별 사양 |
-| 현재 구현 상태 | FDN-001..011·ART-001·LIC-001·BLD-001 완료: private GitHub origin과 repository-local Git LFS, Unity6.3 URP, module/Input/Physics/UTP, renderless SimulationHarness/test-evidence, local atomic storage, 금지 인프라 guard, START art/license 기반과 Windows x64 Development·Steam Reserved Profile 존재. Review image18은 일반 Git 참고 전용·shipping0. Gameplay/Network code·Player Build 없음 |
+| 현재 구현 상태 | FDN-001..011·ART-001·LIC-001·BLD-001·C1B-002 완료: private GitHub origin과 repository-local Git LFS, Unity6.3 URP, module/Input/Physics/UTP, renderless SimulationHarness/test-evidence, local atomic storage, 금지 인프라 guard, START art/license 기반과 Windows x64 Profile 존재. C1B proportion은 H=1 START/CANDIDATE이며 미승인. Review image18은 일반 Git 참고 전용·shipping0. Gameplay/Network code·Player Build 없음 |
 | 계획 규모 | 173 Task, 251.0 집중 개발일 |
 | 자동화 금지 | Unity Player Build, Steam 배포, 외부 서비스 배포 |
 
@@ -187,7 +187,7 @@ BLOCKED, DEFERRED를 사용한다.
 | ID | 일 | 목표 | 선행 | 요구 | 산출물 | 완료 기준 | Gate | 상태 |
 |---|---:|---|---|---|---|---|---|---|
 | C1B-001 | 0.5 | v0.13 C1a 승인 source 고정 | 역사적 승인 | CHAR | source record | 승인 파일·hash 일치 | UG-C1A | PASSED |
-| C1B-002 | 1.5 | normalized exact proportion 후보 작성 | DOC-005,C1B-001,ART-001 | CHAR | profile candidate | front/side depth와 landmark 누락 0 | — | READY |
+| C1B-002 | 1.5 | normalized exact proportion 후보 작성 | DOC-005,C1B-001,ART-001 | CHAR | `CharacterProportionProfile-C1B-002-r01` + fail-closed guard | H1 START/CANDIDATE, landmark17·exact-height front/side section17·envelope11·누락0, bounds W0.58/D0.265, head0.20·terminal-crotch0.045; gameplay meter/physics/production값·pixel역산·승인·asset·Build0, mutation22/152 | — | PASSED |
 | C1B-003 | 2 | 동일 source의 front/side/back/3/4 Blockout 제작 | C1B-002 | CHAR | Blender source·renders + first-party/LFS evidence | 사용자 확인 sourceOwner, canonical `.blend`는 Unity Assets 밖·LFS pointer/upload/fresh fetch, view별 silhouette 일치 | — | NOT_STARTED |
 | C1B-004 | 1.5 | Neutral·Grab·Strike·L/R Kick·Dropkick과 4인 lineup 제작 | C1B-003 | CHAR | pose/lineup bundle | 별도 손·발 Mesh 0, Hand/Kick terminal과 2/3/4 action 판독 기준 준비 | — | NOT_STARTED |
 | C1B-005 | 1.5 | Blender→Unity Blockout 동등성 확인 | C1B-003..004,FDN-002 | CHAR | import comparison | scale·axis·silhouette의 의미 있는 drift 0 | — | NOT_STARTED |
@@ -401,7 +401,7 @@ Workshop, 공식 맵 6개, Patch40, 가격·상점·출시 운영은 Steam 통�
 4. FDN-002 Unity project, FDN-003 module boundary
 5. FDN-004..009 package·test·local storage·forbidden-infrastructure guard
 6. ART-001 style/interoperability profile, LIC-001 license inventory, BLD-001 수동 Build Profile 준비
-7. C1B-002..006 exact profile와 사용자 승인
+7. C1B-003..006 Blockout·Pose·Unity parity와 사용자 승인(C1B-003 직전 first-party sourceOwner 확인)
 8. G1 Character/Input·AIR·Alpha Action Animation부터 한 Task씩 실행
 9. WPA-001..003으로 네 Weapon low-poly 결과를 잠근 뒤 WPN 구현 시작
 10. UG-W1 뒤 FIR-001..003으로 7/30 no-reload state, Projectile, Recoil/Spread를 분리 구현

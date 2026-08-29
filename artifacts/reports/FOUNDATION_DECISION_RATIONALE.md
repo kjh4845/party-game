@@ -5,14 +5,14 @@
 | 항목 | 내용 |
 |---|---|
 | 문서 목적 | 기초 구현에서 무엇을 선택했고 왜 그렇게 선택했는지, 배제한 대안과 검증 근거를 한 문서에서 설명 |
-| 기준 Git revision | `0eeceee` (`chore: enable Git LFS asset workflow`) |
-| 포함 범위 | `FDN-001..011`, `ART-001`, `LIC-001`, `BLD-001` |
+| 기준 Git revision | `06299d5` (`feat: define C1B character proportion candidate`) |
+| 포함 범위 | `FDN-001..011`, `ART-001`, `LIC-001`, `BLD-001`, `C1B-002` |
 | 작성 기준 | 실제 repository, versioned config, test 결과와 Evidence를 우선 사용. 직접 기록되지 않은 선택 연결은 `추론/설계 해석`으로 표시 |
 | 문서 성격 | 설명용 결정 근거서. PRD/SRS/분야별 사양을 대체하거나 새 제품 계약을 만들지 않음 |
 
 > **범위 주의:** 핵심 기술 Foundation `FDN-001..011`, 첫 Art Profile `ART-001`, source 기준
-> 라이선스/NOTICE inventory `LIC-001`과 Windows x64 Profile 준비 `BLD-001`은 완료됐다. 하지만 C1b와
-> Gameplay는 구현되지 않았고 Player Build도 실행하지 않았다. 실제 Player 포함물 기준 최종 NOTICE 감사는
+> 라이선스/NOTICE inventory `LIC-001`, Windows x64 Profile 준비 `BLD-001`과 C1b 수치 후보 `C1B-002`는 완료됐다.
+> 하지만 C1b Blockout·Pose·Unity parity·사용자 승인은 완료되지 않았고 Gameplay와 Player Build도 실행하지 않았다. 실제 Player 포함물 기준 최종 NOTICE 감사는
 > 사용자가 Build한 뒤에만 가능하다. 따라서 이 문서는 “G0 전체 완료”, “게임 완성” 또는 “Steam 기능 구현”을
 > 선언하지 않는다.
 
@@ -41,6 +41,7 @@ Foundation의 핵심 방향은 다음 한 문장으로 정리된다.
 | 2·3·4인과 UI 없는 Simulation 검증 | 같은 runtime kernel을 Unit/EditMode/PlayMode에서 실행 | 화면이나 Scene 없이 Authority 로직 회귀 검증 |
 | Blender와 Unity 결과의 품질 일치 | Toolchain exact lock + ModelInterop/VisualQA START profile | 에셋별 수동 보정과 품질 편차 방지 |
 | `.blend/.fbx` production source 저장 | repository-local Git LFS + private `origin/main`, existing PNG migration 0 | 대형 source가 Git history를 비대하게 만들지 않도록 함 |
+| v0.13 방향을 재현 가능한 Blockout으로 변환 | `H=1.0` C1B proportion START/CANDIDATE + exact-height landmark section | 이미지 pixel 복제 없이 같은 수치 source를 반복 제작 |
 | Docker·Dedicated·자체 Backend 영구 제외 | 경로·코드·Package 기반 금지 인프라 Guard | 시간이 지나며 금지 구조가 조용히 재유입되는 것 방지 |
 | 외부 Package·Asset의 출처/권리 누락 금지 | 58 Package와 18 review image의 fail-closed license inventory | 미등록 에셋의 빌드 반입과 NOTICE 누락 방지 |
 | 사용자가 직접 Build | Windows x64 Development·Steam Reserved Profile과 수동 절차만 준비, Player Build 0 유지 | 코드 검증과 배포 권한을 분리 |
@@ -918,6 +919,68 @@ migration 결정을 요구한다.
 
 ---
 
+## 4.15 `C1B-002` — Pixel 역산이 아닌 H-normalized 비율 후보
+
+### 선택
+
+- 승인 v0.13은 `DIRECTION_ONLY`로 유지하고, 이미지 pixel을 geometry·Bone·Collider·Anchor·reach나 gameplay
+  scale로 역산하지 않았다.
+- `CharacterProportionProfile-C1B-002-r01` 하나에 `H=1.0`의 dimensionless Neutral 후보를 기록했다.
+- Crown·Chin·Chest·Pelvis·Crotch core `5개`와 Shoulder·Elbow·Forearm terminal·Hip·Knee·lower-leg terminal
+  좌우 `12개`, 합계 `17개` landmark에 position과 같은 높이의 front-view width·side-view depth를 모두 붙였다.
+- Head/Torso/Arm/Leg의 연속 외곽은 별도 silhouette envelope `11개`로 기록했다. Neutral bounds 후보는
+  width `0.58H`, depth `0.265H`다.
+- v0.13 방향을 수치화한 최소 불변은 head height `0.20H`, forearm terminal bottom이 crotch보다
+  `0.045H` 위, lower-leg terminal bottom이 ground `0H`, 별도 가시 hand/finger/fist/foot/shoe/toe `0`이다.
+- 전체 measurement set은 SHA-256 `76c98ac…2722`로 고정했지만 상태는 `START/CANDIDATE`, 사용자 승인·
+  visual approval·locked value는 모두 `0`이다.
+- 실제 Character height(m), Collider·reach·mass·joint·Ragdoll, prototype Rig, production helper/topology/UV/LOD/
+  material, Camera와 Animation은 실제 WBS Task와 Gate에 `null`로 남겼다.
+
+[Character Proportion Profile](../../config/character/CharacterProportionProfile.yaml) ·
+[검증기](../../tools/verify_character_proportion_profile.rb) ·
+[C1B-002 Evidence](../evidence/G0/C1B-002/EV-C1B-002-20260829-r01.yaml)
+
+### 이유
+
+v0.13은 front·side·3/4 인상을 보여 주지만 orthographic 치수표가 아니다. Pixel을 그대로 재면 perspective,
+framing과 생성 이미지의 비일관성까지 생산 Mesh 계약으로 굳어진다. 반대로 “둥글고 짧고 굵게”만 남기면
+C1B-003 제작자가 매번 다른 비율을 해석하게 된다. 그래서 source image와 독립된 한 개의 normalized 수치 후보를
+만들고, 각 필수 landmark에 동일 높이 단면을 직접 연결했다.
+
+Shape 후보와 Physics 값을 분리한 이유도 같다. Collider·reach·mass를 Blockout 전에 함께 잠그면 C2 playtest에서
+문제가 생겼을 때 visual shape를 physics 숫자로 숨길 가능성이 커진다. C1B-002는 재현 가능한 외형 입력만 제공하고,
+실제 물리·Rig·production 값은 해당 downstream Task가 Evidence와 함께 결정한다.
+
+### 배제한 대안
+
+- v0.13 PNG의 pixel 거리로 exact geometry·Bone·Collider를 역산
+- front landmark만 기록하고 side depth는 Blender 작업자가 임의 보완
+- `CANDIDATE`를 `LOCKED` 또는 사용자 승인 C1b로 표시
+- C1B-002에서 Blender·FBX·Unity Asset, Pose·4인 lineup이나 Collider까지 미리 생성
+- 실제 키(m), reach, topology, material, Camera와 Animation 값을 근거 없이 함께 확정
+
+### 실제 근거
+
+- source SHA-256 일치 `1`, pixel measurement·reference replica `0/0`
+- normalized landmark `17/17`, exact-height front/side cross-section `17/17`, 누락 `0`
+- silhouette envelope `11`, bounds `1.0H × 0.58H × 0.265H`
+- head `0.20H`, terminal-crotch `0.045H`, lower terminal ground `0H`
+- 사용자 승인·visual approval·locked value `0/0/0`
+- Blender/FBX/Unity/capture/Collider/reach profile/Player Build 생성·실행 `0`
+- fail-closed mutation `22 runs / 152 assertions`, 실패·오류·skip `0`
+- 독립 요구·schema 최종 blocker `0`
+
+### 아직 증명하지 않은 것
+
+- 실제 Blender front/side/back/3/4 Blockout과 후보 수치의 시각적 적합성
+- Neutral·Grab·Strike·좌우 Kick·Dropkick Pose와 4인 lineup 판독성
+- Blender→FBX→Unity silhouette·landmark·bounds parity
+- 실제 gameplay height, Collider·reach·mass·Joint·Ragdoll과 action feel
+- `UG-C1B` 사용자 수치 승인과 production Mesh 품질
+
+---
+
 ## 5. 왜 이 선택들이 함께 있어야 하는가
 
 ### 5.1 UTP 선택만으로 P2P 구조가 안전해지지는 않는다
@@ -957,8 +1020,8 @@ identity·실행 결과·NOTICE 감사는 별도 Evidence로 남긴다.
 
 ## 6. 검증 결과를 해석하는 방법
 
-마지막 기능성 Foundation Task인 BLD-001과 이후 저장소/LFS·first-party inventory 보충 Evidence의 핵심 수치는
-다음과 같다. 각 Task의 역사 수치는 덮어쓰지 않는다. BLD-001은 실제 Profile 의미를 포함한 전체 EditMode와 기존
+Foundation과 현재 G0의 C1B-002 후보까지 핵심 수치는 다음과 같다. 각 Task의 역사 수치는 덮어쓰지 않는다.
+BLD-001은 실제 Profile 의미를 포함한 전체 EditMode와 기존
 PlayMode를 임시 Project 복사본에서 재실행했으며, 원본 Editor의 미저장 Scene은 건드리지 않았다.
 
 | 항목 | 결과 | 이 결과가 증명하지 않는 것 |
@@ -971,8 +1034,9 @@ PlayMode를 임시 Project 복사본에서 재실행했으며, 원본 Editor의 
 | License source inventory | package `58/58`, review image `18/18` | 최종 Windows Player NOTICE가 완성됨 |
 | First-party production seam | current asset `0`, mutation `22/176` | 아직 존재하지 않는 Asset의 저작자·권리·Player 포함 |
 | Git LFS / Remote | local LFS `3.8.0`, pattern `10`, private `origin/main`, file/candidate `0/0` | 실제 production LFS object upload·fresh fetch |
-| Forbidden infra | inventory `276`, content `97`, manifest `2`, violation `0` | Git history·ignored Build·외부 서비스 전체 부재 |
-| Evidence manifest | `43`개 구조 검증 | 각 미래 Feature의 수동 체감 승인 |
+| C1B proportion candidate | landmark/cross-section `17/17`, envelope `11`, mutation `22/152` | Blockout 적합성 또는 `UG-C1B` 승인 |
+| Forbidden infra | inventory `281`, content `100`, manifest `2`, violation `0` | Git history·ignored Build·외부 서비스 전체 부재 |
+| Evidence manifest | `44`개 구조 검증 | 각 미래 Feature의 수동 체감 승인 |
 | Player Build | `0` | Build 불가능을 뜻하지 않음. 사용자 요청에 따라 실행하지 않았음 |
 | Blender export / Unity art import | `0 / 0` | Profile 정의 실패를 뜻하지 않음. 실제 source/import parity 검증이 후속임 |
 | Docker / Deploy | `0 / 0` | 실제 명령은 실행하지 않았지만 ignored 영역·외부 System 전체 부재까지 증명하지는 않음 |
@@ -996,11 +1060,10 @@ Steam 실행 Evidence나 배포 가능을 주장하지 않는다.
 
 ### 7.2 C1b
 
-`Hybrid Core v0.13`은 Character 방향 승인이지 exact 비율·Collider·Reach·Mesh 승인이 아니다.
-다음 실제 제작 단계는 `C1B-002..006`의 orthographic measurement와 사용자 `UG-C1B`다.
+`C1B-002`는 `H=1.0` START/CANDIDATE를 완료했지만 exact C1b 사용자 승인은 아니다. 남은 실제 제작 단계는
+`C1B-003..006`의 Blockout·Pose/lineup·Unity parity와 사용자 `UG-C1B`다.
 
-`C1B-002`의 수치 후보 문서화는 현재 Profile 안에서 진행할 수 있다. Git LFS와 private `origin`도 준비돼
-`C1B-003`의 `.blend/.fbx` 제작 전제는 해제됐다. 다만 첫 production binary는 source/license/hash inventory,
+Git LFS와 private `origin`은 준비돼 `C1B-003`의 `.blend/.fbx` 저장 전제는 해제됐다. 다만 첫 production binary는 source/license/hash inventory,
 LFS index pointer, object upload와 fresh fetch를 확인한 뒤에만 commit 완료로 처리한다. 첫 record의
 `sourceOwner` 표기는 GitHub handle이나 임시 Company 값으로 추론하지 않고 C1B-003 착수 전에 사용자에게 확인한다.
 
@@ -1061,6 +1124,7 @@ Foundation 선택은 영원히 수정 불가한 코드가 아니라, 변경 비�
 | `BLD-001` | `4b47284` | [Windows Build Profile Evidence](../evidence/G0/BLD-001/EV-BLD-001-20260829-r01.yaml) |
 | `FDN-011` LFS·Remote 보충 | `0eeceee` | [Repository LFS Evidence](../evidence/G0/FDN-011/EV-FDN-011-20260829-r02.yaml) |
 | `LIC-001` first-party 보충 | `0eeceee` | [First-party Inventory Evidence](../evidence/G0/LIC-001/EV-LIC-001-20260829-r02.yaml) |
+| `C1B-002` | `06299d5` | [Normalized Proportion Evidence](../evidence/G0/C1B-002/EV-C1B-002-20260829-r01.yaml) |
 
 ---
 
@@ -1075,7 +1139,7 @@ Foundation 선택은 영원히 수정 불가한 코드가 아니라, 변경 비�
 - Blender와 Unity 에셋 품질을 수동 보정으로 숨기지 않게 했다.
 - 아직 하지 않은 Build, Steam, Gameplay와 시각 승인을 완료했다고 과장하지 않게 했다.
 
-Foundation 표의 기술·Art·license·Build Profile과 production binary 저장 전제까지 닫혔다. 다음 구현 순서는
-`C1B-002`의 exact 비율 후보 문서화다. `C1B-003`의 첫 `.blend/.fbx`부터는 활성 LFS 정책과 source/license
+Foundation 표의 기술·Art·license·Build Profile, production binary 저장 전제와 C1B normalized 후보까지 닫혔다.
+다음 구현 순서는 `C1B-003`의 Blender Blockout이다. 첫 `.blend/.fbx`부터는 활성 LFS 정책과 source/license
 inventory를 실제로 적용하고, 그 직전에 first-party `sourceOwner` 표기를 사용자에게 확인한다. Windows Player
 수동 Build는 실제 Scene과 Alpha 기능이 준비된 뒤 별도 Evidence로 수행한다.

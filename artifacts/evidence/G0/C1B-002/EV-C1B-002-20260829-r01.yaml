@@ -1,0 +1,123 @@
+EvidenceManifest:
+  schemaVersion: 1
+  evidenceProfile: "EvidenceProfile-r01"
+  evidenceId: "EV-C1B-002-20260829-r01"
+  taskId: "C1B-002"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "Core=06299d53a874c9d4b035d86ceb17820c7b339957; Profile=9744e737d4f957fa77e8ee10646f91a4c1209f1109a49f58f4f97144d7fc47e5; Validator=a4eea6caeaaed438131324946552809af5ebc2dad3da3a497bbd4a0700bfdda4; Test=8f5723a66c75b4f655f7fca9ec5e6c57cbf32a671c2fddc5a7de412a4ac7e689; DirectionSource=c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616; LowPolyStyle=1a50465fc86ed3625602d88e4f5f5db835986f335a38892b16f63eb68474918b; ModelInterop=b86e90502ead6d0a3b2a86a26d0f0dae364aa8c4488176f6792a8b6ef5edd8e3; AlphaVisualQA=1049f20a162f334a628deecaf8237da77d57e07cbe1786d55a2d925be8bd2640; CharacterSpec=87979bbaf1cb9c8adcc3886b24302664b81525d489cb56319c80373edbc8bc7c; ArtDirection=e9cb61e038ce04168243dd7b8f7ae015b3df7ddb77e59b1fa9967164e815a11a"
+  buildKind: "NormalizedCharacterProportionCandidateValidationNoAssets"
+  buildVersion: "NotBuilt"
+  environment: "macOS arm64; Ruby 2.6.10; Git source/hash inspection; no Blender or Unity execution"
+  profileVersions: ["CharacterProportionProfile-C1B-002-r01", "LowPolyStyleProfile-ART-001-r01", "ModelInteropProfile-ART-001-r01", "AlphaVisualQAProfile-ART-001-r01", "EvidenceProfile-r01"]
+  requirementIds: ["C1B-002", "SRS-APPEAR-014", "SRS-APPEAR-015", "SRS-APPEAR-018", "AT-028"]
+  commandsOrManualSteps:
+    - "C1B-001 r01..r04, Character/Art 방향, Model Interop와 v0.13 source hash를 전수 대조하고 pixel 치수 역산을 금지"
+    - "H=1.0 neutral coordinate에서 core5와 bilateral6종 L/R, 합계17 landmark의 position과 exact-height front width/side depth를 정의"
+    - "Head·Torso·Arm·Leg용 silhouette envelope11과 neutral bounds를 단일 START/CANDIDATE measurement set으로 기록"
+    - "head0.20H, forearm terminal bottom-crotch0.045H, lower terminal ground0H와 visible hand/finger/fist/foot/shoe/toe0을 검증"
+    - "실제 gameplay height, collider, reach, mass/joint/ragdoll, prototype rig, production helper/topology/UV/LOD/material, camera와 animation을 실제 downstream WBS/Gate에 null로 귀속"
+    - "안전 YAML, duplicate/symlink/oversize, exact source/reference/digest, malformed container, semantic reversal, approval/LOCK, landmark/envelope, downstream/execution과 C1B-002 change scope mutation22종 검증"
+    - "독립 요구·schema 감사에서 발견된 cross-section, WBS owner/gate, malformed crash, semantic drift, lower terminal ground와 반대 의미 문구 문제를 수정하고 최종 blocker0 확인"
+    - "Blender/FBX/Unity Asset, render/capture, collider/reach profile, Player Build, Docker와 Deploy 생성·실행0"
+  observedMetrics:
+    directionSourceHashMatches: 1
+    directionSourcePixelMeasurementsUsed: 0
+    directionSourceReplicaAllowed: 0
+    normalizedHeightH: 1.0
+    gameplayCharacterHeightMetersSpecified: 0
+    neutralBoundsWidthH: 0.58
+    neutralBoundsDepthH: 0.265
+    headHeightH: 0.20
+    forearmTerminalBottomAboveCrotchH: 0.045
+    lowerLegTerminalBottomH: 0.0
+    requiredLandmarks: 17
+    landmarkExactHeightCrossSections: 17
+    missingLandmarksOrCrossSections: 0
+    silhouetteEnvelopes: 11
+    deferredDecisionFields: 10
+    userApprovalRecorded: 0
+    visualApprovalClaimed: 0
+    lockedValueCount: 0
+    generatedOrExecutedAssets: 0
+    defaultVerifierViolations: 0
+    scopeVerifierViolations: 0
+    mutationTestRuns: 22
+    mutationTestAssertions: 152
+    mutationTestFailures: 0
+    mutationTestErrors: 0
+    mutationTestSkips: 0
+    independentReviewFinalBlockers: 0
+    finalGitVisibleInventoryFiles: 281
+    finalForbiddenInfrastructureContentFiles: 100
+    finalForbiddenInfrastructurePackageManifests: 2
+    finalForbiddenInfrastructureViolations: 0
+    activeDocsValidated: 12
+    evidenceManifestsAfterC1b002: 44
+    blenderExecutions: 0
+    unityExecutions: 0
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  expectedThresholds:
+    directionSourceHashMatches: 1
+    directionSourcePixelMeasurementsUsed: 0
+    directionSourceReplicaAllowed: 0
+    normalizedHeightH: 1.0
+    gameplayCharacterHeightMetersSpecified: 0
+    neutralBoundsWidthH: 0.58
+    neutralBoundsDepthH: 0.265
+    headHeightH: 0.20
+    forearmTerminalBottomAboveCrotchH: 0.045
+    lowerLegTerminalBottomH: 0.0
+    requiredLandmarks: 17
+    landmarkExactHeightCrossSections: 17
+    missingLandmarksOrCrossSections: 0
+    silhouetteEnvelopes: 11
+    deferredDecisionFields: 10
+    userApprovalRecorded: 0
+    visualApprovalClaimed: 0
+    lockedValueCount: 0
+    generatedOrExecutedAssets: 0
+    defaultVerifierViolations: 0
+    scopeVerifierViolations: 0
+    mutationTestRuns: 22
+    mutationTestAssertions: 152
+    mutationTestFailures: 0
+    mutationTestErrors: 0
+    mutationTestSkips: 0
+    independentReviewFinalBlockers: 0
+    finalGitVisibleInventoryFiles: 281
+    finalForbiddenInfrastructureContentFiles: 100
+    finalForbiddenInfrastructurePackageManifests: 2
+    finalForbiddenInfrastructureViolations: 0
+    activeDocsValidated: 12
+    evidenceManifestsAfterC1b002: 44
+    blenderExecutions: 0
+    unityExecutions: 0
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/C1B-002/EV-C1B-002-20260829-r01.txt"
+    - "config/character/CharacterProportionProfile.yaml"
+    - "tools/verify_character_proportion_profile.rb"
+    - "tools/tests/verify_character_proportion_profile_test.rb"
+    - "artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.13_BELLY_CORRECTED_REVIEW.png"
+    - "config/art/LowPolyStyleProfile.yaml"
+    - "config/art/ModelInteropProfile.yaml"
+    - "config/art/AlphaVisualQAProfile.yaml"
+    - "docs/CHARACTER_TECHNICAL_SPEC.md"
+    - "docs/ART_DIRECTION.md"
+    - "docs/03_IMPLEMENTATION_PLAN.md"
+    - "artifacts/reports/FOUNDATION_DECISION_RATIONALE.md"
+  failures: []
+  limitations:
+    - "C1B-002 PASS는 재현 가능한 START/CANDIDATE 수치안의 완성을 뜻하며 C1B-006 UG-C1B 사용자 승인이나 LOCK을 뜻하지 않는다."
+    - "v0.13 review image는 direction-only이며 pixel을 geometry/bone/collider/anchor/reach/gameplay scale로 역산하지 않았고 Player asset 또는 shipping rights를 부여하지 않는다."
+    - "Blender source/render는 C1B-003, action pose와 4인 lineup은 C1B-004, Unity parity는 C1B-005, 최종 수치 승인은 C1B-006 소유다."
+    - "실제 gameplay height meters와 downstream physics/rig/production/animation 값은 null이며 해당 WBS와 사용자 Gate 전까지 결정되지 않는다."
+    - "0.005H silhouette/landmark/bounds와 ground pivot은 START 비교 목표이며 최종 시각 승인 수치가 아니다."
+    - "C1B-003 첫 first-party source를 만들기 전에 sourceOwner 표기를 사용자에게 확인해야 한다."
+  userDecision: "Hybrid Core v0.13 방향을 사용하고 Blender와 Unity에서 동일한 품질을 최대한 보장하되, 과명세 없이 구현 계획대로 하나씩 진행하며 승인 필요 시 중단함"
+  recordedAtUtc: "2026-08-29T13:32:44Z"
