@@ -1,0 +1,125 @@
+EV-BLD-001-20260829-r01
+TASK=BLD-001
+COMMAND_KIND=Unity-generated Windows Build Profile preparation and validation; Player Build=0 BuildAndRun=0 Docker=0 Deploy=0
+BASE_REVISION=d840940f2e50a7fb699104bb4000fa1560e25ab0
+
+USER_DECISIONS
+- Temporary companyName=KJH4845
+- Temporary productName=Project Hotfix
+- Temporary Standalone applicationIdentifier=com.kjh4845.projecthotfix
+- Temporary bundleVersion=0.1.0
+- User installed Windows Build Support (Mono)
+- Player Build remains user-only
+- User approved removal of an unintended empty Quality Settings profile override
+
+UNITY_PROFILE_CREATION
+- Unity Build Profiles UI created both tracked BuildProfile assets.
+- RAW_BUILD_PROFILE_YAML_HAND_AUTHORING=0
+- PROFILE_COUNT=2
+- PROFILE_GUIDS_UNIQUE=2
+- DEVELOPMENT_PROFILE=Windows x64 Development
+- DEVELOPMENT_DEFINE=PROJECTHOTFIX_BUILD_DEVELOPMENT
+- DEVELOPMENT_BUILD=true
+- STEAM_PROFILE=Windows x64 Steam Reserved
+- STEAM_DEFINE=PROJECTHOTFIX_BUILD_STEAM_RESERVED
+- STEAM_DEVELOPMENT_BUILD=false
+- TARGET=StandaloneWindows64
+- SUBTARGET=Player
+- ARCHITECTURE=x64
+- SCRIPTING_BACKEND=Mono2x
+- PROFILE_PLAYERSETTINGS_OVERRIDES=0
+- PROFILE_QUALITY_OVERRIDES=0
+- PROFILE_GRAPHICS_OVERRIDES=0
+
+SCENE_AND_STEAM_BOUNDARY
+- GLOBAL_ENABLED_SCENES=1
+- SCENE=Assets/Scenes/SampleScene.unity
+- SCENE_GUID=99c9720ab356a0642a771bea13969a05
+- PROFILE_SCENE_OVERRIDES=0
+- SCENE_STATUS=START_PLACEHOLDER
+- RELEASE_READY_CLAIMED=false
+- STEAM_INTEGRATION_STATUS=RESERVED_NOT_IMPLEMENTED
+- STEAM_SDK=0
+- STEAM_APP_ID=0
+- STEAM_AUTH_LOBBY_INVITE_CODE_P2P_SDR=0
+
+LOCAL_WINDOWS_MODULE
+- WINDOWS_MONO_MODULE_VERIFIED=true
+- WIN64_PLAYER_DEVELOPMENT_MONO_VARIATION=1
+- WIN64_PLAYER_NONDEVELOPMENT_MONO_VARIATION=1
+- WINDOWS_SERVER_VARIATION=0
+
+COMMAND=ruby tools/verify_build_profiles.rb --verify-local-windows-module
+EXPECTED_PROFILE_COUNT=2
+PROFILES_CHECKED=2
+RAW_TARGET_SUBTARGET_INTERPRETED=false
+PACKAGE_IDS_HARDCODED=0
+LOCAL_WINDOWS_MODULE_VERIFIED=true
+FORBIDDEN_ARTIFACT_FILES=0
+TOTAL_VIOLATIONS=0
+FINAL_RESULT=PASS
+
+COMMAND=ruby tools/tests/verify_build_profiles_test.rb
+TEST_RUNS=17
+TEST_ASSERTIONS=100
+TEST_FAILURES=0
+TEST_ERRORS=0
+TEST_SKIPS=0
+FINAL_RESULT=PASS
+
+UNITY_TEST_ISOLATION
+- The open original project contained a modified unsaved Untitled scene.
+- The Test Runner save/discard prompt was cancelled; the original scene was neither saved nor discarded.
+- A copy-on-write temporary project copy was used for final batchmode EditMode and PlayMode tests.
+- The temporary project was not a Player Build and produced no Player artifact.
+
+COMMAND=Unity -batchmode -nographics -runTests -testPlatform EditMode (temporary project copy; no -build)
+NUNIT_RESULT_VALIDATION=PASS
+EDITMODE_TOTAL=52
+EDITMODE_PASSED=52
+EDITMODE_FAILED=0
+EDITMODE_SKIPPED=0
+BUILD_PROFILE_TEST_CASES=10
+
+COMMAND=Unity -batchmode -nographics -runTests -testPlatform PlayMode (temporary project copy; no -build)
+NUNIT_RESULT_VALIDATION=PASS
+PLAYMODE_TOTAL=4
+PLAYMODE_PASSED=4
+PLAYMODE_FAILED=0
+PLAYMODE_SKIPPED=0
+
+COMMAND=ruby tools/verify_forbidden_infrastructure.rb
+GIT_VISIBLE_INVENTORY_FILES=270
+CONTENT_FILES_SCANNED=95
+PACKAGE_MANIFESTS_SCANNED=2
+TOTAL_VIOLATIONS=0
+FINAL_RESULT=PASS
+
+COMMAND=ruby tools/verify_license_inventory.rb --verify-package-cache
+PACKAGE_INVENTORY_COUNT=58
+REVIEW_ASSET_COUNT=18
+PACKAGE_CACHE_MATCHES=58
+PACKAGE_CACHE_EVIDENCE_LOCATORS=40
+TOTAL_VIOLATIONS=0
+FINAL_RESULT=PASS
+
+COMMAND=python3 artifacts/evidence/docs/verify_doc_baseline.py
+ACTIVE_DOCS=12/12
+PLAN_TASKS=173
+PLAN_EFFORT_DAYS=251.0
+FINAL_RESULT=PASS
+
+EXECUTION_BOUNDARY
+- PLAYER_BUILDS=0
+- BUILD_AND_RUN=0
+- STEAM_DEPLOYMENTS=0
+- DOCKER_EXECUTIONS=0
+- PACKAGE_CHANGES=0
+- TRACKED_PLAYER_OUTPUTS=0
+- FINAL_WINDOWS_PLAYER_NOTICE_AUDIT=NOT_EXECUTED
+
+LIMITATIONS
+- Profile validation does not prove Windows Player compilation or execution.
+- SampleScene is a START placeholder, not the final Main/Lobby/Match scene list.
+- Steam Reserved is not a functional Steam build profile before STM-001.
+- Final managed/native component and NOTICE inspection requires a user-built Windows artifact.

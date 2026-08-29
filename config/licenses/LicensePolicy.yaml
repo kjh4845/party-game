@@ -114,6 +114,6 @@ LicensePolicy:
 
   limitations:
     - "This policy records engineering evidence and does not provide a legal opinion."
-    - "Unity 6000.3.9f1 currently has MacStandaloneSupport only on the audited machine; Windows Player contents are not yet observable."
+    - "At the LIC-001 audit snapshot, Unity 6000.3.9f1 had MacStandaloneSupport only. Windows Build Support (Mono) was installed later for BLD-001, but no Windows Player contents have been produced or audited."
     - "Unity package stripping and shader compilation can change the final redistributed component set."
     - "The installed Unity aggregate legal notice is not a per-package or per-module mapping."

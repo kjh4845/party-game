@@ -1,0 +1,107 @@
+BuildProfilePolicy:
+  schemaVersion: 1
+  profileId: "project-hotfix-windows-build-profile-r01"
+  ownerTask: "BLD-001"
+  status: "START_PROFILES_READY_PLAYER_NOT_BUILT"
+  approvedAt: "2026-08-29 KST"
+  approvalBasis: "User approved the temporary product identity and installed Windows Build Support (Mono); Player Build remains user-only."
+
+  toolchain:
+    unityEditorVersion: "6000.3.9f1"
+    unityEditorRevision: "7a9955a4f2fa"
+    target: "StandaloneWindows64"
+    subtarget: "Player"
+    architecture: "x64"
+    scriptingBackend: "Mono2x"
+    requiredModule: "Windows Build Support (Mono)"
+    moduleInstalledAtBld001: true
+    serverModuleRequired: false
+    automaticPlayerBuildAllowed: false
+
+  sharedPlayerSettings:
+    scope: "GLOBAL"
+    valueStatus: "TEMPORARY_USER_APPROVED"
+    companyName: "KJH4845"
+    productName: "Project Hotfix"
+    standaloneApplicationIdentifier: "com.kjh4845.projecthotfix"
+    bundleVersion: "0.1.0"
+    profilePlayerSettingsOverridesAllowed: false
+    migrationWarning: "Changing companyName or productName later can change Unity's local persistent data path and requires an explicit local-save migration decision."
+
+  sceneList:
+    source: "GLOBAL_EDITOR_BUILD_SETTINGS"
+    profileOverrideEnabled: false
+    status: "START_PLACEHOLDER"
+    releaseReady: false
+    scenes:
+      - path: "Assets/Scenes/SampleScene.unity"
+        guid: "99c9720ab356a0642a771bea13969a05"
+        enabled: true
+    replacementOwner: "First real Main/Lobby gameplay scene implementation before Alpha build evidence"
+
+  profiles:
+    - id: "windows-x64-development"
+      assetPath: "Project hotfix/Assets/Settings/Build Profiles/Windows x64 Development.asset"
+      assetGuid: "7c0468d628eca45ca8b215848ceafcf3"
+      displayName: "Windows x64 Development"
+      developmentBuild: true
+      customDefines: ["PROJECTHOTFIX_BUILD_DEVELOPMENT"]
+      unityDerivedDefines: ["DEVELOPMENT_BUILD"]
+      connectProfiler: false
+      deepProfiling: false
+      scriptDebugging: false
+      waitForManagedDebugger: false
+      compression: "Default"
+      qualityOverride: false
+      graphicsOverride: false
+      manualBuildPolicy: "USER_ONLY"
+      outputPath: "Builds/Windows/Development/Project Hotfix.exe"
+
+    - id: "windows-x64-steam-reserved"
+      assetPath: "Project hotfix/Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset"
+      assetGuid: "6ee452d05f0644fea9748d26a1571340"
+      displayName: "Windows x64 Steam Reserved"
+      developmentBuild: false
+      customDefines: ["PROJECTHOTFIX_BUILD_STEAM_RESERVED"]
+      unityDerivedDefines: []
+      connectProfiler: false
+      deepProfiling: false
+      scriptDebugging: false
+      waitForManagedDebugger: false
+      compression: "Default"
+      qualityOverride: false
+      graphicsOverride: false
+      manualBuildPolicy: "BLOCKED_UNTIL_STM_001"
+      outputPath: "Builds/Windows/Steam/Project Hotfix.exe"
+
+  steamBoundary:
+    integrationStatus: "RESERVED_NOT_IMPLEMENTED"
+    appId: null
+    appIdOwner: "STM-001"
+    wrapperOwner: "STM-001"
+    steamSdkPresent: false
+    steamAppIdFileAllowed: false
+    functionalityClaimed: false
+
+  executionBoundary:
+    playerBuildsExecutedByBld001: 0
+    buildAndRunExecutedByBld001: 0
+    steamDeploymentsExecutedByBld001: 0
+    dockerExecutionsByBld001: 0
+    trackedPlayerOutputsAllowed: false
+    manualGuidePath: "config/build_profiles/WINDOWS_BUILD_MANUAL.md"
+    postBuildLicenseAuditOwners: ["BLD-001", "ALP-001"]
+
+  prohibited:
+    - "Dedicated or headless Build Profile"
+    - "Server subtarget or UNITY_SERVER define"
+    - "Automatic BuildPipeline.BuildPlayer entry point"
+    - "Docker, container or cloud build path"
+    - "Backend, public matchmaking or ranked build variant"
+    - "Steam functionality claim before STM-001"
+
+  limitations:
+    - "Both profiles currently resolve the global SampleScene placeholder; neither is release-ready."
+    - "The Steam Reserved profile contains no Steam SDK, App ID, authentication, lobby, invite or P2P/SDR integration."
+    - "Profile and PlayerSettings validation does not prove that a Windows Player can compile or run."
+    - "The final Windows Player component and NOTICE audit requires a user-built artifact."

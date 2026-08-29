@@ -1,0 +1,151 @@
+EvidenceManifest:
+  schemaVersion: 1
+  evidenceProfile: "EvidenceProfile-r01"
+  evidenceId: "EV-BLD-001-20260829-r01"
+  taskId: "BLD-001"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "Base=d840940f2e50a7fb699104bb4000fa1560e25ab0; Policy=c967a854fcd82281ce50a1b761727d2230e8f5dd51fc3f4b75d5a3f438db6f67; Guide=32472565bb5df95d0641ef38667124f5eacdf330b6752bc6492656b0332db1a9; DevelopmentProfile=9efc614006256f444640eaac90b30d244eaa8e4ccf3f39eeebd4b8cd722cae1c; SteamReservedProfile=7fd9ef24dc5d8be2c5b73c0638c5660696115df4a56ee25507428047479ab9d6; PlayerSettings=24ce5ed4ac4940028bdbe02295d9a5d8d388e5a5329a711e5d3f9faa18628e5b; EditorBuildSettings=348ba1eca4b0698957f264f877f76227b78583acd3138fd5fc85be92f158e261; UnityTest=c0a31fc70e09ba7679e7b42d9615c83d586099a40615577e08b041435e334a0e; StaticVerifier=9e4a2081662874338ac8df4c86956c2248e879e13cfccc84ce9c3badd5cf5db7; StaticTest=c677608e836bdc5f275d161bcf53884446ad4433a1fed1e668b9adb5fc724d88; Plan=10f653d4fb30cc5841ac2a5aa7d203ffafeb7ead1779fb1536a14cbceb915a9f; Manifest=88a1d01cf3abd14843cb3638a7692552e54f62a6d5de003c458a47a869edd741; PackageLock=8708528393a5fce3dd9110fc14815ad2dbc21cefd0efec6102b79d86a62404aa; LicensePolicy=fc18c0afb78b7d6aea9cdd5cc924eba7b1e79779d5220bf909ad5b98be0da337; NoticeIndex=3b21255085f14949bcfb51933f532eb21885c55fe7cf9b1f90558af0b08dc553"
+  buildKind: "UnityGeneratedWindowsProfilesAndValidationNoPlayerBuild"
+  buildVersion: "NotBuilt"
+  environment: "macOS arm64; Unity 6000.3.9f1; Windows Build Support Mono; Ruby 2.6.10; temporary copy-on-write Unity test project"
+  profileVersions: ["project-hotfix-windows-build-profile-r01", "project-hotfix-alpha-toolchain-r02", "project-hotfix-license-policy-r01", "EvidenceProfile-r01"]
+  requirementIds: ["BLD-001", "LIC-001", "ALP-001"]
+  commandsOrManualSteps:
+    - "사용자 승인 임시 identity KJH4845, Project Hotfix, com.kjh4845.projecthotfix, 0.1.0을 global PlayerSettings에 적용하고 Standalone Mono2x를 명시"
+    - "사용자가 설치한 Windows Build Support (Mono)의 win64 development/nondevelopment client variation을 확인하고 Server variation0 확인"
+    - "Unity Build Profiles UI로 Windows x64 Development와 Windows x64 Steam Reserved Asset을 생성; raw target/subtarget YAML hand-authoring0"
+    - "Development true/SteamReserved false, profile define 두 개 상호배타, profiler/deep/script debugging/wait false로 구성"
+    - "실수로 추가된 empty Quality override를 사용자 승인 뒤 Unity Editor API로 제거하고 두 Profile의 Quality/Graphics/PlayerSettings override0 확인"
+    - "global EditorBuildSettings의 enabled SampleScene 한 개를 두 Profile이 공유하며 START_PLACEHOLDER/releaseReady false로 기록"
+    - "Steam Reserved에 SDK/AppID/Auth/Lobby/Invite/Code/P2P/SDR 기능0, STM-001 전 manual build blocked를 명시"
+    - "정책·Profile/meta·identity·Scene·manual guide·금지 artifact·module을 static verifier와 mutation17종으로 검증"
+    - "원본 Editor의 modified Untitled scene save/discard prompt를 Cancel하고 copy-on-write 임시 Project에서 Unity EditMode52와 PlayMode4를 실행"
+    - "금지 인프라, license/cache, Art profile, active docs와 strict Evidence를 회귀 검증"
+    - "Player Build, Build And Run, Steam deployment, package change, Docker/Deploy 실행0"
+  observedMetrics:
+    unityGeneratedBuildProfiles: 2
+    uniqueBuildProfileGuids: 2
+    windowsX64PlayerProfiles: 2
+    developmentProfiles: 1
+    steamReservedProfiles: 1
+    mutuallyExclusiveCustomDefines: 2
+    globalBuildDefineLeaks: 0
+    globalEnabledScenes: 1
+    sampleScenePlaceholderCount: 1
+    profileSceneOverrides: 0
+    releaseReadyClaims: 0
+    profilePlayerSettingsOverrides: 0
+    profileQualityOverrides: 0
+    profileGraphicsOverrides: 0
+    temporaryIdentityFieldsMatched: 4
+    windowsMonoClientVariations: 2
+    windowsServerVariations: 0
+    steamSdkFiles: 0
+    steamAppIdFiles: 0
+    steamFunctionalityClaims: 0
+    staticVerifierViolations: 0
+    staticMutationTestRuns: 17
+    staticMutationTestAssertions: 100
+    staticMutationTestFailures: 0
+    staticMutationTestErrors: 0
+    staticMutationTestSkips: 0
+    editModeTotal: 52
+    editModePassed: 52
+    editModeFailed: 0
+    editModeSkipped: 0
+    buildProfileEditModeCases: 10
+    playModeTotal: 4
+    playModePassed: 4
+    playModeFailed: 0
+    playModeSkipped: 0
+    originalUnsavedSceneSavedOrDiscarded: 0
+    finalGitVisibleInventoryFiles: 270
+    finalForbiddenInfrastructureContentFiles: 95
+    finalForbiddenInfrastructurePackageManifests: 2
+    finalForbiddenInfrastructureViolations: 0
+    activeDocsValidated: 12
+    evidenceManifestsAfterBld001: 41
+    packageChangesPerformed: 0
+    playerBuildsExecuted: 0
+    buildAndRunExecutions: 0
+    steamDeployments: 0
+    dockerExecutions: 0
+    independentReviewFinalBlockers: 0
+  expectedThresholds:
+    unityGeneratedBuildProfiles: 2
+    uniqueBuildProfileGuids: 2
+    windowsX64PlayerProfiles: 2
+    developmentProfiles: 1
+    steamReservedProfiles: 1
+    mutuallyExclusiveCustomDefines: 2
+    globalBuildDefineLeaks: 0
+    globalEnabledScenes: 1
+    sampleScenePlaceholderCount: 1
+    profileSceneOverrides: 0
+    releaseReadyClaims: 0
+    profilePlayerSettingsOverrides: 0
+    profileQualityOverrides: 0
+    profileGraphicsOverrides: 0
+    temporaryIdentityFieldsMatched: 4
+    windowsMonoClientVariations: 2
+    windowsServerVariations: 0
+    steamSdkFiles: 0
+    steamAppIdFiles: 0
+    steamFunctionalityClaims: 0
+    staticVerifierViolations: 0
+    staticMutationTestRuns: 17
+    staticMutationTestAssertions: 100
+    staticMutationTestFailures: 0
+    staticMutationTestErrors: 0
+    staticMutationTestSkips: 0
+    editModeTotal: 52
+    editModePassed: 52
+    editModeFailed: 0
+    editModeSkipped: 0
+    buildProfileEditModeCases: 10
+    playModeTotal: 4
+    playModePassed: 4
+    playModeFailed: 0
+    playModeSkipped: 0
+    originalUnsavedSceneSavedOrDiscarded: 0
+    finalGitVisibleInventoryFiles: 270
+    finalForbiddenInfrastructureContentFiles: 95
+    finalForbiddenInfrastructurePackageManifests: 2
+    finalForbiddenInfrastructureViolations: 0
+    activeDocsValidated: 12
+    evidenceManifestsAfterBld001: 41
+    packageChangesPerformed: 0
+    playerBuildsExecuted: 0
+    buildAndRunExecutions: 0
+    steamDeployments: 0
+    dockerExecutions: 0
+    independentReviewFinalBlockers: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/BLD-001/EV-BLD-001-20260829-r01.txt"
+    - "config/build_profiles/WindowsBuildProfilePolicy.yaml"
+    - "config/build_profiles/WINDOWS_BUILD_MANUAL.md"
+    - "Project hotfix/Assets/Settings/Build Profiles/Windows x64 Development.asset"
+    - "Project hotfix/Assets/Settings/Build Profiles/Windows x64 Development.asset.meta"
+    - "Project hotfix/Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset"
+    - "Project hotfix/Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset.meta"
+    - "Project hotfix/ProjectSettings/ProjectSettings.asset"
+    - "Project hotfix/ProjectSettings/EditorBuildSettings.asset"
+    - "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/BuildProfileBoundaryTests.cs"
+    - "tools/verify_build_profiles.rb"
+    - "tools/tests/verify_build_profiles_test.rb"
+    - "docs/03_IMPLEMENTATION_PLAN.md"
+    - "artifacts/reports/FOUNDATION_DECISION_RATIONALE.md"
+    - "config/licenses/LicensePolicy.yaml"
+    - "THIRD_PARTY_NOTICES.md"
+  failures: []
+  limitations:
+    - "BLD-001 prepared and validated BuildProfile/PlayerSettings only. No Windows Player, executable, Data folder or runtime output was produced."
+    - "The current SampleScene is a START placeholder and does not prove Main/Lobby/Match scene completeness or Alpha gameplay."
+    - "Steam Reserved contains no Steam SDK, App ID, authentication, friends lobby, invite, code or P2P/SDR implementation and must not be built before STM-001."
+    - "Temporary Company/Product/Application ID values are user-approved placeholders; changing companyName or productName later requires a local-save path and Preset migration decision."
+    - "The local Windows module check proves Mono x64 client templates are installed, not that a Player compiles or runs on Windows."
+    - "EditMode and PlayMode were run in a copy-on-write temporary project so the user's modified unsaved Untitled scene in the original Editor remained untouched."
+    - "Final managed/native component and NOTICE inspection requires a user-built Windows artifact and ALP-001 evidence."
+  userDecision: "임시값 KJH4845 / Project Hotfix / com.kjh4845.projecthotfix / 0.1.0 사용; Windows Build Support (Mono) 직접 설치; Player Build는 사용자가 수행; unintended Quality override 제거 승인"
+  recordedAtUtc: "2026-08-29T07:58:45Z"

@@ -78,7 +78,7 @@ The original review files must not be directly imported, copied, re-encoded, or 
 
 ## Final Windows Player audit
 
-No Player build was run for `LIC-001`. The audited editor installation currently has `MacStandaloneSupport` only, so Windows-specific Player files and notices are not yet observable.
+No Player build was run for `LIC-001` or `BLD-001`. At the LIC-001 snapshot the editor had `MacStandaloneSupport` only. `Windows Build Support (Mono)` was installed later for BLD-001 profile preparation, but no Windows Player was produced, so Windows-specific Player files and notices are still not observable.
 
 After the user performs the Windows x64 build:
 
