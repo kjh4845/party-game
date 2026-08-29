@@ -13,6 +13,11 @@
 **/[Mm]emoryCaptures/
 **/[Rr]ecordings/
 
+# Blender backup files are recoverable editor output; only canonical .blend
+# sources may enter Git LFS.
+*.blend[0-9]
+*.blend[0-9][0-9]
+
 # Unity/IDE generated solution files
 *.csproj
 *.sln

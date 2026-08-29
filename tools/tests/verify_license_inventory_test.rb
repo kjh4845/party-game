@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require "fileutils"
+require "digest"
 require "json"
 require "minitest/autorun"
 require "open3"
@@ -25,6 +26,9 @@ class VerifyLicenseInventoryTest < Minitest::Test
   ).freeze
   REVIEW_PATHS = INVENTORY_TEMPLATE.fetch("ThirdPartyInventory")
     .fetch("reviewOnlyAssets").fetch("items").map { |item| item.fetch("path") }.freeze
+  FIRST_PARTY_PATHS = INVENTORY_TEMPLATE.fetch("ThirdPartyInventory")
+    .fetch("firstPartyProductionAssets").fetch("items").map { |item| item.fetch("path") }.freeze
+  REGISTERED_MEDIA_PATHS = (REVIEW_PATHS + FIRST_PARTY_PATHS).freeze
 
   def test_current_repository_passes_with_and_without_package_cache_verification
     stdout, stderr, status = run_verifier(REPOSITORY_ROOT)
@@ -32,6 +36,7 @@ class VerifyLicenseInventoryTest < Minitest::Test
     assert_equal 0, status, stderr + stdout
     assert_includes stdout, "PACKAGE_INVENTORY_COUNT=58"
     assert_includes stdout, "REVIEW_ASSET_COUNT=18"
+    assert_includes stdout, "FIRST_PARTY_ASSET_COUNT=0"
     assert_includes stdout, "PACKAGE_CACHE_VERIFIED=false"
     assert_includes stdout, "TOTAL_VIOLATIONS=0"
     assert_includes stdout, "FINAL_RESULT=PASS"
@@ -199,6 +204,101 @@ class VerifyLicenseInventoryTest < Minitest::Test
     end
   end
 
+  def test_registered_project_authored_blend_and_fbx_pass
+    with_repository do |root|
+      register_first_party_asset(root, "source/character/hero.blend", "fixture blend\n", "BLENDER_SOURCE")
+      register_first_party_asset(root, "Project hotfix/Assets/Characters/hero.fbx", "fixture fbx\n", "MODEL")
+      mutate_binary_inventory(root) do |binary|
+        recompute_binary_summary(binary, lfs_required: 2, lfs_tracked: 2)
+      end
+
+      stdout, stderr, status = run_verifier(root)
+
+      assert_equal 0, status, stderr + stdout
+      assert_includes stdout, "FIRST_PARTY_ASSET_COUNT=2"
+      assert_includes stdout, "TOTAL_VIOLATIONS=0"
+      assert_includes stdout, "FINAL_RESULT=PASS"
+    end
+  end
+
+  def test_unregistered_first_party_candidates_fail
+    extras = {
+      "source/character/unregistered.blend" => "unregistered blend\n",
+      "Project hotfix/Assets/Characters/unregistered.fbx" => "unregistered fbx\n",
+    }
+    with_repository(extra_files: extras) do |root|
+      stdout, _stderr, status = run_verifier(root)
+
+      assert_equal 1, status
+      extras.each_key do |path|
+        assert_includes stdout, "rule=UNREGISTERED_MEDIA_ASSET path=#{path}"
+      end
+    end
+  end
+
+  def test_first_party_unknown_source_and_review_flags_fail
+    with_repository do |root|
+      path = "source/character/unknown.blend"
+      register_first_party_asset(root, path, "unknown source\n", "BLENDER_SOURCE")
+      mutate_inventory(root) do |inventory|
+        item = inventory.fetch("firstPartyProductionAssets").fetch("items").first
+        item["sourceOwner"] = "UNKNOWN"
+        item["sourceStatus"] = "UNKNOWN"
+        item["reviewOnly"] = true
+        item["shippingAllowed"] = true
+      end
+
+      stdout, _stderr, status = run_verifier(root)
+
+      assert_equal 1, status
+      assert_includes stdout, "rule=INVENTORY_FIRST_PARTY_SOURCE_OWNER path=#{path}"
+      assert_includes stdout, "rule=INVENTORY_FIRST_PARTY_SOURCE_STATUS path=#{path}"
+      assert_includes stdout, "rule=INVENTORY_FIRST_PARTY_REVIEW_FLAG path=#{path}"
+      assert_includes stdout, "rule=INVENTORY_FIRST_PARTY_SHIPPING_FLAG path=#{path}"
+    end
+  end
+
+  def test_first_party_and_review_path_overlap_fails
+    with_repository do |root|
+      review = INVENTORY_TEMPLATE.fetch("ThirdPartyInventory")
+        .fetch("reviewOnlyAssets").fetch("items").first
+      add_first_party_inventory_record(root, review.fetch("path"), review.fetch("sha256"), "REFERENCE_IMAGE")
+
+      stdout, _stderr, status = run_verifier(root)
+
+      assert_equal 1, status
+      assert_includes stdout, "rule=INVENTORY_MEDIA_SCOPE_OVERLAP"
+      assert_includes stdout, "rule=INVENTORY_MEDIA_SCOPE_OVERLAP path=#{review.fetch("path")}"
+    end
+  end
+
+  def test_first_party_asset_sha_drift_fails
+    with_repository do |root|
+      path = "Project hotfix/Assets/Characters/drift.fbx"
+      register_first_party_asset(root, path, "fixture fbx\n", "MODEL")
+      mutate_inventory(root) do |inventory|
+        inventory.fetch("firstPartyProductionAssets").fetch("items").first["sha256"] = "0" * 64
+      end
+
+      stdout, _stderr, status = run_verifier(root)
+
+      assert_equal 1, status
+      assert_includes stdout, "rule=FIRST_PARTY_ASSET_SHA_DRIFT path=#{path}"
+    end
+  end
+
+  def test_production_source_inside_unity_assets_fails
+    with_repository do |root|
+      path = "Project hotfix/Assets/Characters/canonical.blend"
+      register_first_party_asset(root, path, "canonical blend\n", "BLENDER_SOURCE")
+
+      stdout, _stderr, status = run_verifier(root)
+
+      assert_equal 1, status
+      assert_includes stdout, "rule=INVENTORY_FIRST_PARTY_SOURCE_INSIDE_UNITY_ASSETS path=#{path}"
+    end
+  end
+
   def test_duplicate_invalid_and_oversize_yaml_fail_closed
     with_repository do |root|
       path = root.join("config/licenses/LicensePolicy.yaml")
@@ -351,7 +451,7 @@ class VerifyLicenseInventoryTest < Minitest::Test
       raise stderr unless status.success?
 
       SUPPORT_PATHS.each { |relative| copy_file(REPOSITORY_ROOT.join(relative), root.join(relative)) }
-      REVIEW_PATHS.each { |relative| link_or_copy(REPOSITORY_ROOT.join(relative), root.join(relative)) }
+      REGISTERED_MEDIA_PATHS.each { |relative| link_or_copy(REPOSITORY_ROOT.join(relative), root.join(relative)) }
       File.write(root.join(".gitignore"), "Project hotfix/Library/\n")
       extra_files.each do |relative, content|
         path = root.join(relative)
@@ -427,6 +527,48 @@ class VerifyLicenseInventoryTest < Minitest::Test
     write_yaml(root, "config/licenses/ThirdPartyInventory.yaml", document)
   end
 
+  def register_first_party_asset(root, relative, content, asset_type)
+    path = root.join(relative)
+    FileUtils.mkdir_p(path.dirname)
+    File.binwrite(path, content)
+    sha256 = Digest::SHA256.file(path).hexdigest
+    add_first_party_inventory_record(root, relative, sha256, asset_type)
+    mutate_binary_inventory(root) do |binary|
+      binary.fetch("files") << {
+        "path" => relative,
+        "bytes" => File.size(path),
+        "sha256" => sha256,
+      }
+      recompute_binary_summary(binary)
+    end
+  end
+
+  def add_first_party_inventory_record(root, relative, sha256, asset_type)
+    intended_use = File.extname(relative).downcase == ".blend" ? "PRODUCTION_SOURCE" : "PLAYER_CONTENT"
+    shipping_allowed = intended_use == "PLAYER_CONTENT"
+    mutate_inventory(root) do |inventory|
+      first_party = inventory.fetch("firstPartyProductionAssets")
+      first_party.fetch("items") << {
+        "path" => relative,
+        "sha256" => sha256,
+        "assetType" => asset_type,
+        "sourceOwner" => "Fixture Owner",
+        "sourceStatus" => "PROJECT_AUTHORED",
+        "intendedUse" => intended_use,
+        "licenseFamily" => "PROJECT_AUTHORED",
+        "rightsStatus" => "FIRST_PARTY",
+        "noticeDisposition" => "NO_THIRD_PARTY_NOTICE",
+        "reviewOnly" => false,
+        "shippingAllowed" => shipping_allowed,
+        "sourceEvidence" => [
+          "config/repository/BinaryAssetInventory.yaml#files[path=#{relative}]",
+          "project-author:Fixture Owner",
+        ],
+      }
+      first_party["itemCount"] = first_party.fetch("items").length
+    end
+  end
+
   def mutate_binary_inventory(root)
     document = load_yaml(root, "config/repository/BinaryAssetInventory.yaml")
     binary = document.fetch("BinaryAssetInventory")
@@ -441,14 +583,16 @@ class VerifyLicenseInventoryTest < Minitest::Test
     File.write(path, JSON.pretty_generate(document) + "\n")
   end
 
-  def recompute_binary_summary(binary)
+  def recompute_binary_summary(binary, lfs_required: 0, lfs_tracked: 0)
     files = binary.fetch("files")
     binary["summary"] = {
       "fileCount" => files.length,
       "totalBytes" => files.sum { |entry| entry.fetch("bytes") },
       "uniqueContentHashes" => files.map { |entry| entry.fetch("sha256") }.uniq.length,
       "filesOver10MiB" => files.count { |entry| entry.fetch("bytes") > 10 * 1024 * 1024 },
-      "currentLfsRequiredCandidates" => 0,
+      "currentLfsRequiredCandidates" => lfs_required,
+      "currentLfsTrackedFiles" => lfs_tracked,
+      "ordinaryGitBinaryFiles" => files.length - lfs_tracked,
     }
   end
 end

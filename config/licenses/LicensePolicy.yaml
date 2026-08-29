@@ -1,9 +1,9 @@
 LicensePolicy:
   schemaVersion: 1
-  profileId: "project-hotfix-license-policy-r01"
+  profileId: "project-hotfix-license-policy-r02"
   status: "APPROVED"
   approvedAtUtc: "2026-08-27T17:09:43Z"
-  approvalBasis: "User approved the review-only image disposition, deletion of three source-unproven review files, removal of Unity tutorial/readme files, and the license policy on 2026-08-28 KST. Deferring the final Player-content audit follows the separately fixed no-automatic-build rule and BLD-001/ALP-001 ownership."
+  approvalBasis: "User approved the review-only image disposition, deletion of three source-unproven review files, removal of Unity tutorial/readme files, and the license policy on 2026-08-28 KST. The approved policy permits project-authored production assets when first-party ownership and immutable file evidence are recorded separately from review-only references. Deferring the final Player-content audit follows the separately fixed no-automatic-build rule and BLD-001/ALP-001 ownership."
 
   scope:
     packageManifest: "Project hotfix/Packages/manifest.json"
@@ -21,10 +21,12 @@ LicensePolicy:
     - "Package license families and notice components come from the resolved package LICENSE/NOTICE files, recorded by logical package-relative locator rather than a machine-specific PackageCache path."
     - "Unity built-in modules have no per-package notice in Unity 6000.3.9f1; their current basis is the Unity Editor Software Terms plus the installed editor's aggregate legal notice."
     - "An embedded C2PA claim is provenance evidence only and is not a copyright license or redistribution grant."
+    - "A production asset is first-party only when its repository-relative path, immutable SHA-256, asset type, named source owner, PROJECT_AUTHORED status, intended use, rights disposition, and source evidence are recorded in the dedicated first-party inventory."
 
   evaluationOrder:
     - "BLOCKED license or missing rights evidence wins over every allow rule."
     - "Review-only content may remain in the repository only while shippingAllowed is false."
+    - "First-party production content may be retained only while project authorship, first-party rights, non-review status, intended-use profile, and matching file evidence are all explicit."
     - "Official Unity packages and their bundled dependencies may be used under the applicable Unity terms when bundled NOTICE material is preserved."
     - "A final Windows Player audit may narrow the source inventory to files actually distributed, but may not silently remove a required notice."
 
@@ -73,6 +75,42 @@ LicensePolicy:
       - "Attribution and NOTICE requirements"
     failureDisposition: "shippingAllowed must remain false until every required evidence field is reviewed."
 
+  firstPartyProductionAssetRule:
+    decision: "ALLOW_WITH_EXPLICIT_FIRST_PARTY_EVIDENCE"
+    requiredFields:
+      - "path"
+      - "sha256"
+      - "assetType"
+      - "sourceOwner"
+      - "sourceStatus"
+      - "intendedUse"
+      - "licenseFamily"
+      - "rightsStatus"
+      - "noticeDisposition"
+      - "reviewOnly"
+      - "shippingAllowed"
+      - "sourceEvidence"
+    requiredValues:
+      sourceStatus: "PROJECT_AUTHORED"
+      licenseFamily: "PROJECT_AUTHORED"
+      rightsStatus: "FIRST_PARTY"
+      noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+      reviewOnly: false
+    intendedUseProfiles:
+      PRODUCTION_SOURCE:
+        shippingAllowed: false
+        meaning: "Canonical editable source retained for production but not copied into the Player build. A canonical .blend must use this profile and remain outside Project hotfix/Assets/ so Unity receives only the approved derived interchange asset."
+      PLAYER_CONTENT:
+        shippingAllowed: true
+        meaning: "Derived or runtime-ready content whose first-party rights permit inclusion in the Player build, subject to the final build audit."
+    shippingAllowedSemantics: "This field records whether the exact file may cross the Player content boundary; it does not determine Git/LFS storage or prove that the file is actually included in a build."
+    requiredEvidence:
+      - "Repository-relative path and matching SHA-256"
+      - "Named source owner and explicit PROJECT_AUTHORED status"
+      - "Matching BinaryAssetInventory entry"
+      - "At least one non-empty source-evidence locator or authorship record"
+    failureDisposition: "Treat the file as unregistered media and block shipping eligibility until the first-party record is complete and exact."
+
   reviewOnlyContentRule:
     allowedRepositoryPurpose: "Design reference and decision history only"
     allowedHumanReferenceUse: "A human artist may use an approved design image as visual reference while creating a new original production asset."
@@ -99,10 +137,23 @@ LicensePolicy:
       - "licenseFamily"
       - "noticeDisposition"
       - "sourceEvidence"
+    requiredFirstPartyAssetFields:
+      - "path"
+      - "sha256"
+      - "assetType"
+      - "sourceOwner"
+      - "sourceStatus"
+      - "intendedUse"
+      - "licenseFamily"
+      - "rightsStatus"
+      - "noticeDisposition"
+      - "reviewOnly"
+      - "shippingAllowed"
+      - "sourceEvidence"
 
   releaseAudit:
     automaticBuildAllowed: false
-    currentScope: "Source package and review-only asset inventory"
+    currentScope: "Source package, review-only reference, and first-party production asset inventory"
     finalTarget: "Windows x64 Player"
     finalAuditOwners: ["BLD-001", "ALP-001"]
     trigger: "After the user performs the Windows Player build"
@@ -114,6 +165,7 @@ LicensePolicy:
 
   limitations:
     - "This policy records engineering evidence and does not provide a legal opinion."
+    - "ThirdPartyInventory.yaml retains its historical LIC-001 filename for compatibility; firstPartyProductionAssets is a separate, disjoint category and does not classify project-authored work as third-party content."
     - "At the LIC-001 audit snapshot, Unity 6000.3.9f1 had MacStandaloneSupport only. Windows Build Support (Mono) was installed later for BLD-001, but no Windows Player contents have been produced or audited."
     - "Unity package stripping and shader compilation can change the final redistributed component set."
     - "The installed Unity aggregate legal notice is not a per-package or per-module mapping."

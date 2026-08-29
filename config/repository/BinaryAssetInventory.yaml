@@ -1,7 +1,7 @@
 BinaryAssetInventory:
   schemaVersion: 1
-  revision: "r02"
-  recordedAtUtc: "2026-08-27T17:08:44Z"
+  revision: "r03"
+  recordedAtUtc: "2026-08-29T12:21:53Z"
   policyPath: "config/repository/BinaryAssetPolicy.md"
   excludedGeneratedRoots:
     - "Project hotfix/Library"
@@ -14,6 +14,19 @@ BinaryAssetInventory:
     uniqueContentHashes: 13
     filesOver10MiB: 0
     currentLfsRequiredCandidates: 0
+    currentLfsTrackedFiles: 0
+    ordinaryGitBinaryFiles: 18
+  storage:
+    remoteName: "origin"
+    remoteUrl: "https://github.com/kjh4845/project-hotfix.git"
+    remoteVisibility: "PRIVATE"
+    defaultBranch: "main"
+    gitLfsVersion: "3.8.0"
+    repositoryLocalLfsEnabled: true
+    lfsTrackedPatternCount: 10
+    historyMigrationPerformed: false
+    existingReviewPngsMigrated: false
+    initialRemoteBackupRevision: "8d735414bc75d1e786f79f3171b8435a100ddee9"
   files:
     - {path: "artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.10_ROUND_HEAD_REVIEW.png", bytes: 1382831, sha256: "0948d8cb89489eb4eccf486ff39815029418de3e9e1cd861b118a69d22a1eb5c"}
     - {path: "artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.11_GANG_PARTY_ARM_REVIEW.png", bytes: 1311579, sha256: "5d987c2ff1e9e38d14a1a22f1b7c614e61a877672d921dd45d5a9ad9febbb66a"}

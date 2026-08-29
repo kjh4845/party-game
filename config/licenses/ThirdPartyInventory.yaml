@@ -1,8 +1,8 @@
 ThirdPartyInventory:
   schemaVersion: 1
-  inventoryId: "project-hotfix-third-party-inventory-r01"
+  inventoryId: "project-hotfix-third-party-inventory-r02"
   status: "APPROVED_SOURCE_INVENTORY_WINDOWS_FINAL_AUDIT_PENDING"
-  recordedAtUtc: "2026-08-27T17:09:43Z"
+  recordedAtUtc: "2026-08-29T12:33:01Z"
   policyPath: "config/licenses/LicensePolicy.yaml"
   distributedNoticeIndex: "THIRD_PARTY_NOTICES.md"
 
@@ -886,6 +886,11 @@ ThirdPartyInventory:
         - "resolved-package:com.unity.visualscripting@1.9.9/Third Party Notices.md"
         - "https://packages.unity.com"
         - "https://unity.com/legal/licenses/unity-package-distribution-license"
+
+  firstPartyProductionAssets:
+    purpose: "Project-authored production source and Player-content assets with explicit rights evidence"
+    itemCount: 0
+    items: []
 
   reviewOnlyAssets:
     purpose: "Design reference and decision history only"

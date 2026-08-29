@@ -43,6 +43,10 @@ class LicenseInventoryVerifier
     path sha256 contentCredentialStatus intendedUse licenseFamily rightsStatus
     noticeDisposition reviewOnly shippingAllowed sourceEvidence
   ].sort.freeze
+  FIRST_PARTY_ENTRY_FIELDS = %w[
+    path sha256 assetType sourceOwner sourceStatus intendedUse licenseFamily
+    rightsStatus noticeDisposition reviewOnly shippingAllowed sourceEvidence
+  ].freeze
 
   MEDIA_EXTENSIONS = %w[
     .png .jpg .jpeg .gif .bmp .tga .tif .tiff .psd .exr .hdr .svg .webp .ico
@@ -57,12 +61,12 @@ class LicenseInventoryVerifier
   POLICY_TOP_LEVEL_FIELDS = %w[
     schemaVersion profileId status approvedAtUtc approvalBasis scope sourceOfTruth
     evaluationOrder officialUnityPackageRule generallyAllowedWithObligations
-    blockedFamilies newExternalAssetRule reviewOnlyContentRule evidenceRules
-    releaseAudit limitations
+    blockedFamilies newExternalAssetRule firstPartyProductionAssetRule
+    reviewOnlyContentRule evidenceRules releaseAudit limitations
   ].sort.freeze
   INVENTORY_TOP_LEVEL_FIELDS = %w[
     schemaVersion inventoryId status recordedAtUtc policyPath distributedNoticeIndex
-    packageBaseline packages reviewOnlyAssets auditNotes
+    packageBaseline packages firstPartyProductionAssets reviewOnlyAssets auditNotes
   ].sort.freeze
   NOTICE_MARKERS = [
     "# Third-Party Source Inventory and Notice Index",
@@ -294,7 +298,7 @@ class LicenseInventoryVerifier
 
     expect(@policy.keys.sort == POLICY_TOP_LEVEL_FIELDS, "POLICY_FIELD_SET", POLICY_PATH)
     expect(@policy["schemaVersion"] == 1, "POLICY_SCHEMA_VERSION", POLICY_PATH)
-    expect(@policy["profileId"] == "project-hotfix-license-policy-r01", "POLICY_PROFILE_ID", POLICY_PATH)
+    expect(@policy["profileId"] == "project-hotfix-license-policy-r02", "POLICY_PROFILE_ID", POLICY_PATH)
     expect(@policy["status"] == "APPROVED", "POLICY_STATUS", POLICY_PATH)
     expect(nonempty?(@policy["approvedAtUtc"]), "POLICY_APPROVAL_TIME", POLICY_PATH)
     approval = @policy["approvalBasis"].to_s
@@ -315,7 +319,8 @@ class LicenseInventoryVerifier
       "distributedNoticeIndex" => NOTICE_PATH,
     }
     expect(scope.keys.sort == (expected_scope_paths.keys + %w[
-      directPackageCount lockedPackageCount packageChangesPerformedByLic001 reviewOnlyC2paImageCount
+      directPackageCount lockedPackageCount packageChangesPerformedByLic001
+      reviewOnlyC2paImageCount
     ]).sort, "POLICY_SCOPE_CONTRACT", POLICY_PATH)
     expected_scope_paths.each do |key, value|
       expect(scope[key] == value, "POLICY_SCOPE_CONTRACT", POLICY_PATH)
@@ -348,6 +353,34 @@ class LicenseInventoryVerifier
       external["requiredEvidence"].is_a?(Array) && external["requiredEvidence"].length == 5 &&
       external["failureDisposition"].to_s.include?("shippingAllowed must remain false"),
       "POLICY_EXTERNAL_ASSET_FAIL_CLOSED", POLICY_PATH)
+    first_party = @policy["firstPartyProductionAssetRule"]
+    expected_first_party_values = {
+      "sourceStatus" => "PROJECT_AUTHORED",
+      "licenseFamily" => "PROJECT_AUTHORED",
+      "rightsStatus" => "FIRST_PARTY",
+      "noticeDisposition" => "NO_THIRD_PARTY_NOTICE",
+      "reviewOnly" => false,
+    }
+    expect(first_party.is_a?(Hash) &&
+      first_party.keys.sort == %w[
+        decision requiredFields requiredValues intendedUseProfiles
+        shippingAllowedSemantics requiredEvidence failureDisposition
+      ].sort &&
+      first_party["decision"] == "ALLOW_WITH_EXPLICIT_FIRST_PARTY_EVIDENCE" &&
+      first_party["requiredFields"] == FIRST_PARTY_ENTRY_FIELDS &&
+      first_party["requiredValues"] == expected_first_party_values &&
+      first_party["intendedUseProfiles"].is_a?(Hash) &&
+      first_party["intendedUseProfiles"].keys.sort == %w[PLAYER_CONTENT PRODUCTION_SOURCE] &&
+      first_party["intendedUseProfiles"].all? do |_name, profile|
+        profile.is_a?(Hash) && profile.keys.sort == %w[meaning shippingAllowed] &&
+          [true, false].include?(profile["shippingAllowed"]) && nonempty?(profile["meaning"])
+      end &&
+      first_party["intendedUseProfiles"]["PRODUCTION_SOURCE"]["shippingAllowed"] == false &&
+      first_party["intendedUseProfiles"]["PLAYER_CONTENT"]["shippingAllowed"] == true &&
+      nonempty?(first_party["shippingAllowedSemantics"]) &&
+      first_party["requiredEvidence"].is_a?(Array) && first_party["requiredEvidence"].length >= 4 &&
+      nonempty?(first_party["failureDisposition"]),
+      "POLICY_FIRST_PARTY_ASSET_RULE", POLICY_PATH)
     review = @policy["reviewOnlyContentRule"]
     expect(review.is_a?(Hash) && review["shippingAllowed"] == false &&
       nonempty?(review["allowedRepositoryPurpose"]) && nonempty?(review["allowedHumanReferenceUse"]) &&
@@ -369,11 +402,13 @@ class LicenseInventoryVerifier
       end
       expect(evidence["requiredPackageFields"] == REQUIRED_PACKAGE_FIELDS,
         "POLICY_REQUIRED_PACKAGE_FIELDS", POLICY_PATH)
+      expect(evidence["requiredFirstPartyAssetFields"] == FIRST_PARTY_ENTRY_FIELDS,
+        "POLICY_REQUIRED_FIRST_PARTY_FIELDS", POLICY_PATH)
     end
 
     release = @policy["releaseAudit"]
     expect(release.is_a?(Hash) && release["automaticBuildAllowed"] == false &&
-      release["currentScope"] == "Source package and review-only asset inventory" &&
+      release["currentScope"] == "Source package, review-only reference, and first-party production asset inventory" &&
       release["finalTarget"] == "Windows x64 Player" &&
       release["finalAuditOwners"] == %w[BLD-001 ALP-001] &&
       nonempty?(release["requiredChecks"]), "POLICY_RELEASE_AUDIT", POLICY_PATH)
@@ -449,7 +484,7 @@ class LicenseInventoryVerifier
     end
     expect(@inventory.keys.sort == INVENTORY_TOP_LEVEL_FIELDS, "INVENTORY_FIELD_SET", INVENTORY_PATH)
     expect(@inventory["schemaVersion"] == 1, "INVENTORY_SCHEMA_VERSION", INVENTORY_PATH)
-    expect(@inventory["inventoryId"] == "project-hotfix-third-party-inventory-r01",
+    expect(@inventory["inventoryId"] == "project-hotfix-third-party-inventory-r02",
       "INVENTORY_ID", INVENTORY_PATH)
     expect(@inventory["status"] == "APPROVED_SOURCE_INVENTORY_WINDOWS_FINAL_AUDIT_PENDING",
       "INVENTORY_STATUS", INVENTORY_PATH)
@@ -459,6 +494,7 @@ class LicenseInventoryVerifier
 
     validate_inventory_baseline(@inventory["packageBaseline"])
     validate_package_inventory(@inventory["packages"])
+    validate_first_party_inventory(@inventory["firstPartyProductionAssets"])
     validate_review_inventory(@inventory["reviewOnlyAssets"])
     validate_audit_notes(@inventory["auditNotes"])
   end
@@ -581,6 +617,99 @@ class LicenseInventoryVerifier
       "INVENTORY_RESOLVED_EVIDENCE_COUNT", INVENTORY_PATH)
   end
 
+  def validate_first_party_inventory(first_party)
+    unless first_party.is_a?(Hash)
+      add("INVENTORY_FIRST_PARTY_INVALID", INVENTORY_PATH)
+      @first_party_items = []
+      return
+    end
+    expect(first_party.keys.sort == %w[itemCount items purpose].sort,
+      "INVENTORY_FIRST_PARTY_FIELD_SET", INVENTORY_PATH)
+    expect(first_party["purpose"] ==
+      "Project-authored production source and Player-content assets with explicit rights evidence",
+      "INVENTORY_FIRST_PARTY_PURPOSE", INVENTORY_PATH)
+    expect(first_party["itemCount"].is_a?(Integer) && first_party["itemCount"] >= 0,
+      "INVENTORY_FIRST_PARTY_COUNT", INVENTORY_PATH)
+    items = first_party["items"]
+    unless items.is_a?(Array)
+      add("INVENTORY_FIRST_PARTY_ITEMS_INVALID", INVENTORY_PATH)
+      @first_party_items = []
+      return
+    end
+    @first_party_items = items
+    expect(items.length == first_party["itemCount"],
+      "INVENTORY_FIRST_PARTY_ITEM_COUNT", INVENTORY_PATH)
+    paths = items.map { |item| item.is_a?(Hash) ? item["path"] : nil }.compact
+    expect(paths.length == paths.uniq.length,
+      "INVENTORY_FIRST_PARTY_PATH_UNIQUE", INVENTORY_PATH)
+
+    items.each_with_index do |item, index|
+      path = item.is_a?(Hash) && nonempty?(item["path"]) ? item["path"] : "first-party[#{index}]"
+      unless item.is_a?(Hash)
+        add("INVENTORY_FIRST_PARTY_ENTRY", path)
+        next
+      end
+      expect(item.keys.sort == FIRST_PARTY_ENTRY_FIELDS.sort,
+        "INVENTORY_FIRST_PARTY_ENTRY_FIELDS", path)
+      FIRST_PARTY_ENTRY_FIELDS.each do |field|
+        next if %w[reviewOnly shippingAllowed].include?(field)
+        expect(nonempty?(item[field]), "INVENTORY_FIRST_PARTY_REQUIRED_FIELD", "#{path}:#{field}")
+      end
+      expect(repository_relative_path?(path), "INVENTORY_FIRST_PARTY_PATH_INVALID", path)
+      expect(MEDIA_EXTENSIONS.include?(File.extname(path).downcase),
+        "INVENTORY_FIRST_PARTY_ASSET_TYPE_PATH", path)
+      expect(item["assetType"].to_s.match?(/\A[A-Z][A-Z0-9_]*\z/),
+        "INVENTORY_FIRST_PARTY_ASSET_TYPE", path)
+      expect(item["sourceOwner"].is_a?(String) && !item["sourceOwner"].strip.empty? &&
+        !item["sourceOwner"].match?(/\A(?:UNKNOWN|UNPROVEN|UNVERIFIED)\z/i),
+        "INVENTORY_FIRST_PARTY_SOURCE_OWNER", path)
+      expect(item["sourceStatus"] == "PROJECT_AUTHORED",
+        "INVENTORY_FIRST_PARTY_SOURCE_STATUS", path)
+      profiles = if @policy.is_a?(Hash) && @policy["firstPartyProductionAssetRule"].is_a?(Hash)
+        @policy["firstPartyProductionAssetRule"]["intendedUseProfiles"]
+      end
+      profile = profiles.is_a?(Hash) ? profiles[item["intendedUse"]] : nil
+      expect(profile.is_a?(Hash), "INVENTORY_FIRST_PARTY_INTENDED_USE", path)
+      if item["intendedUse"] == "PRODUCTION_SOURCE"
+        expect(!path.start_with?("Project hotfix/Assets/"),
+          "INVENTORY_FIRST_PARTY_SOURCE_INSIDE_UNITY_ASSETS", path)
+      end
+      if File.extname(path).downcase == ".blend"
+        expect(item["intendedUse"] == "PRODUCTION_SOURCE",
+          "INVENTORY_FIRST_PARTY_BLEND_INTENDED_USE", path)
+      end
+      expect(item["licenseFamily"] == "PROJECT_AUTHORED",
+        "INVENTORY_FIRST_PARTY_LICENSE_STATUS", path)
+      expect(item["rightsStatus"] == "FIRST_PARTY",
+        "INVENTORY_FIRST_PARTY_RIGHTS_STATUS", path)
+      expect(item["noticeDisposition"] == "NO_THIRD_PARTY_NOTICE",
+        "INVENTORY_FIRST_PARTY_NOTICE_STATUS", path)
+      expect(item["reviewOnly"] == false, "INVENTORY_FIRST_PARTY_REVIEW_FLAG", path)
+      expected_shipping = profile.is_a?(Hash) ? profile["shippingAllowed"] : nil
+      expect([true, false].include?(item["shippingAllowed"]) &&
+        item["shippingAllowed"] == expected_shipping,
+        "INVENTORY_FIRST_PARTY_SHIPPING_FLAG", path)
+      expect(item["sha256"].to_s.match?(/\A[0-9a-f]{64}\z/),
+        "INVENTORY_FIRST_PARTY_SHA_FORMAT", path)
+      evidence = item["sourceEvidence"]
+      expect(evidence.is_a?(Array) && !evidence.empty? &&
+        evidence.all? { |value| value.is_a?(String) && !value.strip.empty? },
+        "INVENTORY_FIRST_PARTY_SOURCE_EVIDENCE", path)
+      next unless evidence.is_a?(Array)
+
+      binary_anchor = "#{BINARY_INVENTORY_PATH}#files[path=#{path}]"
+      expect(evidence.include?(binary_anchor), "INVENTORY_FIRST_PARTY_BINARY_EVIDENCE", path)
+      evidence.each do |locator|
+        next unless locator.is_a?(String)
+
+        expect(!locator.match?(/\A(?:\/|[A-Za-z]:[\\\/])/),
+          "INVENTORY_FIRST_PARTY_ABSOLUTE_EVIDENCE", path)
+        expect(!locator.include?("Library/PackageCache"),
+          "INVENTORY_FIRST_PARTY_MACHINE_CACHE_EVIDENCE", path)
+      end
+    end
+  end
+
   def validate_review_inventory(review)
     unless review.is_a?(Hash)
       add("INVENTORY_REVIEW_INVALID", INVENTORY_PATH)
@@ -691,7 +820,7 @@ class LicenseInventoryVerifier
       return
     end
     expect(binary.keys.sort == %w[
-      schemaVersion revision recordedAtUtc policyPath excludedGeneratedRoots summary files
+      schemaVersion revision recordedAtUtc policyPath excludedGeneratedRoots summary storage files
     ].sort, "BINARY_INVENTORY_FIELDS", BINARY_INVENTORY_PATH)
     expect(binary["schemaVersion"] == 1 && nonempty?(binary["revision"]),
       "BINARY_INVENTORY_VERSION", BINARY_INVENTORY_PATH)
@@ -703,7 +832,8 @@ class LicenseInventoryVerifier
       return
     end
     @binary_items = files
-    expect(files.length == (@review_items || []).length,
+    expected_media_count = (@review_items || []).length + (@first_party_items || []).length
+    expect(files.length == expected_media_count,
       "BINARY_INVENTORY_FILE_COUNT", BINARY_INVENTORY_PATH)
     paths = files.map { |entry| entry.is_a?(Hash) ? entry["path"] : nil }.compact
     expect(paths.length == paths.uniq.length, "BINARY_INVENTORY_PATH_UNIQUE", BINARY_INVENTORY_PATH)
@@ -723,27 +853,64 @@ class LicenseInventoryVerifier
       hashes << entry["sha256"] if entry["sha256"].is_a?(String)
     end
     summary = binary["summary"]
-    expected_summary = {
+    expected_summary_fields = %w[
+      fileCount totalBytes uniqueContentHashes filesOver10MiB
+      currentLfsRequiredCandidates currentLfsTrackedFiles ordinaryGitBinaryFiles
+    ]
+    expect(summary.is_a?(Hash) && summary.keys.sort == expected_summary_fields.sort,
+      "BINARY_INVENTORY_SUMMARY_FIELDS", BINARY_INVENTORY_PATH)
+    expected_content_summary = {
       "fileCount" => files.length,
       "totalBytes" => total_bytes,
       "uniqueContentHashes" => hashes.uniq.length,
       "filesOver10MiB" => files.count { |item| item.is_a?(Hash) && item["bytes"].is_a?(Integer) && item["bytes"] > 10 * 1024 * 1024 },
-      "currentLfsRequiredCandidates" => 0,
     }
-    expect(summary == expected_summary, "BINARY_INVENTORY_SUMMARY", BINARY_INVENTORY_PATH)
+    expected_content_summary.each do |key, value|
+      expect(summary.is_a?(Hash) && summary[key] == value,
+        "BINARY_INVENTORY_SUMMARY", "#{BINARY_INVENTORY_PATH}:#{key}")
+    end
+    if summary.is_a?(Hash)
+      %w[currentLfsRequiredCandidates currentLfsTrackedFiles ordinaryGitBinaryFiles].each do |key|
+        expect(summary[key].is_a?(Integer) && summary[key] >= 0,
+          "BINARY_INVENTORY_STORAGE_COUNT", "#{BINARY_INVENTORY_PATH}:#{key}")
+      end
+      tracked_count = summary["currentLfsTrackedFiles"]
+      ordinary_count = summary["ordinaryGitBinaryFiles"]
+      expect(tracked_count.is_a?(Integer) && ordinary_count.is_a?(Integer) &&
+        tracked_count + ordinary_count == files.length,
+        "BINARY_INVENTORY_STORAGE_PARTITION", BINARY_INVENTORY_PATH)
+    end
+    storage = binary["storage"]
+    expect(storage.is_a?(Hash) &&
+      storage["remoteName"] == "origin" &&
+      storage["remoteVisibility"] == "PRIVATE" &&
+      storage["defaultBranch"] == "main" &&
+      storage["repositoryLocalLfsEnabled"] == true &&
+      storage["historyMigrationPerformed"] == false &&
+      storage["existingReviewPngsMigrated"] == false,
+      "BINARY_INVENTORY_STORAGE", BINARY_INVENTORY_PATH)
   end
 
   def validate_repository_assets
     review_items = @review_items || []
+    first_party_items = @first_party_items || []
     binary_items = @binary_items || []
     review_by_path = review_items.select { |item| item.is_a?(Hash) }.to_h { |item| [item["path"], item] }
+    first_party_by_path = first_party_items.select { |item| item.is_a?(Hash) }.to_h do |item|
+      [item["path"], item]
+    end
     binary_by_path = binary_items.select { |item| item.is_a?(Hash) }.to_h { |item| [item["path"], item] }
     active_media = @active_paths.select { |path| MEDIA_EXTENSIONS.include?(File.extname(path).downcase) }.to_set
     review_paths = review_by_path.keys.compact.to_set
-    expect(active_media == review_paths, "REVIEW_MEDIA_EXACT_SET", INVENTORY_PATH)
-    (active_media - review_paths).sort.each { |path| add("UNREGISTERED_MEDIA_ASSET", path) }
-    (review_paths - active_media).sort.each { |path| add("INVENTORIED_MEDIA_MISSING", path) }
-    expect(binary_by_path.keys.compact.to_set == review_paths,
+    first_party_paths = first_party_by_path.keys.compact.to_set
+    overlap = review_paths & first_party_paths
+    expect(overlap.empty?, "INVENTORY_MEDIA_SCOPE_OVERLAP", INVENTORY_PATH)
+    overlap.sort.each { |path| add("INVENTORY_MEDIA_SCOPE_OVERLAP", path) }
+    registered_paths = review_paths | first_party_paths
+    expect(active_media == registered_paths, "REVIEW_MEDIA_EXACT_SET", INVENTORY_PATH)
+    (active_media - registered_paths).sort.each { |path| add("UNREGISTERED_MEDIA_ASSET", path) }
+    (registered_paths - active_media).sort.each { |path| add("INVENTORIED_MEDIA_MISSING", path) }
+    expect(binary_by_path.keys.compact.to_set == registered_paths,
       "BINARY_REVIEW_PATH_SET", BINARY_INVENTORY_PATH)
 
     review_by_path.each do |path, review|
@@ -764,6 +931,23 @@ class LicenseInventoryVerifier
       bytes = File.binread(absolute)
       expect(bytes.include?("OpenAI Media Service") && bytes.include?("trainedAlgorithmicMedia"),
         "REVIEW_ASSET_C2PA_MARKERS", path)
+    end
+
+    first_party_by_path.each do |path, first_party|
+      next unless repository_relative_path?(path)
+      absolute = safe_regular_file(path, "FIRST_PARTY_ASSET", MAX_EVIDENCE_BYTES)
+      next unless absolute
+
+      size = File.size(absolute)
+      digest = Digest::SHA256.file(absolute).hexdigest
+      expect(digest == first_party["sha256"], "FIRST_PARTY_ASSET_SHA_DRIFT", path)
+      binary = binary_by_path[path]
+      unless binary.is_a?(Hash)
+        add("FIRST_PARTY_ASSET_BINARY_RECORD_MISSING", path)
+        next
+      end
+      expect(binary["sha256"] == digest, "FIRST_PARTY_BINARY_SHA_DRIFT", path)
+      expect(binary["bytes"] == size, "FIRST_PARTY_BINARY_SIZE_DRIFT", path)
     end
   end
 
@@ -1005,6 +1189,7 @@ class LicenseInventoryVerifier
     puts "GIT_ACTIVE_FILES=#{@active_paths.length}"
     puts "PACKAGE_INVENTORY_COUNT=#{(@packages || []).length}"
     puts "REVIEW_ASSET_COUNT=#{(@review_items || []).length}"
+    puts "FIRST_PARTY_ASSET_COUNT=#{(@first_party_items || []).length}"
     puts "PACKAGE_CACHE_VERIFIED=#{@verify_package_cache}"
     if @verify_package_cache
       puts "PACKAGE_CACHE_MATCHES=#{@package_cache_matches}"
