@@ -1,7 +1,7 @@
 BinaryAssetInventory:
   schemaVersion: 1
-  revision: "r05"
-  recordedAtUtc: "2026-08-29T16:33:31Z"
+  revision: "r06"
+  recordedAtUtc: "2026-08-29T19:00:49Z"
   policyPath: "config/repository/BinaryAssetPolicy.md"
   excludedGeneratedRoots:
     - "Project hotfix/Library"
@@ -9,13 +9,13 @@ BinaryAssetInventory:
     - "Project hotfix/UserSettings"
     - "Project hotfix/.vscode"
   summary:
-    fileCount: 48
-    totalBytes: 74830756
-    uniqueContentHashes: 43
+    fileCount: 57
+    totalBytes: 78239109
+    uniqueContentHashes: 52
     filesOver10MiB: 0
-    currentLfsRequiredCandidates: 2
-    currentLfsTrackedFiles: 2
-    ordinaryGitBinaryFiles: 46
+    currentLfsRequiredCandidates: 3
+    currentLfsTrackedFiles: 3
+    ordinaryGitBinaryFiles: 54
   storage:
     remoteName: "origin"
     remoteUrl: "https://github.com/kjh4845/project-hotfix.git"
@@ -76,3 +76,12 @@ BinaryAssetInventory:
     - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_L_Silhouette_ThreeQuarter.png", bytes: 1589688, sha256: "1c3dd2483457d35695f09a987b53c338d3f853111e24f7e67b21028c7ae7ab67"}
     - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_R_Neutral_ThreeQuarter.png", bytes: 1737093, sha256: "8a25fad27d27a2772c5592e2470cb427ed24d8b8fe9a4dd6c4eb03fe5191c03d"}
     - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_R_Silhouette_ThreeQuarter.png", bytes: 1573600, sha256: "fe6239a426ed942b304b7fee7eb75d4fbd8f0b8435070992fd4e9ceef2d362c3"}
+    - {path: "Project hotfix/Assets/ProjectHotfix/Art/Characters/C1B-005/CHR_MasterCharacter_C1B_Neutral_r02.fbx", bytes: 70268, sha256: "e2049505f6be24508783710c83691445b28fa39cad892bcd88aa0e2ad4807d9d"}
+    - {path: "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Neutral_Back.png", bytes: 582928, sha256: "5b47515145ccb6c95b2e88f155f7afed5136ced8e4d3ecde1d6604dc24598b9f"}
+    - {path: "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Neutral_Front.png", bytes: 1036866, sha256: "e2ba6fcde0922a3130cfffe6694453a7b2316bc9ebad9ff759e2b3627040c0e5"}
+    - {path: "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Neutral_Side.png", bytes: 470612, sha256: "38dd20ed906525ac5fdc35e0f41c67bada3b1d0134c8438cb735e850d58b0cdd"}
+    - {path: "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Neutral_ThreeQuarter.png", bytes: 848109, sha256: "d1574f9d77cfa2b5702610dd3d41804f55b0eb89c33aff36e67588cb68964042"}
+    - {path: "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Silhouette_Back.png", bytes: 103417, sha256: "23ca1870b41855ae277683f0bcee244e1461c95d0c7ada89b45b764eeceafdaf"}
+    - {path: "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Silhouette_Front.png", bytes: 103021, sha256: "5f4e1cf9b19e5faf58083385e5a345fe07a4c4f0476d9649632208161b3f7653"}
+    - {path: "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Silhouette_Side.png", bytes: 93489, sha256: "d613c3bbec715018beca0e13b325e01357880a3c7cd6539bb093db8edef68c1d"}
+    - {path: "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Silhouette_ThreeQuarter.png", bytes: 99643, sha256: "98a994cf749f71e6cc4fb522774c08b6f2ad9393603ea0e0b10c5bbc36521e57"}

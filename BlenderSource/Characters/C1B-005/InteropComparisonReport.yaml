@@ -1,0 +1,153 @@
+C1B005InteropComparisonReport:
+  schemaVersion: 1
+  reportId: "C1B005-CHR-MasterCharacter-InteropComparison-r01"
+  state: "START"
+  candidateStatus: "CANDIDATE"
+  ownerTask: "C1B-005"
+  sourceOwner: "kjh4845"
+  result: "PASS"
+
+  sourceChain:
+    c1b004BlendPath: "BlenderSource/Characters/C1B-004/CHR_MasterCharacter_C1B_PoseLineup_r02.blend"
+    c1b004BlendBytes: 151456
+    c1b004BlendSha256: "83c2e100c74cf75a7faed11dd0ad65c3d07677684e02696e72455fdee4e17c2b"
+    canonicalSourceMutated: false
+    fbxPath: "Project hotfix/Assets/ProjectHotfix/Art/Characters/C1B-005/CHR_MasterCharacter_C1B_Neutral_r02.fbx"
+    fbxBytes: 70268
+    fbxSha256: "e2049505f6be24508783710c83691445b28fa39cad892bcd88aa0e2ad4807d9d"
+    fbxGuid: "250d071cf52954f0586c84d27ec778db"
+    fbxMetaSha256: "e6f13b6bd983deb56b3936b1dc2d1626a2113bac887f0cccbc33966caeecf15f"
+    prefabPath: "Project hotfix/Assets/ProjectHotfix/Art/Characters/C1B-005/CHR_MasterCharacter_C1B_Neutral_r02.prefab"
+    prefabSha256: "ae76d0982e232f8e4344087f58e47f3331bf7b688abbe9ca73236b7706318c43"
+    prefabGuid: "e4c57671925554af4aa4e36feea50f81"
+    prefabMetaSha256: "30047b4953e7ed4da6b5c76b8e0ffe9c88452854374512bdf1de6519445915e6"
+
+  profiles:
+    modelInterop:
+      path: "config/art/ModelInteropProfile-r02.yaml"
+      profileId: "ModelInteropProfile-ART-001-r02"
+      revision: "r02"
+      sha256: "75c8df9e283268cc3a11fce70ce039107cd73d94a98f0f1831365133e1c6d4a0"
+      baseExportPresetId: "PHX-FBX-MODEL-r01"
+      exportOverrideId: "PHX-FBX-C1B-BLOCKOUT-r02"
+      exportOverrideSettingsSha256: "21b50c577b30f79d5717806f0687550c267181ddb3e8d0b9b9213e6133a02f29"
+      baseImporterPresetId: "PHX-UNITY-MODEL-IMPORT-r01"
+      importerOverrideId: "PHX-UNITY-C1B-BLOCKOUT-r02"
+      importerOverrideSettingsSha256: "6e7dc965bf635789ed6447e53c873dd25fab915a1698e54db936564ded24303d"
+    alphaVisualQa:
+      path: "config/art/AlphaVisualQAProfile-r02.yaml"
+      profileId: "AlphaVisualQAProfile-ART-001-r02"
+      revision: "r02"
+      sha256: "358db218a34b7d09e41dbd6596ca2f79d0b74a3f0eea01d1ecd2bf562d0ed1ef"
+
+  fbxBlenderInspection:
+    inspectorId: "C1B005-FBX-Inspector-r02"
+    result: "PASS"
+    objects: 24
+    meshObjects: 6
+    meshDatablocks: 6
+    landmarks: 17
+    maximumLandmarkTransportDeviationH: 0.000000075
+    boundsH: {width: 0.579999983, height: 1.0, depth: 0.264999986}
+    groundMinimumH: -0.000000002
+    axisReversalCount: 0
+    negativeScaleObjects: 0
+    nonFiniteVertexCount: 0
+    nonFiniteNormalCount: 0
+    degeneratePolygonCount: 0
+    materials: 0
+    armatures: 0
+    actions: 0
+    colliders: 0
+
+  unityImport:
+    inspectionPath: "artifacts/evidence/G0/C1B-005/UnityImportInspection.json"
+    inspectionSha256: "94901f3b4d98e14e037e23348aac14dbfface273cbededa8dd5fac037d87bd71"
+    importerSettingsMatched: true
+    meshObjects: 6
+    landmarks: 17
+    maximumLandmarkDeviationH: 0.0
+    combinedBoundsCenterH: [0.0, 0.5, 0.007500000298023224]
+    combinedBoundsSizeH: [0.5799999833106995, 1.0, 0.26499998569488525]
+    groundHeightH: 0.0
+    rootScale: [1.0, 1.0, 1.0]
+    rootForward: [0.0, 0.0, 1.0]
+    rootDeterminant: 1.0
+    exportRootScale: [1.0, 1.0, 1.0]
+    exportRootForward: [0.0, 0.0, 1.0]
+    exportRootDeterminant: 1.0
+    negativeScaleCount: 0
+    axisReversalCount: 0
+    importedMaterialAssetCount: 0
+    armatureCount: 0
+    animatorCount: 0
+    colliderCount: 0
+
+  geometrySignatures:
+    quantizationPerH: 1000000
+    importedVertexCount: 1336
+    importedNormalCount: 1336
+    pointSha256: "cff38fcc751280c16e2efa77c061090bb8b5302b569b1f26ce202d674f39d3b6"
+    surfaceSha256: "289d5f3e8f9105e54b5293d587c51e58a3f73d9766fab9c9cba7a5fe26ecc5f6"
+    result: "PASS"
+
+  silhouetteParity:
+    maskThreshold: 128
+    dimensions: [2048, 2048]
+    boundingBoxMaximumDriftHThreshold: 0.005
+    iouApprovalThresholdApplied: false
+    views:
+      - {view: "Front", intersectionOverUnionObserved: 0.9987911430509301, maximumBoundingBoxDriftPixels: 0, sourceSilhouetteHeightPixels: 1706, maximumBoundingBoxDriftH: 0.0, result: "PASS"}
+      - {view: "Side", intersectionOverUnionObserved: 0.9323229202847169, maximumBoundingBoxDriftPixels: 0, sourceSilhouetteHeightPixels: 1706, maximumBoundingBoxDriftH: 0.0, result: "PASS"}
+      - {view: "Back", intersectionOverUnionObserved: 0.998792095656879, maximumBoundingBoxDriftPixels: 0, sourceSilhouetteHeightPixels: 1706, maximumBoundingBoxDriftH: 0.0, result: "PASS"}
+      - {view: "ThreeQuarter", intersectionOverUnionObserved: 0.9468353917322015, maximumBoundingBoxDriftPixels: 7, sourceSilhouetteHeightPixels: 1706, maximumBoundingBoxDriftH: 0.004103165298944901, result: "PASS"}
+
+  neutralReadability:
+    state: "QA_ONLY_OBSERVED"
+    productLighting: false
+    approvalThresholdApplied: false
+    keyRelativeIntensity: 1.0
+    fillLightCount: 3
+    fillTotalRelativeIntensity: 0.35
+    foregroundVsBackgroundObserved:
+      - {view: "Front", foregroundMeanRgb: [196.6108044772565, 196.910181471779, 197.4213908073351], backgroundMeanRgb: [46.0, 46.0, 46.0], absoluteLuminanceDifference: 150.9807922521235}
+      - {view: "Side", foregroundMeanRgb: [109.69746112891691, 110.43062968505814, 111.69834516462268], backgroundMeanRgb: [46.0, 46.0, 46.0], absoluteLuminanceDifference: 64.60881199286591}
+      - {view: "Back", foregroundMeanRgb: [69.65103977137413, 70.5366858775899, 72.03621338413907], backgroundMeanRgb: [46.0, 46.0, 46.0], absoluteLuminanceDifference: 24.741313011034364}
+      - {view: "ThreeQuarter", foregroundMeanRgb: [163.319957375085, 163.72886523758572, 164.43111290236024], backgroundMeanRgb: [46.0, 46.0, 46.0], absoluteLuminanceDifference: 117.826645171677}
+
+  staticActionReview:
+    state: "READ_ONLY_SOURCE_EVIDENCE_RECONFIRMED"
+    sourceTask: "C1B-004"
+    files: 20
+    png2048Matches: 20
+    orderedBundleSha256: "9f9cbe63a2cf5ec0cf606e89f5114ddc31c86e2a334a4853ae9ca4d467d24a1f"
+    checklistIds: ["STATIC_SILHOUETTE_UNCHANGED", "STATIC_INTERSECTION_REVIEW_UNCHANGED", "STATIC_JOINT_REGION_REVIEW_UNCHANGED"]
+    animationActionsPresent: 0
+    motionNaturalnessClaimed: false
+
+  scopeBoundary:
+    c1bBlockoutUv0State: "DEFERRED_C1B_BLOCKOUT_ONLY"
+    c1bBlockoutImportTangents: "None"
+    globalProductionUv0RequiredPreserved: true
+    globalProductionTangentPolicyPreserved: true
+    animationStage: "NOT_APPLICABLE_STATIC_BLOCKOUT"
+    rigAuthored: false
+    colliderAuthored: false
+    manualModelTransformCorrectionCount: 0
+    userVisualApprovalRecorded: false
+    productionLockRecorded: false
+
+  execution:
+    fbxExports: 1
+    unityImports: 1
+    unityPrefabs: 1
+    sourceReferenceRenders: 8
+    unityReferenceRenders: 8
+    c1b005EditModeTests: 7
+    fullEditModeTests: 59
+    playModeTests: 0
+    animationActions: 0
+    playerBuilds: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  recordedAtUtc: "2026-08-29T18:56:33Z"

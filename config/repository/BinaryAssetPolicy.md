@@ -3,10 +3,10 @@
 ## Status
 
 - Owner: `FDN-011`
-- Revision: `r05`
+- Revision: `r06`
 - Repository remote: private GitHub `origin` over HTTPS (`https://github.com/kjh4845/project-hotfix.git`)
 - Git LFS: `3.8.0`, repository-local filters and pre-push hook enabled
-- Initial remote backup: `main` at `8d73541`, verified before the r05 policy commit
+- Initial remote backup: `main` at `8d73541`, verified before the r06 policy commit
 - Existing-history LFS migration: not performed and not required
 - Player Build, game/Steam deployment and public publication: not part of this policy
 
@@ -27,10 +27,10 @@ The following production-source extensions must use the active Git LFS clean/smu
 - Lossless production audio/source images: `.wav`, `.flac`, `.psd`, `.exr`, `.hdr`, `.tif`, `.tiff`
 - Any single binary file larger than 10 MiB must also use LFS even when its extension is not in the default list; update `.gitattributes` before staging it.
 
-The current repository has `2` LFS-tracked files and `2` LFS-required candidates. Core revision `af11dd2` uploaded the first production LFS object (`b0f4e10e…37cc`, `116437` bytes), and an authenticated fresh clone reproduced the same materialized SHA-256 and byte size after repository-local LFS install, fetch and checkout. Core revision `9caad6a` uploaded the second production LFS object for the C1B-004 Pose/Lineup source (`83c2e100…17c2b`, `151456` bytes). A fresh private clone first confirmed its `131`-byte pointer and declared OID/size, then authenticated LFS fetch and checkout reproduced the same materialized SHA-256 and byte size. Existing PNGs stay in ordinary Git, and existing PNG migration remains `0`. Do not run `git lfs migrate`, rewrite existing commits, force-push, or move existing review PNGs into LFS without a separate user-approved migration plan.
+The current repository has `3` LFS-tracked files and `3` LFS-required candidates. Core revision `af11dd2` uploaded the first production LFS object (`b0f4e10e…37cc`, `116437` bytes), and core revision `9caad6a` uploaded the second (`83c2e100…17c2b`, `151456` bytes); authenticated fresh clones reproduced both materialized SHA-256 values and byte sizes. The C1B-005 Unity import FBX is the third canonical LFS object (`e2049505…7d9d`, `70268` bytes); its normal push and fresh-fetch round-trip remain pending until the C1B-005 core commit. Existing PNGs stay in ordinary Git, and existing PNG migration remains `0`. Do not run `git lfs migrate`, rewrite existing commits, force-push, or move existing review PNGs into LFS without a separate user-approved migration plan.
 
-Blender `.blend1`, `.blend2` and other numbered backup files are ignored as recoverable editor output. Only task-declared canonical `.blend` sources are eligible for LFS tracking and inventory.
-Canonical `.blend` sources must remain outside `Project hotfix/Assets/`; Unity consumes approved derived interchange assets so the Blender→FBX→Unity profile is not bypassed.
+Blender `.blend1`, `.blend2` and other numbered backup files are ignored as recoverable editor output. Only task-declared canonical `.blend` sources and derived `.fbx` interchange assets are eligible for LFS tracking and inventory.
+Canonical `.blend` sources must remain outside `Project hotfix/Assets/`; only first-party FBX records with `PLAYER_CONTENT` and `shippingAllowed: true` may enter the Unity `Assets` import boundary.
 
 Before committing a new required binary:
 

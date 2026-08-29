@@ -4,16 +4,27 @@
 
 | 항목 | 내용 |
 |---|---|
-| 문서 버전 | 0.11.0 Disconnect·Forfeit·Alpha Scope Baseline |
-| 최종 수정일 | 2026-08-26 |
+| 문서 버전 | 0.12.0 C1B Static Interop Baseline |
+| 최종 수정일 | 2026-08-30 |
 | 상위 기준 | `01_PRD.md` 1.8.0, `02_SRS.md` 1.8.0 |
 | 목적 | `MasterCharacter`의 승인 방향, 제작 Gate, 물리·입력·Paint·Cosmetic·무기 통합 기준 정의 |
-| 우선순위 | 게임 규칙은 PRD/SRS, 패치 콘텐츠는 `PATCH_DESIGN.md` 0.5.0, 시각 언어는 `ART_DIRECTION.md` 1.8.0, 구체 캐릭터 제작은 본 문서 |
+| 우선순위 | 게임 규칙은 PRD/SRS, 패치 콘텐츠는 `PATCH_DESIGN.md` 0.5.0, 시각 언어는 `ART_DIRECTION.md` 1.9.0, 구체 캐릭터 제작은 본 문서 |
 
 이 문서는 결과와 승인 기준을 정의한다. 구현체의 바이너리 배치, 내부 직렬화 수식과 반복 fixture
 개수는 구현·테스트 문서에서 관리하며 캐릭터의 제품 방향으로 취급하지 않는다.
 
-### 0.1 0.11.0 변경 요약
+### 0.1 0.12.0 변경 요약
+
+- 첫 C1B static Blockout 반입에서 확인한 Blender/Unity handedness 차이를 `ModelInteropProfile-ART-001-r02`의
+  `C1BBlockout` 전용 transient `ReflectX + reverse winding` export override로 고정했다.
+- 이 override는 canonical `.blend`를 바꾸거나 Unity Prefab에 개별 Rotation·Scale correction을 남기지 않으며,
+  Static Blockout에만 적용된다. Armature·Skinned Character와 base r01 preset에는 적용하지 않는다.
+- C1B Blockout은 UV0가 없는 비생산 Mesh이므로 Unity tangent import를 `None`으로 두는 좁은 예외를 추가했다.
+  전역 UV0·authored tangent 요구는 유지하며 C4 production source부터 다시 필수다.
+- C1B-005는 static silhouette·landmark·bounds·pivot·관절 접합만 검증한다. Armature·Action·Animation·Collider와
+  모션 자연스러움은 0이며 ANP/C2 이후 검증으로 남긴다.
+
+### 0.2 0.11.0 변경 요약
 
 - Guest 30초 Disconnect grace의 Neutral Input과 계속되는 Character physics·vulnerability·Alive/Camera
   참여, current Alive/spectator reconnect를 고정했다.
@@ -25,7 +36,7 @@
 - ModelInteropProfile의 reference toolchain을 Unity 6.3 LTS·Blender 5.2 LTS로 정하고 실제 설치 patch
   version은 Plan 2.5 `FDN-010` ToolchainProfile이 소유하게 했다.
 
-### 0.2 0.10.0 변경 요약
+### 0.3 0.10.0 변경 요약
 
 - Pistol 7발 semi-auto와 LongGun 30발 full-auto·reload 0, Ammo 0 spent cleanup lifecycle을 추가했다.
 - Host visible Projectile의 fixed-step swept SphereCast·first-hit·no-pierce/no-ricochet와 TTL·OOB·reset을 정의했다.
@@ -33,7 +44,7 @@
 - Pistol single recoil과 LongGun RecoilAccumulator·SpreadBloom·deterministic ShotSequence pose/state를 Action Matrix에 추가했다.
 - Projectile별 Patch03·04 dedupe와 source spent/owner loss 뒤 Patch12 NoEligibleTarget을 고정했다.
 
-### 0.3 0.9.0 변경 요약
+### 0.4 0.9.0 변경 요약
 
 - Ground hand Punch·Grab과 Airborne foot Kick·Dropkick·hand/ledge Grab의 입력 arbitration을 고정했다.
 - `AirAttackToken=1`, `KickAnchor_L/R`, Dropkick 단일 AttackAction·dedupe와 non-Down DropkickRecovery를 추가했다.
@@ -41,7 +52,7 @@
 - Punch·Kick·Dropkick·Grab·Throw·Weapon의 action/animation matrix와 Animator↔Ragdoll 전환 정책을 정의했다.
 - Alpha는 primitive/procedural pose로 기능을 검증하고 C4/ANM production polish가 gameplay 판정을 바꾸지 않게 했다.
 
-### 0.4 0.8.0 변경 요약
+### 0.5 0.8.0 변경 요약
 
 - 승인 Catalog를 `PATCH-PROT-001..012`로 확장하고 Character modifier subset 001..008과
   Weapon Supply·Forced Drop subset 009..012의 책임을 분리했다.
@@ -51,7 +62,7 @@
   Round reset에서 Incoming·Loose·Held와 supply schedule을 함께 지우게 했다.
 - 인원별 반복 Supply `START`와 cap이 Character/Weapon 접촉·Camera·2·3·4인 Gate에 포함됐다.
 
-### 0.5 0.7.0 변경 요약
+### 0.6 0.7.0 변경 요약
 
 - 승인된 `PATCH-PROT-001..008`을 캐릭터 물리에 연결하되 base profile과 Round 범위
   `PatchModifier`를 분리했다.
@@ -137,6 +148,27 @@ material import와 mesh 처리 설정을 추적한다. 개별 FBX의 수동 rota
 문서의 `5.2 LTS`·`6.3 LTS` 표기만으로 exact patch를 추정하지 않고 Plan 2.5 `FDN-010`에서 고정한 profile과
 project/package lock이 없으면 import parity를 승인하지 않는다.
 
+`ModelInteropProfile-ART-001-r02`는 C1B static Blockout에 한해 좌표계 handedness를 다음처럼 운반한다.
+
+- canonical Blender source의 `+X Right / -Y Forward / +Z Up`과 vertex는 수정하지 않는다.
+- export용 transient copy에서만 X를 한 번 반사하고 polygon winding을 함께 뒤집어 outward normal을 보존한다.
+- Blender FBX base axis `-Z Forward / +Y Up`에 `bake_space_transform=true`를 적용하고, Unity는
+  `bakeAxisConversion=false`로 읽는다.
+- Unity imported root와 export root는 identity rotation·scale1·positive determinant를 유지하고
+  `+X Right / +Y Up / +Z Forward`가 되어야 한다.
+- 이 처리는 versioned `C1BBlockout` asset-class override이며 개별 FBX post-import correction이 아니다.
+  Armature·Skinned Character·Weapon·Map에 자동 확장하지 않는다.
+
+C1B Blockout Mesh는 production UV를 만들기 전의 수치·실루엣 검토본이므로 `UV0=0`, tangent stream `0`,
+Unity `importTangents=None`을 허용한다. Normals는 계속 `Import`하고 finite/outward 상태를 검사한다. 이 예외는
+Paint, normal map, production Material이나 shipping topology 준비를 뜻하지 않으며 C4 source에서는 끝난다.
+전역 `UV0 required`와 authored tangent 계약은 그대로 유지한다.
+
+Blender 5.2 FBX는 생성 시각과 Python-hash UUID metadata 때문에 같은 semantic export의 binary SHA가 매번
+같다고 보장하지 않는다. Manifest는 선택된 canonical FBX의 SHA를 기록하고, 재현 Gate는 source/preset hash와
+Mesh position·surface topology·landmark·bounds semantic fingerprint를 함께 사용한다. Binary를 사후 patch하거나
+vendor exporter를 monkeypatch해 hash만 맞추지 않는다.
+
 첫 Unity 반입은 승인 C1b source와 동일한 네 방향에서 다음을 비교한다.
 
 - silhouette·landmark·bounds 오차 `0.005H 이하`
@@ -144,6 +176,11 @@ project/package lock이 없으면 import parity를 승인하지 않는다.
 - 잘못된 vertex·normal, 음수 scale과 축 반전 0건
 - Bone 이름·parent와 Bind Pose 일치
 - profile hash와 source→FBX→Prefab version 추적 가능
+
+C1B-005에서는 Skeleton·UV·tangent·Material 항목이 위 Blockout 예외 또는 `N/A`인지 명시하고, 대신
+Neutral four-view mask bounds drift `0.005H 이하`, source/import geometry signature, L/R landmark와
+`+Z Forward`를 직접 검사한다. 정적 Pose의 실루엣·관통·관절 접합은 검토하지만 Animation timing·transition·
+deformation·무게감은 Armature/Action이 생기는 ANP/C2 전에는 승인하지 않는다.
 
 불일치하면 Collider나 Joint로 보정하지 않고 source 또는 interop profile을 수정해 다시 반입한다.
 

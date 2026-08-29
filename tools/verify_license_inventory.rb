@@ -31,6 +31,10 @@ class LicenseInventoryVerifier
   C1B003_MANIFEST_PATH = "#{C1B003_ROOT}GenerationManifest.yaml"
   C1B004_ROOT = "BlenderSource/Characters/C1B-004/"
   C1B004_MANIFEST_PATH = "#{C1B004_ROOT}GenerationManifest.yaml"
+  C1B005_MANIFEST_PATH = "BlenderSource/Characters/C1B-005/GenerationManifest.yaml"
+  C1B005_FBX_PATH = "Project hotfix/Assets/ProjectHotfix/Art/Characters/C1B-005/" \
+    "CHR_MasterCharacter_C1B_Neutral_r02.fbx"
+  C1B005_CAPTURE_ROOT = "artifacts/evidence/G0/C1B-005/Captures/Unity/"
   CHARACTER_PROFILE_ANCHOR = "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
 
   MAX_YAML_BYTES = 2 * 1024 * 1024
@@ -496,7 +500,7 @@ class LicenseInventoryVerifier
     end
     expect(@inventory.keys.sort == INVENTORY_TOP_LEVEL_FIELDS, "INVENTORY_FIELD_SET", INVENTORY_PATH)
     expect(@inventory["schemaVersion"] == 1, "INVENTORY_SCHEMA_VERSION", INVENTORY_PATH)
-    expect(@inventory["inventoryId"] == "project-hotfix-third-party-inventory-r04",
+    expect(@inventory["inventoryId"] == "project-hotfix-third-party-inventory-r05",
       "INVENTORY_ID", INVENTORY_PATH)
     expect(@inventory["status"] == "APPROVED_SOURCE_INVENTORY_WINDOWS_FINAL_AUDIT_PENDING",
       "INVENTORY_STATUS", INVENTORY_PATH)
@@ -664,6 +668,18 @@ class LicenseInventoryVerifier
     end
     expect(c1b004_source_count == 1 && c1b004_render_count == 20,
       "INVENTORY_C1B004_ASSET_TYPE_COUNT", INVENTORY_PATH)
+    c1b005_items = items.select do |item|
+      next false unless item.is_a?(Hash)
+
+      item["path"] == C1B005_FBX_PATH || item["path"].to_s.start_with?(C1B005_CAPTURE_ROOT)
+    end
+    expect(c1b005_items.length == 9, "INVENTORY_C1B005_ITEM_COUNT", INVENTORY_PATH)
+    c1b005_fbx_count = c1b005_items.count { |item| item["path"] == C1B005_FBX_PATH }
+    c1b005_capture_count = c1b005_items.count do |item|
+      item["assetType"] == "UNITY_INTEROP_REFERENCE_RENDER"
+    end
+    expect(c1b005_fbx_count == 1 && c1b005_capture_count == 8,
+      "INVENTORY_C1B005_ASSET_TYPE_COUNT", INVENTORY_PATH)
 
     items.each_with_index do |item, index|
       path = item.is_a?(Hash) && nonempty?(item["path"]) ? item["path"] : "first-party[#{index}]"
@@ -776,6 +792,26 @@ class LicenseInventoryVerifier
           expect(item["assetType"] == "CHARACTER_POSE_LINEUP_REFERENCE_RENDER" &&
             item["intendedUse"] == "PRODUCTION_EVIDENCE" && item["shippingAllowed"] == false,
             "INVENTORY_C1B004_RENDER_CLASS", path)
+        end
+      end
+      if path == C1B005_FBX_PATH || path.start_with?(C1B005_CAPTURE_ROOT)
+        expect(item["sourceOwner"] == "kjh4845", "INVENTORY_C1B005_SOURCE_OWNER", path)
+        expect(evidence.include?(CHARACTER_PROFILE_ANCHOR),
+          "INVENTORY_C1B005_PROFILE_EVIDENCE", path)
+        if path == C1B005_FBX_PATH
+          expect(extension == ".fbx" && item["assetType"] == "MODEL" &&
+            item["intendedUse"] == "PLAYER_CONTENT" && item["shippingAllowed"] == true,
+            "INVENTORY_C1B005_FBX_CLASS", path)
+          expect(evidence.include?("#{C1B005_MANIFEST_PATH}#stages.fbx-export") &&
+            evidence.include?("#{C1B005_MANIFEST_PATH}#identity.fbxSha256"),
+            "INVENTORY_C1B005_FBX_MANIFEST_EVIDENCE", path)
+        else
+          expect(extension == ".png" && item["assetType"] == "UNITY_INTEROP_REFERENCE_RENDER" &&
+            item["intendedUse"] == "PRODUCTION_EVIDENCE" && item["shippingAllowed"] == false,
+            "INVENTORY_C1B005_CAPTURE_CLASS", path)
+          manifest_anchor =
+            "#{C1B005_MANIFEST_PATH}#stages.reference-render.outputs[path=#{path}]"
+          expect(evidence.include?(manifest_anchor), "INVENTORY_C1B005_CAPTURE_MANIFEST_EVIDENCE", path)
         end
       end
       evidence.each do |locator|
@@ -901,7 +937,7 @@ class LicenseInventoryVerifier
     expect(binary.keys.sort == %w[
       schemaVersion revision recordedAtUtc policyPath excludedGeneratedRoots summary storage files
     ].sort, "BINARY_INVENTORY_FIELDS", BINARY_INVENTORY_PATH)
-    expect(binary["schemaVersion"] == 1 && binary["revision"] == "r05",
+    expect(binary["schemaVersion"] == 1 && binary["revision"] == "r06",
       "BINARY_INVENTORY_VERSION", BINARY_INVENTORY_PATH)
     expect(binary["policyPath"] == "config/repository/BinaryAssetPolicy.md",
       "BINARY_INVENTORY_POLICY_PATH", BINARY_INVENTORY_PATH)

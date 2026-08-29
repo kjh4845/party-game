@@ -1,0 +1,692 @@
+{
+    "schemaVersion": 1,
+    "taskId": "C1B-005",
+    "state": "START",
+    "candidateStatus": "CANDIDATE",
+    "result": "PASS",
+    "sourceOwner": "kjh4845",
+    "sourcePath": "Assets/ProjectHotfix/Art/Characters/C1B-005/CHR_MasterCharacter_C1B_Neutral_r02.fbx",
+    "sourceBytes": 70268,
+    "sourceSha256": "e2049505f6be24508783710c83691445b28fa39cad892bcd88aa0e2ad4807d9d",
+    "modelInteropProfileId": "ModelInteropProfile-ART-001-r02",
+    "modelInteropProfileRevision": "r02",
+    "baseImporterPresetId": "PHX-UNITY-MODEL-IMPORT-r01",
+    "baseImporterPresetRevision": "r01",
+    "baseImporterSettingsSha256": "4a00f7ea259ef98d17a932948ca2ebfde7bc7173e632ac5f5b4ddc81fba94cf9",
+    "importerOverrideId": "PHX-UNITY-C1B-BLOCKOUT-r02",
+    "importerOverrideRevision": "r02",
+    "importerOverrideSettingsSha256": "6e7dc965bf635789ed6447e53c873dd25fab915a1698e54db936564ded24303d",
+    "importerSettingsMatched": true,
+    "modelGuid": "250d071cf52954f0586c84d27ec778db",
+    "prefabPath": "Assets/ProjectHotfix/Art/Characters/C1B-005/CHR_MasterCharacter_C1B_Neutral_r02.prefab",
+    "prefabGuid": "e4c57671925554af4aa4e36feea50f81",
+    "combinedBoundsCenter": {
+        "x": 0.0,
+        "y": 0.5,
+        "z": 0.007500000298023224
+    },
+    "combinedBoundsSize": {
+        "x": 0.5799999833106995,
+        "y": 1.0,
+        "z": 0.26499998569488528
+    },
+    "groundHeight": 0.0,
+    "meshObjectCount": 6,
+    "meshObjectNames": [
+        "CHR_C1B005_Arm_L",
+        "CHR_C1B005_Arm_R",
+        "CHR_C1B005_Head",
+        "CHR_C1B005_Leg_L",
+        "CHR_C1B005_Leg_R",
+        "CHR_C1B005_Torso"
+    ],
+    "landmarkCount": 17,
+    "landmarks": [
+        {
+            "id": "LM_Crown",
+            "expected": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+            },
+            "actual": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+            },
+            "maximumDeviationH": 0.0
+        },
+        {
+            "id": "LM_Chin",
+            "expected": {
+                "x": 0.0,
+                "y": 0.800000011920929,
+                "z": 0.0
+            },
+            "actual": {
+                "x": 0.0,
+                "y": 0.800000011920929,
+                "z": 0.0
+            },
+            "maximumDeviationH": 0.0
+        },
+        {
+            "id": "LM_Shoulder_L",
+            "expected": {
+                "x": -0.20499999821186067,
+                "y": 0.6899999976158142,
+                "z": 0.0
+            },
+            "actual": {
+                "x": -0.20499999821186067,
+                "y": 0.6899999976158142,
+                "z": 0.0
+            },
+            "maximumDeviationH": 0.0
+        },
+        {
+            "id": "LM_Shoulder_R",
+            "expected": {
+                "x": 0.20499999821186067,
+                "y": 0.6899999976158142,
+                "z": 0.0
+            },
+            "actual": {
+                "x": 0.20499999821186067,
+                "y": 0.6899999976158142,
+                "z": 0.0
+            },
+            "maximumDeviationH": 0.0
+        },
+        {
+            "id": "LM_Elbow_L",
+            "expected": {
+                "x": -0.23499999940395356,
+                "y": 0.5199999809265137,
+                "z": 0.0
+            },
+            "actual": {
+                "x": -0.23499999940395356,
+                "y": 0.5199999809265137,
+                "z": 0.0
+            },
+            "maximumDeviationH": 0.0
+        },
+        {
+            "id": "LM_Elbow_R",
+            "expected": {
+                "x": 0.23499999940395356,
+                "y": 0.5199999809265137,
+                "z": 0.0
+            },
+            "actual": {
+                "x": 0.23499999940395356,
+                "y": 0.5199999809265137,
+                "z": 0.0
+            },
+            "maximumDeviationH": 0.0
+        },
+        {
+            "id": "LM_ForearmTerminal_L",
+            "expected": {
+                "x": -0.23499999940395356,
+                "y": 0.4050000011920929,
+                "z": 0.004999999888241291
+            },
+            "actual": {
+                "x": -0.23499999940395356,
+                "y": 0.4050000011920929,
+                "z": 0.004999999888241291
+            },
+            "maximumDeviationH": 0.0
+        },
+        {
+            "id": "LM_ForearmTerminal_R",
+            "expected": {
+                "x": 0.23499999940395356,
+                "y": 0.4050000011920929,
+                "z": 0.004999999888241291
+            },
+            "actual": {
+                "x": 0.23499999940395356,
+                "y": 0.4050000011920929,
+                "z": 0.004999999888241291
+            },
+            "maximumDeviationH": 0.0
+        },
+        {
+            "id": "LM_Chest",
+            "expected": {
+                "x": 0.0,
+                "y": 0.5849999785423279,
+                "z": 0.0
+            },
+            "actual": {
+                "x": 0.0,
+                "y": 0.5849999785423279,
+                "z": 0.0
+            },
+            "maximumDeviationH": 0.0
+        },
+        {
+            "id": "LM_Pelvis",
+            "expected": {
+                "x": 0.0,
+                "y": 0.39500001072883608,
+                "z": 0.0
+            },
+            "actual": {
+                "x": 0.0,
+                "y": 0.39500001072883608,
+                "z": 0.0
+            },
+            "maximumDeviationH": 0.0
+        },
+        {
+            "id": "LM_Crotch",
+            "expected": {
+                "x": 0.0,
+                "y": 0.3100000023841858,
+                "z": 0.0
+            },
+            "actual": {
+                "x": 0.0,
+                "y": 0.3100000023841858,
+                "z": 0.0
+            },
+            "maximumDeviationH": 0.0
+        },
+        {
+            "id": "LM_Hip_L",
+            "expected": {
+                "x": -0.0949999988079071,
+                "y": 0.3149999976158142,
+                "z": 0.0
+            },
+            "actual": {
+                "x": -0.0949999988079071,
+                "y": 0.3149999976158142,
+                "z": 0.0
+            },
+            "maximumDeviationH": 0.0
+        },
+        {
+            "id": "LM_Hip_R",
+            "expected": {
+                "x": 0.0949999988079071,
+                "y": 0.3149999976158142,
+                "z": 0.0
+            },
+            "actual": {
+                "x": 0.0949999988079071,
+                "y": 0.3149999976158142,
+                "z": 0.0
+            },
+            "maximumDeviationH": 0.0
+        },
+        {
+            "id": "LM_Knee_L",
+            "expected": {
+                "x": -0.10499999672174454,
+                "y": 0.17000000178813935,
+                "z": 0.0
+            },
+            "actual": {
+                "x": -0.10499999672174454,
+                "y": 0.17000000178813935,
+                "z": 0.0
+            },
+            "maximumDeviationH": 0.0
+        },
+        {
+            "id": "LM_Knee_R",
+            "expected": {
+                "x": 0.10499999672174454,
+                "y": 0.17000000178813935,
+                "z": 0.0
+            },
+            "actual": {
+                "x": 0.10499999672174454,
+                "y": 0.17000000178813935,
+                "z": 0.0
+            },
+            "maximumDeviationH": 0.0
+        },
+        {
+            "id": "LM_LowerLegTerminal_L",
+            "expected": {
+                "x": -0.10999999940395355,
+                "y": 0.06499999761581421,
+                "z": 0.012000000104308129
+            },
+            "actual": {
+                "x": -0.10999999940395355,
+                "y": 0.06499999761581421,
+                "z": 0.012000000104308129
+            },
+            "maximumDeviationH": 0.0
+        },
+        {
+            "id": "LM_LowerLegTerminal_R",
+            "expected": {
+                "x": 0.10999999940395355,
+                "y": 0.06499999761581421,
+                "z": 0.012000000104308129
+            },
+            "actual": {
+                "x": 0.10999999940395355,
+                "y": 0.06499999761581421,
+                "z": 0.012000000104308129
+            },
+            "maximumDeviationH": 0.0
+        }
+    ],
+    "maximumLandmarkDeviationH": 0.0,
+    "rootScale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    },
+    "rootRotationEuler": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "rootForward": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.0
+    },
+    "rootDeterminant": 1.0,
+    "exportRootScale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    },
+    "exportRootRotationEuler": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "exportRootForward": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.0
+    },
+    "exportRootDeterminant": 1.0,
+    "negativeScaleCount": 0,
+    "axisReversalCount": 0,
+    "armatureCount": 0,
+    "animatorCount": 0,
+    "colliderCount": 0,
+    "cameraCount": 0,
+    "lightCount": 0,
+    "importedMaterialAssetCount": 0,
+    "geometrySignature": {
+        "quantizationPerH": 1000000,
+        "vertexCount": 1336,
+        "normalCount": 1336,
+        "pointSha256": "cff38fcc751280c16e2efa77c061090bb8b5302b569b1f26ce202d674f39d3b6",
+        "surfaceSha256": "289d5f3e8f9105e54b5293d587c51e58a3f73d9766fab9c9cba7a5fe26ecc5f6"
+    },
+    "captures": [
+        {
+            "style": "Neutral",
+            "view": "Back",
+            "path": "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Neutral_Back.png",
+            "bytes": 582928,
+            "sha256": "5b47515145ccb6c95b2e88f155f7afed5136ced8e4d3ecde1d6604dc24598b9f",
+            "width": 2048,
+            "height": 2048,
+            "orthographicSize": 0.6000000238418579,
+            "boundsPaddingRatioPerSide": 0.10000000149011612
+        },
+        {
+            "style": "Neutral",
+            "view": "Front",
+            "path": "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Neutral_Front.png",
+            "bytes": 1036866,
+            "sha256": "e2ba6fcde0922a3130cfffe6694453a7b2316bc9ebad9ff759e2b3627040c0e5",
+            "width": 2048,
+            "height": 2048,
+            "orthographicSize": 0.6000000238418579,
+            "boundsPaddingRatioPerSide": 0.10000000149011612
+        },
+        {
+            "style": "Neutral",
+            "view": "Side",
+            "path": "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Neutral_Side.png",
+            "bytes": 470612,
+            "sha256": "38dd20ed906525ac5fdc35e0f41c67bada3b1d0134c8438cb735e850d58b0cdd",
+            "width": 2048,
+            "height": 2048,
+            "orthographicSize": 0.6000000238418579,
+            "boundsPaddingRatioPerSide": 0.10000000149011612
+        },
+        {
+            "style": "Neutral",
+            "view": "ThreeQuarter",
+            "path": "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Neutral_ThreeQuarter.png",
+            "bytes": 848109,
+            "sha256": "d1574f9d77cfa2b5702610dd3d41804f55b0eb89c33aff36e67588cb68964042",
+            "width": 2048,
+            "height": 2048,
+            "orthographicSize": 0.6000000238418579,
+            "boundsPaddingRatioPerSide": 0.10000000149011612
+        },
+        {
+            "style": "Silhouette",
+            "view": "Back",
+            "path": "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Silhouette_Back.png",
+            "bytes": 103417,
+            "sha256": "23ca1870b41855ae277683f0bcee244e1461c95d0c7ada89b45b764eeceafdaf",
+            "width": 2048,
+            "height": 2048,
+            "orthographicSize": 0.6000000238418579,
+            "boundsPaddingRatioPerSide": 0.10000000149011612
+        },
+        {
+            "style": "Silhouette",
+            "view": "Front",
+            "path": "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Silhouette_Front.png",
+            "bytes": 103021,
+            "sha256": "5f4e1cf9b19e5faf58083385e5a345fe07a4c4f0476d9649632208161b3f7653",
+            "width": 2048,
+            "height": 2048,
+            "orthographicSize": 0.6000000238418579,
+            "boundsPaddingRatioPerSide": 0.10000000149011612
+        },
+        {
+            "style": "Silhouette",
+            "view": "Side",
+            "path": "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Silhouette_Side.png",
+            "bytes": 93489,
+            "sha256": "d613c3bbec715018beca0e13b325e01357880a3c7cd6539bb093db8edef68c1d",
+            "width": 2048,
+            "height": 2048,
+            "orthographicSize": 0.6000000238418579,
+            "boundsPaddingRatioPerSide": 0.10000000149011612
+        },
+        {
+            "style": "Silhouette",
+            "view": "ThreeQuarter",
+            "path": "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Silhouette_ThreeQuarter.png",
+            "bytes": 99643,
+            "sha256": "98a994cf749f71e6cc4fb522774c08b6f2ad9393603ea0e0b10c5bbc36521e57",
+            "width": 2048,
+            "height": 2048,
+            "orthographicSize": 0.6000000238418579,
+            "boundsPaddingRatioPerSide": 0.10000000149011612
+        }
+    ],
+    "neutralStage": {
+        "qaOnly": true,
+        "productLighting": false,
+        "shader": "Universal Render Pipeline/Lit",
+        "offWhiteLinear": 0.8999999761581421,
+        "keyRelativeIntensity": 1.0,
+        "keyBlenderEulerDegrees": {
+            "x": 50.0,
+            "y": -30.0,
+            "z": 0.0
+        },
+        "keyBlenderRayLocalMinusZ": {
+            "x": 0.32139381766319277,
+            "y": 0.7660444378852844,
+            "z": -0.5566703677177429
+        },
+        "keyUnityRay": {
+            "x": 0.32139381766319277,
+            "y": -0.5566703677177429,
+            "z": -0.7660444378852844
+        },
+        "fillLightCount": 3,
+        "fillTotalRelativeIntensity": 0.3499999940395355,
+        "fillComponentRelativeIntensity": 0.11666666716337204,
+        "fillIds": [
+            "Back",
+            "Left",
+            "Right"
+        ],
+        "fillBlenderEulerDegrees": [
+            {
+                "x": 130.0,
+                "y": 150.0,
+                "z": 180.0
+            },
+            {
+                "x": 80.0,
+                "y": 90.0,
+                "z": 0.0
+            },
+            {
+                "x": 80.0,
+                "y": -90.0,
+                "z": 0.0
+            }
+        ],
+        "fillUnityRays": [
+            {
+                "x": -0.321393758058548,
+                "y": -0.5566704273223877,
+                "z": 0.7660444378852844
+            },
+            {
+                "x": -0.17364822328090669,
+                "y": 7.999999773744549e-9,
+                "z": -0.9848077297210693
+            },
+            {
+                "x": 0.17364822328090669,
+                "y": 7.999999773744549e-9,
+                "z": -0.9848077297210693
+            }
+        ]
+    },
+    "silhouetteParity": [
+        {
+            "view": "Front",
+            "threshold": 128,
+            "sourcePath": "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Front.png",
+            "unityPath": "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Silhouette_Front.png",
+            "width": 2048,
+            "height": 2048,
+            "sourceForegroundPixels": 1048485,
+            "unityForegroundPixels": 1049750,
+            "sourceBounds": {
+                "minX": 529,
+                "minY": 171,
+                "maxX": 1518,
+                "maxY": 1876
+            },
+            "unityBounds": {
+                "minX": 529,
+                "minY": 171,
+                "maxX": 1518,
+                "maxY": 1876
+            },
+            "intersectionOverUnionObserved": 0.9987911430509301,
+            "maximumBoundingBoxDriftPixels": 0,
+            "sourceSilhouetteHeightPixels": 1706,
+            "maximumBoundingBoxDriftH": 0.0,
+            "maximumBoundingBoxDriftHThreshold": 0.005,
+            "iouApprovalThresholdApplied": false,
+            "result": "PASS"
+        },
+        {
+            "view": "Side",
+            "threshold": 128,
+            "sourcePath": "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Side.png",
+            "unityPath": "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Silhouette_Side.png",
+            "width": 2048,
+            "height": 2048,
+            "sourceForegroundPixels": 603192,
+            "unityForegroundPixels": 604048,
+            "sourceBounds": {
+                "minX": 798,
+                "minY": 171,
+                "maxX": 1249,
+                "maxY": 1876
+            },
+            "unityBounds": {
+                "minX": 798,
+                "minY": 171,
+                "maxX": 1249,
+                "maxY": 1876
+            },
+            "intersectionOverUnionObserved": 0.9323229202847169,
+            "maximumBoundingBoxDriftPixels": 0,
+            "sourceSilhouetteHeightPixels": 1706,
+            "maximumBoundingBoxDriftH": 0.0,
+            "maximumBoundingBoxDriftHThreshold": 0.005,
+            "iouApprovalThresholdApplied": false,
+            "result": "PASS"
+        },
+        {
+            "view": "Back",
+            "threshold": 128,
+            "sourcePath": "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Back.png",
+            "unityPath": "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Silhouette_Back.png",
+            "width": 2048,
+            "height": 2048,
+            "sourceForegroundPixels": 1048486,
+            "unityForegroundPixels": 1049750,
+            "sourceBounds": {
+                "minX": 529,
+                "minY": 171,
+                "maxX": 1518,
+                "maxY": 1876
+            },
+            "unityBounds": {
+                "minX": 529,
+                "minY": 171,
+                "maxX": 1518,
+                "maxY": 1876
+            },
+            "intersectionOverUnionObserved": 0.998792095656879,
+            "maximumBoundingBoxDriftPixels": 0,
+            "sourceSilhouetteHeightPixels": 1706,
+            "maximumBoundingBoxDriftH": 0.0,
+            "maximumBoundingBoxDriftHThreshold": 0.005,
+            "iouApprovalThresholdApplied": false,
+            "result": "PASS"
+        },
+        {
+            "view": "ThreeQuarter",
+            "threshold": 128,
+            "sourcePath": "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_ThreeQuarter.png",
+            "unityPath": "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Silhouette_ThreeQuarter.png",
+            "width": 2048,
+            "height": 2048,
+            "sourceForegroundPixels": 912157,
+            "unityForegroundPixels": 913081,
+            "sourceBounds": {
+                "minX": 648,
+                "minY": 171,
+                "maxX": 1405,
+                "maxY": 1876
+            },
+            "unityBounds": {
+                "minX": 641,
+                "minY": 171,
+                "maxX": 1400,
+                "maxY": 1876
+            },
+            "intersectionOverUnionObserved": 0.9468353917322016,
+            "maximumBoundingBoxDriftPixels": 7,
+            "sourceSilhouetteHeightPixels": 1706,
+            "maximumBoundingBoxDriftH": 0.004103165298944901,
+            "maximumBoundingBoxDriftHThreshold": 0.005,
+            "iouApprovalThresholdApplied": false,
+            "result": "PASS"
+        }
+    ],
+    "neutralContrast": [
+        {
+            "view": "Front",
+            "foregroundMeanRgbObserved": {
+                "x": 196.6108044772565,
+                "y": 196.910181471779,
+                "z": 197.4213908073351
+            },
+            "backgroundMeanRgbObserved": {
+                "x": 46.0,
+                "y": 46.0,
+                "z": 46.0
+            },
+            "foregroundLuminanceObserved": 196.9807922521235,
+            "backgroundLuminanceObserved": 46.0,
+            "absoluteLuminanceDifferenceObserved": 150.9807922521235,
+            "approvalThresholdApplied": false
+        },
+        {
+            "view": "Side",
+            "foregroundMeanRgbObserved": {
+                "x": 109.69746112891692,
+                "y": 110.43062968505814,
+                "z": 111.69834516462268
+            },
+            "backgroundMeanRgbObserved": {
+                "x": 46.0,
+                "y": 46.0,
+                "z": 46.0
+            },
+            "foregroundLuminanceObserved": 110.60881199286591,
+            "backgroundLuminanceObserved": 46.0,
+            "absoluteLuminanceDifferenceObserved": 64.60881199286591,
+            "approvalThresholdApplied": false
+        },
+        {
+            "view": "Back",
+            "foregroundMeanRgbObserved": {
+                "x": 69.65103977137413,
+                "y": 70.5366858775899,
+                "z": 72.03621338413908
+            },
+            "backgroundMeanRgbObserved": {
+                "x": 46.0,
+                "y": 46.0,
+                "z": 46.0
+            },
+            "foregroundLuminanceObserved": 70.74131301103437,
+            "backgroundLuminanceObserved": 46.0,
+            "absoluteLuminanceDifferenceObserved": 24.741313011034366,
+            "approvalThresholdApplied": false
+        },
+        {
+            "view": "ThreeQuarter",
+            "foregroundMeanRgbObserved": {
+                "x": 163.319957375085,
+                "y": 163.72886523758573,
+                "z": 164.43111290236025
+            },
+            "backgroundMeanRgbObserved": {
+                "x": 46.0,
+                "y": 46.0,
+                "z": 46.0
+            },
+            "foregroundLuminanceObserved": 163.826645171677,
+            "backgroundLuminanceObserved": 46.0,
+            "absoluteLuminanceDifferenceObserved": 117.826645171677,
+            "approvalThresholdApplied": false
+        }
+    ],
+    "actionStaticReview": {
+        "state": "READ_ONLY_SOURCE_EVIDENCE_RECONFIRMED",
+        "fileCount": 20,
+        "png2048Matches": 20,
+        "orderedBundleSha256": "9f9cbe63a2cf5ec0cf606e89f5114ddc31c86e2a334a4853ae9ca4d467d24a1f",
+        "checklistIds": [
+            "STATIC_SILHOUETTE_UNCHANGED",
+            "STATIC_INTERSECTION_REVIEW_UNCHANGED",
+            "STATIC_JOINT_REGION_REVIEW_UNCHANGED"
+        ],
+        "animationActionsPresent": 0,
+        "motionNaturalnessClaimed": false
+    },
+    "playerBuildsExecuted": 0,
+    "playModeTestsExecuted": 0,
+    "gameplayComponentsCreated": 0,
+    "manualTransformCorrections": 0,
+    "animationNaturalnessClaimed": false
+}

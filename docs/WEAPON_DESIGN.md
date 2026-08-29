@@ -7,7 +7,7 @@
 | 문서 버전 | 0.7.0 Alpha Minimal UI·Participation·Firearm·Weapon Combat Baseline |
 | 최종 수정일 | 2026-08-26 |
 | 상위 기준 | `01_PRD.md` 1.8.0, `02_SRS.md` 1.8.0 |
-| 기준 | `CHARACTER_TECHNICAL_SPEC.md` 0.11.0, `ART_DIRECTION.md` 1.8.0, `PATCH_DESIGN.md` 0.5.0 |
+| 기준 | `CHARACTER_TECHNICAL_SPEC.md` 0.12.0, `ART_DIRECTION.md` 1.9.0, `PATCH_DESIGN.md` 0.5.0 |
 | 상태 | 네 무기 archetype·권한 보급·총기 발사 구조·초기 Patch12 결정, W1 세부·balance와 exact visual Lock 대기 |
 
 ### 0.1 0.7.0 변경 요약

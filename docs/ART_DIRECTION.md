@@ -4,13 +4,23 @@
 
 | 항목 | 내용 |
 |---|---|
-| 문서 버전 | 1.8.0 Alpha Scope·Disconnect Presentation Baseline |
-| 최종 수정일 | 2026-08-26 |
+| 문서 버전 | 1.9.0 C1B Static Interop·Readability Baseline |
+| 최종 수정일 | 2026-08-30 |
 | 상위 기준 | `01_PRD.md` 1.8.0, `02_SRS.md` 1.8.0 |
-| 기준 | `CHARACTER_TECHNICAL_SPEC.md` 0.11.0, `MAP_DESIGN_GUIDE.md` 1.8.0, `PATCH_DESIGN.md` 0.5.0 |
+| 기준 | `CHARACTER_TECHNICAL_SPEC.md` 0.12.0, `MAP_DESIGN_GUIDE.md` 1.8.0, `PATCH_DESIGN.md` 0.5.0 |
 | 목적 | 캐릭터·맵·무기·UI의 공통 시각 언어와 Blender→Unity 제작 품질 Gate 정의 |
 
-### 0.1 1.8.0 변경 요약
+### 0.1 1.9.0 변경 요약
+
+- 첫 C1B Unity 반입에서 검출한 handedness 반전을 전역 수동 보정 없이 `ModelInteropProfile r02`의
+  static `C1BBlockout` override로 해결했다.
+- Canonical source는 그대로 두고 transient export copy만 ReflectX+winding reversal하며, Unity root는
+  identity·scale1·`+Z Forward`를 유지한다.
+- UV0/tangent가 없는 Blockout에만 tangent import `None`을 허용하고 production UV/tangent 규칙은 유지했다.
+- Unity Neutral/Silhouette four-view를 2048²로 만들고 source mask bounds `0.005H`와 geometry signature를
+  직접 비교한다. Neutral QA는 product lighting이 아닌 고정 key1+분산 fill 총0.35를 사용한다.
+
+### 0.2 1.8.0 변경 요약
 
 - Alpha Art를 Lobby Greybox, EyeSet·Mustache·Headwear 각 placeholder 대표 1개 또는 동등 최소 catalog,
   한국어 Text, basic SFX로 제한하고 BGM을 0으로 했다.
@@ -21,7 +31,7 @@
 - Unity 6.3 LTS·Blender 5.2 LTS를 profile reference로 고정하고 exact installed patch lock은 Plan 2.5
   `FDN-010`에 귀속했다.
 
-### 0.2 1.7.0 변경 요약
+### 0.3 1.7.0 변경 요약
 
 - Pistol 7발 semi-auto single recoil과 LongGun 30발 full-auto sustained recoil·SpreadBloom 표현을 추가했다.
 - visible Host Projectile의 first-hit 비관통 궤적과 read-only muzzle/recoil presentation 경계를 고정했다.
@@ -29,7 +39,7 @@
 - Host Rigidbody impulse/torque·Muzzle·ShotSequence와 Animator recoil pose를 분리하고 Projectile/Hit authority를 0으로 유지했다.
 - FIR-001..003 gameplay ownership, WPN-005 통합과 ANP-003 Firearm visual ownership을 연결했다.
 
-### 0.3 1.6.0 변경 요약
+### 0.4 1.6.0 변경 요약
 
 - Ground Punch·Grab과 Air Kick·Dropkick·hand/ledge Grab의 action silhouette·presentation matrix를 추가했다.
 - Host Rigidbody/Ragdoll authority와 Animator/procedural pose를 분리하고 gameplay root motion·Animation Event authority를 0으로 고정했다.
@@ -37,7 +47,7 @@
 - 네 Weapon을 M1911·AK-47에서 영감을 받은 generic low-poly firearm, baseball bat와 sledgehammer로
   시각 brief하되 실제 명칭·logo·marking·정확 복제를 금지했다.
 
-### 0.4 1.5.0 변경 요약
+### 0.5 1.5.0 변경 요약
 
 - 승인 Catalog를 Patch12로 확장하되 Patch09..12의 Supply·Forced Drop도 Alpha에서는 평문 기능 결과와
   기존 Weapon asset/state만으로 검증하게 했다.
@@ -47,7 +57,7 @@
   asset과 Hazard Telegraph를 바꾸지 않게 했다.
 - Patch 전용 icon·Animation·VFX·SFX·최종 Layout은 계속 후속이며 `ReadyTeal + check + 상태 label`을 유지했다.
 
-### 0.5 1.4.0 변경 요약
+### 0.6 1.4.0 변경 요약
 
 - 패치의 Alpha Gate를 plain-text 기능 검증으로 한정하고 icon·Animation·VFX·SFX·최종 Layout 제작을
   후속 표현 단계로 이동했다.
@@ -427,6 +437,22 @@ version, Unity package manifest/lock과 Blender export preset revision은 Plan 2
 profile에 기록·고정한다. LTS family 문자열만 일치하고 exact installed patch가 누락된 산출물은
 GenerationManifest와 import parity Gate를 통과하지 못한다.
 
+C1B-005가 검증한 `ModelInteropProfile-ART-001-r02`는 base r01을 폐기하지 않고 static
+`C1BBlockout`에만 다음 override를 둔다.
+
+- Blender source는 수정하지 않고 transient export copy의 X handedness만 반사한다.
+- 반사와 동시에 face winding을 뒤집어 outward normal을 보존하고 `bake_space_transform=true`로 내보낸다.
+- Unity는 identity root, scale1, positive determinant와 `+Z Forward`를 가져야 하며 개별 Rotation·Scale
+  wrapper나 post-import normal repair는 0이다.
+- C1B Blockout의 UV0/tangent0은 수치·실루엣 검토 범위에서만 허용하고 Unity tangent import는 `None`이다.
+  Production Character·Paint·normal map·Skinned source에는 이 예외를 사용할 수 없다.
+- FBX byte hash는 선택된 canonical 산출물 identity로 기록하되, 재-export metadata 차이를 숨기기 위한
+  binary patch는 하지 않는다. Source/preset hash와 semantic geometry signature를 함께 비교한다.
+
+Neutral QA lighting은 제품 Lighting이 아니다. Blender rotation을 Unity Euler로 그대로 복사하지 않고 실제
+light ray를 좌표 변환해 key relative intensity `1.0`과 Back/Left/Right fill 합계 `0.35`를 고정한다.
+모든 View에서 off-white body와 limb 접합이 읽혀야 하며, 이 조명으로 Palette·Shader를 승인하지 않는다.
+
 자동화와 Blender 보조 도구는 생산 수단이지 품질 승인자가 아니다. Prompt나 script 실행 성공,
 FBX 생성만으로 완료 처리하지 않는다.
 
@@ -447,6 +473,11 @@ FBX 생성만으로 완료 처리하지 않는다.
 - 2·3·4인 Min/Max Camera capture
 - Blender reference와 Unity material side-by-side
 - GenerationManifest와 자동 구조 검사
+
+C1B static parity는 Blender/Unity Silhouette mask의 2048² foreground bounds를 같은 framing에서 비교해 최대
+`0.005H`만 허용한다. IoU는 관찰값으로 기록하지만 임의 제품 승인 threshold로 사용하지 않는다. 동시에
+quantized position·normal surface signature, landmark17, bounds와 `+Z Forward`를 확인한다. PNG 존재만으로
+통과시키지 않으며, 실제 Animation이 없는 static Pose에서 motion 자연스러움을 주장하지 않는다.
 
 Preflight sample 승인으로 최종 production asset의 post-import Gate를 대체하지 않는다.
 

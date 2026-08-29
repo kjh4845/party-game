@@ -17,6 +17,8 @@ class VerifyArtProfilesTest < Minitest::Test
     LowPolyStyleProfile.yaml
     ModelInteropProfile.yaml
     AlphaVisualQAProfile.yaml
+    ModelInteropProfile-r02.yaml
+    AlphaVisualQAProfile-r02.yaml
   ].freeze
   SUPPORT_FILES = [
     "config/toolchain/ToolchainProfile.yaml",
@@ -35,8 +37,8 @@ class VerifyArtProfilesTest < Minitest::Test
     stdout, stderr, status = run_verifier(REPOSITORY_ROOT)
 
     assert_equal 0, status, stderr + stdout
-    assert_includes stdout, "PROFILE_FILES_LOADED=3"
-    assert_includes stdout, "PROFILE_IDS_UNIQUE=3"
+    assert_includes stdout, "PROFILE_FILES_LOADED=5"
+    assert_includes stdout, "PROFILE_IDS_UNIQUE=5"
     assert_includes stdout, "TOTAL_VIOLATIONS=0"
     assert_includes stdout, "FINAL_RESULT=PASS"
   end
@@ -248,6 +250,36 @@ class VerifyArtProfilesTest < Minitest::Test
       assert_includes stdout, "rule=INTEROP_EXPORT_SETTINGS"
       refute_includes stdout, "rule=INTEROP_EXPORT_DIGEST"
       assert_includes stdout, "rule=INTEROP_ASSET_CLASS_OVERRIDES"
+    end
+  end
+
+  def test_r02_blockout_overrides_and_predecessors_are_fail_closed
+    with_repository do |root|
+      mutate(root, "ModelInteropProfile-r02.yaml") do |profile|
+        profile["predecessor"]["revision"] = "r99"
+        export_override = profile["blenderExportPreset"]["assetClassOverrides"]["C1BBlockout"]
+        export_override["settings"]["reflectAxis"] = "Z"
+        export_override["settingsSha256"] = settings_digest(export_override["settings"])
+        import_override = profile["unityImporterPreset"]["assetClassOverrides"]["C1BBlockout"]
+        import_override["settings"]["importTangents"] = "Import"
+        import_override["settings"]["globalProductionUv0RequiredPreserved"] = false
+        import_override["settingsSha256"] = settings_digest(import_override["settings"])
+        profile["meshDataContract"]["invariants"]["uv0Required"] = false
+      end
+      mutate(root, "AlphaVisualQAProfile-r02.yaml") do |profile|
+        profile["profileReferences"]["modelInteropRevision"] = "r01"
+        profile["fixedNeutralStage"]["ambientFill"]["totalRelativeIntensity"] = 0.70
+        profile["fixedNeutralStage"]["keyLight"]["unityRay"] = [0.0, 0.0, 1.0]
+      end
+      stdout, _stderr, status = run_verifier(root)
+      assert_equal 1, status
+      assert_includes stdout, "rule=R02_INTEROP_PREDECESSOR"
+      assert_includes stdout, "rule=R02_C1B_EXPORT_OVERRIDE"
+      assert_includes stdout, "rule=R02_C1B_IMPORT_OVERRIDE"
+      assert_includes stdout, "rule=R02_GLOBAL_UV_TANGENT_PRESERVED"
+      assert_includes stdout, "rule=R02_QA_INTEROP_REFERENCE"
+      assert_includes stdout, "rule=R02_QA_READABILITY_FILL"
+      assert_includes stdout, "rule=R02_QA_KEY_LIGHT_TRANSPORT"
     end
   end
 

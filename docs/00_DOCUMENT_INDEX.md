@@ -22,8 +22,8 @@
 | 1 | `01_PRD.md` | 1.8.0 Product Baseline · 현행 | 제품 비전, 단계, 범위, 게임 규칙 |
 | 2 | `02_SRS.md` | 1.8.0 Software Baseline · 현행 | 구현·검증 가능한 시스템 요구사항 |
 | 3 | `PATCH_DESIGN.md` | 0.5.0 Approved Patch12 Baseline · 현행 | Patch12·후보·적용·supply/drop·이탈·표현 경계의 단일 source |
-| 4 | `CHARACTER_TECHNICAL_SPEC.md` | 0.11.0 Character·Action·Firearm·Participation Baseline · 현행 | C1~C4 비율·Rig·Air action·총기 반동 표현·이탈 중 물리·Paint·Patch·Grip |
-| 5 | `ART_DIRECTION.md` | 1.8.0 Alpha Quality·Action·Firearm Boundary · 현행 | 캐릭터·액션·무기·환경·Alpha placeholder/SFX와 표현 단계 |
+| 4 | `CHARACTER_TECHNICAL_SPEC.md` | 0.12.0 C1B Static Interop Baseline · 현행 | C1~C4 비율·Rig·Air action·static FBX/Unity parity·이탈 중 물리·Paint·Patch·Grip |
+| 5 | `ART_DIRECTION.md` | 1.9.0 C1B Static Interop·Readability Boundary · 현행 | 캐릭터·액션·무기·환경·handedness/QA capture·Alpha placeholder/SFX와 표현 단계 |
 | 6 | `UI_UX_FLOW.md` | 1.8.0 Minimal Match UI·Leave·Alpha Quality · 현행 | Main·Lobby·Match no-HUD·non-pausing Esc/Leave·평문 Patch 흐름 |
 | 7 | `MAP_DESIGN_GUIDE.md` | 1.8.0 Map·Participation·Projectile Compatibility · 현행 | 공통 맵·이탈 중 Character·projectile·Hazard·Camera·2/3/4인 계약 |
 | 8 | `MAP_P00_CONSTRUCTION_DROP.md` | 0.7.0 Greybox·Participation·Projectile Compatibility · 현행 | P00 이탈/중단·projectile/Spent·Air action·승인 Patch12 |

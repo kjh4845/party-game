@@ -1,0 +1,16 @@
+{
+  "name": "ProjectHotfix.C1B005.Editor",
+  "rootNamespace": "ProjectHotfix.Editor.C1B005",
+  "references": [],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

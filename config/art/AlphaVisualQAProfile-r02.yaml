@@ -1,0 +1,329 @@
+AlphaVisualQAProfile:
+  schemaVersion: 1
+  profileId: "AlphaVisualQAProfile-ART-001-r02"
+  version: "0.2.0-start"
+  revision: "r02"
+  state: "START"
+  ownerTask: "ART-001"
+  visualApprovalClaimed: false
+  lockedValueCount: 0
+  predecessor:
+    profileId: "AlphaVisualQAProfile-ART-001-r01"
+    revision: "r01"
+    path: "config/art/AlphaVisualQAProfile.yaml"
+  sourceDocuments:
+    - path: "docs/ART_DIRECTION.md"
+      version: "1.9.0"
+    - path: "docs/CHARACTER_TECHNICAL_SPEC.md"
+      version: "0.12.0"
+    - path: "docs/WEAPON_DESIGN.md"
+      version: "0.7.0"
+    - path: "docs/MAP_DESIGN_GUIDE.md"
+      version: "1.8.0"
+    - path: "docs/UI_UX_FLOW.md"
+      version: "1.8.0"
+  toolchainReference:
+    profileId: "project-hotfix-alpha-toolchain-r02"
+    path: "config/toolchain/ToolchainProfile.yaml"
+    urpVersion: "17.3.0"
+  profileReferences:
+    lowPolyStyleProfileId: "LowPolyStyleProfile-ART-001-r01"
+    lowPolyStyleRevision: "r01"
+    modelInteropProfileId: "ModelInteropProfile-ART-001-r02"
+    modelInteropRevision: "r02"
+
+  perceptualDecisionPolicy:
+    state: "DECIDED"
+    pixelPerfectComparisonRequired: false
+    arbitraryDeltaEThresholdRequired: false
+    humanReviewRequiredAtDownstreamGates: true
+    meaningfulDriftDimensions: ["hue", "value", "specular-response", "silhouette", "landmarks", "bounds"]
+    automationMayGrantVisualApproval: false
+
+  shaderReference:
+    qaReferenceShader:
+      state: "START"
+      unityShaderName: "Universal Render Pipeline/Lit"
+      purpose: "Neutral QA reference only; not the final product shader"
+      metallic: 0.0
+      smoothness: 0.25
+      surfaceType: "Opaque"
+    productMaterialFamilyMapping:
+      state: "DEFERRED"
+      value: null
+      requiredFamilyIds:
+        - "MAT_Character_Paintable"
+        - "MAT_Environment_Matte"
+        - "MAT_Hazard_Active"
+        - "MAT_Interactable"
+        - "MAT_Glass_Restricted"
+        - "MAT_Decal"
+      ownerTasks: ["C4-001", "P00-020", "WPA-001"]
+      unlockGates: ["UG-C4-LOCK", "UG-P00-ART", "UG-WEAPON-ART"]
+
+  paletteSwatch:
+    state: "START"
+    semanticRoleSource: "LowPolyStyleProfile-ART-001-r01"
+    requiredRoles:
+      - "WorldNeutralBase"
+      - "WorldNeutralLift"
+      - "Warning"
+      - "HazardActive"
+      - "Interactable"
+      - "SafeRecovery"
+      - "PlayerIdentityReserved"
+      - "UiGraphite"
+      - "UiOffWhite"
+      - "ActionAmber"
+      - "ReadyTeal"
+      - "ErrorCoral"
+    productSwatchValues:
+      state: "DEFERRED"
+      value: null
+      ownerTasks: ["UI-001", "P00-020", "WPA-001", "C4-001"]
+      unlockGates: ["UG-ALPHA", "UG-P00-ART", "UG-WEAPON-ART", "UG-C4-LOCK"]
+    qaNeutralCalibration:
+      state: "START"
+      productPalette: false
+      blackLinear: 0.0
+      middleGrayLinear: 0.18
+      whiteLinear: 1.0
+    colorOnlyStateCueAllowed: false
+
+  textureColorSpace:
+    state: "START"
+    projectColorSpace: "Linear"
+    srgbInputs: ["base-color", "character-paint", "emission-color", "ui-color"]
+    linearDataInputs: ["normal", "metallic", "smoothness", "roughness", "ambient-occlusion", "mask", "height"]
+    paintTextureStart:
+      dimensions: [512, 512]
+      format: "RGBA8"
+      sourceColorSpace: "sRGB"
+    exceptionsRequireProfileRevision: true
+
+  toneAndExposure:
+    state: "START"
+    unity:
+      colorSpace: "Linear"
+      toneMapping: "None"
+      postExposureEv: 0.0
+      autoExposureAllowed: false
+      colorGradingAllowed: false
+      bloomAllowed: false
+      vignetteAllowed: false
+    blender:
+      displayDevice: "sRGB"
+      viewTransform: "Standard"
+      look: "None"
+      exposure: 0.0
+      gamma: 1.0
+    purpose: "Deterministic neutral comparison; production tone remains deferred"
+
+  fixedNeutralStage:
+    state: "START"
+    productLighting: false
+    backgroundLinearGray: 0.18
+    keyLight:
+      type: "Directional"
+      colorLinearRgb: [1.0, 1.0, 1.0]
+      relativeIntensity: 1.0
+      eulerDegrees: [50.0, -30.0, 0.0]
+      blenderEulerDegrees: [50.0, -30.0, 0.0]
+      blenderRayLocalMinusZ: [0.321393818, 0.766044438, -0.556670368]
+      unityRay: [0.321393818, -0.556670368, -0.766044438]
+      unityRotationRule: "Quaternion.LookRotation(unityRay, Vector3.up)"
+      shadows: true
+    ambientFill:
+      colorLinearRgb: [1.0, 1.0, 1.0]
+      mode: "BOUNDED_MULTI_DIRECTIONAL"
+      totalRelativeIntensity: 0.35
+      components:
+        - {id: "Back", relativeIntensity: 0.116666667, blenderEulerDegrees: [130.0, 150.0, 180.0], blenderRayLocalMinusZ: [-0.321393758, -0.766044438, -0.556670427], unityRay: [-0.321393758, -0.556670427, 0.766044438]}
+        - {id: "Left", relativeIntensity: 0.116666667, blenderEulerDegrees: [80.0, 90.0, 0.0], blenderRayLocalMinusZ: [-0.173648223, 0.98480773, 0.000000008], unityRay: [-0.173648223, 0.000000008, -0.98480773]}
+        - {id: "Right", relativeIntensity: 0.116666667, blenderEulerDegrees: [80.0, -90.0, 0.0], blenderRayLocalMinusZ: [0.173648223, 0.98480773, 0.000000008], unityRay: [0.173648223, 0.000000008, -0.98480773]}
+      unityRotationRule: "Quaternion.LookRotation(unityRay, Vector3.up)"
+      purpose: "QA-only deterministic joint and limb readability; not product lighting or a palette lock"
+    disabledEffects: ["fog", "depth-of-field", "motion-blur", "screen-space-effects", "auto-exposure"]
+    matchingRule: "Blender and Unity use the same direction, neutral colors and relative key/fill ratio; renderer response is judged perceptually, not pixel-perfectly"
+
+  orthographicReferenceCamera:
+    state: "START"
+    projection: "Orthographic"
+    target: "Authored render bounds center"
+    boundsPaddingRatio: 0.10
+    resolutionPixels: [2048, 2048]
+    views:
+      Front:
+        lookDirectionUnity: [0.0, 0.0, -1.0]
+        upDirectionUnity: [0.0, 1.0, 0.0]
+      Side:
+        lookDirectionUnity: [-1.0, 0.0, 0.0]
+        upDirectionUnity: [0.0, 1.0, 0.0]
+      Back:
+        lookDirectionUnity: [0.0, 0.0, 1.0]
+        upDirectionUnity: [0.0, 1.0, 0.0]
+      ThreeQuarter:
+        lookDirectionUnity: [-0.70710678, 0.0, -0.70710678]
+        upDirectionUnity: [0.0, 1.0, 0.0]
+    perAssetManualFramingAllowed: false
+    framingRule: "Fit authored bounds with the fixed padding; do not change focal or crop to hide drift"
+
+  stylePreflightChecklist:
+    - id: "ASSET_PURPOSE_CLASS"
+      check: "AssetBrief purpose and asset class"
+    - id: "BOUNDS_SILHOUETTE"
+      check: "Bounds and maximum-camera silhouette"
+    - id: "MOVING_PART_PIVOT"
+      check: "Moving parts and physical pivot purpose"
+    - id: "SOCKET_PURPOSE"
+      check: "Required grip, combat, center-of-mass or assembly sockets"
+    - id: "RENDER_COLLIDER_SPLIT"
+      check: "Render mesh and collider separation"
+    - id: "BEVEL_NORMAL_CLASS"
+      check: "Selected bevel and normal classes"
+    - id: "FORBIDDEN_REFERENCE_DETAIL"
+      check: "Forbidden details and reference-not-replica review"
+    - id: "SCALE_LINEUP"
+      check: "MasterCharacter or approved module scale lineup"
+
+  postImportConsistencyChecklist:
+    - id: "FOUR_VIEW_PARITY"
+      check: "Front, Side, Back and ThreeQuarter source-to-FBX-to-Unity comparison"
+    - id: "SILHOUETTE_LANDMARK_BOUNDS"
+      check: "Silhouette, landmarks and bounds"
+    - id: "APPROVED_SCALE_LINEUP"
+      check: "Scale lineup with approved Character or environment module"
+    - id: "MATERIAL_PALETTE_BEVEL_NORMAL"
+      check: "Material family, palette role, bevel class and normal class"
+    - id: "POSE_PIVOT_SOCKET_COLLIDER"
+      check: "Pose, pivot, socket and collider overlays where applicable"
+    - id: "INTEROP_PRESET_DIGESTS"
+      check: "ModelInteropProfile preset IDs, revisions and setting digests"
+    - id: "BLENDER_UNITY_SIDE_BY_SIDE"
+      check: "Blender reference and Unity material side-by-side"
+    - id: "GENERATION_MANIFEST_STRUCTURE"
+      check: "GenerationManifest identity and automatic structure checks"
+
+  runtimeCaptureMatrix:
+    state: "NOT_EXECUTED"
+    participantCounts: [2, 3, 4]
+    aspectRatios:
+      - id: "16:9"
+        referenceResolution: [1920, 1080]
+      - id: "16:10"
+        referenceResolution: [1920, 1200]
+      - id: "21:9"
+        referenceResolution: [2560, 1080]
+    cameraStates: ["MinGameplayDistance", "MaxGameplayDistance"]
+    cameraNumericSource:
+      state: "DEFERRED"
+      value: null
+      ownerTasks: ["CAM-005"]
+      unlockGates: ["UG-CAM"]
+      reason: "P00 camera START values are map-specific and cannot become a global QA lock"
+    persistentPlayerHudAllowed: false
+    developerDebugOverlayAllowedForReadabilityCapture: false
+    requiredScenarioGroups:
+      - id: "CHAR_NEUTRAL_LOCOMOTION"
+        check: "Neutral, locomotion, Sprint and Jump"
+      - id: "CHAR_HAND_ACTIONS"
+        check: "Ground L/R Punch, L/R Grab, Lift and Throw"
+      - id: "CHAR_AIR_ACTIONS"
+        check: "L/R AirKick, Dropkick, DropkickRecovery and Air hand/ledge Grab"
+      - id: "CHAR_RAGDOLL_RECOVERY"
+        check: "Ragdoll, repeated Down and face-up/down GetUp"
+      - id: "WEAPON_PISTOL"
+        check: "Pistol single recoil, visible projectile, first impact and spent release"
+      - id: "WEAPON_LONGGUN"
+        check: "LongGun sustained recoil, SpreadBloom and recovery"
+      - id: "WEAPON_MELEE"
+        check: "Bat and Hammer grip, swing, impact and drop"
+      - id: "WEAPON_LIFECYCLE_SUPPLY"
+        check: "Incoming, clearance wait, landing, Loose, Held, forced drop, Spent and cleanup"
+      - id: "APPEARANCE"
+        check: "White base, Paint and EyeSet/Mustache/Headwear functional placeholders"
+      - id: "HAZARD"
+        check: "Lethal and displacement hazard phases without color-only dependence"
+      - id: "LOBBY_FLOW"
+        check: "InteractiveLobby Greybox Ready/Start, Customizer and reconnect readability"
+      - id: "DISCONNECT_MENU_LEAVE"
+        check: "Local non-pausing menu, disconnect grace, Forfeit and OpponentLeft transition"
+      - id: "WORST_CASE"
+        check: "Four players, cosmetics, cap3 weapon supply, projectile, ragdoll and hazard density"
+      - id: "PATCH12_BASE_READABILITY"
+        check: "Patch12 active while base silhouette, weapon lifecycle and hazard telegraph remain readable"
+      - id: "LOCALIZATION_AUDIO"
+        check: "Korean-only functional text and basic action/hit/hazard SFX with BGM absent"
+    worstCaseStartingInputs:
+      state: "START"
+      participantCount: 4
+      cosmeticsPerParticipantMaximum: 16
+      weaponSupplyCapMaximum: 3
+
+  captureRecordSchema:
+    requiredFields:
+      - "captureId"
+      - "assetId"
+      - "assetVersion"
+      - "sourceSha256"
+      - "fbxSha256"
+      - "unityPrefabRevision"
+      - "lowPolyStyleProfileId"
+      - "modelInteropProfileId"
+      - "alphaVisualQaProfileId"
+      - "viewOrRuntimeScenario"
+      - "participantCount"
+      - "aspectRatio"
+      - "cameraState"
+      - "result"
+      - "reviewer"
+      - "recordedAtUtc"
+    matchedContentOrSecretInFilenameAllowed: false
+
+  downstreamVisualGates:
+    - task: "C1B-006"
+      gate: "UG-C1B"
+      role: "CharacterBlockoutLock"
+    - task: "CAM-005"
+      gate: "UG-CAM"
+      role: "GameplayCameraApproval"
+    - task: "WPA-003"
+      gate: "UG-WEAPON-ART"
+      role: "WeaponVisualLock"
+    - task: "C4-001"
+      gate: "UG-C4-START"
+      role: "ProductionStart"
+    - task: "P00-020"
+      gate: "UG-P00-ART"
+      role: "StylePreflight"
+    - task: "C4-004"
+      gate: "UG-C4-LOCK"
+      role: "CharacterProductionLock"
+    - task: "P00-023"
+      gate: "UG-P00-ART-LOCK"
+      role: "MapProductionLock"
+
+  deferredDecisions:
+    - field: "finalPaletteShaderToneAndProductLighting"
+      state: "DEFERRED"
+      ownerTasks: ["UI-001", "WPA-001", "C4-001", "P00-020"]
+      unlockGates: ["UG-ALPHA", "UG-WEAPON-ART", "UG-C4-LOCK", "UG-P00-ART"]
+      reason: "ART-001 owns a neutral QA baseline, not the final look"
+    - field: "finalGameplayCameraValues"
+      state: "DEFERRED"
+      ownerTasks: ["CAM-005"]
+      unlockGates: ["UG-CAM"]
+      reason: "Requires 2/3/4-player comfort and readability review"
+    - field: "finalPolygonTextureMaterialLodGpuBudgets"
+      state: "DEFERRED"
+      ownerTasks: ["WPA-002", "C4-001", "P00-020"]
+      unlockGates: ["UG-WEAPON-ART", "UG-C4-LOCK", "UG-P00-ART-LOCK"]
+      reason: "Worst-case runtime benchmark has not been executed"
+
+  execution:
+    blenderRenderExecuted: false
+    unityCaptureExecuted: false
+    sideBySideComparisonExecuted: false
+    generatedQaSceneCount: 0
+    generatedCaptureCount: 0
+    userVisualApprovalRecorded: false

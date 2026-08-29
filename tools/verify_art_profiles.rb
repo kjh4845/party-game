@@ -15,6 +15,10 @@ class ArtProfileValidator
     "ModelInteropProfile.yaml" => ["ModelInteropProfile", "ModelInteropProfile-ART-001-r01"],
     "AlphaVisualQAProfile.yaml" => ["AlphaVisualQAProfile", "AlphaVisualQAProfile-ART-001-r01"],
   }.freeze
+  R02_PROFILES = {
+    "ModelInteropProfile-r02.yaml" => ["ModelInteropProfile", "ModelInteropProfile-ART-001-r02"],
+    "AlphaVisualQAProfile-r02.yaml" => ["AlphaVisualQAProfile", "AlphaVisualQAProfile-ART-001-r02"],
+  }.freeze
   MATERIAL_FAMILIES = %w[
     MAT_Character_Paintable
     MAT_Environment_Matte
@@ -41,6 +45,8 @@ class ArtProfileValidator
     "config/art/LowPolyStyleProfile.yaml",
     "config/art/ModelInteropProfile.yaml",
     "config/art/AlphaVisualQAProfile.yaml",
+    "config/art/ModelInteropProfile-r02.yaml",
+    "config/art/AlphaVisualQAProfile-r02.yaml",
     "tools/verify_art_profiles.rb",
     "tools/tests/verify_art_profiles_test.rb",
     "docs/03_IMPLEMENTATION_PLAN.md",
@@ -99,6 +105,7 @@ class ArtProfileValidator
     @violations = []
     @violation_keys = Set.new
     @profiles = {}
+    @r02_profiles = {}
     @scope_paths_checked = 0
   end
 
@@ -113,6 +120,7 @@ class ArtProfileValidator
     validate_interop
     validate_visual_qa
     validate_cross_references
+    validate_r02_profiles
     print_report
     @violations.empty? ? 0 : 1
   end
@@ -126,7 +134,7 @@ class ArtProfileValidator
         .select { |path| path.basename.to_s.end_with?(".yaml") }
         .map { |path| path.basename.to_s }
         .sort
-      expect(actual_yaml == EXPECTED_PROFILES.keys.sort, "ART001_PROFILE_FILE_SET", "config/art")
+      expect(actual_yaml == (EXPECTED_PROFILES.keys + R02_PROFILES.keys).sort, "ART001_PROFILE_FILE_SET", "config/art")
     else
       add("ART001_PROFILE_DIRECTORY", "config/art")
     end
@@ -143,6 +151,19 @@ class ArtProfileValidator
         next
       end
       @profiles[root_key] = profile
+    end
+
+    R02_PROFILES.each do |filename, (root_key, _profile_id)|
+      relative = "config/art/#{filename}"
+      document = load_yaml(relative, "PROFILE")
+      next unless document
+      expect(document.keys == [root_key], "PROFILE_DOCUMENT_ROOT_SET", relative)
+      profile = document[root_key]
+      unless profile.is_a?(Hash)
+        add("PROFILE_ROOT_INVALID", relative)
+        next
+      end
+      @r02_profiles[root_key] = profile
     end
   end
 
@@ -509,6 +530,158 @@ class ArtProfileValidator
     expect(set_equal?(qa.dig("paletteSwatch", "requiredRoles"), low.dig("palette", "roles")&.keys), "CROSS_PALETTE_ROLES", relative)
   end
 
+  def validate_r02_profiles
+    interop = @r02_profiles["ModelInteropProfile"]
+    qa = @r02_profiles["AlphaVisualQAProfile"]
+    base_interop = @profiles["ModelInteropProfile"]
+    base_qa = @profiles["AlphaVisualQAProfile"]
+    unless interop && qa && base_interop && base_qa
+      add("R02_PROFILE_SET", "config/art")
+      return
+    end
+
+    interop_path = "config/art/ModelInteropProfile-r02.yaml"
+    qa_path = "config/art/AlphaVisualQAProfile-r02.yaml"
+    expect(interop["profileId"] == "ModelInteropProfile-ART-001-r02" &&
+      interop["version"] == "0.2.0-start" && interop["revision"] == "r02" &&
+      interop["state"] == "START" && interop["ownerTask"] == "ART-001" &&
+      interop["visualApprovalClaimed"] == false && interop["lockedValueCount"] == 0,
+      "R02_INTEROP_METADATA", interop_path)
+    expect(interop["predecessor"] == {
+      "profileId" => "ModelInteropProfile-ART-001-r01", "revision" => "r01",
+      "path" => "config/art/ModelInteropProfile.yaml",
+    }, "R02_INTEROP_PREDECESSOR", interop_path)
+    expect(qa["profileId"] == "AlphaVisualQAProfile-ART-001-r02" &&
+      qa["version"] == "0.2.0-start" && qa["revision"] == "r02" &&
+      qa["state"] == "START" && qa["ownerTask"] == "ART-001" &&
+      qa["visualApprovalClaimed"] == false && qa["lockedValueCount"] == 0,
+      "R02_QA_METADATA", qa_path)
+    expect(qa["predecessor"] == {
+      "profileId" => "AlphaVisualQAProfile-ART-001-r01", "revision" => "r01",
+      "path" => "config/art/AlphaVisualQAProfile.yaml",
+    }, "R02_QA_PREDECESSOR", qa_path)
+    expected_r02_sources = {
+      "docs/ART_DIRECTION.md" => "1.9.0",
+      "docs/CHARACTER_TECHNICAL_SPEC.md" => "0.12.0",
+      "docs/WEAPON_DESIGN.md" => "0.7.0",
+      "docs/MAP_DESIGN_GUIDE.md" => "1.8.0",
+    }
+    expected_r02_qa_sources = expected_r02_sources.merge("docs/UI_UX_FLOW.md" => "1.8.0")
+    expect(Array(interop["sourceDocuments"]).to_h { |source| [source["path"], source["version"]] } == expected_r02_sources,
+      "R02_INTEROP_SOURCE_DOCUMENT_SET", interop_path)
+    expect(Array(qa["sourceDocuments"]).to_h { |source| [source["path"], source["version"]] } == expected_r02_qa_sources,
+      "R02_QA_SOURCE_DOCUMENT_SET", qa_path)
+    (Array(interop["sourceDocuments"]) + Array(qa["sourceDocuments"])).each do |source|
+      source_path = resolve(source["path"])
+      expect(source_path&.file? && !source_path.symlink? && source_path.read.include?(source["version"]),
+        "R02_SOURCE_DOCUMENT_ENTRY", source["path"])
+    end
+
+    r02_export = interop["blenderExportPreset"]
+    r02_import = interop["unityImporterPreset"]
+    export_override = r02_export.is_a?(Hash) && r02_export.dig("assetClassOverrides", "C1BBlockout")
+    import_override = r02_import.is_a?(Hash) && r02_import.dig("assetClassOverrides", "C1BBlockout")
+    expected_export_settings = {
+      "actionAllowed" => false, "armatureAllowed" => false,
+      "bake_space_transform" => true, "preserveOutwardNormals" => true,
+      "reflectAxis" => "X", "reflectLandmarks" => true, "reflectVertices" => true,
+      "reversePolygonWinding" => true, "sourceMutationAllowed" => false,
+    }
+    expected_import_settings = {
+      "animationType" => "None", "armatureAllowed" => false,
+      "bakeAxisConversion" => false, "globalProductionUv0RequiredPreserved" => true,
+      "importAnimation" => false, "importNormals" => "Import", "importTangents" => "None",
+      "uv0Required" => false, "uv0State" => "DEFERRED_C1B_BLOCKOUT_ONLY",
+    }
+    expect(export_override.is_a?(Hash) &&
+      export_override["overrideId"] == "PHX-FBX-C1B-BLOCKOUT-r02" &&
+      export_override["revision"] == "r02" && export_override["state"] == "START" &&
+      export_override["basePresetId"] == "PHX-FBX-MODEL-r01" &&
+      export_override["basePresetRevision"] == "r01" &&
+      export_override["settings"] == expected_export_settings &&
+      export_override["settingsSha256"] == canonical_digest(expected_export_settings) &&
+      nonempty_string?(export_override["rationale"]), "R02_C1B_EXPORT_OVERRIDE", interop_path)
+    expect(import_override.is_a?(Hash) &&
+      import_override["overrideId"] == "PHX-UNITY-C1B-BLOCKOUT-r02" &&
+      import_override["revision"] == "r02" && import_override["state"] == "START" &&
+      import_override["basePresetId"] == "PHX-UNITY-MODEL-IMPORT-r01" &&
+      import_override["basePresetRevision"] == "r01" &&
+      import_override["settings"] == expected_import_settings &&
+      import_override["settingsSha256"] == canonical_digest(expected_import_settings) &&
+      nonempty_string?(import_override["rationale"]), "R02_C1B_IMPORT_OVERRIDE", interop_path)
+
+    export_without_override = deep_copy(r02_export)
+    export_without_override.delete("assetClassOverrides")
+    expect(export_without_override == base_interop["blenderExportPreset"],
+      "R02_BASE_EXPORT_PRESET_PRESERVED", interop_path)
+    import_without_override = deep_copy(r02_import)
+    import_without_override.dig("assetClassOverrides")&.delete("C1BBlockout")
+    expect(import_without_override == base_interop["unityImporterPreset"],
+      "R02_BASE_IMPORT_PRESET_PRESERVED", interop_path)
+    expect(interop.dig("meshDataContract", "invariants", "uv0Required") == true &&
+      interop.dig("meshDataContract", "r01TechnicalSettings", "tangentPolicy") ==
+        base_interop.dig("meshDataContract", "r01TechnicalSettings", "tangentPolicy"),
+      "R02_GLOBAL_UV_TANGENT_PRESERVED", interop_path)
+
+    expected_deferred = deep_copy(base_interop["deferredDecisions"])
+    expected_deferred.unshift({
+      "field" => "c1bBlockoutUv0AndTangents", "state" => "DEFERRED",
+      "ownerTasks" => ["C4-001"], "unlockGates" => ["UG-C4-START"],
+      "reason" => "C1B-005 validates static Blockout scale, axis, landmarks, bounds and silhouette only; production UV0 and tangents remain required outside the C1BBlockout override.",
+    })
+    expect(interop["deferredDecisions"] == expected_deferred, "R02_DEFERRED_DECISIONS", interop_path)
+
+    interop_copy = deep_copy(interop)
+    base_interop_copy = deep_copy(base_interop)
+    %w[profileId version revision predecessor sourceDocuments blenderExportPreset unityImporterPreset deferredDecisions].each do |key|
+      interop_copy.delete(key)
+      base_interop_copy.delete(key)
+    end
+    expect(interop_copy == base_interop_copy, "R02_INTEROP_BASE_CONTRACT_DRIFT", interop_path)
+
+    qa_copy = deep_copy(qa)
+    base_qa_copy = deep_copy(base_qa)
+    %w[profileId version revision predecessor sourceDocuments].each do |key|
+      qa_copy.delete(key)
+      base_qa_copy.delete(key)
+    end
+    expect(qa_copy.dig("profileReferences", "modelInteropProfileId") == interop["profileId"] &&
+      qa_copy.dig("profileReferences", "modelInteropRevision") == interop["revision"],
+      "R02_QA_INTEROP_REFERENCE", qa_path)
+    qa_copy["profileReferences"]["modelInteropProfileId"] = base_qa_copy.dig("profileReferences", "modelInteropProfileId")
+    qa_copy["profileReferences"]["modelInteropRevision"] = base_qa_copy.dig("profileReferences", "modelInteropRevision")
+    expected_readability_fill = {
+      "colorLinearRgb" => [1.0, 1.0, 1.0],
+      "mode" => "BOUNDED_MULTI_DIRECTIONAL",
+      "totalRelativeIntensity" => 0.35,
+      "components" => [
+        { "id" => "Back", "relativeIntensity" => 0.116666667, "blenderEulerDegrees" => [130.0, 150.0, 180.0], "blenderRayLocalMinusZ" => [-0.321393758, -0.766044438, -0.556670427], "unityRay" => [-0.321393758, -0.556670427, 0.766044438] },
+        { "id" => "Left", "relativeIntensity" => 0.116666667, "blenderEulerDegrees" => [80.0, 90.0, 0.0], "blenderRayLocalMinusZ" => [-0.173648223, 0.98480773, 0.000000008], "unityRay" => [-0.173648223, 0.000000008, -0.98480773] },
+        { "id" => "Right", "relativeIntensity" => 0.116666667, "blenderEulerDegrees" => [80.0, -90.0, 0.0], "blenderRayLocalMinusZ" => [0.173648223, 0.98480773, 0.000000008], "unityRay" => [0.173648223, 0.000000008, -0.98480773] },
+      ],
+      "unityRotationRule" => "Quaternion.LookRotation(unityRay, Vector3.up)",
+      "purpose" => "QA-only deterministic joint and limb readability; not product lighting or a palette lock",
+    }
+    expect(qa_copy.dig("fixedNeutralStage", "ambientFill") == expected_readability_fill,
+      "R02_QA_READABILITY_FILL", qa_path)
+    expected_key_transport = {
+      "blenderEulerDegrees" => [50.0, -30.0, 0.0],
+      "blenderRayLocalMinusZ" => [0.321393818, 0.766044438, -0.556670368],
+      "unityRay" => [0.321393818, -0.556670368, -0.766044438],
+      "unityRotationRule" => "Quaternion.LookRotation(unityRay, Vector3.up)",
+    }
+    expect(expected_key_transport.all? { |key, value| qa_copy.dig("fixedNeutralStage", "keyLight", key) == value },
+      "R02_QA_KEY_LIGHT_TRANSPORT", qa_path)
+    expected_key_transport.each_key { |key| qa_copy["fixedNeutralStage"]["keyLight"].delete(key) }
+    qa_copy["fixedNeutralStage"]["ambientFill"] = deep_copy(base_qa_copy.dig("fixedNeutralStage", "ambientFill"))
+    expect(qa_copy == base_qa_copy, "R02_QA_BASE_CONTRACT_DRIFT", qa_path)
+    expect(!contains_locked_state?(interop) && !contains_locked_state?(qa), "R02_ILLEGAL_LOCKED_VALUE", "config/art")
+
+    all_profiles = @profiles.values + @r02_profiles.values
+    ids = all_profiles.map { |profile| profile["profileId"] }
+    expect(ids.length == 5 && ids.uniq.length == 5, "R02_PROFILE_ID_SET", "config/art")
+  end
+
   def required_export_settings
     {
       "global_scale" => 1.0,
@@ -855,6 +1028,10 @@ class ArtProfileValidator
     end
   end
 
+  def deep_copy(value)
+    Marshal.load(Marshal.dump(value))
+  end
+
   def canonical_digest(value)
     Digest::SHA256.hexdigest(JSON.generate(canonicalize(value)))
   end
@@ -961,9 +1138,9 @@ class ArtProfileValidator
 
   def print_report
     puts "ART_PROFILE_VALIDATION"
-    puts "PROFILE_FILES_EXPECTED=#{EXPECTED_PROFILES.length}"
-    puts "PROFILE_FILES_LOADED=#{@profiles.length}"
-    puts "PROFILE_IDS_UNIQUE=#{@profiles.values.map { |profile| profile["profileId"] }.uniq.length}"
+    puts "PROFILE_FILES_EXPECTED=#{EXPECTED_PROFILES.length + R02_PROFILES.length}"
+    puts "PROFILE_FILES_LOADED=#{@profiles.length + @r02_profiles.length}"
+    puts "PROFILE_IDS_UNIQUE=#{(@profiles.values + @r02_profiles.values).map { |profile| profile["profileId"] }.uniq.length}"
     puts "TOOLCHAIN_PROFILE_LOADED=#{@toolchain.is_a?(Hash)}"
     puts "ART001_SCOPE_CHECKED=#{@check_art001_scope}"
     puts "ART001_SCOPE_PATHS=#{@scope_paths_checked}"
