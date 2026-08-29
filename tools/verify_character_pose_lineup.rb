@@ -342,10 +342,19 @@ class CharacterPoseLineupVerifier
       "tools/verify_lfs_repository.rb", "tools/tests/verify_lfs_repository_test.rb",
       "tools/verify_license_inventory.rb", "tools/tests/verify_license_inventory_test.rb",
       "docs/03_IMPLEMENTATION_PLAN.md", "artifacts/reports/FOUNDATION_DECISION_RATIONALE.md",
+      "docs/00_DOCUMENT_INDEX.md", "docs/04_IMPLEMENTATION_TRACEABILITY.md",
+      "artifacts/reports/CHARACTER_FULL_AUDIT.md",
+      "tools/verify_character_import_parity.rb", "tools/tests/verify_character_import_parity_test.rb",
     ]
     out.split("\0").each do |entry|
       path = entry.length >= 4 ? entry[3..] : ""
-      next if path.start_with?("BlenderSource/Characters/C1B-004/", "artifacts/evidence/G0/C1B-004/") || allowed.include?(path)
+      next if path.start_with?(
+        "BlenderSource/Characters/C1B-004/", "artifacts/evidence/G0/C1B-004/",
+        "BlenderSource/Characters/C1B-005/", "artifacts/evidence/G0/C1B-005/",
+        "Project hotfix/Assets/ProjectHotfix/Art/Characters/C1B-005/",
+        "Project hotfix/Assets/ProjectHotfix/Editor/C1B005/",
+        "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/C1B005/",
+      ) || allowed.include?(path)
       add("C1B004_SCOPE", path)
     end
   end

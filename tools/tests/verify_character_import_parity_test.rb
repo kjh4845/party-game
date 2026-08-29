@@ -174,21 +174,23 @@ class VerifyCharacterImportParityTest < Minitest::Test
     end
   end
 
-  def test_lfs_pending_state_and_flags_are_exact
+  def test_lfs_round_trip_state_and_flags_are_exact
     with_repo do |root|
       rewrite_manifest(root) do |manifest|
         stage = manifest["stages"]["fbx-export"]
-        stage["lfsState"] = "VERIFIED_REMOTE_ROUND_TRIP"
+        stage["lfsState"] = "PENDING_CORE_PUSH"
         stage["indexPointerVerified"] = true
-        stage["remoteObjectRoundTripVerified"] = true
+        stage["remoteObjectRoundTripVerified"] = false
+        manifest["limitations"][-1] = "FBX fresh-fetch evidence remains pending."
       end
-      assert_rule(root, "FBX_LFS_PENDING")
+      assert_rule(root, "FBX_LFS_ROUND_TRIP")
+      assert_rule(root, "LIMITATIONS")
     end
     with_repo do |root|
       rewrite_manifest(root) do |manifest|
         manifest["stages"]["fbx-export"]["indexPointerVerified"] = false
       end
-      assert_rule(root, "FBX_LFS_PENDING")
+      assert_rule(root, "FBX_LFS_ROUND_TRIP")
     end
   end
 

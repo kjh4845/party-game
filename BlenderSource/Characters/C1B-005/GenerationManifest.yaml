@@ -6,7 +6,7 @@ GenerationManifest:
   completionScope: "C1B-005_STATIC_BLOCKOUT_INTEROP_PARITY_COMPLETE"
   ownerTask: "C1B-005"
   sourceOwner: "kjh4845"
-  recordedAtUtc: "2026-08-29T18:56:33Z"
+  recordedAtUtc: "2026-08-29T19:23:32Z"
 
   identity:
     assetId: "CHR_MasterCharacter_C1B_Neutral"
@@ -40,16 +40,16 @@ GenerationManifest:
       sha256: "83c2e100c74cf75a7faed11dd0ad65c3d07677684e02696e72455fdee4e17c2b"
       mutatedByC1b005: false
     fbx-export:
-      status: "COMPLETE_LOCAL"
+      status: "COMPLETE"
       path: "Project hotfix/Assets/ProjectHotfix/Art/Characters/C1B-005/CHR_MasterCharacter_C1B_Neutral_r02.fbx"
       bytes: 70268
       sha256: "e2049505f6be24508783710c83691445b28fa39cad892bcd88aa0e2ad4807d9d"
       metaPath: "Project hotfix/Assets/ProjectHotfix/Art/Characters/C1B-005/CHR_MasterCharacter_C1B_Neutral_r02.fbx.meta"
       metaSha256: "e6f13b6bd983deb56b3936b1dc2d1626a2113bac887f0cccbc33966caeecf15f"
       guid: "250d071cf52954f0586c84d27ec778db"
-      lfsState: "PENDING_CORE_PUSH"
+      lfsState: "VERIFIED_REMOTE_ROUND_TRIP"
       indexPointerVerified: true
-      remoteObjectRoundTripVerified: false
+      remoteObjectRoundTripVerified: true
       binaryByteIdenticalReexportGuaranteed: false
       semanticReproductionInspector: "tools/blender/inspect_c1b005_fbx.py"
     reference-render:
@@ -150,4 +150,4 @@ GenerationManifest:
     - "The identity Prefab contains no gameplay Rig, Animator, Collider, Anchor or manual model correction."
     - "C1B-004 action Pose images were rechecked as unchanged static evidence; motion or animation naturalness is not claimed."
     - "Neutral readability lighting is QA-only and does not approve product lighting, palette, material or visual lock."
-    - "FBX LFS pointer, upload and fresh-fetch evidence remain pending; Player Build, PlayMode, Docker and deployment were not executed."
+    - "FBX LFS pointer, upload and fresh-fetch materialization are verified for core revision 2ce719415f3ebbb785396d82e93ce479bb3c28c9; Player Build, PlayMode, Docker and deployment were not executed."

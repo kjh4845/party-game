@@ -217,7 +217,7 @@ class VerifyLfsRepositoryTest < Minitest::Test
       policy.write(policy.read
         .sub("`.blend`, `.fbx`, `.glb`", "`.blend`, `.glb`")
         .sub(
-          "The C1B-005 Unity import FBX is the third canonical LFS object",
+          "Core revision `2ce7194` uploaded the third production LFS object",
           "Third production object round-trip status omitted",
         )
         .sub("Do not run `git lfs migrate`", "Migration command omitted"))

@@ -1,0 +1,202 @@
+EvidenceManifest:
+  schemaVersion: 1
+  evidenceProfile: "EvidenceProfile-r01"
+  evidenceId: "EV-C1B-005-20260830-r01"
+  taskId: "C1B-005"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "Core=2ce719415f3ebbb785396d82e93ce479bb3c28c9; GenerationManifest=2b040be0925455232e6f549ae4f99e6d1912e3e76c08f039f8a25586d7e19d44; InteropComparisonReport=ea377d660e91dd89c241ea6570a12d6092e005679e6f512d05c3190c359b0d23; FBX=e2049505f6be24508783710c83691445b28fa39cad892bcd88aa0e2ad4807d9d; FBXMeta=e6f13b6bd983deb56b3936b1dc2d1626a2113bac887f0cccbc33966caeecf15f; Prefab=ae76d0982e232f8e4344087f58e47f3331bf7b688abbe9ca73236b7706318c43; PrefabMeta=30047b4953e7ed4da6b5c76b8e0ffe9c88452854374512bdf1de6519445915e6; UnityInspection=94901f3b4d98e14e037e23348aac14dbfface273cbededa8dd5fac037d87bd71; ModelInteropR02=75c8df9e283268cc3a11fce70ce039107cd73d94a98f0f1831365133e1c6d4a0; AlphaVisualQaR02=358db218a34b7d09e41dbd6596ca2f79d0b74a3f0eea01d1ecd2bf562d0ed1ef; BlenderExporter=c5345f8cfc4bf32f88d054bdb82e656112df42bf1aa7f9d505143a575f486b73; BlenderInspector=aa66ecf3e4b91cc0c1ddad4074c3a9a7fe712f91b5dda3ef2f3a0010566340b8; ParityVerifier=00c3b29197e557abec7e7253d8206a7197c95fded59e1040340e5f9e9f46ddf6; ParityTest=d4ef5f1c9d09aca2211277c3694d91f84dca307ce8914b5f8c64bd041eb52e9d; BinaryPolicy=2d9c7b2f9d215e3a76970a5b66341756d84620257b7afd4d45ca4246a15dcaa9; BinaryInventory=fe3ac54026e0ba8257a9731805f70ef9ea4e9c7a07eb439e3f8c19b7e26e48c2; LfsVerifier=05039e1e8fea0a9f62b3ec85750813441bb63870c5f7ee523dbc50c936a0ec19; LfsTest=d22d64146933404493019c9edcc7880a985d91d35b58af878c79fc9dfabaf4fc; LicensePolicy=bf82aa60eaaadcc5792414bd4e6f4fde480685ed4e84af7e9ad2f91d0cec02f8; LicenseInventory=eec9f0b8eca70be5cdea2a70e28fea9208d506fbe81e953920f6429cba75e3dd; LicenseVerifier=40655cb66aabbe68f36bb17afde18744eaf7a89347d2db6112477236707f9e59; LicenseTest=daa880f5f21a56b3eb0181689e0849e34b4d3a9e414f2575f2e43581122e43ce; CharacterAudit=880a682c277d18f3680680f7237255e39f5795d49113af490b37eaa3a2765dda"
+  buildKind: "BlenderFbxUnityStaticInteropParityNoPlayerBuild"
+  buildVersion: "NotBuilt"
+  environment: "macOS arm64; Unity 6000.3.9f1; Blender 5.2.0 LTS fbe6228777e7; Git 2.52.0; Git LFS 3.8.0 repository-local; Ruby 2.6.10; Python Pillow 11.3.0"
+  profileVersions: ["CharacterProportionProfile-C1B-002-r01", "ModelInteropProfile-ART-001-r02", "AlphaVisualQAProfile-ART-001-r02", "GM-CHR-MasterCharacter-C1B-Interop-r01", "RepositoryPolicy-r06", "BinaryAssetInventory-r06", "project-hotfix-license-policy-r03", "project-hotfix-third-party-inventory-r05", "EvidenceProfile-r01"]
+  requirementIds: ["C1B-005", "SRS-APPEAR-014", "SRS-APPEAR-015", "SRS-APPEAR-016", "SRS-APPEAR-017", "SRS-APPEAR-018", "AT-028"]
+  commandsOrManualSteps:
+    - "C1B-004 canonical source SHA를 불변 확인하고 Neutral Mesh6·landmark17만 first-party FBX로 export"
+    - "첫 r01 반입의 L/R landmark 최대0.47H reversal과 UV0 없는 Blockout tangent warning을 실패로 처리하고 기준 포함61개 global 조합을 비교"
+    - "사용자 승인 뒤 r01을 보존한 채 C1BBlockout-only r02 ReflectX/winding/outward-normal/baked-space export와 tangent-none import override를 versioned profile로 기록"
+    - "Blender FBX reimport에서 bounds, landmark transport, winding/normal, invalid geometry와 out-of-scope Armature/Action/Collider0 검사"
+    - "Unity ModelImporter postprocessor로 같은 preset digest를 적용하고 wrapper correction0인 identity Prefab과 2048² Neutral/Silhouette four-view8 생성"
+    - "Unity에서 root/export root transform·determinant, Mesh6·landmark17·bounds·ground, point/surface signature와 material/Rig/Animator/Collider0 검사"
+    - "source/Unity silhouette bbox drift를 0.005H 한도와 비교하고 IoU는 승인 threshold가 아닌 관찰값으로만 기록"
+    - "C1B-002..005의 비율·Neutral/Silhouette·Pose8·lineup·open hole·관통 seam·관절부위를 다시 시각 감사하고 static/animation 경계를 별도 보고서로 기록"
+    - "FBX를 LFS pointer로 normal push한 뒤 fresh private clone에서 130-byte pointer와 declared OID/size를 확인하고 authenticated fetch/checkout materialized SHA·size 일치 검증"
+    - "FBX1을 first-party PLAYER_CONTENT/shipping true, Unity capture8을 PRODUCTION_EVIDENCE/non-shipping으로 inventory에 등록"
+    - "Parity, Art, C1B-002/003/004, LFS, license, infrastructure, doc, Evidence와 Unity EditMode 회귀를 실행"
+    - "Armature, Animation, Collider, gameplay, 2/3/4 runtime, Player Build, Docker와 Deploy 실행0"
+  observedMetrics:
+    sourceOwnerApprovals: 1
+    canonicalSourceMutations: 0
+    fbxExports: 1
+    fbxBytes: 70268
+    fbxHashMatches: 1
+    lfsIndexPointersVerified: 1
+    freshPointerBytes: 130
+    freshLfsObjectsFetched: 1
+    freshMaterializedHashMatches: 1
+    freshMaterializedSizeMatches: 1
+    unityImports: 1
+    unityIdentityPrefabs: 1
+    unityReferenceCaptures: 8
+    unityCapturePng2048Matches: 8
+    meshObjects: 6
+    landmarks: 17
+    blenderMaximumLandmarkTransportDeviationH: 0.000000075
+    unityMaximumLandmarkDeviationH: 0.0
+    boundsWidthH: 0.579999983
+    boundsHeightH: 1.0
+    boundsDepthH: 0.264999986
+    unityGroundDeviationH: 0.0
+    rootDeterminant: 1.0
+    exportRootDeterminant: 1.0
+    negativeScaleCount: 0
+    axisReversalCount: 0
+    pointSignatureMatches: 1
+    surfaceSignatureMatches: 1
+    silhouetteViews: 4
+    silhouetteMaximumBoundingBoxDriftH: 0.004103166
+    staticPoseCandidatesRechecked: 8
+    staticPoseReviewFilesRechecked: 20
+    exposedOpenHoleBlockers: 0
+    visualGeometryBlockers: 0
+    manualModelCorrections: 0
+    importedMaterials: 0
+    armatures: 0
+    animationActions: 0
+    animators: 0
+    colliders: 0
+    firstPartyAssets: 39
+    firstPartyShippingAllowed: 1
+    reviewOnlyAssets: 18
+    binaryInventoryFiles: 57
+    binaryInventoryBytes: 78239109
+    binaryInventoryUniqueHashes: 52
+    lfsRequiredCandidates: 3
+    lfsTrackedFiles: 3
+    ordinaryGitBinaryFiles: 54
+    parityMutationTestRuns: 13
+    parityMutationTestAssertions: 86
+    lfsMutationTestRuns: 16
+    lfsMutationTestAssertions: 162
+    licenseMutationTestRuns: 29
+    licenseMutationTestAssertions: 226
+    dedicatedUnityEditModeTests: 7
+    fullUnityEditModeTests: 59
+    mutationFailuresErrorsSkips: 0
+    finalGitVisibleInventoryFiles: 373
+    finalForbiddenInfrastructureContentFiles: 132
+    finalForbiddenInfrastructurePackageManifests: 2
+    finalForbiddenInfrastructureViolations: 0
+    activeDocsValidated: 12
+    evidenceManifestsAfterC1b005: 47
+    userVisualApprovalRecorded: 0
+    productionLockRecorded: 0
+    runtimeParticipantCountsExecuted: 0
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  expectedThresholds:
+    sourceOwnerApprovals: 1
+    canonicalSourceMutations: 0
+    fbxExports: 1
+    fbxBytes: 70268
+    fbxHashMatches: 1
+    lfsIndexPointersVerified: 1
+    freshPointerBytes: 130
+    freshLfsObjectsFetched: 1
+    freshMaterializedHashMatches: 1
+    freshMaterializedSizeMatches: 1
+    unityImports: 1
+    unityIdentityPrefabs: 1
+    unityReferenceCaptures: 8
+    unityCapturePng2048Matches: 8
+    meshObjects: 6
+    landmarks: 17
+    blenderMaximumLandmarkTransportDeviationH: 0.005
+    unityMaximumLandmarkDeviationH: 0.005
+    boundsWidthH: 0.58
+    boundsHeightH: 1.0
+    boundsDepthH: 0.265
+    unityGroundDeviationH: 0.005
+    rootDeterminant: 1.0
+    exportRootDeterminant: 1.0
+    negativeScaleCount: 0
+    axisReversalCount: 0
+    pointSignatureMatches: 1
+    surfaceSignatureMatches: 1
+    silhouetteViews: 4
+    silhouetteMaximumBoundingBoxDriftH: 0.005
+    staticPoseCandidatesRechecked: 8
+    staticPoseReviewFilesRechecked: 20
+    exposedOpenHoleBlockers: 0
+    visualGeometryBlockers: 0
+    manualModelCorrections: 0
+    importedMaterials: 0
+    armatures: 0
+    animationActions: 0
+    animators: 0
+    colliders: 0
+    firstPartyAssets: 39
+    firstPartyShippingAllowed: 1
+    reviewOnlyAssets: 18
+    binaryInventoryFiles: 57
+    binaryInventoryBytes: 78239109
+    binaryInventoryUniqueHashes: 52
+    lfsRequiredCandidates: 3
+    lfsTrackedFiles: 3
+    ordinaryGitBinaryFiles: 54
+    parityMutationTestRuns: 13
+    parityMutationTestAssertions: 86
+    lfsMutationTestRuns: 16
+    lfsMutationTestAssertions: 162
+    licenseMutationTestRuns: 29
+    licenseMutationTestAssertions: 226
+    dedicatedUnityEditModeTests: 7
+    fullUnityEditModeTests: 59
+    mutationFailuresErrorsSkips: 0
+    finalGitVisibleInventoryFiles: 373
+    finalForbiddenInfrastructureContentFiles: 132
+    finalForbiddenInfrastructurePackageManifests: 2
+    finalForbiddenInfrastructureViolations: 0
+    activeDocsValidated: 12
+    evidenceManifestsAfterC1b005: 47
+    userVisualApprovalRecorded: 0
+    productionLockRecorded: 0
+    runtimeParticipantCountsExecuted: 0
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/C1B-005/EV-C1B-005-20260830-r01.txt"
+    - "BlenderSource/Characters/C1B-005/GenerationManifest.yaml"
+    - "BlenderSource/Characters/C1B-005/InteropComparisonReport.yaml"
+    - "Project hotfix/Assets/ProjectHotfix/Art/Characters/C1B-005/CHR_MasterCharacter_C1B_Neutral_r02.fbx"
+    - "Project hotfix/Assets/ProjectHotfix/Art/Characters/C1B-005/CHR_MasterCharacter_C1B_Neutral_r02.prefab"
+    - "artifacts/evidence/G0/C1B-005/UnityImportInspection.json"
+    - "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Neutral_ThreeQuarter.png"
+    - "artifacts/evidence/G0/C1B-005/Captures/Unity/CHR_MasterCharacter_C1B_Neutral_r02_Silhouette_ThreeQuarter.png"
+    - "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Dropkick_Neutral_ThreeQuarter.png"
+    - "config/art/ModelInteropProfile-r02.yaml"
+    - "config/art/AlphaVisualQAProfile-r02.yaml"
+    - "config/character/CharacterProportionProfile.yaml"
+    - "config/repository/BinaryAssetPolicy.md"
+    - "config/repository/BinaryAssetInventory.yaml"
+    - "config/licenses/LicensePolicy.yaml"
+    - "config/licenses/ThirdPartyInventory.yaml"
+    - "tools/verify_character_import_parity.rb"
+    - "tools/tests/verify_character_import_parity_test.rb"
+    - "tools/verify_lfs_repository.rb"
+    - "tools/verify_license_inventory.rb"
+    - "artifacts/reports/CHARACTER_FULL_AUDIT.md"
+    - "docs/03_IMPLEMENTATION_PLAN.md"
+    - "artifacts/reports/FOUNDATION_DECISION_RATIONALE.md"
+  failures: []
+  limitations:
+    - "C1B-005 PASS proves static START Blockout source-to-FBX-to-Unity scale, axis, landmark, bounds, oriented-surface signature and four-view silhouette parity; it is not UG-C1B approval or production lock."
+    - "Shoulder/hip의 visible cap/interpenetration seam은 background-through open hole이 아닌 닫힌 START review seam이며 production deformation 품질은 C4가 소유한다."
+    - "C1BBlockout-only UV0/tangent exception은 현재 static candidate에만 적용되며 global production UV0/tangent 요구는 유지된다."
+    - "Pose8은 정적 방향·관절부위 감사이며 Armature/Action/Animator가 없어 animation timing, transition 또는 motion naturalness를 주장하지 않는다."
+    - "Actual 2/3/4-player Unity gameplay Camera, Physics, PlayMode, Player Build, LAN/P2P와 Steam 결과는 실행되지 않았다."
+    - "Fresh clone credential text와 temporary absolute path는 Evidence에 보존하지 않았으며 GitHub credential은 repository 밖에 있다."
+  userDecision: "사용자가 C1BBlockout r02 교정을 승인하고 계획대로 진행하되 캐릭터 전체의 실루엣·관통·관절부위를 다시 점검하도록 요청함; 추가 승인이나 애매한 사항이 생기면 중단함"
+  recordedAtUtc: "2026-08-29T19:27:13Z"

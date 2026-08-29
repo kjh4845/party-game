@@ -121,8 +121,8 @@ class CharacterImportParityVerifier
     blend = h(stages["blend-source"])
     expect(blend == {"status"=>"REFERENCE_COMPLETE","ownerTask"=>"C1B-004","path"=>BLEND,"bytes"=>151456,"sha256"=>BLEND_SHA,"mutatedByC1b005"=>false}, "BLEND_REFERENCE_STAGE", MANIFEST)
     fbx = h(stages["fbx-export"])
-    expect(fbx["status"] == "COMPLETE_LOCAL" && fbx["path"] == FBX && fbx["bytes"] == 70268 && fbx["sha256"] == FBX_SHA && fbx["metaPath"] == FBX_META && fbx["metaSha256"] == FBX_META_SHA && fbx["guid"] == "250d071cf52954f0586c84d27ec778db", "FBX_STAGE", MANIFEST)
-    expect(fbx["lfsState"] == "PENDING_CORE_PUSH" && fbx["indexPointerVerified"] == true && fbx["remoteObjectRoundTripVerified"] == false, "FBX_LFS_PENDING", MANIFEST)
+    expect(fbx["status"] == "COMPLETE" && fbx["path"] == FBX && fbx["bytes"] == 70268 && fbx["sha256"] == FBX_SHA && fbx["metaPath"] == FBX_META && fbx["metaSha256"] == FBX_META_SHA && fbx["guid"] == "250d071cf52954f0586c84d27ec778db", "FBX_STAGE", MANIFEST)
+    expect(fbx["lfsState"] == "VERIFIED_REMOTE_ROUND_TRIP" && fbx["indexPointerVerified"] == true && fbx["remoteObjectRoundTripVerified"] == true, "FBX_LFS_ROUND_TRIP", MANIFEST)
     render = h(stages["reference-render"])
     expect(render["sourceReferenceCount"] == 8 && render["sourceReferenceOrderedBundleSha256"] == SOURCE_CAPTURE_BUNDLE_SHA && render["unityReferenceCount"] == 8 && render["unityReferenceOrderedBundleSha256"] == UNITY_CAPTURE_BUNDLE_SHA && render["dimensions"] == [2048,2048], "REFERENCE_STAGE", MANIFEST)
     outputs = render["outputs"]
@@ -138,7 +138,16 @@ class CharacterImportParityVerifier
     expect(boundary == {"c1bBlockoutUv0State"=>"DEFERRED_C1B_BLOCKOUT_ONLY","c1bBlockoutTangents"=>"None","globalProductionUv0AndTangentRulesPreserved"=>true,"armatureCreated"=>false,"animationCreated"=>false,"colliderCreated"=>false,"manualModelCorrectionCount"=>0,"userVisualApprovalRecorded"=>false,"productionLockRecorded"=>false}, "SOURCE_BOUNDARY", MANIFEST)
     execution = h(@manifest["execution"])
     expect(execution == {"fbxExports"=>1,"unityImports"=>1,"unityPrefabs"=>1,"unityCaptures"=>8,"c1b005EditModeTests"=>7,"fullEditModeTests"=>59,"playModeTests"=>0,"playerBuilds"=>0,"dockerExecutions"=>0,"deployExecutions"=>0}, "EXECUTION_SCOPE", MANIFEST)
-    expect(@manifest["limitations"].is_a?(Array) && @manifest["limitations"].length == 6, "LIMITATIONS", MANIFEST)
+    expected_limitations = [
+      "C1B-005 proves static Blockout source-to-FBX-to-Unity scale, axis, landmark, bounds, surface-signature and four-view silhouette parity only.",
+      "The C1BBlockout UV0/tangent exception is local to this static candidate; global production UV0 and tangent requirements remain unchanged.",
+      "The identity Prefab contains no gameplay Rig, Animator, Collider, Anchor or manual model correction.",
+      "C1B-004 action Pose images were rechecked as unchanged static evidence; motion or animation naturalness is not claimed.",
+      "Neutral readability lighting is QA-only and does not approve product lighting, palette, material or visual lock.",
+      "FBX LFS pointer, upload and fresh-fetch materialization are verified for core revision 2ce719415f3ebbb785396d82e93ce479bb3c28c9; Player Build, PlayMode, Docker and deployment were not executed.",
+    ]
+    expect(@manifest["limitations"] == expected_limitations, "LIMITATIONS", MANIFEST)
+    expect(@manifest["recordedAtUtc"].to_s.match?(/\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z\z/), "MANIFEST_RECORDED_AT", MANIFEST)
   end
 
   def validate_report
@@ -285,7 +294,7 @@ class CharacterImportParityVerifier
     out, _err, status = Open3.capture3("git","-C",@root.to_s,"status","--porcelain","-z","--untracked-files=all")
     unless status.success?; add("SCOPE_GIT", @root); return; end
     allowed_prefixes = ["BlenderSource/Characters/C1B-005/","Project hotfix/Assets/ProjectHotfix/Art","Project hotfix/Assets/ProjectHotfix/Editor/C1B005","Project hotfix/Assets/ProjectHotfix/Tests/EditMode/C1B005","artifacts/evidence/G0/C1B-005/"]
-    allowed = FILE_HASHES.keys + ["Project hotfix/Assets/ProjectHotfix/Editor.meta","tools/verify_character_import_parity.rb","tools/tests/verify_character_import_parity_test.rb","tools/verify_art_profiles.rb","tools/tests/verify_art_profiles_test.rb","docs/00_DOCUMENT_INDEX.md","docs/ART_DIRECTION.md","docs/CHARACTER_TECHNICAL_SPEC.md","docs/WEAPON_DESIGN.md","docs/03_IMPLEMENTATION_PLAN.md","artifacts/reports/FOUNDATION_DECISION_RATIONALE.md","config/repository/BinaryAssetPolicy.md","config/repository/BinaryAssetInventory.yaml","config/licenses/ThirdPartyInventory.yaml","tools/verify_lfs_repository.rb","tools/tests/verify_lfs_repository_test.rb","tools/verify_license_inventory.rb","tools/tests/verify_license_inventory_test.rb"]
+    allowed = FILE_HASHES.keys + ["Project hotfix/Assets/ProjectHotfix/Editor.meta","tools/verify_character_import_parity.rb","tools/tests/verify_character_import_parity_test.rb","tools/verify_character_pose_lineup.rb","tools/verify_art_profiles.rb","tools/tests/verify_art_profiles_test.rb","docs/00_DOCUMENT_INDEX.md","docs/ART_DIRECTION.md","docs/CHARACTER_TECHNICAL_SPEC.md","docs/WEAPON_DESIGN.md","docs/03_IMPLEMENTATION_PLAN.md","docs/04_IMPLEMENTATION_TRACEABILITY.md","artifacts/reports/FOUNDATION_DECISION_RATIONALE.md","artifacts/reports/CHARACTER_FULL_AUDIT.md","config/repository/BinaryAssetPolicy.md","config/repository/BinaryAssetInventory.yaml","config/licenses/ThirdPartyInventory.yaml","tools/verify_lfs_repository.rb","tools/tests/verify_lfs_repository_test.rb","tools/verify_license_inventory.rb","tools/tests/verify_license_inventory_test.rb"]
     out.split("\0").each do |entry|
       path = entry.length >= 4 ? entry[3..] : ""
       next if allowed.include?(path) || allowed_prefixes.any? { |prefix| path.start_with?(prefix) }

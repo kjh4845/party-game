@@ -6,7 +6,7 @@
 |---|---|
 | 기준일 | 2026-08-26 |
 | 현재 목표 | `Alpha = Vertical Slice`; Steam 제품 통합 전 LAN/direct endpoint 2·3·4인 완성 |
-| 캐릭터 상태 | `Hybrid Core v0.13` C1a 방향 승인, C1b exact profile·최종 Mesh·physics 미승인 |
+| 캐릭터 상태 | `Hybrid Core v0.13` C1a 방향 승인, C1b normalized Blockout·static Pose8·FBX/Unity parity 완료; `UG-C1B` exact profile·최종 Mesh·Rig/physics 미승인 |
 | 제품 기준 | PRD 1.8.0 → SRS 1.8.0 → Patch Design 0.5.0·분야별 사양 → 구현계획 2.5 → 추적 부록 1.5 |
 | 충돌 처리 | 가장 최근의 명시적 사용자 결정이 최우선이며 상위 문서를 먼저 수정한 뒤 하위 문서에 전파 |
 
@@ -162,8 +162,11 @@ projectile·recoil/spread·Spent, minimal Match UI·Match Esc/Leave/Forfeit, Alp
 2026-08-25~26 사용자 승인 기록이다. 이 결정들을 반영한 Lean 문서 실행 기준선 `UG-DOC`도
 2026-08-26 사용자 확정으로 PASSED다.
 
+C1B-005 static parity까지의 현재 상태와 한계는
+[캐릭터 전체 감사](../artifacts/reports/CHARACTER_FULL_AUDIT.md)에 모아 두었다.
+
 1. 승인 Patch12 실제 기능·2/3/4인 결과 `UG-PATCH12`
-2. C1b exact orthographic·measurement profile과 Collider/reach
+2. `C1B-006` C1b exact orthographic·measurement profile과 four-view 시각 결과 `UG-C1B` 승인. Collider/reach·physics feel은 후속 `UG-C2`
 3. Punch/Grab threshold 120·150·180ms 비교 결과
 4. Sprint multiplier·가속 tuning
 5. groggy base duration·increment·cap과 feedback

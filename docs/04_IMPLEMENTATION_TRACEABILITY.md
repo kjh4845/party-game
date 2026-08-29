@@ -132,7 +132,7 @@
 | AT-025 | APT-001..006 | local appearance relay |
 | AT-026 | APT-001, APT-005..006 | appearance attack |
 | AT-027 | APT-004..006, C4-003 | cosmetic invariance |
-| AT-028 | C1B-005..006, C4-004 | Blender→Unity parity |
+| AT-028 | C1B-005..006, C4-004 | C1B-005 r02 scoped Blockout export/import로 source→FBX→Unity scale·axis·landmark·bounds·surface signature·four-view silhouette parity를 확인하고 C1B-006에서 사용자 시각 승인; production UV/tangent·Rig/Collider/deformation은 C4-004 |
 | AT-029 | NET-014, APT-003, APT-006, DIA-002, QA-010 | performance |
 | AT-030 | UI-003, UI-005, AV-001..003, QA-008 | Alpha non-color cue·Tab mode 최소 접근성; audio를 포함한 확장 설정은 DEF-001 |
 | AT-031 | UI-006, LBY-007, DIA-001..002, SEC-001..002, STM-008 | error·diagnostics |
