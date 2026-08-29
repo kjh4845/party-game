@@ -1,8 +1,8 @@
 ThirdPartyInventory:
   schemaVersion: 1
-  inventoryId: "project-hotfix-third-party-inventory-r02"
+  inventoryId: "project-hotfix-third-party-inventory-r03"
   status: "APPROVED_SOURCE_INVENTORY_WINDOWS_FINAL_AUDIT_PENDING"
-  recordedAtUtc: "2026-08-29T12:33:01Z"
+  recordedAtUtc: "2026-08-29T15:04:28Z"
   policyPath: "config/licenses/LicensePolicy.yaml"
   distributedNoticeIndex: "THIRD_PARTY_NOTICES.md"
 
@@ -888,9 +888,153 @@ ThirdPartyInventory:
         - "https://unity.com/legal/licenses/unity-package-distribution-license"
 
   firstPartyProductionAssets:
-    purpose: "Project-authored production source and Player-content assets with explicit rights evidence"
-    itemCount: 0
-    items: []
+    purpose: "Project-authored production source, non-shipping evidence, and Player-content assets with explicit rights evidence"
+    itemCount: 9
+    items:
+      - path: "BlenderSource/Characters/C1B-003/CHR_MasterCharacter_C1B_Blockout_r01.blend"
+        sha256: "b0f4e10e208e60dd07bd91947ef46f09135f602b2ce695becff355cc662837cc"
+        assetType: "BLENDER_SOURCE"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_SOURCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-003/CHR_MasterCharacter_C1B_Blockout_r01.blend]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-003/GenerationManifest.yaml#stages.blend-source"
+      - path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_Back.png"
+        sha256: "bc3e2e145f6884175c83e3f7ad131a24b0f1ff246ba2db38c2cdd72fd30cd894"
+        assetType: "CHARACTER_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_Back.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-003/GenerationManifest.yaml#stages.reference-render.outputs[path=BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_Back.png]"
+      - path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_Front.png"
+        sha256: "c958d8ae19b700ddf3f0fe6c0cc61fc3770a981f987baa4a5cbd9edc68efca2f"
+        assetType: "CHARACTER_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_Front.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-003/GenerationManifest.yaml#stages.reference-render.outputs[path=BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_Front.png]"
+      - path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_Side.png"
+        sha256: "cd73e23e21a34ddd53c79739c750c69485c29eaeff789257a136e7c4ab8cde2a"
+        assetType: "CHARACTER_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_Side.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-003/GenerationManifest.yaml#stages.reference-render.outputs[path=BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_Side.png]"
+      - path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_ThreeQuarter.png"
+        sha256: "24f3db5341cbcb15d3fae5e2b7cade1bd63199059df1c891746e8ce73d59f805"
+        assetType: "CHARACTER_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_ThreeQuarter.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-003/GenerationManifest.yaml#stages.reference-render.outputs[path=BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_ThreeQuarter.png]"
+      - path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Back.png"
+        sha256: "d2a546f0074d011709ea8b7f5e33805410b682486fe93f13e6da423513070ca4"
+        assetType: "CHARACTER_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Back.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-003/GenerationManifest.yaml#stages.reference-render.outputs[path=BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Back.png]"
+      - path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Front.png"
+        sha256: "303b9c7e62ec7d25ec2864f444ec6acf80828571d246ea70ee60e943753dc741"
+        assetType: "CHARACTER_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Front.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-003/GenerationManifest.yaml#stages.reference-render.outputs[path=BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Front.png]"
+      - path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Side.png"
+        sha256: "98c97df5be2c92c52838e33cc1cc26f5561aedc4cd3dec6a8abfb706163b250c"
+        assetType: "CHARACTER_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Side.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-003/GenerationManifest.yaml#stages.reference-render.outputs[path=BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Side.png]"
+      - path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_ThreeQuarter.png"
+        sha256: "a41dadb69c81e11095523a7b1df137b87e0547564b0d0bf7e172e325beb2f699"
+        assetType: "CHARACTER_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_ThreeQuarter.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-003/GenerationManifest.yaml#stages.reference-render.outputs[path=BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_ThreeQuarter.png]"
 
   reviewOnlyAssets:
     purpose: "Design reference and decision history only"

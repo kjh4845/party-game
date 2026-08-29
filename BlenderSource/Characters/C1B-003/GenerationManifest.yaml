@@ -1,0 +1,147 @@
+GenerationManifest:
+  schemaVersion: 1
+  manifestId: "GM-CHR-MasterCharacter-C1B-Blockout-r01"
+  state: "START"
+  completionScope: "C1B-003_SOURCE_AND_REFERENCE_RENDER_COMPLETE"
+  ownerTask: "C1B-003"
+  sourceOwner: "kjh4845"
+  recordedAtUtc: "2026-08-29T14:58:43Z"
+
+  identity:
+    assetId: "CHR_MasterCharacter_C1B_Blockout"
+    assetVersion: "0.1.0-start"
+    toolchainProfileId: "project-hotfix-alpha-toolchain-r02"
+    projectVersionSha256: "ee06b66c6e48dc22fe4771812f37f3817b17f9459d44b61202d45e2a44ea3509"
+    packageManifestSha256: "88a1d01cf3abd14843cb3638a7692552e54f62a6d5de003c458a47a869edd741"
+    packageLockSha256: "8708528393a5fce3dd9110fc14815ad2dbc21cefd0efec6102b79d86a62404aa"
+    lowPolyStyleProfileId: "LowPolyStyleProfile-ART-001-r01"
+    lowPolyStyleProfileRevision: "r01"
+    modelInteropProfileId: "ModelInteropProfile-ART-001-r01"
+    modelInteropProfileRevision: "r01"
+    blenderExportPresetId: "PHX-FBX-MODEL-r01"
+    blenderExportPresetRevision: "r01"
+    blenderExportSettingsSha256: "5707996b33f8ac6773e309c60d05b236655bb4b17e4cc3261642f142a0062ce4"
+    unityImporterPresetId: "PHX-UNITY-MODEL-IMPORT-r01"
+    unityImporterPresetRevision: "r01"
+    unityImporterSettingsSha256: "4a00f7ea259ef98d17a932948ca2ebfde7bc7173e632ac5f5b4ddc81fba94cf9"
+    sourceSha256: "b0f4e10e208e60dd07bd91947ef46f09135f602b2ce695becff355cc662837cc"
+    fbxSha256: null
+    referenceRenderSha256: "c958d8ae19b700ddf3f0fe6c0cc61fc3770a981f987baa4a5cbd9edc68efca2f"
+    unityPrefabRevision: null
+
+  characterProportionProfile:
+    path: "config/character/CharacterProportionProfile.yaml"
+    profileId: "CharacterProportionProfile-C1B-002-r01"
+    version: "0.1.0-start"
+    revision: "r01"
+    measurementSetSha256: "76c98acfe8cfbf01b51936b29c2f6ba2e78c26222dfd53c033fe84233e562722"
+    state: "START"
+    userApprovalRecorded: false
+
+  stages:
+    blend-source:
+      status: "COMPLETE"
+      path: "BlenderSource/Characters/C1B-003/CHR_MasterCharacter_C1B_Blockout_r01.blend"
+      bytes: 116437
+      sha256: "b0f4e10e208e60dd07bd91947ef46f09135f602b2ce695becff355cc662837cc"
+      blenderVersion: "5.2.0 LTS"
+      blenderBuildHash: "fbe6228777e7"
+      sourceAxis: "+Z Up"
+      characterForwardAxis: "-Y"
+      rootScale: [1.0, 1.0, 1.0]
+      lfsState: "PENDING_CORE_PUSH"
+      indexPointerVerified: true
+      remoteObjectRoundTripVerified: false
+    fbx-export:
+      status: "DEFERRED_C1B-005"
+      path: null
+      bytes: null
+      sha256: null
+      executed: false
+    reference-render:
+      status: "COMPLETE"
+      canonicalReferencePath: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_Front.png"
+      canonicalReferenceSha256: "c958d8ae19b700ddf3f0fe6c0cc61fc3770a981f987baa4a5cbd9edc68efca2f"
+      orderedBundleSha256: "e9697f1c104b1fccf9af0a12aaa2e028a031da2d7b4c062341b688dfb7ac4c43"
+      decodedPixelHashAlgorithm: "SHA256(RGB:WxH:+decoded RGB bytes)"
+      localReproductionMatches: 8
+      reproductionMaximumChannelDifference: 1
+      reproductionMaximumChangedChannelRatio: 0.000001
+      renderResolutionPixels: [2048, 2048]
+      projection: "Orthographic"
+      orthoScale: 1.2
+      boundsPaddingRatio: 0.10
+      perViewManualFramingChanges: 0
+      outputs:
+        - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_Back.png", style: "Neutral", view: "Back", bytes: 1870384, sha256: "bc3e2e145f6884175c83e3f7ad131a24b0f1ff246ba2db38c2cdd72fd30cd894", decodedPixelSha256: "242b6a91b1a0bee70b81a035b426a3cbe7b0c7c965b13b20a1094d5d862a1e5a"}
+        - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_Front.png", style: "Neutral", view: "Front", bytes: 1949373, sha256: "c958d8ae19b700ddf3f0fe6c0cc61fc3770a981f987baa4a5cbd9edc68efca2f", decodedPixelSha256: "2e4008c5cbd66503015c77574f7982dd93e79c0143ff8546511c34c0a7f8bece"}
+        - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_Side.png", style: "Neutral", view: "Side", bytes: 1705786, sha256: "cd73e23e21a34ddd53c79739c750c69485c29eaeff789257a136e7c4ab8cde2a", decodedPixelSha256: "dde37503be19100282a0a72bc7846a69e8e2ee87a5062e32b21f0757000c1cc9"}
+        - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_ThreeQuarter.png", style: "Neutral", view: "ThreeQuarter", bytes: 1879944, sha256: "24f3db5341cbcb15d3fae5e2b7cade1bd63199059df1c891746e8ce73d59f805", decodedPixelSha256: "70d80694aafb5dbbefcfc7e81c0455512638a1fa6fc70e3d9d930f6c34bdf482"}
+        - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Back.png", style: "Silhouette", view: "Back", bytes: 1621393, sha256: "d2a546f0074d011709ea8b7f5e33805410b682486fe93f13e6da423513070ca4", decodedPixelSha256: "0d9108e29465a4137584aaa7044ce7566fff390b41bb107c6c63c4a564d0ff21"}
+        - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Front.png", style: "Silhouette", view: "Front", bytes: 1652801, sha256: "303b9c7e62ec7d25ec2864f444ec6acf80828571d246ea70ee60e943753dc741", decodedPixelSha256: "c67b32b61e5bfdb23f31290165a974ef27a2c3cdf3cb7fe2c1a8662a935f1180"}
+        - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Side.png", style: "Silhouette", view: "Side", bytes: 1591481, sha256: "98c97df5be2c92c52838e33cc1cc26f5561aedc4cd3dec6a8abfb706163b250c", decodedPixelSha256: "1f7d6a9eda787a00804838227de15b2d96b5fcc59f09a485d4665fc314b07388"}
+        - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_ThreeQuarter.png", style: "Silhouette", view: "ThreeQuarter", bytes: 1632539, sha256: "a41dadb69c81e11095523a7b1df137b87e0547564b0d0bf7e172e325beb2f699", decodedPixelSha256: "5a48d26e455eac7e8aba0793d3aa7f99196f9b54294556a5a240cace13cb6b18"}
+    unity-prefab:
+      status: "DEFERRED_C1B-005"
+      path: null
+      revision: null
+      executed: false
+
+  measurementEvidence:
+    reportPath: "BlenderSource/Characters/C1B-003/MeasurementReport.yaml"
+    reportSha256: "79c5ae3a62c91f1aad236d18c29cf8dd27dcfa90fba0d3450f3dcc8b4fe1e0ab"
+    startingToleranceH: 0.005
+    boundsExpectedH: [1.0, 0.58, 0.265]
+    boundsInspectedH: [1.0, 0.579999983, 0.265000001]
+    maximumBoundsDeviationH: 0.000000017
+    authoredBoundsCenterBlender: [0.0, -0.0075, 0.5]
+    maximumOpticalAxisBoundsCenterDeviationH: 0.000001167
+    landmarksRequired: 17
+    landmarksInspected: 17
+    silhouetteEnvelopeSemanticCount: 11
+    result: "PASS"
+
+  generationTools:
+    generator:
+      path: "tools/blender/create_c1b003_blockout.py"
+      sha256: "32579d606a341dd8007fa11d570fd54672eb977923cabe3cc90875116db33382"
+    inspector:
+      path: "tools/blender/inspect_c1b003_blockout.py"
+      sha256: "fe697177649a846053a5e567e409cf997d530300b7dd1231d0cfab4d8250bcdd"
+    rerender:
+      path: "tools/blender/rerender_c1b003_references.py"
+      sha256: "3b9824db25f2d70e80af71db484654754a4edf2851f8cf4dc21421469e6c5937"
+    pixelComparator:
+      path: "tools/blender/compare_c1b003_render_pixels.py"
+      sha256: "b1beaab5af60fa566a49ad47cdeacba58e3406e6bd030a4bbd279a446e02a38d"
+
+  sourceBoundary:
+    directionReferencePath: "artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.13_BELLY_CORRECTED_REVIEW.png"
+    directionReferenceSha256: "c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616"
+    directionReferenceEmbeddedOrPacked: false
+    pixelMeasurementsUsed: false
+    externalImagesLinked: 0
+    externalLibrariesLinked: 0
+    externalFontsOrAudioLinked: 0
+
+  execution:
+    blenderSourceFiles: 1
+    neutralReferenceRenders: 4
+    silhouetteReferenceRenders: 4
+    fbxExports: 0
+    unityImports: 0
+    unityAssets: 0
+    poseOrLineupOutputs: 0
+    armatures: 0
+    colliderProfiles: 0
+    playerBuilds: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+
+  limitations:
+    - "This manifest completes only the C1B-003 Blender source and Neutral four-view reference scope."
+    - "The canonical referenceRenderSha256 identifies Neutral Front; orderedBundleSha256 binds all eight Neutral/Silhouette outputs."
+    - "FBX export and Unity Prefab identity remain null until C1B-005 and must not be inferred from this source."
+    - "Pose/action and four-player lineup outputs remain C1B-004 work."
+    - "The H=1 source is normalized and does not approve gameplay height meters, collider, reach, rig or production topology."
+    - "UG-C1B user approval and production lock have not been recorded."

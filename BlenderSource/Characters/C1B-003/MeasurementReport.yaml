@@ -1,0 +1,114 @@
+C1B003MeasurementReport:
+  schemaVersion: 1
+  reportId: "C1B003-CHR-MasterCharacter-Blockout-r01"
+  state: "START"
+  ownerTask: "C1B-003"
+  assetId: "CHR_MasterCharacter_C1B_Blockout"
+  assetVersion: "0.1.0-start"
+  sourceOwner: "kjh4845"
+  sourcePath: "BlenderSource/Characters/C1B-003/CHR_MasterCharacter_C1B_Blockout_r01.blend"
+  profilePath: "config/character/CharacterProportionProfile.yaml"
+  profileId: "CharacterProportionProfile-C1B-002-r01"
+  measurementSetSha256: "76c98acfe8cfbf01b51936b29c2f6ba2e78c26222dfd53c033fe84233e562722"
+  startingToleranceH: 0.005
+
+  evaluatedGeometry:
+    meshObjects: 6
+    allObjects: 33
+    meshDatablocks: 7
+    materials: 3
+    cameras: 4
+    lights: 4
+    worlds: 1
+    vertices: 1158
+    polygons: 1152
+    armatures: 0
+    colliderObjects: 0
+    externalImages: 0
+    packedReferenceImages: 0
+    externalLibraries: 0
+    externalFonts: 0
+    externalSounds: 0
+    externalMovieClips: 0
+    actions: 0
+    scenes: 1
+    embeddedTextBlocks: 0
+    visibleSeparateHandFingerFistFootShoeToeObjects: 0
+    rootScale: [1.0, 1.0, 1.0]
+    negativeScaleObjects: 0
+
+  bounds:
+    expectedH: {height: 1.0, frontViewFullWidth: 0.58, sideViewTotalDepth: 0.265}
+    inspectedH: {height: 1.0, frontViewFullWidth: 0.579999983, sideViewTotalDepth: 0.265000001}
+    maximumAbsoluteDeviationH: 0.000000017
+    groundMinimumH: 0.0
+    crownMaximumH: 1.0
+    result: "PASS"
+
+  landmarks:
+    required: 17
+    inspected: 17
+    missing: 0
+    exactHeightCrossSectionsRequired: 17
+    exactHeightCrossSectionsInspected: 17
+    maximumPositionDeviationH: 0.000000021
+    maximumDeclaredCrossSectionDeviationH: 0.0
+    result: "PASS"
+
+  silhouetteEnvelopes:
+    semanticEnvelopeCount: 11
+    evaluatedSectionInstances: 16
+    missingSemanticEnvelopes: 0
+    maximumMeshSectionDeviationH: 0.000000015
+    result: "PASS"
+
+  directionInvariants:
+    expectedHeadHeightH: 0.20
+    inspectedCrownMinusChinH: 0.199999988
+    expectedForearmTerminalBottomAboveCrotchH: 0.045
+    inspectedForearmTerminalBottomAboveCrotchH: 0.044999998
+    expectedLowerLegTerminalBottomH: 0.0
+    inspectedLowerLegTerminalBottomH: 0.0
+    bilateralNeutralSymmetryMismatchCount: 0
+    result: "PASS"
+
+  referenceRenders:
+    renderResolutionPixels: [2048, 2048]
+    projection: "Orthographic"
+    orthoScale: 1.2
+    boundsPaddingRatio: 0.10
+    authoredBoundsCenterBlender: [0.0, -0.0075, 0.5]
+    maximumOpticalAxisBoundsCenterDeviationH: 0.000001167
+    views: ["Front", "Side", "Back", "ThreeQuarter"]
+    styles: ["Neutral", "Silhouette"]
+    expectedFiles: 8
+    inspectedFiles: 8
+    reproducedPixelMatches: 8
+    decodedPixelHashAlgorithm: "SHA256(RGB:WxH:+decoded RGB bytes)"
+    reproductionMaximumChannelDifference: 1
+    reproductionMaximumChangedChannelRatio: 0.000001
+    reproducedMaximumChannelDifference: 1
+    reproducedMaximumChangedChannelRatio: 0.0000002384185791
+    perViewManualFramingChanges: 0
+    result: "PASS"
+
+  reviewBoundary:
+    internalStructuralReview: "PASS"
+    internalSilhouetteReadabilityReview: "PASS"
+    userVisualApprovalRecorded: false
+    lockedValueCount: 0
+    pixelPerfectComparisonRequired: false
+    notes:
+      - "The blockout reads as one faceless character with a rounded oval head, short wide torso, low center and short thick continuous limbs."
+      - "The blockout intentionally remains faceted and separable; topology, bevel, normals, rig, collider, material polish and gameplay scale are downstream decisions."
+      - "Passing the 0.005H START tolerance does not grant UG-C1B approval or production lock."
+
+  execution:
+    blenderSourceCreated: 1
+    neutralRendersCreated: 4
+    silhouetteRendersCreated: 4
+    fbxExportsCreated: 0
+    unityAssetsCreated: 0
+    poseOrLineupOutputsCreated: 0
+    playerBuildsExecuted: 0
+  recordedAtUtc: "2026-08-29T14:58:43Z"

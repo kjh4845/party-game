@@ -224,7 +224,7 @@ class LfsRepositoryVerifier
 
     expect(@inventory.keys.sort == INVENTORY_FIELDS, "INVENTORY_FIELD_SET", INVENTORY_PATH)
     expect(@inventory["schemaVersion"] == 1, "INVENTORY_SCHEMA_VERSION", INVENTORY_PATH)
-    expect(@inventory["revision"] == "r03", "INVENTORY_REVISION", INVENTORY_PATH)
+    expect(@inventory["revision"] == "r04", "INVENTORY_REVISION", INVENTORY_PATH)
     expect(@inventory["recordedAtUtc"].is_a?(String) &&
       @inventory["recordedAtUtc"].match?(/\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z\z/),
       "INVENTORY_RECORDED_AT", INVENTORY_PATH)
@@ -530,7 +530,7 @@ class LfsRepositoryVerifier
 
     required_markers = [
       "- Owner: `FDN-011`",
-      "- Revision: `r03`",
+      "- Revision: `r04`",
       "private GitHub `origin` over HTTPS (`#{EXPECTED_STORAGE.fetch("remoteUrl")}`)",
       "Git LFS: `#{EXPECTED_STORAGE.fetch("gitLfsVersion")}`",
       "repository-local filters and pre-push hook enabled",
@@ -539,6 +539,8 @@ class LfsRepositoryVerifier
       "rewrite existing commits",
       "force-push",
       "Existing PNGs stay in ordinary Git",
+      "The first production LFS object upload and fresh-fetch round-trip remain pending until the C1B-003 core commit is pushed",
+      "existing PNG migration remains `0`",
       "Only the canonical `.blend` source is eligible for LFS tracking and inventory",
       "ruby tools/verify_lfs_repository.rb --verify-local-lfs --verify-remote",
       "`origin` is the only product Remote",
@@ -563,8 +565,12 @@ class LfsRepositoryVerifier
 
     summary = @inventory.is_a?(Hash) ? @inventory["summary"] : nil
     if summary.is_a?(Hash)
-      count_marker = "The current repository has `#{summary["currentLfsTrackedFiles"]}` LFS-tracked files " \
-        "and `#{summary["currentLfsRequiredCandidates"]}` LFS-required candidates"
+      tracked_count = summary["currentLfsTrackedFiles"]
+      candidate_count = summary["currentLfsRequiredCandidates"]
+      tracked_label = tracked_count == 1 ? "file" : "files"
+      candidate_label = candidate_count == 1 ? "candidate" : "candidates"
+      count_marker = "The current repository has `#{tracked_count}` LFS-tracked #{tracked_label} " \
+        "and `#{candidate_count}` LFS-required #{candidate_label}"
       expect(@policy_text.include?(count_marker), "POLICY_CURRENT_LFS_COUNTS", POLICY_PATH)
     end
     backup = @inventory.is_a?(Hash) ? @inventory.dig("storage", "initialRemoteBackupRevision") : nil

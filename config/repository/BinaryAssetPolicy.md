@@ -3,10 +3,10 @@
 ## Status
 
 - Owner: `FDN-011`
-- Revision: `r03`
+- Revision: `r04`
 - Repository remote: private GitHub `origin` over HTTPS (`https://github.com/kjh4845/project-hotfix.git`)
 - Git LFS: `3.8.0`, repository-local filters and pre-push hook enabled
-- Initial remote backup: `main` at `8d73541`, verified before the r03 policy commit
+- Initial remote backup: `main` at `8d73541`, verified before the r04 policy commit
 - Existing-history LFS migration: not performed and not required
 - Player Build, game/Steam deployment and public publication: not part of this policy
 
@@ -27,7 +27,7 @@ The following production-source extensions must use the active Git LFS clean/smu
 - Lossless production audio/source images: `.wav`, `.flac`, `.psd`, `.exr`, `.hdr`, `.tif`, `.tiff`
 - Any single binary file larger than 10 MiB must also use LFS even when its extension is not in the default list; update `.gitattributes` before staging it.
 
-The current repository has `0` LFS-tracked files and `0` LFS-required candidates because production Blender/FBX/audio source has not been created yet. Existing PNGs stay in ordinary Git. Do not run `git lfs migrate`, rewrite existing commits, force-push, or move existing review PNGs into LFS without a separate user-approved migration plan.
+The current repository has `1` LFS-tracked file and `1` LFS-required candidate. The first production LFS object upload and fresh-fetch round-trip remain pending until the C1B-003 core commit is pushed. Existing PNGs stay in ordinary Git, and existing PNG migration remains `0`. Do not run `git lfs migrate`, rewrite existing commits, force-push, or move existing review PNGs into LFS without a separate user-approved migration plan.
 
 Blender `.blend1`, `.blend2` and other numbered backup files are ignored as recoverable editor output. Only the canonical `.blend` source is eligible for LFS tracking and inventory.
 The canonical `.blend` must remain outside `Project hotfix/Assets/`; Unity consumes the approved derived interchange asset so the Blender→FBX→Unity profile is not bypassed.

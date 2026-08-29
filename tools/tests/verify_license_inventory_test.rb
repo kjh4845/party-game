@@ -36,7 +36,7 @@ class VerifyLicenseInventoryTest < Minitest::Test
     assert_equal 0, status, stderr + stdout
     assert_includes stdout, "PACKAGE_INVENTORY_COUNT=58"
     assert_includes stdout, "REVIEW_ASSET_COUNT=18"
-    assert_includes stdout, "FIRST_PARTY_ASSET_COUNT=0"
+    assert_includes stdout, "FIRST_PARTY_ASSET_COUNT=9"
     assert_includes stdout, "PACKAGE_CACHE_VERIFIED=false"
     assert_includes stdout, "TOTAL_VIOLATIONS=0"
     assert_includes stdout, "FINAL_RESULT=PASS"
@@ -215,7 +215,7 @@ class VerifyLicenseInventoryTest < Minitest::Test
       stdout, stderr, status = run_verifier(root)
 
       assert_equal 0, status, stderr + stdout
-      assert_includes stdout, "FIRST_PARTY_ASSET_COUNT=2"
+      assert_includes stdout, "FIRST_PARTY_ASSET_COUNT=11"
       assert_includes stdout, "TOTAL_VIOLATIONS=0"
       assert_includes stdout, "FINAL_RESULT=PASS"
     end
@@ -241,7 +241,8 @@ class VerifyLicenseInventoryTest < Minitest::Test
       path = "source/character/unknown.blend"
       register_first_party_asset(root, path, "unknown source\n", "BLENDER_SOURCE")
       mutate_inventory(root) do |inventory|
-        item = inventory.fetch("firstPartyProductionAssets").fetch("items").first
+        item = inventory.fetch("firstPartyProductionAssets").fetch("items")
+          .find { |entry| entry["path"] == path }
         item["sourceOwner"] = "UNKNOWN"
         item["sourceStatus"] = "UNKNOWN"
         item["reviewOnly"] = true
@@ -277,7 +278,9 @@ class VerifyLicenseInventoryTest < Minitest::Test
       path = "Project hotfix/Assets/Characters/drift.fbx"
       register_first_party_asset(root, path, "fixture fbx\n", "MODEL")
       mutate_inventory(root) do |inventory|
-        inventory.fetch("firstPartyProductionAssets").fetch("items").first["sha256"] = "0" * 64
+        item = inventory.fetch("firstPartyProductionAssets").fetch("items")
+          .find { |entry| entry["path"] == path }
+        item["sha256"] = "0" * 64
       end
 
       stdout, _stderr, status = run_verifier(root)
@@ -296,6 +299,80 @@ class VerifyLicenseInventoryTest < Minitest::Test
 
       assert_equal 1, status
       assert_includes stdout, "rule=INVENTORY_FIRST_PARTY_SOURCE_INSIDE_UNITY_ASSETS path=#{path}"
+    end
+  end
+
+  def test_project_authored_reference_render_evidence_passes
+    with_repository do |root|
+      path = "source/character/Renders/evidence.png"
+      register_first_party_asset(root, path, "project-authored render\n",
+        "CHARACTER_REFERENCE_RENDER", intended_use: "PRODUCTION_EVIDENCE")
+
+      stdout, stderr, status = run_verifier(root)
+
+      assert_equal 0, status, stderr + stdout
+      assert_includes stdout, "FIRST_PARTY_ASSET_COUNT=10"
+      assert_includes stdout, "TOTAL_VIOLATIONS=0"
+      assert_includes stdout, "FINAL_RESULT=PASS"
+    end
+  end
+
+  def test_reference_render_cannot_be_source_or_player_content
+    %w[PRODUCTION_SOURCE PLAYER_CONTENT].each do |invalid_use|
+      with_repository do |root|
+        path = nil
+        mutate_inventory(root) do |inventory|
+          item = inventory.fetch("firstPartyProductionAssets").fetch("items")
+            .find { |entry| entry["assetType"] == "CHARACTER_REFERENCE_RENDER" }
+          path = item.fetch("path")
+          item["intendedUse"] = invalid_use
+          item["shippingAllowed"] = invalid_use == "PLAYER_CONTENT"
+        end
+
+        stdout, _stderr, status = run_verifier(root)
+
+        assert_equal 1, status
+        assert_includes stdout,
+          "rule=INVENTORY_FIRST_PARTY_EVIDENCE_INTENDED_USE path=#{path}"
+      end
+    end
+  end
+
+  def test_production_evidence_shipping_and_manifest_drift_fail
+    with_repository do |root|
+      path = nil
+      mutate_inventory(root) do |inventory|
+        item = inventory.fetch("firstPartyProductionAssets").fetch("items")
+          .find { |entry| entry["assetType"] == "CHARACTER_REFERENCE_RENDER" }
+        path = item.fetch("path")
+        item["shippingAllowed"] = true
+        item["sourceEvidence"].reject! do |locator|
+          locator.include?("GenerationManifest.yaml#stages.reference-render")
+        end
+      end
+
+      stdout, _stderr, status = run_verifier(root)
+
+      assert_equal 1, status
+      assert_includes stdout, "rule=INVENTORY_FIRST_PARTY_SHIPPING_FLAG path=#{path}"
+      assert_includes stdout,
+        "rule=INVENTORY_FIRST_PARTY_RENDER_MANIFEST_EVIDENCE path=#{path}"
+      assert_includes stdout, "rule=INVENTORY_C1B003_MANIFEST_EVIDENCE path=#{path}"
+    end
+  end
+
+  def test_blend_cannot_be_production_evidence
+    with_repository do |root|
+      mutate_inventory(root) do |inventory|
+        item = inventory.fetch("firstPartyProductionAssets").fetch("items")
+          .find { |entry| entry["assetType"] == "BLENDER_SOURCE" }
+        item["intendedUse"] = "PRODUCTION_EVIDENCE"
+      end
+
+      stdout, _stderr, status = run_verifier(root)
+
+      assert_equal 1, status
+      assert_includes stdout, "rule=INVENTORY_FIRST_PARTY_BLEND_INTENDED_USE"
     end
   end
 
@@ -527,12 +604,12 @@ class VerifyLicenseInventoryTest < Minitest::Test
     write_yaml(root, "config/licenses/ThirdPartyInventory.yaml", document)
   end
 
-  def register_first_party_asset(root, relative, content, asset_type)
+  def register_first_party_asset(root, relative, content, asset_type, intended_use: nil)
     path = root.join(relative)
     FileUtils.mkdir_p(path.dirname)
     File.binwrite(path, content)
     sha256 = Digest::SHA256.file(path).hexdigest
-    add_first_party_inventory_record(root, relative, sha256, asset_type)
+    add_first_party_inventory_record(root, relative, sha256, asset_type, intended_use: intended_use)
     mutate_binary_inventory(root) do |binary|
       binary.fetch("files") << {
         "path" => relative,
@@ -543,9 +620,25 @@ class VerifyLicenseInventoryTest < Minitest::Test
     end
   end
 
-  def add_first_party_inventory_record(root, relative, sha256, asset_type)
-    intended_use = File.extname(relative).downcase == ".blend" ? "PRODUCTION_SOURCE" : "PLAYER_CONTENT"
+  def add_first_party_inventory_record(root, relative, sha256, asset_type, intended_use: nil)
+    intended_use ||= if File.extname(relative).downcase == ".blend"
+      "PRODUCTION_SOURCE"
+    elsif asset_type.end_with?("_REFERENCE_RENDER")
+      "PRODUCTION_EVIDENCE"
+    else
+      "PLAYER_CONTENT"
+    end
     shipping_allowed = intended_use == "PLAYER_CONTENT"
+    evidence = [
+      "config/repository/BinaryAssetInventory.yaml#files[path=#{relative}]",
+      "project-author:Fixture Owner",
+    ]
+    if asset_type == "BLENDER_SOURCE"
+      evidence << "#{File.dirname(relative)}/GenerationManifest.yaml#stages.blend-source"
+    elsif asset_type.end_with?("_REFERENCE_RENDER")
+      manifest_root = relative.include?("/Renders/") ? relative.split("/Renders/", 2).first : File.dirname(relative)
+      evidence << "#{manifest_root}/GenerationManifest.yaml#stages.reference-render.outputs[path=#{relative}]"
+    end
     mutate_inventory(root) do |inventory|
       first_party = inventory.fetch("firstPartyProductionAssets")
       first_party.fetch("items") << {
@@ -560,10 +653,7 @@ class VerifyLicenseInventoryTest < Minitest::Test
         "noticeDisposition" => "NO_THIRD_PARTY_NOTICE",
         "reviewOnly" => false,
         "shippingAllowed" => shipping_allowed,
-        "sourceEvidence" => [
-          "config/repository/BinaryAssetInventory.yaml#files[path=#{relative}]",
-          "project-author:Fixture Owner",
-        ],
+        "sourceEvidence" => evidence,
       }
       first_party["itemCount"] = first_party.fetch("items").length
     end

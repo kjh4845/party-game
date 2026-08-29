@@ -1,9 +1,9 @@
 LicensePolicy:
   schemaVersion: 1
-  profileId: "project-hotfix-license-policy-r02"
+  profileId: "project-hotfix-license-policy-r03"
   status: "APPROVED"
-  approvedAtUtc: "2026-08-27T17:09:43Z"
-  approvalBasis: "User approved the review-only image disposition, deletion of three source-unproven review files, removal of Unity tutorial/readme files, and the license policy on 2026-08-28 KST. The approved policy permits project-authored production assets when first-party ownership and immutable file evidence are recorded separately from review-only references. Deferring the final Player-content audit follows the separately fixed no-automatic-build rule and BLD-001/ALP-001 ownership."
+  approvedAtUtc: "2026-08-29T13:59:49Z"
+  approvalBasis: "User approved the review-only image disposition, deletion of three source-unproven review files, removal of Unity tutorial/readme files, and the license policy on 2026-08-28 KST. The approved policy permits project-authored production assets when first-party ownership and immutable file evidence are recorded separately from review-only references. On 2026-08-29 KST the user confirmed kjh4845 as the C1B-003 sourceOwner; r03 records the resulting project-authored Blender source and adds a reusable non-shipping PRODUCTION_EVIDENCE seam for same-source QA renders without classifying them as PLAYER_CONTENT or review-only references. Deferring the final Player-content audit follows the separately fixed no-automatic-build rule and BLD-001/ALP-001 ownership."
 
   scope:
     packageManifest: "Project hotfix/Packages/manifest.json"
@@ -22,6 +22,7 @@ LicensePolicy:
     - "Unity built-in modules have no per-package notice in Unity 6000.3.9f1; their current basis is the Unity Editor Software Terms plus the installed editor's aggregate legal notice."
     - "An embedded C2PA claim is provenance evidence only and is not a copyright license or redistribution grant."
     - "A production asset is first-party only when its repository-relative path, immutable SHA-256, asset type, named source owner, PROJECT_AUTHORED status, intended use, rights disposition, and source evidence are recorded in the dedicated first-party inventory."
+    - "A project-authored QA render derived from an inventoried production source is PRODUCTION_EVIDENCE, remains outside Player content, and must identify its exact GenerationManifest render output."
 
   evaluationOrder:
     - "BLOCKED license or missing rights evidence wins over every allow rule."
@@ -100,10 +101,13 @@ LicensePolicy:
       PRODUCTION_SOURCE:
         shippingAllowed: false
         meaning: "Canonical editable source retained for production but not copied into the Player build. A canonical .blend must use this profile and remain outside Project hotfix/Assets/ so Unity receives only the approved derived interchange asset."
+      PRODUCTION_EVIDENCE:
+        shippingAllowed: false
+        meaning: "Project-authored QA output derived from an inventoried production source and retained only to evaluate or reproduce that source; it is neither canonical editable source nor Player content."
       PLAYER_CONTENT:
         shippingAllowed: true
         meaning: "Derived or runtime-ready content whose first-party rights permit inclusion in the Player build, subject to the final build audit."
-    shippingAllowedSemantics: "This field records whether the exact file may cross the Player content boundary; it does not determine Git/LFS storage or prove that the file is actually included in a build."
+    shippingAllowedSemantics: "This field records whether the exact file may cross the Player content boundary; PRODUCTION_SOURCE and PRODUCTION_EVIDENCE remain false, and the field does not determine Git/LFS storage or prove that a PLAYER_CONTENT file is actually included in a build."
     requiredEvidence:
       - "Repository-relative path and matching SHA-256"
       - "Named source owner and explicit PROJECT_AUTHORED status"
@@ -153,7 +157,7 @@ LicensePolicy:
 
   releaseAudit:
     automaticBuildAllowed: false
-    currentScope: "Source package, review-only reference, and first-party production asset inventory"
+    currentScope: "Source package, review-only reference, first-party production source/evidence, and Player-content asset inventory"
     finalTarget: "Windows x64 Player"
     finalAuditOwners: ["BLD-001", "ALP-001"]
     trigger: "After the user performs the Windows Player build"

@@ -1,7 +1,7 @@
 BinaryAssetInventory:
   schemaVersion: 1
-  revision: "r03"
-  recordedAtUtc: "2026-08-29T12:21:53Z"
+  revision: "r04"
+  recordedAtUtc: "2026-08-29T15:04:35Z"
   policyPath: "config/repository/BinaryAssetPolicy.md"
   excludedGeneratedRoots:
     - "Project hotfix/Library"
@@ -9,13 +9,13 @@ BinaryAssetInventory:
     - "Project hotfix/UserSettings"
     - "Project hotfix/.vscode"
   summary:
-    fileCount: 18
-    totalBytes: 26990163
-    uniqueContentHashes: 13
+    fileCount: 27
+    totalBytes: 41010301
+    uniqueContentHashes: 22
     filesOver10MiB: 0
-    currentLfsRequiredCandidates: 0
-    currentLfsTrackedFiles: 0
-    ordinaryGitBinaryFiles: 18
+    currentLfsRequiredCandidates: 1
+    currentLfsTrackedFiles: 1
+    ordinaryGitBinaryFiles: 26
   storage:
     remoteName: "origin"
     remoteUrl: "https://github.com/kjh4845/project-hotfix.git"
@@ -46,3 +46,12 @@ BinaryAssetInventory:
     - {path: "docs/assets/ui/interactive-lobby-concept-v2.png", bytes: 1864812, sha256: "b682dbee822f55919064e9ef5050d8ca3dd3d82f152903bbd88fdcae5da7e4b2"}
     - {path: "docs/assets/ui/main-menu-approved-v1.png", bytes: 1698108, sha256: "af108d5201aeab108d7395aaa1862c6dfe9b74173fae3d007c0796ed95c682c8"}
     - {path: "docs/assets/ui/private-lobby-approved-v1.png", bytes: 1963932, sha256: "b962f1758f8de60b26cbfea8e1915b4d8a355aae1da769f61f6e43c1ee351995"}
+    - {path: "BlenderSource/Characters/C1B-003/CHR_MasterCharacter_C1B_Blockout_r01.blend", bytes: 116437, sha256: "b0f4e10e208e60dd07bd91947ef46f09135f602b2ce695becff355cc662837cc"}
+    - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_Back.png", bytes: 1870384, sha256: "bc3e2e145f6884175c83e3f7ad131a24b0f1ff246ba2db38c2cdd72fd30cd894"}
+    - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_Front.png", bytes: 1949373, sha256: "c958d8ae19b700ddf3f0fe6c0cc61fc3770a981f987baa4a5cbd9edc68efca2f"}
+    - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_Side.png", bytes: 1705786, sha256: "cd73e23e21a34ddd53c79739c750c69485c29eaeff789257a136e7c4ab8cde2a"}
+    - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_ThreeQuarter.png", bytes: 1879944, sha256: "24f3db5341cbcb15d3fae5e2b7cade1bd63199059df1c891746e8ce73d59f805"}
+    - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Back.png", bytes: 1621393, sha256: "d2a546f0074d011709ea8b7f5e33805410b682486fe93f13e6da423513070ca4"}
+    - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Front.png", bytes: 1652801, sha256: "303b9c7e62ec7d25ec2864f444ec6acf80828571d246ea70ee60e943753dc741"}
+    - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Side.png", bytes: 1591481, sha256: "98c97df5be2c92c52838e33cc1cc26f5561aedc4cd3dec6a8abfb706163b250c"}
+    - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_ThreeQuarter.png", bytes: 1632539, sha256: "a41dadb69c81e11095523a7b1df137b87e0547564b0d0bf7e172e325beb2f699"}
