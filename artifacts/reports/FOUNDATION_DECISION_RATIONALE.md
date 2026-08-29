@@ -5,7 +5,7 @@
 | 항목 | 내용 |
 |---|---|
 | 문서 목적 | 기초 구현에서 무엇을 선택했고 왜 그렇게 선택했는지, 배제한 대안과 검증 근거를 한 문서에서 설명 |
-| 기준 Git revision | `4b47284` (`chore: establish Windows build profiles`) |
+| 기준 Git revision | `0eeceee` (`chore: enable Git LFS asset workflow`) |
 | 포함 범위 | `FDN-001..011`, `ART-001`, `LIC-001`, `BLD-001` |
 | 작성 기준 | 실제 repository, versioned config, test 결과와 Evidence를 우선 사용. 직접 기록되지 않은 선택 연결은 `추론/설계 해석`으로 표시 |
 | 문서 성격 | 설명용 결정 근거서. PRD/SRS/분야별 사양을 대체하거나 새 제품 계약을 만들지 않음 |
@@ -40,6 +40,7 @@ Foundation의 핵심 방향은 다음 한 문장으로 정리된다.
 | 복잡한 tap/hold/chord·Esc rearm 입력 | New Input System만 활성화 | 중복 Backend 없이 명시적 Action/Context 구현 가능 |
 | 2·3·4인과 UI 없는 Simulation 검증 | 같은 runtime kernel을 Unit/EditMode/PlayMode에서 실행 | 화면이나 Scene 없이 Authority 로직 회귀 검증 |
 | Blender와 Unity 결과의 품질 일치 | Toolchain exact lock + ModelInterop/VisualQA START profile | 에셋별 수동 보정과 품질 편차 방지 |
+| `.blend/.fbx` production source 저장 | repository-local Git LFS + private `origin/main`, existing PNG migration 0 | 대형 source가 Git history를 비대하게 만들지 않도록 함 |
 | Docker·Dedicated·자체 Backend 영구 제외 | 경로·코드·Package 기반 금지 인프라 Guard | 시간이 지나며 금지 구조가 조용히 재유입되는 것 방지 |
 | 외부 Package·Asset의 출처/권리 누락 금지 | 58 Package와 18 review image의 fail-closed license inventory | 미등록 에셋의 빌드 반입과 NOTICE 누락 방지 |
 | 사용자가 직접 Build | Windows x64 Development·Steam Reserved Profile과 수동 절차만 준비, Player Build 0 유지 | 코드 검증과 배포 권한을 분리 |
@@ -215,7 +216,10 @@ Windows Player, 실제 FBX Import parity와 향후 Package 호환성은 별도 T
 - `Assets/**/*.meta`, ProjectSettings와 Package lock은 추적
 - Unity serialization은 text 기반으로 유지
 - 현재 binary를 hash inventory로 기록
-- Git LFS가 설치·연결되지 않은 현재 상태에서는 LFS 후보의 commit을 금지
+- 초기 r01에서는 Git LFS와 Remote가 없으므로 production binary commit을 금지
+- 사용자 승인 뒤 r03에서 repository-local Git LFS와 private GitHub `origin/main`을 연결하고 향후
+  `.blend/.fbx/.glb`·lossless source pattern `10개`를 LFS로 고정
+- 기존 review PNG `18개`와 기존 Git history는 migration/history rewrite 없이 ordinary Git에 유지
 
 [Binary 정책](../../config/repository/BinaryAssetPolicy.md) ·
 [Binary inventory](../../config/repository/BinaryAssetInventory.yaml)
@@ -227,12 +231,17 @@ Unity의 `Library`와 Cache는 재생성 가능하고 Machine마다 달라지지
 
 큰 `.blend`, `.fbx`, `.glb`를 LFS 설정 없이 먼저 commit하면 나중에 LFS를 붙여도 Git history가 이미
 무거워진다. 그래서 “LFS가 없으니 그냥 일반 Git에 넣기”가 아니라 “연결되기 전 후보 commit 금지”를 택했다.
+실제 production source를 만들기 직전에는 그 금지를 해제하는 대신 local filter·pre-push hook·private Remote와
+검증기를 함께 설치했다. 현재 PNG는 최대 약 1.96 MiB이고 review-only이므로 14개 commit을 다시 쓰는 LFS migration
+이득보다 history·Evidence identity 손실이 더 크다.
 
 ### 배제한 대안
 
 - `Library`와 Build 결과까지 모두 commit
 - `.meta` 전체 ignore
 - 설치되지 않은 Git LFS filter를 설정 파일에만 적어 사용 가능한 것처럼 처리
+- 기존 PNG까지 LFS migrate하고 14개 commit SHA를 전부 rewrite
+- global/system 범위에 LFS 설정을 적용하거나 force-push를 허용
 - Binary file을 이름만 기록하고 hash는 남기지 않음
 
 ### 실제 근거
@@ -243,16 +252,20 @@ Unity의 `Library`와 Cache는 재생성 가능하고 Machine마다 달라지지
 - `10 MiB` 초과 binary `0`, 현재 LFS-required 후보 `0`
 - Git LFS unavailable, Remote `0`, LFS 후보 commit 허용 `false`
 
-[FDN-011 Evidence](../evidence/G0/FDN-011/EV-FDN-011-20260826-r01.yaml)
+[FDN-011 초기 Evidence](../evidence/G0/FDN-011/EV-FDN-011-20260826-r01.yaml) ·
+[LFS·Remote 보충 Evidence](../evidence/G0/FDN-011/EV-FDN-011-20260829-r02.yaml)
 
-위 `20개 / 27,722,987 bytes / unique hash 15`는 FDN-011 완료 당시의 r01 역사값이다. `LIC-001`에서
-Unity Tutorial icon과 출처 불명 review PNG를 제거한 현재 living Binary inventory r02는 `18개 / 26,990,163
-bytes / unique hash 13 / LFS-required 후보 0`이다. 과거 Evidence는 당시 사실이므로 덮어쓰지 않는다.
+위 `20개 / 27,722,987 bytes / unique hash 15 / LFS unavailable / Remote 0`은 FDN-011 완료 당시의 r01
+역사값이다. `LIC-001`은 불필요·출처 불명 파일을 제거해 r02 `18개 / 26,990,163 bytes / unique hash 13`으로
+정리했다. 사용자 승인 r03은 Git LFS `3.8.0`, LFS pattern `10`, private `origin/main`, initial push HEAD 일치,
+current LFS file/candidate `0`, PNG migration/history rewrite `0`을 추가했다. 과거 Evidence는 당시 사실이므로
+덮어쓰지 않는다.
 
 ### 아직 증명하지 않은 것
 
-실제 Git LFS filter·Remote·fetch/push, production `.blend/.fbx/.glb`의 저장 방식과 Player Build는
-검증하지 않았다. 현재 정책은 LFS와 Remote가 준비되기 전 production binary commit을 막는 경계다.
+아직 실제 production `.blend/.fbx/.glb` LFS object가 없으므로 pointer upload/download 왕복은 증명하지 않았다.
+첫 production source commit에서 working bytes, index pointer, LFS object upload와 fresh fetch를 다시 확인해야 한다.
+Remote backup은 Player Build·Steam 배포 또는 public publication을 의미하지 않는다.
 
 ---
 
@@ -779,6 +792,11 @@ Profile을 먼저 만든 이유는 최종 미술 취향을 조기에 확정하�
   파생물을 Player asset이나 Steam media로 사용하지 않는다.
 - 출처를 증명하지 못한 review 파일 `3개`와 제품에 필요 없는 Unity Tutorial/Readme 파일 `14개`는
   사용자 승인에 따라 제거했다.
+- 새로 직접 제작하는 Asset은 외부 reference와 섞지 않고 `firstPartyProductionAssets`에 별도 등록한다.
+  정확한 path·SHA-256·assetType·사용자 확인 `sourceOwner`·`PROJECT_AUTHORED`·intended use·`FIRST_PARTY`
+  rights·NOTICE disposition과 source evidence가 모두 있어야 한다.
+- canonical `.blend`는 `PRODUCTION_SOURCE`로 Unity `Assets` 밖에 두고 `shippingAllowed: false`로 유지한다.
+  Unity가 실제로 소비할 derived/runtime file은 별도의 `PLAYER_CONTENT` record로만 shipping 후보가 될 수 있다.
 - 현재 Package를 제거·추가·Upgrade하지 않았고 Player Build도 실행하지 않았다.
 - 실제 Windows Player에 포함된 engine/package component와 최종 배포 NOTICE는 사용자가 Build한 뒤
   `BLD-001`/`ALP-001`에서 다시 대조한다.
@@ -814,9 +832,14 @@ compiled shader와 platform module 구성은 실제 Build에 따라 달라진다
 - resolved-package file locator `40개`와 built-in module metadata logical locator `36개`,
   version/source/relationship 누락 `0`
 - review-only image `18개`, Binary inventory 일치 `18/18`, `shippingAllowed: true` `0`
+- first-party production asset `0개`, review path와 중복 `0`; 아직 만들지 않은 Asset의 권리 주장 `0`
 - Font `0`, Audio `0`, 3D model `0`, project shader `0`, DLL/native plugin `0`
 - 출처 불명 파일 `3개`와 Unity Tutorial/Readme 파일 `14개` 제거
 - Package manifest/lock 변경 `0`, Player Build `0`, Docker/Deploy `0`
+- living license guard mutation `22 runs / 176 assertions`, 실패·오류·skip `0`
+
+[LIC-001 초기 Evidence](../evidence/G0/LIC-001/EV-LIC-001-20260828-r01.yaml) ·
+[First-party seam 보충 Evidence](../evidence/G0/LIC-001/EV-LIC-001-20260829-r02.yaml)
 
 ### 아직 증명하지 않은 것
 
@@ -934,9 +957,9 @@ identity·실행 결과·NOTICE 감사는 별도 Evidence로 남긴다.
 
 ## 6. 검증 결과를 해석하는 방법
 
-현재 마지막 완료 Task인 BLD-001 Evidence snapshot의 핵심 수치는 다음과 같다. LIC-001의 source inventory와
-ART-001의 시각 Profile 수치는 각 Task 당시 역사값으로 보존한다. BLD-001은 실제 Profile 의미를 포함한 전체
-EditMode와 기존 PlayMode를 임시 Project 복사본에서 재실행했으며, 원본 Editor의 미저장 Scene은 건드리지 않았다.
+마지막 기능성 Foundation Task인 BLD-001과 이후 저장소/LFS·first-party inventory 보충 Evidence의 핵심 수치는
+다음과 같다. 각 Task의 역사 수치는 덮어쓰지 않는다. BLD-001은 실제 Profile 의미를 포함한 전체 EditMode와 기존
+PlayMode를 임시 Project 복사본에서 재실행했으며, 원본 Editor의 미저장 Scene은 건드리지 않았다.
 
 | 항목 | 결과 | 이 결과가 증명하지 않는 것 |
 |---|---:|---|
@@ -946,8 +969,10 @@ EditMode와 기존 PlayMode를 임시 Project 복사본에서 재실행했으며
 | Scene source | global `SampleScene` `1`, START | 최종 Main/Lobby/Match Scene 목록 |
 | Steam Reserved | SDK/App ID/기능 `0` | Steam 통합 또는 배포 가능 |
 | License source inventory | package `58/58`, review image `18/18` | 최종 Windows Player NOTICE가 완성됨 |
-| Forbidden infra | inventory `270`, content `95`, manifest `2`, violation `0` | Git history·ignored Build·외부 서비스 전체 부재 |
-| Evidence manifest | `41`개 구조 검증 | 각 미래 Feature의 수동 체감 승인 |
+| First-party production seam | current asset `0`, mutation `22/176` | 아직 존재하지 않는 Asset의 저작자·권리·Player 포함 |
+| Git LFS / Remote | local LFS `3.8.0`, pattern `10`, private `origin/main`, file/candidate `0/0` | 실제 production LFS object upload·fresh fetch |
+| Forbidden infra | inventory `276`, content `97`, manifest `2`, violation `0` | Git history·ignored Build·외부 서비스 전체 부재 |
+| Evidence manifest | `43`개 구조 검증 | 각 미래 Feature의 수동 체감 승인 |
 | Player Build | `0` | Build 불가능을 뜻하지 않음. 사용자 요청에 따라 실행하지 않았음 |
 | Blender export / Unity art import | `0 / 0` | Profile 정의 실패를 뜻하지 않음. 실제 source/import parity 검증이 후속임 |
 | Docker / Deploy | `0 / 0` | 실제 명령은 실행하지 않았지만 ignored 영역·외부 System 전체 부재까지 증명하지는 않음 |
@@ -974,10 +999,10 @@ Steam 실행 Evidence나 배포 가능을 주장하지 않는다.
 `Hybrid Core v0.13`은 Character 방향 승인이지 exact 비율·Collider·Reach·Mesh 승인이 아니다.
 다음 실제 제작 단계는 `C1B-002..006`의 orthographic measurement와 사용자 `UG-C1B`다.
 
-`C1B-002`의 수치 후보 문서화는 현재 Profile 안에서 진행할 수 있다. 하지만 `C1B-003`부터 `.blend/.fbx`
-production binary가 생긴다. 현재 Git LFS는 설치되지 않았고 Remote도 `0`이며 Binary 정책은 해당 파일의
-commit을 금지한다. 따라서 C1B-003을 시작하기 전 Git LFS 설치, Remote 선택과 Binary policy 변경을
-사용자에게 승인받아야 한다.
+`C1B-002`의 수치 후보 문서화는 현재 Profile 안에서 진행할 수 있다. Git LFS와 private `origin`도 준비돼
+`C1B-003`의 `.blend/.fbx` 제작 전제는 해제됐다. 다만 첫 production binary는 source/license/hash inventory,
+LFS index pointer, object upload와 fresh fetch를 확인한 뒤에만 commit 완료로 처리한다. 첫 record의
+`sourceOwner` 표기는 GitHub handle이나 임시 Company 값으로 추론하지 않고 C1B-003 착수 전에 사용자에게 확인한다.
 
 ### 7.3 구현되지 않은 핵심 Runtime
 
@@ -1008,7 +1033,7 @@ Foundation 선택은 영원히 수정 불가한 코드가 아니라, 변경 비�
 | Backend·DB·Docker·Dedicated 도입 | 단순 구현 변경이 아니라 제품 범위 변경. 사용자 승인과 PRD/SRS 선행 수정 필요 |
 | 최종 Palette/Bevel/Shader/Camera Lock | 해당 downstream 사용자 Gate와 실제 Unity capture 필요 |
 | 새 외부 Asset 추가 | source·version/hash·상업사용·재배포·NOTICE 증명, 미충족 시 shipping 차단 |
-| 큰 Binary 추가 | Binary inventory·license inventory 갱신, LFS 설치/Remote 확인 전 commit 금지 정책 적용 |
+| 큰 Binary 추가 | Binary/license inventory 갱신, LFS attr·index pointer·object upload/fresh fetch 확인; 임의 history rewrite·force-push 금지 |
 
 특히 금지 인프라를 도입하는 변경은 “개발 편의를 위한 내부 구현”으로 조용히 처리할 수 없다.
 현재 제품의 운영비·접속 구조·보안 경계를 바꾸므로 상위 계약을 먼저 변경해야 한다.
@@ -1034,6 +1059,8 @@ Foundation 선택은 영원히 수정 불가한 코드가 아니라, 변경 비�
 | `ART-001` | `2faee33` | [Art Profile Evidence](../evidence/G0/ART-001/EV-ART-001-20260827-r01.yaml) |
 | `LIC-001` | `d5f19a9` | [License Inventory Evidence](../evidence/G0/LIC-001/EV-LIC-001-20260828-r01.yaml) |
 | `BLD-001` | `4b47284` | [Windows Build Profile Evidence](../evidence/G0/BLD-001/EV-BLD-001-20260829-r01.yaml) |
+| `FDN-011` LFS·Remote 보충 | `0eeceee` | [Repository LFS Evidence](../evidence/G0/FDN-011/EV-FDN-011-20260829-r02.yaml) |
+| `LIC-001` first-party 보충 | `0eeceee` | [First-party Inventory Evidence](../evidence/G0/LIC-001/EV-LIC-001-20260829-r02.yaml) |
 
 ---
 
@@ -1048,6 +1075,7 @@ Foundation 선택은 영원히 수정 불가한 코드가 아니라, 변경 비�
 - Blender와 Unity 에셋 품질을 수동 보정으로 숨기지 않게 했다.
 - 아직 하지 않은 Build, Steam, Gameplay와 시각 승인을 완료했다고 과장하지 않게 했다.
 
-Foundation 표의 기술·Art·license·Build Profile 준비는 닫혔다. 다음 구현 순서는 `C1B-002`의 exact 비율
-후보 문서화다. `C1B-003`에서 실제 `.blend/.fbx`를 만들기 전에는 Git LFS 설치와 Remote 정책을 사용자에게
-승인받아야 한다. Windows Player 수동 Build는 실제 Scene과 Alpha 기능이 준비된 뒤 별도 Evidence로 수행한다.
+Foundation 표의 기술·Art·license·Build Profile과 production binary 저장 전제까지 닫혔다. 다음 구현 순서는
+`C1B-002`의 exact 비율 후보 문서화다. `C1B-003`의 첫 `.blend/.fbx`부터는 활성 LFS 정책과 source/license
+inventory를 실제로 적용하고, 그 직전에 first-party `sourceOwner` 표기를 사용자에게 확인한다. Windows Player
+수동 Build는 실제 Scene과 Alpha 기능이 준비된 뒤 별도 Evidence로 수행한다.

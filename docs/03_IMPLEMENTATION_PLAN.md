@@ -8,7 +8,7 @@
 | 기준일 | 2026-08-26 |
 | 현재 목표 | Alpha에서 2·3·4인 전체 흐름과 실제 무기 전투를 검증한 뒤 Steam 통합 |
 | 기준 문서 | PRD 1.8.0, SRS 1.8.0, PATCH_DESIGN 0.5.0과 현행 분야별 사양 |
-| 현재 구현 상태 | FDN-001..011·ART-001·LIC-001·BLD-001 완료: Git/toolchain/policy, Unity6.3 URP, module/Input/Physics/UTP, renderless SimulationHarness/test-evidence, local atomic storage, 금지 인프라 guard, START art/license 기반과 Windows x64 Development·Steam Reserved Profile 존재. Review image18은 참고 전용·shipping0. Gameplay/Network code·Player Build 없음 |
+| 현재 구현 상태 | FDN-001..011·ART-001·LIC-001·BLD-001 완료: private GitHub origin과 repository-local Git LFS, Unity6.3 URP, module/Input/Physics/UTP, renderless SimulationHarness/test-evidence, local atomic storage, 금지 인프라 guard, START art/license 기반과 Windows x64 Development·Steam Reserved Profile 존재. Review image18은 일반 Git 참고 전용·shipping0. Gameplay/Network code·Player Build 없음 |
 | 계획 규모 | 173 Task, 251.0 집중 개발일 |
 | 자동화 금지 | Unity Player Build, Steam 배포, 외부 서비스 배포 |
 
@@ -169,7 +169,7 @@ BLOCKED, DEFERRED를 사용한다.
 |---|---:|---|---|---|---|---|---|---|
 | FDN-001 | 1 | 기존 자료를 보존한 root repository 생성 | DOC-005 | SYS | root tree | 중첩 repository 0, 초기화 전 기존 파일 75개 보존(`assets/`는 착수 시 미존재) | — | PASSED |
 | FDN-010 | 1 | Unity6.3 LTS·Blender5.2 LTS·Package exact version lock | FDN-001 | SYS,ART | ToolchainProfile | Unity6000.3.9f1·Blender5.2.0 LTS, ProjectVersion.txt·manifest/lock hash 고정, 자동 upgrade 0; package 채택은 FDN-004..006 소유 | — | PASSED |
-| FDN-011 | 1 | Repository ignore·attribute·large binary policy 구성 | FDN-001 | SYS,ART | `.gitignore`·`.gitattributes`·binary policy/inventory | Unity 생성물 제외·source/meta/lock 추적, binary20 hash 일치; Git LFS 미설치·remote0에서 LFS 후보 commit 금지 | — | PASSED |
+| FDN-011 | 1 | Repository ignore·attribute·large binary policy 구성 | FDN-001 | SYS,ART | `.gitignore`·`.gitattributes`·binary policy/inventory + LFS/Remote guard | Unity 생성물 제외·source/meta/lock 추적, initial binary20·living binary18 hash 일치; private origin/main 초기 push 일치, repo-local Git LFS3.8·source pattern10, 현재 LFS file/candidate0, 기존 PNG migration·history rewrite0 | — | PASSED |
 | FDN-002 | 1.5 | Unity URP project 생성·검증 | FDN-010..011 | SYS,NFR | `Project hotfix` Unity client | Unity6000.3.9f1·URP17.3.0 import/C# compile error0, package/source change0, Player Build0 | — | PASSED |
 | FDN-003 | 1.5 | Simulation·Presentation·Input·Transport 모듈 경계 생성 | FDN-002 | SYS | Contracts leaf + 4 runtime asmdef graph | project edge4·cycle0, Presentation→Simulation path0, folder ownership 일치, Unity compile0·EditMode4/4, gameplay code0 | — | PASSED |
 | FDN-004 | 1 | Input package 선택 | FDN-002..003 | INPUT | InputPackageDecision | InputSystem1.18.0 Registry/direct·New-only 채택, Legacy/Both·다른 module ref0, Input test4/4·전체8/8; action map은 INP-001 소유 | — | PASSED |
@@ -179,7 +179,7 @@ BLOCKED, DEFERRED를 사용한다.
 | FDN-008 | 1 | Settings·Preset local atomic storage 기반 생성 | FDN-001 | APPEAR,UI | bounded byte envelope/current·last-good·pending repository + LocalStorageProfile | version·length·SHA-256와 validator-aware 복구, 동일 process 다중 instance 직렬화, storage Edit19·boundary2·Play1/전체 Edit42·Play4, server dependency 0 | — | PASSED |
 | FDN-009 | 0.5 | 금지 인프라 guard 생성 | FDN-001 | SYS,SEC | versioned policy + Git inventory/content/package audit + adversarial fixtures | 최종 inventory259·content83·manifest2에서 Backend·DB·Docker/Container·Dedicated·audit 위반0, self-test14/245·전체 Edit42/Play4 | — | PASSED |
 | ART-001 | 1.5 | LowPolyStyle·ModelInterop·AlphaVisualQA Profile 최초 작성 | FDN-002,FDN-010 | ART,NFR | 세 versioned START profile + semantic/scope validator | unit·axis, palette role·bevel class, FBX/ModelImporter preset, neutral QA·2/3/4×세 화면비 capture 기준과 owner/version 누락0; tests24/206·scope asset/capture0·전체 Edit42/Play4 | — | PASSED |
-| LIC-001 | 1 | Third-party package·font·audio·asset license/NOTICE inventory 생성 | FDN-004..006,ART-001 | SYS,SEC,ART | living policy·inventory·NOTICE index + fail-closed verifier | lock58/58(direct46/transitive12) source·version·license·NOTICE disposition, cache58/58·locator40; C2PA review18 전부 shippingAllowed=false, Player-shipping forbidden/unlicensed external asset0, font/audio/3D/project shader/native0; source-unproven3+Unity tutorial/readme14 제거; mutation16/142, package change·Build0, final Windows Player audit는 BLD-001/ALP-001 | — | PASSED |
+| LIC-001 | 1 | Third-party package·font·audio·asset license/NOTICE inventory 생성 | FDN-004..006,ART-001 | SYS,SEC,ART | living policy·inventory·NOTICE index + fail-closed verifier | lock58/58(direct46/transitive12) source·version·license·NOTICE disposition, cache58/58·locator40; C2PA review18 shipping0과 first-party production seam(current0) 분리, Player-shipping forbidden/unlicensed external asset0; source-unproven3+Unity tutorial/readme14 제거; initial r01 mutation16/142, living r02 22/176, package change·Build0, final Windows Player audit는 BLD-001/ALP-001 | — | PASSED |
 | BLD-001 | 1.5 | Windows x64 Build Profile·PlayerSettings·Scene list 준비 | FDN-002..003,LIC-001 | SYS,NFR | Unity-generated Development·Steam Reserved profiles + policy/manual + guard | profile2·GUID2, Windows x64 Player/Mono, dev/SteamReserved define 상호배타, 임시 identity4, 공용 SampleScene1 START·release-ready0, profile별 Quality/Graphics/PlayerSettings override0, Steam SDK/AppID/기능0; static17/100·전체 Edit52/52·Play4/4, Player Build·BuildAndRun·배포0 | — | PASSED |
 
 ### 5.2 C1b exact profile
@@ -187,8 +187,8 @@ BLOCKED, DEFERRED를 사용한다.
 | ID | 일 | 목표 | 선행 | 요구 | 산출물 | 완료 기준 | Gate | 상태 |
 |---|---:|---|---|---|---|---|---|---|
 | C1B-001 | 0.5 | v0.13 C1a 승인 source 고정 | 역사적 승인 | CHAR | source record | 승인 파일·hash 일치 | UG-C1A | PASSED |
-| C1B-002 | 1.5 | normalized exact proportion 후보 작성 | DOC-005,C1B-001,ART-001 | CHAR | profile candidate | front/side depth와 landmark 누락 0 | — | NOT_STARTED |
-| C1B-003 | 2 | 동일 source의 front/side/back/3/4 Blockout 제작 | C1B-002 | CHAR | Blender source·renders | view별 silhouette 일치 | — | NOT_STARTED |
+| C1B-002 | 1.5 | normalized exact proportion 후보 작성 | DOC-005,C1B-001,ART-001 | CHAR | profile candidate | front/side depth와 landmark 누락 0 | — | READY |
+| C1B-003 | 2 | 동일 source의 front/side/back/3/4 Blockout 제작 | C1B-002 | CHAR | Blender source·renders + first-party/LFS evidence | 사용자 확인 sourceOwner, canonical `.blend`는 Unity Assets 밖·LFS pointer/upload/fresh fetch, view별 silhouette 일치 | — | NOT_STARTED |
 | C1B-004 | 1.5 | Neutral·Grab·Strike·L/R Kick·Dropkick과 4인 lineup 제작 | C1B-003 | CHAR | pose/lineup bundle | 별도 손·발 Mesh 0, Hand/Kick terminal과 2/3/4 action 판독 기준 준비 | — | NOT_STARTED |
 | C1B-005 | 1.5 | Blender→Unity Blockout 동등성 확인 | C1B-003..004,FDN-002 | CHAR | import comparison | scale·axis·silhouette의 의미 있는 drift 0 | — | NOT_STARTED |
 | C1B-006 | 0.5 | exact profile 사용자 승인 | C1B-002..005 | CHAR | approved profile | ID·version·수치 명시 | UG-C1B | NOT_STARTED |

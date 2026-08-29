@@ -1,0 +1,40 @@
+EV-LIC-001-20260829-r02
+TASK=LIC-001 supplemental first-party production asset seam
+CORE_POLICY_REVISION=0eeceee3b4e6542488961f69206c3c194804ec0e
+PLAYER_BUILD=0 DOCKER=0 DEPLOY=0 PACKAGE_CHANGE=0
+
+FIRST_PARTY_POLICY
+- ThirdPartyInventory.yaml keeps its historical filename, but firstPartyProductionAssets is a disjoint category.
+- Required immutable fields: path, SHA-256, assetType, sourceOwner, PROJECT_AUTHORED, intendedUse, PROJECT_AUTHORED license family, FIRST_PARTY rights, NO_THIRD_PARTY_NOTICE, reviewOnly=false, shippingAllowed, sourceEvidence.
+- PRODUCTION_SOURCE is retained outside the Player and shippingAllowed=false.
+- A canonical .blend uses PRODUCTION_SOURCE and must remain outside Project hotfix/Assets/.
+- PLAYER_CONTENT may be shippingAllowed=true only for the exact registered first-party runtime file and remains subject to the final Player audit.
+- Review-only C2PA images and first-party production assets must be path-disjoint.
+- Current first-party production asset count=0. The policy seam is ready; no uncreated asset is claimed.
+
+COMMAND=ruby tools/verify_license_inventory.rb
+PACKAGE_INVENTORY_COUNT=58
+REVIEW_ASSET_COUNT=18
+FIRST_PARTY_ASSET_COUNT=0
+TOTAL_VIOLATIONS=0
+FINAL_RESULT=PASS
+
+COMMAND=ruby tools/verify_license_inventory.rb --verify-package-cache
+PACKAGE_CACHE_MATCHES=58
+PACKAGE_CACHE_EVIDENCE_LOCATORS=40
+TOTAL_VIOLATIONS=0
+FINAL_RESULT=PASS
+
+COMMAND=ruby tools/tests/verify_license_inventory_test.rb
+TEST_RUNS=22
+TEST_ASSERTIONS=176
+TEST_FAILURES=0
+TEST_ERRORS=0
+TEST_SKIPS=0
+FINAL_RESULT=PASS
+
+BOUNDARY
+- No first-party asset file or inventory entry exists yet.
+- Before the first C1B-003 production asset record, the exact sourceOwner label requires user confirmation and must not be inferred from a GitHub handle or temporary companyName.
+- The first production binary also requires BinaryAssetInventory update and actual LFS pointer/upload/fresh-fetch evidence under FDN-011.
+- The final Windows Player content and NOTICE audit remains owned by BLD-001/ALP-001 after a user-performed build.

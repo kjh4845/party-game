@@ -1,0 +1,109 @@
+EvidenceManifest:
+  schemaVersion: 1
+  evidenceProfile: "EvidenceProfile-r01"
+  evidenceId: "EV-FDN-011-20260829-r02"
+  taskId: "FDN-011"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "Base=8d735414bc75d1e786f79f3171b8435a100ddee9; CorePolicy=0eeceee3b4e6542488961f69206c3c194804ec0e; GitAttributes=8c5c3b06559c038f1e5f2dff2eb362f77d14e0e597aa4a269f7702addb6b8372; GitIgnore=2a04d96673d73cbb11e8a38b7cefcf61672efd6f8903a111290f4a956fa82a24; BinaryPolicy=03f90857e4ce5c0c5b35532ed551185057d9feb63e11365955f2583b5dc8fae3; BinaryInventory=b1c4db79b535f3b1bb3ccd326704a28e3556af154a8588b17dd0c81df1409301; Validator=ea1eb62947f7f3f28cd20fd1df92374c3e9e8b48b24d10017a54254a1cc19d74; Test=b696ee25e88c30dd97957f12f16f8ba2441e8dbb9688e5b1cc914d215a73556e"
+  buildKind: "RepositoryLocalLfsAndPrivateRemoteValidationNoPlayerBuild"
+  buildVersion: "NotBuilt"
+  environment: "macOS arm64; Git 2.52.0; Git LFS 3.8.0 repository-local; GitHub CLI 2.98.0; private GitHub origin/main"
+  profileVersions: ["RepositoryPolicy-r03", "BinaryAssetInventory-r03", "EvidenceProfile-r01"]
+  requirementIds: ["FDN-011", "C1B-003"]
+  commandsOrManualSteps:
+    - "변경 전 Git history와 living binary inventory를 다시 검사하고 review PNG18, LFS 후보0, 10 MiB 초과 binary0을 확인"
+    - "사용자 승인 범위에서 Git LFS 3.8.0과 GitHub CLI 2.98.0을 설치하고 git lfs install --local로 이 repository에만 filter와 pre-push hook을 구성"
+    - "사용자 OAuth 완료 뒤 private GitHub repository kjh4845/project-hotfix를 만들고 HTTPS origin과 main을 연결"
+    - "정책 변경 전 revision 8d73541과 정책 core revision 0eeceee가 각각 local/origin/ls-remote에서 일치함을 확인"
+    - ".blend/.fbx/.glb와 lossless production source 10개 pattern을 LFS로 고정하고 기존 PNG와 Git history는 migration하지 않음"
+    - "canonical .blend는 Unity Assets 밖에 두고 Blender numbered backup은 ignore하며 binary 10 MiB 초과 파일은 LFS pointer가 아니면 차단"
+    - "default, repository-local LFS, private remote 검증과 mutation16종을 실행"
+    - "금지 인프라 guard, active docs12와 전체 Evidence manifest43을 재검증"
+    - "credential 원문, Player Build, Build And Run, Steam 배포, Docker, force-push와 history rewrite 실행0"
+  observedMetrics:
+    initialRemoteRevisionMatches: 1
+    coreRemoteRevisionMatches: 1
+    privateRemoteRepositories: 1
+    defaultBranchMain: 1
+    repositoryLocalLfsInstallations: 1
+    lfsPatternCount: 10
+    lfsTrackedFiles: 0
+    currentLfsRequiredCandidates: 0
+    ordinaryGitReviewPngFiles: 18
+    existingPngFilesMigrated: 0
+    historyRewrites: 0
+    forcePushes: 0
+    binaryInventoryFiles: 18
+    binaryInventoryBytes: 26990163
+    binaryInventoryUniqueHashes: 13
+    defaultVerifierViolations: 0
+    localLfsVerifierViolations: 0
+    remoteVerifierViolations: 0
+    mutationTestRuns: 16
+    mutationTestAssertions: 161
+    mutationTestFailures: 0
+    mutationTestErrors: 0
+    mutationTestSkips: 0
+    productionLfsObjectRoundTrips: 0
+    finalGitVisibleInventoryFiles: 276
+    finalForbiddenInfrastructureContentFiles: 97
+    finalForbiddenInfrastructurePackageManifests: 2
+    finalForbiddenInfrastructureViolations: 0
+    activeDocsValidated: 12
+    evidenceManifestsAfterSupplemental: 43
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  expectedThresholds:
+    initialRemoteRevisionMatches: 1
+    coreRemoteRevisionMatches: 1
+    privateRemoteRepositories: 1
+    defaultBranchMain: 1
+    repositoryLocalLfsInstallations: 1
+    lfsPatternCount: 10
+    lfsTrackedFiles: 0
+    currentLfsRequiredCandidates: 0
+    ordinaryGitReviewPngFiles: 18
+    existingPngFilesMigrated: 0
+    historyRewrites: 0
+    forcePushes: 0
+    binaryInventoryFiles: 18
+    binaryInventoryBytes: 26990163
+    binaryInventoryUniqueHashes: 13
+    defaultVerifierViolations: 0
+    localLfsVerifierViolations: 0
+    remoteVerifierViolations: 0
+    mutationTestRuns: 16
+    mutationTestAssertions: 161
+    mutationTestFailures: 0
+    mutationTestErrors: 0
+    mutationTestSkips: 0
+    productionLfsObjectRoundTrips: 0
+    finalGitVisibleInventoryFiles: 276
+    finalForbiddenInfrastructureContentFiles: 97
+    finalForbiddenInfrastructurePackageManifests: 2
+    finalForbiddenInfrastructureViolations: 0
+    activeDocsValidated: 12
+    evidenceManifestsAfterSupplemental: 43
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/FDN-011/EV-FDN-011-20260829-r02.txt"
+    - ".gitattributes"
+    - ".gitignore"
+    - "config/repository/BinaryAssetPolicy.md"
+    - "config/repository/BinaryAssetInventory.yaml"
+    - "tools/verify_lfs_repository.rb"
+    - "tools/tests/verify_lfs_repository_test.rb"
+    - "docs/03_IMPLEMENTATION_PLAN.md"
+    - "artifacts/reports/FOUNDATION_DECISION_RATIONALE.md"
+  failures: []
+  limitations:
+    - "현재 production .blend/.fbx/.glb가 0개이므로 Git LFS pointer upload와 fresh fetch의 실제 object 왕복은 첫 production binary에서 검증한다."
+    - "private GitHub origin은 source backup이고 Player Build, Steam 배포 또는 public publication이 아니다."
+    - "GitHub credential은 운영체제 keyring과 Git credential helper에 있고 repository나 Evidence에는 기록하지 않았다."
+    - "기존 review PNG18은 ordinary Git에 남았으며 history rewrite나 git lfs migrate를 수행하지 않았다."
+  userDecision: "Git LFS와 GitHub remote를 설치·연결하고 이전 작업을 재검증하며, private repository kjh4845/project-hotfix와 HTTPS origin/main을 사용함; Docker와 자동 Player Build는 사용하지 않음"
+  recordedAtUtc: "2026-08-29T12:45:56Z"

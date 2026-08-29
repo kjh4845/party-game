@@ -1,0 +1,85 @@
+EvidenceManifest:
+  schemaVersion: 1
+  evidenceProfile: "EvidenceProfile-r01"
+  evidenceId: "EV-LIC-001-20260829-r02"
+  taskId: "LIC-001"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "CorePolicy=0eeceee3b4e6542488961f69206c3c194804ec0e; LicensePolicy=cf843f3eb51592edc6cab4e4d432f4da97304df27c1615469c268e58c023fd7b; Inventory=d6a922f8d979ccff620318095853c779bfdfed7f4ad9b0491d0e0ddf1925c774; NoticeIndex=3b21255085f14949bcfb51933f532eb21885c55fe7cf9b1f90558af0b08dc553; Validator=a705e64a91b1b50a4e17fb59390978bee0af5892357be8c3647ca93da281616a; Test=53705b5cf9ad0dad94138fed0f2517a1e628d8f888acff5cbe4c937cfb64936b; BinaryInventory=b1c4db79b535f3b1bb3ccd326704a28e3556af154a8588b17dd0c81df1409301; Manifest=88a1d01cf3abd14843cb3638a7692552e54f62a6d5de003c458a47a869edd741; PackageLock=8708528393a5fce3dd9110fc14815ad2dbc21cefd0efec6102b79d86a62404aa"
+  buildKind: "FirstPartyProductionAssetInventorySeamValidationNoPlayerBuild"
+  buildVersion: "NotBuilt"
+  environment: "macOS arm64; Ruby 2.6.10; Git-visible asset inventory; Unity 6000.3.9f1 PackageCache read-only"
+  profileVersions: ["project-hotfix-license-policy-r02", "project-hotfix-third-party-inventory-r02", "BinaryAssetInventory-r03", "EvidenceProfile-r01"]
+  requirementIds: ["LIC-001", "C1B-003", "BLD-001", "ALP-001"]
+  commandsOrManualSteps:
+    - "review-only 외부 reference와 project-authored first-party production asset을 서로 겹치지 않는 inventory category로 분리"
+    - "first-party record에 path, SHA-256, assetType, sourceOwner, PROJECT_AUTHORED, intendedUse, rights/NOTICE disposition과 source evidence를 모두 요구"
+    - "canonical .blend PRODUCTION_SOURCE는 Unity Assets 밖과 shippingAllowed false, runtime-ready PLAYER_CONTENT는 exact file만 shippingAllowed true가 가능하도록 분리"
+    - "현재 first-party production asset0을 사실대로 유지하고 아직 만들지 않은 Asset의 권리나 LFS 전송을 주장하지 않음"
+    - "default/cache verifier와 first-party .blend/FBX 경계를 포함한 mutation22종을 실행"
+    - "Package 변경, Player Build, Build And Run, Steam 배포, Docker와 Deploy 실행0"
+  observedMetrics:
+    directPackages: 46
+    transitivePackages: 12
+    lockedPackages: 58
+    packageInventoryMatches: 58
+    packageCacheMatches: 58
+    resolvedPackageEvidenceLocators: 40
+    reviewOnlyAssets: 18
+    reviewAssetsShippingAllowed: 0
+    firstPartyProductionAssets: 0
+    firstPartyAndReviewPathOverlaps: 0
+    playerShippingForbiddenOrUnlicensedExternalAssets: 0
+    defaultVerifierViolations: 0
+    packageCacheVerifierViolations: 0
+    mutationTestRuns: 22
+    mutationTestAssertions: 176
+    mutationTestFailures: 0
+    mutationTestErrors: 0
+    mutationTestSkips: 0
+    packageChangesPerformed: 0
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  expectedThresholds:
+    directPackages: 46
+    transitivePackages: 12
+    lockedPackages: 58
+    packageInventoryMatches: 58
+    packageCacheMatches: 58
+    resolvedPackageEvidenceLocators: 40
+    reviewOnlyAssets: 18
+    reviewAssetsShippingAllowed: 0
+    firstPartyProductionAssets: 0
+    firstPartyAndReviewPathOverlaps: 0
+    playerShippingForbiddenOrUnlicensedExternalAssets: 0
+    defaultVerifierViolations: 0
+    packageCacheVerifierViolations: 0
+    mutationTestRuns: 22
+    mutationTestAssertions: 176
+    mutationTestFailures: 0
+    mutationTestErrors: 0
+    mutationTestSkips: 0
+    packageChangesPerformed: 0
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/LIC-001/EV-LIC-001-20260829-r02.txt"
+    - "config/licenses/LicensePolicy.yaml"
+    - "config/licenses/ThirdPartyInventory.yaml"
+    - "THIRD_PARTY_NOTICES.md"
+    - "config/repository/BinaryAssetInventory.yaml"
+    - "tools/verify_license_inventory.rb"
+    - "tools/tests/verify_license_inventory_test.rb"
+    - "docs/03_IMPLEMENTATION_PLAN.md"
+    - "artifacts/reports/FOUNDATION_DECISION_RATIONALE.md"
+  failures: []
+  limitations:
+    - "현재 first-party production asset은 0개다. 이 PASS는 schema와 fail-closed 경계의 준비를 뜻하며 실제 Asset 소유권을 선제 주장하지 않는다."
+    - "첫 production asset의 sourceOwner 표기는 GitHub handle이나 임시 Company 값으로 추론하지 않고 사용자 확인 뒤 기록한다."
+    - "첫 production binary의 BinaryAssetInventory와 LFS pointer/upload/fresh-fetch 검증은 FDN-011/C1B-003에서 함께 수행한다."
+    - "실제 Windows Player 포함물과 최종 NOTICE bundle은 사용자 Build 뒤 BLD-001/ALP-001에서 감사한다."
+    - "License 분류와 policy는 engineering evidence이며 법률 의견을 제공하지 않는다."
+  userDecision: "승인된 무기·캐릭터·맵 디자인을 production asset 제작에 사용하되 review image는 Build에 포함하지 않고, first-party production asset은 별도 source/rights/hash inventory로 관리함; 자동 Player Build 금지"
+  recordedAtUtc: "2026-08-29T12:45:56Z"

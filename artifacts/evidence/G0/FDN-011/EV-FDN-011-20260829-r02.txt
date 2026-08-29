@@ -1,0 +1,78 @@
+EV-FDN-011-20260829-r02
+TASK=FDN-011 supplemental repository/LFS revision
+BASE_REVISION=8d735414bc75d1e786f79f3171b8435a100ddee9
+CORE_POLICY_REVISION=0eeceee3b4e6542488961f69206c3c194804ec0e
+PLAYER_BUILD=0 DOCKER=0 DEPLOY=0 FORCE_PUSH=0 HISTORY_REWRITE=0
+
+PRECHANGE_AUDIT
+- worktree clean; branch main; commits14; remote0; upstream0; submodule0; single worktree
+- git-lfs unavailable; local/global LFS filter0; LFS pointers0
+- binary inventory18; 26,990,163 bytes; unique hashes13; max1,963,932 bytes
+- current .blend/.fbx/.glb/lossless source0; files over10MiB0; LFS-required candidates0
+- existing review PNG18 remain reachable ordinary Git; no history-only/unreachable large blob
+- static mutation71 runs/693 assertions PASS
+- Unity temporary-copy regression EditMode52/52 and PlayMode4/4 PASS; original modified Untitled scene untouched
+
+TOOL_AND_REMOTE_SETUP
+- git-lfs=3.8.0 installed with Homebrew
+- gh=2.98.0 installed with Homebrew
+- git lfs install --local completed; repository-local filter and pre-push hook present
+- GitHub CLI authenticated as kjh4845 via operating-system keyring
+- origin=https://github.com/kjh4845/project-hotfix.git
+- repository visibility=PRIVATE; viewerPermission=ADMIN; default branch=main
+- initial push local/origin/ls-remote=8d735414bc75d1e786f79f3171b8435a100ddee9
+- policy core push local/origin/ls-remote=0eeceee3b4e6542488961f69206c3c194804ec0e
+
+LFS_POLICY
+- active pattern count=10
+- patterns=.blend,.fbx,.glb,.wav,.flac,.psd,.exr,.hdr,.tif,.tiff
+- current LFS tracked files=0
+- current LFS required candidates=0
+- ordinary Git review PNG files=18
+- existing PNG migration=0
+- git lfs migrate=0
+- force push=0
+- Blender numbered backup files ignored
+- canonical .blend under Project hotfix/Assets blocked
+- binary files over10MiB require LFS; large valid UTF-8 text is not treated as binary
+
+COMMAND=ruby tools/verify_lfs_repository.rb --verify-local-lfs --verify-remote
+DEFAULT_LFS_PATTERN_COUNT=10
+BINARY_INVENTORY_COUNT=18
+LFS_REQUIRED_CANDIDATES=0
+LFS_TRACKED_FILES=0
+ORDINARY_PNG_FILES=18
+LOCAL_LFS_VERIFIED=true
+REMOTE_VERIFIED=true
+TOTAL_VIOLATIONS=0
+FINAL_RESULT=PASS
+
+COMMAND=ruby tools/tests/verify_lfs_repository_test.rb
+TEST_RUNS=16
+TEST_ASSERTIONS=161
+TEST_FAILURES=0
+TEST_ERRORS=0
+TEST_SKIPS=0
+FINAL_RESULT=PASS
+
+COMMAND=ruby tools/verify_forbidden_infrastructure.rb
+GIT_VISIBLE_INVENTORY_FILES=276
+CONTENT_FILES_SCANNED=97
+PACKAGE_MANIFESTS_SCANNED=2
+TOTAL_VIOLATIONS=0
+FINAL_RESULT=PASS
+
+COMMAND=find artifacts/evidence -name '*.yaml' ... | ruby tools/verify_evidence_manifest.rb
+EVIDENCE_MANIFEST_VALIDATION=PASS files=43
+
+COMMAND=python3 artifacts/evidence/docs/verify_doc_baseline.py
+ACTIVE_DOCS=12/12
+PLAN_TASKS=173
+PLAN_EFFORT_DAYS=251.0
+FINAL_RESULT=PASS
+
+BOUNDARY
+- Ordinary Git ref push was verified, but no production LFS object exists yet.
+- First .blend/.fbx task must verify working bytes, index pointer, LFS object upload and fresh fetch.
+- Private GitHub backup is not a Player Build, Steam deployment or public publication.
+- GitHub credentials are stored outside the repository and are not copied into Evidence.
