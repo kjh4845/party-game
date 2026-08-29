@@ -217,8 +217,8 @@ class VerifyLfsRepositoryTest < Minitest::Test
       policy.write(policy.read
         .sub("`.blend`, `.fbx`, `.glb`", "`.blend`, `.glb`")
         .sub(
-          "Core revision `af11dd2` uploaded the first production LFS object",
-          "First production object round-trip status omitted",
+          "Core revision `9caad6a` uploaded the second production LFS object",
+          "Second production object round-trip status omitted",
         )
         .sub("Do not run `git lfs migrate`", "Migration command omitted"))
       stdout, _stderr, status = run_verifier(root)

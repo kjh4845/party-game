@@ -5,14 +5,14 @@
 | 항목 | 내용 |
 |---|---|
 | 문서 목적 | 기초 구현에서 무엇을 선택했고 왜 그렇게 선택했는지, 배제한 대안과 검증 근거를 한 문서에서 설명 |
-| 기준 Git revision | `af11dd2` (`feat: create C1B Blender blockout source`) |
-| 포함 범위 | `FDN-001..011`, `ART-001`, `LIC-001`, `BLD-001`, `C1B-002..003` |
+| 기준 Git revision | `9caad6a` (`feat: create C1B character pose lineup`) |
+| 포함 범위 | `FDN-001..011`, `ART-001`, `LIC-001`, `BLD-001`, `C1B-002..004` |
 | 작성 기준 | 실제 repository, versioned config, test 결과와 Evidence를 우선 사용. 직접 기록되지 않은 선택 연결은 `추론/설계 해석`으로 표시 |
 | 문서 성격 | 설명용 결정 근거서. PRD/SRS/분야별 사양을 대체하거나 새 제품 계약을 만들지 않음 |
 
 > **범위 주의:** 핵심 기술 Foundation `FDN-001..011`, 첫 Art Profile `ART-001`, source 기준
-> 라이선스/NOTICE inventory `LIC-001`, Windows x64 Profile 준비 `BLD-001`, C1b 수치 후보와 Blender Blockout
-> `C1B-002..003`은 완료됐다. 하지만 C1b Pose·lineup·Unity parity·사용자 승인은 완료되지 않았고 Gameplay와
+> 라이선스/NOTICE inventory `LIC-001`, Windows x64 Profile 준비 `BLD-001`, C1b 수치 후보·Blender Blockout·
+> static Pose/4인 lineup `C1B-002..004`는 완료됐다. 하지만 Blender→Unity parity와 C1b 사용자 승인은 완료되지 않았고 Gameplay와
 > Player Build도 실행하지 않았다. 실제 Player 포함물 기준 최종 NOTICE 감사는
 > 사용자가 Build한 뒤에만 가능하다. 따라서 이 문서는 “G0 전체 완료”, “게임 완성” 또는 “Steam 기능 구현”을
 > 선언하지 않는다.
@@ -44,6 +44,7 @@ Foundation의 핵심 방향은 다음 한 문장으로 정리된다.
 | `.blend/.fbx` production source 저장 | repository-local Git LFS + private `origin/main`, existing PNG migration 0 | 대형 source가 Git history를 비대하게 만들지 않도록 함 |
 | v0.13 방향을 재현 가능한 Blockout으로 변환 | `H=1.0` C1B proportion START/CANDIDATE + exact-height landmark section | 이미지 pixel 복제 없이 같은 수치 source를 반복 제작 |
 | Blender 결과의 source/render 동일성 | exact Blender inventory + camera/bounds + 8-view decoded-pixel 재렌더 + LFS fresh fetch | 숨은 Asset·stale render·원격 source 손실 방지 |
+| C1b action 방향과 4인 밀집 판독 | same-lineage static Pose8 + overlap/spread lineup + Neutral/Silhouette 재렌더 | Rig·Physics를 조기 확정하지 않고 terminal 방향과 혼잡도를 먼저 검토 |
 | Docker·Dedicated·자체 Backend 영구 제외 | 경로·코드·Package 기반 금지 인프라 Guard | 시간이 지나며 금지 구조가 조용히 재유입되는 것 방지 |
 | 외부 Package·Asset의 출처/권리 누락 금지 | 58 Package와 18 review image의 fail-closed license inventory | 미등록 에셋의 빌드 반입과 NOTICE 누락 방지 |
 | 사용자가 직접 Build | Windows x64 Development·Steam Reserved Profile과 수동 절차만 준비, Player Build 0 유지 | 코드 검증과 배포 권한을 분리 |
@@ -257,7 +258,8 @@ Unity의 `Library`와 Cache는 재생성 가능하고 Machine마다 달라지지
 
 [FDN-011 초기 Evidence](../evidence/G0/FDN-011/EV-FDN-011-20260826-r01.yaml) ·
 [LFS·Remote 보충 Evidence](../evidence/G0/FDN-011/EV-FDN-011-20260829-r02.yaml) ·
-[첫 production LFS 왕복 Evidence](../evidence/G0/C1B-003/EV-C1B-003-20260830-r01.yaml)
+[첫 production LFS 왕복 Evidence](../evidence/G0/C1B-003/EV-C1B-003-20260830-r01.yaml) ·
+[두 번째 production LFS 왕복 Evidence](../evidence/G0/C1B-004/EV-C1B-004-20260830-r01.yaml)
 
 위 `20개 / 27,722,987 bytes / unique hash 15 / LFS unavailable / Remote 0`은 FDN-011 완료 당시의 r01
 역사값이다. `LIC-001`은 불필요·출처 불명 파일을 제거해 r02 `18개 / 26,990,163 bytes / unique hash 13`으로
@@ -266,6 +268,8 @@ current LFS file/candidate `0`, PNG migration/history rewrite `0`을 추가했�
 덮어쓰지 않는다. C1B-003의 living r04는 binary `27개 / 41,010,301 bytes / unique hash 22`, LFS
 file/candidate `1/1`, ordinary Git binary `26`으로 갱신됐다. 첫 `.blend`의 working SHA와 index OID·size가
 일치했고 normal push upload `1/1` 뒤 fresh clone fetch/checkout SHA·size가 다시 일치했다.
+C1B-004 living r05는 binary `48개 / 74,830,756 bytes / unique hash 43`, LFS `2/2`, ordinary Git `46`이며
+두 번째 `.blend`도 OID `83c2e100…17c2b`, `151456` bytes의 pointer/upload/fresh fetch 왕복을 닫았다.
 
 ### 아직 증명하지 않은 것
 
@@ -846,6 +850,8 @@ compiled shader와 platform module 구성은 실제 Build에 따라 달라진다
 
 위 first-party `0`과 mutation `22/176`은 LIC-001 완료 당시 r02 snapshot이다. C1B-003 living r03은
 first-party source/evidence `9`, shipping true `0`, mutation `26/199`이며 4.16과 C1B-003 Evidence가 소유한다.
+C1B-004 living inventory r04는 first-party source/evidence `30`, shipping true `0`, mutation `27/208`로
+갱신됐으며 새 21개 항목의 권리·Manifest/Binary anchor는 4.17과 C1B-004 Evidence가 소유한다.
 
 [LIC-001 초기 Evidence](../evidence/G0/LIC-001/EV-LIC-001-20260828-r01.yaml) ·
 [First-party seam 보충 Evidence](../evidence/G0/LIC-001/EV-LIC-001-20260829-r02.yaml)
@@ -1054,6 +1060,76 @@ Reference render를 Player-content로 거짓 분류하면 현재 Build에 들어
 
 ---
 
+## 4.17 `C1B-004` — Same-lineage static Pose와 4인 lineup
+
+### 선택
+
+- C1B-003 r01은 SHA `b0f4e10e…37cc`의 불변 기준으로 남기고, 새 r02 source
+  `CHR_MasterCharacter_C1B_PoseLineup_r02.blend`를 같은 geometry lineage에서 파생했다.
+- static review set은 `Neutral`, `BothHandsGrab`, `StrikeReady_L/R`, `AirKick_L/R`, `Dropkick`,
+  `AirHandReach`의 정확한 8개 ID다. Animation clip·timing·Hit·impulse·root motion은 만들지 않았다.
+- 동일 profile 4개를 scale `(1,1,1)`로 사용한 `Lineup_Overlap`과 `Lineup_Spread`를 만들었다. 색·Cosmetic·
+  gameplay Camera 값은 이 단계에서 잠그지 않았다.
+- C1B-003 base Mesh 6개는 source 안에서 변경하지 않았다. 회전한 limb의 열린 proximal boundary가 시각 감사에서
+  드러난 문제는 action pose 전용 derivative 4개에 base vertex 추가 `0`, 내부 cap polygon `+1`만 허용해 닫았다.
+  이 seam closure는 `productionTopologyApproved=false`인 review-only 조치다.
+- scenario 10개를 흰 기본 상태와 단색 Silhouette로 각각 렌더해 `2048²` PNG 20개를 만들었다. Source 재렌더는
+  channel 최대 `1`, changed ratio `0.000001`의 기존 한도를 유지했고 기록 실행의 실제 최대 ratio는
+  `0.000000635783`, tolerance match는 `20/20`이었다.
+- 2·3·4인 runtime 판독 기준은 stable ID 5개로 `PREPARED_NOT_EXECUTED` 상태를 만들었다. 실제 Unity runtime
+  capture는 `0`이며 후속 C2/C3 Camera 검증을 선점하지 않는다.
+- 새 `.blend`는 LFS OID `83c2e100…17c2b`, `151456` bytes로 normal push했고 fresh private clone에서
+  `131`-byte pointer→authenticated fetch/checkout→같은 materialized SHA·size 왕복을 확인했다.
+
+[Generation Manifest](../../BlenderSource/Characters/C1B-004/GenerationManifest.yaml) ·
+[Pose/Lineup Report](../../BlenderSource/Characters/C1B-004/PoseLineupReport.yaml) ·
+[Pose/Lineup 검증기](../../tools/verify_character_pose_lineup.rb) ·
+[C1B-004 Evidence](../evidence/G0/C1B-004/EV-C1B-004-20260830-r01.yaml)
+
+### 이유
+
+Gameplay Rig나 Animation을 먼저 만들면 static silhouette 문제를 Joint·Collider·clip 보정으로 숨길 수 있다.
+그래서 같은 normalized source의 object transform만으로 action 방향과 4인 밀집 상태를 먼저 확인했다. L/R terminal,
+Grab과 Strike, single Kick과 Dropkick을 구분하는 최소 review set만 두고 실제 physics 의미는 후속 Task에 남겼다.
+
+처음 렌더에서 proximal open boundary가 발견됐을 때 Camera 각도로 가리지 않았다. 반대로 C1B-003 base topology를
+수정해 역사 Evidence를 무효화하지도 않았다. Base vertex를 보존하고 내부 cap 한 면만 더한 별도 START derivative로
+문제를 닫아 source lineage, 시각 검토와 production topology 미승인 경계를 동시에 유지했다.
+
+### 배제한 대안
+
+- C1B-003 r01을 덮어써 기존 source hash와 Evidence를 변경
+- Pose별로 서로 다른 body Mesh나 비율을 다시 모델링
+- 열린 proximal boundary를 Camera crop·view 변경만으로 숨김
+- C1B-004에서 Armature, gameplay Bone·Anchor·Collider, Animation Action이나 root motion을 조기 확정
+- 2·3·4인 Unity gameplay capture를 실행하지 않고 성공했다고 기록
+- Pose/lineup PNG만 저장하고 현재 source 재렌더를 생략
+- 두 번째 `.blend`를 ordinary Git에 넣거나 upload만 확인하고 fresh fetch를 생략
+
+### 실제 근거
+
+- source `1 / 151456 bytes / 83c2e100…17c2b`, base source SHA match `1`
+- Pose `8/8`, lineup `2/2`, lineup participant instance `8`, mirror 최대 deviation `0H`
+- 최소 terminal directional delta `0.150744656H`, 2·3·4인 판독 기준 `5`, runtime capture `0`
+- Blender object/collection/review Mesh `150/16/96`, Mesh datablock `11`
+- base Mesh part `6`, cap derivative `4`, derivative object `28`, vertex 추가 `0`, polygon 추가 `1/mesh`
+- Camera `5`, render encoded/dimension/rerender tolerance `20/20/20`, 기록 exact match `5`
+- visible separate Hand/Foot·Armature·Action·Collider·external/packed input `0`
+- first-party `30`, C1B-004 source/evidence `21`, shipping true `0`, external review `18`, overlap `0`
+- binary `48 / 74,830,756 bytes / unique43`, LFS candidate/tracked `2/2`, ordinary Git `46`
+- Pose mutation `21/145`, LFS mutation `16/162`, license mutation `27/208`, 실패·오류·skip `0`
+- Player Build·FBX export·Unity import·gameplay Rig/Anchor·Docker·Deploy `0`
+
+### 아직 증명하지 않은 것
+
+- C1B-005 FBX export·Unity import와 source→FBX→Prefab scale·axis·silhouette parity
+- C1B-006 `UG-C1B` exact 수치·시각 승인
+- 실제 2·3·4인 Unity Camera에서 action/terminal 판독과 performance
+- gameplay Skeleton·Collider·reach·mass·Joint, procedural/clip animation과 physics feel
+- production topology·UV·weights·LOD·material·deformation 품질
+
+---
+
 ## 5. 왜 이 선택들이 함께 있어야 하는가
 
 ### 5.1 UTP 선택만으로 P2P 구조가 안전해지지는 않는다
@@ -1093,7 +1169,7 @@ identity·실행 결과·NOTICE 감사는 별도 Evidence로 남긴다.
 
 ## 6. 검증 결과를 해석하는 방법
 
-Foundation과 현재 G0의 C1B-003 Blender Blockout까지 핵심 수치는 다음과 같다. 각 Task의 역사 수치는 덮어쓰지 않는다.
+Foundation과 현재 G0의 C1B-004 static Pose/lineup까지 핵심 수치는 다음과 같다. 각 Task의 역사 수치는 덮어쓰지 않는다.
 BLD-001은 실제 Profile 의미를 포함한 전체 EditMode와 기존
 PlayMode를 임시 Project 복사본에서 재실행했으며, 원본 Editor의 미저장 Scene은 건드리지 않았다.
 
@@ -1105,14 +1181,15 @@ PlayMode를 임시 Project 복사본에서 재실행했으며, 원본 Editor의 
 | Scene source | global `SampleScene` `1`, START | 최종 Main/Lobby/Match Scene 목록 |
 | Steam Reserved | SDK/App ID/기능 `0` | Steam 통합 또는 배포 가능 |
 | License source inventory | package `58/58`, review image `18/18` | 최종 Windows Player NOTICE가 완성됨 |
-| First-party production seam | source/evidence asset `9`, shipping `0`, mutation `26/199` | 최종 Player 포함 또는 production 권리 법률 의견 |
-| Git LFS / Remote | local LFS `3.8.0`, pattern `10`, private `origin/main`, file/candidate `1/1`, fresh fetch `1` | 후속 FBX/GLB와 장기 복구 훈련 |
+| First-party production seam | source/evidence asset `30`, shipping `0`, mutation `27/208` | 최종 Player 포함 또는 production 권리 법률 의견 |
+| Git LFS / Remote | local LFS `3.8.0`, pattern `10`, private `origin/main`, file/candidate `2/2`, fresh fetch `2` | 후속 FBX/GLB와 장기 복구 훈련 |
 | C1B proportion candidate | landmark/cross-section `17/17`, envelope `11`, mutation `22/152` | Blockout 적합성 또는 `UG-C1B` 승인 |
 | C1B Blender Blockout | source `1`, render `8`, rerender `8/8`, mutation `19/139` | Pose·Unity parity·`UG-C1B` 승인 |
-| Forbidden infra | inventory `300`, content `108`, manifest `2`, violation `0` | Git history·ignored Build·외부 서비스 전체 부재 |
-| Evidence manifest | `45`개 구조 검증 | 각 미래 Feature의 수동 체감 승인 |
+| C1B static Pose/lineup | Pose `8`, lineup `2×4`, render/rerender `20/20`, mutation `21/145` | Unity runtime action·physics·`UG-C1B` 승인 |
+| Forbidden infra | inventory `331`, content `116`, manifest `2`, violation `0` | Git history·ignored Build·외부 서비스 전체 부재 |
+| Evidence manifest | `46`개 구조 검증 | 각 미래 Feature의 수동 체감 승인 |
 | Player Build | `0` | Build 불가능을 뜻하지 않음. 사용자 요청에 따라 실행하지 않았음 |
-| Blender source / FBX / Unity art import | `1 / 0 / 0` | Source만으로는 FBX·Unity parity가 증명되지 않음 |
+| Blender source / FBX / Unity art import | `2 / 0 / 0` | Source만으로는 FBX·Unity parity가 증명되지 않음 |
 | Docker / Deploy | `0 / 0` | 실제 명령은 실행하지 않았지만 ignored 영역·외부 System 전체 부재까지 증명하지는 않음 |
 
 수치는 해당 Task가 주장한 범위 안에서만 읽어야 한다. 예를 들어 Physics PlayMode `2/2`는 Contact와 Joint
@@ -1134,12 +1211,12 @@ Steam 실행 Evidence나 배포 가능을 주장하지 않는다.
 
 ### 7.2 C1b
 
-`C1B-002..003`은 H-normalized 후보와 same-source Blender Blockout을 완료했지만 exact C1b 사용자 승인은 아니다.
-남은 단계는 `C1B-004..006`의 Pose/4인 lineup·Unity parity와 사용자 `UG-C1B`다.
+`C1B-002..004`는 H-normalized 후보, same-source Blender Blockout과 static Pose/4인 lineup을 완료했지만 exact C1b 사용자 승인은 아니다.
+남은 단계는 `C1B-005..006`의 Unity parity와 사용자 `UG-C1B`다.
 
-첫 production `.blend`는 `sourceOwner=kjh4845`, first-party non-shipping inventory, LFS pointer/upload/fresh fetch까지
-닫혔다. 다음 C1B-004는 같은 source 안에서 Pose와 lineup만 추가하고 gameplay Rig·Collider나 FBX/Unity 단계로
-넘어가지 않는다.
+두 production `.blend`는 `sourceOwner=kjh4845`, first-party non-shipping inventory, LFS pointer/upload/fresh fetch까지
+닫혔다. 다음 C1B-005는 r02의 Neutral/profile source를 승인 Interop Profile로 FBX→Unity 반입해 scale·axis·
+silhouette parity만 확인한다. gameplay Rig·Collider나 사용자 수치 승인은 아직 시작하지 않는다.
 
 ### 7.3 구현되지 않은 핵심 Runtime
 
@@ -1200,6 +1277,7 @@ Foundation 선택은 영원히 수정 불가한 코드가 아니라, 변경 비�
 | `LIC-001` first-party 보충 | `0eeceee` | [First-party Inventory Evidence](../evidence/G0/LIC-001/EV-LIC-001-20260829-r02.yaml) |
 | `C1B-002` | `06299d5` | [Normalized Proportion Evidence](../evidence/G0/C1B-002/EV-C1B-002-20260829-r01.yaml) |
 | `C1B-003` | `af11dd2` | [Blender Blockout Evidence](../evidence/G0/C1B-003/EV-C1B-003-20260830-r01.yaml) |
+| `C1B-004` | `9caad6a` | [Static Pose/Lineup Evidence](../evidence/G0/C1B-004/EV-C1B-004-20260830-r01.yaml) |
 
 ---
 
@@ -1215,6 +1293,6 @@ Foundation 선택은 영원히 수정 불가한 코드가 아니라, 변경 비�
 - 아직 하지 않은 Build, Steam, Gameplay와 시각 승인을 완료했다고 과장하지 않게 했다.
 
 Foundation 표의 기술·Art·license·Build Profile, production binary 저장 전제와 C1B normalized 후보·Blender
-Blockout까지 닫혔다. 다음 구현 순서는 `C1B-004`의 action Pose와 4인 lineup이다. 같은 source를 유지하되
-FBX·Unity Import, gameplay Rig·Collider와 수치 승인은 아직 시작하지 않는다. Windows Player 수동 Build는 실제
+Blockout·static Pose/4인 lineup까지 닫혔다. 다음 구현 순서는 `C1B-005`의 Blender→Unity Blockout parity다.
+FBX·Unity Import 범위를 넘는 gameplay Rig·Collider와 수치 승인은 아직 시작하지 않는다. Windows Player 수동 Build는 실제
 Scene과 Alpha 기능이 준비된 뒤 별도 Evidence로 수행한다.

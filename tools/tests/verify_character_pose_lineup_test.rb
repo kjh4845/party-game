@@ -142,15 +142,15 @@ class VerifyCharacterPoseLineupTest < Minitest::Test
     end
   end
 
-  def test_approval_lock_and_lfs_remote_claims_are_rejected
+  def test_approval_lock_and_incomplete_lfs_states_are_rejected
     with_repo do |root|
       rewrite_manifest(root) do |m|
         m["state"] = "LOCKED"
         m["poseLineupContract"]["userApprovalRecorded"] = true
         m["poseLineupContract"]["lockedValueCount"] = 1
-        m["stages"]["blend-source"]["lfsState"] = "VERIFIED_REMOTE_ROUND_TRIP"
+        m["stages"]["blend-source"]["lfsState"] = "PENDING_CORE_PUSH"
         m["stages"]["blend-source"]["indexPointerVerified"] = true
-        m["stages"]["blend-source"]["remoteObjectRoundTripVerified"] = true
+        m["stages"]["blend-source"]["remoteObjectRoundTripVerified"] = false
         m["stages"]["blend-source"]["remoteProof"] = "unverified"
         m["limitations"][0] = "Production-ready final asset."
       end
@@ -159,7 +159,7 @@ class VerifyCharacterPoseLineupTest < Minitest::Test
       assert_includes stdout, "rule=MANIFEST_METADATA"
       assert_includes stdout, "rule=UNAPPROVED_LOCK"
       assert_includes stdout, "rule=CONTRACT_APPROVAL"
-      assert_includes stdout, "rule=LFS_PENDING_STATE"
+      assert_includes stdout, "rule=LFS_ROUND_TRIP_STATE"
       assert_includes stdout, "rule=BLEND_STAGE_FIELD_SET"
       assert_includes stdout, "rule=LIMITATIONS"
     end
@@ -168,7 +168,7 @@ class VerifyCharacterPoseLineupTest < Minitest::Test
       rewrite_manifest(root) do |m|
         m["stages"]["blend-source"]["indexPointerVerified"] = false
       end
-      assert_rule(root, "LFS_PENDING_STATE")
+      assert_rule(root, "LFS_ROUND_TRIP_STATE")
     end
   end
 
@@ -252,6 +252,26 @@ class VerifyCharacterPoseLineupTest < Minitest::Test
       assert_includes stdout, "rule=REPORT_METADATA"
       assert_includes stdout, "rule=REPORT_APPROVAL_BOUNDARY"
       assert_includes stdout, "rule=REPORT_EXECUTION"
+    end
+  end
+
+  def test_runtime_readability_criteria_are_exact_and_unexecuted
+    with_repo do |root|
+      rewrite_manifest(root) do |m|
+        m["poseLineupContract"]["criteriaPrepared"] = false
+        m["poseLineupContract"]["runtimeCapturesExecuted"] = 1
+      end
+      rewrite_report(root) do |r|
+        criteria = r["runtimeReadabilityCriteria"]
+        criteria["participantCounts"] = [4]
+        criteria["state"] = "EXECUTED"
+        criteria["runtimeCapturesExecuted"] = 1
+        criteria["checks"].first["criterionId"] = "UNSTABLE-ID"
+      end
+      stdout, _stderr, status = run_verifier(root)
+      assert_equal 1, status
+      assert_includes stdout, "rule=RUNTIME_CRITERIA_PREPARATION"
+      assert_includes stdout, "rule=RUNTIME_READABILITY_CRITERIA"
     end
   end
 

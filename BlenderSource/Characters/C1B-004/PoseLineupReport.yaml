@@ -138,6 +138,16 @@ C1B004PoseLineupReport:
     reproductionAllowedMaximumChannelDifference: 1
     reproductionAllowedMaximumChangedChannelRatio: 0.000001
     result: "PASS"
+  runtimeReadabilityCriteria:
+    participantCounts: [2, 3, 4]
+    state: "PREPARED_NOT_EXECUTED"
+    runtimeCapturesExecuted: 0
+    checks:
+      - {criterionId: "C1B004-RC-STRIKE-TERMINAL-LR", check: "L/R Strike terminal readability"}
+      - {criterionId: "C1B004-RC-KICK-TERMINAL-LR", check: "L/R Kick terminal readability"}
+      - {criterionId: "C1B004-RC-GRAB-VS-STRIKE", check: "Grab-vs-Strike readability"}
+      - {criterionId: "C1B004-RC-DROPKICK-VS-DOWN-RAGDOLL", check: "Dropkick-vs-Down/Ragdoll readability"}
+      - {criterionId: "C1B004-RC-FULL-BODY-TERMINAL-CROWDING", check: "Full-body and terminal visibility under crowding"}
   reviewBoundary:
     internalStructuralReview: "PASS"
     userVisualApprovalRecorded: false

@@ -6,7 +6,7 @@ GenerationManifest:
   completionScope: "C1B-004_STATIC_POSE_AND_FOUR_PLAYER_LINEUP_COMPLETE"
   ownerTask: "C1B-004"
   sourceOwner: "kjh4845"
-  recordedAtUtc: "2026-08-29T16:25:47Z"
+  recordedAtUtc: "2026-08-29T16:56:13Z"
   identity:
     assetId: "CHR_MasterCharacter_C1B_PoseLineup"
     assetVersion: "0.2.0-start"
@@ -63,9 +63,11 @@ GenerationManifest:
     userApprovalRecorded: false
     lockedValueCount: 0
     productionTopologyApproved: false
+    criteriaPrepared: true
+    runtimeCapturesExecuted: 0
   stages:
     blend-source:
-      status: "COMPLETE_LOCAL"
+      status: "COMPLETE"
       path: "BlenderSource/Characters/C1B-004/CHR_MasterCharacter_C1B_PoseLineup_r02.blend"
       bytes: 151456
       sha256: "83c2e100c74cf75a7faed11dd0ad65c3d07677684e02696e72455fdee4e17c2b"
@@ -74,9 +76,9 @@ GenerationManifest:
       sourceAxis: "+Z Up"
       characterForwardAxis: "-Y"
       rootScale: [1.0, 1.0, 1.0]
-      lfsState: "PENDING_CORE_PUSH"
+      lfsState: "VERIFIED_REMOTE_ROUND_TRIP"
       indexPointerVerified: true
-      remoteObjectRoundTripVerified: false
+      remoteObjectRoundTripVerified: true
     fbx-export: {status: "DEFERRED_C1B-005", path: null, bytes: null, sha256: null, executed: false}
     reference-render:
       status: "COMPLETE"
@@ -116,7 +118,7 @@ GenerationManifest:
     unity-prefab: {status: "DEFERRED_C1B-005", path: null, revision: null, executed: false}
   report:
     path: "BlenderSource/Characters/C1B-004/PoseLineupReport.yaml"
-    sha256: "724c756e6c01bbcf77f0067bd6b6a6437409a72921a425576931021ca8095cf3"
+    sha256: "5bb0ee576732154794949c41b81e79310c87d75483ec7fa29751b37c1b0a56f6"
     result: "PASS"
   generationTools:
     generator: {path: "tools/blender/create_c1b004_pose_lineup.py", sha256: "170a5b7144205221e578f2bc2899168cec8c042040f9dea220e57450c2608544"}
@@ -165,4 +167,5 @@ GenerationManifest:
     - "No gameplay rig, collider, anchor, root motion, hit or physics semantics are authored."
     - "FBX export and Unity Prefab identity remain null until C1B-005."
     - "Pose transforms and lineup offsets remain START candidates until C1B-006 user review."
+    - "Two-, three-, and four-player runtime action-readability criteria are prepared; runtime captures remain unexecuted."
     - "UG-C1B user approval and production lock have not been recorded."

@@ -25,7 +25,7 @@ class CharacterPoseLineupVerifier
   SOURCE_SHA = "83c2e100c74cf75a7faed11dd0ad65c3d07677684e02696e72455fdee4e17c2b"
   BASE_SOURCE_SHA = "b0f4e10e208e60dd07bd91947ef46f09135f602b2ce695becff355cc662837cc"
   BASE_MANIFEST_SHA = "0b195dbc1add30270cc9a259441643cbabaaacacfb2cbbd7449d384f277a4c53"
-  REPORT_SHA = "724c756e6c01bbcf77f0067bd6b6a6437409a72921a425576931021ca8095cf3"
+  REPORT_SHA = "5bb0ee576732154794949c41b81e79310c87d75483ec7fa29751b37c1b0a56f6"
   ENCODED_BUNDLE_SHA = "9f9cbe63a2cf5ec0cf606e89f5114ddc31c86e2a334a4853ae9ca4d467d24a1f"
   PIXEL_BUNDLE_SHA = "5929398d425227feb0678915d504a1bb089dbe6ad4515513210888b903d92c40"
   POSES = %w[Neutral BothHandsGrab StrikeReady_L StrikeReady_R AirKick_L AirKick_R Dropkick AirHandReach].freeze
@@ -50,13 +50,26 @@ class CharacterPoseLineupVerifier
   }.freeze
   EXPECTED_TOP = %w[schemaVersion manifestId state candidateStatus completionScope ownerTask sourceOwner recordedAtUtc identity derivedFrom characterProportionProfile poseLineupContract stages report generationTools sourceBoundary execution limitations].sort.freeze
   EXPECTED_IDENTITY = %w[assetId assetVersion toolchainProfileId projectVersionSha256 packageManifestSha256 packageLockSha256 lowPolyStyleProfileId lowPolyStyleProfileRevision modelInteropProfileId modelInteropProfileRevision blenderExportPresetId blenderExportPresetRevision blenderExportSettingsSha256 unityImporterPresetId unityImporterPresetRevision unityImporterSettingsSha256 sourceSha256 fbxSha256 referenceRenderSha256 unityPrefabRevision].sort.freeze
-  EXPECTED_REPORT_TOP = %w[schemaVersion reportId state candidateStatus ownerTask assetId assetVersion sourceOwner sourcePath sourceBytes sourceSha256 profilePath profileId measurementSetSha256 lineage contractDigests structure poses lineups readability cameras renders reviewBoundary execution recordedAtUtc].sort.freeze
+  EXPECTED_REPORT_TOP = %w[schemaVersion reportId state candidateStatus ownerTask assetId assetVersion sourceOwner sourcePath sourceBytes sourceSha256 profilePath profileId measurementSetSha256 lineage contractDigests structure poses lineups readability cameras renders runtimeReadabilityCriteria reviewBoundary execution recordedAtUtc].sort.freeze
+  EXPECTED_RUNTIME_CRITERIA = {
+    "participantCounts" => [2, 3, 4],
+    "state" => "PREPARED_NOT_EXECUTED",
+    "runtimeCapturesExecuted" => 0,
+    "checks" => [
+      {"criterionId"=>"C1B004-RC-STRIKE-TERMINAL-LR", "check"=>"L/R Strike terminal readability"},
+      {"criterionId"=>"C1B004-RC-KICK-TERMINAL-LR", "check"=>"L/R Kick terminal readability"},
+      {"criterionId"=>"C1B004-RC-GRAB-VS-STRIKE", "check"=>"Grab-vs-Strike readability"},
+      {"criterionId"=>"C1B004-RC-DROPKICK-VS-DOWN-RAGDOLL", "check"=>"Dropkick-vs-Down/Ragdoll readability"},
+      {"criterionId"=>"C1B004-RC-FULL-BODY-TERMINAL-CROWDING", "check"=>"Full-body and terminal visibility under crowding"},
+    ],
+  }.freeze
   EXPECTED_LIMITATIONS = [
     "This manifest completes only C1B-004 static pose and four-player lineup review candidates.",
     "The C1B-003 base meshes remain unchanged; action limbs use review-only same-vertex derivatives with one internal proximal cap polygon, and production topology is not approved.",
     "No gameplay rig, collider, anchor, root motion, hit or physics semantics are authored.",
     "FBX export and Unity Prefab identity remain null until C1B-005.",
     "Pose transforms and lineup offsets remain START candidates until C1B-006 user review.",
+    "Two-, three-, and four-player runtime action-readability criteria are prepared; runtime captures remain unexecuted.",
     "UG-C1B user approval and production lock have not been recorded.",
   ].freeze
   MAX_YAML = 512 * 1024
@@ -132,17 +145,18 @@ class CharacterPoseLineupVerifier
     expect(profile["profileId"] == ref["profileId"] && profile["measurementSetSha256"] == ref["measurementSetSha256"], "PROFILE_DRIFT", PROFILE_PATH)
 
     contract = h(@manifest["poseLineupContract"])
-    expect(contract.keys.sort == (%w[state candidateStatus requiredPoseIds requiredLineupIds participantCountPerLineup userApprovalRecorded lockedValueCount productionTopologyApproved] + DIGESTS.keys).sort, "CONTRACT_FIELD_SET", MANIFEST_PATH)
+    expect(contract.keys.sort == (%w[state candidateStatus requiredPoseIds requiredLineupIds participantCountPerLineup userApprovalRecorded lockedValueCount productionTopologyApproved criteriaPrepared runtimeCapturesExecuted] + DIGESTS.keys).sort, "CONTRACT_FIELD_SET", MANIFEST_PATH)
     expect(contract["state"] == "START" && contract["candidateStatus"] == "CANDIDATE" && contract["requiredPoseIds"] == POSES && contract["requiredLineupIds"] == LINEUPS && contract["participantCountPerLineup"] == 4, "POSE_LINEUP_CONTRACT", MANIFEST_PATH)
     DIGESTS.each { |k,v| expect(contract[k] == v, "CONTRACT_DIGEST", k) }
     expect(contract["userApprovalRecorded"] == false && contract["lockedValueCount"] == 0 && contract["productionTopologyApproved"] == false, "CONTRACT_APPROVAL", MANIFEST_PATH)
+    expect(contract["criteriaPrepared"] == true && contract["runtimeCapturesExecuted"] == 0, "RUNTIME_CRITERIA_PREPARATION", MANIFEST_PATH)
 
     stages = h(@manifest["stages"])
     expect(stages.keys.sort == %w[blend-source fbx-export reference-render unity-prefab].sort, "STAGE_SET", MANIFEST_PATH)
     blend = h(stages["blend-source"])
     expect(blend.keys.sort == %w[status path bytes sha256 blenderVersion blenderBuildHash sourceAxis characterForwardAxis rootScale lfsState indexPointerVerified remoteObjectRoundTripVerified].sort, "BLEND_STAGE_FIELD_SET", MANIFEST_PATH)
-    expect(blend["status"] == "COMPLETE_LOCAL" && blend["path"] == SOURCE_PATH && blend["bytes"] == 151456 && blend["sha256"] == SOURCE_SHA, "BLEND_STAGE", MANIFEST_PATH)
-    expect(blend["lfsState"] == "PENDING_CORE_PUSH" && blend["indexPointerVerified"] == true && blend["remoteObjectRoundTripVerified"] == false, "LFS_PENDING_STATE", MANIFEST_PATH)
+    expect(blend["status"] == "COMPLETE" && blend["path"] == SOURCE_PATH && blend["bytes"] == 151456 && blend["sha256"] == SOURCE_SHA, "BLEND_STAGE", MANIFEST_PATH)
+    expect(blend["lfsState"] == "VERIFIED_REMOTE_ROUND_TRIP" && blend["indexPointerVerified"] == true && blend["remoteObjectRoundTripVerified"] == true, "LFS_ROUND_TRIP_STATE", MANIFEST_PATH)
     expect(blend["rootScale"] == [1.0,1.0,1.0] && blend["sourceAxis"] == "+Z Up" && blend["characterForwardAxis"] == "-Y", "BLEND_TRANSFORM", MANIFEST_PATH)
     expect(h(stages["fbx-export"]) == {"status"=>"DEFERRED_C1B-005","path"=>nil,"bytes"=>nil,"sha256"=>nil,"executed"=>false}, "FBX_DEFERRED", MANIFEST_PATH)
     expect(h(stages["unity-prefab"]) == {"status"=>"DEFERRED_C1B-005","path"=>nil,"revision"=>nil,"executed"=>false}, "UNITY_DEFERRED", MANIFEST_PATH)
@@ -209,6 +223,7 @@ class CharacterPoseLineupVerifier
     expect(positive.all? { |k| finite?(readability[k]) && readability[k] >= 0.10 } && mirrors.all? { |k| finite?(readability[k]) && readability[k] <= 0.000001 } && readability["result"] == "PASS", "REPORT_READABILITY", REPORT_PATH)
     renders = h(@report["renders"])
     expect(renders["expectedFiles"] == 20 && renders["inspectedFiles"] == 20 && renders["encodedHashMatches"] == 20 && renders["sourceRerenderMatches"] == 20 && renders["sourceRerenderExactMatches"] == 5 && renders["reproducedMaximumChannelDifference"] == 1 && renders["reproducedMaximumChangedChannelRatio"] == 0.0000006357828776041666 && renders["reproductionAllowedMaximumChannelDifference"] == 1 && renders["reproductionAllowedMaximumChangedChannelRatio"] == 0.000001 && renders["result"] == "PASS", "REPORT_RENDERS", REPORT_PATH)
+    expect(h(@report["runtimeReadabilityCriteria"]) == EXPECTED_RUNTIME_CRITERIA, "RUNTIME_READABILITY_CRITERIA", REPORT_PATH)
     review = h(@report["reviewBoundary"])
     expect(review["internalStructuralReview"] == "PASS" && review["userVisualApprovalRecorded"] == false && review["lockedValueCount"] == 0 && review["productionTopologyApproved"] == false && review["notes"].is_a?(Array) && review["notes"].length == 5, "REPORT_APPROVAL_BOUNDARY", REPORT_PATH)
     expect(h(@report["execution"])["fbxExportsCreated"] == 0 && h(@report["execution"])["unityAssetsCreated"] == 0 && h(@report["execution"])["playerBuildsExecuted"] == 0 && h(@report["execution"])["armaturesCreated"] == 0 && h(@report["execution"])["actionsCreated"] == 0 && h(@report["execution"])["colliderProfilesCreated"] == 0, "REPORT_EXECUTION", REPORT_PATH)
