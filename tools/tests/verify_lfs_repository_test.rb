@@ -217,7 +217,7 @@ class VerifyLfsRepositoryTest < Minitest::Test
       policy.write(policy.read
         .sub("`.blend`, `.fbx`, `.glb`", "`.blend`, `.glb`")
         .sub(
-          "The first production LFS object upload and fresh-fetch round-trip remain pending until the C1B-003 core commit is pushed",
+          "Core revision `af11dd2` uploaded the first production LFS object",
           "First production object round-trip status omitted",
         )
         .sub("Do not run `git lfs migrate`", "Migration command omitted"))

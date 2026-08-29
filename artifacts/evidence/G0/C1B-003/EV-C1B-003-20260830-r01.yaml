@@ -1,0 +1,176 @@
+EvidenceManifest:
+  schemaVersion: 1
+  evidenceProfile: "EvidenceProfile-r01"
+  evidenceId: "EV-C1B-003-20260830-r01"
+  taskId: "C1B-003"
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "Core=af11dd26d7ee1486a2d53d2332272c1de8f0a6b1; GenerationManifest=0b195dbc1add30270cc9a259441643cbabaaacacfb2cbbd7449d384f277a4c53; MeasurementReport=79c5ae3a62c91f1aad236d18c29cf8dd27dcfa90fba0d3450f3dcc8b4fe1e0ab; Blend=b0f4e10e208e60dd07bd91947ef46f09135f602b2ce695becff355cc662837cc; Generator=32579d606a341dd8007fa11d570fd54672eb977923cabe3cc90875116db33382; Inspector=fe697177649a846053a5e567e409cf997d530300b7dd1231d0cfab4d8250bcdd; Rerender=3b9824db25f2d70e80af71db484654754a4edf2851f8cf4dc21421469e6c5937; PixelComparator=b1beaab5af60fa566a49ad47cdeacba58e3406e6bd030a4bbd279a446e02a38d; BlockoutVerifier=92232be1fcf4e056d11a3ffa5794178498b59b05b295a5a98c964e9fe6139234; BlockoutTest=c66fbb44b80eb4e154ab5a42cc46dcaea34d49198d841654258a5c3727a3fde9; BinaryPolicy=351f857c0a60cb17146e460daa99a114d351987db5c9cf05d29d4f3f56ca7ee2; BinaryInventory=83c8d969c395927339a1a8712f37b3871839531b0c3334bb6732c3798161fc16; LfsVerifier=d10f8a5769353e9411b38284e810751752d8fba079fba159fd1d19ad55350aa7; LfsTest=a1381e521589dbdb6dd79d6a0bcfd80890747a4d225aa985eb1705a9512aa075; LicensePolicy=bf82aa60eaaadcc5792414bd4e6f4fde480685ed4e84af7e9ad2f91d0cec02f8; LicenseInventory=fb164ff5f938da475dc651ccb5f3fc034d8b1f15c84ca1d8c02ecd548d60ee10; LicenseVerifier=eb2e56e8d2bf25d9126713ed8d2cb19f98d71d035c4575ab9b312193ed557f54; LicenseTest=aeffe2ee090ee149f1c48cd15cdf94ed68480a50a4c9562e6897ede3ab6bbbb4; ProportionProfile=9744e737d4f957fa77e8ee10646f91a4c1209f1109a49f58f4f97144d7fc47e5"
+  buildKind: "BlenderBlockoutAndLfsRoundTripNoUnityImport"
+  buildVersion: "NotBuilt"
+  environment: "macOS arm64; Blender 5.2.0 LTS fbe6228777e7; Git 2.52.0; Git LFS 3.8.0 repository-local; Ruby 2.6.10; Python Pillow 11.3.0"
+  profileVersions: ["CharacterProportionProfile-C1B-002-r01", "GM-CHR-MasterCharacter-C1B-Blockout-r01", "RepositoryPolicy-r04", "BinaryAssetInventory-r04", "project-hotfix-license-policy-r03", "project-hotfix-third-party-inventory-r03", "EvidenceProfile-r01"]
+  requirementIds: ["C1B-003", "SRS-APPEAR-014", "SRS-APPEAR-015", "SRS-APPEAR-016", "SRS-APPEAR-018", "AT-028"]
+  commandsOrManualSteps:
+    - "사용자가 first-party sourceOwner를 kjh4845로 승인한 뒤 C1B-003에 착수"
+    - "Blender 5.2.0 LTS에서 H=1 profile로 canonical source, landmark17, fixed orthographic camera4와 Neutral/Silhouette render8을 같은 Scene에서 생성"
+    - "terminal/crown/contact, fixed fill lighting, internal cap artifact와 actual authored-bounds camera center를 반복 시각 감사 후 교정"
+    - "Blender read-only inspector로 exact object/datablock/material/light/world, geometry bounds, landmark position와 actual mesh cross-section, camera rotation/target, external/packed content와 C1B-004/005 scope0을 검증"
+    - "현재 .blend에서 render8을 임시 재생성하고 encoded source render의 decoded RGB pixel을 bounded 1-level tolerance로 전수 대조"
+    - "canonical .blend와 render8을 Binary r04와 first-party License r03에 path/bytes/SHA/sourceOwner/rights/manifest anchor로 등록; Player shippingAllowed0"
+    - "LFS attr, materialized working bytes와 staged pointer OID/size를 확인하고 normal push로 LFS object1 업로드"
+    - "fresh private clone에서 pointer를 먼저 확인하고 repository-local LFS와 .gitattributes를 활성화한 뒤 authenticated fetch/checkout으로 raw source SHA/size 왕복 확인"
+    - "hidden C1B-004 Mesh, material/light drift, stale render, report semantic reversal, malformed schema와 out-of-scope outputs를 fail-closed mutation으로 거부"
+    - "FBX export, Unity import/Asset, Pose/lineup, Collider/Rig, Player Build, Docker와 Deploy 실행0"
+  observedMetrics:
+    sourceOwnerApprovals: 1
+    canonicalBlendFiles: 1
+    canonicalBlendBytes: 116437
+    sourceHashMatches: 1
+    lfsIndexPointersVerified: 1
+    lfsObjectsUploaded: 1
+    freshClonePointersVerified: 1
+    freshLfsObjectsFetched: 1
+    freshMaterializedHashMatches: 1
+    freshMaterializedSizeMatches: 1
+    neutralReferenceRenders: 4
+    silhouetteReferenceRenders: 4
+    renderEncodedHashMatches: 8
+    renderPng2048Matches: 8
+    renderReproductionToleranceMatches: 8
+    reproductionMaximumChannelDifference: 1
+    reproductionMaximumChangedChannelRatio: 0.000000238419
+    blenderObjects: 33
+    modelMeshObjects: 6
+    meshVertices: 1158
+    meshPolygons: 1152
+    requiredLandmarks: 17
+    landmarkMeshCrossSections: 17
+    silhouetteEnvelopeSectionInstances: 16
+    maximumMeasurementDeviationH: 0.000001167
+    startingToleranceH: 0.005
+    externalOrPackedInputs: 0
+    armatures: 0
+    colliderProfiles: 0
+    actionsOrPoseLineups: 0
+    fbxExports: 0
+    unityImportsOrAssets: 0
+    userVisualApprovalRecorded: 0
+    lockedValueCount: 0
+    firstPartyAssets: 9
+    firstPartyShippingAllowed: 0
+    reviewOnlyAssets: 18
+    firstPartyReviewPathOverlaps: 0
+    binaryInventoryFiles: 27
+    binaryInventoryBytes: 41010301
+    binaryInventoryUniqueHashes: 22
+    lfsRequiredCandidates: 1
+    lfsTrackedFiles: 1
+    ordinaryGitBinaryFiles: 26
+    blockoutMutationTestRuns: 19
+    blockoutMutationTestAssertions: 139
+    lfsMutationTestRuns: 16
+    lfsMutationTestAssertions: 162
+    licenseMutationTestRuns: 26
+    licenseMutationTestAssertions: 199
+    mutationFailuresErrorsSkips: 0
+    independentReviewFinalBlockers: 0
+    finalGitVisibleInventoryFiles: 300
+    finalForbiddenInfrastructureContentFiles: 108
+    finalForbiddenInfrastructurePackageManifests: 2
+    finalForbiddenInfrastructureViolations: 0
+    activeDocsValidated: 12
+    evidenceManifestsAfterC1b003: 45
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  expectedThresholds:
+    sourceOwnerApprovals: 1
+    canonicalBlendFiles: 1
+    canonicalBlendBytes: 116437
+    sourceHashMatches: 1
+    lfsIndexPointersVerified: 1
+    lfsObjectsUploaded: 1
+    freshClonePointersVerified: 1
+    freshLfsObjectsFetched: 1
+    freshMaterializedHashMatches: 1
+    freshMaterializedSizeMatches: 1
+    neutralReferenceRenders: 4
+    silhouetteReferenceRenders: 4
+    renderEncodedHashMatches: 8
+    renderPng2048Matches: 8
+    renderReproductionToleranceMatches: 8
+    reproductionMaximumChannelDifference: 1
+    reproductionMaximumChangedChannelRatio: 0.000001
+    blenderObjects: 33
+    modelMeshObjects: 6
+    meshVertices: 1158
+    meshPolygons: 1152
+    requiredLandmarks: 17
+    landmarkMeshCrossSections: 17
+    silhouetteEnvelopeSectionInstances: 16
+    maximumMeasurementDeviationH: 0.005
+    startingToleranceH: 0.005
+    externalOrPackedInputs: 0
+    armatures: 0
+    colliderProfiles: 0
+    actionsOrPoseLineups: 0
+    fbxExports: 0
+    unityImportsOrAssets: 0
+    userVisualApprovalRecorded: 0
+    lockedValueCount: 0
+    firstPartyAssets: 9
+    firstPartyShippingAllowed: 0
+    reviewOnlyAssets: 18
+    firstPartyReviewPathOverlaps: 0
+    binaryInventoryFiles: 27
+    binaryInventoryBytes: 41010301
+    binaryInventoryUniqueHashes: 22
+    lfsRequiredCandidates: 1
+    lfsTrackedFiles: 1
+    ordinaryGitBinaryFiles: 26
+    blockoutMutationTestRuns: 19
+    blockoutMutationTestAssertions: 139
+    lfsMutationTestRuns: 16
+    lfsMutationTestAssertions: 162
+    licenseMutationTestRuns: 26
+    licenseMutationTestAssertions: 199
+    mutationFailuresErrorsSkips: 0
+    independentReviewFinalBlockers: 0
+    finalGitVisibleInventoryFiles: 300
+    finalForbiddenInfrastructureContentFiles: 108
+    finalForbiddenInfrastructurePackageManifests: 2
+    finalForbiddenInfrastructureViolations: 0
+    activeDocsValidated: 12
+    evidenceManifestsAfterC1b003: 45
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/C1B-003/EV-C1B-003-20260830-r01.txt"
+    - "BlenderSource/Characters/C1B-003/GenerationManifest.yaml"
+    - "BlenderSource/Characters/C1B-003/MeasurementReport.yaml"
+    - "BlenderSource/Characters/C1B-003/CHR_MasterCharacter_C1B_Blockout_r01.blend"
+    - "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Neutral_Front.png"
+    - "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Front.png"
+    - "config/character/CharacterProportionProfile.yaml"
+    - "config/repository/BinaryAssetPolicy.md"
+    - "config/repository/BinaryAssetInventory.yaml"
+    - "config/licenses/LicensePolicy.yaml"
+    - "config/licenses/ThirdPartyInventory.yaml"
+    - "tools/verify_character_blockout.rb"
+    - "tools/tests/verify_character_blockout_test.rb"
+    - "tools/verify_lfs_repository.rb"
+    - "tools/verify_license_inventory.rb"
+    - "docs/03_IMPLEMENTATION_PLAN.md"
+    - "artifacts/reports/FOUNDATION_DECISION_RATIONALE.md"
+  failures: []
+  limitations:
+    - "C1B-003 PASS proves a same-source START Blender Blockout, bounded reference-render reproduction and first LFS object round-trip; it is not UG-C1B approval or production lock."
+    - "The source remains H-normalized; gameplay height meters, physics bodies, collider, reach, rig and runtime anchors remain downstream decisions."
+    - "Neutral action poses and four-player lineup belong to C1B-004; FBX and Unity parity belong to C1B-005; numeric and visual approval belongs to C1B-006."
+    - "The source is intentionally faceted and separable. Final topology, bevel, normals, UV, weights, LOD, materials and deformation quality are not claimed."
+    - "Decoded pixel reproduction uses a maximum one-level channel difference and changed-channel ratio 0.000001 to tolerate bounded EEVEE invocation variance; all eight outputs passed."
+    - "Fresh clone credentials and temporary absolute paths were not retained; GitHub credentials remain outside the repository."
+  userDecision: "first-party sourceOwner는 kjh4845로 사용하고, 애매하거나 승인이 필요한 사항이 생기면 즉시 중단함"
+  recordedAtUtc: "2026-08-29T15:19:33Z"

@@ -1,0 +1,99 @@
+EV-C1B-003-20260830-r01
+TASK=C1B-003 same-source Blender Blockout and LFS round-trip
+CORE_REVISION=af11dd26d7ee1486a2d53d2332272c1de8f0a6b1
+SOURCE_OWNER=kjh4845
+PLAYER_BUILD=0 FBX_EXPORT=0 UNITY_IMPORT=0 POSE_LINEUP=0 DOCKER=0 DEPLOY=0
+
+CANONICAL_SOURCE
+- PATH=BlenderSource/Characters/C1B-003/CHR_MasterCharacter_C1B_Blockout_r01.blend
+- BYTES=116437
+- SHA256=b0f4e10e208e60dd07bd91947ef46f09135f602b2ce695becff355cc662837cc
+- LFS_OID_SHA256=b0f4e10e208e60dd07bd91947ef46f09135f602b2ce695becff355cc662837cc
+- PROFILE=CharacterProportionProfile-C1B-002-r01
+- MEASUREMENT_SET_SHA256=76c98acfe8cfbf01b51936b29c2f6ba2e78c26222dfd53c033fe84233e562722
+- BLENDER=5.2.0 LTS fbe6228777e7
+- STATE=START BLOCKOUT_CANDIDATE
+- USER_VISUAL_APPROVAL=false LOCKED_VALUES=0
+
+BLENDER_STRUCTURE
+- OBJECTS=33 MODEL_MESHES=6 QA_MESHES=1 COLLECTIONS=3
+- VERTICES=1158 POLYGONS=1152
+- LANDMARKS=17 LANDMARK_MESH_CROSS_SECTIONS=17 ENVELOPE_SECTION_INSTANCES=16
+- BOUNDS_H=1.0 WIDTH_H=0.579999983 DEPTH_H=0.265000001
+- MAXIMUM_MEASUREMENT_DEVIATION_H=0.000001167 START_TOLERANCE_H=0.005
+- AUTHORED_BOUNDS_CENTER_BLENDER=[0.0,-0.0075,0.5]
+- CAMERA_COUNT=4 ORTHOGRAPHIC=4 ORTHO_SCALE=1.2 PADDING=0.10
+- MAXIMUM_CAMERA_OPTICAL_AXIS_CENTER_DEVIATION_H=0.000001167
+- ARMATURE=0 COLLIDER=0 ACTION=0 EXTRA_SCENE=0 EMBEDDED_TEXT=0
+- EXTERNAL_IMAGE=0 PACKED_IMAGE=0 LIBRARY=0 FONT=0 SOUND=0 MOVIECLIP=0
+
+REFERENCE_RENDERS
+- NEUTRAL=4 SILHOUETTE=4 TOTAL=8
+- RESOLUTION=2048x2048 PER_VIEW_MANUAL_REFRAMING=0
+- ENCODED_FILE_HASH_MATCHES=8
+- SOURCE_RERENDER_TOLERANCE_MATCHES=8
+- REPRODUCTION_MAXIMUM_CHANNEL_DIFFERENCE=1
+- REPRODUCTION_MAXIMUM_CHANGED_CHANNEL_RATIO=0.000000238419
+- Exact decoded hashes may differ in a tiny number of 1-level channels across EEVEE invocations; the bounded decoded-pixel contract passed all eight outputs.
+
+FIRST_PARTY_AND_BINARY
+- FIRST_PARTY_ASSETS=9 REVIEW_ONLY_ASSETS=18 OVERLAP=0
+- PRODUCTION_SOURCE=1 PRODUCTION_EVIDENCE=8 PLAYER_SHIPPING_ALLOWED=0
+- SOURCE_STATUS=PROJECT_AUTHORED RIGHTS_STATUS=FIRST_PARTY NOTICE=NO_THIRD_PARTY_NOTICE
+- BINARY_FILES=27 TOTAL_BYTES=41010301 UNIQUE_HASHES=22 OVER_10_MIB=0
+- LFS_REQUIRED=1 LFS_TRACKED=1 ORDINARY_GIT_BINARY=26
+
+LFS_LOCAL_AND_PUSH
+- ATTR_FILTER=lfs INDEX_POINTER=true WORKING_FILE_MATERIALIZED=true
+- INDEX_OID=b0f4e10e208e60dd07bd91947ef46f09135f602b2ce695becff355cc662837cc INDEX_SIZE=116437
+- NORMAL_PUSH uploaded LFS objects 1/1 and advanced origin/main to af11dd2
+- MIGRATE=0 HISTORY_REWRITE=0 FORCE_PUSH=0
+
+FRESH_FETCH
+- A fresh private clone was created with smudge disabled and the checked-out source was first confirmed as the 131-byte pointer.
+- The first pull was not accepted as success because the fresh no-checkout clone lacked repository-local LFS filters and a checked-out .gitattributes file.
+- After git lfs install --local, authenticated gh credential helper setup, .gitattributes checkout, git lfs fetch origin af11dd2 and git lfs checkout, the working file materialized.
+- FRESH_SHA256=b0f4e10e208e60dd07bd91947ef46f09135f602b2ce695becff355cc662837cc
+- FRESH_BYTES=116437 HASH_MATCH=true SIZE_MATCH=true
+- The temporary clone was moved out of /tmp after verification; credential text and absolute temp paths are not retained in Evidence.
+
+COMMAND=ruby tools/verify_character_blockout.rb --verify-blender --check-c1b003-scope
+SOURCE_HASH_MATCH=true
+REFERENCE_RENDER_HASH_MATCHES=8
+BLENDER_VERIFIED=true
+LANDMARKS_VERIFIED=17
+LANDMARK_MESH_CROSS_SECTIONS_VERIFIED=17
+SECTION_INSTANCES_VERIFIED=16
+RENDER_REPRODUCTION_PIXEL_MATCHES=8
+MAXIMUM_MEASUREMENT_DEVIATION_H=0.000001167
+TOTAL_VIOLATIONS=0
+FINAL_RESULT=PASS
+
+COMMAND=ruby tools/tests/verify_character_blockout_test.rb
+TEST_RUNS=19 TEST_ASSERTIONS=139 TEST_FAILURES=0 TEST_ERRORS=0 TEST_SKIPS=0
+FINAL_RESULT=PASS
+
+COMMAND=ruby tools/tests/verify_lfs_repository_test.rb
+TEST_RUNS=16 TEST_ASSERTIONS=162 TEST_FAILURES=0 TEST_ERRORS=0 TEST_SKIPS=0
+FINAL_RESULT=PASS
+
+COMMAND=ruby tools/tests/verify_license_inventory_test.rb
+TEST_RUNS=26 TEST_ASSERTIONS=199 TEST_FAILURES=0 TEST_ERRORS=0 TEST_SKIPS=0
+FINAL_RESULT=PASS
+
+COMMAND=ruby tools/verify_forbidden_infrastructure.rb
+GIT_VISIBLE_INVENTORY_FILES=300 CONTENT_FILES_SCANNED=108 PACKAGE_MANIFESTS_SCANNED=2
+TOTAL_VIOLATIONS=0 FINAL_RESULT=PASS
+
+COMMAND=find artifacts/evidence -name '*.yaml' ... | ruby tools/verify_evidence_manifest.rb
+EVIDENCE_MANIFEST_VALIDATION=PASS files=45
+
+COMMAND=python3 artifacts/evidence/docs/verify_doc_baseline.py
+ACTIVE_DOCS=12/12 PLAN_TASKS=173 PLAN_EFFORT_DAYS=251.0 FINAL_RESULT=PASS
+
+BOUNDARY
+- This is a faceted, separable START Blockout, not a production topology/material/rig lock.
+- C1B-004 owns Neutral action poses and four-player lineup; C1B-005 owns FBX and Unity import parity; C1B-006 owns UG-C1B approval.
+- Gameplay height meters, collider, reach, mass, joints, ragdoll and runtime anchors remain deferred.
+- The v0.13 direction reference is neither embedded nor packed into the first-party source.
+- No Unity Player Build, Build And Run, Steam deployment, Docker or external deployment was executed.

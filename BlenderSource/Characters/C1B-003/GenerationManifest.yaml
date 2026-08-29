@@ -5,7 +5,7 @@ GenerationManifest:
   completionScope: "C1B-003_SOURCE_AND_REFERENCE_RENDER_COMPLETE"
   ownerTask: "C1B-003"
   sourceOwner: "kjh4845"
-  recordedAtUtc: "2026-08-29T14:58:43Z"
+  recordedAtUtc: "2026-08-29T15:19:33Z"
 
   identity:
     assetId: "CHR_MasterCharacter_C1B_Blockout"
@@ -49,9 +49,9 @@ GenerationManifest:
       sourceAxis: "+Z Up"
       characterForwardAxis: "-Y"
       rootScale: [1.0, 1.0, 1.0]
-      lfsState: "PENDING_CORE_PUSH"
+      lfsState: "VERIFIED_REMOTE_ROUND_TRIP"
       indexPointerVerified: true
-      remoteObjectRoundTripVerified: false
+      remoteObjectRoundTripVerified: true
     fbx-export:
       status: "DEFERRED_C1B-005"
       path: null
