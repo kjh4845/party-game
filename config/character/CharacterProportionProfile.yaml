@@ -1,0 +1,163 @@
+CharacterProportionProfile:
+  schemaVersion: 1
+  profileId: "CharacterProportionProfile-C1B-002-r01"
+  version: "0.1.0-start"
+  revision: "r01"
+  state: "START"
+  candidateStatus: "CANDIDATE"
+  ownerTask: "C1B-002"
+  measurementSetSha256: "76c98acfe8cfbf01b51936b29c2f6ba2e78c26222dfd53c033fe84233e562722"
+
+  approval:
+    approvalTask: "C1B-006"
+    approvalGate: "UG-C1B"
+    userApprovalRecorded: false
+    visualApprovalClaimed: false
+    lockedValueCount: 0
+    meaning: "A reversible blockout candidate; not an approved C1b proportion, gameplay scale, collider or production mesh"
+
+  directionSource:
+    profileId: "C1a-Hybrid-Core-v0.13"
+    path: "artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.13_BELLY_CORRECTED_REVIEW.png"
+    sha256: "c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616"
+    role: "DIRECTION_ONLY"
+    pixelMeasurementUsed: false
+    referenceReplicaAllowed: false
+    constraints:
+      - "Use the approved rounded head, short wide torso, low center and short thick continuous limbs as qualitative direction only."
+      - "Do not reverse-engineer pixel distances into geometry, bones, colliders, anchors, reach or gameplay scale."
+      - "Do not reproduce a reference work's proprietary mesh, silhouette, material, animation or dimensions."
+
+  profileReferences:
+    lowPolyStyleProfile:
+      profileId: "LowPolyStyleProfile-ART-001-r01"
+      revision: "r01"
+      path: "config/art/LowPolyStyleProfile.yaml"
+    modelInteropProfile:
+      profileId: "ModelInteropProfile-ART-001-r01"
+      revision: "r01"
+      path: "config/art/ModelInteropProfile.yaml"
+    alphaVisualQaProfile:
+      profileId: "AlphaVisualQAProfile-ART-001-r01"
+      revision: "r01"
+      path: "config/art/AlphaVisualQAProfile.yaml"
+
+  normalization:
+    unit: "H"
+    totalHeightH: 1.0
+    dimensionless: true
+    normalizedSourceUnitsPerH: 1.0
+    gameplayCharacterHeightMeters: null
+    gameplayHeightOwnerTask: "C1B-006"
+    origin: "Neutral pose midpoint between both lower-leg terminal ground contacts"
+    coordinateFrame:
+      rightAxis: "+X"
+      upAxis: "+Y"
+      forwardAxis: "+Z"
+      anatomicalLeftXSign: "negative"
+    sourceAuthoringAxes:
+      blenderUpAxis: "+Z"
+      blenderCharacterForwardAxis: "-Y"
+    targetAxes:
+      unityUpAxis: "+Y"
+      unityCharacterForwardAxis: "+Z"
+    transformRules:
+      runtimeScale: [1.0, 1.0, 1.0]
+      negativeScaleAllowed: false
+      perFileScaleCorrectionAllowed: false
+
+  measurementSemantics:
+    positionH: "Dimensionless neutral-pose landmark center in the normalized Unity coordinate frame."
+    centerlineHeightPlane: "A semantic centerline height, not a skeleton joint or collider surface."
+    limbCenter: "The visible limb volume center at the named neutral-pose landmark, not a locked bone position."
+    frontViewFullWidthH: "The full local silhouette width at the exact landmark height; paired limb values apply to one limb."
+    sideViewTotalDepthH: "The full local front-to-rear silhouette depth at the exact landmark height."
+    crossSectionScope: "CORE, EACH_LIMB or POINT_TANGENT identifies how the local width/depth is applied."
+    silhouetteEnvelope: "A full front-view width and front/rear side-view extent at the named height; each-limb widths apply to one limb."
+    surfaceTangent: "A silhouette contact plane used only to reproduce the candidate outer shape."
+    approvedPixelSource: false
+
+  neutralBoundsH:
+    height: 1.0
+    fullWidthIncludingArms: 0.58
+    totalDepth: 0.265
+    groundMinimumY: 0.0
+    crownMaximumY: 1.0
+
+  landmarks:
+    - {id: "Crown", semantic: "SURFACE_TANGENT", crossSectionScope: "POINT_TANGENT", positionH: {x: 0.0, y: 1.0, z: 0.0}, frontViewFullWidthH: 0.0, sideViewTotalDepthH: 0.0}
+    - {id: "Chin", semantic: "CENTERLINE_HEIGHT_PLANE", crossSectionScope: "CORE", positionH: {x: 0.0, y: 0.80, z: 0.0}, frontViewFullWidthH: 0.190, sideViewTotalDepthH: 0.170}
+    - {id: "Shoulder_L", semantic: "LIMB_CENTER", crossSectionScope: "EACH_LIMB", positionH: {x: -0.205, y: 0.69, z: 0.0}, frontViewFullWidthH: 0.105, sideViewTotalDepthH: 0.110}
+    - {id: "Shoulder_R", semantic: "LIMB_CENTER", crossSectionScope: "EACH_LIMB", positionH: {x: 0.205, y: 0.69, z: 0.0}, frontViewFullWidthH: 0.105, sideViewTotalDepthH: 0.110}
+    - {id: "Elbow_L", semantic: "LIMB_CENTER", crossSectionScope: "EACH_LIMB", positionH: {x: -0.235, y: 0.52, z: 0.0}, frontViewFullWidthH: 0.100, sideViewTotalDepthH: 0.105}
+    - {id: "Elbow_R", semantic: "LIMB_CENTER", crossSectionScope: "EACH_LIMB", positionH: {x: 0.235, y: 0.52, z: 0.0}, frontViewFullWidthH: 0.100, sideViewTotalDepthH: 0.105}
+    - {id: "ForearmTerminal_L", semantic: "LIMB_CENTER", crossSectionScope: "EACH_LIMB", positionH: {x: -0.235, y: 0.405, z: 0.005}, frontViewFullWidthH: 0.110, sideViewTotalDepthH: 0.115}
+    - {id: "ForearmTerminal_R", semantic: "LIMB_CENTER", crossSectionScope: "EACH_LIMB", positionH: {x: 0.235, y: 0.405, z: 0.005}, frontViewFullWidthH: 0.110, sideViewTotalDepthH: 0.115}
+    - {id: "Chest", semantic: "CENTERLINE_HEIGHT_PLANE", crossSectionScope: "CORE", positionH: {x: 0.0, y: 0.585, z: 0.0}, frontViewFullWidthH: 0.385, sideViewTotalDepthH: 0.260}
+    - {id: "Pelvis", semantic: "CENTERLINE_HEIGHT_PLANE", crossSectionScope: "CORE", positionH: {x: 0.0, y: 0.395, z: 0.0}, frontViewFullWidthH: 0.350, sideViewTotalDepthH: 0.265}
+    - {id: "Crotch", semantic: "CENTERLINE_HEIGHT_PLANE", crossSectionScope: "CORE", positionH: {x: 0.0, y: 0.31, z: 0.0}, frontViewFullWidthH: 0.250, sideViewTotalDepthH: 0.235}
+    - {id: "Hip_L", semantic: "LIMB_CENTER", crossSectionScope: "EACH_LIMB", positionH: {x: -0.095, y: 0.315, z: 0.0}, frontViewFullWidthH: 0.150, sideViewTotalDepthH: 0.170}
+    - {id: "Hip_R", semantic: "LIMB_CENTER", crossSectionScope: "EACH_LIMB", positionH: {x: 0.095, y: 0.315, z: 0.0}, frontViewFullWidthH: 0.150, sideViewTotalDepthH: 0.170}
+    - {id: "Knee_L", semantic: "LIMB_CENTER", crossSectionScope: "EACH_LIMB", positionH: {x: -0.105, y: 0.17, z: 0.0}, frontViewFullWidthH: 0.130, sideViewTotalDepthH: 0.140}
+    - {id: "Knee_R", semantic: "LIMB_CENTER", crossSectionScope: "EACH_LIMB", positionH: {x: 0.105, y: 0.17, z: 0.0}, frontViewFullWidthH: 0.130, sideViewTotalDepthH: 0.140}
+    - {id: "LowerLegTerminal_L", semantic: "LIMB_CENTER", crossSectionScope: "EACH_LIMB", positionH: {x: -0.11, y: 0.065, z: 0.012}, frontViewFullWidthH: 0.145, sideViewTotalDepthH: 0.165}
+    - {id: "LowerLegTerminal_R", semantic: "LIMB_CENTER", crossSectionScope: "EACH_LIMB", positionH: {x: 0.11, y: 0.065, z: 0.012}, frontViewFullWidthH: 0.145, sideViewTotalDepthH: 0.165}
+
+  silhouetteEnvelopes:
+    - {id: "HeadMax", scope: "CORE", heightH: 0.90, fullWidthH: 0.255, frontExtentH: 0.115, rearExtentH: 0.110, totalDepthH: 0.225}
+    - {id: "Chin", scope: "CORE", heightH: 0.80, fullWidthH: 0.190, frontExtentH: 0.085, rearExtentH: 0.085, totalDepthH: 0.170}
+    - {id: "ShoulderBody", scope: "CORE", heightH: 0.69, fullWidthH: 0.400, frontExtentH: 0.130, rearExtentH: 0.120, totalDepthH: 0.250}
+    - {id: "ChestBody", scope: "CORE", heightH: 0.585, fullWidthH: 0.385, frontExtentH: 0.140, rearExtentH: 0.120, totalDepthH: 0.260}
+    - {id: "PelvisBody", scope: "CORE", heightH: 0.395, fullWidthH: 0.350, frontExtentH: 0.140, rearExtentH: 0.125, totalDepthH: 0.265}
+    - {id: "CrotchBridge", scope: "CORE", heightH: 0.31, fullWidthH: 0.250, frontExtentH: 0.120, rearExtentH: 0.115, totalDepthH: 0.235}
+    - {id: "UpperArm", scope: "EACH_LIMB", heightH: 0.605, fullWidthH: 0.105, frontExtentH: 0.055, rearExtentH: 0.055, totalDepthH: 0.110}
+    - {id: "ForearmTerminal", scope: "EACH_LIMB", heightH: 0.405, fullWidthH: 0.110, frontExtentH: 0.060, rearExtentH: 0.055, totalDepthH: 0.115}
+    - {id: "UpperThigh", scope: "EACH_LIMB", heightH: 0.245, fullWidthH: 0.150, frontExtentH: 0.090, rearExtentH: 0.080, totalDepthH: 0.170}
+    - {id: "Knee", scope: "EACH_LIMB", heightH: 0.170, fullWidthH: 0.130, frontExtentH: 0.075, rearExtentH: 0.065, totalDepthH: 0.140}
+    - {id: "LowerLegTerminal", scope: "EACH_LIMB", heightH: 0.065, fullWidthH: 0.145, frontExtentH: 0.090, rearExtentH: 0.075, totalDepthH: 0.165}
+
+  directionInvariants:
+    headHeightH: 0.20
+    forearmTerminalBottomHeightH: 0.355
+    crotchHeightH: 0.31
+    forearmTerminalBottomAboveCrotchH: 0.045
+    forearmTerminalBottomAboveCrotchAllowedRangeH: [0.04, 0.05]
+    lowerLegTerminalBottomHeightH: 0.0
+    torsoDepthVariationMaximumH: 0.02
+    bilateralNeutralSymmetryRequired: true
+    separateVisibleHandMesh: false
+    visibleFingerOrFistShape: false
+    separateVisibleFootOrShoeMesh: false
+    visibleToeShape: false
+    roundedForearmTerminalRequired: true
+    roundedLowerLegTerminalRequired: true
+    bellyOnlySilhouetteAllowed: false
+
+  startingVerificationTargets:
+    state: "START"
+    profileToBlockoutSilhouetteLandmarkBoundsMaximumH: 0.005
+    groundPivotMaximumH: 0.005
+    orthographicViews: ["Front", "Side", "Back", "ThreeQuarter"]
+    pixelPerfectComparisonRequired: false
+    humanApprovalRequired: true
+
+  deferredDecisions:
+    gameplayCharacterHeightMeters: {value: null, ownerTasks: ["C1B-006"], approvalGate: "UG-C1B"}
+    colliderDimensions: {value: null, ownerTasks: ["CHR-002"], approvalGate: "UG-C2"}
+    gameplayReachAndAnchors: {value: null, ownerTasks: ["CHR-001", "CHR-006"], approvalGate: "UG-C2"}
+    massJointAndRagdollTuning: {value: null, ownerTasks: ["CHR-002", "CHR-008"], approvalGate: "UG-C2"}
+    prototypeRigBonePlacement: {value: null, ownerTasks: ["CHR-001"], approvalGate: "UG-C2"}
+    productionHelperBoneExceptions: {value: null, ownerTasks: ["C4-002", "C4-004"], approvalGate: "UG-C4-LOCK"}
+    topologyUvWeightsAndLods: {value: null, ownerTasks: ["C4-001", "C4-002", "C4-003", "C4-004"], approvalGate: "UG-C4-LOCK"}
+    bevelNormalsMaterialsPaletteShaderLighting: {value: null, ownerTasks: ["C4-001", "C4-002", "C4-003", "C4-004"], approvalGate: "UG-C4-LOCK"}
+    gameplayCameraValues: {value: null, ownerTasks: ["CAM-005"], approvalGate: "UG-CAM"}
+    actionAnimationPolish: {value: null, ownerTasks: ["ANM-001", "ANM-002", "ANM-003", "ANM-004"], approvalGate: "UG-ALPHA"}
+
+  execution:
+    generatedBlendCount: 0
+    generatedFbxCount: 0
+    generatedUnityAssetCount: 0
+    generatedCaptureCount: 0
+    colliderProfilesCreated: 0
+    gameplayReachProfilesCreated: 0
+    playerBuildsExecuted: 0
