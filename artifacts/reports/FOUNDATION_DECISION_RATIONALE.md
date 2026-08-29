@@ -5,15 +5,15 @@
 | 항목 | 내용 |
 |---|---|
 | 문서 목적 | 기초 구현에서 무엇을 선택했고 왜 그렇게 선택했는지, 배제한 대안과 검증 근거를 한 문서에서 설명 |
-| 기준 Git revision | `d5f19a9` (`chore: establish license inventory guard`) |
-| 포함 범위 | `FDN-001..011`, `ART-001`, `LIC-001` |
+| 기준 Git revision | `4b47284` (`chore: establish Windows build profiles`) |
+| 포함 범위 | `FDN-001..011`, `ART-001`, `LIC-001`, `BLD-001` |
 | 작성 기준 | 실제 repository, versioned config, test 결과와 Evidence를 우선 사용. 직접 기록되지 않은 선택 연결은 `추론/설계 해석`으로 표시 |
 | 문서 성격 | 설명용 결정 근거서. PRD/SRS/분야별 사양을 대체하거나 새 제품 계약을 만들지 않음 |
 
-> **범위 주의:** 핵심 기술 Foundation인 `FDN-001..011`, 첫 Art Profile `ART-001`과 source 기준
-> 라이선스/NOTICE inventory `LIC-001`은 완료됐다. 그러나 구현계획의 Foundation 표 전체는 아직 닫히지
-> 않았다. `BLD-001` Windows x64 수동 Build Profile이 남아 있고, 실제 Player 포함물 기준 최종 NOTICE
-> 감사는 사용자가 Build한 뒤에만 가능하다. 따라서 이 문서는 “G0 전체 완료”나 “게임을 빌드할 수 있음”을
+> **범위 주의:** 핵심 기술 Foundation `FDN-001..011`, 첫 Art Profile `ART-001`, source 기준
+> 라이선스/NOTICE inventory `LIC-001`과 Windows x64 Profile 준비 `BLD-001`은 완료됐다. 하지만 C1b와
+> Gameplay는 구현되지 않았고 Player Build도 실행하지 않았다. 실제 Player 포함물 기준 최종 NOTICE 감사는
+> 사용자가 Build한 뒤에만 가능하다. 따라서 이 문서는 “G0 전체 완료”, “게임 완성” 또는 “Steam 기능 구현”을
 > 선언하지 않는다.
 
 규범적 우선순위는 계속 [문서 인덱스](../../docs/00_DOCUMENT_INDEX.md)의
@@ -42,7 +42,7 @@ Foundation의 핵심 방향은 다음 한 문장으로 정리된다.
 | Blender와 Unity 결과의 품질 일치 | Toolchain exact lock + ModelInterop/VisualQA START profile | 에셋별 수동 보정과 품질 편차 방지 |
 | Docker·Dedicated·자체 Backend 영구 제외 | 경로·코드·Package 기반 금지 인프라 Guard | 시간이 지나며 금지 구조가 조용히 재유입되는 것 방지 |
 | 외부 Package·Asset의 출처/권리 누락 금지 | 58 Package와 18 review image의 fail-closed license inventory | 미등록 에셋의 빌드 반입과 NOTICE 누락 방지 |
-| 사용자가 직접 Build | Foundation 자동화에서 Player Build를 계속 0으로 유지 | 코드 검증과 배포 권한을 분리 |
+| 사용자가 직접 Build | Windows x64 Development·Steam Reserved Profile과 수동 절차만 준비, Player Build 0 유지 | 코드 검증과 배포 권한을 분리 |
 
 ---
 
@@ -827,6 +827,74 @@ compiled shader와 platform module 구성은 실제 Build에 따라 달라진다
 
 ---
 
+## 4.14 `BLD-001` — 자동 Build 없이 분리한 Windows Development·Steam Reserved Profile
+
+### 선택
+
+- 사용자가 설치한 Unity `6000.3.9f1`의 `Windows Build Support (Mono)`로 Windows x64 **Client Player**
+  Profile만 준비했다. Windows Server/Dedicated module과 Server subtarget은 사용하지 않는다.
+- Unity 공식 Build Profiles UI가 두 Asset을 직접 생성했다. 내부 target/subtarget 숫자를 손으로 작성해
+  Profile인 것처럼 꾸미지 않았다.
+- `Windows x64 Development`는 Development Build를 켜고
+  `PROJECTHOTFIX_BUILD_DEVELOPMENT` 하나만 가진다.
+- `Windows x64 Steam Reserved`는 Development Build를 끄고
+  `PROJECTHOTFIX_BUILD_STEAM_RESERVED` 하나만 가진다. Steam SDK, App ID와 기능은 `0`이며 `STM-001` 전에는
+  Build하지 않는 예약 슬롯이다.
+- 두 Profile은 임시 사용자 승인값 `KJH4845 / Project Hotfix / com.kjh4845.projecthotfix / 0.1.0`과
+  Standalone Mono를 공유한다. Profile별 PlayerSettings, Quality와 Graphics override는 `0`이다.
+- Scene은 두 Profile에 중복 복사하지 않고 global EditorBuildSettings의 `SampleScene` 한 개를 사용한다.
+  이 목록은 `START_PLACEHOLDER`, release-ready `false`다.
+- 자동 Player Build, Build And Run, Steam 배포와 Build 산출물 commit은 금지하고 사용자가 수행할 수동 절차만
+  기록했다.
+
+[Windows Build Profile Policy](../../config/build_profiles/WindowsBuildProfilePolicy.yaml) ·
+[수동 Build 안내](../../config/build_profiles/WINDOWS_BUILD_MANUAL.md)
+
+### 이유
+
+Alpha direct 테스트와 후속 Steam 제품 경로는 debug flag와 compile define이 다르다. Profile을 하나만 두고
+매번 checkbox와 define을 손으로 바꾸면 어떤 조합으로 만든 Player인지 재현하기 어렵다. 반대로 아직 Steam SDK도
+없는 Profile을 `Steam` 완성본으로 부르면 구현 상태를 과장한다. 그래서 Development와 **Steam Reserved**를
+분리하고, 후자는 `STM-001`이 실제 App ID와 wrapper를 소유할 때까지 잠갔다.
+
+현재 `SampleScene`은 제품 Main/Lobby/Match가 아니다. 두 Profile에 같은 임시 목록을 복제하면 두 사본의 drift만
+늘어나므로 global list 한 곳을 START source로 사용한다. 실제 Scene이 생길 때 목록과 상태를 함께 revision한다.
+
+Company/Product 값은 Windows 실행 파일 이름뿐 아니라 향후 Unity local persistent data path에도 영향을 줄 수 있다.
+그래서 Git 사용자 정보를 임의 제품명으로 확정하지 않고 사용자에게 임시값을 승인받았으며, 변경 시 local-save
+migration 결정을 요구한다.
+
+### 배제한 대안
+
+- Windows module 없이 Build Profile YAML target/subtarget 숫자를 손으로 작성
+- Development/Steam을 하나의 Profile checkbox 수동 전환으로 운영
+- Steam SDK·App ID 없이 실제 Steam 기능이 있는 것처럼 define/Profile 이름 사용
+- SampleScene을 release-ready Scene list로 선언하거나 같은 임시 목록을 두 Profile에 중복 저장
+- Server, Dedicated, Headless, Cloud Build, Docker/Container build variant 추가
+- 검증 과정에서 Player Build 또는 Build And Run 실행
+
+### 실제 근거
+
+- Unity-generated Build Profile `2`, unique Asset GUID `2`
+- Unity API 기준 target `StandaloneWindows64`, subtarget `Player`, architecture `x64`, Standalone backend `Mono2x`
+- Development flag `true/false`, custom define 상호배타 `2`, global define 누출 `0`
+- global enabled Scene `1`, `SampleScene`, Profile scene override `0`, release-ready claim `0`
+- Profile별 Quality/Graphics/PlayerSettings override `0`
+- Windows Mono x64 development/nondevelopment variation `2`, Server variation `0`
+- Steam SDK, App ID file, Auth/Lobby/Invite/P2P 기능 `0`
+- Build Profile static mutation `17/17`, assertion `100`; Unity EditMode `52/52`, PlayMode `4/4`
+- Package manifest/lock 변경 `0`, Player Build/Build And Run/Deploy/Docker 실행 `0`
+
+### 아직 증명하지 않은 것
+
+- Windows `.exe`, `UnityPlayer.dll`, Data folder 생성과 실제 Windows 실행
+- 2·3·4인 direct P2P Match와 무기 전투
+- 실제 Main/Lobby/Match Scene list와 최종 Company/Product identity
+- Steam App ID, SDK, Auth, Friends Lobby, Invite, Code와 P2P/SDR
+- 실제 Player 포함 component와 최종 NOTICE bundle
+
+---
+
 ## 5. 왜 이 선택들이 함께 있어야 하는가
 
 ### 5.1 UTP 선택만으로 P2P 구조가 안전해지지는 않는다
@@ -856,23 +924,30 @@ model의 권리가 불명확하면 배포할 수 없다. 반대로 review image�
 버릴 필요는 없다. 그래서 Art Profile은 “무엇을 어떻게 재현할지”를, License Policy는 “어떤 source file을
 어디까지 사용할 수 있는지”를 각각 소유하고 SHA inventory로 연결했다.
 
+### 5.6 Build Profile이 있어도 Player가 검증된 것은 아니다
+
+Profile은 target, define, Scene source와 identity를 재현하지만 compile 성공, Windows 실행, P2P 연결 또는
+NOTICE 완전성을 대신하지 않는다. 그래서 BLD-001은 Build 실행 `0`을 유지하고, 사용자 Build 뒤의 artifact
+identity·실행 결과·NOTICE 감사는 별도 Evidence로 남긴다.
+
 ---
 
 ## 6. 검증 결과를 해석하는 방법
 
-현재 마지막 완료 Task인 LIC-001 Evidence snapshot의 핵심 수치는 다음과 같다. ART-001 Evidence의
-Forbidden-infra `266/88/2`와 Unity EditMode `42/42`·PlayMode `4/4`는 당시 역사값이다. LIC-001은 C# Runtime을
-바꾸지 않아 Unity suite를 다시 실행하지 않았고, 대신 현재 Git source/license 분모와 PackageCache를 검증했다.
+현재 마지막 완료 Task인 BLD-001 Evidence snapshot의 핵심 수치는 다음과 같다. LIC-001의 source inventory와
+ART-001의 시각 Profile 수치는 각 Task 당시 역사값으로 보존한다. BLD-001은 실제 Profile 의미를 포함한 전체
+EditMode와 기존 PlayMode를 임시 Project 복사본에서 재실행했으며, 원본 Editor의 미저장 Scene은 건드리지 않았다.
 
 | 항목 | 결과 | 이 결과가 증명하지 않는 것 |
 |---|---:|---|
-| Package source inventory | `58/58` | 실제 Windows Player에 58개가 모두 포함됨 |
-| PackageCache audit | package `58/58`, root license `22`, root notice `10`, locator `40` | 최종 release NOTICE가 완성됨 |
-| Review image | `18/18`, shipping 허용 `0` | 승인 디자인을 사람이 참고해 새 원본 Asset을 제작하는 것까지 금지됨 |
-| License mutation | `16 runs`, `142 assertions`, 실패 `0` | 법률 자문 또는 미래 외부 Asset 자동 승인 |
-| Forbidden infra | inventory `257`, content `89`, manifest `2`, violation `0` | Git history·ignored Build·외부 서비스 전체 부재 |
-| Evidence manifest | `40`개 구조 검증 | 각 미래 Feature의 수동 체감 승인 |
-| 마지막 Unity 회귀(ART-001) | EditMode `42/42`, PlayMode `4/4` | LIC-001에서 Unity C# suite를 재실행함 |
+| Windows Client Profile | `2/2`, unique GUID `2` | Windows Player가 compile·실행됨 |
+| Profile static mutation | `17 runs`, `100 assertions`, 실패 `0` | Unity enum 의미 또는 Windows runtime 동작 |
+| Unity regression | EditMode `52/52`, PlayMode `4/4` | 실제 Windows exe·P2P Match·무기 전투 성공 |
+| Scene source | global `SampleScene` `1`, START | 최종 Main/Lobby/Match Scene 목록 |
+| Steam Reserved | SDK/App ID/기능 `0` | Steam 통합 또는 배포 가능 |
+| License source inventory | package `58/58`, review image `18/18` | 최종 Windows Player NOTICE가 완성됨 |
+| Forbidden infra | inventory `270`, content `95`, manifest `2`, violation `0` | Git history·ignored Build·외부 서비스 전체 부재 |
+| Evidence manifest | `41`개 구조 검증 | 각 미래 Feature의 수동 체감 승인 |
 | Player Build | `0` | Build 불가능을 뜻하지 않음. 사용자 요청에 따라 실행하지 않았음 |
 | Blender export / Unity art import | `0 / 0` | Profile 정의 실패를 뜻하지 않음. 실제 source/import parity 검증이 후속임 |
 | Docker / Deploy | `0 / 0` | 실제 명령은 실행하지 않았지만 ignored 영역·외부 System 전체 부재까지 증명하지는 않음 |
@@ -884,20 +959,15 @@ smoke를 뜻하지 Character combat feel 승인을 뜻하지 않는다. UTP pack
 
 ## 7. 아직 남아 있는 Foundation·G0 작업
 
-### 7.1 `BLD-001`
+### 7.1 사용자 수동 Windows Player·NOTICE Evidence
 
-Windows x64 Development/Steam Build Profile, Company/Product ID, Scene list와 수동 Build 안내가 아직 없다.
-이 Task도 Profile만 준비하고 Player Build 자체는 실행하지 않는다.
+`BLD-001`의 Profile, 임시 identity와 수동 절차는 완료됐지만 Player는 만들지 않았다. 실제 Main/Lobby/Match
+Scene이 준비된 뒤 사용자가 `Windows x64 Development`로 Build하고, Git revision·Profile hash·exe hash·warning/
+error와 Windows 실행 결과를 기록해야 한다. 그 산출물의 managed/native assembly, engine module과 compiled
+shader를 `LIC-001` source inventory에 대조해야 release NOTICE를 확정할 수 있다.
 
-현재 ProjectSettings는 `companyName: DefaultCompany`, `productName: Project hotfix`이고
-Application Identifier도 `com.Unity-Technologies.com.unity.template.urp-blank` 계열 Template 값이다.
-`Project Hotfix` 자체도 가칭이므로 Company Name·Product Name·플랫폼 Application Identifier를 실제
-제품값으로 고정하기 전 사용자 승인이 필요하다. 현재 Build Scene도 Template `SampleScene` 한 개뿐이므로
-BLD-001의 Scene list는 `START/placeholder`일 뿐 release-ready 목록으로 표시하면 안 된다.
-
-`LIC-001`의 `58개` source inventory는 이 Task에서 Build Profile과 Scene list를 준비하더라도 final Player
-NOTICE로 바뀌지 않는다. 사용자가 실제 Windows Player를 만든 뒤 그 산출물의 managed/native assembly,
-engine module과 compiled shader를 대조해야 release NOTICE를 확정할 수 있다.
+`Windows x64 Steam Reserved`는 `STM-001` 전 Build 금지다. Steam App ID와 wrapper가 정해지기 전에는
+Steam 실행 Evidence나 배포 가능을 주장하지 않는다.
 
 ### 7.2 C1b
 
@@ -929,6 +999,9 @@ Foundation 선택은 영원히 수정 불가한 코드가 아니라, 변경 비�
 |---|---|
 | Unity/Blender patch 변경 | ToolchainProfile revision, Package/Project hash 재기록, compile·Physics·Interop 회귀 |
 | Package 추가·교체 | 소유 module 명시, manifest/lock 동시 변경, License inventory revision, Architecture·license test |
+| Company/Product/Application ID 변경 | local persistent-data path 영향 검토, Preset migration 결정, Build policy revision |
+| Build Profile target/backend/define 변경 | Windows client·Server 금지·Profile 상호배타·전체 Unity 회귀 재검증 |
+| 실제 Scene list 전환 | SampleScene START 제거, Main/Lobby/Match 순서와 모든 Profile 유효 Scene 재검증 |
 | Physics cadence 변경 | PhysicsProfile revision, Contact/Joint와 Gameplay·Network cadence 전체 재검증 |
 | UTP 이외 Alpha transport | Transport Adapter 계약과 trusted-direct 범위 재검토 |
 | Steam transport 도입 | Alpha UTP fallback과 분리, 실제 Steam 계정 2·3·4인 수동 검증 |
@@ -960,6 +1033,7 @@ Foundation 선택은 영원히 수정 불가한 코드가 아니라, 변경 비�
 | `FDN-009` | `9a7018d` | [Infrastructure Guard Evidence](../evidence/G0/FDN-009/EV-FDN-009-20260827-r01.yaml) |
 | `ART-001` | `2faee33` | [Art Profile Evidence](../evidence/G0/ART-001/EV-ART-001-20260827-r01.yaml) |
 | `LIC-001` | `d5f19a9` | [License Inventory Evidence](../evidence/G0/LIC-001/EV-LIC-001-20260828-r01.yaml) |
+| `BLD-001` | `4b47284` | [Windows Build Profile Evidence](../evidence/G0/BLD-001/EV-BLD-001-20260829-r01.yaml) |
 
 ---
 
@@ -974,7 +1048,6 @@ Foundation 선택은 영원히 수정 불가한 코드가 아니라, 변경 비�
 - Blender와 Unity 에셋 품질을 수동 보정으로 숨기지 않게 했다.
 - 아직 하지 않은 Build, Steam, Gameplay와 시각 승인을 완료했다고 과장하지 않게 했다.
 
-따라서 다음 작업은 Foundation을 다시 넓히는 것이 아니라 `BLD-001`에서 Build Profile을 준비하는 것이다.
-그 전에 Company/Product/Application ID 승인을 받고, `C1B-002` 후보 문서화 뒤
-`C1B-003` 전에는 Git LFS·Remote 정책 승인을 받아야 한다. 이 승인 경계 안에서 C1b와 실제 Gameplay를
-구현한다.
+Foundation 표의 기술·Art·license·Build Profile 준비는 닫혔다. 다음 구현 순서는 `C1B-002`의 exact 비율
+후보 문서화다. `C1B-003`에서 실제 `.blend/.fbx`를 만들기 전에는 Git LFS 설치와 Remote 정책을 사용자에게
+승인받아야 한다. Windows Player 수동 Build는 실제 Scene과 Alpha 기능이 준비된 뒤 별도 Evidence로 수행한다.
