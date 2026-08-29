@@ -1,7 +1,7 @@
 BinaryAssetInventory:
   schemaVersion: 1
-  revision: "r04"
-  recordedAtUtc: "2026-08-29T15:04:35Z"
+  revision: "r05"
+  recordedAtUtc: "2026-08-29T16:33:31Z"
   policyPath: "config/repository/BinaryAssetPolicy.md"
   excludedGeneratedRoots:
     - "Project hotfix/Library"
@@ -9,13 +9,13 @@ BinaryAssetInventory:
     - "Project hotfix/UserSettings"
     - "Project hotfix/.vscode"
   summary:
-    fileCount: 27
-    totalBytes: 41010301
-    uniqueContentHashes: 22
+    fileCount: 48
+    totalBytes: 74830756
+    uniqueContentHashes: 43
     filesOver10MiB: 0
-    currentLfsRequiredCandidates: 1
-    currentLfsTrackedFiles: 1
-    ordinaryGitBinaryFiles: 26
+    currentLfsRequiredCandidates: 2
+    currentLfsTrackedFiles: 2
+    ordinaryGitBinaryFiles: 46
   storage:
     remoteName: "origin"
     remoteUrl: "https://github.com/kjh4845/project-hotfix.git"
@@ -55,3 +55,24 @@ BinaryAssetInventory:
     - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Front.png", bytes: 1652801, sha256: "303b9c7e62ec7d25ec2864f444ec6acf80828571d246ea70ee60e943753dc741"}
     - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_Side.png", bytes: 1591481, sha256: "98c97df5be2c92c52838e33cc1cc26f5561aedc4cd3dec6a8abfb706163b250c"}
     - {path: "BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_ThreeQuarter.png", bytes: 1632539, sha256: "a41dadb69c81e11095523a7b1df137b87e0547564b0d0bf7e172e325beb2f699"}
+    - {path: "BlenderSource/Characters/C1B-004/CHR_MasterCharacter_C1B_PoseLineup_r02.blend", bytes: 151456, sha256: "83c2e100c74cf75a7faed11dd0ad65c3d07677684e02696e72455fdee4e17c2b"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_AirHandReach_Neutral_ThreeQuarter.png", bytes: 1697382, sha256: "b58d6dcf4f500cd34993e4643539dc8423bcaa67ad265efb0d18de0181f49f47"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_AirHandReach_Silhouette_ThreeQuarter.png", bytes: 1564154, sha256: "7955349bdf900d39223e37ea949d92a929537e546845faeeaf6b9ee63ec0c98f"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_L_Neutral_ThreeQuarter.png", bytes: 1693029, sha256: "d806428ac4daa1632021f1205e6d43c7a2cd17a9da0d2539aa9e0f02bd3272d3"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_L_Silhouette_ThreeQuarter.png", bytes: 1565268, sha256: "bfa09a73eeacf0da90bf4eb26773667d04ab5a866249ca62adba1aca3b9a7157"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_R_Neutral_ThreeQuarter.png", bytes: 1686802, sha256: "4fcc5eb61e3939d94df6373c0208f34a9e7c147d762d09de850a17f083775b2e"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_R_Silhouette_ThreeQuarter.png", bytes: 1570437, sha256: "93c2a4ccd7d8ea337cca77eeb290f001c5bad8a07d0c6584cece6a6c3aa5d705"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_BothHandsGrab_Neutral_ThreeQuarter.png", bytes: 1738213, sha256: "77c2cf1e62f11a330a6121cdaa43cc269f8bbc336ede7acfc6c92a5db3ddff57"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_BothHandsGrab_Silhouette_ThreeQuarter.png", bytes: 1580816, sha256: "85c79f3b46a6c753286ef0680784d694a71aed9ab6e47ff655788f16da69378b"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Dropkick_Neutral_ThreeQuarter.png", bytes: 1629293, sha256: "0153aa23c7e2fc66bd6fe5c489ec558c6f96c31e1bfeec5c7591ce41d28fb758"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Dropkick_Silhouette_ThreeQuarter.png", bytes: 1529159, sha256: "ecebab9131d173be1dc5190e0ead1a55867897eddd0f22cd2f81a8ef02a706fa"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Overlap_Neutral_Front.png", bytes: 2187074, sha256: "062ed09893b1a0bd426c1269d26666f21d47b208e75a9c5fa5b98784198f1719"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Overlap_Silhouette_Front.png", bytes: 1715180, sha256: "6da9f58a41051f04d6e54ecbd58167eb9153b64c9514c595f0189195fa389870"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Spread_Neutral_Front.png", bytes: 1858644, sha256: "2c547ae2a3125f9c57f4269e5d593f35958d30badf439ccbaac75718aba1d665"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Spread_Silhouette_Front.png", bytes: 1591956, sha256: "5b99abeb61ac4c14936c8dc423f14dd9dd88b6b405cd300930950eece761fc0a"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Neutral_Neutral_Front.png", bytes: 1803064, sha256: "66378e2e21d664147ba176fba4ed85554553b41b8c49c33b19dba9199bc84a4e"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Neutral_Silhouette_Front.png", bytes: 1591271, sha256: "26546ccaad1fab41ee4d80208dc6c97d64598a257ea6464027add773385cb174"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_L_Neutral_ThreeQuarter.png", bytes: 1766876, sha256: "55f368ada9864fd7c2098c1233ceb6762120de2f360d0165a11ce2f3a5478e90"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_L_Silhouette_ThreeQuarter.png", bytes: 1589688, sha256: "1c3dd2483457d35695f09a987b53c338d3f853111e24f7e67b21028c7ae7ab67"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_R_Neutral_ThreeQuarter.png", bytes: 1737093, sha256: "8a25fad27d27a2772c5592e2470cb427ed24d8b8fe9a4dd6c4eb03fe5191c03d"}
+    - {path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_R_Silhouette_ThreeQuarter.png", bytes: 1573600, sha256: "fe6239a426ed942b304b7fee7eb75d4fbd8f0b8435070992fd4e9ceef2d362c3"}

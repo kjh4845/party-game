@@ -36,7 +36,7 @@ class VerifyLicenseInventoryTest < Minitest::Test
     assert_equal 0, status, stderr + stdout
     assert_includes stdout, "PACKAGE_INVENTORY_COUNT=58"
     assert_includes stdout, "REVIEW_ASSET_COUNT=18"
-    assert_includes stdout, "FIRST_PARTY_ASSET_COUNT=9"
+    assert_includes stdout, "FIRST_PARTY_ASSET_COUNT=30"
     assert_includes stdout, "PACKAGE_CACHE_VERIFIED=false"
     assert_includes stdout, "TOTAL_VIOLATIONS=0"
     assert_includes stdout, "FINAL_RESULT=PASS"
@@ -215,7 +215,7 @@ class VerifyLicenseInventoryTest < Minitest::Test
       stdout, stderr, status = run_verifier(root)
 
       assert_equal 0, status, stderr + stdout
-      assert_includes stdout, "FIRST_PARTY_ASSET_COUNT=11"
+      assert_includes stdout, "FIRST_PARTY_ASSET_COUNT=32"
       assert_includes stdout, "TOTAL_VIOLATIONS=0"
       assert_includes stdout, "FINAL_RESULT=PASS"
     end
@@ -311,7 +311,7 @@ class VerifyLicenseInventoryTest < Minitest::Test
       stdout, stderr, status = run_verifier(root)
 
       assert_equal 0, status, stderr + stdout
-      assert_includes stdout, "FIRST_PARTY_ASSET_COUNT=10"
+      assert_includes stdout, "FIRST_PARTY_ASSET_COUNT=31"
       assert_includes stdout, "TOTAL_VIOLATIONS=0"
       assert_includes stdout, "FINAL_RESULT=PASS"
     end
@@ -373,6 +373,36 @@ class VerifyLicenseInventoryTest < Minitest::Test
 
       assert_equal 1, status
       assert_includes stdout, "rule=INVENTORY_FIRST_PARTY_BLEND_INTENDED_USE"
+    end
+  end
+
+  def test_c1b004_owner_render_class_and_file_anchor_are_exact
+    with_repository do |root|
+      path = nil
+      mutate_inventory(root) do |inventory|
+        item = inventory.fetch("firstPartyProductionAssets").fetch("items")
+          .find { |entry| entry["path"].to_s.include?("C1B-004/Renders/") }
+        path = item.fetch("path")
+        item["sourceOwner"] = "Different Owner"
+        item["sourceEvidence"] = item.fetch("sourceEvidence").map do |locator|
+          locator == "project-author:kjh4845" ? "project-author:Different Owner" : locator
+        end
+        item["assetType"] = "CHARACTER_REFERENCE_RENDER"
+        item["sourceEvidence"] = item.fetch("sourceEvidence").map do |locator|
+          next locator unless locator.include?("GenerationManifest.yaml#stages.reference-render")
+
+          "BlenderSource/Characters/C1B-004/GenerationManifest.yaml" \
+            "#stages.reference-render.outputs[path=#{path}]"
+        end
+      end
+
+      stdout, _stderr, status = run_verifier(root)
+
+      assert_equal 1, status
+      assert_includes stdout, "rule=INVENTORY_C1B004_ASSET_TYPE_COUNT"
+      assert_includes stdout, "rule=INVENTORY_C1B004_SOURCE_OWNER path=#{path}"
+      assert_includes stdout, "rule=INVENTORY_C1B004_MANIFEST_EVIDENCE path=#{path}"
+      assert_includes stdout, "rule=INVENTORY_C1B004_RENDER_CLASS path=#{path}"
     end
   end
 

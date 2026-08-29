@@ -1,0 +1,168 @@
+GenerationManifest:
+  schemaVersion: 1
+  manifestId: "GM-CHR-MasterCharacter-C1B-PoseLineup-r02"
+  state: "START"
+  candidateStatus: "CANDIDATE"
+  completionScope: "C1B-004_STATIC_POSE_AND_FOUR_PLAYER_LINEUP_COMPLETE"
+  ownerTask: "C1B-004"
+  sourceOwner: "kjh4845"
+  recordedAtUtc: "2026-08-29T16:25:47Z"
+  identity:
+    assetId: "CHR_MasterCharacter_C1B_PoseLineup"
+    assetVersion: "0.2.0-start"
+    toolchainProfileId: "project-hotfix-alpha-toolchain-r02"
+    projectVersionSha256: "ee06b66c6e48dc22fe4771812f37f3817b17f9459d44b61202d45e2a44ea3509"
+    packageManifestSha256: "88a1d01cf3abd14843cb3638a7692552e54f62a6d5de003c458a47a869edd741"
+    packageLockSha256: "8708528393a5fce3dd9110fc14815ad2dbc21cefd0efec6102b79d86a62404aa"
+    lowPolyStyleProfileId: "LowPolyStyleProfile-ART-001-r01"
+    lowPolyStyleProfileRevision: "r01"
+    modelInteropProfileId: "ModelInteropProfile-ART-001-r01"
+    modelInteropProfileRevision: "r01"
+    blenderExportPresetId: "PHX-FBX-MODEL-r01"
+    blenderExportPresetRevision: "r01"
+    blenderExportSettingsSha256: "5707996b33f8ac6773e309c60d05b236655bb4b17e4cc3261642f142a0062ce4"
+    unityImporterPresetId: "PHX-UNITY-MODEL-IMPORT-r01"
+    unityImporterPresetRevision: "r01"
+    unityImporterSettingsSha256: "4a00f7ea259ef98d17a932948ca2ebfde7bc7173e632ac5f5b4ddc81fba94cf9"
+    sourceSha256: "83c2e100c74cf75a7faed11dd0ad65c3d07677684e02696e72455fdee4e17c2b"
+    fbxSha256: null
+    referenceRenderSha256: "66378e2e21d664147ba176fba4ed85554553b41b8c49c33b19dba9199bc84a4e"
+    unityPrefabRevision: null
+  derivedFrom:
+    taskId: "C1B-003"
+    coreRevision: "af11dd26d7ee1486a2d53d2332272c1de8f0a6b1"
+    sourcePath: "BlenderSource/Characters/C1B-003/CHR_MasterCharacter_C1B_Blockout_r01.blend"
+    sourceBytes: 116437
+    sourceSha256: "b0f4e10e208e60dd07bd91947ef46f09135f602b2ce695becff355cc662837cc"
+    manifestPath: "BlenderSource/Characters/C1B-003/GenerationManifest.yaml"
+    manifestSha256: "0b195dbc1add30270cc9a259441643cbabaaacacfb2cbbd7449d384f277a4c53"
+    sameGeometryLineage: true
+  characterProportionProfile:
+    path: "config/character/CharacterProportionProfile.yaml"
+    profileId: "CharacterProportionProfile-C1B-002-r01"
+    version: "0.1.0-start"
+    revision: "r01"
+    measurementSetSha256: "76c98acfe8cfbf01b51936b29c2f6ba2e78c26222dfd53c033fe84233e562722"
+    state: "START"
+    userApprovalRecorded: false
+  poseLineupContract:
+    state: "START"
+    candidateStatus: "CANDIDATE"
+    requiredPoseIds: ["Neutral", "BothHandsGrab", "StrikeReady_L", "StrikeReady_R", "AirKick_L", "AirKick_R", "Dropkick", "AirHandReach"]
+    requiredLineupIds: ["Lineup_Overlap", "Lineup_Spread"]
+    participantCountPerLineup: 4
+    baseMeshesSha256: "7a87482d2737d3d13594ec05aa1e0b7282940c7c115747e3ea7eb181cf8fe62e"
+    proximalCapMeshesSha256: "d4c676ef6c400f4b489726717d57865296ab96ff57a8ad47892d4a663c584287"
+    posesSha256: "f0bff530ffaf01f7b2545957d9eb398bb1b47ba79496ad308c5b5001ed6e0293"
+    lineupsSha256: "b3f44a081438658c71bc8f1761d7dc4d33f77b6de1eb49999e57919a5d21afa3"
+    readabilitySha256: "e43d3378bca8f20eb4878c65081e2169058ea6a6519a024aaf10c02651e735d2"
+    camerasSha256: "876f4d40e648cad8d74e9c63c9aaaa48ebf955c1e6b17a93cd07a2c877c4a34f"
+    renderJobsSha256: "2091d43fdf16da14a048149033b6840f2337e09807d6143baff73a8567a9bbc7"
+    countsSha256: "f3b70f25d52629799a09db295b13e4531012c9e8ac2bdc51837017f26cafc899"
+    sceneSha256: "091140b5a3dc2a3047c7c84caf5ee99ab97e4877782064095bac96590c6b9205"
+    userApprovalRecorded: false
+    lockedValueCount: 0
+    productionTopologyApproved: false
+  stages:
+    blend-source:
+      status: "COMPLETE_LOCAL"
+      path: "BlenderSource/Characters/C1B-004/CHR_MasterCharacter_C1B_PoseLineup_r02.blend"
+      bytes: 151456
+      sha256: "83c2e100c74cf75a7faed11dd0ad65c3d07677684e02696e72455fdee4e17c2b"
+      blenderVersion: "5.2.0 LTS"
+      blenderBuildHash: "fbe6228777e7"
+      sourceAxis: "+Z Up"
+      characterForwardAxis: "-Y"
+      rootScale: [1.0, 1.0, 1.0]
+      lfsState: "PENDING_CORE_PUSH"
+      indexPointerVerified: true
+      remoteObjectRoundTripVerified: false
+    fbx-export: {status: "DEFERRED_C1B-005", path: null, bytes: null, sha256: null, executed: false}
+    reference-render:
+      status: "COMPLETE"
+      renderRoot: "BlenderSource/Characters/C1B-004/Renders"
+      canonicalReferenceFile: "CHR_MasterCharacter_C1B_PoseLineup_r02_Neutral_Neutral_Front.png"
+      canonicalReferenceSha256: "66378e2e21d664147ba176fba4ed85554553b41b8c49c33b19dba9199bc84a4e"
+      orderedBundleSha256: "9f9cbe63a2cf5ec0cf606e89f5114ddc31c86e2a334a4853ae9ca4d467d24a1f"
+      decodedPixelHashAlgorithm: "SHA256(RGB:WxH:+decoded RGB bytes)"
+      localReproductionMatches: 20
+      localReproductionExactMatches: 5
+      reproducedMaximumChannelDifference: 1
+      reproducedMaximumChangedChannelRatio: 0.0000006357828776041666
+      reproductionAllowedMaximumChannelDifference: 1
+      reproductionAllowedMaximumChangedChannelRatio: 0.000001
+      renderResolutionPixels: [2048, 2048]
+      outputs:
+        - {scenarioId: "AirHandReach", style: "Neutral", view: "ThreeQuarter", camera: "CAM_C1B004_Pose_ThreeQuarter", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_AirHandReach_Neutral_ThreeQuarter.png", bytes: 1697382, sha256: "b58d6dcf4f500cd34993e4643539dc8423bcaa67ad265efb0d18de0181f49f47", decodedPixelSha256: "71a9d006f7c4fcd0288ec26d4580cce40bc4ebfb6ca683353f9d7f02551b5fc0"}
+        - {scenarioId: "AirHandReach", style: "Silhouette", view: "ThreeQuarter", camera: "CAM_C1B004_Pose_ThreeQuarter", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_AirHandReach_Silhouette_ThreeQuarter.png", bytes: 1564154, sha256: "7955349bdf900d39223e37ea949d92a929537e546845faeeaf6b9ee63ec0c98f", decodedPixelSha256: "4f70d95426148cf53e3e0bccf40f203e54c72dec392fae0e27e39605e3e52404"}
+        - {scenarioId: "AirKick_L", style: "Neutral", view: "ThreeQuarter", camera: "CAM_C1B004_Pose_ThreeQuarter", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_L_Neutral_ThreeQuarter.png", bytes: 1693029, sha256: "d806428ac4daa1632021f1205e6d43c7a2cd17a9da0d2539aa9e0f02bd3272d3", decodedPixelSha256: "7e26b743b4282b57c960497c6bb0de5bebc50cf96a963658d793794a33b3727f"}
+        - {scenarioId: "AirKick_L", style: "Silhouette", view: "ThreeQuarter", camera: "CAM_C1B004_Pose_ThreeQuarter", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_L_Silhouette_ThreeQuarter.png", bytes: 1565268, sha256: "bfa09a73eeacf0da90bf4eb26773667d04ab5a866249ca62adba1aca3b9a7157", decodedPixelSha256: "9960befd5ed1eff6d7024bb6ceb28f8c085f6e995a29f2a0d5df01da68d69dd2"}
+        - {scenarioId: "AirKick_R", style: "Neutral", view: "ThreeQuarter", camera: "CAM_C1B004_Pose_ThreeQuarter", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_R_Neutral_ThreeQuarter.png", bytes: 1686802, sha256: "4fcc5eb61e3939d94df6373c0208f34a9e7c147d762d09de850a17f083775b2e", decodedPixelSha256: "6cc3728dcd5568fbe4398823d7560db362517e36f2dabf2e0113eda8d4436990"}
+        - {scenarioId: "AirKick_R", style: "Silhouette", view: "ThreeQuarter", camera: "CAM_C1B004_Pose_ThreeQuarter", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_R_Silhouette_ThreeQuarter.png", bytes: 1570437, sha256: "93c2a4ccd7d8ea337cca77eeb290f001c5bad8a07d0c6584cece6a6c3aa5d705", decodedPixelSha256: "dd70f6f7b97dba260f8d161309d21344b07689537b295711b43a7186ea9b96bf"}
+        - {scenarioId: "BothHandsGrab", style: "Neutral", view: "ThreeQuarter", camera: "CAM_C1B004_Pose_ThreeQuarter", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_BothHandsGrab_Neutral_ThreeQuarter.png", bytes: 1738213, sha256: "77c2cf1e62f11a330a6121cdaa43cc269f8bbc336ede7acfc6c92a5db3ddff57", decodedPixelSha256: "4e8fb720bd4396d67ad5ab9f5d9c0cd88af3acc5f65f1fd131e582c9e3670bf0"}
+        - {scenarioId: "BothHandsGrab", style: "Silhouette", view: "ThreeQuarter", camera: "CAM_C1B004_Pose_ThreeQuarter", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_BothHandsGrab_Silhouette_ThreeQuarter.png", bytes: 1580816, sha256: "85c79f3b46a6c753286ef0680784d694a71aed9ab6e47ff655788f16da69378b", decodedPixelSha256: "988693dd86017b195c29c9bc3f29fcaa8f3db6da673e4bab5638cf94cfd20d31"}
+        - {scenarioId: "Dropkick", style: "Neutral", view: "ThreeQuarter", camera: "CAM_C1B004_Pose_ThreeQuarter", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_Dropkick_Neutral_ThreeQuarter.png", bytes: 1629293, sha256: "0153aa23c7e2fc66bd6fe5c489ec558c6f96c31e1bfeec5c7591ce41d28fb758", decodedPixelSha256: "57b4c19b8a63794e2d4edf6df67c79913b3c9afb3c092bfd42705fff85e84993"}
+        - {scenarioId: "Dropkick", style: "Silhouette", view: "ThreeQuarter", camera: "CAM_C1B004_Pose_ThreeQuarter", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_Dropkick_Silhouette_ThreeQuarter.png", bytes: 1529159, sha256: "ecebab9131d173be1dc5190e0ead1a55867897eddd0f22cd2f81a8ef02a706fa", decodedPixelSha256: "b256e2e8e3c4271def0c1ad8024f36db7855804cbf61ffd47b7fdfc01147250d"}
+        - {scenarioId: "Lineup_Overlap", style: "Neutral", view: "Front", camera: "CAM_C1B004_Lineup_Overlap_Front", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Overlap_Neutral_Front.png", bytes: 2187074, sha256: "062ed09893b1a0bd426c1269d26666f21d47b208e75a9c5fa5b98784198f1719", decodedPixelSha256: "cdda3e91df144809b3ba6ffb7f2f5afce5249af3a27ed01fbe47ff8b5134bba0"}
+        - {scenarioId: "Lineup_Overlap", style: "Silhouette", view: "Front", camera: "CAM_C1B004_Lineup_Overlap_Front", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Overlap_Silhouette_Front.png", bytes: 1715180, sha256: "6da9f58a41051f04d6e54ecbd58167eb9153b64c9514c595f0189195fa389870", decodedPixelSha256: "146fe00767455212036e6b699fb3080891ea01fcb1451e63f75057cbb6434248"}
+        - {scenarioId: "Lineup_Spread", style: "Neutral", view: "Front", camera: "CAM_C1B004_Lineup_Spread_Front", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Spread_Neutral_Front.png", bytes: 1858644, sha256: "2c547ae2a3125f9c57f4269e5d593f35958d30badf439ccbaac75718aba1d665", decodedPixelSha256: "6f10c9415422bd340d4dac332312d8eadb645aa391a111ce6f5bbee9b1b7ec2a"}
+        - {scenarioId: "Lineup_Spread", style: "Silhouette", view: "Front", camera: "CAM_C1B004_Lineup_Spread_Front", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Spread_Silhouette_Front.png", bytes: 1591956, sha256: "5b99abeb61ac4c14936c8dc423f14dd9dd88b6b405cd300930950eece761fc0a", decodedPixelSha256: "085d98d5a0483bfddab4aee25d7c8cc020270ec68d798913c61f9b47bbec57dc"}
+        - {scenarioId: "Neutral", style: "Neutral", view: "Front", camera: "CAM_C1B004_Pose_Front", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_Neutral_Neutral_Front.png", bytes: 1803064, sha256: "66378e2e21d664147ba176fba4ed85554553b41b8c49c33b19dba9199bc84a4e", decodedPixelSha256: "f0d018425a5bac600db9aeac28ac2cb889693e7b8d9ff272d932a1f54c7cb672"}
+        - {scenarioId: "Neutral", style: "Silhouette", view: "Front", camera: "CAM_C1B004_Pose_Front", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_Neutral_Silhouette_Front.png", bytes: 1591271, sha256: "26546ccaad1fab41ee4d80208dc6c97d64598a257ea6464027add773385cb174", decodedPixelSha256: "b5553c889d76ffaefb8c69628754453587f57e82974d9902c6bec973a9593a2d"}
+        - {scenarioId: "StrikeReady_L", style: "Neutral", view: "ThreeQuarter", camera: "CAM_C1B004_Pose_ThreeQuarter_Mirror", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_L_Neutral_ThreeQuarter.png", bytes: 1766876, sha256: "55f368ada9864fd7c2098c1233ceb6762120de2f360d0165a11ce2f3a5478e90", decodedPixelSha256: "514c86c9d348a5eef2effcc68a9ba40831b433e4d8f297737d07472e89ca8f19"}
+        - {scenarioId: "StrikeReady_L", style: "Silhouette", view: "ThreeQuarter", camera: "CAM_C1B004_Pose_ThreeQuarter_Mirror", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_L_Silhouette_ThreeQuarter.png", bytes: 1589688, sha256: "1c3dd2483457d35695f09a987b53c338d3f853111e24f7e67b21028c7ae7ab67", decodedPixelSha256: "9014a7a19171fb0390ed9b42b002591382be05b65f110af9aa741fd08fbcdcb0"}
+        - {scenarioId: "StrikeReady_R", style: "Neutral", view: "ThreeQuarter", camera: "CAM_C1B004_Pose_ThreeQuarter", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_R_Neutral_ThreeQuarter.png", bytes: 1737093, sha256: "8a25fad27d27a2772c5592e2470cb427ed24d8b8fe9a4dd6c4eb03fe5191c03d", decodedPixelSha256: "085b4bcafa436f2790b990d3de4db063c9c0a464b034dfe205ca6610478ea7f5"}
+        - {scenarioId: "StrikeReady_R", style: "Silhouette", view: "ThreeQuarter", camera: "CAM_C1B004_Pose_ThreeQuarter", file: "CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_R_Silhouette_ThreeQuarter.png", bytes: 1573600, sha256: "fe6239a426ed942b304b7fee7eb75d4fbd8f0b8435070992fd4e9ceef2d362c3", decodedPixelSha256: "0cc053ee52513c53647c15e4483eff72fcfc1ff47f3a9a537e76d04ea64ea341"}
+    unity-prefab: {status: "DEFERRED_C1B-005", path: null, revision: null, executed: false}
+  report:
+    path: "BlenderSource/Characters/C1B-004/PoseLineupReport.yaml"
+    sha256: "724c756e6c01bbcf77f0067bd6b6a6437409a72921a425576931021ca8095cf3"
+    result: "PASS"
+  generationTools:
+    generator: {path: "tools/blender/create_c1b004_pose_lineup.py", sha256: "170a5b7144205221e578f2bc2899168cec8c042040f9dea220e57450c2608544"}
+    inspector: {path: "tools/blender/inspect_c1b004_pose_lineup.py", sha256: "8e996f81f5b47139a61e78ecd254f3369ffe0f85a413ad554b2a04df20154405"}
+    rerender: {path: "tools/blender/rerender_c1b004_references.py", sha256: "d279b1882b3e0ac08fa5ea15fa52eb5af2def0f6ec0f94b1c2fa4bda53e35a18"}
+    pixelComparator: {path: "tools/blender/compare_c1b004_render_pixels.py", sha256: "b3cf7a30f007d81db95223ee9699c6b1220af59bffdfa9c525e2727f742cceaa"}
+  sourceBoundary:
+    baseMeshPartsPreserved: 6
+    baseLinkedReviewMeshObjects: 68
+    proximalCapMeshDatablocks: 4
+    proximalCapDerivedReviewMeshObjects: 28
+    proximalCapVerticesAddedPerMesh: 0
+    proximalCapPolygonsAddedPerMesh: 1
+    linkedMeshMismatchObjects: 0
+    productionTopologyApproved: false
+    visibleSeparateHandFingerFistFootShoeToeObjects: 0
+    negativeScaleObjects: 0
+    nonUnitReviewRoots: 0
+    externalOrPackedInputs: 0
+    armatures: 0
+    actions: 0
+    colliderObjects: 0
+    gameplayRigAuthored: false
+    gameplayColliderAuthored: false
+    gameplayAnchorAuthored: false
+    rootMotionAuthored: false
+    physicsOrHitSemanticsAuthored: false
+  execution:
+    blenderSourceFiles: 1
+    staticPoseCandidates: 8
+    fourPlayerLineups: 2
+    lineupParticipantInstances: 8
+    referenceRenders: 20
+    fbxExports: 0
+    unityImports: 0
+    unityAssets: 0
+    armatures: 0
+    actions: 0
+    colliderProfiles: 0
+    playerBuilds: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  limitations:
+    - "This manifest completes only C1B-004 static pose and four-player lineup review candidates."
+    - "The C1B-003 base meshes remain unchanged; action limbs use review-only same-vertex derivatives with one internal proximal cap polygon, and production topology is not approved."
+    - "No gameplay rig, collider, anchor, root motion, hit or physics semantics are authored."
+    - "FBX export and Unity Prefab identity remain null until C1B-005."
+    - "Pose transforms and lineup offsets remain START candidates until C1B-006 user review."
+    - "UG-C1B user approval and production lock have not been recorded."

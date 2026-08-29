@@ -1,8 +1,8 @@
 ThirdPartyInventory:
   schemaVersion: 1
-  inventoryId: "project-hotfix-third-party-inventory-r03"
+  inventoryId: "project-hotfix-third-party-inventory-r04"
   status: "APPROVED_SOURCE_INVENTORY_WINDOWS_FINAL_AUDIT_PENDING"
-  recordedAtUtc: "2026-08-29T15:04:28Z"
+  recordedAtUtc: "2026-08-29T16:33:31Z"
   policyPath: "config/licenses/LicensePolicy.yaml"
   distributedNoticeIndex: "THIRD_PARTY_NOTICES.md"
 
@@ -889,7 +889,7 @@ ThirdPartyInventory:
 
   firstPartyProductionAssets:
     purpose: "Project-authored production source, non-shipping evidence, and Player-content assets with explicit rights evidence"
-    itemCount: 9
+    itemCount: 30
     items:
       - path: "BlenderSource/Characters/C1B-003/CHR_MasterCharacter_C1B_Blockout_r01.blend"
         sha256: "b0f4e10e208e60dd07bd91947ef46f09135f602b2ce695becff355cc662837cc"
@@ -1035,6 +1035,342 @@ ThirdPartyInventory:
           - "project-author:kjh4845"
           - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
           - "BlenderSource/Characters/C1B-003/GenerationManifest.yaml#stages.reference-render.outputs[path=BlenderSource/Characters/C1B-003/Renders/CHR_MasterCharacter_C1B_Blockout_r01_Silhouette_ThreeQuarter.png]"
+      - path: "BlenderSource/Characters/C1B-004/CHR_MasterCharacter_C1B_PoseLineup_r02.blend"
+        sha256: "83c2e100c74cf75a7faed11dd0ad65c3d07677684e02696e72455fdee4e17c2b"
+        assetType: "BLENDER_SOURCE"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_SOURCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/CHR_MasterCharacter_C1B_PoseLineup_r02.blend]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.blend-source"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_AirHandReach_Neutral_ThreeQuarter.png"
+        sha256: "b58d6dcf4f500cd34993e4643539dc8423bcaa67ad265efb0d18de0181f49f47"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_AirHandReach_Neutral_ThreeQuarter.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_AirHandReach_Neutral_ThreeQuarter.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_AirHandReach_Silhouette_ThreeQuarter.png"
+        sha256: "7955349bdf900d39223e37ea949d92a929537e546845faeeaf6b9ee63ec0c98f"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_AirHandReach_Silhouette_ThreeQuarter.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_AirHandReach_Silhouette_ThreeQuarter.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_L_Neutral_ThreeQuarter.png"
+        sha256: "d806428ac4daa1632021f1205e6d43c7a2cd17a9da0d2539aa9e0f02bd3272d3"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_L_Neutral_ThreeQuarter.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_L_Neutral_ThreeQuarter.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_L_Silhouette_ThreeQuarter.png"
+        sha256: "bfa09a73eeacf0da90bf4eb26773667d04ab5a866249ca62adba1aca3b9a7157"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_L_Silhouette_ThreeQuarter.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_L_Silhouette_ThreeQuarter.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_R_Neutral_ThreeQuarter.png"
+        sha256: "4fcc5eb61e3939d94df6373c0208f34a9e7c147d762d09de850a17f083775b2e"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_R_Neutral_ThreeQuarter.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_R_Neutral_ThreeQuarter.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_R_Silhouette_ThreeQuarter.png"
+        sha256: "93c2a4ccd7d8ea337cca77eeb290f001c5bad8a07d0c6584cece6a6c3aa5d705"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_R_Silhouette_ThreeQuarter.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_AirKick_R_Silhouette_ThreeQuarter.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_BothHandsGrab_Neutral_ThreeQuarter.png"
+        sha256: "77c2cf1e62f11a330a6121cdaa43cc269f8bbc336ede7acfc6c92a5db3ddff57"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_BothHandsGrab_Neutral_ThreeQuarter.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_BothHandsGrab_Neutral_ThreeQuarter.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_BothHandsGrab_Silhouette_ThreeQuarter.png"
+        sha256: "85c79f3b46a6c753286ef0680784d694a71aed9ab6e47ff655788f16da69378b"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_BothHandsGrab_Silhouette_ThreeQuarter.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_BothHandsGrab_Silhouette_ThreeQuarter.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Dropkick_Neutral_ThreeQuarter.png"
+        sha256: "0153aa23c7e2fc66bd6fe5c489ec558c6f96c31e1bfeec5c7591ce41d28fb758"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Dropkick_Neutral_ThreeQuarter.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_Dropkick_Neutral_ThreeQuarter.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Dropkick_Silhouette_ThreeQuarter.png"
+        sha256: "ecebab9131d173be1dc5190e0ead1a55867897eddd0f22cd2f81a8ef02a706fa"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Dropkick_Silhouette_ThreeQuarter.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_Dropkick_Silhouette_ThreeQuarter.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Overlap_Neutral_Front.png"
+        sha256: "062ed09893b1a0bd426c1269d26666f21d47b208e75a9c5fa5b98784198f1719"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Overlap_Neutral_Front.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Overlap_Neutral_Front.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Overlap_Silhouette_Front.png"
+        sha256: "6da9f58a41051f04d6e54ecbd58167eb9153b64c9514c595f0189195fa389870"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Overlap_Silhouette_Front.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Overlap_Silhouette_Front.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Spread_Neutral_Front.png"
+        sha256: "2c547ae2a3125f9c57f4269e5d593f35958d30badf439ccbaac75718aba1d665"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Spread_Neutral_Front.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Spread_Neutral_Front.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Spread_Silhouette_Front.png"
+        sha256: "5b99abeb61ac4c14936c8dc423f14dd9dd88b6b405cd300930950eece761fc0a"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Spread_Silhouette_Front.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_Lineup_Spread_Silhouette_Front.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Neutral_Neutral_Front.png"
+        sha256: "66378e2e21d664147ba176fba4ed85554553b41b8c49c33b19dba9199bc84a4e"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Neutral_Neutral_Front.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_Neutral_Neutral_Front.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Neutral_Silhouette_Front.png"
+        sha256: "26546ccaad1fab41ee4d80208dc6c97d64598a257ea6464027add773385cb174"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_Neutral_Silhouette_Front.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_Neutral_Silhouette_Front.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_L_Neutral_ThreeQuarter.png"
+        sha256: "55f368ada9864fd7c2098c1233ceb6762120de2f360d0165a11ce2f3a5478e90"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_L_Neutral_ThreeQuarter.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_L_Neutral_ThreeQuarter.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_L_Silhouette_ThreeQuarter.png"
+        sha256: "1c3dd2483457d35695f09a987b53c338d3f853111e24f7e67b21028c7ae7ab67"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_L_Silhouette_ThreeQuarter.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_L_Silhouette_ThreeQuarter.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_R_Neutral_ThreeQuarter.png"
+        sha256: "8a25fad27d27a2772c5592e2470cb427ed24d8b8fe9a4dd6c4eb03fe5191c03d"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_R_Neutral_ThreeQuarter.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_R_Neutral_ThreeQuarter.png]"
+      - path: "BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_R_Silhouette_ThreeQuarter.png"
+        sha256: "fe6239a426ed942b304b7fee7eb75d4fbd8f0b8435070992fd4e9ceef2d362c3"
+        assetType: "CHARACTER_POSE_LINEUP_REFERENCE_RENDER"
+        sourceOwner: "kjh4845"
+        sourceStatus: "PROJECT_AUTHORED"
+        intendedUse: "PRODUCTION_EVIDENCE"
+        licenseFamily: "PROJECT_AUTHORED"
+        rightsStatus: "FIRST_PARTY"
+        noticeDisposition: "NO_THIRD_PARTY_NOTICE"
+        reviewOnly: false
+        shippingAllowed: false
+        sourceEvidence:
+          - "config/repository/BinaryAssetInventory.yaml#files[path=BlenderSource/Characters/C1B-004/Renders/CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_R_Silhouette_ThreeQuarter.png]"
+          - "project-author:kjh4845"
+          - "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+          - "BlenderSource/Characters/C1B-004/GenerationManifest.yaml#stages.reference-render.outputs[file=CHR_MasterCharacter_C1B_PoseLineup_r02_StrikeReady_R_Silhouette_ThreeQuarter.png]"
 
   reviewOnlyAssets:
     purpose: "Design reference and decision history only"

@@ -32,12 +32,14 @@ class VerifyCharacterProportionProfileTest < Minitest::Test
     assert_includes stdout, "FINAL_RESULT=PASS"
   end
 
-  def test_current_c1b002_change_scope_passes_without_asset_outputs
-    stdout, stderr, status = run_verifier(REPOSITORY_ROOT, scope: true)
+  def test_isolated_c1b002_change_scope_passes_without_asset_outputs
+    with_git_repository do |root|
+      stdout, stderr, status = run_verifier(root, scope: true)
 
-    assert_equal 0, status, stderr + stdout
-    assert_includes stdout, "C1B002_SCOPE_CHECKED=true"
-    assert_includes stdout, "FINAL_RESULT=PASS"
+      assert_equal 0, status, stderr + stdout
+      assert_includes stdout, "C1B002_SCOPE_CHECKED=true"
+      assert_includes stdout, "FINAL_RESULT=PASS"
+    end
   end
 
   def test_missing_profile_fails

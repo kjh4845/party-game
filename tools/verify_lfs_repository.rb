@@ -224,7 +224,7 @@ class LfsRepositoryVerifier
 
     expect(@inventory.keys.sort == INVENTORY_FIELDS, "INVENTORY_FIELD_SET", INVENTORY_PATH)
     expect(@inventory["schemaVersion"] == 1, "INVENTORY_SCHEMA_VERSION", INVENTORY_PATH)
-    expect(@inventory["revision"] == "r04", "INVENTORY_REVISION", INVENTORY_PATH)
+    expect(@inventory["revision"] == "r05", "INVENTORY_REVISION", INVENTORY_PATH)
     expect(@inventory["recordedAtUtc"].is_a?(String) &&
       @inventory["recordedAtUtc"].match?(/\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z\z/),
       "INVENTORY_RECORDED_AT", INVENTORY_PATH)
@@ -530,7 +530,7 @@ class LfsRepositoryVerifier
 
     required_markers = [
       "- Owner: `FDN-011`",
-      "- Revision: `r04`",
+      "- Revision: `r05`",
       "private GitHub `origin` over HTTPS (`#{EXPECTED_STORAGE.fetch("remoteUrl")}`)",
       "Git LFS: `#{EXPECTED_STORAGE.fetch("gitLfsVersion")}`",
       "repository-local filters and pre-push hook enabled",
@@ -541,8 +541,10 @@ class LfsRepositoryVerifier
       "Existing PNGs stay in ordinary Git",
       "Core revision `af11dd2` uploaded the first production LFS object",
       "an authenticated fresh clone reproduced the same materialized SHA-256 and byte size",
+      "The C1B-004 Pose/Lineup source is the second canonical LFS object",
+      "its normal push and fresh-fetch round-trip remain pending until the C1B-004 core commit",
       "existing PNG migration remains `0`",
-      "Only the canonical `.blend` source is eligible for LFS tracking and inventory",
+      "Only task-declared canonical `.blend` sources are eligible for LFS tracking and inventory",
       "ruby tools/verify_lfs_repository.rb --verify-local-lfs --verify-remote",
       "`origin` is the only product Remote",
       "default branch is `main`",

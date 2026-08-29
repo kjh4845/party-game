@@ -1,0 +1,166 @@
+C1B004PoseLineupReport:
+  schemaVersion: 1
+  reportId: "C1B004-CHR-MasterCharacter-PoseLineup-r02"
+  state: "START"
+  candidateStatus: "CANDIDATE"
+  ownerTask: "C1B-004"
+  assetId: "CHR_MasterCharacter_C1B_PoseLineup"
+  assetVersion: "0.2.0-start"
+  sourceOwner: "kjh4845"
+  sourcePath: "BlenderSource/Characters/C1B-004/CHR_MasterCharacter_C1B_PoseLineup_r02.blend"
+  sourceBytes: 151456
+  sourceSha256: "83c2e100c74cf75a7faed11dd0ad65c3d07677684e02696e72455fdee4e17c2b"
+  profilePath: "config/character/CharacterProportionProfile.yaml"
+  profileId: "CharacterProportionProfile-C1B-002-r01"
+  measurementSetSha256: "76c98acfe8cfbf01b51936b29c2f6ba2e78c26222dfd53c033fe84233e562722"
+  lineage:
+    derivedFromTask: "C1B-003"
+    baseSourcePath: "BlenderSource/Characters/C1B-003/CHR_MasterCharacter_C1B_Blockout_r01.blend"
+    baseSourceBytes: 116437
+    baseSourceSha256: "b0f4e10e208e60dd07bd91947ef46f09135f602b2ce695becff355cc662837cc"
+    baseManifestPath: "BlenderSource/Characters/C1B-003/GenerationManifest.yaml"
+    baseManifestSha256: "0b195dbc1add30270cc9a259441643cbabaaacacfb2cbbd7449d384f277a4c53"
+    sameGeometryLineage: true
+    baseMeshPartsPreserved: 6
+    baseLinkedReviewMeshObjects: 68
+    proximalCapMeshDatablocks: 4
+    proximalCapDerivedReviewMeshObjects: 28
+    proximalCapVerticesAddedPerMesh: 0
+    proximalCapPolygonsAddedPerMesh: 1
+    linkedMeshMismatchObjects: 0
+    poseReviewGeometryMode: "C1B003_BASE_PLUS_INTERNAL_PROXIMAL_CAP"
+    productionTopologyApproved: false
+  contractDigests:
+    baseMeshesSha256: "7a87482d2737d3d13594ec05aa1e0b7282940c7c115747e3ea7eb181cf8fe62e"
+    proximalCapMeshesSha256: "d4c676ef6c400f4b489726717d57865296ab96ff57a8ad47892d4a663c584287"
+    posesSha256: "f0bff530ffaf01f7b2545957d9eb398bb1b47ba79496ad308c5b5001ed6e0293"
+    lineupsSha256: "b3f44a081438658c71bc8f1761d7dc4d33f77b6de1eb49999e57919a5d21afa3"
+    readabilitySha256: "e43d3378bca8f20eb4878c65081e2169058ea6a6519a024aaf10c02651e735d2"
+    camerasSha256: "876f4d40e648cad8d74e9c63c9aaaa48ebf955c1e6b17a93cd07a2c877c4a34f"
+    renderJobsSha256: "2091d43fdf16da14a048149033b6840f2337e09807d6143baff73a8567a9bbc7"
+    countsSha256: "f3b70f25d52629799a09db295b13e4531012c9e8ac2bdc51837017f26cafc899"
+    sceneSha256: "091140b5a3dc2a3047c7c84caf5ee99ab97e4877782064095bac96590c6b9205"
+  structure:
+    objects: 150
+    collections: 16
+    meshObjects: 103
+    reviewMeshObjects: 96
+    meshDatablocks: 11
+    baseMeshDatablocks: 6
+    proximalCapMeshDatablocks: 4
+    proximalCapDerivedReviewMeshObjects: 28
+    materials: 3
+    camerasTotal: 9
+    c1b004Cameras: 5
+    lights: 4
+    worlds: 1
+    scenes: 1
+    armatures: 0
+    actions: 0
+    colliderObjects: 0
+    embeddedTextBlocks: 0
+    externalOrPackedInputs: 0
+    negativeScaleObjects: 0
+    nonUnitReviewRoots: 0
+    visibleSeparateHandFingerFistFootShoeToeObjects: 0
+  poses:
+    required: 8
+    inspected: 8
+    missing: 0
+    ids: ["Neutral", "BothHandsGrab", "StrikeReady_L", "StrikeReady_R", "AirKick_L", "AirKick_R", "Dropkick", "AirHandReach"]
+    rootsPerPose: 1
+    meshPartsPerPose: 6
+    neutralGeometryMode: "BASE_LINKED"
+    actionLimbGeometryMode: "BASE_PLUS_PROXIMAL_CAP"
+    actionHeadTorsoGeometryMode: "BASE_LINKED"
+    baseLinkedMeshObjects: 20
+    proximalCapDerivedMeshObjects: 28
+    invalidGeometryDerivations: 0
+    rootScale: [1.0, 1.0, 1.0]
+    userApprovalRecorded: false
+    lockedValueCount: 0
+    result: "PASS"
+  lineups:
+    required: 2
+    inspected: 2
+    missing: 0
+    ids: ["Lineup_Overlap", "Lineup_Spread"]
+    participantCountPerLineup: 4
+    totalParticipantInstances: 8
+    meshPartsPerParticipant: 6
+    geometryMode: "BASE_LINKED"
+    baseLinkedMeshObjects: 48
+    overlapCenterOffsetsH: [-0.36, -0.12, 0.12, 0.36]
+    spreadCenterOffsetsH: [-0.90, -0.30, 0.30, 0.90]
+    overlapBoundsH: [1.299999952, 0.264999986, 1.0]
+    spreadBoundsH: [2.379999876, 0.264999986, 1.0]
+    result: "PASS"
+  readability:
+    grabForwardDeltaLeftH: 0.233014773
+    grabForwardDeltaRightH: 0.233014773
+    strikeReadyBackDeltaLeftH: 0.32024536
+    strikeReadyBackDeltaRightH: 0.32024536
+    airKickForwardDeltaLeftH: 0.230460936
+    airKickForwardDeltaRightH: 0.230460936
+    dropkickForwardDeltaLeftH: 0.150744656
+    dropkickForwardDeltaRightH: 0.150744656
+    airReachHeightDeltaLeftH: 0.544950992
+    airReachHeightDeltaRightH: 0.544950992
+    strikeMirrorMaximumDeviationH: 0.0
+    kickMirrorMaximumDeviationH: 0.0
+    grabMirrorMaximumDeviationH: 0.0
+    dropkickMirrorMaximumDeviationH: 0.0
+    airReachMirrorMaximumDeviationH: 0.0
+    positiveDirectionalDeltaMinimumH: 0.10
+    mirrorDeviationMaximumH: 0.000001
+    result: "PASS"
+  cameras:
+    required: 5
+    inspected: 5
+    orthographic: 5
+    maximumOpticalAxisDeviation: 0.000000163
+    poseOrthoScale: 1.42
+    overlapOrthoScale: 1.55
+    spreadOrthoScale: 2.55
+    renderResolutionPixels: [2048, 2048]
+    result: "PASS"
+  renders:
+    scenarios: 10
+    styles: ["Neutral", "Silhouette"]
+    expectedFiles: 20
+    inspectedFiles: 20
+    encodedHashMatches: 20
+    decodedPixelHashAlgorithm: "SHA256(RGB:WxH:+decoded RGB bytes)"
+    sourceRerenderMatches: 20
+    sourceRerenderExactMatches: 5
+    reproducedMaximumChannelDifference: 1
+    reproducedMaximumChangedChannelRatio: 0.0000006357828776041666
+    reproductionAllowedMaximumChannelDifference: 1
+    reproductionAllowedMaximumChangedChannelRatio: 0.000001
+    result: "PASS"
+  reviewBoundary:
+    internalStructuralReview: "PASS"
+    userVisualApprovalRecorded: false
+    lockedValueCount: 0
+    pixelPerfectComparisonRequired: false
+    productionTopologyApproved: false
+    notes:
+      - "These are static transform-only review candidates, not animation, gameplay root motion, hit, collider or physics definitions."
+      - "The unchanged C1B-003 six-part base meshes remain embedded; Neutral and both four-player lineups link them directly."
+      - "Seven action poses use four review-only limb mesh derivatives with identical base vertices and one internal proximal cap polygon; this prevents exposed rotation boundaries without approving production topology."
+      - "No visible separate hand, finger, fist, foot, shoe or toe mesh is added."
+      - "Passing this report prepares downstream review inputs but does not grant UG-C1B approval or production lock."
+  execution:
+    blenderSourceCreated: 1
+    staticPoseCandidatesCreated: 8
+    fourPlayerLineupsCreated: 2
+    referenceRendersCreated: 20
+    armaturesCreated: 0
+    actionsCreated: 0
+    colliderProfilesCreated: 0
+    fbxExportsCreated: 0
+    unityAssetsCreated: 0
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  recordedAtUtc: "2026-08-29T16:25:47Z"

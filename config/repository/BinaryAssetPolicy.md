@@ -3,10 +3,10 @@
 ## Status
 
 - Owner: `FDN-011`
-- Revision: `r04`
+- Revision: `r05`
 - Repository remote: private GitHub `origin` over HTTPS (`https://github.com/kjh4845/project-hotfix.git`)
 - Git LFS: `3.8.0`, repository-local filters and pre-push hook enabled
-- Initial remote backup: `main` at `8d73541`, verified before the r04 policy commit
+- Initial remote backup: `main` at `8d73541`, verified before the r05 policy commit
 - Existing-history LFS migration: not performed and not required
 - Player Build, game/Steam deployment and public publication: not part of this policy
 
@@ -27,10 +27,10 @@ The following production-source extensions must use the active Git LFS clean/smu
 - Lossless production audio/source images: `.wav`, `.flac`, `.psd`, `.exr`, `.hdr`, `.tif`, `.tiff`
 - Any single binary file larger than 10 MiB must also use LFS even when its extension is not in the default list; update `.gitattributes` before staging it.
 
-The current repository has `1` LFS-tracked file and `1` LFS-required candidate. Core revision `af11dd2` uploaded the first production LFS object (`b0f4e10e…37cc`, `116437` bytes), and an authenticated fresh clone reproduced the same materialized SHA-256 and byte size after repository-local LFS install, fetch and checkout. Existing PNGs stay in ordinary Git, and existing PNG migration remains `0`. Do not run `git lfs migrate`, rewrite existing commits, force-push, or move existing review PNGs into LFS without a separate user-approved migration plan.
+The current repository has `2` LFS-tracked files and `2` LFS-required candidates. Core revision `af11dd2` uploaded the first production LFS object (`b0f4e10e…37cc`, `116437` bytes), and an authenticated fresh clone reproduced the same materialized SHA-256 and byte size after repository-local LFS install, fetch and checkout. The C1B-004 Pose/Lineup source is the second canonical LFS object; its normal push and fresh-fetch round-trip remain pending until the C1B-004 core commit. Existing PNGs stay in ordinary Git, and existing PNG migration remains `0`. Do not run `git lfs migrate`, rewrite existing commits, force-push, or move existing review PNGs into LFS without a separate user-approved migration plan.
 
-Blender `.blend1`, `.blend2` and other numbered backup files are ignored as recoverable editor output. Only the canonical `.blend` source is eligible for LFS tracking and inventory.
-The canonical `.blend` must remain outside `Project hotfix/Assets/`; Unity consumes the approved derived interchange asset so the Blender→FBX→Unity profile is not bypassed.
+Blender `.blend1`, `.blend2` and other numbered backup files are ignored as recoverable editor output. Only task-declared canonical `.blend` sources are eligible for LFS tracking and inventory.
+Canonical `.blend` sources must remain outside `Project hotfix/Assets/`; Unity consumes approved derived interchange assets so the Blender→FBX→Unity profile is not bypassed.
 
 Before committing a new required binary:
 
