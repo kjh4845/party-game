@@ -16,7 +16,7 @@ GenerationManifest:
   predecessor: {profileId: "CharacterProportionProfile-C1BRW-001-r01", sourceStatus: "SUPERSEDED_IMMUTABLE", priorArtifactsRewritten: false}
   stages:
     profile: {status: "COMPLETE_START_CANDIDATE", path: "config/character/CharacterProportionProfile-C1B-RW-001-r02.yaml", sha256: "1de2b0841ca57dca56ac7e68a83f6725b88d573254ae43bbd7c15abe51617fdd"}
-    blend-source: {status: "COMPLETE_LOCAL", path: "BlenderSource/Characters/C1B-RW-002-r02/CHR_MasterCharacter_C1B_NeutralRework_r02.blend", bytes: 520225, sha256: "548a786a50eb28dc8e2b12fe2cf2ddc4032471d8774ff1fa4c02e0f667d6e252", lfsState: "PENDING_CORE_PUSH", indexPointerVerified: false, remoteObjectRoundTripVerified: false}
+    blend-source: {status: "COMPLETE", path: "BlenderSource/Characters/C1B-RW-002-r02/CHR_MasterCharacter_C1B_NeutralRework_r02.blend", bytes: 520225, sha256: "548a786a50eb28dc8e2b12fe2cf2ddc4032471d8774ff1fa4c02e0f667d6e252", lfsState: "VERIFIED_REMOTE_ROUND_TRIP", coreCommit: "99302fca3ed482067e52250824b4180ae115b734", indexPointerBytes: 131, indexPointerVerified: true, remoteObjectRoundTripVerified: true}
     reference-render:
       status: "COMPLETE"
       root: "BlenderSource/Characters/C1B-RW-002-r02/Renders"

@@ -14,10 +14,13 @@
 
 - C1B-002..005의 기술 PASS는 보존하지만, 현 faceted head·egg/peg body·exposed proximal cap·detached-looking
   limb는 v0.13 시각 방향을 충족하지 못하므로 current visual acceptance를 철회하고 `REWORK_REQUIRED`로 전환한다.
-- 새 Neutral은 rounded-square head, narrow neck, continuous shoulder/arm, continuous U-crotch/leg, rounded
-  terminal과 one continuous review Mesh를 사용한다.
-- C1B rework chain의 `C1BRW-002` fixed four-view를 `UG-C1B-NEUTRAL`에서 승인하기 전에는 Pose·FBX·Unity를 만들지 않는다.
-- 새 candidate의 H/W/D `1/.464322567/.206985458`, Mesh/component `1/1`, V/E/P `1882/3760/1880`, render8은
+- r01 Neutral source/profile과 기술 Evidence는 역사로 보존하지만 rounded-square head와 authored neck인 시각 결과는
+  `REWORK_REQUIRED`다. 현재 r02 Neutral은 round head, visible neck·authored Neck semantic node `0`, head의 torso 직접
+  overlap/attachment, torso→shoulder→arm visible seam·groove·step·cap·detached boundary `0`, continuous
+  U-crotch/leg와 rounded terminal을 사용한다.
+- C1B rework chain의 r02 fixed four-view를 `UG-C1B-NEUTRAL`에서 승인하기 전에는 Pose·Animation·FBX·Unity import를 만들지 않는다.
+- r02 candidate의 H/W/D `1/.4725346267223358/.23389440774917603`, object/closed component `1/2`, V/E/P
+  `11394/24864/13470`, topology error0, camera/render `4/8`은
   재현용 관찰값이지 user visual approval·production topology가 아니다.
 
 ### 0.1 1.9.0 변경 요약
@@ -100,13 +103,13 @@
 캐릭터는 하나의 `MasterCharacter`를 공유한다.
 
 - 흰색 무안면 Paint canvas
-- soft rounded-square head와 좁은 neck 전이
+- 둥근 head, visible neck `0`, torso에 직접 붙는 head
 - 배 돌출을 줄인 비교적 곧고 부드러운 몸통
 - 짧고 굵은 다리와 낮은 중심
 - 가랑이보다 위에서 끝나는 짧고 굵은 중립 팔
-- shoulder→arm, torso→U-crotch→leg가 한 캐릭터로 이어지는 continuous silhouette
+- torso→shoulder→arm visible seam·groove·step·cap·detached boundary `0`, torso→U-crotch→leg의 continuous silhouette
 - 별도 가시 손·발 없이 둥글게 닫힌 forearm/lower-leg terminal
-- Neutral 단계 one continuous review Mesh; production topology·UV·weight lock은 아님
+- Neutral 단계 one review object와 visually continuous direct head overlap; production topology·UV·weight lock은 아님
 - Paint·Cosmetic을 제거해도 완성된 외형
 
 `Hybrid Core v0.13`은 C1a 큰 방향 승인본이다. exact 비율·Collider·reach·최종 Mesh 승인이 아니며
@@ -474,9 +477,10 @@ FBX 생성만으로 완료 처리하지 않는다.
 
 ### 9.2 두 단계 Gate
 
-Character rework에는 production Style Gate 앞에 `UG-C1B-NEUTRAL`이 있다. `C1BRW-002`의
-Front·Side·Back·ThreeQuarter Neutral/Silhouette에서 head·neck·shoulder/arm·U-crotch/leg·terminal을
-사용자가 승인하기 전 `C1BRW-004` Pose와 `C1BRW-005` FBX/Unity를 시작하지 않는다. 이 Gate는 pixel-perfect
+Character rework에는 production Style Gate 앞에 `UG-C1B-NEUTRAL`이 있다. r02의
+Front·Side·Back·ThreeQuarter Neutral/Silhouette에서 round head·visible neck0·head direct torso attachment,
+torso→shoulder→arm visible seam0·U-crotch/leg·terminal을 사용자가 승인하기 전 `C1BRW-004` Pose·Animation과
+`C1BRW-005` FBX/Unity import를 시작하지 않는다. 이 Gate는 pixel-perfect
 comparison이나 production topology 승인이 아니라 현재 Neutral 방향 승인이다.
 
 제작 전 `StylePreflight`:

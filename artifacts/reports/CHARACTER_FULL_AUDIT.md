@@ -1,16 +1,23 @@
 # Project Hotfix 캐릭터 전체 감사
 
+> **역사·superseded 범위 공지:** 이 보고서 본문의 `C1B-002..005 PASS`는 old faceted/part-based START
+> Blockout과 그 Pose·FBX/Unity 전달이 당시 기술 완료조건을 충족했다는 역사 감사다. 최신 캐릭터 시각 acceptance가
+> 아니며, 해당 결과의 current status는 `REWORK_REQUIRED`다. 현재 입력은 round head·visible neck0·head direct
+> torso attachment·torso-arm visible seam0의 C1BRW r02 Neutral이고, 합법적인 다음 단계는
+> `C1BRW-003 / UG-C1B-NEUTRAL` 사용자 승인이다. 이 승인 전 Pose·Animation·FBX·Unity import를 진행하지 않으며
+> `C1B-006 / UG-C1B`로 바로 건너뛰지 않는다.
+
 ## 0. 문서 정보
 
 | 항목 | 내용 |
 |---|---|
-| 감사 범위 | `C1B-001` 방향 source부터 `C1B-005` Blender→FBX→Unity static Blockout parity까지 |
+| 감사 범위 | 역사 `C1B-001..005` 기술 감사; current acceptance는 별도 C1BRW r02 Neutral |
 | 기준일 | 2026-08-30 KST |
-| 감사 성격 | 현재 산출물의 독립 read-only 구조·수치·시각·권리 감사 |
-| 결론 | `C1B-001..005`의 각 Task 범위는 통과. 전체 캐릭터는 여전히 `START/CANDIDATE`이며 `UG-C1B`, Animation, C2/C4는 미완료 |
+| 감사 성격 | `C1B-001..005` 당시 산출물의 독립 read-only 구조·수치·시각·권리 역사 감사 |
+| 결론 | `C1B-001..005`의 당시 기술 범위만 통과. old visual result는 `REWORK_REQUIRED`; current r02는 `UG-C1B-NEUTRAL` USER_REVIEW이며 Animation·C2/C4·`UG-C1B`는 미완료 |
 | 자동 실행 제외 | Unity Player Build, PlayMode gameplay, Steam, Docker, Deploy |
 
-이 문서는 “현재 만든 것이 무엇을 증명하는가”와 “아직 무엇을 증명하지 않았는가”를 한곳에서 확인하기 위한
+이 문서는 “당시 만든 것이 무엇을 증명했는가”와 “현재도 무엇을 증명하지 않았는가”를 한곳에서 확인하기 위한
 재사용 감사 기록이다. `PASS`는 해당 행의 제한된 범위만 통과했다는 뜻이며 사용자 승인, production lock 또는
 게임플레이 완성을 뜻하지 않는다.
 
@@ -25,17 +32,18 @@
 | 감사 항목 | 판정 | 현재 증거 | 이 판정이 증명하지 않는 것 |
 |---|---|---|---|
 | C1a v0.13 방향 source | PASS | 승인 PNG SHA 일치, `DIRECTION_ONLY`, pixel 역산·복제 0 | C1b exact 수치, Mesh, Physics, production 권리 |
-| C1B-002 normalized 비율 | PASS / START | H=1, bounds `1/.58/.265`, landmark·section `17/17`, envelope `11` | 사용자 수치 승인, gameplay meter, Collider/Rig |
-| C1B-003 Blender Blockout | PASS / START | base Mesh6, render8, source 재렌더8, 최대 측정 편차 `0.000001167H` | Pose, FBX/Unity, watertight production topology |
-| C1B-004 static Pose·lineup | PASS / START | Pose8, lineup2×4, render20, mirror deviation `0H` | Animation timing, deformation, physics feel, 2/3/4 runtime |
+| C1B-002 normalized 비율 | 역사 PASS / START · current REWORK_REQUIRED | H=1, bounds `1/.58/.265`, landmark·section `17/17`, envelope `11` | 사용자 수치 승인, gameplay meter, Collider/Rig |
+| C1B-003 Blender Blockout | 역사 PASS / START · current REWORK_REQUIRED | base Mesh6, render8, source 재렌더8, 최대 측정 편차 `0.000001167H` | Pose, FBX/Unity, watertight production topology |
+| C1B-004 static Pose·lineup | 역사 PASS / START · current REWORK_REQUIRED | Pose8, lineup2×4, render20, mirror deviation `0H` | Animation timing, deformation, physics feel, 2/3/4 runtime |
 | 노출 open hole | PASS | 감사한 Neutral·Pose8·Unity four-view에서 background-through hole 0 | 모든 미래 Animation pose의 watertightness |
 | 관절·관통 seam | 주의 | shoulder/hip의 닫힌 cap 또는 겹친 component 경계가 일부 view에서 보임 | production deformation·seam 품질 |
-| C1B-005 FBX→Unity parity | PASS / START | Mesh6·landmark17, scale/axis/bounds/pivot/fingerprint, Unity capture8 | Rig·Animator·Collider·Material·UV production 품질 |
+| C1B-005 FBX→Unity parity | 역사 PASS / START · current REWORK_REQUIRED | Mesh6·landmark17, scale/axis/bounds/pivot/fingerprint, Unity capture8 | Rig·Animator·Collider·Material·UV production 품질 |
 | Unity four-view silhouette | PASS | bbox drift 최대 `0.004103166H`, four-view 관찰 IoU 기록 | pixel-perfect renderer 동일성, 최종 조명/Shader 승인 |
 | Animation/motion 자연스러움 | 후속 | Armature·Action·Animator 0, 정적 Pose만 존재 | locomotion·Punch·Kick·Dropkick 전환과 Ragdoll blend |
-| LFS 복구성 | PASS | `.blend`2 + `.fbx`1, LFS `3/3`, private remote push·fresh fetch/checkout 왕복 | 향후 모든 대형 asset 복구성 |
-| 권리/배포 경계 | PASS | first-party source/evidence/player-content 분류, license inventory 누락 0 | 실제 Player 포함 결과와 최종 release NOTICE |
-| `UG-C1B` | 후속 | user approval/locked value 0 | exact C1b 사용자 승인 |
+| LFS 복구성 | PASS | Binary75, LFS `5/5`; r02 pointer131 bytes→fresh fetch/checkout SHA `548a786a…6e252`·520225 일치 | 향후 모든 대형 asset 복구성 |
+| 권리/배포 경계 | PASS | firstParty57·review18·shipping0, license inventory 누락 0 | 실제 Player 포함 결과와 최종 release NOTICE |
+| `UG-C1B-NEUTRAL` | 후속 / USER_REVIEW | r02 technical candidate 준비, visual approval 0 | r02 Neutral 사용자 승인 |
+| `UG-C1B` | 후속 | Neutral Gate 이후 Pose·Unity 결과와 locked value 0 | exact C1b 최종 사용자 승인 |
 
 ## 2. Evidence chain
 
@@ -184,27 +192,31 @@ Alpha motion은 `ANP-001..003`, Character 체감은 `CHR-012 / UG-C2`, productio
 
 ## 8. LFS·license·shipping 경계
 
-- Canonical `.blend` 2개와 C1B-005 `.fbx` 1개가 Git LFS-required candidate이며 tracked file도 `3/3`이다.
-- FBX는 index pointer, private remote upload, fresh clone fetch/checkout 뒤 materialized SHA·size 일치를 확인했다.
+- 현재 Binary inventory는 `75 files / 107274740 bytes / unique70`, LFS candidate/tracked `5/5`, ordinary Git
+  `70`이다. r02 `.blend`는 index pointer `131 bytes`, private `origin/main` core Commit `99302fc`, fresh clone
+  fetch/checkout 뒤 materialized SHA `548a786a…6e252`·size `520225` 일치를 확인했다.
 - Existing PNG history migration, history rewrite, force-push는 `0`이다.
 - C1B-003/004 `.blend`는 `PRODUCTION_SOURCE`, shipping false다.
 - Blender·Unity reference PNG는 `PRODUCTION_EVIDENCE`, shipping false다.
-- Unity `Assets` 안의 C1B-005 FBX는 first-party `PLAYER_CONTENT`, shipping allowed true 후보이며 sourceOwner는
-  `kjh4845`다.
-- 현재 first-party inventory는 source/evidence/player-content `39`개이며 license inventory 누락은 `0`이다.
+- Unity `Assets` 안의 C1B-005 FBX는 당시 first-party `PLAYER_CONTENT` 후보였으나 현재는 superseded/non-shipping
+  역사 산출물이며 sourceOwner는 `kjh4845`다.
+- 현재 first-party inventory는 `57`, external review는 `18`, shipping true는 `0`이며 license inventory 누락은 `0`이다.
 
 `shippingAllowed=true`는 그 파일을 Player에 넣을 권리 경계를 뜻할 뿐 실제 Build에 포함됐음을 뜻하지 않는다.
 Player Build가 없으므로 최종 Windows Player 포함물과 release NOTICE는 아직 확정하지 않는다.
 
 ## 9. 명시적 후속
 
-1. `C1B-006 / UG-C1B`: profile ID/version/수치와 four-view/Pose/lineup을 사용자가 명시적으로 승인한다.
-2. `CHR-001..012`, `AIR-001..002`, `ANP-001..003`: prototype Rig·Collider·Joint·Anchor, locomotion, Punch,
+1. `C1BRW-003 / UG-C1B-NEUTRAL`: r02 Neutral four-view의 round head·visible neck0·direct torso attachment와
+   torso-arm visible seam0를 사용자가 명시적으로 승인한다. 승인 전 Pose·Animation·FBX·Unity import는 `0`이다.
+2. `C1BRW-004..005`: 승인 r02에서 Pose/lineup과 FBX/Unity parity를 재생성한다.
+3. `C1B-006 / UG-C1B`: r02 profile ID/version/수치와 승인 뒤 생성한 Pose/lineup·Unity 결과를 최종 승인한다.
+4. `CHR-001..012`, `AIR-001..002`, `ANP-001..003`: prototype Rig·Collider·Joint·Anchor, locomotion, Punch,
    Grab, AirKick, Dropkick, Ragdoll/GetUp과 motion 자연스러움을 검증한다.
-3. `CAM-005`와 downstream QA: 실제 Unity 2/3/4인, 세 화면비, Min/Max gameplay Camera를 실행한다.
-4. `C4-001..004`: production topology, UV0, tangents, weights, LOD, Material, cage와 deformation을 제작·승인한다.
-5. `ANM-001..004`: production action Animation을 in-place/root-motion0 계약 안에서 polish한다.
-6. 사용자 수동 Build 이후: 실제 Player 포함 asset과 NOTICE를 다시 감사한다.
+5. `CAM-005`와 downstream QA: 실제 Unity 2/3/4인, 세 화면비, Min/Max gameplay Camera를 실행한다.
+6. `C4-001..004`: production topology, UV0, tangents, weights, LOD, Material, cage와 deformation을 제작·승인한다.
+7. `ANM-001..004`: production action Animation을 in-place/root-motion0 계약 안에서 polish한다.
+8. 사용자 수동 Build 이후: 실제 Player 포함 asset과 NOTICE를 다시 감사한다.
 
 ## 10. 재사용 감사 체크리스트
 
@@ -268,9 +280,10 @@ Player Build가 없으므로 최종 Windows Player 포함물과 release NOTICE�
 
 ## 11. 종료 판정
 
-현재 캐릭터는 C1a 방향, C1B normalized proportion, same-source Blender Blockout, static Pose8·4인 lineup,
-FBX→Unity static parity와 LFS/rights 경계까지 준비됐다. 이 범위 안에서는 blocking geometry·open-hole·axis·import
-문제가 남아 있지 않다.
+역사 C1B 산출물은 normalized proportion, same-source Blender Blockout, static Pose8·4인 lineup,
+FBX→Unity static parity와 LFS/rights 경계를 당시 기술 범위에서 통과했다. 이 결론은 old shape의 현재 시각
+acceptance가 아니며 old C1B-002..005는 `REWORK_REQUIRED`다.
 
-그러나 이는 exact C1b 사용자 승인도, 움직이는 캐릭터도, production character도 아니다. 다음 합법적인 순서는
-`C1B-006 / UG-C1B`이고, motion 자연스러움은 C2/ANP, 최종 Mesh·UV·weight·deformation은 C4/ANM에서 검증한다.
+Current r02 Neutral은 기술 후보일 뿐 exact C1b 사용자 승인도, 움직이는 캐릭터도, production character도 아니다.
+다음 합법적인 순서는 `C1BRW-003 / UG-C1B-NEUTRAL`이며 `C1B-006 / UG-C1B`로 바로 건너뛰지 않는다. Motion
+자연스러움은 C2/ANP, 최종 Mesh·UV·weight·deformation은 C4/ANM에서 검증한다.

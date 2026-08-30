@@ -18,12 +18,17 @@
 - C1B-002..005는 당시 수치·Blender·Pose·FBX/Unity 기술 Evidence로는 PASS였지만, v0.13의 부드러운 한 몸
   방향과 다른 faceted head, egg/peg body, exposed proximal cap과 detached-looking limb 때문에 current visual
   acceptance에서는 `REWORK_REQUIRED`다. 역사 Evidence와 Commit은 수정하지 않는다.
-- 새 Neutral은 rounded-square head, narrow neck, continuous shoulder/arm, continuous U-crotch/leg, rounded terminal과
-  one continuous review Mesh를 사용한다. Pixel distance, vertex 수 또는 특정 topology를 v0.13에서 역산하지 않는다.
-- C1B rework chain의 `C1BRW-002` Neutral four-view를 사용자가 `UG-C1B-NEUTRAL`에서 먼저 승인해야 한다. 이 Gate 전에는 새 Pose,
+- r01 Neutral의 기술 Evidence와 source/profile은 역사로 보존하지만, rounded-square head와 authored neck 때문에 현재
+  시각 결과는 `REWORK_REQUIRED`이며 r02가 이를 대체한다. r02는 round head, visible neck `0`, head와 torso의 직접
+  overlap/attachment, torso→shoulder→arm visible seam·groove·step·cap·detached boundary `0`, continuous
+  U-crotch/leg와 rounded terminal을 사용한다. Pixel distance, vertex 수 또는 특정 topology를 v0.13에서 역산하지 않는다.
+- C1B rework chain의 r02 Neutral four-view를 사용자가 `UG-C1B-NEUTRAL`에서 먼저 승인해야 한다. 이 Gate 전에는 새 Pose,
   FBX, Unity import, Rig와 Collider를 만들지 않는다.
-- 현재 technical candidate는 H/W/D `1/.464322567/.206985458`, Mesh/component `1/1`, V/E/P
-  `1882/3760/1880`, Neutral/Silhouette render `8`이다. 이 수치는 재현 identity이며 visual approval이나
+- 현재 USER_REVIEW candidate `CHR_MasterCharacter_C1B_NeutralRework_r02`는 SHA-256
+  `548a786a50eb28dc8e2b12fe2cf2ddc4032471d8774ff1fa4c02e0f667d6e252`, `520225 bytes`, H/W/D
+  `1/.4725346267223358/.23389440774917603`, object `1`, closed component `2`, V/E/P
+  `11394/24864/13470`, topology error·UV layer `0`, camera/render `4/8`, scene `START/USER_REVIEW`다. 두 component는 seamless body field와 직접
+  overlap한 closed round head이며 visible neck이나 authored Neck semantic node는 `0`이다. 이 수치는 재현 identity이며 visual approval이나
   production topology lock이 아니다.
 
 ### 0.1 0.12.0 변경 요약
@@ -118,7 +123,7 @@ Material, Animation 또는 수치를 복제하지 않는다. UI 기준 이미지
 |---|---|---|---|
 | `C0 Reference Lock` | 참고할 인상과 복제 금지 기록 | reference-role checklist | 참고 방향 |
 | `C1a Direction Review` | 큰 체형 방향 확인 | v0.13 front·side·3/4 sheet | 큰 시각 방향만 |
-| `C1b Neutral Review` | Pose·FBX 전에 현재 Neutral 조형 승인 | one continuous review Mesh의 front·side·back·3/4 Neutral/Silhouette | `UG-C1B-NEUTRAL`, Pose 제작 입력 |
+| `C1b Neutral Review` | Pose·FBX 전에 현재 Neutral 조형 승인 | one review object·visually continuous direct head overlap의 front·side·back·3/4 Neutral/Silhouette | `UG-C1B-NEUTRAL`, Pose 제작 입력 |
 | `C1b Exact Proportion` | 한 체형의 정확한 수치 승인 | front·side·back·3/4, measurement, Pose, 4인 lineup | C2 Prototype 입력 |
 | `C2 Physics` | Rig·Collider·Joint·Ground/Air 행동 검증 | Unity physics Prefab, action/physics profile, capture | 물리 Prototype |
 | `C3 Integration` | Camera·Paint·Cosmetic·무기·action presentation 통합 | 2·3·4인 capture, UV/cage/Grip/action report | 통합 Prototype |
@@ -127,8 +132,8 @@ Material, Animation 또는 수치를 복제하지 않는다. UI 기준 이미지
 Gate를 건너뛰지 않는다. C2·C3에서 비율이나 reach 문제가 발견되면 Physics 값을 억지로 보정하지
 않고 C1b minor revision으로 돌아가 다시 승인한다.
 
-`C1b Neutral Review`는 `C1b Exact Proportion`을 대신하지 않는다. Neutral 조형을 먼저 승인한 뒤 Pose8·lineup과
-FBX/Unity parity를 만들고, 마지막 `UG-C1B`에서 수치·Pose·Unity 결과를 함께 승인한다.
+`C1b Neutral Review`는 `C1b Exact Proportion`을 대신하지 않는다. r02 Neutral 조형을 먼저 승인한 뒤에만
+Pose8·lineup/Animation과 FBX/Unity parity를 만들고, 마지막 `UG-C1B`에서 수치·Pose·Unity 결과를 함께 승인한다.
 
 ### 2.1 C1b 필수 자료
 
@@ -147,13 +152,14 @@ FBX/Unity parity를 만들고, 마지막 `UG-C1B`에서 수치·Pose·Unity 결�
 
 ### 2.2 Neutral rework 조형 계약
 
-- Head는 faceted sphere가 아니라 v0.13의 soft rounded-square mass로 읽혀야 한다.
-- Head와 torso 사이에는 좁은 neck 전이가 있고 flat cut 두 개가 맞닿은 형태를 허용하지 않는다.
-- Shoulder에서 arm으로 외곽이 연속되고, visible proximal cap·circular cut face·detached peg 인상이 없어야 한다.
+- Head는 faceted 또는 square mass가 아니라 둥근 mass로 읽혀야 한다.
+- Visible neck과 authored Neck semantic node는 `0`이며, Head는 torso 상단에 직접 overlap/attachment되어야 한다.
+- Torso→shoulder→arm의 visible seam·groove·step·cap·detached boundary는 모든 필수 view에서 `0`이어야 한다.
 - Torso는 과도한 egg/pear mass가 아니라 v0.13의 비교적 곧고 부드러운 몸통이어야 한다.
 - Crotch는 torso와 양 leg를 잇는 연속 U 형태이며 hip cap이나 분리 leg block이 보이지 않아야 한다.
 - Forearm/lower-leg terminal은 별도 hand/foot 없이 둥글게 닫히고 flat disc로 읽히지 않아야 한다.
-- Neutral review Mesh는 component `1`, review Mesh `1`을 사용한다. 이는 production topology·UV·weight를
+- Neutral review object는 `1`을 사용한다. r02의 closed component `2`는 seamless body field와 closed round head의
+  직접 overlap/attachment를 뜻하며 visible gap·neck·seam을 허용하지 않는다. 이는 production topology·UV·weight를
   미리 확정하는 규칙이 아니라 seam/cap 회피와 조형 검토를 위한 현재 단계 계약이다.
 
 다음 failure class는 새 Neutral Gate에서 명시적으로 거부한다: `FACETED_HEAD`, `EGG_OR_PEG_BODY`,

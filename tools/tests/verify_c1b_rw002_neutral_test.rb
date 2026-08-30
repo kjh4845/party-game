@@ -19,6 +19,9 @@ class VerifyC1BRW002NeutralTest < Minitest::Test
   repo{|r|mut(r,M,"GenerationManifest"){|x|x["stages"]["reference-render"]["orderedBundleSha256"]="0"*64};rule(r,"RENDER_BUNDLE_SHA")}
   repo{|r|mut(r,M,"GenerationManifest"){|x|x["stages"]["pose-generation"]["status"]="COMPLETE";x["stages"]["fbx-export"]["executed"]=true;x["stages"]["unity-import"]["executed"]=true;x["neutralVisualGate"]["poseGenerationAllowed"]=true};o,_,s=execute(r);assert_equal 1,s;assert_includes o,"MANIFEST_POSE_BLOCK";assert_includes o,"MANIFEST_FBX_BLOCK";assert_includes o,"MANIFEST_UNITY_BLOCK";assert_includes o,"MANIFEST_GATE"}
  end
+ def test_verified_lfs_round_trip_is_exact
+  repo{|r|mut(r,M,"GenerationManifest"){|x|b=x["stages"]["blend-source"];b["lfsState"]="PENDING_CORE_PUSH";b["coreCommit"]="0"*40;b["indexPointerBytes"]=130;b["indexPointerVerified"]=false;b["remoteObjectRoundTripVerified"]=false};rule(r,"MANIFEST_BLEND")}
+ end
  def test_profile_required_before_flags_are_exact;repo{|r|mut(r,P,"CharacterProportionProfile"){|x|x["neutralVisualGate"]["requiredBeforePoseWork"]=false;x["neutralVisualGate"]["requiredBeforeFbxExport"]=false};rule(r,"PROFILE_GATE")}end
  private
  def execute(r,b=false);c=[RbConfig.ruby,V.to_s,"--root",r.to_s];c<<"--verify-blender"if b;o,e,s=Open3.capture3(*c);[o,e,s.exitstatus]end
