@@ -217,7 +217,7 @@ class VerifyLfsRepositoryTest < Minitest::Test
       policy.write(policy.read
         .sub("`.blend`, `.fbx`, `.glb`", "`.blend`, `.glb`")
         .sub(
-          "The C1B-RW-002 continuous Neutral rework source is the fourth canonical LFS object",
+          "Core revision `d7877b3` uploaded the fourth production LFS object",
           "Fourth production object round-trip status omitted",
         )
         .sub("Do not run `git lfs migrate`", "Migration command omitted"))

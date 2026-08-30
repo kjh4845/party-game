@@ -1,0 +1,217 @@
+EvidenceManifest:
+  schemaVersion: 1
+  evidenceProfile: "EvidenceProfile-r01"
+  evidenceId: "EV-C1BRW-001-002-20260830-r01"
+  taskIds: ["C1BRW-001", "C1BRW-002"]
+  goalId: "G0"
+  status: "PASS"
+  sourceRevision: "Core=d7877b3896cf7be44077200da9d05f3142c75417; Profile=6c55a9d522096256fd15652f97c0a7a772285f427c53edb87f0c4d90d024b883; GenerationManifest=50525e6d5348f4aebc06eca7b6dbcc8aba10bc0de2cebf272e850768e26e20aa; MeasurementReport=9f67ae7c6d3345e0f8f7a315dbb1302933f41cff690895b32b3345e2e1d0806b; Blend=35f21abe5b6bcd35dc2b066aa3bd29cea5fbf8f9e8bd600b50ffa3f5daedb938; Generator=0901d27d4a5183ca43d61f8285f97f6f171e7ac6770f6b24aa519c40689ff6db; Inspector=86faae7cadfe57e4e79acc9dcd3a1664a784c460036d0ab108a908670ba4cc6b; ReworkVerifier=f55255f6d0d0b6b2e6f2009f1fb15e207177c5609dbd7e25c9b8c03999615452; ReworkTest=11144384b7f74ae4300de98f847b2a643e5dee0bede58c7360e560ddc1f5e90a; BinaryPolicy=0434e2a1aef263ebc085442574c6e5cfcc7b49828748d987a701453b63f1b00f; BinaryInventory=26eaf05e4cc59c849376c79b2b2d939180157368b776ea61cfc62b86f13880b1; LfsVerifier=2f6b5ebe04cd61fb5e1d5b9e263337ff300462bddcd5cdb10881d655438c8fa9; LfsTest=585091139bbeec21245b459b03d8751a2c11181c42f5b292dd3ff95639fbb695; LicensePolicy=cf24e8114607b52fd508569f60e72867530840c51e0de25e865b9fcd5790b401; LicenseInventory=ab2c86bb4f39e1b59f93a600d7c9b719527b5078d6ea66cd807df9427a5cdb79; LicenseVerifier=bc6bb2597683fca337da8637558b9d11b834ca18a833b5287dc39cbe4a3f24b3; LicenseTest=2a5412822c193665337d0ccaef405f5764eb7987bf5afc952da9a357dd4875ac; NeutralReview=8946a546b063ad4eaeb2fac3f2f5aa7fb7ba199f7cc318a9767caa5dc8e0f52a"
+  buildKind: "BlenderContinuousNeutralReworkAndLfsRoundTripNoUnityImport"
+  buildVersion: "NotBuilt"
+  environment: "macOS arm64; Blender 5.2.0 LTS fbe6228777e7; Git 2.52.0; Git LFS 3.8.0 repository-local; Ruby 2.6.10; Python Pillow 11.3.0"
+  profileVersions: ["CharacterProportionProfile-C1BRW-001-r01", "GM-CHR-MasterCharacter-C1B-NeutralRework-r01", "RepositoryPolicy-r07", "BinaryAssetInventory-r07", "project-hotfix-license-policy-r04", "project-hotfix-third-party-inventory-r06", "EvidenceProfile-r01"]
+  requirementIds: ["C1BRW-001", "C1BRW-002", "SRS-APPEAR-014", "SRS-APPEAR-015", "SRS-APPEAR-016", "SRS-APPEAR-018", "AT-028"]
+  commandsOrManualSteps:
+    - "사용자가 old C1B geometry를 v0.13 방향 불일치로 명시적으로 거부하고 전면 재작업을 요청"
+    - "C1B-002..005 historical Evidence를 변경하지 않고 current visual acceptance만 REWORK_REQUIRED로 분리"
+    - "v0.13을 pixel 역산하지 않고 rounded-square head, narrow neck, continuous shoulder/arm, U-crotch/leg와 rounded terminal의 lean contract로 재작성"
+    - "기존 six-part Mesh를 join/cap하지 않고 Blender Skin graph와 Subdivision을 적용한 one continuous closed Neutral review Mesh를 새 versioned source로 생성"
+    - "Front/Side/Back/ThreeQuarter Neutral/Silhouette 8장을 고정 orthographic Camera와 동일 조명으로 2048² 생성"
+    - "Blender read-only inspector로 one mesh/component, topology, bounds, X symmetry, Camera, external/packed input와 prohibited downstream scope를 검사"
+    - "별도 재생성 render8을 decoded RGB 최대 channel1/changed ratio0.000001 한도에서 원본과 전수 비교"
+    - "새 Blend1을 first-party PRODUCTION_SOURCE/non-shipping, render8을 PRODUCTION_EVIDENCE/non-shipping으로 등록"
+    - "사용자가 거부한 old C1B-005 FBX는 파일·hash·history를 보존하되 SUPERSEDED_CONTENT/shipping false로 전환"
+    - "새 Blend를 LFS pointer로 normal push하고 fresh private clone에서 pointer→authenticated fetch/checkout→materialized SHA/size 왕복 확인"
+    - "Neutral visual Gate 전 Pose, FBX export, Unity import, Rig, Collider, Animation과 Player Build 실행0"
+  observedMetrics:
+    reworkTasksCompleted: 2
+    sourceOwnerApprovals: 1
+    supersededHistoricalTasks: 4
+    historicalArtifactsRewritten: 0
+    pixelMeasurementsUsed: 0
+    canonicalBlendFiles: 1
+    canonicalBlendBytes: 157613
+    sourceHashMatches: 1
+    renderMeshObjects: 1
+    renderMeshDatablocks: 1
+    connectedComponents: 1
+    meshVertices: 1882
+    meshEdges: 3760
+    meshPolygons: 1880
+    boundaryEdges: 0
+    nonManifoldEdges: 0
+    looseEdges: 0
+    degenerateFaces: 0
+    nonFiniteVertices: 0
+    boundsHeightH: 1.0
+    boundsWidthH: 0.464322567
+    boundsDepthH: 0.206985459
+    maximumXSymmetryDeviationH: 0.000000239
+    missingMirroredVertices: 0
+    missingMirroredEdges: 0
+    missingMirroredPolygons: 0
+    neutralReferenceRenders: 4
+    silhouetteReferenceRenders: 4
+    renderEncodedHashMatches: 8
+    renderPng2048Matches: 8
+    renderReproductionToleranceMatches: 8
+    renderReproductionExactMatchesAtRecordedRun: 5
+    reproductionMaximumChannelDifference: 1
+    reproductionMaximumChangedChannelRatio: 0.000000158946
+    armatures: 0
+    animationActions: 0
+    colliders: 0
+    uvLayers: 0
+    weightedVertexAssignments: 0
+    lodObjects: 0
+    oldSixPartOrCapMeshes: 0
+    separateVisibleHandFootMeshes: 0
+    externalOrPackedInputs: 0
+    lfsIndexPointersVerified: 1
+    freshPointerBytes: 131
+    freshLfsObjectsFetched: 1
+    freshMaterializedHashMatches: 1
+    freshMaterializedSizeMatches: 1
+    binaryInventoryFiles: 66
+    binaryInventoryBytes: 92558963
+    binaryInventoryUniqueHashes: 61
+    lfsRequiredCandidates: 4
+    lfsTrackedFiles: 4
+    ordinaryGitBinaryFiles: 62
+    firstPartyAssets: 48
+    firstPartyShippingAllowed: 0
+    reviewOnlyAssets: 18
+    reworkMutationTestRuns: 14
+    reworkMutationTestAssertions: 87
+    lfsMutationTestRuns: 16
+    lfsMutationTestAssertions: 162
+    licenseMutationTestRuns: 30
+    licenseMutationTestAssertions: 231
+    mutationFailuresErrorsSkips: 0
+    finalGitVisibleInventoryFiles: 392
+    finalForbiddenInfrastructureContentFiles: 139
+    finalForbiddenInfrastructurePackageManifests: 2
+    finalForbiddenInfrastructureViolations: 0
+    activeDocsValidated: 12
+    planTasksValidated: 178
+    planEffortDaysValidated: 258.0
+    evidenceManifestsAfterC1brw002: 48
+    userNeutralVisualApprovalRecorded: 0
+    productionTopologyApproved: 0
+    poseOutputsCreated: 0
+    fbxExportsCreated: 0
+    unityAssetsCreated: 0
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  expectedThresholds:
+    reworkTasksCompleted: 2
+    sourceOwnerApprovals: 1
+    supersededHistoricalTasks: 4
+    historicalArtifactsRewritten: 0
+    pixelMeasurementsUsed: 0
+    canonicalBlendFiles: 1
+    canonicalBlendBytes: 157613
+    sourceHashMatches: 1
+    renderMeshObjects: 1
+    renderMeshDatablocks: 1
+    connectedComponents: 1
+    meshVertices: 1882
+    meshEdges: 3760
+    meshPolygons: 1880
+    boundaryEdges: 0
+    nonManifoldEdges: 0
+    looseEdges: 0
+    degenerateFaces: 0
+    nonFiniteVertices: 0
+    boundsHeightH: 1.0
+    boundsWidthH: 0.464322567
+    boundsDepthH: 0.206985459
+    maximumXSymmetryDeviationH: 0.000001
+    missingMirroredVertices: 0
+    missingMirroredEdges: 0
+    missingMirroredPolygons: 0
+    neutralReferenceRenders: 4
+    silhouetteReferenceRenders: 4
+    renderEncodedHashMatches: 8
+    renderPng2048Matches: 8
+    renderReproductionToleranceMatches: 8
+    reproductionMaximumChannelDifference: 1
+    reproductionMaximumChangedChannelRatio: 0.000001
+    armatures: 0
+    animationActions: 0
+    colliders: 0
+    uvLayers: 0
+    weightedVertexAssignments: 0
+    lodObjects: 0
+    oldSixPartOrCapMeshes: 0
+    separateVisibleHandFootMeshes: 0
+    externalOrPackedInputs: 0
+    lfsIndexPointersVerified: 1
+    freshPointerBytes: 131
+    freshLfsObjectsFetched: 1
+    freshMaterializedHashMatches: 1
+    freshMaterializedSizeMatches: 1
+    binaryInventoryFiles: 66
+    binaryInventoryBytes: 92558963
+    binaryInventoryUniqueHashes: 61
+    lfsRequiredCandidates: 4
+    lfsTrackedFiles: 4
+    ordinaryGitBinaryFiles: 62
+    firstPartyAssets: 48
+    firstPartyShippingAllowed: 0
+    reviewOnlyAssets: 18
+    reworkMutationTestRuns: 14
+    reworkMutationTestAssertions: 87
+    lfsMutationTestRuns: 16
+    lfsMutationTestAssertions: 162
+    licenseMutationTestRuns: 30
+    licenseMutationTestAssertions: 231
+    mutationFailuresErrorsSkips: 0
+    finalGitVisibleInventoryFiles: 392
+    finalForbiddenInfrastructureContentFiles: 139
+    finalForbiddenInfrastructurePackageManifests: 2
+    finalForbiddenInfrastructureViolations: 0
+    activeDocsValidated: 12
+    planTasksValidated: 178
+    planEffortDaysValidated: 258.0
+    evidenceManifestsAfterC1brw002: 48
+    userNeutralVisualApprovalRecorded: 0
+    productionTopologyApproved: 0
+    poseOutputsCreated: 0
+    fbxExportsCreated: 0
+    unityAssetsCreated: 0
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  rawEvidencePaths:
+    - "artifacts/evidence/G0/C1BRW-002/EV-C1BRW-001-002-20260830-r01.txt"
+    - "config/character/CharacterProportionProfile-C1B-RW-001-r01.yaml"
+    - "BlenderSource/Characters/C1B-RW-002/GenerationManifest.yaml"
+    - "BlenderSource/Characters/C1B-RW-002/MeasurementReport.yaml"
+    - "BlenderSource/Characters/C1B-RW-002/CHR_MasterCharacter_C1B_NeutralRework_r01.blend"
+    - "BlenderSource/Characters/C1B-RW-002/Renders/CHR_MasterCharacter_C1B_NeutralRework_r01_Neutral_Front.png"
+    - "BlenderSource/Characters/C1B-RW-002/Renders/CHR_MasterCharacter_C1B_NeutralRework_r01_Neutral_Side.png"
+    - "BlenderSource/Characters/C1B-RW-002/Renders/CHR_MasterCharacter_C1B_NeutralRework_r01_Neutral_ThreeQuarter.png"
+    - "BlenderSource/Characters/C1B-RW-002/Renders/CHR_MasterCharacter_C1B_NeutralRework_r01_Silhouette_Front.png"
+    - "tools/blender/create_c1b_rw002_neutral.py"
+    - "tools/blender/inspect_c1b_rw002_neutral.py"
+    - "tools/verify_c1b_rw002_neutral.rb"
+    - "tools/tests/verify_c1b_rw002_neutral_test.rb"
+    - "config/repository/BinaryAssetPolicy.md"
+    - "config/repository/BinaryAssetInventory.yaml"
+    - "config/licenses/LicensePolicy.yaml"
+    - "config/licenses/ThirdPartyInventory.yaml"
+    - "artifacts/reports/CHARACTER_REWORK_NEUTRAL_REVIEW.md"
+    - "docs/03_IMPLEMENTATION_PLAN.md"
+    - "artifacts/reports/FOUNDATION_DECISION_RATIONALE.md"
+  failures: []
+  limitations:
+    - "PASS proves a reproducible one-component Neutral review Mesh, fixed four-view renders, source rights and LFS recovery; it does not grant UG-C1B-NEUTRAL visual approval."
+    - "Skin/Subdivision is applied review construction, not approved production topology, UV, weights, deformation loops or LOD."
+    - "The old C1B-002..005 files and Evidence remain immutable history; their visual acceptance is superseded, not their recorded technical results rewritten."
+    - "Pose8, FBX export, Unity import, Rig, Collider and Animation are deliberately blocked until the user reviews this Neutral candidate."
+    - "The existing old C1B-005 FBX remains in Unity Assets only as non-shipping SUPERSEDED_CONTENT and must not be activated as the current candidate."
+    - "Fresh-clone credentials and temporary absolute paths were not retained; GitHub credentials remain outside the repository."
+  userDecision: "기존 C1B 디자인이 승인 v0.13과 전혀 다르다는 사용자 지적을 수용하고 전면 재작업; 새 Neutral 승인 전 Pose·FBX·Unity 진행 금지"
+  recordedAtUtc: "2026-08-30T06:55:19Z"

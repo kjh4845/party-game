@@ -16,6 +16,12 @@
 이 보고서는 기존 C1B-002..005 결과가 수치·반입에는 일치했지만 승인된 v0.13 디자인 방향과 달랐다는
 사용자 지적을 반영한다. 과거 Evidence는 당시 기술 결과로 보존하되, 현재 캐릭터 승인 입력에서는 제외한다.
 
+[새 비율 Profile](../../config/character/CharacterProportionProfile-C1B-RW-001-r01.yaml) ·
+[Blender source](../../BlenderSource/Characters/C1B-RW-002/CHR_MasterCharacter_C1B_NeutralRework_r01.blend) ·
+[Generation Manifest](../../BlenderSource/Characters/C1B-RW-002/GenerationManifest.yaml) ·
+[Measurement Report](../../BlenderSource/Characters/C1B-RW-002/MeasurementReport.yaml) ·
+[Technical Evidence](../evidence/G0/C1BRW-002/EV-C1BRW-001-002-20260830-r01.yaml)
+
 ## 승인된 방향
 
 ![승인된 C1a Hybrid Core v0.13](../review/character/C1_CHARACTER_HYBRID_CORE_v0.13_BELLY_CORRECTED_REVIEW.png)

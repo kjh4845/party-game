@@ -195,6 +195,24 @@ class VerifyC1BRW002NeutralTest < Minitest::Test
     end
   end
 
+  def test_lfs_round_trip_state_and_flags_are_exact
+    with_repo do |root|
+      rewrite_manifest(root) do |manifest|
+        stage = manifest["stages"]["blend-source"]
+        stage["status"] = "COMPLETE_LOCAL"
+        stage["lfsState"] = "PENDING_CORE_PUSH"
+        stage["remoteObjectRoundTripVerified"] = false
+      end
+      assert_rule(root, "MANIFEST_BLEND_STAGE")
+    end
+    with_repo do |root|
+      rewrite_manifest(root) do |manifest|
+        manifest["stages"]["blend-source"]["indexPointerVerified"] = false
+      end
+      assert_rule(root, "MANIFEST_BLEND_STAGE")
+    end
+  end
+
   def test_extra_old_cap_hand_foot_or_downstream_file_fails_exact_set
     with_repo do |root|
       File.write(root.join("BlenderSource/Characters/C1B-RW-002/CHR_C1B004_BasePlusProximalCap_Hand_Foot.fbx"), "forbidden")

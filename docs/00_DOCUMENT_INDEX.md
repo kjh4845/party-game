@@ -6,7 +6,7 @@
 |---|---|
 | 기준일 | 2026-08-30 |
 | 현재 목표 | `Alpha = Vertical Slice`; Steam 제품 통합 전 LAN/direct endpoint 2·3·4인 완성 |
-| 캐릭터 상태 | `Hybrid Core v0.13` C1a 방향은 유지. 역사 C1B-002..005 기술 Evidence는 보존하지만 old faceted/egg/peg 결과는 `REWORK_REQUIRED`. C1B rework chain의 one-continuous-Mesh `C1BRW-002` Neutral이 `USER_REVIEW`이며 `UG-C1B-NEUTRAL` 전 Pose·FBX·Unity 재작업0 |
+| 캐릭터 상태 | `Hybrid Core v0.13` C1a 방향은 유지. 역사 C1B-002..005 기술 Evidence는 보존하지만 old faceted/egg/peg 결과는 `REWORK_REQUIRED`. C1B rework profile·one-continuous-Mesh Neutral `C1BRW-001..002`는 기술 PASS, 현재 `C1BRW-003 / UG-C1B-NEUTRAL` 사용자 검토 대기이며 승인 전 Pose·FBX·Unity 재작업0 |
 | 제품 기준 | PRD 1.8.0 → SRS 1.8.0 → Patch Design 0.5.0·분야별 사양 → 구현계획 2.5 → 추적 부록 1.5 |
 | 충돌 처리 | 가장 최근의 명시적 사용자 결정이 최우선이며 상위 문서를 먼저 수정한 뒤 하위 문서에 전파 |
 
@@ -166,6 +166,7 @@ C1B-005 static parity까지의 현재 상태와 한계는
 [캐릭터 전체 감사](../artifacts/reports/CHARACTER_FULL_AUDIT.md)에 모아 두었다.
 
 그 감사의 기술 PASS는 old geometry 전달 결과로서 역사적으로 유효하지만 최신 사용자 시각 acceptance는 아니다.
+현재 승인 입력은 [Neutral 전면 재작업 검토](../artifacts/reports/CHARACTER_REWORK_NEUTRAL_REVIEW.md)다.
 현재 다음 Gate는 `C1BRW-003 / UG-C1B-NEUTRAL`이며, 이 승인 전 Pose·FBX·Unity 재작업을 시작하지 않는다.
 
 1. 승인 Patch12 실제 기능·2/3/4인 결과 `UG-PATCH12`

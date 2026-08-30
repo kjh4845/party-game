@@ -6,7 +6,7 @@ GenerationManifest:
   completionScope: "C1B-RW-002_NEUTRAL_REVIEW_SOURCE_COMPLETE"
   ownerTask: "C1BRW-002"
   sourceOwner: "kjh4845"
-  recordedAtUtc: "2026-08-30T06:22:45Z"
+  recordedAtUtc: "2026-08-30T06:51:35Z"
 
   identity:
     assetId: "CHR_MasterCharacter_C1B_NeutralRework"
@@ -32,7 +32,7 @@ GenerationManifest:
       path: "config/character/CharacterProportionProfile-C1B-RW-001-r01.yaml"
       sha256: "6c55a9d522096256fd15652f97c0a7a772285f427c53edb87f0c4d90d024b883"
     blend-source:
-      status: "COMPLETE_LOCAL"
+      status: "COMPLETE"
       path: "BlenderSource/Characters/C1B-RW-002/CHR_MasterCharacter_C1B_NeutralRework_r01.blend"
       bytes: 157613
       sha256: "35f21abe5b6bcd35dc2b066aa3bd29cea5fbf8f9e8bd600b50ffa3f5daedb938"
@@ -40,9 +40,9 @@ GenerationManifest:
       rootScale: [1.0, 1.0, 1.0]
       sourceAxis: "+Z Up"
       characterForwardAxis: "-Y"
-      lfsState: "PENDING_CORE_PUSH"
+      lfsState: "VERIFIED_REMOTE_ROUND_TRIP"
       indexPointerVerified: true
-      remoteObjectRoundTripVerified: false
+      remoteObjectRoundTripVerified: true
     reference-render:
       status: "COMPLETE"
       root: "BlenderSource/Characters/C1B-RW-002/Renders"

@@ -8,7 +8,7 @@
 | 기준일 | 2026-08-26 |
 | 현재 목표 | Alpha에서 2·3·4인 전체 흐름과 실제 무기 전투를 검증한 뒤 Steam 통합 |
 | 기준 문서 | PRD 1.8.0, SRS 1.8.0, PATCH_DESIGN 0.5.0과 현행 분야별 사양 |
-| 현재 구현 상태 | Foundation은 완료. C1B-002..005 기술 Evidence는 역사적으로 유효하지만 v0.13과 다른 faceted head·egg/peg body·분리 limb/cap 때문에 current visual acceptance에서는 `REWORK_REQUIRED`. `C1BRW-001` profile은 완료, one continuous review Mesh Neutral `C1BRW-002`는 `USER_REVIEW`; `UG-C1B-NEUTRAL` 전 Pose·FBX·Unity 재작업0. Gameplay/Network code·Rig/Collider/Animation·Player Build 없음 |
+| 현재 구현 상태 | Foundation은 완료. C1B-002..005 기술 Evidence는 역사적으로 유효하지만 v0.13과 다른 faceted head·egg/peg body·분리 limb/cap 때문에 current visual acceptance에서는 `REWORK_REQUIRED`. `C1BRW-001..002` profile·one continuous Neutral source/render8·LFS 왕복은 기술 PASS, `C1BRW-003 / UG-C1B-NEUTRAL` 사용자 검토 대기; 승인 전 Pose·FBX·Unity 재작업0. Gameplay/Network code·Rig/Collider/Animation·Player Build 없음 |
 | 계획 규모 | 178 Task, 258.0 집중 개발일 |
 | 자동화 금지 | Unity Player Build, Steam 배포, 외부 서비스 배포 |
 
@@ -193,8 +193,8 @@ BLOCKED, DEFERRED, REWORK_REQUIRED를 사용한다. `REWORK_REQUIRED`는 당시 
 | C1B-004 | 1.5 | 역사 static Pose8·4인 lineup | C1B-003 | CHAR | pose/lineup bundle·Evidence | 당시 기술 PASS 보존; current visual acceptance=`REWORK_REQUIRED`, 새 Neutral에서 재파생 | — | REWORK_REQUIRED |
 | C1B-005 | 1.5 | 역사 FBX/Unity static parity | C1B-003..004,FDN-002 | CHAR | FBX·Prefab·capture8·Evidence | 당시 parity 기술 PASS 보존; current visual acceptance=`REWORK_REQUIRED`, superseded geometry 전달 결과 | — | REWORK_REQUIRED |
 | C1BRW-001 | 1.5 | v0.13 방향의 새 lean proportion/profile 후보 | C1B-001,DOC-005,ART-001 | CHAR | `CharacterProportionProfile-C1BRW-001-r01` | pixel 역산0, rounded-square head·narrow neck·continuous torso/limb·U-crotch·rounded terminal을 과적합 없이 기록 | — | PASSED |
-| C1BRW-002 | 2 | one continuous review Mesh Neutral 제작·검토 | C1BRW-001 | CHAR | versioned `.blend` + fixed four-view Neutral/Silhouette8 | H/W/D `1/.464322567/.206985458`, mesh/component1, V/E/P `1882/3760/1880`, render8·구조 검증 PASS; failure-class 시각 판정은 Neutral Gate 소유, visual approval·production topology·Build0 | — | USER_REVIEW |
-| C1BRW-003 | 0.5 | Neutral 방향 사용자 승인 | C1BRW-002 | CHAR | decision record | four-view에서 head·neck·shoulder/arm·U-crotch/leg·terminal 연속성 승인 또는 재작업. 미승인 시 Pose/FBX/Unity0 | UG-C1B-NEUTRAL | BLOCKED |
+| C1BRW-002 | 2 | one continuous review Mesh Neutral 제작·검토 | C1BRW-001 | CHAR | versioned `.blend` + fixed four-view Neutral/Silhouette8 | H/W/D `1/.464322567/.206985458`, mesh/component1, V/E/P `1882/3760/1880`, render8·구조/LFS/rights 검증 PASS; failure-class 시각 판정은 Neutral Gate 소유, visual approval·production topology·Build0 | — | PASSED |
+| C1BRW-003 | 0.5 | Neutral 방향 사용자 승인 | C1BRW-002 | CHAR | decision record | four-view에서 head·neck·shoulder/arm·U-crotch/leg·terminal 연속성 승인 또는 재작업. 미승인 시 Pose/FBX/Unity0 | UG-C1B-NEUTRAL | USER_REVIEW |
 | C1BRW-004 | 1.5 | 승인 Neutral에서 Pose8·4인 lineup 재파생 | C1BRW-003 | CHAR | new pose/lineup bundle | exact Pose8·overlap/spread, visible open hole·exposed cap0, static 방향 판독; Animation claim0 | — | NOT_STARTED |
 | C1BRW-005 | 1.5 | 승인 Neutral의 FBX/Unity parity 재검증 | C1BRW-004,FDN-002 | CHAR | new FBX·identity Prefab·capture8 | source 불변·manual correction0, scale·axis·surface·four-view parity와 LFS/license; Rig/Collider/Animation·Build0 | — | NOT_STARTED |
 | C1B-006 | 0.5 | exact profile 최종 사용자 승인 | C1B-001,C1BRW-001,C1BRW-002,C1BRW-003,C1BRW-004,C1BRW-005 | CHAR | approved profile | Neutral Gate를 통과한 ID·version·수치·Pose·Unity 결과 명시 | UG-C1B | BLOCKED |
