@@ -4,9 +4,9 @@
 
 | 항목 | 값 |
 |---|---|
-| 기준일 | 2026-08-26 |
+| 기준일 | 2026-08-30 |
 | 현재 목표 | `Alpha = Vertical Slice`; Steam 제품 통합 전 LAN/direct endpoint 2·3·4인 완성 |
-| 캐릭터 상태 | `Hybrid Core v0.13` C1a 방향 승인, C1b normalized Blockout·static Pose8·FBX/Unity parity 완료; `UG-C1B` exact profile·최종 Mesh·Rig/physics 미승인 |
+| 캐릭터 상태 | `Hybrid Core v0.13` C1a 방향은 유지. 역사 C1B-002..005 기술 Evidence는 보존하지만 old faceted/egg/peg 결과는 `REWORK_REQUIRED`. C1B rework chain의 one-continuous-Mesh `C1BRW-002` Neutral이 `USER_REVIEW`이며 `UG-C1B-NEUTRAL` 전 Pose·FBX·Unity 재작업0 |
 | 제품 기준 | PRD 1.8.0 → SRS 1.8.0 → Patch Design 0.5.0·분야별 사양 → 구현계획 2.5 → 추적 부록 1.5 |
 | 충돌 처리 | 가장 최근의 명시적 사용자 결정이 최우선이며 상위 문서를 먼저 수정한 뒤 하위 문서에 전파 |
 
@@ -22,14 +22,14 @@
 | 1 | `01_PRD.md` | 1.8.0 Product Baseline · 현행 | 제품 비전, 단계, 범위, 게임 규칙 |
 | 2 | `02_SRS.md` | 1.8.0 Software Baseline · 현행 | 구현·검증 가능한 시스템 요구사항 |
 | 3 | `PATCH_DESIGN.md` | 0.5.0 Approved Patch12 Baseline · 현행 | Patch12·후보·적용·supply/drop·이탈·표현 경계의 단일 source |
-| 4 | `CHARACTER_TECHNICAL_SPEC.md` | 0.12.0 C1B Static Interop Baseline · 현행 | C1~C4 비율·Rig·Air action·static FBX/Unity parity·이탈 중 물리·Paint·Patch·Grip |
-| 5 | `ART_DIRECTION.md` | 1.9.0 C1B Static Interop·Readability Boundary · 현행 | 캐릭터·액션·무기·환경·handedness/QA capture·Alpha placeholder/SFX와 표현 단계 |
+| 4 | `CHARACTER_TECHNICAL_SPEC.md` | 0.12.0 + Neutral Rework Addendum · 현행 | C1~C4 비율·Neutral-first Gate·Rig·Air action·static Interop·Paint·Patch·Grip |
+| 5 | `ART_DIRECTION.md` | 1.9.0 + Neutral Rework Addendum · 현행 | continuous character silhouette·거부 failure class·Neutral Gate·Interop/QA·표현 단계 |
 | 6 | `UI_UX_FLOW.md` | 1.8.0 Minimal Match UI·Leave·Alpha Quality · 현행 | Main·Lobby·Match no-HUD·non-pausing Esc/Leave·평문 Patch 흐름 |
 | 7 | `MAP_DESIGN_GUIDE.md` | 1.8.0 Map·Participation·Projectile Compatibility · 현행 | 공통 맵·이탈 중 Character·projectile·Hazard·Camera·2/3/4인 계약 |
 | 8 | `MAP_P00_CONSTRUCTION_DROP.md` | 0.7.0 Greybox·Participation·Projectile Compatibility · 현행 | P00 이탈/중단·projectile/Spent·Air action·승인 Patch12 |
 | 9 | `WEAPON_DESIGN.md` | 0.7.0 Alpha Minimal UI·Participation·Firearm Combat · 현행 | debug-only ammo, 이탈 중 무기, 4종 archetype·Supply·실제 전투 |
-| 10 | `03_IMPLEMENTATION_PLAN.md` | 2.5 Approved Baseline · 현행 | 173 Task·251.0일 WBS, 제작 순서, Evidence와 사용자 Gate |
-| 11 | `04_IMPLEMENTATION_TRACEABILITY.md` | 1.5 Approved Baseline · 현행 | 요구사항과 Task의 downstream 추적 감사 |
+| 10 | `03_IMPLEMENTATION_PLAN.md` | 2.5 + C1B Rework Addendum · 현행 | 178 Task·258.0일 WBS, Neutral-first 제작 순서, Evidence와 사용자 Gate |
+| 11 | `04_IMPLEMENTATION_TRACEABILITY.md` | 1.5 + C1B Rework Addendum · 현행 | 요구사항과 역사/현행 Task·Gate의 downstream 추적 감사 |
 
 `04_IMPLEMENTATION_TRACEABILITY.md`는 상위 제품 요구를 새로 만들지 않는다. 추적 부록이나 계획이
 PRD·SRS와 충돌하면 상위 문서가 우선한다.
@@ -165,15 +165,19 @@ projectile·recoil/spread·Spent, minimal Match UI·Match Esc/Leave/Forfeit, Alp
 C1B-005 static parity까지의 현재 상태와 한계는
 [캐릭터 전체 감사](../artifacts/reports/CHARACTER_FULL_AUDIT.md)에 모아 두었다.
 
+그 감사의 기술 PASS는 old geometry 전달 결과로서 역사적으로 유효하지만 최신 사용자 시각 acceptance는 아니다.
+현재 다음 Gate는 `C1BRW-003 / UG-C1B-NEUTRAL`이며, 이 승인 전 Pose·FBX·Unity 재작업을 시작하지 않는다.
+
 1. 승인 Patch12 실제 기능·2/3/4인 결과 `UG-PATCH12`
-2. `C1B-006` C1b exact orthographic·measurement profile과 four-view 시각 결과 `UG-C1B` 승인. Collider/reach·physics feel은 후속 `UG-C2`
-3. Punch/Grab threshold 120·150·180ms 비교 결과
-4. Sprint multiplier·가속 tuning
-5. groggy base duration·increment·cap과 feedback
-6. W1 WeaponUse/Drop·airborne mode/별도 입력
-7. WPA-003 Blender→Unity 비교 뒤 네 Weapon exact visual Lock `UG-WEAPON-ART`
-8. Alpha 공식 맵 1개·Greybox 2개와 2/3/4인 결과
-9. Alpha Lobby Greybox·대표 Cosmetic placeholder의 2/3/4인 기능 판독 결과
+2. `C1BRW-003` one-continuous-Mesh Neutral four-view `UG-C1B-NEUTRAL` 승인
+3. 승인 Neutral에서 Pose·Unity parity를 재생성한 뒤 `C1B-006 / UG-C1B` exact 최종 승인. Collider/reach·physics feel은 후속 `UG-C2`
+4. Punch/Grab threshold 120·150·180ms 비교 결과
+5. Sprint multiplier·가속 tuning
+6. groggy base duration·increment·cap과 feedback
+7. W1 WeaponUse/Drop·airborne mode/별도 입력
+8. WPA-003 Blender→Unity 비교 뒤 네 Weapon exact visual Lock `UG-WEAPON-ART`
+9. Alpha 공식 맵 1개·Greybox 2개와 2/3/4인 결과
+10. Alpha Lobby Greybox·대표 Cosmetic placeholder의 2/3/4인 기능 판독 결과
 
 이 Gate 전에도 Host Ready 제거, Start 조건, ReadyTeal+check+label, no Backend, Alpha direct/G4 Steam
 분리, 사용자 노출 명칭 `패치`와 영구 matchmaking·rank·MMR 제외는 현행 고정 계약이다.

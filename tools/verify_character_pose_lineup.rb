@@ -343,7 +343,13 @@ class CharacterPoseLineupVerifier
       "tools/verify_license_inventory.rb", "tools/tests/verify_license_inventory_test.rb",
       "docs/03_IMPLEMENTATION_PLAN.md", "artifacts/reports/FOUNDATION_DECISION_RATIONALE.md",
       "docs/00_DOCUMENT_INDEX.md", "docs/04_IMPLEMENTATION_TRACEABILITY.md",
+      "docs/ART_DIRECTION.md", "docs/CHARACTER_TECHNICAL_SPEC.md",
+      "artifacts/evidence/docs/verify_doc_baseline.py",
       "artifacts/reports/CHARACTER_FULL_AUDIT.md",
+      "artifacts/reports/CHARACTER_REWORK_NEUTRAL_REVIEW.md",
+      "config/character/CharacterProportionProfile-C1B-RW-001-r01.yaml",
+      "tools/blender/create_c1b_rw002_neutral.py", "tools/blender/inspect_c1b_rw002_neutral.py",
+      "tools/verify_c1b_rw002_neutral.rb", "tools/tests/verify_c1b_rw002_neutral_test.rb",
       "tools/verify_character_import_parity.rb", "tools/tests/verify_character_import_parity_test.rb",
     ]
     out.split("\0").each do |entry|
@@ -351,6 +357,7 @@ class CharacterPoseLineupVerifier
       next if path.start_with?(
         "BlenderSource/Characters/C1B-004/", "artifacts/evidence/G0/C1B-004/",
         "BlenderSource/Characters/C1B-005/", "artifacts/evidence/G0/C1B-005/",
+        "BlenderSource/Characters/C1B-RW-002/", "artifacts/evidence/G0/C1BRW-002/",
         "Project hotfix/Assets/ProjectHotfix/Art/Characters/C1B-005/",
         "Project hotfix/Assets/ProjectHotfix/Editor/C1B005/",
         "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/C1B005/",

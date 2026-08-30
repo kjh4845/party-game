@@ -1,0 +1,134 @@
+C1BRW002MeasurementReport:
+  schemaVersion: 1
+  reportId: "C1BRW002-CHR-MasterCharacter-NeutralRework-r01"
+  state: "START"
+  candidateStatus: "USER_REVIEW"
+  ownerTask: "C1BRW-002"
+  sourceOwner: "kjh4845"
+  result: "PASS_INTERNAL_STRUCTURE"
+  sourcePath: "BlenderSource/Characters/C1B-RW-002/CHR_MasterCharacter_C1B_NeutralRework_r01.blend"
+  sourceBytes: 157613
+  sourceSha256: "35f21abe5b6bcd35dc2b066aa3bd29cea5fbf8f9e8bd600b50ffa3f5daedb938"
+  profilePath: "config/character/CharacterProportionProfile-C1B-RW-001-r01.yaml"
+  profileId: "CharacterProportionProfile-C1BRW-001-r01"
+  profileSha256: "6c55a9d522096256fd15652f97c0a7a772285f427c53edb87f0c4d90d024b883"
+
+  contractDigests:
+    sceneSha256: "6b56ff363f175c9cb1c976703b3e9e55b85685f0f092bf3514b43465175bb4ba"
+    countsSha256: "34c480febd6b9946aa2979581af6a75b4a3105bdd664ee5d8249d8f9071bf5fd"
+    meshSha256: "9cee160b20cc96fa4aab7c3c41b506ec8ccd28862ba4cef48b90be4c3758dd3c"
+    boundsSha256: "b2ea4cd42807c7e040a5bf2f1023309b0e113b8a5595b5949e92274e94ba7399"
+    symmetrySha256: "d8d653b517b64dc0183aec45f7d16c8730eb92f652fafe667ad88710716a3224"
+    camerasSha256: "cd0890a3bfee49f9543fc42012755f102f0265bd766c719587bbdd081c5f3d23"
+    renderSettingsSha256: "99ac69570350b617f1ec49abbfa5b511340f03cf0a764d52396602295a797c44"
+    graphContractSha256: "cf79a988cdc4341da7c9298dd8fa9e08e6fe787e5f9d01f7bf0dc2c05065d3c9"
+
+  geometry:
+    renderMeshObjects: 1
+    renderMeshDatablocks: 1
+    connectedComponents: 1
+    vertices: 1882
+    edges: 3760
+    polygons: 1880
+    boundaryEdges: 0
+    nonManifoldEdges: 0
+    looseEdges: 0
+    degenerateFaces: 0
+    nonFiniteVertices: 0
+    materialSlots: 1
+    activeModifiers: 0
+    shapeKeys: 0
+    positionSha256: "15381bb936b84d07d2572da677c412bed104a1df71e6ced8cf7ff9dbf670e592"
+    orientedTopologySha256: "c29dfe56bbb5eb5d8ed338a542b69880bc120c34c7df5a079aaf0dc27ebf2fd5"
+    result: "PASS"
+
+  boundsH:
+    minimum: [-0.232161283493042, -0.10349272936582565, 0.0]
+    maximum: [0.232161283493042, 0.10349272936582565, 1.0]
+    size: [0.464322566986084, 0.2069854587316513, 1.0]
+    result: "PASS"
+
+  symmetry:
+    axis: "X"
+    positionToleranceH: 0.000001
+    maximumPositionDeviationH: 0.000000239
+    missingMirroredVertices: 0
+    missingMirroredEdges: 0
+    missingMirroredPolygons: 0
+    result: "PASS"
+
+  construction:
+    geometryRole: "C1B_CONTINUOUS_NEUTRAL_REVIEW_MESH"
+    graphNodes: 31
+    graphEdges: 30
+    graphContractSha256: "cf79a988cdc4341da7c9298dd8fa9e08e6fe787e5f9d01f7bf0dc2c05065d3c9"
+    oldSixPartMeshesPresent: 0
+    oldPoseCapMeshesPresent: 0
+    separateVisibleHandFingerFistMeshes: 0
+    separateVisibleFootShoeToeMeshes: 0
+    productionTopologyApproved: false
+    skinningApproved: false
+
+  prohibitedScope:
+    armatures: 0
+    actions: 0
+    colliders: 0
+    uvLayers: 0
+    vertexGroups: 0
+    weightedVertexAssignments: 0
+    lodObjects: 0
+    externalImages: 0
+    packedImages: 0
+    externalLibraries: 0
+    embeddedTextBlocks: 0
+    directionReferenceEmbeddedOrPacked: false
+    result: "PASS"
+
+  cameras:
+    required: 4
+    inspected: 4
+    ids: ["Back", "Front", "Side", "ThreeQuarter"]
+    orthographic: 4
+    orthoScale: 1.2
+    maximumOpticalAxisDeviation: 0.000000222
+    targetH: [0.0, 0.0, 0.5]
+    result: "PASS"
+
+  renders:
+    styles: ["Neutral", "Silhouette"]
+    views: ["Back", "Front", "Side", "ThreeQuarter"]
+    expected: 8
+    inspected: 8
+    png2048Matches: 8
+    encodedHashMatches: 8
+    orderedBundleSha256: "622b68e9672956e000ccbccddf8c6c069e1a4f122f6c4659a2f94cc499ca60e7"
+    result: "PASS"
+
+  supersessionBoundary:
+    priorTasks: ["C1B-002", "C1B-003", "C1B-004", "C1B-005"]
+    priorArtifactsStatus: "SUPERSEDED_EXCLUDED_FROM_REWORK_INPUT"
+    priorArtifactsRewritten: false
+    inheritedOldGeometryCount: 0
+
+  neutralVisualGate:
+    gateId: "UG-C1B-NEUTRAL"
+    state: "PENDING_USER_REVIEW"
+    userVisualApprovalRecorded: false
+    poseGenerationAllowed: false
+    fbxExportAllowed: false
+    unityImportAllowed: false
+    result: "BLOCKS_DOWNSTREAM_BY_DESIGN"
+
+  execution:
+    blendSourcesCreated: 1
+    referenceRendersCreated: 8
+    poseOutputsCreated: 0
+    fbxExportsCreated: 0
+    unityAssetsCreated: 0
+    armaturesCreated: 0
+    actionsCreated: 0
+    collidersCreated: 0
+    playerBuildsExecuted: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+  recordedAtUtc: "2026-08-30T06:22:45Z"

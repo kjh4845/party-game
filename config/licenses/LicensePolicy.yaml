@@ -1,9 +1,9 @@
 LicensePolicy:
   schemaVersion: 1
-  profileId: "project-hotfix-license-policy-r03"
+  profileId: "project-hotfix-license-policy-r04"
   status: "APPROVED"
-  approvedAtUtc: "2026-08-29T13:59:49Z"
-  approvalBasis: "User approved the review-only image disposition, deletion of three source-unproven review files, removal of Unity tutorial/readme files, and the license policy on 2026-08-28 KST. The approved policy permits project-authored production assets when first-party ownership and immutable file evidence are recorded separately from review-only references. On 2026-08-29 KST the user confirmed kjh4845 as the C1B-003 sourceOwner; r03 records the resulting project-authored Blender source and adds a reusable non-shipping PRODUCTION_EVIDENCE seam for same-source QA renders without classifying them as PLAYER_CONTENT or review-only references. Deferring the final Player-content audit follows the separately fixed no-automatic-build rule and BLD-001/ALP-001 ownership."
+  approvedAtUtc: "2026-08-30T06:34:55Z"
+  approvalBasis: "User approved the review-only image disposition, deletion of three source-unproven review files, removal of Unity tutorial/readme files, and the license policy on 2026-08-28 KST. The approved policy permits project-authored production assets when first-party ownership and immutable file evidence are recorded separately from review-only references. On 2026-08-29 KST the user confirmed kjh4845 as the first-party sourceOwner; r03 added a reusable non-shipping PRODUCTION_EVIDENCE seam. On 2026-08-30 KST the user rejected the prior C1B-005 geometry and required its FBX to remain immutable history but lose Player eligibility; r04 adds fail-closed SUPERSEDED_CONTENT without deleting or rewriting the historical file. Deferring the final Player-content audit follows the separately fixed no-automatic-build rule and BLD-001/ALP-001 ownership."
 
   scope:
     packageManifest: "Project hotfix/Packages/manifest.json"
@@ -104,10 +104,13 @@ LicensePolicy:
       PRODUCTION_EVIDENCE:
         shippingAllowed: false
         meaning: "Project-authored QA output derived from an inventoried production source and retained only to evaluate or reproduce that source; it is neither canonical editable source nor Player content."
+      SUPERSEDED_CONTENT:
+        shippingAllowed: false
+        meaning: "A previously eligible first-party Player/import artifact rejected or replaced by an explicit user decision; retained only as immutable history and blocked from Player activation, import use, and future derivation."
       PLAYER_CONTENT:
         shippingAllowed: true
         meaning: "Derived or runtime-ready content whose first-party rights permit inclusion in the Player build, subject to the final build audit."
-    shippingAllowedSemantics: "This field records whether the exact file may cross the Player content boundary; PRODUCTION_SOURCE and PRODUCTION_EVIDENCE remain false, and the field does not determine Git/LFS storage or prove that a PLAYER_CONTENT file is actually included in a build."
+    shippingAllowedSemantics: "This field records whether the exact file may cross the Player content boundary; PRODUCTION_SOURCE, PRODUCTION_EVIDENCE and SUPERSEDED_CONTENT remain false, and the field does not determine Git/LFS storage or prove that a PLAYER_CONTENT file is actually included in a build."
     requiredEvidence:
       - "Repository-relative path and matching SHA-256"
       - "Named source owner and explicit PROJECT_AUTHORED status"

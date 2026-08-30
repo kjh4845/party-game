@@ -1,0 +1,107 @@
+CharacterProportionProfile:
+  schemaVersion: 1
+  profileId: "CharacterProportionProfile-C1BRW-001-r01"
+  version: "0.1.0-start"
+  revision: "r01"
+  state: "START"
+  candidateStatus: "USER_REVIEW"
+  ownerTask: "C1BRW-001"
+  sourceOwner: "kjh4845"
+
+  directionSource:
+    profileId: "C1a-Hybrid-Core-v0.13"
+    path: "artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.13_BELLY_CORRECTED_REVIEW.png"
+    sha256: "c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616"
+    role: "QUALITATIVE_DIRECTION_ONLY"
+    pixelMeasurementUsed: false
+    referenceReplicaAllowed: false
+
+  supersessionBoundary:
+    state: "DECIDED"
+    priorTasks: ["C1B-002", "C1B-003", "C1B-004", "C1B-005"]
+    priorArtifactsStatus: "SUPERSEDED_EXCLUDED_FROM_REWORK_INPUT"
+    rewritePriorArtifactsAllowed: false
+    inheritOldSixPartGeometryAllowed: false
+    inheritOldPoseCapGeometryAllowed: false
+    reason: "The old peg-like six-part Blockout and its derived Pose/FBX outputs failed the approved qualitative direction; they remain immutable history, not geometry inputs."
+
+  normalization:
+    unit: "H"
+    totalHeightH: 1.0
+    dimensionless: true
+    origin: "Neutral midpoint on the ground plane"
+    upAxis: "+Z"
+    characterForwardAxis: "-Y"
+    boundsH:
+      height: 1.0
+      fullWidth: 0.464322566986084
+      totalDepth: 0.2069854587316513
+      groundMinimum: 0.0
+      crownMaximum: 1.0
+
+  visualIntent:
+    head: "Rounded-square, large, faceless head connected through a narrow neck"
+    shoulderTorso: "One continuous sloped shoulder and broad compact torso surface"
+    arms: "Short curved tapered arms with rounded terminals and no visible hand mesh"
+    pelvisLegs: "One connected pelvis with a readable U-crotch and integrated short legs"
+    lowerTerminals: "Wide grounded rounded lower-leg terminals with no separate foot or toe mesh"
+    bellyOnlySilhouetteAllowed: false
+
+  neutralMeshContract:
+    renderMeshObjects: 1
+    renderMeshDatablocks: 1
+    connectedComponents: 1
+    vertices: 1882
+    edges: 3760
+    polygons: 1880
+    boundaryEdges: 0
+    nonManifoldEdges: 0
+    looseEdges: 0
+    degenerateFaces: 0
+    nonFiniteVertices: 0
+    xSymmetryRequired: true
+    xSymmetryPositionToleranceH: 0.000001
+    oldSixPartOrCapMeshesAllowed: false
+    separateVisibleHandFingerFistMeshesAllowed: false
+    separateVisibleFootShoeToeMeshesAllowed: false
+
+  reviewConstructionBoundary:
+    geometryRole: "C1B_CONTINUOUS_NEUTRAL_REVIEW_MESH"
+    graphContractSha256: "cf79a988cdc4341da7c9298dd8fa9e08e6fe787e5f9d01f7bf0dc2c05065d3c9"
+    graphNodes: 31
+    graphEdges: 30
+    skinModifierAppliedAsReviewConstruction: true
+    subdivisionAppliedAsReviewConstruction: true
+    activeConstructionModifiersAllowed: false
+    productionTopologyApproved: false
+    skinnedCharacterApproved: false
+
+  deferredProductionDecisions:
+    armature: {state: "DEFERRED", ownerTask: "CHR-001"}
+    animationActions: {state: "DEFERRED", ownerTasks: ["ANM-001", "ANM-002", "ANM-003", "ANM-004"]}
+    colliderAndPhysics: {state: "DEFERRED", ownerTasks: ["CHR-002", "CHR-008"]}
+    uv0AndPaintLayout: {state: "DEFERRED", ownerTask: "C4-001"}
+    skinWeightsAndDeformationLoops: {state: "DEFERRED", ownerTasks: ["C4-002", "C4-004"]}
+    lods: {state: "DEFERRED", ownerTask: "C4-003"}
+    productionTopology: {state: "DEFERRED", ownerTasks: ["C4-001", "C4-004"]}
+    materialsAndLighting: {state: "DEFERRED", ownerTasks: ["C4-001", "C4-004"]}
+
+  neutralVisualGate:
+    gateId: "UG-C1B-NEUTRAL"
+    state: "PENDING_USER_REVIEW"
+    userVisualApprovalRecorded: false
+    requiredBeforePoseWork: true
+    requiredBeforeFbxExport: true
+    poseGenerationAllowed: false
+    fbxExportAllowed: false
+    unityImportAllowed: false
+
+  execution:
+    generatedBlendCount: 0
+    generatedFbxCount: 0
+    generatedUnityAssetCount: 0
+    generatedPoseCount: 0
+    armaturesCreated: 0
+    actionsCreated: 0
+    collidersCreated: 0
+    playerBuildsExecuted: 0

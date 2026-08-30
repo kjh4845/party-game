@@ -8,7 +8,7 @@
 | 기준일 | 2026-08-26 |
 | 상위 문서 | PRD 1.8.0, SRS 1.8.0 |
 | 상세 패치 기준 | PATCH_DESIGN 0.5.0 · 승인 Patch12·Air Action·Firearm source |
-| 실행 계획 | Implementation Plan 2.5 · 173 Task · 251.0일 |
+| 실행 계획 | Implementation Plan 2.5 + C1B Rework Addendum · 178 Task · 258.0일 |
 | 범위 | SRS 요구사항 186개, 인수 시나리오 44개 |
 
 이 문서는 요구사항의 구현·검증 소유권을 확인하는 표다. 제품 규칙을 새로 만들지 않으며,
@@ -48,6 +48,8 @@
 - `UG-PATCH12-DESIGN`은 2026-08-25, `UG-DOC`는 모든 추가 범위를 반영한 2026-08-26 사용자 승인으로 PASSED다.
 - 공개 매칭·서버 목록·MMR·Rank는 Deferred가 아니라 영구 비범위다.
 - Player Build와 실제 Steam 계정 시험은 USER-MANUAL evidence가 없으면 완료가 아니다.
+- C1B-002..005의 PASS Evidence는 당시 기술 결과로 보존하지만 current visual acceptance에서는
+  `REWORK_REQUIRED`다. `UG-C1B-NEUTRAL` 전에는 새 Pose·FBX·Unity를 만들지 않는다.
 
 ---
 
@@ -90,7 +92,7 @@
 | SRS-NET-001..015 | direct P2P·Action·Ammo/Projectile·동기화·reconnect·Leave/Forfeit·Host loss | FIR-001..003, NET-001..015 | QA-003..006, QA-009 | USER-MANUAL DIRECT |
 | SRS-LOBBY-001..010 | FreeRoam·Guest Ready·Host Start·return | LBY-001..007 | UI-003, QA-004..006, QA-008 | UG-ALPHA |
 | SRS-APPEAR-001..013 | local preset·Paint·Cosmetic·Host P2P relay | APT-001..006, UI-004 | QA-003..006, QA-008..009 | UG-ALPHA |
-| SRS-APPEAR-014..023 | C1b·Interop·Hybrid action animation·Weapon visual archetype·production quality·Alpha placeholder catalog | C1B-001..006, WPA-001..003, ANP-001..003, APT-007, C4-001..004, ANM-001..004 | WPA-003, ANP-003, CAM-005, APT-006, QA-003, C4-004 | UG-C1B, UG-WEAPON-ART, UG-C4-LOCK |
+| SRS-APPEAR-014..023 | C1b·continuous Neutral·Interop·Hybrid action animation·Weapon visual archetype·production quality·Alpha placeholder catalog | C1B-001..006, C1BRW-001..005, WPA-001..003, ANP-001..003, APT-007, C4-001..004, ANM-001..004 | C1BRW-003,C1BRW-005,WPA-003,ANP-003,CAM-005,APT-006,QA-003,C4-004 | UG-C1B-NEUTRAL, UG-C1B, UG-WEAPON-ART, UG-C4-LOCK |
 | SRS-WEAPON-001..017 | W1·Air mapping·4종 art·7/30 no-reload·Spent·Projectile·recoil/spread·melee·supply·reset | WPA-001..003, FIR-001..003, WPN-001..008, ANP-003 | WPA-003, WPN-005..008, QA-001..002, NET-011..014, QA-009 | UG-WEAPON-ART, UG-W1, UG-PATCH12 |
 | SRS-UI-001..006 | Host Start·blocking reason·Tab/Minimal Match UI·local-only Match menu | UI-003, INP-004, INP-006, UI-007, LBY-004 | QA-003..006, QA-008 | UG-ALPHA |
 | SRS-STEAM-001..008 | Steam private Lobby·code·invite·P2P/SDR | STM-001..008 | STM-007..012 | UG-STEAM |
@@ -132,7 +134,7 @@
 | AT-025 | APT-001..006 | local appearance relay |
 | AT-026 | APT-001, APT-005..006 | appearance attack |
 | AT-027 | APT-004..006, C4-003 | cosmetic invariance |
-| AT-028 | C1B-005..006, C4-004 | C1B-005 r02 scoped Blockout export/import로 source→FBX→Unity scale·axis·landmark·bounds·surface signature·four-view silhouette parity를 확인하고 C1B-006에서 사용자 시각 승인; production UV/tangent·Rig/Collider/deformation은 C4-004 |
+| AT-028 | C1B-005, C1BRW-001..005, C1B-006, C4-004 | old C1B-005 기술 parity는 역사 보존. 새 continuous Neutral은 C1BRW-003 `UG-C1B-NEUTRAL` 승인 뒤에만 Pose·FBX/Unity를 진행하고 C1B-006에서 최종 승인; production UV/tangent·Rig/Collider/deformation은 C4-004 |
 | AT-029 | NET-014, APT-003, APT-006, DIA-002, QA-010 | performance |
 | AT-030 | UI-003, UI-005, AV-001..003, QA-008 | Alpha non-color cue·Tab mode 최소 접근성; audio를 포함한 확장 설정은 DEF-001 |
 | AT-031 | UI-006, LBY-007, DIA-001..002, SEC-001..002, STM-008 | error·diagnostics |
@@ -172,7 +174,7 @@
 - 모든 PRD ID는 2장의 SRS 범위에 정확히 포함된다.
 - 모든 SRS prefix와 AT ID가 이 문서에 적어도 한 번 등장한다.
 - 모든 주 구현·검증 Task가 Plan 2.5에 실제 존재한다.
-- Plan은 정확히 173 Task·251.0일이며 AIR-001..002, ANP-001..003, WPA-001..003,
+- Plan은 정확히 178 Task·258.0일이며 C1BRW-001..005, AIR-001..002, ANP-001..003, WPA-001..003,
   FIR-001..003, FDN-010..011, ART-001, LIC-001, BLD-001, INP-006, NET-015, UI-007,
   APT-007과 모든 선행관계가 존재해야 한다.
 - Plan Task의 선행관계는 누락과 순환이 없어야 한다.

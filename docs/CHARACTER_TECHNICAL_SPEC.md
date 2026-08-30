@@ -4,7 +4,7 @@
 
 | 항목 | 내용 |
 |---|---|
-| 문서 버전 | 0.12.0 C1B Static Interop Baseline |
+| 문서 버전 | 0.12.0 C1B Static Interop Baseline + 2026-08-30 Neutral Rework Addendum |
 | 최종 수정일 | 2026-08-30 |
 | 상위 기준 | `01_PRD.md` 1.8.0, `02_SRS.md` 1.8.0 |
 | 목적 | `MasterCharacter`의 승인 방향, 제작 Gate, 물리·입력·Paint·Cosmetic·무기 통합 기준 정의 |
@@ -12,6 +12,19 @@
 
 이 문서는 결과와 승인 기준을 정의한다. 구현체의 바이너리 배치, 내부 직렬화 수식과 반복 fixture
 개수는 구현·테스트 문서에서 관리하며 캐릭터의 제품 방향으로 취급하지 않는다.
+
+### 0.0 2026-08-30 Neutral Rework 결정
+
+- C1B-002..005는 당시 수치·Blender·Pose·FBX/Unity 기술 Evidence로는 PASS였지만, v0.13의 부드러운 한 몸
+  방향과 다른 faceted head, egg/peg body, exposed proximal cap과 detached-looking limb 때문에 current visual
+  acceptance에서는 `REWORK_REQUIRED`다. 역사 Evidence와 Commit은 수정하지 않는다.
+- 새 Neutral은 rounded-square head, narrow neck, continuous shoulder/arm, continuous U-crotch/leg, rounded terminal과
+  one continuous review Mesh를 사용한다. Pixel distance, vertex 수 또는 특정 topology를 v0.13에서 역산하지 않는다.
+- C1B rework chain의 `C1BRW-002` Neutral four-view를 사용자가 `UG-C1B-NEUTRAL`에서 먼저 승인해야 한다. 이 Gate 전에는 새 Pose,
+  FBX, Unity import, Rig와 Collider를 만들지 않는다.
+- 현재 technical candidate는 H/W/D `1/.464322567/.206985458`, Mesh/component `1/1`, V/E/P
+  `1882/3760/1880`, Neutral/Silhouette render `8`이다. 이 수치는 재현 identity이며 visual approval이나
+  production topology lock이 아니다.
 
 ### 0.1 0.12.0 변경 요약
 
@@ -105,6 +118,7 @@ Material, Animation 또는 수치를 복제하지 않는다. UI 기준 이미지
 |---|---|---|---|
 | `C0 Reference Lock` | 참고할 인상과 복제 금지 기록 | reference-role checklist | 참고 방향 |
 | `C1a Direction Review` | 큰 체형 방향 확인 | v0.13 front·side·3/4 sheet | 큰 시각 방향만 |
+| `C1b Neutral Review` | Pose·FBX 전에 현재 Neutral 조형 승인 | one continuous review Mesh의 front·side·back·3/4 Neutral/Silhouette | `UG-C1B-NEUTRAL`, Pose 제작 입력 |
 | `C1b Exact Proportion` | 한 체형의 정확한 수치 승인 | front·side·back·3/4, measurement, Pose, 4인 lineup | C2 Prototype 입력 |
 | `C2 Physics` | Rig·Collider·Joint·Ground/Air 행동 검증 | Unity physics Prefab, action/physics profile, capture | 물리 Prototype |
 | `C3 Integration` | Camera·Paint·Cosmetic·무기·action presentation 통합 | 2·3·4인 capture, UV/cage/Grip/action report | 통합 Prototype |
@@ -112,6 +126,9 @@ Material, Animation 또는 수치를 복제하지 않는다. UI 기준 이미지
 
 Gate를 건너뛰지 않는다. C2·C3에서 비율이나 reach 문제가 발견되면 Physics 값을 억지로 보정하지
 않고 C1b minor revision으로 돌아가 다시 승인한다.
+
+`C1b Neutral Review`는 `C1b Exact Proportion`을 대신하지 않는다. Neutral 조형을 먼저 승인한 뒤 Pose8·lineup과
+FBX/Unity parity를 만들고, 마지막 `UG-C1B`에서 수치·Pose·Unity 결과를 함께 승인한다.
 
 ### 2.1 C1b 필수 자료
 
@@ -127,6 +144,21 @@ Gate를 건너뛰지 않는다. C2·C3에서 비율이나 reach 문제가 발견
 `H=1.0` normalized profile을 사용하고 profile과 Blockout의 주요 silhouette·landmark 오차는
 `0.005H 이하`를 C1b/C2 시작 목표로 검증한다. 이 수치는 이미지 pixel 복제를 요구하는 값이 아니라
 동일한 승인 source가 제작 단계에서 바뀌지 않았음을 확인하는 값이다.
+
+### 2.2 Neutral rework 조형 계약
+
+- Head는 faceted sphere가 아니라 v0.13의 soft rounded-square mass로 읽혀야 한다.
+- Head와 torso 사이에는 좁은 neck 전이가 있고 flat cut 두 개가 맞닿은 형태를 허용하지 않는다.
+- Shoulder에서 arm으로 외곽이 연속되고, visible proximal cap·circular cut face·detached peg 인상이 없어야 한다.
+- Torso는 과도한 egg/pear mass가 아니라 v0.13의 비교적 곧고 부드러운 몸통이어야 한다.
+- Crotch는 torso와 양 leg를 잇는 연속 U 형태이며 hip cap이나 분리 leg block이 보이지 않아야 한다.
+- Forearm/lower-leg terminal은 별도 hand/foot 없이 둥글게 닫히고 flat disc로 읽히지 않아야 한다.
+- Neutral review Mesh는 component `1`, review Mesh `1`을 사용한다. 이는 production topology·UV·weight를
+  미리 확정하는 규칙이 아니라 seam/cap 회피와 조형 검토를 위한 현재 단계 계약이다.
+
+다음 failure class는 새 Neutral Gate에서 명시적으로 거부한다: `FACETED_HEAD`, `EGG_OR_PEG_BODY`,
+`EXPOSED_PROXIMAL_CAP`, `DETACHED_LOOKING_LIMB`, `FLAT_TERMINAL_DISC`, `BACKGROUND_THROUGH_HOLE`.
+사용자는 four-view 전체를 보고 승인하며, 한 view crop·조명 또는 Pose로 실패를 숨기지 않는다.
 
 ---
 
@@ -658,7 +690,7 @@ material-slot mapping, Skeleton과 mount pivot을 비교한다.
 
 ## 12. 미승인·Alpha tuning 항목
 
-- C1b exact 비율과 전체 gameplay scale
+- `C1BRW-002` current Neutral의 `UG-C1B-NEUTRAL` 시각 승인, 이후 C1b exact 비율과 전체 gameplay scale
 - Collider·mass·Joint·reach와 `GrabHoldThresholdMs`
 - `DualClickChordWindow 60/80/100ms`, Kick·Dropkick impulse/knockback·steering과 DropkickRecovery tuning
 - Sprint multiplier

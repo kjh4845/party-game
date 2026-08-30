@@ -1,0 +1,141 @@
+GenerationManifest:
+  schemaVersion: 1
+  manifestId: "GM-CHR-MasterCharacter-C1B-NeutralRework-r01"
+  state: "START"
+  candidateStatus: "USER_REVIEW"
+  completionScope: "C1B-RW-002_NEUTRAL_REVIEW_SOURCE_COMPLETE"
+  ownerTask: "C1BRW-002"
+  sourceOwner: "kjh4845"
+  recordedAtUtc: "2026-08-30T06:22:45Z"
+
+  identity:
+    assetId: "CHR_MasterCharacter_C1B_NeutralRework"
+    assetVersion: "0.1.0-start"
+    profileId: "CharacterProportionProfile-C1BRW-001-r01"
+    profileRevision: "r01"
+    profilePath: "config/character/CharacterProportionProfile-C1B-RW-001-r01.yaml"
+    profileSha256: "6c55a9d522096256fd15652f97c0a7a772285f427c53edb87f0c4d90d024b883"
+    directionSourceSha256: "c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616"
+    sourceSha256: "35f21abe5b6bcd35dc2b066aa3bd29cea5fbf8f9e8bd600b50ffa3f5daedb938"
+    fbxSha256: null
+    unityPrefabRevision: null
+
+  supersessionBoundary:
+    priorTasks: ["C1B-002", "C1B-003", "C1B-004", "C1B-005"]
+    priorArtifactsStatus: "SUPERSEDED_EXCLUDED_FROM_REWORK_INPUT"
+    priorArtifactsRewritten: false
+    inheritedOldGeometryCount: 0
+
+  stages:
+    profile:
+      status: "COMPLETE_START_CANDIDATE"
+      path: "config/character/CharacterProportionProfile-C1B-RW-001-r01.yaml"
+      sha256: "6c55a9d522096256fd15652f97c0a7a772285f427c53edb87f0c4d90d024b883"
+    blend-source:
+      status: "COMPLETE_LOCAL"
+      path: "BlenderSource/Characters/C1B-RW-002/CHR_MasterCharacter_C1B_NeutralRework_r01.blend"
+      bytes: 157613
+      sha256: "35f21abe5b6bcd35dc2b066aa3bd29cea5fbf8f9e8bd600b50ffa3f5daedb938"
+      blenderVersion: "5.2.0 LTS"
+      rootScale: [1.0, 1.0, 1.0]
+      sourceAxis: "+Z Up"
+      characterForwardAxis: "-Y"
+      lfsState: "PENDING_CORE_PUSH"
+      indexPointerVerified: true
+      remoteObjectRoundTripVerified: false
+    reference-render:
+      status: "COMPLETE"
+      root: "BlenderSource/Characters/C1B-RW-002/Renders"
+      styles: ["Neutral", "Silhouette"]
+      views: ["Back", "Front", "Side", "ThreeQuarter"]
+      dimensions: [2048, 2048]
+      outputCount: 8
+      orderedBundleSha256: "622b68e9672956e000ccbccddf8c6c069e1a4f122f6c4659a2f94cc499ca60e7"
+      outputs:
+        - {style: "Neutral", view: "Back", path: "BlenderSource/Characters/C1B-RW-002/Renders/CHR_MasterCharacter_C1B_NeutralRework_r01_Neutral_Back.png", bytes: 1956677, sha256: "cce8150a003d0aa1085e336c6163b3be221d0f9935406e0e204fc75462b579a5"}
+        - {style: "Neutral", view: "Front", path: "BlenderSource/Characters/C1B-RW-002/Renders/CHR_MasterCharacter_C1B_NeutralRework_r01_Neutral_Front.png", bytes: 1998826, sha256: "c370d63177cdceab08599379168420fb36e7df069825ed93fde8140e41d7f30f"}
+        - {style: "Neutral", view: "Side", path: "BlenderSource/Characters/C1B-RW-002/Renders/CHR_MasterCharacter_C1B_NeutralRework_r01_Neutral_Side.png", bytes: 1809857, sha256: "0e8ca9c5822936d1c5d9f1de5d52bf5dabe13324b48e7f2440f8dc27b61003b6"}
+        - {style: "Neutral", view: "ThreeQuarter", path: "BlenderSource/Characters/C1B-RW-002/Renders/CHR_MasterCharacter_C1B_NeutralRework_r01_Neutral_ThreeQuarter.png", bytes: 1934391, sha256: "916eb0a3e5946234055ee879a6301a60d9fec5b36e3aebbe0a5f4f6ee3e627c2"}
+        - {style: "Silhouette", view: "Back", path: "BlenderSource/Characters/C1B-RW-002/Renders/CHR_MasterCharacter_C1B_NeutralRework_r01_Silhouette_Back.png", bytes: 1611404, sha256: "21af46db9e17e6d70ab36abf06754d04befb1638c1ee2ede3ea9e64844507e24"}
+        - {style: "Silhouette", view: "Front", path: "BlenderSource/Characters/C1B-RW-002/Renders/CHR_MasterCharacter_C1B_NeutralRework_r01_Silhouette_Front.png", bytes: 1638842, sha256: "d77c189f1bb5a898bd38563682cc9f1eb82fe295251cbbfc78b37ed5ab905695"}
+        - {style: "Silhouette", view: "Side", path: "BlenderSource/Characters/C1B-RW-002/Renders/CHR_MasterCharacter_C1B_NeutralRework_r01_Silhouette_Side.png", bytes: 1585970, sha256: "88c398c1c024850460f9b313e2356ce3e5e7498950327ca1d48056d0b432c9b0"}
+        - {style: "Silhouette", view: "ThreeQuarter", path: "BlenderSource/Characters/C1B-RW-002/Renders/CHR_MasterCharacter_C1B_NeutralRework_r01_Silhouette_ThreeQuarter.png", bytes: 1626274, sha256: "15b3d8f6dc8cdef2980a3d160fc68503cea6f3abbf0de5cadc6394525edb9016"}
+    pose-generation:
+      status: "BLOCKED_PENDING_NEUTRAL_VISUAL_GATE"
+      outputs: 0
+    fbx-export:
+      status: "BLOCKED_PENDING_NEUTRAL_VISUAL_GATE"
+      path: null
+      bytes: null
+      sha256: null
+      executed: false
+    unity-import:
+      status: "BLOCKED_PENDING_NEUTRAL_VISUAL_GATE"
+      path: null
+      revision: null
+      executed: false
+
+  measurementEvidence:
+    reportPath: "BlenderSource/Characters/C1B-RW-002/MeasurementReport.yaml"
+    reportSha256: "9f67ae7c6d3345e0f8f7a315dbb1302933f41cff690895b32b3345e2e1d0806b"
+    result: "PASS_INTERNAL_STRUCTURE"
+  generationTools:
+    generator: {path: "tools/blender/create_c1b_rw002_neutral.py", sha256: "0901d27d4a5183ca43d61f8285f97f6f171e7ac6770f6b24aa519c40689ff6db"}
+    inspector: {path: "tools/blender/inspect_c1b_rw002_neutral.py", sha256: "86faae7cadfe57e4e79acc9dcd3a1664a784c460036d0ab108a908670ba4cc6b"}
+
+  neutralMeshContract:
+    renderMeshObjects: 1
+    renderMeshDatablocks: 1
+    connectedComponents: 1
+    vertices: 1882
+    edges: 3760
+    polygons: 1880
+    boundaryEdges: 0
+    nonManifoldEdges: 0
+    looseEdges: 0
+    degenerateFaces: 0
+    xSymmetryMaximumPositionDeviationH: 0.000001
+    positionSha256: "15381bb936b84d07d2572da677c412bed104a1df71e6ced8cf7ff9dbf670e592"
+    orientedTopologySha256: "c29dfe56bbb5eb5d8ed338a542b69880bc120c34c7df5a079aaf0dc27ebf2fd5"
+    boundsH: {width: 0.464322566986084, depth: 0.2069854587316513, height: 1.0}
+
+  sourceBoundary:
+    oldSixPartOrPoseCapMeshes: 0
+    separateVisibleHandFingerFistMeshes: 0
+    separateVisibleFootShoeToeMeshes: 0
+    armatures: 0
+    actions: 0
+    colliders: 0
+    uvLayers: 0
+    weightedVertexAssignments: 0
+    lodObjects: 0
+    externalOrPackedInputs: 0
+    productionTopologyApproved: false
+    userVisualApprovalRecorded: false
+
+  neutralVisualGate:
+    gateId: "UG-C1B-NEUTRAL"
+    state: "PENDING_USER_REVIEW"
+    poseGenerationAllowed: false
+    fbxExportAllowed: false
+    unityImportAllowed: false
+
+  execution:
+    blendSources: 1
+    referenceRenders: 8
+    poseOutputs: 0
+    fbxExports: 0
+    unityImports: 0
+    armatures: 0
+    actions: 0
+    colliders: 0
+    playerBuilds: 0
+    dockerExecutions: 0
+    deployExecutions: 0
+
+  limitations:
+    - "This is a START/USER_REVIEW Neutral direction candidate, not an approved production character."
+    - "C1B-002 through C1B-005 remain immutable superseded history and are excluded from the rework geometry input."
+    - "The one-piece Skin/Subdivision result is review construction; production topology, UV, weights, deformation loops and LOD remain deferred."
+    - "Neutral user review is required before Pose generation, FBX export or Unity import."
+    - "No Armature, Action, Collider, Player Build, Docker or deployment was created or executed."

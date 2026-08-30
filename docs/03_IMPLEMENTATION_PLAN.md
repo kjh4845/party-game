@@ -8,8 +8,8 @@
 | 기준일 | 2026-08-26 |
 | 현재 목표 | Alpha에서 2·3·4인 전체 흐름과 실제 무기 전투를 검증한 뒤 Steam 통합 |
 | 기준 문서 | PRD 1.8.0, SRS 1.8.0, PATCH_DESIGN 0.5.0과 현행 분야별 사양 |
-| 현재 구현 상태 | FDN-001..011·ART-001·LIC-001·BLD-001·C1B-002..005 완료: private GitHub origin과 repository-local Git LFS, Unity6.3 URP, module/Input/Physics/UTP, renderless SimulationHarness/test-evidence, local atomic storage, 금지 인프라 guard, Windows x64 Profile 존재. C1B proportion·Blender Blockout·static Pose8·4인 lineup2·static FBX/Unity four-view parity는 START/CANDIDATE이며 미승인; first-party asset39·shipping true1(FBX)·Unity QA capture8 non-shipping. Gameplay/Network code·Rig/Collider/Animation·Player Build 없음 |
-| 계획 규모 | 173 Task, 251.0 집중 개발일 |
+| 현재 구현 상태 | Foundation은 완료. C1B-002..005 기술 Evidence는 역사적으로 유효하지만 v0.13과 다른 faceted head·egg/peg body·분리 limb/cap 때문에 current visual acceptance에서는 `REWORK_REQUIRED`. `C1BRW-001` profile은 완료, one continuous review Mesh Neutral `C1BRW-002`는 `USER_REVIEW`; `UG-C1B-NEUTRAL` 전 Pose·FBX·Unity 재작업0. Gameplay/Network code·Rig/Collider/Animation·Player Build 없음 |
+| 계획 규모 | 178 Task, 258.0 집중 개발일 |
 | 자동화 금지 | Unity Player Build, Steam 배포, 외부 서비스 배포 |
 
 이 계획은 솔로 개발자가 하나씩 실행할 수 있도록 작업을 0.5~2 집중 개발일로 나눈다.
@@ -147,7 +147,8 @@ BGM0 범위도 2026-08-26 사용자 승인 완료다. exact installed patch와 p
 - Player Build와 Steam 실제 계정 시험은 사용자가 직접 실행한다.
 
 상태는 NOT_STARTED, READY, IN_PROGRESS, EVIDENCE_PENDING, USER_REVIEW, PASSED, FAILED,
-BLOCKED, DEFERRED를 사용한다.
+BLOCKED, DEFERRED, REWORK_REQUIRED를 사용한다. `REWORK_REQUIRED`는 당시 PASS Evidence를 실패로 다시 쓰지 않고,
+최신 사용자 시각 결정 때문에 그 산출물을 current acceptance 입력에서 제외한다는 뜻이다.
 
 ---
 
@@ -187,11 +188,19 @@ BLOCKED, DEFERRED를 사용한다.
 | ID | 일 | 목표 | 선행 | 요구 | 산출물 | 완료 기준 | Gate | 상태 |
 |---|---:|---|---|---|---|---|---|---|
 | C1B-001 | 0.5 | v0.13 C1a 승인 source 고정 | 역사적 승인 | CHAR | source record | 승인 파일·hash 일치 | UG-C1A | PASSED |
-| C1B-002 | 1.5 | normalized exact proportion 후보 작성 | DOC-005,C1B-001,ART-001 | CHAR | `CharacterProportionProfile-C1B-002-r01` + fail-closed guard | H1 START/CANDIDATE, landmark17·exact-height front/side section17·envelope11·누락0, bounds W0.58/D0.265, head0.20·terminal-crotch0.045; gameplay meter/physics/production값·pixel역산·승인·asset·Build0, mutation22/152 | — | PASSED |
-| C1B-003 | 2 | 동일 source의 front/side/back/3/4 Blockout 제작 | C1B-002 | CHAR | Blender source·Neutral/Silhouette render8 + manifest/measurement/first-party/LFS evidence | owner kjh4845, H/W/D 1/.58/.265·landmark/mesh section17·camera4 center drift1.167e-6H, source rerender8/8, source/evidence asset9 shipping0; `.blend` pointer/upload/fresh fetch hash·size 일치, mutation19/139, FBX·Unity·Pose·승인·Build0 | — | PASSED |
-| C1B-004 | 1.5 | Neutral·Grab·Strike·L/R Kick·Dropkick과 4인 lineup 제작 | C1B-003 | CHAR | pose/lineup bundle | owner kjh4845, same-lineage r02 source·Pose8·4인 overlap/spread2, Neutral/Silhouette render20·source rerender20/20, base6 불변+internal-cap derivative4·별도 손발/Rig/Collider/Action/FBX/Unity/Build0, 2/3/4 판독 기준5 PREPARED_NOT_EXECUTED, LFS pointer/upload/fresh fetch 일치, mutation21/145 | — | PASSED |
-| C1B-005 | 1.5 | Blender→Unity Blockout 동등성 확인 | C1B-003..004,FDN-002 | CHAR | FBX·identity Prefab·four-view import comparison | r02 전역 C1BBlockout 변환으로 source 불변·수동 보정0, H/W/D `1/.58/.265`, landmark17 Unity deviation0, root/export determinant1·axis/negative scale0, surface signature 일치, silhouette bbox drift 최대 `0.004103H≤0.005H`; Unity capture8, dedicated EditMode7/7·전체59/59, FBX LFS pointer/upload/fresh fetch 일치. UV0/tangent·Rig/Collider/Animation·2/3/4 runtime·사용자 시각 승인·Build는 후속 | — | PASSED |
-| C1B-006 | 0.5 | exact profile 사용자 승인 | C1B-002..005 | CHAR | approved profile | ID·version·수치 명시 | UG-C1B | NOT_STARTED |
+| C1B-002 | 1.5 | 역사 normalized proportion 후보 | DOC-005,C1B-001,ART-001 | CHAR | `CharacterProportionProfile-C1B-002-r01` + Evidence | 당시 H1·landmark17·bounds 기술 PASS 보존; current visual acceptance=`REWORK_REQUIRED`, superseded | — | REWORK_REQUIRED |
+| C1B-003 | 2 | 역사 6-part faceted Blockout | C1B-002 | CHAR | Blender source·render8·Evidence | 당시 source/render/LFS 기술 PASS 보존; current visual acceptance=`REWORK_REQUIRED`, superseded | — | REWORK_REQUIRED |
+| C1B-004 | 1.5 | 역사 static Pose8·4인 lineup | C1B-003 | CHAR | pose/lineup bundle·Evidence | 당시 기술 PASS 보존; current visual acceptance=`REWORK_REQUIRED`, 새 Neutral에서 재파생 | — | REWORK_REQUIRED |
+| C1B-005 | 1.5 | 역사 FBX/Unity static parity | C1B-003..004,FDN-002 | CHAR | FBX·Prefab·capture8·Evidence | 당시 parity 기술 PASS 보존; current visual acceptance=`REWORK_REQUIRED`, superseded geometry 전달 결과 | — | REWORK_REQUIRED |
+| C1BRW-001 | 1.5 | v0.13 방향의 새 lean proportion/profile 후보 | C1B-001,DOC-005,ART-001 | CHAR | `CharacterProportionProfile-C1BRW-001-r01` | pixel 역산0, rounded-square head·narrow neck·continuous torso/limb·U-crotch·rounded terminal을 과적합 없이 기록 | — | PASSED |
+| C1BRW-002 | 2 | one continuous review Mesh Neutral 제작·검토 | C1BRW-001 | CHAR | versioned `.blend` + fixed four-view Neutral/Silhouette8 | H/W/D `1/.464322567/.206985458`, mesh/component1, V/E/P `1882/3760/1880`, render8·구조 검증 PASS; failure-class 시각 판정은 Neutral Gate 소유, visual approval·production topology·Build0 | — | USER_REVIEW |
+| C1BRW-003 | 0.5 | Neutral 방향 사용자 승인 | C1BRW-002 | CHAR | decision record | four-view에서 head·neck·shoulder/arm·U-crotch/leg·terminal 연속성 승인 또는 재작업. 미승인 시 Pose/FBX/Unity0 | UG-C1B-NEUTRAL | BLOCKED |
+| C1BRW-004 | 1.5 | 승인 Neutral에서 Pose8·4인 lineup 재파생 | C1BRW-003 | CHAR | new pose/lineup bundle | exact Pose8·overlap/spread, visible open hole·exposed cap0, static 방향 판독; Animation claim0 | — | NOT_STARTED |
+| C1BRW-005 | 1.5 | 승인 Neutral의 FBX/Unity parity 재검증 | C1BRW-004,FDN-002 | CHAR | new FBX·identity Prefab·capture8 | source 불변·manual correction0, scale·axis·surface·four-view parity와 LFS/license; Rig/Collider/Animation·Build0 | — | NOT_STARTED |
+| C1B-006 | 0.5 | exact profile 최종 사용자 승인 | C1B-001,C1BRW-001,C1BRW-002,C1BRW-003,C1BRW-004,C1BRW-005 | CHAR | approved profile | Neutral Gate를 통과한 ID·version·수치·Pose·Unity 결과 명시 | UG-C1B | BLOCKED |
+
+위 네 역사 Task의 당시 기술 Evidence `PASSED`는 그대로 보존한다. 상태 열의 `REWORK_REQUIRED`는 최신 active visual
+acceptance만 철회했음을 뜻하며 C1BRW chain이 이를 대체한다. 과거 Evidence를 FAILED로 다시 쓰지 않는다.
 
 ## 6. G1 — Offline gameplay Alpha core
 
@@ -401,17 +410,20 @@ Workshop, 공식 맵 6개, Patch40, 가격·상점·출시 운영은 Steam 통�
 4. FDN-002 Unity project, FDN-003 module boundary
 5. FDN-004..009 package·test·local storage·forbidden-infrastructure guard
 6. ART-001 style/interoperability profile, LIC-001 license inventory, BLD-001 수동 Build Profile 준비
-7. C1B-006에서 완료된 Unity parity 결과를 사용자에게 제시하고 `UG-C1B` 승인
-8. G1 Character/Input·AIR·Alpha Action Animation부터 한 Task씩 실행
-9. WPA-001..003으로 네 Weapon low-poly 결과를 잠근 뒤 WPN 구현 시작
-10. UG-W1 뒤 FIR-001..003으로 7/30 no-reload state, Projectile, Recoil/Spread를 분리 구현
-11. PAT-001은 2026-08-25 `UG-PATCH12-DESIGN` 승인 기록과 FDN-003 완료 뒤 시작
+7. `C1BRW-002` Neutral을 제시하고 `C1BRW-003 / UG-C1B-NEUTRAL` 승인. 승인 전 Pose·FBX·Unity0
+8. 승인 Neutral의 `C1BRW-004..005` Pose·Unity parity 뒤 `C1B-006 / UG-C1B` 최종 승인
+9. G1 Character/Input·AIR·Alpha Action Animation부터 한 Task씩 실행
+10. WPA-001..003으로 네 Weapon low-poly 결과를 잠근 뒤 WPN 구현 시작
+11. UG-W1 뒤 FIR-001..003으로 7/30 no-reload state, Projectile, Recoil/Spread를 분리 구현
+12. PAT-001은 2026-08-25 `UG-PATCH12-DESIGN` 승인 기록과 FDN-003 완료 뒤 시작
 
 Player Build, Steam 배포와 외부 서비스 실행은 이 자동 순서에 포함하지 않는다.
 
 ## 12. 계획 검증 체크리스트
 
 - 모든 Task는 0.5~2일이며 하나의 검증 가능한 결과를 가진다.
+- Plan은 178 Task·258.0일이며 역사 C1B PASS Evidence를 보존한 채 C1B rework chain `C1BRW-001..005`가 current acceptance를 소유한다.
+- `UG-C1B-NEUTRAL` 전에는 새 Pose·FBX·Unity를 만들지 않고, 이후 `UG-C1B` 최종 승인을 별도로 받는다.
 - Host Start는 Guest 전원 Ready 전에는 활성화되지 않는다.
 - Shift Sprint, Esc Cursor toggle, Tab Hold/Toggle와 DownCount reset이 각각 구현·검증 Task를 가진다.
 - Ground hand Punch/Grab과 Air L/R Kick·dual-click Dropkick·Hold Ledge Grab이 결정적 resolver와

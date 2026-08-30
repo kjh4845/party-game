@@ -36,6 +36,10 @@ class LicenseInventoryVerifier
     "CHR_MasterCharacter_C1B_Neutral_r02.fbx"
   C1B005_CAPTURE_ROOT = "artifacts/evidence/G0/C1B-005/Captures/Unity/"
   CHARACTER_PROFILE_ANCHOR = "config/character/CharacterProportionProfile.yaml#CharacterProportionProfile"
+  C1BRW002_ROOT = "BlenderSource/Characters/C1B-RW-002/"
+  C1BRW002_MANIFEST_PATH = "#{C1BRW002_ROOT}GenerationManifest.yaml"
+  C1BRW_PROFILE_ANCHOR =
+    "config/character/CharacterProportionProfile-C1B-RW-001-r01.yaml#CharacterProportionProfile"
 
   MAX_YAML_BYTES = 2 * 1024 * 1024
   MAX_JSON_BYTES = 4 * 1024 * 1024
@@ -307,7 +311,7 @@ class LicenseInventoryVerifier
 
     expect(@policy.keys.sort == POLICY_TOP_LEVEL_FIELDS, "POLICY_FIELD_SET", POLICY_PATH)
     expect(@policy["schemaVersion"] == 1, "POLICY_SCHEMA_VERSION", POLICY_PATH)
-    expect(@policy["profileId"] == "project-hotfix-license-policy-r03", "POLICY_PROFILE_ID", POLICY_PATH)
+    expect(@policy["profileId"] == "project-hotfix-license-policy-r04", "POLICY_PROFILE_ID", POLICY_PATH)
     expect(@policy["status"] == "APPROVED", "POLICY_STATUS", POLICY_PATH)
     expect(nonempty?(@policy["approvedAtUtc"]), "POLICY_APPROVAL_TIME", POLICY_PATH)
     approval = @policy["approvalBasis"].to_s
@@ -319,6 +323,8 @@ class LicenseInventoryVerifier
       "POLICY_FIRST_PARTY_OWNER_BASIS", POLICY_PATH)
     expect(approval.include?("PRODUCTION_EVIDENCE") && approval.include?("non-shipping"),
       "POLICY_PRODUCTION_EVIDENCE_BASIS", POLICY_PATH)
+    expect(approval.include?("SUPERSEDED_CONTENT") && approval.include?("rejected"),
+      "POLICY_SUPERSEDED_CONTENT_BASIS", POLICY_PATH)
 
     scope = @policy["scope"]
     unless scope.is_a?(Hash)
@@ -384,7 +390,7 @@ class LicenseInventoryVerifier
       first_party["requiredValues"] == expected_first_party_values &&
       first_party["intendedUseProfiles"].is_a?(Hash) &&
       first_party["intendedUseProfiles"].keys.sort == %w[
-        PLAYER_CONTENT PRODUCTION_EVIDENCE PRODUCTION_SOURCE
+        PLAYER_CONTENT PRODUCTION_EVIDENCE PRODUCTION_SOURCE SUPERSEDED_CONTENT
       ] &&
       first_party["intendedUseProfiles"].all? do |_name, profile|
         profile.is_a?(Hash) && profile.keys.sort == %w[meaning shippingAllowed] &&
@@ -392,6 +398,7 @@ class LicenseInventoryVerifier
       end &&
       first_party["intendedUseProfiles"]["PRODUCTION_SOURCE"]["shippingAllowed"] == false &&
       first_party["intendedUseProfiles"]["PRODUCTION_EVIDENCE"]["shippingAllowed"] == false &&
+      first_party["intendedUseProfiles"]["SUPERSEDED_CONTENT"]["shippingAllowed"] == false &&
       first_party["intendedUseProfiles"]["PLAYER_CONTENT"]["shippingAllowed"] == true &&
       nonempty?(first_party["shippingAllowedSemantics"]) &&
       first_party["requiredEvidence"].is_a?(Array) && first_party["requiredEvidence"].length >= 4 &&
@@ -500,7 +507,7 @@ class LicenseInventoryVerifier
     end
     expect(@inventory.keys.sort == INVENTORY_TOP_LEVEL_FIELDS, "INVENTORY_FIELD_SET", INVENTORY_PATH)
     expect(@inventory["schemaVersion"] == 1, "INVENTORY_SCHEMA_VERSION", INVENTORY_PATH)
-    expect(@inventory["inventoryId"] == "project-hotfix-third-party-inventory-r05",
+    expect(@inventory["inventoryId"] == "project-hotfix-third-party-inventory-r06",
       "INVENTORY_ID", INVENTORY_PATH)
     expect(@inventory["status"] == "APPROVED_SOURCE_INVENTORY_WINDOWS_FINAL_AUDIT_PENDING",
       "INVENTORY_STATUS", INVENTORY_PATH)
@@ -680,6 +687,16 @@ class LicenseInventoryVerifier
     end
     expect(c1b005_fbx_count == 1 && c1b005_capture_count == 8,
       "INVENTORY_C1B005_ASSET_TYPE_COUNT", INVENTORY_PATH)
+    c1brw002_items = items.select do |item|
+      item.is_a?(Hash) && item["path"].to_s.start_with?(C1BRW002_ROOT)
+    end
+    expect(c1brw002_items.length == 9, "INVENTORY_C1BRW002_ITEM_COUNT", INVENTORY_PATH)
+    c1brw002_source_count = c1brw002_items.count { |item| item["assetType"] == "BLENDER_SOURCE" }
+    c1brw002_render_count = c1brw002_items.count do |item|
+      item["assetType"] == "CHARACTER_REWORK_REFERENCE_RENDER"
+    end
+    expect(c1brw002_source_count == 1 && c1brw002_render_count == 8,
+      "INVENTORY_C1BRW002_ASSET_TYPE_COUNT", INVENTORY_PATH)
 
     items.each_with_index do |item, index|
       path = item.is_a?(Hash) && nonempty?(item["path"]) ? item["path"] : "first-party[#{index}]"
@@ -713,9 +730,14 @@ class LicenseInventoryVerifier
         expect(!path.start_with?("Project hotfix/Assets/"),
           "INVENTORY_FIRST_PARTY_SOURCE_INSIDE_UNITY_ASSETS", path)
       end
-      if item["shippingAllowed"] == false
+      if item["shippingAllowed"] == false && item["intendedUse"] != "SUPERSEDED_CONTENT"
         expect(!path.start_with?("Project hotfix/Assets/"),
           "INVENTORY_FIRST_PARTY_NONSHIPPING_INSIDE_UNITY_ASSETS", path)
+      end
+      if item["intendedUse"] == "SUPERSEDED_CONTENT"
+        expect(extension == ".fbx" && item["assetType"] == "MODEL" &&
+          item["shippingAllowed"] == false && item["reviewOnly"] == false,
+          "INVENTORY_FIRST_PARTY_SUPERSEDED_CLASS", path)
       end
       if extension == ".blend" || item["assetType"] == "BLENDER_SOURCE"
         expect(extension == ".blend" && item["assetType"] == "BLENDER_SOURCE" &&
@@ -800,10 +822,12 @@ class LicenseInventoryVerifier
           "INVENTORY_C1B005_PROFILE_EVIDENCE", path)
         if path == C1B005_FBX_PATH
           expect(extension == ".fbx" && item["assetType"] == "MODEL" &&
-            item["intendedUse"] == "PLAYER_CONTENT" && item["shippingAllowed"] == true,
+            item["intendedUse"] == "SUPERSEDED_CONTENT" && item["shippingAllowed"] == false,
             "INVENTORY_C1B005_FBX_CLASS", path)
           expect(evidence.include?("#{C1B005_MANIFEST_PATH}#stages.fbx-export") &&
-            evidence.include?("#{C1B005_MANIFEST_PATH}#identity.fbxSha256"),
+            evidence.include?("#{C1B005_MANIFEST_PATH}#identity.fbxSha256") &&
+            evidence.include?("superseded-by:#{C1BRW002_ROOT}CHR_MasterCharacter_C1B_NeutralRework_r01.blend") &&
+            evidence.any? { |locator| locator.include?("geometry rejected") },
             "INVENTORY_C1B005_FBX_MANIFEST_EVIDENCE", path)
         else
           expect(extension == ".png" && item["assetType"] == "UNITY_INTEROP_REFERENCE_RENDER" &&
@@ -812,6 +836,22 @@ class LicenseInventoryVerifier
           manifest_anchor =
             "#{C1B005_MANIFEST_PATH}#stages.reference-render.outputs[path=#{path}]"
           expect(evidence.include?(manifest_anchor), "INVENTORY_C1B005_CAPTURE_MANIFEST_EVIDENCE", path)
+        end
+      end
+      if path.start_with?(C1BRW002_ROOT)
+        expect(item["sourceOwner"] == "kjh4845", "INVENTORY_C1BRW002_SOURCE_OWNER", path)
+        expect(evidence.include?(C1BRW_PROFILE_ANCHOR),
+          "INVENTORY_C1BRW002_PROFILE_EVIDENCE", path)
+        manifest_anchor = if extension == ".blend"
+          "#{C1BRW002_MANIFEST_PATH}#stages.blend-source"
+        else
+          "#{C1BRW002_MANIFEST_PATH}#stages.reference-render.outputs[path=#{path}]"
+        end
+        expect(evidence.include?(manifest_anchor), "INVENTORY_C1BRW002_MANIFEST_EVIDENCE", path)
+        if extension == ".png"
+          expect(item["assetType"] == "CHARACTER_REWORK_REFERENCE_RENDER" &&
+            item["intendedUse"] == "PRODUCTION_EVIDENCE" && item["shippingAllowed"] == false,
+            "INVENTORY_C1BRW002_RENDER_CLASS", path)
         end
       end
       evidence.each do |locator|
@@ -937,7 +977,7 @@ class LicenseInventoryVerifier
     expect(binary.keys.sort == %w[
       schemaVersion revision recordedAtUtc policyPath excludedGeneratedRoots summary storage files
     ].sort, "BINARY_INVENTORY_FIELDS", BINARY_INVENTORY_PATH)
-    expect(binary["schemaVersion"] == 1 && binary["revision"] == "r06",
+    expect(binary["schemaVersion"] == 1 && binary["revision"] == "r07",
       "BINARY_INVENTORY_VERSION", BINARY_INVENTORY_PATH)
     expect(binary["policyPath"] == "config/repository/BinaryAssetPolicy.md",
       "BINARY_INVENTORY_POLICY_PATH", BINARY_INVENTORY_PATH)

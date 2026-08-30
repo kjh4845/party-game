@@ -29,21 +29,21 @@ class VerifyLfsRepositoryTest < Minitest::Test
     stdout, stderr, status = run_verifier(REPOSITORY_ROOT)
 
     assert_includes stdout, "DEFAULT_LFS_PATTERN_COUNT=10"
-    assert_includes stdout, "BINARY_INVENTORY_COUNT=57"
-    assert_includes stdout, "LFS_REQUIRED_CANDIDATES=3"
-    assert_includes stdout, "ORDINARY_PNG_FILES=54"
+    assert_includes stdout, "BINARY_INVENTORY_COUNT=66"
+    assert_includes stdout, "LFS_REQUIRED_CANDIDATES=4"
+    assert_includes stdout, "ORDINARY_PNG_FILES=62"
     assert_includes stdout, "HISTORY_REWRITE_CLAIMED=false"
     assert_includes stdout, "LOCAL_LFS_REQUESTED=false"
     assert_includes stdout, "REMOTE_REQUESTED=false"
     if status.zero?
       assert_empty stderr
-      assert_includes stdout, "LFS_TRACKED_FILES=3"
+      assert_includes stdout, "LFS_TRACKED_FILES=4"
       assert_includes stdout, "TOTAL_VIOLATIONS=0"
       assert_includes stdout, "FINAL_RESULT=PASS"
     else
       assert_equal 1, status, stderr + stdout
       assert_empty stderr
-      assert_includes stdout, "LFS_TRACKED_FILES=2"
+      assert_includes stdout, "LFS_TRACKED_FILES=3"
       rules = stdout.lines.map { |line| line[/VIOLATION rule=([^ ]+)/, 1] }.compact.sort
       assert_equal %w[
         INVENTORY_SUMMARY_CURRENTLFSTRACKEDFILES
@@ -70,7 +70,7 @@ class VerifyLfsRepositoryTest < Minitest::Test
   def test_duplicate_invalid_and_oversize_inventory_yaml_fail_closed
     with_repository do |root|
       path = root.join(INVENTORY_PATH)
-      path.write(path.read.sub("  revision: \"r06\"\n", "  revision: \"r06\"\n  revision: \"r06\"\n"))
+      path.write(path.read.sub("  revision: \"r07\"\n", "  revision: \"r07\"\n  revision: \"r07\"\n"))
       stdout, _stderr, status = run_verifier(root)
       assert_equal 1, status
       assert_includes stdout, "rule=INVENTORY_YAML_DUPLICATE_KEY"
@@ -152,7 +152,7 @@ class VerifyLfsRepositoryTest < Minitest::Test
         entry = inventory.fetch("files").first
         entry["bytes"] = 1
         entry["sha256"] = "0" * 64
-        recompute_summary(inventory, required: 3, tracked: 3)
+        recompute_summary(inventory, required: 4, tracked: 4)
       end
       stdout, _stderr, status = run_verifier(root)
 
@@ -174,7 +174,7 @@ class VerifyLfsRepositoryTest < Minitest::Test
     with_repository do |root|
       mutate_inventory(root) do |inventory|
         inventory.fetch("files").pop
-        recompute_summary(inventory, required: 3, tracked: 3)
+        recompute_summary(inventory, required: 4, tracked: 4)
       end
       stdout, _stderr, status = run_verifier(root)
 
@@ -217,8 +217,8 @@ class VerifyLfsRepositoryTest < Minitest::Test
       policy.write(policy.read
         .sub("`.blend`, `.fbx`, `.glb`", "`.blend`, `.glb`")
         .sub(
-          "Core revision `2ce7194` uploaded the third production LFS object",
-          "Third production object round-trip status omitted",
+          "The C1B-RW-002 continuous Neutral rework source is the fourth canonical LFS object",
+          "Fourth production object round-trip status omitted",
         )
         .sub("Do not run `git lfs migrate`", "Migration command omitted"))
       stdout, _stderr, status = run_verifier(root)
@@ -296,7 +296,7 @@ class VerifyLfsRepositoryTest < Minitest::Test
       stdout, stderr, status = run_verifier(root)
 
       assert_equal 0, status, stderr + stdout
-      assert_includes stdout, "LFS_REQUIRED_CANDIDATES=3"
+      assert_includes stdout, "LFS_REQUIRED_CANDIDATES=4"
       assert_includes stdout, "FINAL_RESULT=PASS"
     end
   end
@@ -312,25 +312,25 @@ class VerifyLfsRepositoryTest < Minitest::Test
           "bytes" => payload.bytesize,
           "sha256" => Digest::SHA256.hexdigest(payload),
         }
-        recompute_summary(inventory, required: 4, tracked: 4)
+        recompute_summary(inventory, required: 5, tracked: 5)
       end
       policy = root.join(POLICY_PATH)
       policy.write(policy.read.sub(
-        "has `3` LFS-tracked files and `3` LFS-required candidates",
         "has `4` LFS-tracked files and `4` LFS-required candidates",
+        "has `5` LFS-tracked files and `5` LFS-required candidates",
       ))
       pointer = stage_pointer_for_working_file(root, path)
 
       stdout, stderr, status = run_verifier(root)
       assert_equal 0, status, stderr + stdout
-      assert_includes stdout, "LFS_REQUIRED_CANDIDATES=4"
-      assert_includes stdout, "LFS_TRACKED_FILES=4"
+      assert_includes stdout, "LFS_REQUIRED_CANDIDATES=5"
+      assert_includes stdout, "LFS_TRACKED_FILES=5"
       assert_includes stdout, "FINAL_RESULT=PASS"
 
       write_file(root.join(path), pointer)
       stdout, stderr, status = run_verifier(root)
       assert_equal 0, status, stderr + stdout
-      assert_includes stdout, "LFS_TRACKED_FILES=4"
+      assert_includes stdout, "LFS_TRACKED_FILES=5"
       assert_includes stdout, "FINAL_RESULT=PASS"
     end
   end

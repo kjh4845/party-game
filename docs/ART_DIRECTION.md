@@ -4,11 +4,21 @@
 
 | 항목 | 내용 |
 |---|---|
-| 문서 버전 | 1.9.0 C1B Static Interop·Readability Baseline |
+| 문서 버전 | 1.9.0 C1B Static Interop Baseline + 2026-08-30 Neutral Rework Addendum |
 | 최종 수정일 | 2026-08-30 |
 | 상위 기준 | `01_PRD.md` 1.8.0, `02_SRS.md` 1.8.0 |
 | 기준 | `CHARACTER_TECHNICAL_SPEC.md` 0.12.0, `MAP_DESIGN_GUIDE.md` 1.8.0, `PATCH_DESIGN.md` 0.5.0 |
 | 목적 | 캐릭터·맵·무기·UI의 공통 시각 언어와 Blender→Unity 제작 품질 Gate 정의 |
+
+### 0.0 2026-08-30 Neutral Rework 시각 결정
+
+- C1B-002..005의 기술 PASS는 보존하지만, 현 faceted head·egg/peg body·exposed proximal cap·detached-looking
+  limb는 v0.13 시각 방향을 충족하지 못하므로 current visual acceptance를 철회하고 `REWORK_REQUIRED`로 전환한다.
+- 새 Neutral은 rounded-square head, narrow neck, continuous shoulder/arm, continuous U-crotch/leg, rounded
+  terminal과 one continuous review Mesh를 사용한다.
+- C1B rework chain의 `C1BRW-002` fixed four-view를 `UG-C1B-NEUTRAL`에서 승인하기 전에는 Pose·FBX·Unity를 만들지 않는다.
+- 새 candidate의 H/W/D `1/.464322567/.206985458`, Mesh/component `1/1`, V/E/P `1882/3760/1880`, render8은
+  재현용 관찰값이지 user visual approval·production topology가 아니다.
 
 ### 0.1 1.9.0 변경 요약
 
@@ -90,16 +100,22 @@
 캐릭터는 하나의 `MasterCharacter`를 공유한다.
 
 - 흰색 무안면 Paint canvas
-- 완만한 둥근 타원형 머리
-- 배 돌출을 줄인 짧고 넓은 몸통
+- soft rounded-square head와 좁은 neck 전이
+- 배 돌출을 줄인 비교적 곧고 부드러운 몸통
 - 짧고 굵은 다리와 낮은 중심
 - 가랑이보다 위에서 끝나는 짧고 굵은 중립 팔
-- 별도 가시 손 없이 Forearm과 이어지는 둥근 terminal cap
+- shoulder→arm, torso→U-crotch→leg가 한 캐릭터로 이어지는 continuous silhouette
+- 별도 가시 손·발 없이 둥글게 닫힌 forearm/lower-leg terminal
+- Neutral 단계 one continuous review Mesh; production topology·UV·weight lock은 아님
 - Paint·Cosmetic을 제거해도 완성된 외형
 
 `Hybrid Core v0.13`은 C1a 큰 방향 승인본이다. exact 비율·Collider·reach·최종 Mesh 승인이 아니며
 C1b orthographic·measurement 사용자 Gate를 거쳐야 한다. UI 이미지 속 캐릭터는 이 기준을
 대체하지 않는다.
+
+거부 failure class는 `FACETED_HEAD`, `EGG_OR_PEG_BODY`, `EXPOSED_PROXIMAL_CAP`,
+`DETACHED_LOOKING_LIMB`, `FLAT_TERMINAL_DISC`, `BACKGROUND_THROUGH_HOLE`다. 한 view crop·조명·Pose로
+이를 숨길 수 없으며, reference pixel 거리나 특정 vertex topology를 그대로 복제하는 방식도 금지한다.
 
 부드러운 물리 인상은 젤리 Shader 하나가 아니라 형태와 움직임으로 만든다.
 
@@ -457,6 +473,11 @@ light ray를 좌표 변환해 key relative intensity `1.0`과 Back/Left/Right fi
 FBX 생성만으로 완료 처리하지 않는다.
 
 ### 9.2 두 단계 Gate
+
+Character rework에는 production Style Gate 앞에 `UG-C1B-NEUTRAL`이 있다. `C1BRW-002`의
+Front·Side·Back·ThreeQuarter Neutral/Silhouette에서 head·neck·shoulder/arm·U-crotch/leg·terminal을
+사용자가 승인하기 전 `C1BRW-004` Pose와 `C1BRW-005` FBX/Unity를 시작하지 않는다. 이 Gate는 pixel-perfect
+comparison이나 production topology 승인이 아니라 현재 Neutral 방향 승인이다.
 
 제작 전 `StylePreflight`:
 

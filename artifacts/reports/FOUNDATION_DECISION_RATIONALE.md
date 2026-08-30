@@ -6,16 +6,22 @@
 |---|---|
 | 문서 목적 | 기초 구현에서 무엇을 선택했고 왜 그렇게 선택했는지, 배제한 대안과 검증 근거를 한 문서에서 설명 |
 | 기준 Git revision | `2ce7194` (`feat: validate C1B Unity import parity`) |
-| 포함 범위 | `FDN-001..011`, `ART-001`, `LIC-001`, `BLD-001`, `C1B-002..005` |
+| 포함 범위 | `FDN-001..011`, `ART-001`, `LIC-001`, `BLD-001`, 역사 `C1B-002..005`와 current C1B rework chain `C1BRW-001..002` 결정 |
 | 작성 기준 | 실제 repository, versioned config, test 결과와 Evidence를 우선 사용. 직접 기록되지 않은 선택 연결은 `추론/설계 해석`으로 표시 |
 | 문서 성격 | 설명용 결정 근거서. PRD/SRS/분야별 사양을 대체하거나 새 제품 계약을 만들지 않음 |
 
 > **범위 주의:** 핵심 기술 Foundation `FDN-001..011`, 첫 Art Profile `ART-001`, source 기준
 > 라이선스/NOTICE inventory `LIC-001`, Windows x64 Profile 준비 `BLD-001`, C1b 수치 후보·Blender Blockout·
-> static Pose/4인 lineup·FBX/Unity static parity `C1B-002..005`는 완료됐다. 하지만 C1b 사용자 승인은 완료되지 않았고 Gameplay와
+> static Pose/4인 lineup·FBX/Unity static parity `C1B-002..005`의 기술 Evidence는 완료됐다. 그러나 최신 사용자
+> 시각 결정은 그 faceted/egg/peg 결과의 visual acceptance를 철회했다. 현재 `C1BRW-002` continuous Neutral은
+> `USER_REVIEW`이며 `UG-C1B-NEUTRAL` 전 Pose·FBX·Unity 재작업을 시작하지 않는다. C1b 사용자 승인은 완료되지 않았고 Gameplay와
 > Player Build도 실행하지 않았다. 실제 Player 포함물 기준 최종 NOTICE 감사는
 > 사용자가 Build한 뒤에만 가능하다. 따라서 이 문서는 “G0 전체 완료”, “게임 완성” 또는 “Steam 기능 구현”을
 > 선언하지 않는다.
+
+> **역사 보존:** C1B-002..005 Evidence의 `PASS`는 당시 수치·source·Pose·Interop 검증이 실제로 통과했다는
+> 역사 사실이다. 이를 FAILED로 고쳐 쓰지 않는다. 다만 현재 Plan에서는 최신 사용자 시각 결정에 따라
+> `REWORK_REQUIRED`이며 새 acceptance 입력으로 사용하지 않는다.
 
 규범적 우선순위는 계속 [문서 인덱스](../../docs/00_DOCUMENT_INDEX.md)의
 `최신 사용자 결정 → PRD → SRS → 분야별 사양 → 구현계획 → Evidence` 순서를 따른다.
@@ -1220,6 +1226,48 @@ L/R·single-foot/both-feet action 구분만 PASS하고 animation timing·deforma
 
 ---
 
+## 4.19 `C1BRW-001..002` — 기술 PASS와 시각 acceptance를 분리한 Neutral 재작업
+
+### 결정
+
+- 승인 v0.13과 C1B-003/005 결과를 다시 나란히 비교했다. Old 결과는 수치·axis·silhouette 전달은 정확했지만
+  rounded-square head, 좁은 neck, 연속 shoulder/arm과 U-crotch/leg라는 승인 방향 대신 faceted head,
+  egg/peg body, exposed proximal cap과 detached-looking limb로 읽혔다.
+- 따라서 C1B-002..005의 역사 Evidence는 유지하되 current Plan status를 `REWORK_REQUIRED`로 바꿨다.
+  “잘못 선택한 shape가 Unity에 정확히 도착했다”는 기술 PASS를 시각 승인으로 취급하지 않는다.
+- 새 `C1BRW-001`은 pixel 역산 없이 lean proportion/silhouette profile을 만들었다. `C1BRW-002`는 one
+  continuous review Mesh Neutral을 만들었고 현재 상태는 `USER_REVIEW`다.
+- 다음 단계는 `C1BRW-003 / UG-C1B-NEUTRAL`이다. 이 Gate 전 새 Pose, FBX, Unity, Rig, Collider를 만들지 않는다.
+  승인 뒤 `C1BRW-004` Pose8/lineup, `C1BRW-005` Unity parity를 진행하고 기존 `C1B-006 / UG-C1B`에서
+  최종 수치·Pose·Unity 결과를 승인한다.
+
+### current candidate와 경계
+
+- H/W/D `1.0 / 0.464322567 / 0.206985458`
+- review Mesh/component `1/1`, vertex/edge/polygon `1882/3760/1880`, fixed Neutral/Silhouette render `8`
+- rounded-square head, narrow neck, continuous shoulder/arm, continuous U-crotch/leg, rounded terminal
+- visual approval `0`, production topology `0`, Player Build `0`
+- 실제 old candidate에서 철회한 failure class: faceted head, egg/peg body, exposed proximal cap,
+  detached-looking limb와 flat terminal disc. 새 Gate는 background-through hole도 함께 거부
+
+### 이유
+
+Pose와 FBX/Unity를 먼저 만들면 Neutral의 조형 실패 위에 더 많은 유효한 기술 Evidence가 쌓여 재작업 비용만 커진다.
+반대로 v0.13 image pixel이나 특정 topology를 그대로 복제하면 reference의 불일치까지 과적합한다. 그래서 새 Neutral은
+최소한의 shape language와 one-continuous-review-Mesh 경계만 고정하고, 실제 four-view를 사용자에게 먼저 보여 주는
+Gate를 분리했다.
+
+### 철회한 이전 해석
+
+- C1B-003/005의 open-hole blocker0과 interop parity PASS를 v0.13 조형 적합성으로 해석한 것
+- C1B-004 Pose8 방향 판독 가능을 current Neutral acceptance로 해석한 것
+- C1B-006만 남았으므로 old Neutral을 그대로 사용자 최종 Gate에 올릴 수 있다는 실행 순서
+
+이 철회는 과거 파일·Commit·LFS object·Evidence를 삭제하거나 다시 쓰는 조치가 아니다. 새 revision chain이 current
+acceptance를 소유한다.
+
+---
+
 ## 5. 왜 이 선택들이 함께 있어야 하는가
 
 ### 5.1 UTP 선택만으로 P2P 구조가 안전해지지는 않는다
@@ -1273,10 +1321,9 @@ PlayMode를 임시 Project 복사본에서 재실행했으며, 원본 Editor의 
 | License source inventory | package `58/58`, review image `18/18` | 최종 Windows Player NOTICE가 완성됨 |
 | First-party production seam | asset `39`, shipping true `1`(FBX), Unity QA capture non-shipping `8`, mutation `29/226` | 최종 Player 포함 또는 production 권리 법률 의견 |
 | Git LFS / Remote | local LFS `3.8.0`, pattern `10`, private `origin/main`, file/candidate `3/3`, fresh fetch `3`, mutation `16/162` | 후속 FBX/GLB와 장기 복구 훈련 |
-| C1B proportion candidate | landmark/cross-section `17/17`, envelope `11`, mutation `22/152` | Blockout 적합성 또는 `UG-C1B` 승인 |
-| C1B Blender Blockout | source `1`, render `8`, rerender `8/8`, mutation `19/139` | Pose·Unity parity·`UG-C1B` 승인 |
-| C1B static Pose/lineup | Pose `8`, lineup `2×4`, render/rerender `20/20`, mutation `21/145` | Unity runtime action·physics·`UG-C1B` 승인 |
-| C1B FBX/Unity parity | landmark `17`, bounds/signature match, silhouette bbox drift max `0.004103H`, mutation `13/86`, Unity `7/7` | Animation·Physics·production Mesh·`UG-C1B` 승인 |
+| 역사 C1B-002..005 | proportion·Blockout·Pose·Interop 기술 Evidence PASS | 최신 visual acceptance; current status는 `REWORK_REQUIRED` |
+| C1B rework profile | pixel 역산0, v0.13 continuous shape 계약 | 사용자 Neutral 승인 |
+| C1B rework continuous Neutral | H/W/D `1/.464322567/.206985458`, Mesh1, V/E/P `1882/3760/1880`, render8 | `UG-C1B-NEUTRAL`, Pose·Unity·production Mesh |
 | Forbidden infra | inventory `373`, content `132`, manifest `2`, violation `0` | Git history·ignored Build·외부 서비스 전체 부재 |
 | Evidence manifest | `47`개 구조 검증 | 각 미래 Feature의 수동 체감 승인 |
 | Player Build | `0` | Build 불가능을 뜻하지 않음. 사용자 요청에 따라 실행하지 않았음 |
@@ -1302,13 +1349,14 @@ Steam 실행 Evidence나 배포 가능을 주장하지 않는다.
 
 ### 7.2 C1b
 
-`C1B-002..005`는 H-normalized 후보, same-source Blender Blockout, static Pose/4인 lineup과 FBX/Unity static parity를
-완료했지만 exact C1b 사용자 승인은 아니다. 남은 단계는 `C1B-006`의 사용자 `UG-C1B`다.
+`C1B-002..005`는 H-normalized 후보, same-source Blender Blockout, static Pose/4인 lineup과 FBX/Unity static parity의
+역사 기술 Evidence를 완료했다. 최신 사용자 결정은 old shape의 visual acceptance를 철회했으며 current status는
+`REWORK_REQUIRED`다.
 
-두 production `.blend`와 Unity 반입 FBX는 `sourceOwner=kjh4845`, first-party inventory, LFS pointer/upload/fresh fetch까지
-닫혔다. r02 static parity는 scale·axis·landmark·bounds·surface signature와 four-view silhouette만 증명한다.
-다음 C1B-006에서 이 후보의 수치와 시각 결과를 사용자에게 제시해 승인 여부를 결정하며, gameplay Rig·Collider나
-Animation 자연스러움은 아직 시작하지 않는다.
+Old `.blend`와 Unity 반입 FBX는 first-party/LFS history로 보존한다. 현재 다음 단계는 one-continuous-Mesh
+`C1BRW-002` four-view의 `C1BRW-003 / UG-C1B-NEUTRAL`이다. 승인 전 Pose·FBX·Unity 재작업을 만들지 않는다.
+승인 뒤 RW-004..005를 완료하고 C1B-006에서 최종 `UG-C1B`를 받는다. gameplay Rig·Collider와 Animation
+자연스러움은 그 뒤 C2/ANP가 소유한다.
 
 ### 7.3 구현되지 않은 핵심 Runtime
 
@@ -1385,7 +1433,7 @@ Foundation 선택은 영원히 수정 불가한 코드가 아니라, 변경 비�
 - Blender와 Unity 에셋 품질을 수동 보정으로 숨기지 않게 했다.
 - 아직 하지 않은 Build, Steam, Gameplay와 시각 승인을 완료했다고 과장하지 않게 했다.
 
-Foundation 표의 기술·Art·license·Build Profile, production binary 저장 전제와 C1B normalized 후보·Blender
-Blockout·static Pose/4인 lineup·FBX/Unity static parity까지 닫혔다. 다음 순서는 `C1B-006`의 사용자 `UG-C1B`다.
-FBX·Unity Import 범위를 넘는 gameplay Rig·Collider·Animation과 수치/시각 승인은 아직 시작하지 않는다. Windows Player 수동 Build는 실제
+Foundation 표의 기술·Art·license·Build Profile과 역사 C1B 기술 Evidence는 닫혔다. 하지만 old C1B visual
+acceptance는 철회됐고 current Neutral rework는 `USER_REVIEW`다. 다음 순서는 `C1BRW-003 / UG-C1B-NEUTRAL`이며
+승인 전 Pose·FBX·Unity 재작업0이다. Gameplay Rig·Collider·Animation과 최종 `UG-C1B`도 아직 시작하지 않는다. Windows Player 수동 Build는 실제
 Scene과 Alpha 기능이 준비된 뒤 별도 Evidence로 수행한다.
