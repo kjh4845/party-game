@@ -224,7 +224,7 @@ class LfsRepositoryVerifier
 
     expect(@inventory.keys.sort == INVENTORY_FIELDS, "INVENTORY_FIELD_SET", INVENTORY_PATH)
     expect(@inventory["schemaVersion"] == 1, "INVENTORY_SCHEMA_VERSION", INVENTORY_PATH)
-    expect(@inventory["revision"] == "r07", "INVENTORY_REVISION", INVENTORY_PATH)
+    expect(@inventory["revision"] == "r08", "INVENTORY_REVISION", INVENTORY_PATH)
     expect(@inventory["recordedAtUtc"].is_a?(String) &&
       @inventory["recordedAtUtc"].match?(/\A\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z\z/),
       "INVENTORY_RECORDED_AT", INVENTORY_PATH)
@@ -530,7 +530,7 @@ class LfsRepositoryVerifier
 
     required_markers = [
       "- Owner: `FDN-011`",
-      "- Revision: `r07`",
+      "- Revision: `r08`",
       "private GitHub `origin` over HTTPS (`#{EXPECTED_STORAGE.fetch("remoteUrl")}`)",
       "Git LFS: `#{EXPECTED_STORAGE.fetch("gitLfsVersion")}`",
       "repository-local filters and pre-push hook enabled",
@@ -539,15 +539,14 @@ class LfsRepositoryVerifier
       "rewrite existing commits",
       "force-push",
       "Existing PNGs stay in ordinary Git",
-      "Core revisions `af11dd2`, `9caad6a` and `2ce7194` uploaded the first three production LFS objects",
+      "Core revisions `af11dd2`, `9caad6a`, `2ce7194` and `d7877b3` uploaded the first four production LFS objects",
       "authenticated fresh clones reproduced their materialized SHA-256 values and byte sizes",
-      "Core revision `d7877b3` uploaded the fourth production LFS object",
-      "`35f21abe5b6bcd35dc2b066aa3bd29cea5fbf8f9e8bd600b50ffa3f5daedb938`, `157613` bytes",
-      "A fresh private clone first confirmed its `131`-byte pointer and declared OID/size",
-      "authenticated LFS fetch and checkout reproduced the same materialized SHA-256 and byte size",
+      "The C1B-RW-002 r02 Neutral rework source is the fifth canonical LFS object",
+      "its normal push and fresh-fetch round-trip remain pending until the r02 core commit",
       "existing PNG migration remains `0`",
       "Only task-declared canonical `.blend` sources and derived `.fbx` interchange assets are eligible",
       "An explicitly rejected historical FBX may remain at its immutable path only as `SUPERSEDED_CONTENT`",
+      "The r01 Rework source and renders remain immutable historical first-party records",
       "ruby tools/verify_lfs_repository.rb --verify-local-lfs --verify-remote",
       "`origin` is the only product Remote",
       "default branch is `main`",

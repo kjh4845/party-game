@@ -1,0 +1,42 @@
+C1BRW002MeasurementReport:
+  schemaVersion: 2
+  reportId: "MR-C1BRW-002-Neutral-r02"
+  state: "START"
+  candidateStatus: "USER_REVIEW"
+  ownerTask: "C1BRW-002"
+  sourceOwner: "kjh4845"
+  source: {path: "BlenderSource/Characters/C1B-RW-002-r02/CHR_MasterCharacter_C1B_NeutralRework_r02.blend", bytes: 520225, sha256: "548a786a50eb28dc8e2b12fe2cf2ddc4032471d8774ff1fa4c02e0f667d6e252"}
+  geometry:
+    renderMeshObjects: 1
+    renderMeshDatablocks: 1
+    connectedClosedComponents: 2
+    componentVertexCounts: [10784, 610]
+    vertices: 11394
+    edges: 24864
+    polygons: 13470
+    boundaryEdges: 0
+    nonManifoldEdges: 0
+    looseEdges: 0
+    degenerateFaces: 0
+    nonFiniteVertices: 0
+    materialSlots: 1
+    uvLayers: 0
+    positionSha256: "1da184a2ec70246f0e1f26e752523210f0775459572c5f87d3c3af8cce68a98c"
+    orientedTopologySha256: "6b15f47eb0efee68019f44ce4014c2285387155510211becc23f4142c8233a13"
+    boundsH: {width: 0.4725346267223358, depth: 0.23389440774917603, height: 1.0, ground: 0.0, crown: 1.0}
+  construction:
+    mode: "SEAMLESS_BODY_FIELD_PLUS_DIRECT_HEAD_OVERLAP"
+    contractSha256: "df30a9dfc69d6df5fafcf4d298935aa99922ef69a9980b9cc33883db22fd5c26"
+    headShape: "ROUND"
+    visibleNeckAllowed: false
+    neckSemanticElementCount: 0
+    headAttachment: "DIRECT_OVERLAP_TORSO_ATTACHMENT"
+    torsoArmVisibleSeamAllowed: false
+    oldGraphCapPegOrPartGeometryCount: 0
+  geometryGates:
+    symmetry: {method: "SAMPLED_GEOMETRY_ENVELOPE_NOT_TOPOLOGY_MAPPING", thresholdH: 0.003, observedH: 0.001477674, result: "PASS"}
+    shoulderContinuity: {method: "JUNCTION_DIHEDRAL_DISTRIBUTION", p95ThresholdDegrees: 20.0, observedP95Degrees: 14.642955694, severeThresholdDegrees: 75.0, severeCountLimit: 4, observedSevereCount: 4, result: "PASS"}
+    headRoundness: {method: "CLOSED_HEAD_RADIAL_COEFFICIENT", coefficientThreshold: 0.12, observedCoefficient: 0.06009815, result: "PASS"}
+    directAttachment: {method: "CLOSED_COMPONENT_BVH_SURFACE_INTERSECTION", minimumOverlapH: 0.005, observedOverlapH: [0.23681891, 0.216225885, 0.057257056], minimumTriangleIntersectionPairs: 1, observedTriangleIntersectionPairs: 106, result: "PASS"}
+  sourceBoundary: {armatures: 0, actions: 0, colliders: 0, uvLayers: 0, weightedVertexAssignments: 0, lodObjects: 0, externalImages: 0, packedImages: 0, externalLibraries: 0, productionTopologyApproved: false}
+  review: {gateId: "UG-C1B-NEUTRAL", state: "PENDING_USER_REVIEW", userVisualApprovalRecorded: false, poseFbxUnityExecuted: 0}

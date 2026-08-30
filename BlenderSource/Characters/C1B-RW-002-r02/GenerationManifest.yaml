@@ -1,0 +1,46 @@
+GenerationManifest:
+  schemaVersion: 2
+  manifestId: "GM-C1BRW-002-Neutral-r02"
+  state: "START"
+  candidateStatus: "USER_REVIEW"
+  ownerTask: "C1BRW-002"
+  sourceOwner: "kjh4845"
+  recordedAtUtc: "2026-08-30T08:30:00Z"
+  identity:
+    assetId: "CHR_MasterCharacter_C1B_NeutralRework"
+    assetVersion: "0.2.0-start"
+    profileId: "CharacterProportionProfile-C1BRW-001-r02"
+    profilePath: "config/character/CharacterProportionProfile-C1B-RW-001-r02.yaml"
+    profileSha256: "1de2b0841ca57dca56ac7e68a83f6725b88d573254ae43bbd7c15abe51617fdd"
+    sourceSha256: "548a786a50eb28dc8e2b12fe2cf2ddc4032471d8774ff1fa4c02e0f667d6e252"
+  predecessor: {profileId: "CharacterProportionProfile-C1BRW-001-r01", sourceStatus: "SUPERSEDED_IMMUTABLE", priorArtifactsRewritten: false}
+  stages:
+    profile: {status: "COMPLETE_START_CANDIDATE", path: "config/character/CharacterProportionProfile-C1B-RW-001-r02.yaml", sha256: "1de2b0841ca57dca56ac7e68a83f6725b88d573254ae43bbd7c15abe51617fdd"}
+    blend-source: {status: "COMPLETE_LOCAL", path: "BlenderSource/Characters/C1B-RW-002-r02/CHR_MasterCharacter_C1B_NeutralRework_r02.blend", bytes: 520225, sha256: "548a786a50eb28dc8e2b12fe2cf2ddc4032471d8774ff1fa4c02e0f667d6e252", lfsState: "PENDING_CORE_PUSH", indexPointerVerified: false, remoteObjectRoundTripVerified: false}
+    reference-render:
+      status: "COMPLETE"
+      root: "BlenderSource/Characters/C1B-RW-002-r02/Renders"
+      styles: ["Neutral", "Silhouette"]
+      views: ["Back", "Front", "Side", "ThreeQuarter"]
+      dimensions: [2048, 2048]
+      outputCount: 8
+      orderedBundleSha256: "d0456c9495070cd5659fdd9f6004b489c8ccfb5ca9bae3b2208fe83301cf37e1"
+      outputs:
+        - {path: "BlenderSource/Characters/C1B-RW-002-r02/Renders/CHR_MasterCharacter_C1B_NeutralRework_r02_Neutral_Back.png", bytes: 1960768, sha256: "fcfd81a570cba4771d990525ea1503d92517b64d9ef6a1b7fbea308cd5381089"}
+        - {path: "BlenderSource/Characters/C1B-RW-002-r02/Renders/CHR_MasterCharacter_C1B_NeutralRework_r02_Neutral_Front.png", bytes: 1984913, sha256: "cdaff43eb5d05eaa426accfe1275404a54b28fdf88ad95966ad4e3e1f6ccfca8"}
+        - {path: "BlenderSource/Characters/C1B-RW-002-r02/Renders/CHR_MasterCharacter_C1B_NeutralRework_r02_Neutral_Side.png", bytes: 1828832, sha256: "eb86dcdb81faf4c63e4f934697f3cccbd8065081266187ce742ff8f370f26303"}
+        - {path: "BlenderSource/Characters/C1B-RW-002-r02/Renders/CHR_MasterCharacter_C1B_NeutralRework_r02_Neutral_ThreeQuarter.png", bytes: 1943368, sha256: "35274526275a4be7c3129bdadab79e817d0cddd0c2ba2dd29374dc351b484198"}
+        - {path: "BlenderSource/Characters/C1B-RW-002-r02/Renders/CHR_MasterCharacter_C1B_NeutralRework_r02_Silhouette_Back.png", bytes: 1619003, sha256: "69da375f542c12f20b5e45e99c0266390e74a39d0139bd16d0ef54bd7a10c1f5"}
+        - {path: "BlenderSource/Characters/C1B-RW-002-r02/Renders/CHR_MasterCharacter_C1B_NeutralRework_r02_Silhouette_Front.png", bytes: 1645142, sha256: "bc6622df268b346a6b1065a0ff6342bdb0aba79c493c8260da989163fd38b0d2"}
+        - {path: "BlenderSource/Characters/C1B-RW-002-r02/Renders/CHR_MasterCharacter_C1B_NeutralRework_r02_Silhouette_Side.png", bytes: 1587113, sha256: "50e632ecf2f2cd5a626f428548547f76834c74f46eb5e8220d1237c5f61955a7"}
+        - {path: "BlenderSource/Characters/C1B-RW-002-r02/Renders/CHR_MasterCharacter_C1B_NeutralRework_r02_Silhouette_ThreeQuarter.png", bytes: 1626413, sha256: "e9af3f102ffc00d0dd90def812cfbe8d44acaa8f795809acdcb718a71496148e"}
+    pose-generation: {status: "BLOCKED_PENDING_NEUTRAL_VISUAL_GATE", outputs: 0}
+    fbx-export: {status: "BLOCKED_PENDING_NEUTRAL_VISUAL_GATE", executed: false}
+    unity-import: {status: "BLOCKED_PENDING_NEUTRAL_VISUAL_GATE", executed: false}
+  measurementEvidence: {path: "BlenderSource/Characters/C1B-RW-002-r02/MeasurementReport.yaml", sha256: "647e63a73a983c89903932bab018ca97518eea1189fc9bd11d0255db6857ec17", result: "PASS_INTERNAL_GEOMETRY_GATES"}
+  generationTools:
+    generator: {path: "tools/blender/create_c1b_rw002_neutral.py", sha256: "2670cdeacf537417d4799df614c4bac9bc6cd05b0af428e3bf0a53e99e90f606"}
+    inspector: {path: "tools/blender/inspect_c1b_rw002_neutral.py", sha256: "c82694b5a44c3f3165b39e5443240e6092bb38c18c3640c2a544ece06ba6e40b"}
+  sourceBoundary: {armatures: 0, actions: 0, colliders: 0, uvLayers: 0, weightedVertexAssignments: 0, lodObjects: 0, externalOrPackedInputs: 0, oldGraphCapPegOrPartGeometry: 0, productionTopologyApproved: false}
+  neutralVisualGate: {gateId: "UG-C1B-NEUTRAL", state: "PENDING_USER_REVIEW", poseGenerationAllowed: false, fbxExportAllowed: false, unityImportAllowed: false}
+  execution: {blendSources: 1, referenceRenders: 8, poseOutputs: 0, fbxExports: 0, unityImports: 0, armatures: 0, actions: 0, colliders: 0, playerBuilds: 0}

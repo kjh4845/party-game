@@ -11,10 +11,11 @@ from mathutils import Euler, Vector
 
 
 ASSET_ID = "CHR_MasterCharacter_C1B_NeutralRework"
-ASSET_VERSION = "0.1.0-start"
+ASSET_VERSION = "0.2.0-start"
+ASSET_REVISION = "r02"
 OWNER_TASK = "C1BRW-002"
 SOURCE_OWNER = "kjh4845"
-REFERENCE_PROFILE_ID = "CharacterProportionProfile-C1BRW-001-r01"
+REFERENCE_PROFILE_ID = "CharacterProportionProfile-C1BRW-001-r02"
 REFERENCE_SHA256 = "c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616"
 RENDER_RESOLUTION = 2048
 ORTHO_SCALE = 1.2
@@ -41,6 +42,7 @@ def clear_scene():
         bpy.data.cameras,
         bpy.data.lights,
         bpy.data.armatures,
+        bpy.data.metaballs,
     ):
         for datablock in list(datablocks):
             datablocks.remove(datablock)
@@ -75,30 +77,27 @@ def make_material(name, base_color, roughness=0.82):
 # peg construction. Applied topology is a temporary C1b visual-review input;
 # C4 still owns production retopology, UVs, weights and deformation loops.
 GRAPH_NODES = [
-    # central body and rounded-square head
+    # central body. The head is modeled separately and fused into this surface
+    # after Skin evaluation so there is no authored neck segment.
     ("Pelvis", (0.000, 0.000, 0.315), (0.145, 0.102)),
     ("Belly", (0.000, -0.004, 0.435), (0.155, 0.108)),
     ("Chest", (0.000, 0.000, 0.565), (0.150, 0.102)),
     ("ShoulderCenter", (0.000, 0.000, 0.665), (0.130, 0.094)),
-    ("Neck", (0.000, 0.000, 0.750), (0.048, 0.047)),
-    ("HeadBase", (0.000, 0.000, 0.785), (0.082, 0.077)),
-    ("HeadLower", (0.000, 0.000, 0.820), (0.110, 0.098)),
-    ("HeadMid", (0.000, -0.002, 0.895), (0.116, 0.103)),
-    ("HeadUpper", (0.000, -0.001, 0.960), (0.104, 0.093)),
+    ("UpperTorso", (0.000, 0.000, 0.720), (0.112, 0.088)),
     # anatomical left arm: broad blended shoulder, bowed upper arm, rounded terminal
     ("Shoulder_L", (-0.112, 0.000, 0.655), (0.074, 0.068)),
-    ("Deltoid_L", (-0.145, 0.000, 0.620), (0.060, 0.058)),
-    ("UpperArm_L", (-0.165, 0.000, 0.565), (0.045, 0.048)),
-    ("Elbow_L", (-0.177, -0.002, 0.490), (0.041, 0.044)),
-    ("Forearm_L", (-0.174, -0.004, 0.415), (0.045, 0.049)),
-    ("ArmTerminal_L", (-0.167, -0.005, 0.360), (0.034, 0.039)),
+    ("Deltoid_L", (-0.150, 0.000, 0.620), (0.060, 0.058)),
+    ("UpperArm_L", (-0.175, 0.000, 0.565), (0.045, 0.048)),
+    ("Elbow_L", (-0.190, -0.002, 0.490), (0.041, 0.044)),
+    ("Forearm_L", (-0.187, -0.004, 0.415), (0.045, 0.049)),
+    ("ArmTerminal_L", (-0.180, -0.005, 0.360), (0.034, 0.039)),
     # right arm
     ("Shoulder_R", (0.112, 0.000, 0.655), (0.074, 0.068)),
-    ("Deltoid_R", (0.145, 0.000, 0.620), (0.060, 0.058)),
-    ("UpperArm_R", (0.165, 0.000, 0.565), (0.045, 0.048)),
-    ("Elbow_R", (0.177, -0.002, 0.490), (0.041, 0.044)),
-    ("Forearm_R", (0.174, -0.004, 0.415), (0.045, 0.049)),
-    ("ArmTerminal_R", (0.167, -0.005, 0.360), (0.034, 0.039)),
+    ("Deltoid_R", (0.150, 0.000, 0.620), (0.060, 0.058)),
+    ("UpperArm_R", (0.175, 0.000, 0.565), (0.045, 0.048)),
+    ("Elbow_R", (0.190, -0.002, 0.490), (0.041, 0.044)),
+    ("Forearm_R", (0.187, -0.004, 0.415), (0.045, 0.049)),
+    ("ArmTerminal_R", (0.180, -0.005, 0.360), (0.034, 0.039)),
     # left leg: shared pelvis branches into a U crotch and a short rounded leg
     ("Hip_L", (-0.080, 0.000, 0.270), (0.074, 0.078)),
     ("Thigh_L", (-0.088, 0.000, 0.210), (0.064, 0.071)),
@@ -119,11 +118,7 @@ GRAPH_EDGES = [
     ("Pelvis", "Belly"),
     ("Belly", "Chest"),
     ("Chest", "ShoulderCenter"),
-    ("ShoulderCenter", "Neck"),
-    ("Neck", "HeadBase"),
-    ("HeadBase", "HeadLower"),
-    ("HeadLower", "HeadMid"),
-    ("HeadMid", "HeadUpper"),
+    ("ShoulderCenter", "UpperTorso"),
     ("ShoulderCenter", "Shoulder_L"),
     ("Shoulder_L", "Deltoid_L"),
     ("Deltoid_L", "UpperArm_L"),
@@ -149,6 +144,35 @@ GRAPH_EDGES = [
 ]
 
 
+META_ELEMENTS = [
+    # id, center, ellipsoid size. All elements share one implicit field, so
+    # there are no mesh seams between torso, shoulders, arms, pelvis or legs.
+    ("Torso", (0.000, 0.000, 0.485), (0.240, 0.185, 0.405)),
+    ("ShoulderMass", (0.000, 0.000, 0.665), (0.270, 0.185, 0.150)),
+    ("PelvisMass", (0.000, -0.003, 0.315), (0.240, 0.190, 0.160)),
+    # left arm
+    ("Shoulder_L", (-0.145, 0.000, 0.635), (0.085, 0.085, 0.105)),
+    ("UpperArm_L", (-0.178, 0.000, 0.565), (0.070, 0.075, 0.120)),
+    ("Forearm_L", (-0.195, -0.002, 0.455), (0.065, 0.072, 0.125)),
+    ("ArmTerminal_L", (-0.192, -0.004, 0.370), (0.068, 0.075, 0.068)),
+    # right arm
+    ("Shoulder_R", (0.145, 0.000, 0.635), (0.085, 0.085, 0.105)),
+    ("UpperArm_R", (0.178, 0.000, 0.565), (0.070, 0.075, 0.120)),
+    ("Forearm_R", (0.195, -0.002, 0.455), (0.065, 0.072, 0.125)),
+    ("ArmTerminal_R", (0.192, -0.004, 0.370), (0.068, 0.075, 0.068)),
+    # left leg
+    ("Hip_L", (-0.075, 0.000, 0.285), (0.120, 0.120, 0.140)),
+    ("Thigh_L", (-0.085, 0.000, 0.220), (0.108, 0.115, 0.150)),
+    ("LowerLeg_L", (-0.090, -0.003, 0.105), (0.100, 0.110, 0.155)),
+    ("LegTerminal_L", (-0.090, -0.006, 0.030), (0.105, 0.118, 0.060)),
+    # right leg
+    ("Hip_R", (0.075, 0.000, 0.285), (0.120, 0.120, 0.140)),
+    ("Thigh_R", (0.085, 0.000, 0.220), (0.108, 0.115, 0.150)),
+    ("LowerLeg_R", (0.090, -0.003, 0.105), (0.100, 0.110, 0.155)),
+    ("LegTerminal_R", (0.090, -0.006, 0.030), (0.105, 0.118, 0.060)),
+]
+
+
 def graph_payload():
     return {
         "nodes": [
@@ -157,6 +181,131 @@ def graph_payload():
         ],
         "edges": [[left, right] for left, right in GRAPH_EDGES],
     }
+
+
+def meta_payload():
+    return {
+        "construction": "SEAMLESS_BODY_FIELD_PLUS_DIRECT_HEAD_OVERLAP",
+        "visibleNeckAllowed": False,
+        "headAttachment": "DIRECT_OVERLAP_TORSO_ATTACHMENT",
+        "headShape": "ROUND",
+        "torsoArmVisibleSeamAllowed": False,
+        "head": {"type": "ROUND_UV_SPHERE", "center": [0.0, -0.002, 0.835], "scale": [0.115, 0.105, 0.130]},
+        "elements": [
+            {"id": name, "center": list(center), "size": list(size)}
+            for name, center, size in META_ELEMENTS
+        ],
+    }
+
+
+def create_seamless_metaball_review_mesh(model_collection, material):
+    meta = bpy.data.metaballs.new("C1B_R02_ContinuousField")
+    meta.resolution = 0.010
+    meta.render_resolution = 0.010
+    meta.threshold = 0.72
+    obj = bpy.data.objects.new(ASSET_ID, meta)
+    model_collection.objects.link(obj)
+
+    for name, center, size in META_ELEMENTS:
+        element = meta.elements.new()
+        element.type = "ELLIPSOID"
+        element.co = center
+        element.radius = 1.0
+        element.size_x, element.size_y, element.size_z = size
+        element.stiffness = 2.0
+
+    bpy.context.view_layer.objects.active = obj
+    obj.select_set(True)
+    bpy.ops.object.convert(target="MESH")
+    obj = bpy.context.object
+    obj.name = ASSET_ID
+    obj.data.name = f"{ASSET_ID}_ReviewMesh"
+
+    surface_smooth = obj.modifiers.new("C1B_ImplicitSurfaceRelax", "SMOOTH")
+    surface_smooth.factor = 0.32
+    surface_smooth.iterations = 3
+    surface_smooth.use_x = True
+    surface_smooth.use_y = True
+    surface_smooth.use_z = True
+    bpy.ops.object.modifier_apply(modifier=surface_smooth.name)
+
+    cleanup = bmesh.new()
+    cleanup.from_mesh(obj.data)
+    isolated_vertices = [vertex for vertex in cleanup.verts if not vertex.link_edges]
+    if isolated_vertices:
+        bmesh.ops.delete(cleanup, geom=isolated_vertices, context="VERTS")
+    cleanup.to_mesh(obj.data)
+    cleanup.free()
+    obj.data.update()
+
+    # The head is a round closed mass placed directly into the upper torso.
+    # It is joined into the same render object but deliberately not blended
+    # through an intermediate neck field. This matches the requested visual
+    # construction: direct attachment, visible neck geometry zero.
+    bpy.ops.mesh.primitive_uv_sphere_add(
+        segments=32,
+        ring_count=20,
+        location=(0.0, -0.002, 0.835),
+        scale=(0.115, 0.105, 0.130),
+    )
+    head = bpy.context.object
+    head.name = "C1B_RoundHead_DirectAttachment"
+    head.data.name = "C1B_RoundHead_DirectAttachmentMesh"
+    link_object_to_collection(head, model_collection)
+    head.data.materials.append(material)
+    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+
+    bpy.ops.object.select_all(action="DESELECT")
+    obj.select_set(True)
+    head.select_set(True)
+    bpy.context.view_layer.objects.active = obj
+    bpy.ops.object.join()
+    obj.name = ASSET_ID
+    obj.data.name = f"{ASSET_ID}_ReviewMesh"
+
+    # UV authoring belongs to the deferred production-topology pass. The UV
+    # sphere primitive creates a layer automatically, so remove it from this
+    # shape-only Neutral review source.
+    while obj.data.uv_layers:
+        obj.data.uv_layers.remove(obj.data.uv_layers[0])
+
+    for polygon in obj.data.polygons:
+        polygon.use_smooth = True
+    obj.data.materials.clear()
+    obj.data.materials.append(material)
+
+    world_vertices = [obj.matrix_world @ vertex.co for vertex in obj.data.vertices]
+    minimum = Vector(tuple(min(vertex[index] for vertex in world_vertices) for index in range(3)))
+    maximum = Vector(tuple(max(vertex[index] for vertex in world_vertices) for index in range(3)))
+    height = maximum.z - minimum.z
+    if height <= 0.0:
+        raise RuntimeError("generated metaball mesh has zero height")
+    scale = 1.0 / height
+    obj.scale = (scale, scale, scale)
+    bpy.context.view_layer.update()
+    scaled = [obj.matrix_world @ vertex.co for vertex in obj.data.vertices]
+    scaled_minimum = Vector(tuple(min(vertex[index] for vertex in scaled) for index in range(3)))
+    scaled_maximum = Vector(tuple(max(vertex[index] for vertex in scaled) for index in range(3)))
+    obj.location.x -= (scaled_minimum.x + scaled_maximum.x) * 0.5
+    obj.location.y -= (scaled_minimum.y + scaled_maximum.y) * 0.5
+    obj.location.z -= scaled_minimum.z
+    bpy.context.view_layer.update()
+    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+
+    obj["asset_id"] = ASSET_ID
+    obj["asset_version"] = ASSET_VERSION
+    obj["owner_task"] = OWNER_TASK
+    obj["source_owner"] = SOURCE_OWNER
+    obj["reference_profile_id"] = REFERENCE_PROFILE_ID
+    obj["geometry_role"] = "C1B_CONTINUOUS_NEUTRAL_REVIEW_MESH"
+    obj["production_topology_approved"] = False
+    obj["skinning_approved"] = False
+    obj["construction_contract_json"] = json.dumps(meta_payload(), sort_keys=True, separators=(",", ":"))
+    obj["visible_neck_allowed"] = False
+    obj["head_attachment"] = "DIRECT_OVERLAP_TORSO_ATTACHMENT"
+    obj["head_shape"] = "ROUND"
+    obj["torso_arm_visible_seam_allowed"] = False
+    return obj
 
 
 def create_continuous_review_mesh(model_collection, material):
@@ -190,13 +339,57 @@ def create_continuous_review_mesh(model_collection, material):
     bpy.ops.object.modifier_apply(modifier=skin.name)
     bpy.ops.object.modifier_apply(modifier=subdivision.name)
 
-    smooth = obj.modifiers.new("C1B_SilhouetteRelax", "SMOOTH")
+    smooth = obj.modifiers.new("C1B_BodyRelax", "SMOOTH")
     smooth.factor = 0.25
     smooth.iterations = 2
     smooth.use_x = True
     smooth.use_y = True
     smooth.use_z = True
     bpy.ops.object.modifier_apply(modifier=smooth.name)
+
+    # The user-approved correction requires a round head directly attached to
+    # the torso, with no visible neck. The ellipsoid overlaps UpperTorso and a
+    # voxel remesh fuses both surfaces while also relaxing Skin branch creases
+    # at torso-to-shoulder-to-arm transitions.
+    bpy.ops.mesh.primitive_uv_sphere_add(
+        segments=32,
+        ring_count=20,
+        location=(0.0, -0.002, 0.820),
+        scale=(0.115, 0.105, 0.130),
+    )
+    head = bpy.context.object
+    head.name = "C1B_RoundHead_Construction"
+    head.data.name = "C1B_RoundHead_ConstructionMesh"
+    link_object_to_collection(head, model_collection)
+    head.data.materials.append(material)
+    bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
+
+    bpy.ops.object.select_all(action="DESELECT")
+    obj.select_set(True)
+    head.select_set(True)
+    bpy.context.view_layer.objects.active = obj
+    bpy.ops.object.join()
+    obj.name = ASSET_ID
+    obj.data.name = f"{ASSET_ID}_ReviewMesh"
+
+    obj.data.remesh_voxel_size = 0.005
+    obj.data.remesh_voxel_adaptivity = 0.0
+    obj.data.use_remesh_fix_poles = True
+    obj.data.use_remesh_preserve_volume = True
+    bpy.context.view_layer.objects.active = obj
+    obj.select_set(True)
+    bpy.ops.object.voxel_remesh()
+
+    seamless_smooth = obj.modifiers.new("C1B_SeamlessSurfaceRelax", "SMOOTH")
+    seamless_smooth.factor = 0.42
+    seamless_smooth.iterations = 6
+    seamless_smooth.use_x = True
+    seamless_smooth.use_y = True
+    seamless_smooth.use_z = True
+    bpy.ops.object.modifier_apply(modifier=seamless_smooth.name)
+
+    obj.data.materials.clear()
+    obj.data.materials.append(material)
 
     cleanup = bmesh.new()
     cleanup.from_mesh(obj.data)
@@ -236,6 +429,10 @@ def create_continuous_review_mesh(model_collection, material):
     obj["source_owner"] = SOURCE_OWNER
     obj["reference_profile_id"] = REFERENCE_PROFILE_ID
     obj["geometry_role"] = "C1B_CONTINUOUS_NEUTRAL_REVIEW_MESH"
+    obj["visible_neck_allowed"] = False
+    obj["head_attachment"] = "DIRECT_OVERLAP_TORSO_ATTACHMENT"
+    obj["head_shape"] = "ROUND"
+    obj["torso_arm_visible_seam_allowed"] = False
     obj["production_topology_approved"] = False
     obj["skinning_approved"] = False
     obj["graph_contract_json"] = json.dumps(graph_payload(), sort_keys=True, separators=(",", ":"))
@@ -291,9 +488,9 @@ def validate_mesh(obj):
         raise RuntimeError(f"degenerate faces remain: {len(degenerate_faces)}")
     component_reports = mesh_component_reports(mesh)
     component_count = len(component_reports)
-    if component_count != 1:
+    if component_count != 2:
         raise RuntimeError(
-            f"review mesh is not one connected component: {json.dumps(component_reports, separators=(',', ':'))}"
+            f"review mesh must contain body plus directly attached head components: {json.dumps(component_reports, separators=(',', ':'))}"
         )
 
     world_vertices = [obj.matrix_world @ vertex.co for vertex in mesh.vertices]
@@ -308,7 +505,7 @@ def validate_mesh(obj):
         "vertices": len(mesh.vertices),
         "edges": len(mesh.edges),
         "polygons": len(mesh.polygons),
-        "connectedComponents": 1,
+        "connectedComponents": 2,
         "boundaryEdges": 0,
         "nonManifoldEdges": 0,
         "looseEdges": 0,
@@ -408,7 +605,7 @@ def render_views(scene, cameras, output_directory, ground, silhouette_material):
             set_world(scene, (0.75, 0.75, 0.75), 0.8)
         for view_id in ("Front", "Side", "Back", "ThreeQuarter"):
             scene.camera = cameras[view_id]
-            filename = f"{ASSET_ID}_r01_{style}_{view_id}.png"
+            filename = f"{ASSET_ID}_{ASSET_REVISION}_{style}_{view_id}.png"
             scene.render.filepath = os.path.join(output_directory, filename)
             bpy.ops.render.render(write_still=True)
             outputs.append(filename)
@@ -434,7 +631,7 @@ def main():
     silhouette_material = make_material("MAT_C1BRW002_Silhouette", (0.004, 0.004, 0.004), 1.0)
     silhouette_material.use_fake_user = True
 
-    character = create_continuous_review_mesh(model_collection, neutral_material)
+    character = create_seamless_metaball_review_mesh(model_collection, neutral_material)
     mesh_report = validate_mesh(character)
     ground = create_ground(qa_collection)
     create_lighting(qa_collection)
@@ -450,7 +647,7 @@ def main():
     scene["owner_task"] = OWNER_TASK
     scene["source_owner"] = SOURCE_OWNER
     scene["state"] = "START"
-    scene["candidate_status"] = "NEUTRAL_REWORK_CANDIDATE"
+    scene["candidate_status"] = "USER_REVIEW"
     scene["reference_profile_id"] = REFERENCE_PROFILE_ID
     scene["direction_reference_sha256"] = REFERENCE_SHA256
     scene["pixel_measurement_used"] = False
@@ -461,8 +658,12 @@ def main():
     scene["action_count"] = 0
     scene["collider_count"] = 0
     scene["mesh_report_json"] = json.dumps(mesh_report, sort_keys=True, separators=(",", ":"))
-    scene["rejected_predecessor"] = "CHR_MasterCharacter_C1B_Blockout_r01"
-    scene["rejected_failure_class"] = "DIRECTION_SHAPE_MISMATCH_SIX_PART_PEG_CONSTRUCTION"
+    scene["rejected_predecessor"] = "CHR_MasterCharacter_C1B_NeutralRework_r01"
+    scene["rejected_failure_class"] = "TORSO_ARM_SEAM_SQUARE_HEAD_AND_UNREQUESTED_NECK"
+    scene["visible_neck_allowed"] = False
+    scene["head_attachment"] = "DIRECT_OVERLAP_TORSO_ATTACHMENT"
+    scene["head_shape"] = "ROUND"
+    scene["torso_arm_visible_seam_allowed"] = False
 
     bpy.context.preferences.filepaths.save_version = 0
     bpy.ops.wm.save_as_mainfile(filepath=output_blend, compress=True)

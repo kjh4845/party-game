@@ -1,0 +1,48 @@
+CharacterProportionProfile:
+  schemaVersion: 1
+  profileId: "CharacterProportionProfile-C1BRW-001-r02"
+  version: "0.2.0-start"
+  revision: "r02"
+  state: "START"
+  candidateStatus: "USER_REVIEW"
+  ownerTask: "C1BRW-001"
+  sourceOwner: "kjh4845"
+  predecessor: {profileId: "CharacterProportionProfile-C1BRW-001-r01", status: "SUPERSEDED_IMMUTABLE"}
+  directionSource: {path: "artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.13_BELLY_CORRECTED_REVIEW.png", sha256: "c1def169cefd59f19339a5b5edbac2dfd0c8fe9a05eba9ee0afb1ae598bab616", role: "QUALITATIVE_DIRECTION_ONLY", pixelMeasurementUsed: false, referenceReplicaAllowed: false}
+  normalization:
+    unit: "H"
+    dimensionless: true
+    boundsH: {height: 1.0, fullWidth: 0.4725346267223358, totalDepth: 0.23389440774917603, groundMinimum: 0.0, crownMaximum: 1.0}
+  visualIntent:
+    headShape: "ROUND"
+    visibleNeckAllowed: false
+    headAttachment: "DIRECT_OVERLAP_TORSO_ATTACHMENT"
+    torsoArmVisibleSeamAllowed: false
+  neutralMeshContract:
+    renderMeshObjects: 1
+    renderMeshDatablocks: 1
+    connectedClosedComponents: 2
+    componentVertexCounts: [10784, 610]
+    vertices: 11394
+    edges: 24864
+    polygons: 13470
+    boundaryEdges: 0
+    nonManifoldEdges: 0
+    looseEdges: 0
+    degenerateFaces: 0
+    nonFiniteVertices: 0
+    materialSlots: 1
+    uvLayers: 0
+  reviewConstructionBoundary:
+    construction: "SEAMLESS_BODY_FIELD_PLUS_DIRECT_HEAD_OVERLAP"
+    geometryRole: "C1B_CONTINUOUS_NEUTRAL_REVIEW_MESH"
+    oldGraphCapPegOrPartGeometryAllowed: false
+    productionTopologyApproved: false
+  geometryValidation:
+    symmetry: {method: "SAMPLED_GEOMETRY_ENVELOPE_NOT_TOPOLOGY_MAPPING", maximumDeviationH: 0.003, observedDeviationH: 0.001477674}
+    shoulderContinuity: {method: "JUNCTION_DIHEDRAL_DISTRIBUTION", maximumP95Degrees: 20.0, observedP95Degrees: 14.642955694, severeThresholdDegrees: 75.0, maximumSevereEdges: 4, observedSevereEdges: 4}
+    headRoundness: {method: "CLOSED_HEAD_RADIAL_COEFFICIENT", maximumCoefficientOfVariation: 0.12, observedCoefficientOfVariation: 0.06009815}
+    directAttachment: {method: "CLOSED_COMPONENT_BVH_SURFACE_INTERSECTION", minimumOverlapH: 0.005, observedOverlapH: [0.23681891, 0.216225885, 0.057257056], minimumTriangleIntersectionPairs: 1, observedTriangleIntersectionPairs: 106, neckSemanticElementCount: 0}
+  deferredProductionDecisions: {armature: null, actions: null, colliders: null, uvAndWeights: null, lod: null, productionTopology: null}
+  neutralVisualGate: {gateId: "UG-C1B-NEUTRAL", state: "PENDING_USER_REVIEW", userVisualApprovalRecorded: false, requiredBeforePoseWork: true, requiredBeforeFbxExport: true, poseGenerationAllowed: false, fbxExportAllowed: false, unityImportAllowed: false}
+  execution: {generatedBlendCount: 0, generatedFbxCount: 0, generatedUnityAssetCount: 0, generatedPoseCount: 0, armaturesCreated: 0, actionsCreated: 0, collidersCreated: 0, playerBuildsExecuted: 0}

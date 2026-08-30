@@ -1,7 +1,7 @@
 BinaryAssetInventory:
   schemaVersion: 1
-  revision: "r07"
-  recordedAtUtc: "2026-08-30T06:34:55Z"
+  revision: "r08"
+  recordedAtUtc: "2026-08-30T07:54:39Z"
   policyPath: "config/repository/BinaryAssetPolicy.md"
   excludedGeneratedRoots:
     - "Project hotfix/Library"
@@ -9,13 +9,13 @@ BinaryAssetInventory:
     - "Project hotfix/UserSettings"
     - "Project hotfix/.vscode"
   summary:
-    fileCount: 66
-    totalBytes: 92558963
-    uniqueContentHashes: 61
+    fileCount: 75
+    totalBytes: 107274740
+    uniqueContentHashes: 70
     filesOver10MiB: 0
-    currentLfsRequiredCandidates: 4
-    currentLfsTrackedFiles: 4
-    ordinaryGitBinaryFiles: 62
+    currentLfsRequiredCandidates: 5
+    currentLfsTrackedFiles: 5
+    ordinaryGitBinaryFiles: 70
   storage:
     remoteName: "origin"
     remoteUrl: "https://github.com/kjh4845/project-hotfix.git"
@@ -94,3 +94,12 @@ BinaryAssetInventory:
     - {path: "BlenderSource/Characters/C1B-RW-002/Renders/CHR_MasterCharacter_C1B_NeutralRework_r01_Silhouette_Front.png", bytes: 1638842, sha256: "d77c189f1bb5a898bd38563682cc9f1eb82fe295251cbbfc78b37ed5ab905695"}
     - {path: "BlenderSource/Characters/C1B-RW-002/Renders/CHR_MasterCharacter_C1B_NeutralRework_r01_Silhouette_Side.png", bytes: 1585970, sha256: "88c398c1c024850460f9b313e2356ce3e5e7498950327ca1d48056d0b432c9b0"}
     - {path: "BlenderSource/Characters/C1B-RW-002/Renders/CHR_MasterCharacter_C1B_NeutralRework_r01_Silhouette_ThreeQuarter.png", bytes: 1626274, sha256: "15b3d8f6dc8cdef2980a3d160fc68503cea6f3abbf0de5cadc6394525edb9016"}
+    - {path: "BlenderSource/Characters/C1B-RW-002-r02/CHR_MasterCharacter_C1B_NeutralRework_r02.blend", bytes: 520225, sha256: "548a786a50eb28dc8e2b12fe2cf2ddc4032471d8774ff1fa4c02e0f667d6e252"}
+    - {path: "BlenderSource/Characters/C1B-RW-002-r02/Renders/CHR_MasterCharacter_C1B_NeutralRework_r02_Neutral_Back.png", bytes: 1960768, sha256: "fcfd81a570cba4771d990525ea1503d92517b64d9ef6a1b7fbea308cd5381089"}
+    - {path: "BlenderSource/Characters/C1B-RW-002-r02/Renders/CHR_MasterCharacter_C1B_NeutralRework_r02_Neutral_Front.png", bytes: 1984913, sha256: "cdaff43eb5d05eaa426accfe1275404a54b28fdf88ad95966ad4e3e1f6ccfca8"}
+    - {path: "BlenderSource/Characters/C1B-RW-002-r02/Renders/CHR_MasterCharacter_C1B_NeutralRework_r02_Neutral_Side.png", bytes: 1828832, sha256: "eb86dcdb81faf4c63e4f934697f3cccbd8065081266187ce742ff8f370f26303"}
+    - {path: "BlenderSource/Characters/C1B-RW-002-r02/Renders/CHR_MasterCharacter_C1B_NeutralRework_r02_Neutral_ThreeQuarter.png", bytes: 1943368, sha256: "35274526275a4be7c3129bdadab79e817d0cddd0c2ba2dd29374dc351b484198"}
+    - {path: "BlenderSource/Characters/C1B-RW-002-r02/Renders/CHR_MasterCharacter_C1B_NeutralRework_r02_Silhouette_Back.png", bytes: 1619003, sha256: "69da375f542c12f20b5e45e99c0266390e74a39d0139bd16d0ef54bd7a10c1f5"}
+    - {path: "BlenderSource/Characters/C1B-RW-002-r02/Renders/CHR_MasterCharacter_C1B_NeutralRework_r02_Silhouette_Front.png", bytes: 1645142, sha256: "bc6622df268b346a6b1065a0ff6342bdb0aba79c493c8260da989163fd38b0d2"}
+    - {path: "BlenderSource/Characters/C1B-RW-002-r02/Renders/CHR_MasterCharacter_C1B_NeutralRework_r02_Silhouette_Side.png", bytes: 1587113, sha256: "50e632ecf2f2cd5a626f428548547f76834c74f46eb5e8220d1237c5f61955a7"}
+    - {path: "BlenderSource/Characters/C1B-RW-002-r02/Renders/CHR_MasterCharacter_C1B_NeutralRework_r02_Silhouette_ThreeQuarter.png", bytes: 1626413, sha256: "e9af3f102ffc00d0dd90def812cfbe8d44acaa8f795809acdcb718a71496148e"}

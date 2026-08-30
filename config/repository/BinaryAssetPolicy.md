@@ -3,10 +3,10 @@
 ## Status
 
 - Owner: `FDN-011`
-- Revision: `r07`
+- Revision: `r08`
 - Repository remote: private GitHub `origin` over HTTPS (`https://github.com/kjh4845/project-hotfix.git`)
 - Git LFS: `3.8.0`, repository-local filters and pre-push hook enabled
-- Initial remote backup: `main` at `8d73541`, verified before the r07 policy commit
+- Initial remote backup: `main` at `8d73541`, verified before the r08 policy commit
 - Existing-history LFS migration: not performed and not required
 - Player Build, game/Steam deployment and public publication: not part of this policy
 
@@ -27,7 +27,7 @@ The following production-source extensions must use the active Git LFS clean/smu
 - Lossless production audio/source images: `.wav`, `.flac`, `.psd`, `.exr`, `.hdr`, `.tif`, `.tiff`
 - Any single binary file larger than 10 MiB must also use LFS even when its extension is not in the default list; update `.gitattributes` before staging it.
 
-The current repository has `4` LFS-tracked files and `4` LFS-required candidates. Core revisions `af11dd2`, `9caad6a` and `2ce7194` uploaded the first three production LFS objects and authenticated fresh clones reproduced their materialized SHA-256 values and byte sizes. Core revision `d7877b3` uploaded the fourth production LFS object for the C1B-RW-002 continuous Neutral rework source (`35f21abe5b6bcd35dc2b066aa3bd29cea5fbf8f9e8bd600b50ffa3f5daedb938`, `157613` bytes). A fresh private clone first confirmed its `131`-byte pointer and declared OID/size, then authenticated LFS fetch and checkout reproduced the same materialized SHA-256 and byte size. Existing PNGs stay in ordinary Git, and existing PNG migration remains `0`. Do not run `git lfs migrate`, rewrite existing commits, force-push, or move existing review PNGs into LFS without a separate user-approved migration plan.
+The current repository has `5` LFS-tracked files and `5` LFS-required candidates. Core revisions `af11dd2`, `9caad6a`, `2ce7194` and `d7877b3` uploaded the first four production LFS objects and authenticated fresh clones reproduced their materialized SHA-256 values and byte sizes. The C1B-RW-002 r02 Neutral rework source is the fifth canonical LFS object (`548a786a…e252`, `520225` bytes); its normal push and fresh-fetch round-trip remain pending until the r02 core commit. The r01 Rework source and renders remain immutable historical first-party records and are not overwritten by r02. Existing PNGs stay in ordinary Git, and existing PNG migration remains `0`. Do not run `git lfs migrate`, rewrite existing commits, force-push, or move existing review PNGs into LFS without a separate user-approved migration plan.
 
 Blender `.blend1`, `.blend2` and other numbered backup files are ignored as recoverable editor output. Only task-declared canonical `.blend` sources and derived `.fbx` interchange assets are eligible for LFS tracking and inventory.
 Canonical `.blend` sources must remain outside `Project hotfix/Assets/`. New or active FBX records need first-party `PLAYER_CONTENT` and `shippingAllowed: true` to enter the Unity `Assets` import boundary. An explicitly rejected historical FBX may remain at its immutable path only as `SUPERSEDED_CONTENT` with `shippingAllowed: false`; it must not be activated, imported as the current candidate, or used as a rework geometry input.

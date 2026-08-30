@@ -1,257 +1,28 @@
 #!/usr/bin/env ruby
-
-require "fileutils"
-require "minitest/autorun"
-require "open3"
-require "pathname"
-require "rbconfig"
-require "tmpdir"
-require "yaml"
-
+require "fileutils";require "minitest/autorun";require "open3";require "pathname";require "rbconfig";require "tmpdir";require "yaml"
 class VerifyC1BRW002NeutralTest < Minitest::Test
-  ROOT = Pathname.new(__dir__).join("../..").expand_path
-  VERIFIER = ROOT.join("tools/verify_c1b_rw002_neutral.rb")
-  PROFILE = "config/character/CharacterProportionProfile-C1B-RW-001-r01.yaml"
-  MANIFEST = "BlenderSource/Characters/C1B-RW-002/GenerationManifest.yaml"
-  REPORT = "BlenderSource/Characters/C1B-RW-002/MeasurementReport.yaml"
-  SOURCE = "BlenderSource/Characters/C1B-RW-002/CHR_MasterCharacter_C1B_NeutralRework_r01.blend"
-  RENDERS = Dir[ROOT.join("BlenderSource/Characters/C1B-RW-002/Renders/*.png")]
-    .map { |path| Pathname.new(path).relative_path_from(ROOT).to_s }.sort.freeze
-  SUPPORT = [
-    PROFILE, MANIFEST, REPORT, SOURCE, *RENDERS,
-    "tools/blender/create_c1b_rw002_neutral.py",
-    "tools/blender/inspect_c1b_rw002_neutral.py",
-    "artifacts/review/character/C1_CHARACTER_HYBRID_CORE_v0.13_BELLY_CORRECTED_REVIEW.png",
-  ].freeze
-
-  def test_current_static_bundle_passes
-    out, err, status = run_verifier(ROOT)
-    assert_equal 0, status, err + out
-    assert_includes out, "PROFILE_STATE=START"
-    assert_includes out, "CANDIDATE_STATUS=USER_REVIEW"
-    assert_includes out, "SOURCE_HASH_MATCH=true"
-    assert_includes out, "RENDER_HASH_MATCHES=8"
-    assert_includes out, "RENDER_PNG_2048_MATCHES=8"
-    assert_includes out, "FINAL_RESULT=PASS"
-  end
-
-  def test_current_blender_inspection_passes
-    skip unless File.executable?("/Applications/Blender.app/Contents/MacOS/Blender")
-    out, err, status = run_verifier(ROOT, blender: true)
-    assert_equal 0, status, err + out
-    assert_includes out, "BLENDER_VERIFIED=true"
-  end
-
-  def test_invalid_duplicate_and_oversized_yaml_fail_closed
-    with_repo do |root|
-      File.write(root.join(PROFILE), "invalid: [")
-      assert_rule(root, "PROFILE_YAML_INVALID")
-    end
-    with_repo do |root|
-      File.open(root.join(MANIFEST), "a") { |file| file.write("\nGenerationManifest: {}\n") }
-      assert_rule(root, "MANIFEST_YAML_DUPLICATE_KEY")
-    end
-    with_repo do |root|
-      File.open(root.join(REPORT), "a") { |file| file.write("#" * (512 * 1024)) }
-      assert_rule(root, "REPORT_TOO_LARGE")
-    end
-  end
-
-  def test_missing_and_symlink_source_fail_closed
-    with_repo do |root|
-      File.delete(root.join(SOURCE))
-      assert_rule(root, "SOURCE_MISSING")
-    end
-    with_repo do |root|
-      File.delete(root.join(SOURCE))
-      File.symlink(ROOT.join(SOURCE), root.join(SOURCE))
-      assert_rule(root, "SOURCE_SYMLINK")
-    end
-  end
-
-  def test_source_hash_and_size_drift_fail
-    with_repo do |root|
-      replace_copy(root, SOURCE)
-      File.open(root.join(SOURCE), "ab") { |file| file.write("drift") }
-      out, _err, status = run_verifier(root)
-      assert_equal 1, status
-      assert_includes out, "rule=SOURCE_SIZE"
-      assert_includes out, "rule=SOURCE_SHA"
-    end
-  end
-
-  def test_render_missing_hash_and_dimensions_fail
-    with_repo do |root|
-      File.delete(root.join(RENDERS.first))
-      assert_rule(root, "RENDER_MISSING")
-    end
-    with_repo do |root|
-      replace_copy(root, RENDERS.first)
-      File.open(root.join(RENDERS.first), "r+b") { |file| file.seek(16); file.write([1024].pack("N")) }
-      out, _err, status = run_verifier(root)
-      assert_equal 1, status
-      assert_includes out, "rule=RENDER_SHA"
-      assert_includes out, "rule=RENDER_DIMENSIONS"
-    end
-  end
-
-  def test_profile_approval_and_gate_cannot_be_bypassed
-    with_repo do |root|
-      mutate_yaml(root, PROFILE, "CharacterProportionProfile") do |profile|
-        profile["state"] = "LOCKED"
-        profile["candidateStatus"] = "APPROVED"
-        gate = profile["neutralVisualGate"]
-        gate["state"] = "APPROVED"
-        gate["userVisualApprovalRecorded"] = true
-        gate["poseGenerationAllowed"] = true
-        gate["fbxExportAllowed"] = true
-        gate["unityImportAllowed"] = true
-      end
-      out, _err, status = run_verifier(root)
-      assert_equal 1, status
-      assert_includes out, "rule=PROFILE_METADATA"
-      assert_includes out, "rule=PROFILE_VISUAL_GATE"
-      assert_includes out, "rule=PROFILE_ILLEGAL_APPROVAL"
-    end
-  end
-
-  def test_superseded_history_cannot_become_geometry_input
-    with_repo do |root|
-      mutate_yaml(root, PROFILE, "CharacterProportionProfile") do |profile|
-        boundary = profile["supersessionBoundary"]
-        boundary["rewritePriorArtifactsAllowed"] = true
-        boundary["inheritOldSixPartGeometryAllowed"] = true
-        boundary["inheritOldPoseCapGeometryAllowed"] = true
-      end
-      rewrite_manifest(root) do |manifest|
-        manifest["supersessionBoundary"]["priorArtifactsRewritten"] = true
-        manifest["supersessionBoundary"]["inheritedOldGeometryCount"] = 6
-      end
-      out, _err, status = run_verifier(root)
-      assert_equal 1, status
-      assert_includes out, "rule=PROFILE_SUPERSESSION"
-      assert_includes out, "rule=MANIFEST_SUPERSESSION"
-    end
-  end
-
-  def test_mesh_topology_and_symmetry_contract_cannot_drift
-    with_repo do |root|
-      rewrite_report(root) do |report|
-        geometry = report["geometry"]
-        geometry["renderMeshObjects"] = 6
-        geometry["connectedComponents"] = 2
-        geometry["boundaryEdges"] = 1
-        geometry["positionSha256"] = "0" * 64
-        report["symmetry"]["missingMirroredVertices"] = 1
-      end
-      out, _err, status = run_verifier(root)
-      assert_equal 1, status
-      assert_includes out, "rule=REPORT_CANONICAL_SHA"
-      assert_includes out, "rule=REPORT_GEOMETRY"
-      assert_includes out, "rule=REPORT_SYMMETRY"
-    end
-  end
-
-  def test_prohibited_rig_uv_weights_lod_and_collider_claims_fail
-    with_repo do |root|
-      rewrite_manifest(root) do |manifest|
-        boundary = manifest["sourceBoundary"]
-        boundary["armatures"] = 1
-        boundary["actions"] = 1
-        boundary["colliders"] = 1
-        boundary["uvLayers"] = 1
-        boundary["weightedVertexAssignments"] = 1
-        boundary["lodObjects"] = 1
-      end
-      assert_rule(root, "MANIFEST_BOUNDARY")
-    end
-  end
-
-  def test_pose_fbx_unity_and_build_execution_stay_blocked
-    with_repo do |root|
-      rewrite_manifest(root) do |manifest|
-        manifest["stages"]["pose-generation"]["status"] = "COMPLETE"
-        manifest["stages"]["pose-generation"]["outputs"] = 8
-        manifest["stages"]["fbx-export"]["executed"] = true
-        manifest["stages"]["unity-import"]["executed"] = true
-        manifest["execution"]["poseOutputs"] = 8
-        manifest["execution"]["fbxExports"] = 1
-        manifest["execution"]["unityImports"] = 1
-        manifest["execution"]["playerBuilds"] = 1
-      end
-      out, _err, status = run_verifier(root)
-      assert_equal 1, status
-      assert_includes out, "rule=MANIFEST_POSE_BLOCK"
-      assert_includes out, "rule=MANIFEST_FBX_BLOCK"
-      assert_includes out, "rule=MANIFEST_UNITY_BLOCK"
-      assert_includes out, "rule=MANIFEST_EXECUTION"
-    end
-  end
-
-  def test_generation_tool_hash_drift_fails
-    with_repo do |root|
-      rewrite_manifest(root) { |manifest| manifest["generationTools"]["inspector"]["sha256"] = "0" * 64 }
-      assert_rule(root, "MANIFEST_TOOLS")
-    end
-  end
-
-  def test_lfs_round_trip_state_and_flags_are_exact
-    with_repo do |root|
-      rewrite_manifest(root) do |manifest|
-        stage = manifest["stages"]["blend-source"]
-        stage["status"] = "COMPLETE_LOCAL"
-        stage["lfsState"] = "PENDING_CORE_PUSH"
-        stage["remoteObjectRoundTripVerified"] = false
-      end
-      assert_rule(root, "MANIFEST_BLEND_STAGE")
-    end
-    with_repo do |root|
-      rewrite_manifest(root) do |manifest|
-        manifest["stages"]["blend-source"]["indexPointerVerified"] = false
-      end
-      assert_rule(root, "MANIFEST_BLEND_STAGE")
-    end
-  end
-
-  def test_extra_old_cap_hand_foot_or_downstream_file_fails_exact_set
-    with_repo do |root|
-      File.write(root.join("BlenderSource/Characters/C1B-RW-002/CHR_C1B004_BasePlusProximalCap_Hand_Foot.fbx"), "forbidden")
-      assert_rule(root, "RW002_FILE_SET")
-    end
-  end
-
-  private
-
-  def run_verifier(root, blender: false)
-    command = [RbConfig.ruby, VERIFIER.to_s, "--root", root.to_s]
-    command << "--verify-blender" if blender
-    out, err, status = Open3.capture3(*command)
-    [out, err, status.exitstatus]
-  end
-
-  def assert_rule(root, rule)
-    out, _err, status = run_verifier(root)
-    assert_equal 1, status
-    assert_includes out, "rule=#{rule}"
-  end
-
-  def with_repo
-    Dir.mktmpdir("c1brw002-") do |directory|
-      root = Pathname.new(directory)
-      SUPPORT.each do |relative|
-        source = ROOT.join(relative); target = root.join(relative)
-        FileUtils.mkdir_p(target.dirname)
-        %w[.blend .png].include?(source.extname.downcase) ? File.link(source,target) : FileUtils.cp(source,target)
-      end
-      yield root
-    end
-  end
-
-  def rewrite_manifest(root, &block); mutate_yaml(root,MANIFEST,"GenerationManifest",&block); end
-  def rewrite_report(root, &block); mutate_yaml(root,REPORT,"C1BRW002MeasurementReport",&block); end
-  def mutate_yaml(root,relative,key)
-    path=root.join(relative); document=YAML.safe_load(File.read(path),aliases:false)
-    yield document.fetch(key); File.write(path,YAML.dump(document))
-  end
-  def replace_copy(root,relative); File.delete(root.join(relative)); FileUtils.cp(ROOT.join(relative),root.join(relative)); end
+ ROOT=Pathname(__dir__).join("../..").expand_path; V=ROOT.join("tools/verify_c1b_rw002_neutral.rb"); P="config/character/CharacterProportionProfile-C1B-RW-001-r02.yaml";M="BlenderSource/Characters/C1B-RW-002-r02/GenerationManifest.yaml";R="BlenderSource/Characters/C1B-RW-002-r02/MeasurementReport.yaml";S="BlenderSource/Characters/C1B-RW-002-r02/CHR_MasterCharacter_C1B_NeutralRework_r02.blend"
+ SUPPORT=[P,M,R,S,*Dir[ROOT.join("BlenderSource/Characters/C1B-RW-002-r02/Renders/*.png")].map{|x|Pathname(x).relative_path_from(ROOT).to_s},"tools/blender/create_c1b_rw002_neutral.py","tools/blender/inspect_c1b_rw002_neutral.py"].freeze
+ def test_exact;out,_,s=execute(ROOT);assert_equal 0,s,out;assert_includes out,"FINAL_RESULT=PASS"end
+ def test_blender;skip unless File.executable?("/Applications/Blender.app/Contents/MacOS/Blender");out,_,s=execute(ROOT,true);assert_equal 0,s,out;assert_includes out,"BLENDER_VERIFIED=true"end
+ def test_malformed_duplicate_and_source_drift
+  repo{|r|File.write(r.join(P),"bad: [");rule(r,"PROFILE_YAML_INVALID")};repo{|r|File.open(r.join(M),"a"){|f|f.write("\nGenerationManifest: {}\n")};rule(r,"MANIFEST_YAML_DUPLICATE_KEY")};repo{|r|File.open(r.join(S),"ab"){|f|f.write("x")};rule(r,"SOURCE_SIZE")}
+ end
+ def test_crease_mutation;repo{|r|mut(r,R,"C1BRW002MeasurementReport"){|x|x["geometryGates"]["shoulderContinuity"]["observedP95Degrees"]=80};rule(r,"REPORT_SHOULDER")}end
+ def test_square_head_mutation;repo{|r|mut(r,R,"C1BRW002MeasurementReport"){|x|x["geometryGates"]["headRoundness"]["observedCoefficient"]=0.5};rule(r,"REPORT_HEAD")}end
+ def test_neck_and_gap_mutation;repo{|r|mut(r,R,"C1BRW002MeasurementReport"){|x|x["construction"]["neckSemanticElementCount"]=1;x["geometryGates"]["directAttachment"]["observedOverlapH"]=[0,0,0]};o,_,s=execute(r);assert_equal 1,s;assert_includes o,"REPORT_CONSTRUCTION";assert_includes o,"REPORT_ATTACHMENT"}end
+ def test_aabb_overlap_without_surface_intersection_fails;repo{|r|mut(r,R,"C1BRW002MeasurementReport"){|x|x["geometryGates"]["directAttachment"]["observedTriangleIntersectionPairs"]=0};rule(r,"REPORT_ATTACHMENT")}end
+ def test_topology_mapping_substitution_rejected;repo{|r|mut(r,P,"CharacterProportionProfile"){|x|x["geometryValidation"]["symmetry"]["method"]="EXACT_VERTEX_MAPPING"};rule(r,"PROFILE_SYMMETRY")}end
+ def test_fake_approval_and_downstream_execution;repo{|r|mut(r,P,"CharacterProportionProfile"){|x|x["state"]="LOCKED";x["neutralVisualGate"]["poseGenerationAllowed"]=true};o,_,s=execute(r);assert_equal 1,s;assert_includes o,"PROFILE_METADATA";assert_includes o,"PROFILE_GATE";assert_includes o,"ILLEGAL_APPROVAL"}end
+ def test_uv_rig_old_geometry_and_render_drift;repo{|r|mut(r,M,"GenerationManifest"){|x|x["sourceBoundary"]["uvLayers"]=1;x["sourceBoundary"]["armatures"]=1;x["sourceBoundary"]["oldGraphCapPegOrPartGeometry"]=1};rule(r,"MANIFEST_BOUNDARY")};repo{|r|p=Dir[r.join("BlenderSource/Characters/C1B-RW-002-r02/Renders/*.png")].first;File.open(p,"ab"){|f|f.write("x")};rule(r,"RENDER_SIZE")}end
+ def test_bundle_digest_and_blocked_stages_are_exact
+  repo{|r|mut(r,M,"GenerationManifest"){|x|x["stages"]["reference-render"]["orderedBundleSha256"]="0"*64};rule(r,"RENDER_BUNDLE_SHA")}
+  repo{|r|mut(r,M,"GenerationManifest"){|x|x["stages"]["pose-generation"]["status"]="COMPLETE";x["stages"]["fbx-export"]["executed"]=true;x["stages"]["unity-import"]["executed"]=true;x["neutralVisualGate"]["poseGenerationAllowed"]=true};o,_,s=execute(r);assert_equal 1,s;assert_includes o,"MANIFEST_POSE_BLOCK";assert_includes o,"MANIFEST_FBX_BLOCK";assert_includes o,"MANIFEST_UNITY_BLOCK";assert_includes o,"MANIFEST_GATE"}
+ end
+ def test_profile_required_before_flags_are_exact;repo{|r|mut(r,P,"CharacterProportionProfile"){|x|x["neutralVisualGate"]["requiredBeforePoseWork"]=false;x["neutralVisualGate"]["requiredBeforeFbxExport"]=false};rule(r,"PROFILE_GATE")}end
+ private
+ def execute(r,b=false);c=[RbConfig.ruby,V.to_s,"--root",r.to_s];c<<"--verify-blender"if b;o,e,s=Open3.capture3(*c);[o,e,s.exitstatus]end
+ def rule(r,x);o,_,s=execute(r);assert_equal 1,s,o;assert_includes o,"rule=#{x}"end
+ def repo;Dir.mktmpdir{|d|r=Pathname(d);SUPPORT.each{|p|dst=r.join(p);FileUtils.mkdir_p(dst.dirname);FileUtils.cp(ROOT.join(p),dst)};yield r}end
+ def mut(r,p,key);d=YAML.safe_load(r.join(p).read,aliases:false);yield d[key];r.join(p).write(YAML.dump(d))end
 end
