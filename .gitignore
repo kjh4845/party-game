@@ -18,6 +18,9 @@ __pycache__/
 /BlenderSource/Characters/C1B-RW-017-pose-preview/Renders/
 /BlenderSource/Characters/C1B-RW-019-global-candidates/*.blend
 
+# Local pose reviews must be approved before publication.
+/BlenderSource/Characters/C1B-RW-020-helper-rig-preview/PoseTests/*.png
+
 # Unity generated directories (the project lives below the repository root)
 **/[Ll]ibrary/
 **/[Tt]emp/

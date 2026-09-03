@@ -123,56 +123,17 @@ Project Hotfix는 가칭입니다. 혼자 개발하고 있으며, 목표 플랫�
 | Unity 프로젝트 | 에디터·패키지 버전과 코드 모듈의 기본 구성을 잡았습니다. |
 | 게임 진행 코드 | 시뮬레이션의 실행 횟수를 갱신하는 최소 코드와 테스트가 있습니다. 라운드·전투 기능은 아직 없습니다. |
 | 로컬 저장 | 저장 도중 오류가 나더라도 파일 손상을 줄이기 위한 교체 저장·백업·복구 코드와 테스트가 있습니다. |
-| 캐릭터 모델 | 기본 형태의 검토를 거쳐 리그와 자세에 따른 변형을 확인하고 있습니다. |
+| 캐릭터 모델 | 제작 중이며, 자세와 애니메이션은 확정되지 않았습니다. |
 | 캐릭터의 Unity 적용 | 이전 모델을 FBX로 옮겨 형태를 비교한 코드와 자료가 있습니다. 현재 작업 중인 리그의 게임 적용은 아직입니다. |
 | 입력·화면·네트워크 | 패키지와 모듈 경계만 준비되어 있습니다. 조작, 게임 화면, 실제 접속 코드는 아직 없습니다. |
 | 실행 빌드 | Windows용 빌드 설정만 준비되어 있습니다. 배포할 실행 파일은 없습니다. |
-
-아래는 Blender에서 확인한 캐릭터 자세입니다. 리그를 움직였을 때 몸이 어떻게 변하는지 살펴본 **정적 테스트 렌더**이며, 게임 화면이나 완성된 애니메이션은 아닙니다.
-
-![캐릭터 리그의 여덟 가지 자세 테스트](BlenderSource/Characters/C1B-RW-020-helper-rig-preview/PoseTests/C1B_R20_PoseTest_ContactSheet.png)
-
-캐릭터의 기본 형태는 [r16 검토 기록](BlenderSource/Characters/C1B-RW-016-preview/NeutralApprovalRecord.json), 현재 리그 작업은 [r20 폴더](BlenderSource/Characters/C1B-RW-020-helper-rig-preview)에서 확인할 수 있습니다. 세부 기획·검토 문서에는 이전 작업 단계의 기록도 남아 있으므로 작성 기준일을 함께 봐 주세요.
-
-## 프로젝트 열기
-
-### 필요한 도구
-
-| 도구 | 저장소 기준 버전 | 용도 |
-|---|---|---|
-| Unity Editor | `6000.3.9f1` — Unity 6.3 LTS | 프로젝트 열기와 C# 작업 |
-| Blender | `5.2.0 LTS` | 캐릭터 원본 수정과 제작 스크립트 실행 |
-| Git / Git LFS | Git LFS `3.8.0` 기준 | 저장소와 `.blend`·`.fbx` 파일 내려받기 |
-
-Unity 패키지는 저장소의 `manifest.json`과 `packages-lock.json`에 맞춰 복원합니다. 현재 기준은 URP `17.3.0`, Input System `1.18.0`, Unity Transport `2.6.0`입니다. Blender는 모델을 수정할 때 필요합니다.
-
-### 내려받고 Unity에서 열기
-
-Git과 Git LFS가 설치되어 있고 비공개 저장소에 접근할 수 있는 계정으로 로그인한 상태에서 실행합니다.
-
-```bash
-git clone https://github.com/kjh4845/party-game.git
-cd party-game
-git lfs install --local
-git lfs pull
-```
-
-Unity Hub의 프로젝트 추가 기능으로 `party-game/Project hotfix` 폴더를 선택하고, `6000.3.9f1`로 엽니다. 저장소 최상위 폴더보다 한 단계 안쪽에 Unity 프로젝트가 있습니다. 첫 실행에는 패키지 복원과 에셋 임포트 시간이 필요합니다.
-
-현재 씬은 `Assets/Scenes/SampleScene.unity` 하나입니다. 카메라와 조명만 있는 기본 씬이므로 Play를 눌러도 게임이 시작되지는 않습니다.
-
-### 테스트와 빌드
-
-Unity의 **Window → General → Test Runner**에서 EditMode와 PlayMode 테스트를 실행할 수 있습니다. 현재 테스트는 모듈 의존성, 최소 시뮬레이션, 저장 코드와 이전 캐릭터의 임포트 결과를 확인합니다. 대전 기능을 검증하는 테스트는 아직 없습니다.
-
-Windows 빌드 설정은 준비되어 있으며, 관련 절차는 [수동 빌드 안내](config/build_profiles/WINDOWS_BUILD_MANUAL.md)에 있습니다. 현재 이 설정으로 빌드해도 완성된 게임을 얻을 수 있는 단계는 아닙니다.
 
 ## 저장소 구성
 
 | 경로 | 들어 있는 내용 |
 |---|---|
 | [`Project hotfix/`](Project%20hotfix/) | Unity 프로젝트. `Assets`, `Packages`, `ProjectSettings`를 함께 관리합니다. |
-| [`BlenderSource/`](BlenderSource/) | 캐릭터 원본, 현재 검토 중인 리그, 제작 과정의 측정 자료 |
+| [`BlenderSource/`](BlenderSource/) | 캐릭터 원본과 제작 자료 |
 | [`docs/`](docs/) | 게임 규칙, 세부 설계와 구현 계획 |
 | [`config/`](config/) | 도구 버전, 모델 제작 기준, 저장·빌드 설정과 에셋 출처 목록 |
 | [`tools/`](tools/) | Blender 제작 스크립트와 저장소·에셋 검증 도구 |
