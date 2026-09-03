@@ -1,0 +1,140 @@
+{
+  "assetId": "CHR_MasterCharacter_C1B_NeutralRework",
+  "revision": "r11",
+  "assetVersion": "0.11.0-local-preview",
+  "sourceRevision": "r10",
+  "sourceOwner": "kjh4845",
+  "construction": "R10_ANALYTIC_MACRO_REFIT_HIGH_RESOLUTION_WHOLE_BODY_GLOBAL_FAIR",
+  "process": {
+    "torsoWidthRefitStrength": 0.78,
+    "torsoDepthRefitStrength": 0.55,
+    "shoulderBlendFactor": 0.42,
+    "shoulderBlendIterations": 20,
+    "voxelSize": 0.0045,
+    "globalSmoothFactor": 0.2,
+    "globalSmoothIterations": 30,
+    "laplacianLambda": 0.18,
+    "laplacianIterations": 12,
+    "catmullClarkLevels": 1,
+    "depthVolumeRestoreScale": 1.0593343043679637
+  },
+  "comparison": {
+    "sourceBoundsSize": [
+      1.1466848850250244,
+      0.296780526638031,
+      0.724495530128479
+    ],
+    "targetBoundsSize": [
+      1.1444646120071411,
+      0.3019113540649414,
+      0.7237641215324402
+    ],
+    "boundsRelativeDelta": [
+      0.0019362538452182068,
+      0.01728828870624731,
+      0.0010095419027762855
+    ],
+    "sourceSignedVolume": 0.04709693077483212,
+    "targetSignedVolume": 0.04709693077271764,
+    "volumeRelativeDelta": 4.489624327451472e-11
+  },
+  "topology": {
+    "vertices": 227942,
+    "edges": 455880,
+    "faces": 227940,
+    "allQuads": true,
+    "boundaryEdges": 0,
+    "nonManifoldEdges": 0,
+    "looseEdges": 0,
+    "degenerateFaces": 0,
+    "components": 1,
+    "eulerCharacteristic": 2,
+    "signedVolume": 0.04709693077271764
+  },
+  "manifold": {
+    "boundaryEdgeCount": 0,
+    "nonManifoldEdgeCount": 0,
+    "looseEdgeCount": 0,
+    "connectedComponents": 1,
+    "eulerCharacteristic": 2,
+    "degenerateFaceCount": 0,
+    "signedVolume": 0.04709693077271764,
+    "result": "PASS"
+  },
+  "mirror": {
+    "axis": "X",
+    "tolerance": 1e-06,
+    "unmatchedVertexCount": 0,
+    "maximumPositionDeviation": 1.8849563332423713e-07,
+    "result": "PASS"
+  },
+  "fold": {
+    "adjacentAngleMaximumDegrees": 6.843838876182199,
+    "foldoverEdgeCountAt90Degrees": 0,
+    "foldoverEdgesAt90Degrees": [],
+    "hardEdgeCountAt45Degrees": 0,
+    "result": "PASS"
+  },
+  "bvhSelfIntersection": {
+    "triangleCount": 455880,
+    "rawUniqueOverlapPairCount": 0,
+    "nonAdjacentOverlapPairCount": 0,
+    "nonAdjacentOverlapPairs": [],
+    "result": "PASS"
+  },
+  "armSections": {
+    "targetZ": 0.635,
+    "sections": {
+      "0.35": {
+        "sampleCount": 544,
+        "minimumZ": 0.599788248538971,
+        "maximumZ": 0.6700778603553772,
+        "centerZ": 0.6349330544471741
+      },
+      "0.45": {
+        "sampleCount": 720,
+        "minimumZ": 0.6020952463150024,
+        "maximumZ": 0.6678828001022339,
+        "centerZ": 0.6349890232086182
+      },
+      "0.54": {
+        "sampleCount": 744,
+        "minimumZ": 0.6037771105766296,
+        "maximumZ": 0.6662906408309937,
+        "centerZ": 0.6350338757038116
+      }
+    },
+    "maximumCenterDeviation": 6.694555282593662e-05
+  },
+  "headBodyOverlap": 0.009677767753601074,
+  "runtimeModifierCount": 0,
+  "renderFiles": [
+    "CHR_MasterCharacter_C1B_NeutralRework_r11_Neutral_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r11_Neutral_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r11_Neutral_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r11_Neutral_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r11_Silhouette_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r11_Silhouette_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r11_Silhouette_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r11_Silhouette_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r11_RakeLight_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r11_RakeLight_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r11_RakeLight_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r11_RakeLight_ThreeQuarter.png"
+  ],
+  "independentVisualGate": {
+    "reviewerCount": 3,
+    "blockers": [],
+    "fitToShow": true
+  },
+  "eyesCreated": false,
+  "handsCreated": false,
+  "fingersCreated": false,
+  "visibleNeckAllowed": false,
+  "armatureObjects": 0,
+  "animationActions": 0,
+  "userVisualApprovalRecorded": false,
+  "productionTopologyApproved": false,
+  "playerBuildsExecuted": 0,
+  "result": "PASS"
+}

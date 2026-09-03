@@ -1,0 +1,229 @@
+{
+  "assetId": "CHR_MasterCharacter_C1B_NeutralRework",
+  "assetVersion": "0.8.0-local-preview",
+  "baseControlCage": {
+    "allQuads": true,
+    "bvhSelfIntersection": {
+      "nonAdjacentOverlapPairCount": 0,
+      "nonAdjacentOverlapPairs": [],
+      "rawUniqueOverlapPairCount": 0,
+      "result": "PASS",
+      "triangleCount": 1043384
+    },
+    "edges": 1043384,
+    "fold": {
+      "adjacentAngleMaximumDegrees": 24.49726405264716,
+      "foldoverEdgeCountAt90Degrees": 0,
+      "foldoverEdgesAt90Degrees": [],
+      "hardEdgeCountAt45Degrees": 0,
+      "result": "PASS"
+    },
+    "manifold": {
+      "boundaryEdgeCount": 0,
+      "connectedComponents": 1,
+      "degenerateFaceCount": 0,
+      "eulerCharacteristic": 2,
+      "looseEdgeCount": 0,
+      "nonManifoldEdgeCount": 0,
+      "result": "PASS",
+      "signedVolume": 0.042028040605983856
+    },
+    "mirror": {
+      "axis": "X",
+      "maximumPositionDeviation": 1.7947240849025548e-07,
+      "result": "PASS",
+      "tolerance": 1e-06,
+      "unmatchedVertexCount": 0
+    },
+    "nonConvex": {
+      "centerlineProjectionDiagnostic": true,
+      "concaveQuadCount": 0,
+      "concaveQuadIndices": [],
+      "dominantProjectionZeroCornerCount": 4,
+      "geometricZeroCornerCount": 0,
+      "quadCount": 521692,
+      "result": "PASS",
+      "zeroCornerCount": 0
+    },
+    "polygonVertexCountHistogram": {
+      "4": 521692
+    },
+    "polygons": 521692,
+    "result": "PASS",
+    "vertices": 521694
+  },
+  "bodyAuthoredPartCount": 1,
+  "construction": "FULL_IMPLICIT_R07_SCALE_TABLE_DRIVEN_18_DEGREE_ARMS",
+  "evaluatedRenderSurface": {
+    "allQuads": true,
+    "bvhSelfIntersection": {
+      "nonAdjacentOverlapPairCount": 0,
+      "nonAdjacentOverlapPairs": [],
+      "rawUniqueOverlapPairCount": 0,
+      "result": "PASS",
+      "triangleCount": 1043384
+    },
+    "edges": 1043384,
+    "fold": {
+      "adjacentAngleMaximumDegrees": 24.49726405264716,
+      "foldoverEdgeCountAt90Degrees": 0,
+      "foldoverEdgesAt90Degrees": [],
+      "hardEdgeCountAt45Degrees": 0,
+      "result": "PASS"
+    },
+    "manifold": {
+      "boundaryEdgeCount": 0,
+      "connectedComponents": 1,
+      "degenerateFaceCount": 0,
+      "eulerCharacteristic": 2,
+      "looseEdgeCount": 0,
+      "nonManifoldEdgeCount": 0,
+      "result": "PASS",
+      "signedVolume": 0.042028040605983856
+    },
+    "mirror": {
+      "axis": "X",
+      "maximumPositionDeviation": 1.7947240849025548e-07,
+      "result": "PASS",
+      "tolerance": 1e-06,
+      "unmatchedVertexCount": 0
+    },
+    "nonConvex": {
+      "centerlineProjectionDiagnostic": true,
+      "concaveQuadCount": 0,
+      "concaveQuadIndices": [],
+      "dominantProjectionZeroCornerCount": 4,
+      "geometricZeroCornerCount": 0,
+      "quadCount": 521692,
+      "result": "PASS",
+      "zeroCornerCount": 0
+    },
+    "polygonVertexCountHistogram": {
+      "4": 521692
+    },
+    "polygons": 521692,
+    "result": "PASS",
+    "vertices": 521694
+  },
+  "eyesCreated": false,
+  "fingersCreated": false,
+  "handsCreated": false,
+  "head": {
+    "boundsMaximum": [
+      0.14999999105930328,
+      0.12699998915195465,
+      0.9900000095367432
+    ],
+    "boundsMinimum": [
+      -0.1499999612569809,
+      -0.1329999715089798,
+      0.7000000476837158
+    ],
+    "directBodyContact": true,
+    "edges": 4032,
+    "eyesCreated": false,
+    "object": "C1B_R08_RoundFacelessHead",
+    "polygons": 2048,
+    "vertices": 1986,
+    "visibleNeckAllowed": false
+  },
+  "independentVisualGate": {
+    "blockers": [],
+    "fitToShow": true
+  },
+  "playerBuildsExecuted": 0,
+  "productionTopologyApproved": false,
+  "reference": {
+    "path": "/Users/kjh/Downloads/Gang_Beast.webp",
+    "sha256": "9afccdb71c696d856c47b4a7a6640c02b80c1d50ea58f1e7b42a225c21f75991"
+  },
+  "referenceFit": {
+    "frontSections": {
+      "0.54": {
+        "armInner": 0.164675,
+        "armOuter": 0.240607,
+        "armThickness": 0.075932,
+        "gap": 0.018236,
+        "torsoOuter": 0.14644
+      },
+      "0.56": {
+        "armInner": 0.174859,
+        "armOuter": 0.243227,
+        "armThickness": 0.068367,
+        "gap": 0.029027,
+        "torsoOuter": 0.145832
+      },
+      "0.58": {
+        "armInner": 0.184443,
+        "armOuter": 0.247588,
+        "armThickness": 0.063145,
+        "gap": 0.038821,
+        "torsoOuter": 0.145623
+      },
+      "0.60": {
+        "armInner": 0.19237,
+        "armOuter": 0.252672,
+        "armThickness": 0.060303,
+        "gap": 0.046356,
+        "torsoOuter": 0.146014
+      },
+      "0.62": {
+        "armInner": 0.199124,
+        "armOuter": 0.257907,
+        "armThickness": 0.058782,
+        "gap": 0.052124,
+        "torsoOuter": 0.147
+      },
+      "0.64": {
+        "armInner": 0.207898,
+        "armOuter": 0.263242,
+        "armThickness": 0.055344,
+        "gap": 0.059364,
+        "torsoOuter": 0.148533
+      },
+      "0.66": {
+        "armInner": 0.216808,
+        "armOuter": 0.268144,
+        "armThickness": 0.051336,
+        "gap": 0.066237,
+        "torsoOuter": 0.150571
+      },
+      "0.68": {
+        "armInner": 0.225202,
+        "armOuter": 0.274111,
+        "armThickness": 0.048909,
+        "gap": 0.071968,
+        "torsoOuter": 0.153234
+      }
+    },
+    "gapStrictlyIncreasesFromV054": true,
+    "upperArmCenterlineDegreesV054ToV062": 18.091926,
+    "upperArmCenterlineDegreesV054ToV068": 18.73772
+  },
+  "renderFiles": [
+    "CHR_MasterCharacter_C1B_NeutralRework_r08_Neutral_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r08_Neutral_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r08_Neutral_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r08_Neutral_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r08_Silhouette_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r08_Silhouette_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r08_Silhouette_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r08_Silhouette_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r08_RakeLight_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r08_RakeLight_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r08_RakeLight_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r08_RakeLight_ThreeQuarter.png"
+  ],
+  "renderMeshObjects": 2,
+  "renderPasses": [
+    "Neutral",
+    "Silhouette",
+    "RakeLight"
+  ],
+  "result": "PASS",
+  "revision": "r08",
+  "runtimeModifierCount": 0,
+  "sourceOwner": "kjh4845",
+  "userVisualApprovalRecorded": false,
+  "visibleNeckAllowed": false
+}

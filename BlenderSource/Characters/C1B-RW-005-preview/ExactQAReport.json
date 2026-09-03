@@ -1,0 +1,104 @@
+{
+  "baseControlCage": {
+    "bvhSelfIntersection": {
+      "nonAdjacentOverlapPairCount": 0,
+      "nonAdjacentOverlapPairs": [],
+      "rawUniqueOverlapPairCount": 0,
+      "result": "PASS",
+      "triangleCount": 21056
+    },
+    "fold": {
+      "adjacentAngleMaximumDegrees": 53.109921985902105,
+      "foldoverEdgeCountAt90Degrees": 0,
+      "foldoverEdgesAt90Degrees": [],
+      "hardEdgeCountAt45Degrees": 8,
+      "result": "PASS"
+    },
+    "manifold": {
+      "boundaryEdgeCount": 0,
+      "looseEdgeCount": 0,
+      "nonManifoldEdgeCount": 0,
+      "result": "PASS"
+    },
+    "mirror": {
+      "axis": "X",
+      "maximumPositionDeviation": 1.795883548538768e-07,
+      "result": "PASS",
+      "tolerance": 1e-06,
+      "unmatchedVertexCount": 0
+    },
+    "nonConvex": {
+      "concaveQuadCount": 0,
+      "concaveQuadIndices": [],
+      "quadCount": 10528,
+      "result": "PASS",
+      "zeroCornerCount": 0
+    },
+    "polygons": 10528,
+    "result": "PASS",
+    "vertices": 10530
+  },
+  "candidate": "c1b-r05-radical-short-cap-candidate-25",
+  "construction": "CANDIDATE14_ACCEPTED_EVALUATED_SURFACE_FROZEN_AS_BASE",
+  "evaluatedRenderSurface": {
+    "bvhSelfIntersection": {
+      "nonAdjacentOverlapPairCount": 0,
+      "nonAdjacentOverlapPairs": [],
+      "rawUniqueOverlapPairCount": 0,
+      "result": "PASS",
+      "triangleCount": 21056
+    },
+    "fold": {
+      "adjacentAngleMaximumDegrees": 53.109921985902105,
+      "foldoverEdgeCountAt90Degrees": 0,
+      "foldoverEdgesAt90Degrees": [],
+      "hardEdgeCountAt45Degrees": 8,
+      "result": "PASS"
+    },
+    "manifold": {
+      "boundaryEdgeCount": 0,
+      "looseEdgeCount": 0,
+      "nonManifoldEdgeCount": 0,
+      "result": "PASS"
+    },
+    "mirror": {
+      "axis": "X",
+      "maximumPositionDeviation": 1.795883548538768e-07,
+      "result": "PASS",
+      "tolerance": 1e-06,
+      "unmatchedVertexCount": 0
+    },
+    "nonConvex": {
+      "concaveQuadCount": 0,
+      "concaveQuadIndices": [],
+      "quadCount": 10528,
+      "result": "PASS",
+      "zeroCornerCount": 0
+    },
+    "polygons": 10528,
+    "result": "PASS",
+    "vertices": 10530
+  },
+  "renders": [
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_Neutral_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_Neutral_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_Neutral_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_Neutral_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_Silhouette_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_Silhouette_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_Silhouette_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_Silhouette_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_RakeLight_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_RakeLight_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_RakeLight_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_RakeLight_ThreeQuarter.png"
+  ],
+  "result": "PASS",
+  "runtimeModifierCount": 0,
+  "source": "/tmp/c1b-r05-radical-short-cap-candidate-14/CHR_MasterCharacter_C1B_NeutralRework_r05.blend",
+  "sourceVisualPreservation": {
+    "evaluatedMaximumPositionDeltaH": 0.0,
+    "headMaximumPositionDeltaH": 0.0,
+    "result": "PASS"
+  }
+}

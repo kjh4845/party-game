@@ -1,0 +1,154 @@
+{
+  "assetId": "CHR_MasterCharacter_C1B_NeutralRework",
+  "assetVersion": "0.5.0-local-preview",
+  "baseControlCage": {
+    "allQuads": true,
+    "bvhSelfIntersection": {
+      "nonAdjacentOverlapPairCount": 0,
+      "nonAdjacentOverlapPairs": [],
+      "rawUniqueOverlapPairCount": 0,
+      "result": "PASS",
+      "triangleCount": 21056
+    },
+    "edges": 21056,
+    "fold": {
+      "adjacentAngleMaximumDegrees": 53.109921985902105,
+      "foldoverEdgeCountAt90Degrees": 0,
+      "foldoverEdgesAt90Degrees": [],
+      "hardEdgeCountAt45Degrees": 8,
+      "result": "PASS"
+    },
+    "manifold": {
+      "boundaryEdgeCount": 0,
+      "connectedComponents": 1,
+      "degenerateFaceCount": 0,
+      "eulerCharacteristic": 2,
+      "looseEdgeCount": 0,
+      "nonManifoldEdgeCount": 0,
+      "result": "PASS",
+      "signedVolume": 0.048445990443625846
+    },
+    "mirror": {
+      "axis": "X",
+      "maximumPositionDeviation": 1.795883548538768e-07,
+      "result": "PASS",
+      "tolerance": 1e-06,
+      "unmatchedVertexCount": 0
+    },
+    "nonConvex": {
+      "concaveQuadCount": 0,
+      "concaveQuadIndices": [],
+      "quadCount": 10528,
+      "result": "PASS",
+      "zeroCornerCount": 0
+    },
+    "polygonVertexCountHistogram": {
+      "4": 10528
+    },
+    "polygons": 10528,
+    "result": "PASS",
+    "vertices": 10530
+  },
+  "bodyAuthoredPartCount": 1,
+  "construction": "FROZEN_APPLIED_SINGLE_SURFACE_10528_QUADS",
+  "evaluatedRenderSurface": {
+    "allQuads": true,
+    "bvhSelfIntersection": {
+      "nonAdjacentOverlapPairCount": 0,
+      "nonAdjacentOverlapPairs": [],
+      "rawUniqueOverlapPairCount": 0,
+      "result": "PASS",
+      "triangleCount": 21056
+    },
+    "edges": 21056,
+    "fold": {
+      "adjacentAngleMaximumDegrees": 53.109921985902105,
+      "foldoverEdgeCountAt90Degrees": 0,
+      "foldoverEdgesAt90Degrees": [],
+      "hardEdgeCountAt45Degrees": 8,
+      "result": "PASS"
+    },
+    "manifold": {
+      "boundaryEdgeCount": 0,
+      "connectedComponents": 1,
+      "degenerateFaceCount": 0,
+      "eulerCharacteristic": 2,
+      "looseEdgeCount": 0,
+      "nonManifoldEdgeCount": 0,
+      "result": "PASS",
+      "signedVolume": 0.048445990443625846
+    },
+    "mirror": {
+      "axis": "X",
+      "maximumPositionDeviation": 1.795883548538768e-07,
+      "result": "PASS",
+      "tolerance": 1e-06,
+      "unmatchedVertexCount": 0
+    },
+    "nonConvex": {
+      "concaveQuadCount": 0,
+      "concaveQuadIndices": [],
+      "quadCount": 10528,
+      "result": "PASS",
+      "zeroCornerCount": 0
+    },
+    "polygonVertexCountHistogram": {
+      "4": 10528
+    },
+    "polygons": 10528,
+    "result": "PASS",
+    "vertices": 10530
+  },
+  "eyesCreated": false,
+  "fingersCreated": false,
+  "handsCreated": false,
+  "head": {
+    "boundsMaximum": [
+      0.14999999105930328,
+      0.12699998915195465,
+      0.9900000095367432
+    ],
+    "boundsMinimum": [
+      -0.1499999612569809,
+      -0.1329999715089798,
+      0.7000000476837158
+    ],
+    "directBodyContact": true,
+    "edges": 4032,
+    "eyesCreated": false,
+    "object": "C1B_R05_RoundFacelessHead",
+    "polygons": 2048,
+    "vertices": 1986,
+    "visibleNeckAllowed": false
+  },
+  "playerBuildsExecuted": 0,
+  "reference": {
+    "path": "/Users/kjh/Downloads/Gang_Beast.webp",
+    "sha256": "9afccdb71c696d856c47b4a7a6640c02b80c1d50ea58f1e7b42a225c21f75991"
+  },
+  "renderFiles": [
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_Neutral_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_Neutral_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_Neutral_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_Neutral_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_Silhouette_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_Silhouette_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_Silhouette_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_Silhouette_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_RakeLight_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_RakeLight_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_RakeLight_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r05_RakeLight_ThreeQuarter.png"
+  ],
+  "renderMeshObjects": 2,
+  "renderPasses": [
+    "Neutral",
+    "Silhouette",
+    "RakeLight"
+  ],
+  "result": "PASS",
+  "revision": "r05",
+  "runtimeModifierCount": 0,
+  "sourceOwner": "kjh4845",
+  "visibleNeckAllowed": false
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "recordId": "UG-C1B-NEUTRAL-r16-20260902",
+  "gateId": "UG-C1B-NEUTRAL",
+  "ownerTask": "C1BRW-003",
+  "state": "APPROVED",
+  "recordedDateLocal": "2026-09-02",
+  "timezone": "Asia/Seoul",
+  "candidate": {
+    "assetId": "CHR_MasterCharacter_C1B_NeutralRework",
+    "revision": "r16",
+    "assetVersion": "0.16.0-local-preview",
+    "sourcePath": "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend",
+    "sourceSha256": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "qaReportPath": "BlenderSource/Characters/C1B-RW-016-preview/BodyCrotchFairQAReport.json",
+    "qaReportSha256": "c12435ca17acc4577ec7c92c95a083a79ce806fca0596f22eb0e27fcc41af5a2",
+    "technicalResult": "PASS"
+  },
+  "decision": {
+    "userVisualApprovalRecorded": true,
+    "approvedForNeutralDirection": true,
+    "poseTaskAuthorized": true,
+    "productionTopologyApproved": false,
+    "gameplayRigApproved": false,
+    "colliderApproved": false,
+    "animationApproved": false,
+    "canonicalPromotionStatus": "PENDING_USER_DECISION",
+    "poseGenerationStatus": "PENDING_USER_METHOD_DECISION",
+    "fbxExportAllowed": false,
+    "unityImportAllowed": false
+  },
+  "approvalScope": [
+    "r16 Neutral visual direction",
+    "body surface and outer silhouette fairing",
+    "crotch and torso-to-leg transition fairing",
+    "r14 3 mm and r15 additional 4 mm recess layer preservation"
+  ],
+  "basis": "The user confirmed that the r16 result was sufficient to proceed and explicitly authorized continuation.",
+  "limitations": [
+    "This approval does not approve production topology, UVs, skin weights, rigging, colliders, animation, FBX export, Unity import, or a Player Build.",
+    "The approved source remains at its current preview path until the user chooses a canonical promotion policy.",
+    "Pose8 generation remains paused until the user chooses a review-pose method for the connected r16 body mesh."
+  ]
+}

@@ -1,0 +1,338 @@
+{
+  "assetId": "CHR_MasterCharacter_C1B_NeutralRework",
+  "revision": "r16",
+  "assetVersion": "0.16.0-local-preview",
+  "sourceRevision": "r15",
+  "sourceIdentity": {
+    "CHR_MasterCharacter_C1B_NeutralRework_r13.blend": {
+      "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-013-preview/CHR_MasterCharacter_C1B_NeutralRework_r13.blend",
+      "sha256Before": "98c0d943371afc044863a3b41fc7de83fac9643ea93c01e0c7266c447aefb8fa",
+      "sha256After": "98c0d943371afc044863a3b41fc7de83fac9643ea93c01e0c7266c447aefb8fa",
+      "sizeBytes": 8753098,
+      "unchanged": true
+    },
+    "CHR_MasterCharacter_C1B_NeutralRework_r14.blend": {
+      "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-014-preview/CHR_MasterCharacter_C1B_NeutralRework_r14.blend",
+      "sha256Before": "5c5096e781ecefa653b5eda9addf64336e5b7a82b0504ed6479fe80f4cc3f717",
+      "sha256After": "5c5096e781ecefa653b5eda9addf64336e5b7a82b0504ed6479fe80f4cc3f717",
+      "sizeBytes": 8749944,
+      "unchanged": true
+    },
+    "CHR_MasterCharacter_C1B_NeutralRework_r15.blend": {
+      "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-015-preview/CHR_MasterCharacter_C1B_NeutralRework_r15.blend",
+      "sha256Before": "014b87e6beb69e253575283ad683866cbc21be1f95ca7a160e6b08aa52940528",
+      "sha256After": "014b87e6beb69e253575283ad683866cbc21be1f95ca7a160e6b08aa52940528",
+      "sizeBytes": 8750172,
+      "unchanged": true
+    }
+  },
+  "construction": "R15_3AXIS_LAPLACIAN_BODY_CROTCH_FAIR_WITH_EXACT_3MM_AND_4MM_LAYERS",
+  "process": {
+    "baseRevision": "r13",
+    "preservedRecessLayers": [
+      "r14-r13_3mm",
+      "r15-r14_4mm"
+    ],
+    "profileStep": 0.002,
+    "widthPresentSigma": 0.003,
+    "widthPolynomialDegree": 4,
+    "depthPresentSigma": 0.003,
+    "depthFidelity": 30.0,
+    "depthCurvatureWeight": 500000.0,
+    "depthBlend": 0.7,
+    "editZ": [
+      0.1265,
+      0.69
+    ],
+    "editX": [
+      0.19,
+      0.225
+    ],
+    "threeAxisFairZ": [
+      0.05,
+      0.69
+    ],
+    "threeAxisFairFullStartZ": 0.13,
+    "localSmoothIterations": 120,
+    "localSmoothFactor": 0.2,
+    "crotchSmoothIterations": 240,
+    "crotchSmoothFactor": 0.2,
+    "crotchSmoothZ": [
+      0.05,
+      0.32
+    ],
+    "crotchSmoothX": [
+      0.16,
+      0.2
+    ],
+    "topologyChangingOperations": 0
+  },
+  "lineage": {
+    "topologySignaturesEqual": true,
+    "edgeArraySha256": {
+      "r13": "0d7576c15acdabe149889c5b8363178b5357248b5a5ecc1cad08b67ca9f5f32d",
+      "r14": "0d7576c15acdabe149889c5b8363178b5357248b5a5ecc1cad08b67ca9f5f32d",
+      "r15": "0d7576c15acdabe149889c5b8363178b5357248b5a5ecc1cad08b67ca9f5f32d"
+    },
+    "layer3MaximumAbsY": 0.00299999862909317,
+    "layer4MaximumAbsY": 0.0040000006556510925,
+    "totalRecessLayerMaximumAbsY": 0.006999999284744263,
+    "layer3MaximumAbsX": 0.0,
+    "layer3MaximumAbsZ": 0.0,
+    "layer4MaximumAbsX": 0.0,
+    "layer4MaximumAbsZ": 0.0,
+    "layerReapplicationMaximumError": 0.0,
+    "additional4mmLayerMaximumError": 0.0,
+    "surfaceReconstructionMaximumError": 1.3877787807814457e-17,
+    "additional4mmPeakVertexCount": 38,
+    "additional4mmPeakAbsoluteMaximumDeltaFromR15": 0.0010948698055801489
+  },
+  "edit": {
+    "modifiedVertexCount": 166985,
+    "frozenVertexCount": 60805,
+    "threeAxisFairVertexCount": 167137,
+    "maximumVertexDelta": 0.0025119987914095305,
+    "maximumAbsXDelta": 0.0014362111687660217,
+    "maximumAbsYDelta": 0.0019177943468093872,
+    "maximumAbsZDelta": 0.00191478431224823,
+    "p95ModifiedVertexDelta": 0.0012889763997444702,
+    "p99ModifiedVertexDelta": 0.00168935577253753,
+    "frozenMaximumDelta": 0.0,
+    "maximumSectionCenterDelta": 1.809446710382412e-07,
+    "volumeRelativeDelta": 0.0014896320583309098,
+    "editWeightMaximum": 1.0
+  },
+  "surfaceBilaplacian": {
+    "source": {
+      "crotch": {
+        "sampleCount": 25147,
+        "rms": 9.000857672454782e-06,
+        "p95": 2.298553588513725e-05,
+        "p99": 4.6892539190781654e-05,
+        "maximum": 6.649916763944971e-05
+      },
+      "torso": {
+        "sampleCount": 89336,
+        "rms": 5.341526022490944e-06,
+        "p95": 5.536119318703559e-06,
+        "p99": 3.110485648097821e-05,
+        "maximum": 8.173713918978324e-05
+      }
+    },
+    "final": {
+      "crotch": {
+        "sampleCount": 25147,
+        "rms": 9.687465004677616e-08,
+        "p95": 1.8578796579886083e-07,
+        "p99": 2.9137249241828873e-07,
+        "maximum": 1.0864753033274824e-06
+      },
+      "torso": {
+        "sampleCount": 89336,
+        "rms": 5.075807104694608e-07,
+        "p95": 2.61798155101483e-07,
+        "p99": 4.1948503752536245e-07,
+        "maximum": 5.6384972634271044e-05
+      }
+    }
+  },
+  "profileFairness": {
+    "source": {
+      "crotchWidth": {
+        "sampleCount": 72,
+        "secondDerivativeRms": 1.03980329711013,
+        "secondDerivativeMaximum": 2.268977312987197,
+        "thirdDerivativeRms": 82.44545068975361,
+        "curvatureSignChanges": 2
+      },
+      "crotchDepth": {
+        "sampleCount": 72,
+        "secondDerivativeRms": 11.850080425383153,
+        "secondDerivativeMaximum": 25.525146124984715,
+        "thirdDerivativeRms": 1189.3850911246368,
+        "curvatureSignChanges": 3
+      },
+      "torsoWidth": {
+        "sampleCount": 130,
+        "secondDerivativeRms": 1.766657388917157,
+        "secondDerivativeMaximum": 4.89618214755301,
+        "thirdDerivativeRms": 105.93454208395198,
+        "curvatureSignChanges": 5
+      },
+      "torsoDepth": {
+        "sampleCount": 180,
+        "secondDerivativeRms": 4.229584575984397,
+        "secondDerivativeMaximum": 15.308903594506845,
+        "thirdDerivativeRms": 254.20567654324276,
+        "curvatureSignChanges": 4
+      }
+    },
+    "final": {
+      "crotchWidth": {
+        "sampleCount": 72,
+        "secondDerivativeRms": 1.0716983312564148,
+        "secondDerivativeMaximum": 2.1223326362486414,
+        "thirdDerivativeRms": 58.06789956046742,
+        "curvatureSignChanges": 0
+      },
+      "crotchDepth": {
+        "sampleCount": 72,
+        "secondDerivativeRms": 9.897637997685788,
+        "secondDerivativeMaximum": 23.668609851135862,
+        "thirdDerivativeRms": 1082.319677940594,
+        "curvatureSignChanges": 3
+      },
+      "torsoWidth": {
+        "sampleCount": 130,
+        "secondDerivativeRms": 1.0918927559511353,
+        "secondDerivativeMaximum": 3.7278146530969614,
+        "thirdDerivativeRms": 81.9043463826754,
+        "curvatureSignChanges": 3
+      },
+      "torsoDepth": {
+        "sampleCount": 180,
+        "secondDerivativeRms": 3.726470027259554,
+        "secondDerivativeMaximum": 13.713693688908664,
+        "thirdDerivativeRms": 217.90470514629118,
+        "curvatureSignChanges": 4
+      }
+    }
+  },
+  "coreCrotchProfileFairness": {
+    "source": {
+      "front": {
+        "sampleCount": 57,
+        "secondDerivativeRms": 17.587171293326485,
+        "secondDerivativeMaximum": 43.232289087136884,
+        "thirdDerivativeRms": 1754.99978162088,
+        "curvatureSignChanges": 2
+      },
+      "back": {
+        "sampleCount": 57,
+        "secondDerivativeRms": 17.449849933997474,
+        "secondDerivativeMaximum": 43.154386227936044,
+        "thirdDerivativeRms": 1801.997039358401,
+        "curvatureSignChanges": 4
+      }
+    },
+    "final": {
+      "front": {
+        "sampleCount": 57,
+        "secondDerivativeRms": 14.337428906413814,
+        "secondDerivativeMaximum": 36.365564214442536,
+        "thirdDerivativeRms": 1131.8795966055704,
+        "curvatureSignChanges": 2
+      },
+      "back": {
+        "sampleCount": 57,
+        "secondDerivativeRms": 14.370035702889592,
+        "secondDerivativeMaximum": 36.39490622991437,
+        "thirdDerivativeRms": 1090.4628117142358,
+        "curvatureSignChanges": 2
+      }
+    }
+  },
+  "preservation": {
+    "headCoordinateMaximumDelta": 0.0,
+    "headMatrixMaximumDelta": 0.0,
+    "headBodyOverlap": 0.009677767753601074
+  },
+  "sourceTopology": {
+    "vertices": 227942,
+    "edges": 455880,
+    "faces": 227940
+  },
+  "targetTopology": {
+    "vertices": 227942,
+    "edges": 455880,
+    "faces": 227940
+  },
+  "topology": {
+    "vertices": 227942,
+    "edges": 455880,
+    "faces": 227940,
+    "allQuads": true,
+    "boundaryEdges": 0,
+    "nonManifoldEdges": 0,
+    "looseEdges": 0,
+    "degenerateFaces": 0,
+    "components": 1,
+    "eulerCharacteristic": 2,
+    "signedVolume": 0.045184884480180716
+  },
+  "manifold": {
+    "boundaryEdgeCount": 0,
+    "nonManifoldEdgeCount": 0,
+    "looseEdgeCount": 0,
+    "connectedComponents": 1,
+    "eulerCharacteristic": 2,
+    "degenerateFaceCount": 0,
+    "signedVolume": 0.045184884480180716,
+    "result": "PASS"
+  },
+  "mirror": {
+    "axis": "X",
+    "tolerance": 1e-06,
+    "unmatchedVertexCount": 0,
+    "maximumPositionDeviation": 1.8849563332423713e-07,
+    "result": "PASS"
+  },
+  "sourceFold": {
+    "adjacentAngleMaximumDegrees": 6.6016177432119205,
+    "foldoverEdgeCountAt90Degrees": 0,
+    "foldoverEdgesAt90Degrees": [],
+    "hardEdgeCountAt45Degrees": 0,
+    "result": "PASS"
+  },
+  "fold": {
+    "adjacentAngleMaximumDegrees": 6.7881297188774585,
+    "foldoverEdgeCountAt90Degrees": 0,
+    "hardEdgeCountAt45Degrees": 0,
+    "result": "PASS"
+  },
+  "foldMaximumDiagnostic": {
+    "angleDegrees": 6.7881297188774585,
+    "vertexCoordinates": [
+      [
+        -1.0647954740150567e-11,
+        -0.011228238232433796,
+        0.1259170025587082
+      ],
+      [
+        -9.662336035443087e-12,
+        -0.008997293189167976,
+        0.12564410269260406
+      ]
+    ],
+    "midpoint": [
+      -1.0155145821477696e-11,
+      -0.010112766176462173,
+      0.12578055262565613
+    ]
+  },
+  "bvhSelfIntersection": {
+    "triangleCount": 455880,
+    "rawUniqueOverlapPairCount": 0,
+    "nonAdjacentOverlapPairCount": 0,
+    "result": "PASS"
+  },
+  "runtimeModifierCount": 0,
+  "renderFiles": [
+    "CHR_MasterCharacter_C1B_NeutralRework_r16_Neutral_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r16_Neutral_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r16_Neutral_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r16_Neutral_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r16_Silhouette_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r16_Silhouette_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r16_Silhouette_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r16_Silhouette_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r16_RakeLight_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r16_RakeLight_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r16_RakeLight_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r16_RakeLight_ThreeQuarter.png"
+  ],
+  "missingRenderFiles": [],
+  "userVisualApprovalRecorded": false,
+  "productionTopologyApproved": false,
+  "technicalResult": "PASS"
+}

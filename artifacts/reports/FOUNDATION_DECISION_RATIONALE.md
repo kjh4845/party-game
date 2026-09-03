@@ -14,8 +14,23 @@
 > 라이선스/NOTICE inventory `LIC-001`, Windows x64 Profile 준비 `BLD-001`, C1b 수치 후보·Blender Blockout·
 > static Pose/4인 lineup·FBX/Unity static parity `C1B-002..005`의 기술 Evidence는 완료됐다. 그러나 최신 사용자
 > 시각 결정은 그 faceted/egg/peg 결과와 C1BRW r01의 rounded-square head·authored neck 결과에 대한 visual
-> acceptance를 철회했다. r01 Evidence/source/profile은 역사로 보존한다. 현재 round head·visible neck0·head direct
-> torso attachment·torso-arm visible seam0의 r02가 `C1BRW-003 / UG-C1B-NEUTRAL` 사용자 검토 대기다. 승인 전
+> acceptance를 철회했다. r01 Evidence/source/profile은 역사로 보존한다. 사용자는 r02의 sphere head·bulbous
+> torso·arm/body contact와 uncommitted r03 preview도 반려했고 r04 Metaball 후보는 surface 주름 때문에,
+> r05는 cape형 어깨·붙인 팔·비정상 겨드랑이 때문에, r06은 축소된 torso와 불충분한 body/arm 분리 때문에,
+> r07은 bodybuilder형 shoulder cap과 긴 axilla channel 때문에 반려됐다. r08도 T-pose가 아니고 몸통·팔 방향이
+> 사용자 요구와 달라 `SUPERSEDED / REJECTED`다. r09는 T-pose·비율 방향을 바로잡았고 r10은 고주파 잔물결을
+> 제거했지만, r10이 r09 macro를 거의 그대로 보존해 torso/shoulder/belly/hip의 저주파 다중 bulge가 남았다는
+> 사용자 지적으로 둘 다 superseded됐다. 현재 입력은 Blender 5.2 local r11 globally-faired T-pose surface다.
+> r11은 몸통 폭·측면 깊이 profile을 단일 연속 곡선으로 재형성하고 shoulder/axilla broad blend 뒤
+> `0.0045H` uniform voxel, whole-body Smooth `.20×30`, volume-preserving Laplacian `.18×12`, Catmull-Clark1을 적용했다.
+> Body·arm·pelvis·leg는 connected component1·Euler2이고 `227942V/455880E/227940F`(all-quad), runtime modifier0다.
+> Boundary/non-manifold/loose/degenerate와 non-adjacent BVH overlap, `45°` hard edge, `90°` foldover는 모두0이고
+> max adjacent angle `6.843839°`, exact X mirror max `1.884956e-7H`, visible arm center max deviation
+> `6.694555e-5H`다. Y depth restore로 r10 signed volume 오차는 `4.489624e-11`이며 X/Y/Z bounds 변화는
+> `-0.193625%/+1.728829%/-0.100954%`다. Gray body와 별도 round direct-contact head, eyes/hands/fingers0,
+> render12다. 독립 시각 gate reviewer3이 blocker0으로 `FIT_TO_SHOW`를 기록했지만 user approval·production
+> topology approval은 false이고 Commit/LFS/Evidence 대상이 아니다. r11이 `C1BRW-003 / UG-C1B-NEUTRAL`
+> 사용자 검토 대기다. 승인 전
 > Pose·Animation·FBX·Unity import 재작업을 시작하지 않는다. C1b 사용자 승인은 완료되지 않았고 Gameplay와
 > Player Build도 실행하지 않았다. 실제 Player 포함물 기준 최종 NOTICE 감사는
 > 사용자가 Build한 뒤에만 가능하다. 따라서 이 문서는 “G0 전체 완료”, “게임 완성” 또는 “Steam 기능 구현”을
@@ -24,6 +39,15 @@
 > **역사 보존:** C1B-002..005 Evidence의 `PASS`는 당시 수치·source·Pose·Interop 검증이 실제로 통과했다는
 > 역사 사실이다. 이를 FAILED로 고쳐 쓰지 않는다. 다만 현재 Plan에서는 최신 사용자 시각 결정에 따라
 > `REWORK_REQUIRED`이며 새 acceptance 입력으로 사용하지 않는다.
+
+> **r11 preview 경계:** r02 기술 Evidence는 역사로 보존하고 r02 visual·r03·r04·r05·r06·r07·r08·r09·r10은 current 입력이 아니다. r11의
+> QA와 독립 시각 QA PASS는 사용자 확인을 대신하지 않는다. `LOCAL_USER_REVIEW / IN_PROGRESS`, 사용자 시각
+> 승인 미기록, `userVisualApproval=false`, `productionTopologyApproval=false`이며
+> Rig/FBX/Unity/Build/Commit/push/LFS는 `0`이다. 다리 정렬·굵기와 rounded forearm terminal은 유지했고,
+> exact pixel 수치를 제품 계약으로 만들지 않고 12-view 실루엣·음영으로 판정한다. 현재는 static Armature0이다.
+> Uniform all-quad preview의 production retopology와 elbow pivot·weights·deformation 검증은 사용자 시각 승인 뒤 후속 Task이며,
+> 현재 파일로 production topology나 Rig/Animation 적합성을 주장하지 않는다.
+> Mesh object 분리는 필요하지 않지만 Rig/Animation approval을 주장하지 않는다.
 
 규범적 우선순위는 계속 [문서 인덱스](../../docs/00_DOCUMENT_INDEX.md)의
 `최신 사용자 결정 → PRD → SRS → 분야별 사양 → 구현계획 → Evidence` 순서를 따른다.
@@ -1244,24 +1268,41 @@ L/R·single-foot/both-feet action 구분만 PASS하고 animation timing·deforma
   H/W/D `1/.4725346267223358/.23389440774917603`, object/closed component `1/2`, V/E/P
   `11394/24864/13470`, topology error·UV layer0, camera/render `4/8`, scene `START/USER_REVIEW`로 고정됐다. component2는 seamless body field와
   closed round head의 direct overlap이며 visible neck·authored Neck semantic node는 `0`이다.
-- 다음 단계는 r02를 입력으로 한 `C1BRW-003 / UG-C1B-NEUTRAL`이다. 이 Gate 전 새 Pose, Animation, FBX,
+- r07은 수치상 gap이 있어도 3/4에서 shoulder cap과 긴 axilla channel로 읽혀 사용자가 반려했다. 국소 절단,
+  기존 surface 확대, 앞면 강제 union은 각각 절단선·수평 띠·용접 홈을 만들었으므로 최종 방식에서 제외했다.
+- r08은 full implicit all-quad 기술 QA를 통과했지만 사용자가 정확한 T-pose와 팔·몸통 재제작을 요구해 current
+  acceptance에서 반려했다. Frozen r08 shell을 부분 회전하는 실험은 root fold와 찢어진 shoulder를 만들어 폐기했다.
+- r09는 torso·pelvis·legs·arms를 compact implicit field 하나로 다시 만들고, 각 팔은 깊게 매입한 capsule 하나와
+  monotone taper가 소유한다. 숨은 root `z=.620`에서 외측 world-X T-pose `z=.635`로 부드럽게 연결하며 visible
+  centerline max deviation은 `5.0068e-8H`다. Component1/Euler2, mixed `16760 triangle + 43544 quad`,
+  `51926V/112228E/60304F`, runtime modifier0이다. Manifold·BVH·fold·exact mirror QA와 render12, 독립 reviewer2의
+  visual gate가 blocker0 `FIT_TO_SHOW`다.
+- 사용자는 r09의 전신 표면이 울퉁불퉁해 보인다고 지적했다. r10은 r09 macro 형상을 고정한 채 uniform voxel
+  all-quad 재표본화, 체적 보존 Laplacian relax와 Catmull-Clark1로 고주파 표면 물결만 제거했다. 최종 Body는
+  `383090V/766176E/383088F`, all-quad, component1/Euler2, runtime modifier0이며 최대 adjacent angle은
+  `18.258704°→5.474322°`로 낮아졌다. Volume·최대 bounds 변화는 `0.038887% / 0.012752%`, 4-view silhouette
+  XOR은 `0.0110~0.0411%`, 최대 경계 이동은 `1px`다. 독립 reviewer3 모두 blocker0 `SHOW`를 기록했다.
+- 사용자는 r10이 고주파 잔물결만 줄였고 몸통 자체의 큰 굴곡은 그대로라고 반려했다. r11은 front width와
+  side depth profile 자체를 재형성해 반복 slope reversal을 없애고, shoulder/axilla broad blend와 전신 fair를
+  적용했다. 최종 Body는 `227942V/455880E/227940F`, all-quad, component1/Euler2, modifier0다. r10 signed volume을
+  사실상 정확히 복원했고 X/Y/Z bounds 변화는 `-0.193625%/+1.728829%/-0.100954%`다. Independent reviewer3가
+  torso·shoulder·pelvis·leg flow의 blocker0 `SHOW`를 기록했다.
+- 다음 단계는 r11을 입력으로 한 `C1BRW-003 / UG-C1B-NEUTRAL`이다. 이 Gate 전 새 Pose, Animation, FBX,
   Unity import, Rig, Collider를 만들지 않는다.
   승인 뒤 `C1BRW-004` Pose8/lineup, `C1BRW-005` Unity parity를 진행하고 기존 `C1B-006 / UG-C1B`에서
   최종 수치·Pose·Unity 결과를 승인한다.
 
 ### current candidate와 경계
 
-- H/W/D `1.0 / 0.4725346267223358 / 0.23389440774917603`
-- review object/closed component `1/2`, vertex/edge/polygon `11394/24864/13470`, fixed camera/render `4/8`
-- round head, visible neck·authored Neck semantic node `0`, head direct torso overlap/attachment
-- torso→shoulder→arm visible seam·groove·step·cap·detached boundary `0`, continuous U-crotch/leg, rounded terminal
+- applied body component `1`, V/E/F `227942/455880/227940`, triangle/quad `0/227940`, runtime modifier0
+- boundary/nonmanifold/loose/degenerate·BVH overlap·45° hard edge·90° foldover `0`, exact mirror unmatched0/max `1.884956e-7H`
+- visible T-pose arm centerline max deviation `6.694555e-5H`; root transition은 torso 안의 `z=.620`에서 시작
+- round head, visible neck·authored Neck semantic node `0`, head direct torso contact
+- one compact implicit torso/pelvis/leg/arm surface, tangent-relaxed rounded axilla, monotone tapered arm, continuous bean torso/U-crotch/leg, rounded terminal
 - visual approval `0`, production topology `0`, Player Build `0`
-- source `520225 bytes / 548a786a…6e252`, LFS pointer `131 bytes`; core Commit `99302fc`가 `origin/main`에 있고
-  fresh private clone의 LFS fetch/checkout 뒤 materialized SHA·size가 일치
-- Binary `75 / 107274740 bytes / unique70`, LFS candidate/tracked `5/5`, ordinary Git `70`;
-  first-party `57`, external review `18`, shipping true `0`
 - 실제 old candidate에서 철회한 failure class: faceted head, egg/peg body, exposed proximal cap,
-  detached-looking limb와 flat terminal disc. 새 Gate는 background-through hole도 함께 거부
+  detached-looking limb, flat terminal disc, cape형·bodybuilder shoulder cap, needle slit/긴 channel 겨드랑이,
+  T-pose가 아닌 hanging arm과 background-through hole
 
 ### 이유
 
@@ -1344,11 +1385,11 @@ PlayMode를 임시 Project 복사본에서 재실행했으며, 원본 Editor의 
 | Git LFS / Remote | local LFS `3.8.0`, pattern `10`, private `origin/main`, file/candidate `5/5`, r02 fresh pointer `131 bytes`→fetch/checkout SHA·size 일치 | 후속 FBX/GLB와 장기 복구 훈련 |
 | 역사 C1B-002..005 | proportion·Blockout·Pose·Interop 기술 Evidence PASS | 최신 visual acceptance; current status는 `REWORK_REQUIRED` |
 | C1B rework r01 | profile/source/Evidence 기술 history; rounded-square head·authored neck 시각 결과 superseded | current visual acceptance `REWORK_REQUIRED` |
-| C1B rework r02 Neutral | SHA `548a786a…6e252`, bytes `520225`, H/W/D `1/.4725346267223358/.23389440774917603`, object/component `1/2`, V/E/P `11394/24864/13470`, topology·UV error0, camera/render `4/8`, START/USER_REVIEW | `UG-C1B-NEUTRAL`, Pose·Unity·production retopo |
+| C1B rework current r11 preview | component1/Euler2, all-quad `227940`, `227942/455880/227940`, runtime modifier0, boundary/nonmanifold/loose/degenerate·BVH overlap·45° hard edge·90° foldover0, max adjacent angle `6.843839°`, exact mirror max `1.884956e-7H`, visible T-arm center max error `6.694555e-5H`, r10 volume 복원, render12·독립 reviewer3 blocker0 `FIT_TO_SHOW`, `LOCAL_USER_REVIEW` | 사용자 `UG-C1B-NEUTRAL`, Pose·Unity·production topology 승인 |
 | Forbidden infra | inventory `392`, content `139`, manifest `2`, violation `0` | Git history·ignored Build·외부 서비스 전체 부재 |
 | Evidence manifest | 현재 역사 `48`개 + r02 `EV-C1BRW-001-002-20260830-r02` 별도 기록 | 각 미래 Feature의 수동 체감 승인 |
 | Player Build | `0` | Build 불가능을 뜻하지 않음. 사용자 요청에 따라 실행하지 않았음 |
-| Blender source / FBX / Unity art import | `.blend 4`(old2+r01 history+r02 current) / superseded FBX1 / historical identity Prefab1 | Gameplay Rig·Collider·Animation이나 production quality |
+| Blender source / FBX / Unity art import | `.blend 12`(old2+r01/r02 history+r04/r05/r06/r07/r08/r09/r10 rejected+r11 preview) / superseded FBX1 / historical identity Prefab1 | Gameplay Rig·Collider·Animation이나 production quality |
 | Docker / Deploy | `0 / 0` | 실제 명령은 실행하지 않았지만 ignored 영역·외부 System 전체 부재까지 증명하지는 않음 |
 
 수치는 해당 Task가 주장한 범위 안에서만 읽어야 한다. 예를 들어 Physics PlayMode `2/2`는 Contact와 Joint
@@ -1374,9 +1415,9 @@ Steam 실행 Evidence나 배포 가능을 주장하지 않는다.
 역사 기술 Evidence를 완료했다. 최신 사용자 결정은 old shape의 visual acceptance를 철회했으며 current status는
 `REWORK_REQUIRED`다.
 
-Old `.blend`와 Unity 반입 FBX, C1BRW r01 source/profile/Evidence는 first-party/LFS history로 보존한다. 현재
-다음 단계는 r02 four-view의 `C1BRW-003 / UG-C1B-NEUTRAL`이다. 승인 전 Pose·Animation·FBX·Unity import
-재작업을 만들지 않으며 production retopo는 C4까지 미룬다.
+Old `.blend`와 Unity 반입 FBX, C1BRW r01/r02 source/profile/Evidence는 first-party/LFS history로 보존한다.
+현재 다음 단계는 local r11 globally-faired T-pose Neutral/Silhouette/Rake 12-view의 `C1BRW-003 / UG-C1B-NEUTRAL`이다. 승인 전
+Pose·Animation·FBX·Unity import 재작업을 만들지 않으며 production topology 승격도 하지 않는다.
 승인 뒤 RW-004..005를 완료하고 C1B-006에서 최종 `UG-C1B`를 받는다. gameplay Rig·Collider와 Animation
 자연스러움은 그 뒤 C2/ANP가 소유한다.
 
@@ -1458,6 +1499,7 @@ Foundation 선택은 영원히 수정 불가한 코드가 아니라, 변경 비�
 - 아직 하지 않은 Build, Steam, Gameplay와 시각 승인을 완료했다고 과장하지 않게 했다.
 
 Foundation 표의 기술·Art·license·Build Profile과 역사 C1B 기술 Evidence, 새 Neutral의 기술 검증은 닫혔다.
-Old C1B와 C1BRW r01 visual acceptance는 철회됐고 다음 순서는 r02의 `C1BRW-003 / UG-C1B-NEUTRAL` 사용자 검토다.
+Old C1B와 C1BRW r01/r02·r03·r04·r05·r06·r07·r08·r09·r10 visual acceptance는 철회됐고 다음 순서는 local r11의
+`C1BRW-003 / UG-C1B-NEUTRAL` 사용자 검토다.
 승인 전 Pose·Animation·FBX·Unity import 재작업0이다. Gameplay Rig·Collider와 최종 `UG-C1B`도 아직 시작하지 않는다. Windows Player 수동 Build는 실제
 Scene과 Alpha 기능이 준비된 뒤 별도 Evidence로 수행한다.

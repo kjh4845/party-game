@@ -1,0 +1,1350 @@
+{
+  "assetId": "CHR_MasterCharacter_C1B_Rig",
+  "assetVersion": "0.19.0-weight-only-rig-preview",
+  "revision": "r19",
+  "ownerTask": "CHR-001",
+  "candidateStatus": "RIG_REVIEW",
+  "source": {
+    "revision": "r16",
+    "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend",
+    "sha256Before": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "sha256After": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "unchanged": true,
+    "approvalRecordPath": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-016-preview/NeutralApprovalRecord.json",
+    "approvalRecordSha256": "1f89295748cd2e5be9bf9d8625f963d602a035a3a3b43e48e05d7f96a0eb9565",
+    "bodySignature": {
+      "vertices": 227942,
+      "edges": 455880,
+      "faces": 227940
+    },
+    "headSignature": {
+      "vertices": 6050,
+      "edges": 12192,
+      "faces": 6144
+    },
+    "headSourceMatrix": [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      -0.003000000026077032,
+      0.0,
+      0.0,
+      1.0,
+      0.8550000190734863,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  "contract": {
+    "modelInteropProfileId": "ModelInteropProfile-ART-001-r02",
+    "rigType": "GENERIC",
+    "avatarSetup": "CreateFromThisModel",
+    "blenderAxes": "+X Right / -Y Forward / +Z Up",
+    "unitScaleMeters": 1.0,
+    "maximumWeightsPerVertex": 4,
+    "fingerBoneCount": 0,
+    "toeBoneCount": 0,
+    "extraLeafBoneCount": 0,
+    "animationClipCount": 0,
+    "rootMotionAuthored": false
+  },
+  "skeleton": {
+    "armatureObject": "RIG_C1B_R19_Armature",
+    "armatureDatablock": "RIG_C1B_R19_ArmatureData",
+    "rigType": "GENERIC",
+    "boneCount": 20,
+    "requiredBoneNames": [
+      "Root",
+      "Pelvis",
+      "Spine",
+      "Chest",
+      "Neck",
+      "Head",
+      "Clavicle_L",
+      "UpperArm_L",
+      "Forearm_L",
+      "HandLogical_L",
+      "Clavicle_R",
+      "UpperArm_R",
+      "Forearm_R",
+      "HandLogical_R",
+      "Thigh_L",
+      "Calf_L",
+      "Foot_L",
+      "Thigh_R",
+      "Calf_R",
+      "Foot_R"
+    ],
+    "bones": [
+      {
+        "name": "Root",
+        "parent": null,
+        "useConnect": false,
+        "useDeform": false,
+        "headLocal": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tailLocal": [
+          0.0,
+          0.0,
+          0.10000000149011612
+        ],
+        "matrixLocal": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Pelvis",
+        "parent": "Root",
+        "useConnect": false,
+        "useDeform": true,
+        "headLocal": [
+          0.0,
+          0.0,
+          0.18000000715255737
+        ],
+        "tailLocal": [
+          0.0,
+          0.0,
+          0.3199999928474426
+        ],
+        "matrixLocal": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.18000000715255737,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Spine",
+        "parent": "Pelvis",
+        "useConnect": true,
+        "useDeform": true,
+        "headLocal": [
+          0.0,
+          0.0,
+          0.3199999928474426
+        ],
+        "tailLocal": [
+          0.0,
+          0.0,
+          0.5
+        ],
+        "matrixLocal": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.3199999928474426,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Chest",
+        "parent": "Spine",
+        "useConnect": true,
+        "useDeform": true,
+        "headLocal": [
+          0.0,
+          0.0,
+          0.5
+        ],
+        "tailLocal": [
+          0.0,
+          0.0,
+          0.6399999856948853
+        ],
+        "matrixLocal": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          -1.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.5,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Neck",
+        "parent": "Chest",
+        "useConnect": true,
+        "useDeform": true,
+        "headLocal": [
+          0.0,
+          0.0,
+          0.6399999856948853
+        ],
+        "tailLocal": [
+          0.0,
+          -0.003000000026077032,
+          0.7099999785423279
+        ],
+        "matrixLocal": [
+          7.549790126404332e-08,
+          0.0,
+          1.0,
+          0.0,
+          0.9990829229354858,
+          -0.042817842215299606,
+          -7.55535438656807e-08,
+          0.0,
+          0.042817842215299606,
+          0.9990829825401306,
+          -3.725290298461914e-09,
+          0.6399999856948853,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Head",
+        "parent": "Neck",
+        "useConnect": true,
+        "useDeform": true,
+        "headLocal": [
+          0.0,
+          -0.003000000026077032,
+          0.7099999785423279
+        ],
+        "tailLocal": [
+          0.0,
+          -0.003000000026077032,
+          0.9599999785423279
+        ],
+        "matrixLocal": [
+          7.537302337823348e-08,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          2.442387210276661e-16,
+          -7.549790126404332e-08,
+          -0.0029999997932463884,
+          -3.725290298461914e-09,
+          1.0000001192092896,
+          -4.92632601378773e-10,
+          0.7099999785423279,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Clavicle_L",
+        "parent": "Chest",
+        "useConnect": false,
+        "useDeform": true,
+        "headLocal": [
+          -0.07000000029802322,
+          0.0,
+          0.6200000047683716
+        ],
+        "tailLocal": [
+          -0.18000000715255737,
+          0.0,
+          0.621999979019165
+        ],
+        "matrixLocal": [
+          1.210719347000122e-07,
+          -0.9998345375061035,
+          0.018178578466176987,
+          -0.07000000029802322,
+          0.9999998807907104,
+          0.0,
+          4.371138828673793e-08,
+          0.0,
+          -4.5925844460725784e-08,
+          0.018178576603531837,
+          0.9998347163200378,
+          0.6200000047683716,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "UpperArm_L",
+        "parent": "Clavicle_L",
+        "useConnect": true,
+        "useDeform": true,
+        "headLocal": [
+          -0.18000000715255737,
+          0.0,
+          0.621999979019165
+        ],
+        "tailLocal": [
+          -0.36000001430511475,
+          0.0,
+          0.6349999904632568
+        ],
+        "matrixLocal": [
+          1.213298475022384e-07,
+          -0.9974019527435303,
+          0.07203464210033417,
+          -0.17999997735023499,
+          0.9999998807907104,
+          4.440892098500626e-16,
+          7.450584149637507e-09,
+          0.0,
+          -9.652900700984901e-09,
+          0.07203464955091476,
+          0.9974020719528198,
+          0.621999979019165,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Forearm_L",
+        "parent": "UpperArm_L",
+        "useConnect": true,
+        "useDeform": true,
+        "headLocal": [
+          -0.36000001430511475,
+          0.0,
+          0.6349999904632568
+        ],
+        "tailLocal": [
+          -0.5,
+          0.0,
+          0.6349999904632568
+        ],
+        "matrixLocal": [
+          1.2186654885226744e-07,
+          -0.9999998807907104,
+          0.0,
+          -0.35999998450279236,
+          0.9999998807907104,
+          -5.551115123125783e-17,
+          -4.440892098500626e-16,
+          8.014427885317667e-17,
+          -2.2216708472910796e-09,
+          7.450580596923828e-09,
+          0.9999999403953552,
+          0.6349999904632568,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "HandLogical_L",
+        "parent": "Forearm_L",
+        "useConnect": true,
+        "useDeform": true,
+        "headLocal": [
+          -0.5,
+          0.0,
+          0.6349999904632568
+        ],
+        "tailLocal": [
+          -0.5600000023841858,
+          0.0,
+          0.6349999904632568
+        ],
+        "matrixLocal": [
+          1.2186654885226744e-07,
+          -0.9999998807907104,
+          -7.450580596923828e-09,
+          -0.4999999701976776,
+          0.9999998807907104,
+          3.308722844642563e-24,
+          0.0,
+          7.237271847489396e-17,
+          -2.2216712913802894e-09,
+          0.0,
+          0.9999999403953552,
+          0.6349999904632568,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Clavicle_R",
+        "parent": "Chest",
+        "useConnect": false,
+        "useDeform": true,
+        "headLocal": [
+          0.07000000029802322,
+          0.0,
+          0.6200000047683716
+        ],
+        "tailLocal": [
+          0.18000000715255737,
+          0.0,
+          0.621999979019165
+        ],
+        "matrixLocal": [
+          1.210719347000122e-07,
+          0.9998345375061035,
+          -0.018178578466176987,
+          0.07000000029802322,
+          -0.9999998807907104,
+          0.0,
+          4.371138828673793e-08,
+          0.0,
+          4.5925844460725784e-08,
+          0.018178576603531837,
+          0.9998347163200378,
+          0.6200000047683716,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "UpperArm_R",
+        "parent": "Clavicle_R",
+        "useConnect": true,
+        "useDeform": true,
+        "headLocal": [
+          0.18000000715255737,
+          0.0,
+          0.621999979019165
+        ],
+        "tailLocal": [
+          0.36000001430511475,
+          0.0,
+          0.6349999904632568
+        ],
+        "matrixLocal": [
+          1.213298475022384e-07,
+          0.9974019527435303,
+          -0.07203464210033417,
+          0.17999997735023499,
+          -0.9999998807907104,
+          4.440892098500626e-16,
+          7.450584149637507e-09,
+          0.0,
+          9.652900700984901e-09,
+          0.07203464955091476,
+          0.9974020719528198,
+          0.621999979019165,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Forearm_R",
+        "parent": "UpperArm_R",
+        "useConnect": true,
+        "useDeform": true,
+        "headLocal": [
+          0.36000001430511475,
+          0.0,
+          0.6349999904632568
+        ],
+        "tailLocal": [
+          0.5,
+          0.0,
+          0.6349999904632568
+        ],
+        "matrixLocal": [
+          1.2186654885226744e-07,
+          0.9999998807907104,
+          0.0,
+          0.35999998450279236,
+          -0.9999998807907104,
+          -5.551115123125783e-17,
+          -4.440892098500626e-16,
+          8.014427885317667e-17,
+          2.2216708472910796e-09,
+          7.450580596923828e-09,
+          0.9999999403953552,
+          0.6349999904632568,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "HandLogical_R",
+        "parent": "Forearm_R",
+        "useConnect": true,
+        "useDeform": true,
+        "headLocal": [
+          0.5,
+          0.0,
+          0.6349999904632568
+        ],
+        "tailLocal": [
+          0.5600000023841858,
+          0.0,
+          0.6349999904632568
+        ],
+        "matrixLocal": [
+          1.2186654885226744e-07,
+          0.9999998807907104,
+          7.450580596923828e-09,
+          0.4999999701976776,
+          -0.9999998807907104,
+          3.308722844642563e-24,
+          0.0,
+          7.237271847489396e-17,
+          2.2216712913802894e-09,
+          0.0,
+          0.9999999403953552,
+          0.6349999904632568,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Thigh_L",
+        "parent": "Pelvis",
+        "useConnect": false,
+        "useDeform": true,
+        "headLocal": [
+          -0.09000000357627869,
+          0.0,
+          0.18000000715255737
+        ],
+        "tailLocal": [
+          -0.09799999743700027,
+          0.0,
+          0.09000000357627869
+        ],
+        "matrixLocal": [
+          0.9960876703262329,
+          -0.08853975683450699,
+          1.5040279777167598e-07,
+          -0.09000000357627869,
+          -1.509981046865505e-07,
+          0.0,
+          1.0,
+          0.0,
+          -0.08854241669178009,
+          -0.9960730075836182,
+          -1.3369127138673775e-08,
+          0.18000000715255737,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Calf_L",
+        "parent": "Thigh_L",
+        "useConnect": true,
+        "useDeform": true,
+        "headLocal": [
+          -0.09799999743700027,
+          0.0,
+          0.09000000357627869
+        ],
+        "tailLocal": [
+          -0.10000000149011612,
+          0.0,
+          0.02500000037252903
+        ],
+        "matrixLocal": [
+          0.9995419383049011,
+          -0.030754748731851578,
+          -1.55753809849557e-09,
+          -0.09799999743700027,
+          1.5537011677224655e-09,
+          8.881784197001252e-16,
+          1.0,
+          0.0,
+          -0.03075825795531273,
+          -0.9995273947715759,
+          4.8399506624718924e-11,
+          0.0899999812245369,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Foot_L",
+        "parent": "Calf_L",
+        "useConnect": true,
+        "useDeform": true,
+        "headLocal": [
+          -0.10000000149011612,
+          0.0,
+          0.02500000037252903
+        ],
+        "tailLocal": [
+          -0.10000000149011612,
+          -0.054999999701976776,
+          0.014999999664723873
+        ],
+        "matrixLocal": [
+          -1.0000150203704834,
+          -7.958917969119739e-10,
+          -4.039153793655714e-07,
+          -0.10000000149011612,
+          7.202151408591817e-08,
+          -0.9838697910308838,
+          -0.17888540029525757,
+          5.775889874058492e-17,
+          3.555789589881897e-06,
+          -0.17888545989990234,
+          0.9838704466819763,
+          0.02499997615814209,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Thigh_R",
+        "parent": "Pelvis",
+        "useConnect": false,
+        "useDeform": true,
+        "headLocal": [
+          0.09000000357627869,
+          0.0,
+          0.18000000715255737
+        ],
+        "tailLocal": [
+          0.09799999743700027,
+          0.0,
+          0.09000000357627869
+        ],
+        "matrixLocal": [
+          0.9960876703262329,
+          0.08853975683450699,
+          -1.5040279777167598e-07,
+          0.09000000357627869,
+          1.509981046865505e-07,
+          0.0,
+          1.0,
+          0.0,
+          0.08854241669178009,
+          -0.9960730075836182,
+          -1.3369127138673775e-08,
+          0.18000000715255737,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Calf_R",
+        "parent": "Thigh_R",
+        "useConnect": true,
+        "useDeform": true,
+        "headLocal": [
+          0.09799999743700027,
+          0.0,
+          0.09000000357627869
+        ],
+        "tailLocal": [
+          0.10000000149011612,
+          0.0,
+          0.02500000037252903
+        ],
+        "matrixLocal": [
+          0.9995419383049011,
+          0.030754748731851578,
+          1.55753809849557e-09,
+          0.09799999743700027,
+          -1.5537011677224655e-09,
+          8.881784197001252e-16,
+          1.0,
+          0.0,
+          0.03075825795531273,
+          -0.9995273947715759,
+          4.8399506624718924e-11,
+          0.0899999812245369,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "name": "Foot_R",
+        "parent": "Calf_R",
+        "useConnect": true,
+        "useDeform": true,
+        "headLocal": [
+          0.10000000149011612,
+          0.0,
+          0.02500000037252903
+        ],
+        "tailLocal": [
+          0.10000000149011612,
+          -0.054999999701976776,
+          0.014999999664723873
+        ],
+        "matrixLocal": [
+          -1.0000150203704834,
+          7.958917969119739e-10,
+          4.039153793655714e-07,
+          0.10000000149011612,
+          -7.202151408591817e-08,
+          -0.9838697910308838,
+          -0.17888540029525757,
+          5.775889874058492e-17,
+          -3.555789589881897e-06,
+          -0.17888545989990234,
+          0.9838704466819763,
+          0.02499997615814209,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    ],
+    "bindPoseSha256": "b52014474bb03864128ec369f79630664a3c0c12d8e3d19387051c911b03590d",
+    "rootBoneDeforms": false,
+    "fingerBoneCount": 0,
+    "toeBoneCount": 0,
+    "helperBoneCount": 0
+  },
+  "weights": {
+    "method": "DETERMINISTIC_C2_FRONT_HIP_SUPPORT",
+    "automaticBoneHeatUsed": false,
+    "mirrorPairing": {
+      "pairCount": 114363,
+      "unmatchedVertexCount": 0,
+      "maximumPairDistanceMeters": 1.8849563332423713e-07
+    },
+    "body": {
+      "object": "CHR_C1B_R19_SkinnedBody",
+      "vertexCount": 227942,
+      "groupNames": [
+        "Pelvis",
+        "Spine",
+        "Chest",
+        "Neck",
+        "Clavicle_L",
+        "UpperArm_L",
+        "Forearm_L",
+        "HandLogical_L",
+        "Clavicle_R",
+        "UpperArm_R",
+        "Forearm_R",
+        "HandLogical_R",
+        "Thigh_L",
+        "Calf_L",
+        "Foot_L",
+        "Thigh_R",
+        "Calf_R",
+        "Foot_R"
+      ],
+      "groupNonzeroVertexCounts": {
+        "Pelvis": 90479,
+        "Spine": 72706,
+        "Chest": 68166,
+        "Neck": 30627,
+        "Clavicle_L": 43289,
+        "UpperArm_L": 61677,
+        "Forearm_L": 22293,
+        "HandLogical_L": 2825,
+        "Clavicle_R": 43289,
+        "UpperArm_R": 61677,
+        "Forearm_R": 22293,
+        "HandLogical_R": 2825,
+        "Thigh_L": 30887,
+        "Calf_L": 20798,
+        "Foot_L": 4831,
+        "Thigh_R": 30887,
+        "Calf_R": 20798,
+        "Foot_R": 4831
+      },
+      "finite": true,
+      "minimumWeight": 0.0,
+      "maximumWeight": 1.0,
+      "minimumWeightSum": 0.9999999534338713,
+      "maximumWeightSum": 1.0000000447034836,
+      "maximumWeightSumError": 4.6566128730773926e-08,
+      "maximumInfluencesPerVertex": 4,
+      "unweightedVertexCount": 0,
+      "maximumAssignmentRoundtripError": 2.9801861312073186e-08,
+      "maximumLeftBoneLeakOnRightSide": 0.0,
+      "maximumRightBoneLeakOnLeftSide": 0.0,
+      "mirror": {
+        "positionToleranceMeters": 1e-06,
+        "pairCount": 114363,
+        "matchedVertexCount": 227942,
+        "unmatchedVertexCount": 0,
+        "maximumPairDistanceMeters": 1.8849563332423713e-07,
+        "maximumMirroredWeightDeviation": 0.0
+      }
+    },
+    "head": {
+      "object": "CHR_C1B_R19_SkinnedHead",
+      "vertexCount": 6050,
+      "groupNames": [
+        "Head"
+      ],
+      "groupNonzeroVertexCounts": {
+        "Head": 6050
+      },
+      "finite": true,
+      "minimumWeight": 1.0,
+      "maximumWeight": 1.0,
+      "minimumWeightSum": 1.0,
+      "maximumWeightSum": 1.0,
+      "maximumWeightSumError": 0.0,
+      "maximumInfluencesPerVertex": 1,
+      "unweightedVertexCount": 0,
+      "maximumAssignmentRoundtripError": 0.0,
+      "maximumLeftBoneLeakOnRightSide": 0.0,
+      "maximumRightBoneLeakOnLeftSide": 0.0,
+      "mirror": {
+        "positionToleranceMeters": 1e-06,
+        "pairCount": 3089,
+        "matchedVertexCount": 6050,
+        "unmatchedVertexCount": 0,
+        "maximumPairDistanceMeters": 3.216732125110866e-07,
+        "maximumMirroredWeightDeviation": 0.0
+      }
+    },
+    "hipField": {
+      "startMeters": 0.0,
+      "endMeters": 0.255,
+      "frontBias": 0.32,
+      "backBias": 0.0,
+      "windowPower": 0.55,
+      "depthSmoothMeters": 0.018,
+      "formula": "u=z/0.255; c=clip01(u); window=(4*c*(1-c))^0.55; g=tanh(y/0.018); front=(-y)*0.5*(1-g); legVertical=1-smootherstep(u-(0.32*front/0.255)*window)",
+      "unchangedFields": [
+        "centerGate",
+        "legSegmentWeights",
+        "armWeights",
+        "torsoWeights"
+      ]
+    }
+  },
+  "modifiers": {
+    "body": "C1BRW019_Armature",
+    "head": "C1BRW019_Armature",
+    "skinningMode": "LINEAR_BLEND_UNITY_PARITY",
+    "preserveVolume": false,
+    "valid": true
+  },
+  "deformationQA": {
+    "temporaryPoseOnly": true,
+    "actionDatablocksCreated": 0,
+    "savedInRestPose": true,
+    "maximumAdjacentAngleDegrees": 30.0,
+    "edgeStretchRatioLimits": {
+      "minimum": 0.5,
+      "p01Minimum": 0.8,
+      "p99Maximum": 1.25,
+      "maximum": 1.8
+    },
+    "poses": {
+      "Rest": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "maximumVertexDisplacementMeters": 6.664004416739544e-08,
+        "manifold": {
+          "boundaryEdgeCount": 0,
+          "nonManifoldEdgeCount": 0,
+          "looseEdgeCount": 0,
+          "connectedComponents": 1,
+          "eulerCharacteristic": 2,
+          "degenerateFaceCount": 0,
+          "signedVolume": 0.04518488143888327,
+          "result": "PASS"
+        },
+        "fold": {
+          "adjacentAngleMaximumDegrees": 6.7881297188774585,
+          "foldoverEdgeCountAt90Degrees": 0,
+          "hardEdgeCountAt45Degrees": 0,
+          "result": "PASS"
+        },
+        "selfIntersection": {
+          "triangleCount": 455880,
+          "rawUniqueOverlapPairCount": 0,
+          "nonAdjacentOverlapPairCount": 0,
+          "result": "PASS"
+        },
+        "edgeStretchRatio": {
+          "minimum": 0.9999502497378687,
+          "p01": 0.9999867765445472,
+          "p50": 1.0,
+          "p99": 1.0000131446163332,
+          "maximum": 1.0000503232634044
+        },
+        "result": "PASS"
+      },
+      "ShoulderForward": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "maximumVertexDisplacementMeters": 0.16978531192183394,
+        "manifold": {
+          "boundaryEdgeCount": 0,
+          "nonManifoldEdgeCount": 0,
+          "looseEdgeCount": 0,
+          "connectedComponents": 1,
+          "eulerCharacteristic": 2,
+          "degenerateFaceCount": 0,
+          "signedVolume": 0.04516039834291172,
+          "result": "PASS"
+        },
+        "fold": {
+          "adjacentAngleMaximumDegrees": 6.7881297188774585,
+          "foldoverEdgeCountAt90Degrees": 0,
+          "hardEdgeCountAt45Degrees": 0,
+          "result": "PASS"
+        },
+        "selfIntersection": {
+          "triangleCount": 455880,
+          "rawUniqueOverlapPairCount": 0,
+          "nonAdjacentOverlapPairCount": 0,
+          "result": "PASS"
+        },
+        "edgeStretchRatio": {
+          "minimum": 0.7913029052234124,
+          "p01": 0.9118630244849294,
+          "p50": 1.0,
+          "p99": 1.1103201339346234,
+          "maximum": 1.1707250408698722
+        },
+        "result": "PASS"
+      },
+      "ElbowFlex": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "maximumVertexDisplacementMeters": 0.12763897652246467,
+        "manifold": {
+          "boundaryEdgeCount": 0,
+          "nonManifoldEdgeCount": 0,
+          "looseEdgeCount": 0,
+          "connectedComponents": 1,
+          "eulerCharacteristic": 2,
+          "degenerateFaceCount": 0,
+          "signedVolume": 0.04514471249817387,
+          "result": "PASS"
+        },
+        "fold": {
+          "adjacentAngleMaximumDegrees": 6.7881297188774585,
+          "foldoverEdgeCountAt90Degrees": 0,
+          "hardEdgeCountAt45Degrees": 0,
+          "result": "PASS"
+        },
+        "selfIntersection": {
+          "triangleCount": 455880,
+          "rawUniqueOverlapPairCount": 0,
+          "nonAdjacentOverlapPairCount": 0,
+          "result": "PASS"
+        },
+        "edgeStretchRatio": {
+          "minimum": 0.822604180212774,
+          "p01": 0.9243182318567322,
+          "p50": 1.0,
+          "p99": 1.078473343314712,
+          "maximum": 1.1217530875242672
+        },
+        "result": "PASS"
+      },
+      "HipFlex_L": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "maximumVertexDisplacementMeters": 0.07988334534755351,
+        "manifold": {
+          "boundaryEdgeCount": 0,
+          "nonManifoldEdgeCount": 0,
+          "looseEdgeCount": 0,
+          "connectedComponents": 1,
+          "eulerCharacteristic": 2,
+          "degenerateFaceCount": 0,
+          "signedVolume": 0.04513241016055205,
+          "result": "PASS"
+        },
+        "fold": {
+          "adjacentAngleMaximumDegrees": 12.301725648063028,
+          "foldoverEdgeCountAt90Degrees": 0,
+          "hardEdgeCountAt45Degrees": 0,
+          "result": "PASS"
+        },
+        "selfIntersection": {
+          "triangleCount": 455880,
+          "rawUniqueOverlapPairCount": 0,
+          "nonAdjacentOverlapPairCount": 0,
+          "result": "PASS"
+        },
+        "edgeStretchRatio": {
+          "minimum": 0.701561004180976,
+          "p01": 0.8571650369287884,
+          "p50": 1.0,
+          "p99": 1.1606660751504048,
+          "maximum": 1.4268663625684106
+        },
+        "result": "PASS"
+      },
+      "HipFlex_R": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "maximumVertexDisplacementMeters": 0.07988334551113875,
+        "manifold": {
+          "boundaryEdgeCount": 0,
+          "nonManifoldEdgeCount": 0,
+          "looseEdgeCount": 0,
+          "connectedComponents": 1,
+          "eulerCharacteristic": 2,
+          "degenerateFaceCount": 0,
+          "signedVolume": 0.04513241016026386,
+          "result": "PASS"
+        },
+        "fold": {
+          "adjacentAngleMaximumDegrees": 12.301725648063028,
+          "foldoverEdgeCountAt90Degrees": 0,
+          "hardEdgeCountAt45Degrees": 0,
+          "result": "PASS"
+        },
+        "selfIntersection": {
+          "triangleCount": 455880,
+          "rawUniqueOverlapPairCount": 0,
+          "nonAdjacentOverlapPairCount": 0,
+          "result": "PASS"
+        },
+        "edgeStretchRatio": {
+          "minimum": 0.701561004180976,
+          "p01": 0.8571639190063443,
+          "p50": 1.0,
+          "p99": 1.1606660751504048,
+          "maximum": 1.4268663625684106
+        },
+        "result": "PASS"
+      },
+      "KneeFlex_L": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "maximumVertexDisplacementMeters": 0.02411223428792492,
+        "manifold": {
+          "boundaryEdgeCount": 0,
+          "nonManifoldEdgeCount": 0,
+          "looseEdgeCount": 0,
+          "connectedComponents": 1,
+          "eulerCharacteristic": 2,
+          "degenerateFaceCount": 0,
+          "signedVolume": 0.045132499349429034,
+          "result": "PASS"
+        },
+        "fold": {
+          "adjacentAngleMaximumDegrees": 6.8091893265227235,
+          "foldoverEdgeCountAt90Degrees": 0,
+          "hardEdgeCountAt45Degrees": 0,
+          "result": "PASS"
+        },
+        "selfIntersection": {
+          "triangleCount": 455880,
+          "rawUniqueOverlapPairCount": 0,
+          "nonAdjacentOverlapPairCount": 0,
+          "result": "PASS"
+        },
+        "edgeStretchRatio": {
+          "minimum": 0.608725387656755,
+          "p01": 0.9067091801109716,
+          "p50": 1.0,
+          "p99": 1.0759149004469224,
+          "maximum": 1.3160054200796205
+        },
+        "result": "PASS"
+      },
+      "KneeFlex_R": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "maximumVertexDisplacementMeters": 0.02411222647479439,
+        "manifold": {
+          "boundaryEdgeCount": 0,
+          "nonManifoldEdgeCount": 0,
+          "looseEdgeCount": 0,
+          "connectedComponents": 1,
+          "eulerCharacteristic": 2,
+          "degenerateFaceCount": 0,
+          "signedVolume": 0.04513249934772744,
+          "result": "PASS"
+        },
+        "fold": {
+          "adjacentAngleMaximumDegrees": 6.8091893265227235,
+          "foldoverEdgeCountAt90Degrees": 0,
+          "hardEdgeCountAt45Degrees": 0,
+          "result": "PASS"
+        },
+        "selfIntersection": {
+          "triangleCount": 455880,
+          "rawUniqueOverlapPairCount": 0,
+          "nonAdjacentOverlapPairCount": 0,
+          "result": "PASS"
+        },
+        "edgeStretchRatio": {
+          "minimum": 0.608725387656755,
+          "p01": 0.9067083997433948,
+          "p50": 1.0,
+          "p99": 1.0759149004469224,
+          "maximum": 1.3160054200796205
+        },
+        "result": "PASS"
+      },
+      "HipFlex_L_45": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "maximumVertexDisplacementMeters": 0.14124049932364416,
+        "manifold": {
+          "boundaryEdgeCount": 0,
+          "nonManifoldEdgeCount": 0,
+          "looseEdgeCount": 0,
+          "connectedComponents": 1,
+          "eulerCharacteristic": 2,
+          "degenerateFaceCount": 0,
+          "signedVolume": 0.04500653043965794,
+          "result": "PASS"
+        },
+        "fold": {
+          "adjacentAngleMaximumDegrees": 25.417521052732365,
+          "foldoverEdgeCountAt90Degrees": 0,
+          "hardEdgeCountAt45Degrees": 0,
+          "result": "PASS"
+        },
+        "selfIntersection": {
+          "triangleCount": 455880,
+          "rawUniqueOverlapPairCount": 0,
+          "nonAdjacentOverlapPairCount": 0,
+          "result": "PASS"
+        },
+        "edgeStretchRatio": {
+          "minimum": 0.50170708599332,
+          "p01": 0.7720371928856957,
+          "p50": 1.0,
+          "p99": 1.2972793484886493,
+          "maximum": 1.7680964675425623
+        },
+        "result": "PASS"
+      }
+    },
+    "headRestMaximumDeltaMeters": 0.0,
+    "stressPoseLimits": {
+      "HipFlex_L_45": {
+        "minimum": 0.48,
+        "p01Minimum": 0.75,
+        "p99Maximum": 1.32,
+        "maximum": 1.8,
+        "maximumAdjacentAngleDegrees": 30.0
+      }
+    }
+  },
+  "finalInventory": {
+    "armatureObjectCount": 1,
+    "armatureDatablockCount": 1,
+    "boneCount": 20,
+    "actionCount": 0,
+    "shapeKeyDatablockCount": 0,
+    "latticeObjectCount": 0,
+    "bodyModifierCount": 1,
+    "headModifierCount": 1,
+    "bodyVertexGroupCount": 18,
+    "headVertexGroupCount": 1,
+    "animatedObjectCount": 0,
+    "rigidBodyObjectCount": 0,
+    "rigidBodyConstraintObjectCount": 0,
+    "objectTypeCounts": {
+      "ARMATURE": 1,
+      "MESH": 2
+    },
+    "collectionCount": 1,
+    "negativeScaleObjects": [],
+    "temporaryDatablocks": [],
+    "colliderObjects": []
+  },
+  "renderFiles": [
+    "CHR_MasterCharacter_C1B_Rig_r19_Rest_Neutral_Front.png",
+    "CHR_MasterCharacter_C1B_Rig_r19_RigOverlay_Front.png",
+    "CHR_MasterCharacter_C1B_Rig_r19_RigOverlay_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_Rig_r19_ShoulderForward_Neutral_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_Rig_r19_ElbowFlex_Neutral_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_Rig_r19_HipFlex_L_Neutral_Side.png",
+    "CHR_MasterCharacter_C1B_Rig_r19_KneeFlex_L_Neutral_Side.png"
+  ],
+  "missingRenderFiles": [],
+  "userRigStartAuthorized": true,
+  "userRigApprovalRecorded": false,
+  "productionTopologyApproved": false,
+  "animationAuthored": false,
+  "fbxExportExecuted": false,
+  "unityImportExecuted": false,
+  "generator": {
+    "path": "/Users/kjh/local_dev/party game/tools/blender/create_c1b_rw019_weight_rig.py",
+    "sha256": "74b4690b98bec7278a8928326d2555636243ee22607c54ced5115ec1f22e2ed5"
+  },
+  "technicalResult": "PASS",
+  "savedFileVerification": {
+    "result": "PASS",
+    "errors": [],
+    "bindPoseSha256": "b52014474bb03864128ec369f79630664a3c0c12d8e3d19387051c911b03590d",
+    "restPoseConfirmed": true,
+    "linearSkinningConfirmed": true,
+    "maximumObjectTransformDeviation": 0.0,
+    "bodyWeightMaximumSumError": 4.6566128730773926e-08,
+    "bodyMaximumInfluencesPerVertex": 4,
+    "bodyMirrorWeightMaximumDeviation": 0.0,
+    "bodyMirrorUnmatchedVertexCount": 0,
+    "headWeightMinimum": 1.0,
+    "inventory": {
+      "armatureObjectCount": 1,
+      "armatureDatablockCount": 1,
+      "boneCount": 20,
+      "actionCount": 0,
+      "shapeKeyDatablockCount": 0,
+      "latticeObjectCount": 0,
+      "bodyModifierCount": 1,
+      "headModifierCount": 1,
+      "bodyVertexGroupCount": 18,
+      "headVertexGroupCount": 1,
+      "animatedObjectCount": 0,
+      "rigidBodyObjectCount": 0,
+      "rigidBodyConstraintObjectCount": 0,
+      "objectTypeCounts": {
+        "ARMATURE": 1,
+        "MESH": 2
+      },
+      "collectionCount": 1,
+      "negativeScaleObjects": [],
+      "temporaryDatablocks": [],
+      "colliderObjects": []
+    },
+    "legacySceneMetadataKeys": []
+  },
+  "output": {
+    "blendPath": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-019-rig-preview/CHR_MasterCharacter_C1B_Rig_r19.blend",
+    "blendBytes": 11895418,
+    "blendSha256": "60d67d5111beb9b61855ad6ee70e4db399430fc0bdf8e1e4113b81d9a6f25cea"
+  },
+  "weightSelection": {
+    "totalBoundedCandidates": 2165,
+    "sweepCounts": {
+      "symmetric": 476,
+      "asymmetricCoarse": 864,
+      "fine": 825
+    },
+    "feasibilityFilter": {
+      "minimumHip25NeckImprovementMillimeters": 5.0,
+      "Hip25": {
+        "minimum": 0.5,
+        "p01Minimum": 0.8,
+        "p99Maximum": 1.25,
+        "maximum": 1.8
+      },
+      "Hip45": {
+        "minimum": 0.48,
+        "p01Minimum": 0.75,
+        "p99Maximum": 1.32,
+        "maximum": 1.8,
+        "maximumAdjacentAngleDegrees": 30.0
+      }
+    },
+    "rankingRule": "Filter by neck improvement and Hip25/Hip45 gates; then minimize side-outline second-difference RMS, using a 1e-6 m equivalence band; break near-ties by smoother depth gate, lower Hip45 maximum stretch, and higher Hip45 minimum stretch.",
+    "selectedFineSweepMetrics": {
+      "hip25NeckMinimumBeforeMeters": 0.1310833945298824,
+      "hip25NeckMinimumAfterMeters": 0.13614856164751246,
+      "hip25NeckImprovementMillimeters": 5.065167117630054,
+      "sideOutlineSecondDifferenceRmsMeters": 0.0010705273307034255,
+      "Hip25": {
+        "minimum": 0.7015612717432665,
+        "p01": 0.8571643406531163,
+        "p99": 1.1606644178973153,
+        "maximum": 1.4268656564672573
+      },
+      "Hip45": {
+        "minimum": 0.5017053388270303,
+        "p01": 0.772037811357057,
+        "p99": 1.297277978541431,
+        "maximum": 1.7680909125510005
+      }
+    },
+    "temporaryEvidenceSha256": {
+      "symmetricSweep": "fac0367daf8d33151212c2900ed3a890d3ebbebe56ef55ff99f859766b39309d",
+      "asymmetricCoarseSweep": "14f90017d4968fefe425eabf10d012000901ec795c86884140f5da8738d43c8d",
+      "fineSweep": "70492036938cbd945e26c6ba729d5a51799ca452e6b30692220fcb95980c3c0e",
+      "independentActualQa": "2347553f6c326e0e008fdd6053dd087279fd7d7e76520fc3332cfec4f349f7db"
+    }
+  },
+  "upstreamR18": {
+    "generatorPath": "/Users/kjh/local_dev/party game/tools/blender/create_c1b_rw018_rig.py",
+    "generatorSha256": "e6de3d1974bf11fdb45d7f207c2d1641812e29e00a73b56727fb838bb0fcca02",
+    "checkpointPath": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-018-rig-preview/CHR_MasterCharacter_C1B_Rig_r18.blend",
+    "checkpointSha256Before": "cdd85350e387d66005a9b122f2348c66a212eb3d4924b0a10bb928acb6c10fbe",
+    "checkpointSha256After": "cdd85350e387d66005a9b122f2348c66a212eb3d4924b0a10bb928acb6c10fbe",
+    "unchanged": true
+  }
+}

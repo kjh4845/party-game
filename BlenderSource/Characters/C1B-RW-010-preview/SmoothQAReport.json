@@ -1,0 +1,171 @@
+{
+  "animationActions": 0,
+  "armSections": {
+    "maximumCenterDeviation": 7.642269134522373e-05,
+    "sections": {
+      "0.35": {
+        "centerZ": 0.6350004076957703,
+        "maximumAbsY": 0.03539155051112175,
+        "maximumZ": 0.670424222946167,
+        "minimumZ": 0.5995765924453735,
+        "sampleCount": 984
+      },
+      "0.45": {
+        "centerZ": 0.6350007653236389,
+        "maximumAbsY": 0.033320773392915726,
+        "maximumZ": 0.6683637499809265,
+        "minimumZ": 0.6016377806663513,
+        "sampleCount": 936
+      },
+      "0.54": {
+        "centerZ": 0.6349235773086548,
+        "maximumAbsY": 0.03177609667181969,
+        "maximumZ": 0.6667782664299011,
+        "minimumZ": 0.6030688881874084,
+        "sampleCount": 910
+      }
+    },
+    "targetZ": 0.635
+  },
+  "armatureObjects": 0,
+  "assetId": "CHR_MasterCharacter_C1B_NeutralRework",
+  "assetVersion": "0.10.0-local-preview",
+  "bvhSelfIntersection": {
+    "nonAdjacentOverlapPairCount": 0,
+    "rawUniqueOverlapPairCount": 0,
+    "result": "PASS",
+    "triangleCount": 766176
+  },
+  "characterMeshObjects": 2,
+  "construction": "R09_UNIFORM_VOXEL_QUAD_SURFACE_VOLUME_PRESERVING_RELAX",
+  "eyesCreated": false,
+  "fingersCreated": false,
+  "fold": {
+    "adjacentAngleMaximumDegrees": 5.474322341457996,
+    "foldoverEdgeCountAt90Degrees": 0,
+    "hardEdgeCountAt45Degrees": 0,
+    "result": "PASS"
+  },
+  "handsCreated": false,
+  "independentVisualGate": {
+    "blockers": [],
+    "fitToShow": true,
+    "reviewerCount": 3
+  },
+  "manifold": {
+    "boundaryEdgeCount": 0,
+    "connectedComponents": 1,
+    "degenerateFaceCount": 0,
+    "eulerCharacteristic": 2,
+    "looseEdgeCount": 0,
+    "nonManifoldEdgeCount": 0,
+    "result": "PASS",
+    "signedVolume": 0.04709693077483212
+  },
+  "mirror": {
+    "axis": "X",
+    "maximumPositionDeviation": 1.8849563332423713e-07,
+    "result": "PASS",
+    "tolerance": 1e-06,
+    "unmatchedVertexCount": 0
+  },
+  "playerBuildsExecuted": 0,
+  "productionTopologyApproved": false,
+  "reference": {
+    "path": "/Users/kjh/Downloads/Gang_Beast.webp",
+    "sha256": "9afccdb71c696d856c47b4a7a6640c02b80c1d50ea58f1e7b42a225c21f75991"
+  },
+  "renderFiles": [
+    "CHR_MasterCharacter_C1B_NeutralRework_r10_Neutral_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r10_Neutral_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r10_Neutral_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r10_Neutral_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r10_Silhouette_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r10_Silhouette_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r10_Silhouette_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r10_Silhouette_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r10_RakeLight_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r10_RakeLight_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r10_RakeLight_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r10_RakeLight_ThreeQuarter.png"
+  ],
+  "renderPasses": [
+    "Neutral",
+    "Silhouette",
+    "RakeLight"
+  ],
+  "result": "PASS",
+  "revision": "r10",
+  "runtimeModifierCount": 0,
+  "sceneMeshObjectsIncludingQAGround": 3,
+  "sourceOwner": "kjh4845",
+  "sourceRevision": "r09",
+  "surfaceComparison": {
+    "boundsRelativeDelta": [
+      3.440955541918791e-05,
+      0.0001275155197432179,
+      5.454239873520866e-05
+    ],
+    "boundsSizeDelta": [
+      -3.9458274841308594e-05,
+      -3.784894943237305e-05,
+      -3.9517879486083984e-05
+    ],
+    "sourceBoundsSize": [
+      1.1467243432998657,
+      0.2968183755874634,
+      0.7245350480079651
+    ],
+    "sourceSignedVolume": 0.04711525269307174,
+    "targetBoundsSize": [
+      1.1466848850250244,
+      0.296780526638031,
+      0.724495530128479
+    ],
+    "targetSignedVolume": 0.04709693077483212,
+    "volumeRelativeDelta": 0.0003888744555607392
+  },
+  "surfaceProcess": {
+    "catmullClarkLevels": 1,
+    "laplacianBorder": 0.02,
+    "laplacianIterations": 6,
+    "laplacianLambda": 0.12,
+    "preserveVolume": true,
+    "voxelAdaptivity": 0.0,
+    "voxelRemeshSize": 0.0035
+  },
+  "topology": {
+    "allQuads": true,
+    "boundaryEdges": 0,
+    "boundsMaximum": [
+      0.5733424425125122,
+      0.1483902633190155,
+      0.7199581265449524
+    ],
+    "boundsMinimum": [
+      -0.5733424425125122,
+      -0.1483902633190155,
+      -0.004537398926913738
+    ],
+    "boundsSize": [
+      1.1466848850250244,
+      0.296780526638031,
+      0.724495530128479
+    ],
+    "connectedComponents": 1,
+    "degenerateFaces": 0,
+    "edges": 766176,
+    "eulerCharacteristic": 2,
+    "looseEdges": 0,
+    "nonManifoldEdges": 0,
+    "polygonVertexCountHistogram": {
+      "4": 383088
+    },
+    "polygons": 383088,
+    "result": "PASS",
+    "signedVolume": 0.04709693077483212,
+    "vertices": 383090
+  },
+  "userVisualApprovalRecorded": false,
+  "visibleNeckAllowed": false
+}

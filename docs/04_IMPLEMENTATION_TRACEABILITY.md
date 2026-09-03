@@ -50,7 +50,7 @@
 - Player Build와 실제 Steam 계정 시험은 USER-MANUAL evidence가 없으면 완료가 아니다.
 - C1B-002..005의 PASS Evidence는 당시 기술 결과로 보존하지만 current visual acceptance에서는
   `REWORK_REQUIRED`다. C1BRW r01 source/profile/Evidence도 역사로 보존하되 current visual result는 r02에
-  superseded됐다. r02 `UG-C1B-NEUTRAL` 전에는 새 Pose·Animation·FBX·Unity import를 만들지 않는다.
+  superseded됐다. Current r11 globally-faired T-pose `UG-C1B-NEUTRAL` 전에는 Rig·Pose clip·Animation·FBX·Unity import·Build를 만들지 않는다.
 
 ---
 
@@ -135,7 +135,7 @@
 | AT-025 | APT-001..006 | local appearance relay |
 | AT-026 | APT-001, APT-005..006 | appearance attack |
 | AT-027 | APT-004..006, C4-003 | cosmetic invariance |
-| AT-028 | C1B-005, C1BRW-001..005, C1B-006, C4-004 | old C1B-005와 C1BRW r01 기술 결과는 역사 보존. r02 Neutral은 C1BRW-003 `UG-C1B-NEUTRAL` 승인 뒤에만 Pose·Animation·FBX/Unity import를 진행하고 C1B-006에서 최종 승인; production retopo·UV/tangent·Rig/Collider/deformation은 C4-004 |
+| AT-028 | C1B-005, C1BRW-001..005, C1B-006, C4-004 | old C1B-005와 C1BRW r01/r02 기술 결과는 역사 보존. current r11 globally-faired T-pose는 C1BRW-003 `UG-C1B-NEUTRAL` 승인 뒤에만 Pose·Animation·FBX/Unity import를 진행하고 C1B-006에서 최종 승인; production retopo·UV/tangent·Rig/Collider/deformation은 C4-004 |
 | AT-029 | NET-014, APT-003, APT-006, DIA-002, QA-010 | performance |
 | AT-030 | UI-003, UI-005, AV-001..003, QA-008 | Alpha non-color cue·Tab mode 최소 접근성; audio를 포함한 확장 설정은 DEF-001 |
 | AT-031 | UI-006, LBY-007, DIA-001..002, SEC-001..002, STM-008 | error·diagnostics |

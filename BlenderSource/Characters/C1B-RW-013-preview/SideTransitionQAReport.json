@@ -1,0 +1,203 @@
+{
+  "assetId": "CHR_MasterCharacter_C1B_NeutralRework",
+  "revision": "r13",
+  "assetVersion": "0.13.0-local-preview",
+  "sourceRevision": "r12",
+  "sourceIdentity": {
+    "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-012-preview/CHR_MasterCharacter_C1B_NeutralRework_r12.blend",
+    "sha256Before": "75f20a64ebaa8efa6d0fe6f8182c34cb4501d6d4c0d36d39ee8e9d9afbdf09c7",
+    "sha256After": "75f20a64ebaa8efa6d0fe6f8182c34cb4501d6d4c0d36d39ee8e9d9afbdf09c7",
+    "sizeBytes": 8755642,
+    "unchanged": true
+  },
+  "construction": "R12_Y_ONLY_GAUSSIAN_SIDE_TRANSITION_FAIR",
+  "process": {
+    "profileStep": 0.002,
+    "presentSigma": 0.003,
+    "fairSigma": 0.012,
+    "fairStrength": 0.3,
+    "surfaceSmoothFactor": 0.1,
+    "surfaceSmoothIterations": 15,
+    "surfaceXFadeStart": 0.185,
+    "sideWeightStart": 0.65,
+    "sideWeightFull": 0.95,
+    "maximumSectionCenterDelta": 2e-06,
+    "editStartZ": 0.1265,
+    "editFullZ": 0.1615,
+    "editFadeStartZ": 0.28,
+    "editEndZ": 0.34,
+    "editXLimit": 0.205,
+    "windowMaximum": 1.0,
+    "topologyChangingOperations": 0
+  },
+  "edit": {
+    "allowedVertexCount": 57671,
+    "frozenVertexCount": 170271,
+    "modifiedVertexCount": 35390,
+    "maximumAbsXDelta": 0.0,
+    "maximumAbsYDelta": 0.0008208602666854858,
+    "p95AbsYDelta": 0.0006338506937026978,
+    "maximumAbsZDelta": 0.0,
+    "frozenMaximumAbsYDelta": 0.0,
+    "maximumSectionCenterDelta": 1.4182297695536361e-06,
+    "volumeRelativeDelta": 7.055698648945273e-05
+  },
+  "preservation": {
+    "armCoreMaximumDelta": 0.0,
+    "lowerBodyCoreMaximumDelta": 0.0,
+    "headCoordinateMaximumDelta": 0.0,
+    "headMatrixMaximumDelta": 0.0
+  },
+  "sideCurvature": {
+    "source": {
+      "front": {
+        "sampleCount": 100,
+        "secondDerivativeRms": 19.37326010004246,
+        "secondDerivativeMaximum": 61.221187727793584,
+        "thirdDerivativeRms": 2320.6276056292177,
+        "curvatureRms": 10.428930379669096,
+        "curvatureMaximum": 28.104793830846454,
+        "curvatureMaximumZ": 0.14800000000000002,
+        "curvatureSignChanges": 3
+      },
+      "back": {
+        "sampleCount": 100,
+        "secondDerivativeRms": 19.378073224988427,
+        "secondDerivativeMaximum": 61.247067601011146,
+        "thirdDerivativeRms": 2321.5850935599046,
+        "curvatureRms": 10.431700263137744,
+        "curvatureMaximum": 28.126917476607353,
+        "curvatureMaximumZ": 0.14800000000000002,
+        "curvatureSignChanges": 3
+      }
+    },
+    "final": {
+      "front": {
+        "sampleCount": 100,
+        "secondDerivativeRms": 16.958864802678526,
+        "secondDerivativeMaximum": 50.756743495704136,
+        "thirdDerivativeRms": 1914.8940845759728,
+        "curvatureRms": 9.520325030293073,
+        "curvatureMaximum": 23.74158734699925,
+        "curvatureMaximumZ": 0.14800000000000002,
+        "curvatureSignChanges": 3
+      },
+      "back": {
+        "sampleCount": 100,
+        "secondDerivativeRms": 16.963853863770325,
+        "secondDerivativeMaximum": 50.78385887238335,
+        "thirdDerivativeRms": 1915.9420942042993,
+        "curvatureRms": 9.523023164343606,
+        "curvatureMaximum": 23.764182793733024,
+        "curvatureMaximumZ": 0.14800000000000002,
+        "curvatureSignChanges": 3
+      }
+    }
+  },
+  "sideSurfaceBilaplacian": {
+    "source": {
+      "sampleCount": 30674,
+      "rms": 2.7870030707165116e-06,
+      "p99": 1.551442313939333e-05,
+      "maximum": 3.804871812462807e-05
+    },
+    "final": {
+      "sampleCount": 30674,
+      "rms": 1.54428770146505e-06,
+      "p99": 6.021826217572428e-06,
+      "maximum": 3.440678119659424e-05
+    }
+  },
+  "sourceTopology": {
+    "vertices": 227942,
+    "edges": 455880,
+    "faces": 227940
+  },
+  "targetTopology": {
+    "vertices": 227942,
+    "edges": 455880,
+    "faces": 227940
+  },
+  "topology": {
+    "vertices": 227942,
+    "edges": 455880,
+    "faces": 227940,
+    "allQuads": true,
+    "boundaryEdges": 0,
+    "nonManifoldEdges": 0,
+    "looseEdges": 0,
+    "degenerateFaces": 0,
+    "components": 1,
+    "eulerCharacteristic": 2,
+    "signedVolume": 0.04535742367241997
+  },
+  "manifold": {
+    "boundaryEdgeCount": 0,
+    "nonManifoldEdgeCount": 0,
+    "looseEdgeCount": 0,
+    "connectedComponents": 1,
+    "eulerCharacteristic": 2,
+    "degenerateFaceCount": 0,
+    "signedVolume": 0.04535742367241997,
+    "result": "PASS"
+  },
+  "mirror": {
+    "axis": "X",
+    "tolerance": 1e-06,
+    "unmatchedVertexCount": 0,
+    "maximumPositionDeviation": 1.8849563332423713e-07,
+    "result": "PASS"
+  },
+  "fold": {
+    "adjacentAngleMaximumDegrees": 6.6016177432119205,
+    "foldoverEdgeCountAt90Degrees": 0,
+    "hardEdgeCountAt45Degrees": 0,
+    "result": "PASS"
+  },
+  "foldMaximumDiagnostic": {
+    "angleDegrees": 6.6016177432119205,
+    "vertexCoordinates": [
+      [
+        0.0024553854018449783,
+        -0.00786312110722065,
+        0.12663674354553223
+      ],
+      [
+        0.0025508308317512274,
+        -0.0050803846679627895,
+        0.12636585533618927
+      ]
+    ],
+    "midpoint": [
+      0.0025031082332134247,
+      -0.006471753120422363,
+      0.12650129199028015
+    ]
+  },
+  "bvhSelfIntersection": {
+    "triangleCount": 455880,
+    "rawUniqueOverlapPairCount": 0,
+    "nonAdjacentOverlapPairCount": 0,
+    "result": "PASS"
+  },
+  "headBodyOverlap": 0.009677767753601074,
+  "runtimeModifierCount": 0,
+  "renderFiles": [
+    "CHR_MasterCharacter_C1B_NeutralRework_r13_Neutral_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r13_Neutral_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r13_Neutral_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r13_Neutral_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r13_Silhouette_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r13_Silhouette_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r13_Silhouette_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r13_Silhouette_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r13_RakeLight_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r13_RakeLight_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r13_RakeLight_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r13_RakeLight_ThreeQuarter.png"
+  ],
+  "missingRenderFiles": [],
+  "userVisualApprovalRecorded": false,
+  "productionTopologyApproved": false,
+  "technicalResult": "PASS"
+}

@@ -1,0 +1,63 @@
+{
+  "source": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend",
+  "target": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-019-rig-preview/CHR_MasterCharacter_C1B_Rig_r19.blend",
+  "body": {
+    "label": "body",
+    "sourceSignature": {
+      "vertices": 227942,
+      "edges": 455880,
+      "faces": 227940
+    },
+    "targetSignature": {
+      "vertices": 227942,
+      "edges": 455880,
+      "faces": 227940
+    },
+    "coordinateFloat32BitsEqual": true,
+    "maximumCoordinateDeltaMeters": 0.0,
+    "edgeIndexOrderEqual": true,
+    "faceTopologyAndWindingEqual": true,
+    "sourceWorldGeometrySha256": "5b52a4afeee8367c156e6af7eb5240a8b09411bd49845af9b8e33af25958d2c9",
+    "targetWorldGeometrySha256": "5b52a4afeee8367c156e6af7eb5240a8b09411bd49845af9b8e33af25958d2c9",
+    "worldGeometrySha256Equal": true
+  },
+  "head": {
+    "label": "head",
+    "sourceSignature": {
+      "vertices": 6050,
+      "edges": 12192,
+      "faces": 6144
+    },
+    "targetSignature": {
+      "vertices": 6050,
+      "edges": 12192,
+      "faces": 6144
+    },
+    "coordinateFloat32BitsEqual": true,
+    "maximumCoordinateDeltaMeters": 0.0,
+    "edgeIndexOrderEqual": true,
+    "faceTopologyAndWindingEqual": true,
+    "sourceWorldGeometrySha256": "f1310bd3d610ec7875ab68cde51c17d1ea551d31635d7fe7658e161d406a8582",
+    "targetWorldGeometrySha256": "f1310bd3d610ec7875ab68cde51c17d1ea551d31635d7fe7658e161d406a8582",
+    "worldGeometrySha256Equal": true
+  },
+  "inventory": {
+    "objectTypes": {
+      "ARMATURE": 1,
+      "MESH": 2
+    },
+    "actions": 0,
+    "armatures": 1,
+    "bones": 20,
+    "bodyModifiers": [
+      "ARMATURE"
+    ],
+    "headModifiers": [
+      "ARMATURE"
+    ],
+    "bodyPreserveVolume": [
+      false
+    ]
+  },
+  "result": "PASS"
+}

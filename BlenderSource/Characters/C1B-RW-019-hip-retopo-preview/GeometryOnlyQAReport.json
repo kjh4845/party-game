@@ -1,0 +1,217 @@
+{
+  "mode": "GEOMETRY_ONLY",
+  "revision": "r19",
+  "sourceSha256": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+  "sourceSignature": {
+    "vertices": 227942,
+    "edges": 455880,
+    "faces": 227940
+  },
+  "selector": {
+    "faceCentroidZInclusive": [
+      0.12,
+      0.24
+    ],
+    "faceCount": 33790,
+    "vertexCount": 34343,
+    "faceIdSha256": "ac966f7c25ab6794a0136882250b9950b09097b1aa8c61d4f258ed75af2ce4eb"
+  },
+  "boundaryLoopCounts": [
+    260,
+    260,
+    588
+  ],
+  "outsidePreservation": {
+    "faceCount": 194150,
+    "sourceVertexCount": 194932,
+    "maximumCoordinateDeltaMeters": 0.0,
+    "topologyAndWindingExact": true
+  },
+  "targetSignature": {
+    "vertices": 231592,
+    "edges": 463180,
+    "faces": 231590
+  },
+  "targetGeometrySha256": "6745e4e270b8bbe17c3e6a78353bb86c36db31e4aab22d2dd683a8d7ee36ce91",
+  "allQuads": true,
+  "centerSeam": {
+    "sourcePathVertexCount": 227,
+    "pathLengthMeters": 0.37321222588640146,
+    "sourcePathMaximumAbsX": 4.1235605208189696e-11,
+    "sourcePathMinimumZ": 0.1250659078359604,
+    "sharedFinalVertexCount": 227
+  },
+  "baseFaceHistogram": {
+    "4": 18720
+  },
+  "quadCounts": {
+    "left": 18720,
+    "right": 18720
+  },
+  "surfaceFidelity": {
+    "sourceToTarget": {
+      "sampleCount": 34343,
+      "p50Meters": 5.843711278430419e-06,
+      "p95Meters": 2.5221635041816605e-05,
+      "p99Meters": 0.00017298759514233105,
+      "maximumMeters": 0.0009622258949093521
+    },
+    "targetToSource": {
+      "sampleCount": 37993,
+      "p50Meters": 1.4901161193847656e-08,
+      "p95Meters": 5.271541158435869e-06,
+      "p99Meters": 1.212066006701208e-05,
+      "maximumMeters": 4.091612936463207e-05
+    }
+  },
+  "boundsMaximumDeltaMeters": 0.0,
+  "signedVolumeRelativeDelta": 3.7381641737701824e-05,
+  "patchFaceAspectRatio": {
+    "minimum": 1.0021067215675115,
+    "p50": 1.6854331377628018,
+    "p95": 3.2449822689531715,
+    "p99": 28.475317210090836,
+    "maximum": 64.46119525166158,
+    "worstFaces": [
+      {
+        "aspect": 64.46119525166158,
+        "centroid": [
+          -0.05681583797559142,
+          0.11493459157645702,
+          0.23566388338804245
+        ]
+      },
+      {
+        "aspect": 64.46119525166158,
+        "centroid": [
+          0.05681583797559142,
+          0.11493459157645702,
+          0.23566388338804245
+        ]
+      },
+      {
+        "aspect": 54.491004774117904,
+        "centroid": [
+          0.05798576679080725,
+          0.11467722989618778,
+          0.23574691638350487
+        ]
+      },
+      {
+        "aspect": 54.491004774117904,
+        "centroid": [
+          -0.05798576679080725,
+          0.11467722989618778,
+          0.23574691638350487
+        ]
+      },
+      {
+        "aspect": 52.17236277512926,
+        "centroid": [
+          0.05435719154775143,
+          0.11546662822365761,
+          0.23543592542409897
+        ]
+      },
+      {
+        "aspect": 52.17236277512926,
+        "centroid": [
+          -0.05435719154775143,
+          0.11546662822365761,
+          0.23543592542409897
+        ]
+      },
+      {
+        "aspect": 48.440480119060744,
+        "centroid": [
+          0.05920836050063372,
+          0.11438316479325294,
+          0.23580143973231316
+        ]
+      },
+      {
+        "aspect": 48.440480119060744,
+        "centroid": [
+          -0.05920836050063372,
+          0.11438316479325294,
+          0.23580143973231316
+        ]
+      },
+      {
+        "aspect": 46.95765923192772,
+        "centroid": [
+          -0.0531202694401145,
+          0.11573939584195614,
+          0.23539334163069725
+        ]
+      },
+      {
+        "aspect": 46.95765923192772,
+        "centroid": [
+          0.0531202694401145,
+          0.11573939584195614,
+          0.23539334163069725
+        ]
+      },
+      {
+        "aspect": 46.688673923008004,
+        "centroid": [
+          0.055605688598006964,
+          0.11519459635019302,
+          0.2355460189282894
+        ]
+      },
+      {
+        "aspect": 46.688673923008004,
+        "centroid": [
+          -0.055605688598006964,
+          0.11519459635019302,
+          0.2355460189282894
+        ]
+      }
+    ]
+  },
+  "restManifold": {
+    "boundaryEdgeCount": 0,
+    "nonManifoldEdgeCount": 0,
+    "looseEdgeCount": 0,
+    "connectedComponents": 1,
+    "eulerCharacteristic": 2,
+    "degenerateFaceCount": 0,
+    "signedVolume": 0.04518319539501712,
+    "result": "PASS"
+  },
+  "restFold": {
+    "adjacentAngleMaximumDegrees": 178.87395270163134,
+    "foldoverEdgeCountAt90Degrees": 192,
+    "hardEdgeCountAt45Degrees": 454,
+    "result": "FAIL"
+  },
+  "restFoldDiagnostic": {
+    "angleDegrees": 178.87395270163134,
+    "vertexCoordinates": [
+      [
+        0.018641307950019836,
+        -0.02448045276105404,
+        0.12095803022384644
+      ],
+      [
+        0.018256429582834244,
+        -0.022508541122078896,
+        0.12057340890169144
+      ]
+    ],
+    "midpoint": [
+      0.01844886876642704,
+      -0.023494496941566467,
+      0.12076571583747864
+    ]
+  },
+  "restSelfIntersection": {
+    "triangleCount": 463180,
+    "rawUniqueOverlapPairCount": 899,
+    "nonAdjacentOverlapPairCount": 862,
+    "result": "FAIL"
+  },
+  "result": "FAIL"
+}

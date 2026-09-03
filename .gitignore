@@ -3,6 +3,11 @@
 **/.DS_Store
 .idea/
 .vscode/
+.codex_tmp/
+
+# Python generated caches
+__pycache__/
+*.py[cod]
 
 # Unity generated directories (the project lives below the repository root)
 **/[Ll]ibrary/

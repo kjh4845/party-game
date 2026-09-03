@@ -1,0 +1,139 @@
+{
+  "animationActions": 0,
+  "armSections": {
+    "maximumVisibleCenterlineDeviation": 5.006790160244634e-08,
+    "rootCenterlineZ": 0.62,
+    "sections": {
+      "0.35": {
+        "centerZ": 0.6350000202655792,
+        "maximumAbsY": 0.03545389696955681,
+        "maximumZ": 0.6704539060592651,
+        "minimumZ": 0.5995461344718933,
+        "sampleCount": 230
+      },
+      "0.45": {
+        "centerZ": 0.6349999904632568,
+        "maximumAbsY": 0.03338279575109482,
+        "maximumZ": 0.6683827638626099,
+        "minimumZ": 0.6016172170639038,
+        "sampleCount": 128
+      },
+      "0.54": {
+        "centerZ": 0.6350000500679016,
+        "maximumAbsY": 0.031556617468595505,
+        "maximumZ": 0.6662644743919373,
+        "minimumZ": 0.603735625743866,
+        "sampleCount": 102
+      }
+    },
+    "targetVisibleCenterlineZ": 0.635
+  },
+  "armatureObjects": 0,
+  "assetId": "CHR_MasterCharacter_C1B_NeutralRework",
+  "assetVersion": "0.9.0-local-preview",
+  "body": {
+    "boundaryEdges": 0,
+    "boundsMaximum": [
+      0.5733621716499329,
+      0.1484091877937317,
+      0.719963788986206
+    ],
+    "boundsMinimum": [
+      -0.5733621716499329,
+      -0.1484091877937317,
+      -0.004571255296468735
+    ],
+    "boundsSize": [
+      1.1467243432998657,
+      0.2968183755874634,
+      0.7245350480079651
+    ],
+    "components": [
+      51926
+    ],
+    "degenerateFaces": 0,
+    "edges": 112228,
+    "looseEdges": 0,
+    "nonManifoldEdges": 0,
+    "polygonVertexCountHistogram": {
+      "3": 16760,
+      "4": 43544
+    },
+    "polygons": 60304,
+    "result": "PASS",
+    "vertices": 51926
+  },
+  "bodyAuthoredPartCount": 1,
+  "construction": "COMPACT_TANGENT_CONTINUOUS_IMPLICIT_TORSO_LEGS_AND_TPOSE_ARMS",
+  "extendedQA": {
+    "bvhSelfIntersection": {
+      "nonAdjacentOverlapPairCount": 0,
+      "rawUniqueOverlapPairCount": 0,
+      "result": "PASS",
+      "triangleCount": 103848
+    },
+    "fold": {
+      "adjacentAngleMaximumDegrees": 18.25870416099362,
+      "foldoverEdgeCountAt90Degrees": 0,
+      "hardEdgeCountAt45Degrees": 0,
+      "result": "PASS"
+    },
+    "manifold": {
+      "boundaryEdgeCount": 0,
+      "connectedComponents": 1,
+      "degenerateFaceCount": 0,
+      "eulerCharacteristic": 2,
+      "looseEdgeCount": 0,
+      "nonManifoldEdgeCount": 0,
+      "result": "PASS",
+      "signedVolume": 0.04711525269307174
+    },
+    "mirror": {
+      "axis": "X",
+      "maximumPositionDeviation": 4.656612873077393e-10,
+      "result": "PASS",
+      "tolerance": 1e-06,
+      "unmatchedVertexCount": 0
+    }
+  },
+  "eyesCreated": false,
+  "fingersCreated": false,
+  "handsCreated": false,
+  "independentVisualGate": {
+    "blockers": [],
+    "fitToShow": true,
+    "reviewerCount": 2
+  },
+  "playerBuildsExecuted": 0,
+  "pose": "T_POSE_DEEP_ROOT_TO_WORLD_X_HORIZONTAL_VISIBLE_SPAN",
+  "productionTopologyApproved": false,
+  "reference": {
+    "path": "/Users/kjh/Downloads/Gang_Beast.webp",
+    "sha256": "9afccdb71c696d856c47b4a7a6640c02b80c1d50ea58f1e7b42a225c21f75991"
+  },
+  "renderFiles": [
+    "CHR_MasterCharacter_C1B_NeutralRework_r09_Neutral_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r09_Neutral_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r09_Neutral_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r09_Neutral_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r09_Silhouette_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r09_Silhouette_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r09_Silhouette_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r09_Silhouette_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r09_RakeLight_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r09_RakeLight_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r09_RakeLight_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r09_RakeLight_ThreeQuarter.png"
+  ],
+  "renderMeshObjects": 2,
+  "renderPasses": [
+    "Neutral",
+    "Silhouette",
+    "RakeLight"
+  ],
+  "result": "PASS",
+  "revision": "r09",
+  "sourceOwner": "kjh4845",
+  "userVisualApprovalRecorded": false,
+  "visibleNeckAllowed": false
+}

@@ -1,0 +1,93 @@
+{
+  "source": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend",
+  "sourceSha256": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+  "targetFaces": 20000,
+  "quadriFlowElapsedSeconds": 3.862651824951172,
+  "candidate": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-019-global-candidates/C1B_R19_QuadriFlow_20000.blend",
+  "candidateSha256": "afb8b3159581f86a036bedeb562b49b3d939504c3bdaf17f5a6e42a9614dfb78",
+  "topology": {
+    "vertices": 18167,
+    "edges": 36330,
+    "faces": 18165,
+    "allQuads": true,
+    "boundaryEdges": 0,
+    "nonManifoldEdges": 0,
+    "looseEdges": 0,
+    "degenerateFaces": 0,
+    "components": 1,
+    "eulerCharacteristic": 2,
+    "signedVolume": 0.04513293191172458
+  },
+  "manifold": {
+    "boundaryEdgeCount": 0,
+    "nonManifoldEdgeCount": 0,
+    "looseEdgeCount": 0,
+    "connectedComponents": 1,
+    "eulerCharacteristic": 2,
+    "degenerateFaceCount": 0,
+    "signedVolume": 0.04513293191172458,
+    "result": "PASS"
+  },
+  "fold": {
+    "adjacentAngleMaximumDegrees": 17.24952663565131,
+    "foldoverEdgeCountAt90Degrees": 0,
+    "hardEdgeCountAt45Degrees": 0,
+    "result": "PASS"
+  },
+  "selfIntersection": {
+    "triangleCount": 36330,
+    "rawUniqueOverlapPairCount": 0,
+    "nonAdjacentOverlapPairCount": 0,
+    "result": "PASS"
+  },
+  "sourceBounds": {
+    "minimum": [
+      -0.5722323060035706,
+      -0.14314784109592438,
+      -0.004086286295205355
+    ],
+    "maximum": [
+      0.5722323060035706,
+      0.1431475728750229,
+      0.7196778059005737
+    ],
+    "size": [
+      1.1444646120071411,
+      0.28629541397094727,
+      0.7237640921957791
+    ]
+  },
+  "candidateBounds": {
+    "minimum": [
+      -0.5720175504684448,
+      -0.14314067363739014,
+      -0.0040792440995574
+    ],
+    "maximum": [
+      0.5721831321716309,
+      0.14313146471977234,
+      0.7195944786071777
+    ],
+    "size": [
+      1.1442006826400757,
+      0.2862721383571625,
+      0.7236737227067351
+    ]
+  },
+  "candidateToSource": {
+    "count": 18167,
+    "missing": 0,
+    "maximumMeters": 8.56006536764653e-08,
+    "p99Meters": 5.978626660407826e-08,
+    "p95Meters": 1.666000493116826e-08,
+    "meanMeters": 4.777409316194989e-09
+  },
+  "sourceToCandidate": {
+    "count": 227942,
+    "missing": 0,
+    "maximumMeters": 0.0006878945860080421,
+    "p99Meters": 0.00024682043294887984,
+    "p95Meters": 0.00017692689361865628,
+    "meanMeters": 6.502839326221138e-05
+  }
+}

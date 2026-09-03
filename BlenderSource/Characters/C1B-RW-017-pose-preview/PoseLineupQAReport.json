@@ -1,0 +1,946 @@
+{
+  "assetId": "CHR_MasterCharacter_C1B_PoseLineup",
+  "revision": "r17",
+  "assetVersion": "0.17.0-local-preview",
+  "ownerTask": "C1BRW-004",
+  "sourceRevision": "r16",
+  "sourceIdentity": {
+    "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend",
+    "sha256Before": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "sha256After": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "unchanged": true,
+    "approvalRecordPath": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-016-preview/NeutralApprovalRecord.json",
+    "approvalRecordSha256": "1f89295748cd2e5be9bf9d8625f963d602a035a3a3b43e48e05d7f96a0eb9565"
+  },
+  "construction": "R16_TEMP_REVIEW_RIG_PRESERVE_VOLUME_TO_STATIC_BAKED_POSES",
+  "process": {
+    "finalArtifactMode": "STATIC_BAKED_REVIEW_MESHES",
+    "temporaryHelperRigCreated": 1,
+    "temporaryHelperRigRetained": 0,
+    "historicalPoseAnglesUsedAsReviewStart": true,
+    "lineupMode": "ALL_NEUTRAL_HISTORICAL_OFFSETS",
+    "renderTemplate": "10_SCENARIOS_X_2_STYLES_20_FILES",
+    "armPivots": {
+      "L": [
+        -0.18000000715255737,
+        0.0,
+        0.6200000047683716
+      ],
+      "R": [
+        0.18000000715255737,
+        0.0,
+        0.6200000047683716
+      ]
+    },
+    "legPivots": {
+      "L": [
+        -0.09000000357627869,
+        0.0,
+        0.2199999988079071
+      ],
+      "R": [
+        0.09000000357627869,
+        0.0,
+        0.2199999988079071
+      ]
+    },
+    "weightMaximumSumError": 0.0,
+    "jointSmoothing": {
+      "iterations": 6,
+      "factor": 0.08,
+      "maximumTransitionWeight": 0.9999999982200077
+    },
+    "topologyChangingOperations": 0
+  },
+  "poseIds": [
+    "Neutral",
+    "BothHandsGrab",
+    "StrikeReady_L",
+    "StrikeReady_R",
+    "AirKick_L",
+    "AirKick_R",
+    "Dropkick",
+    "AirHandReach"
+  ],
+  "poses": {
+    "Neutral": {
+      "geometryMode": "R16_BODY_LINKED",
+      "topology": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "allQuads": true,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "looseEdges": 0,
+        "degenerateFaces": 0,
+        "components": 1,
+        "eulerCharacteristic": 2,
+        "signedVolume": 0.045184884480180716
+      },
+      "manifold": {
+        "boundaryEdgeCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "looseEdgeCount": 0,
+        "connectedComponents": 1,
+        "eulerCharacteristic": 2,
+        "degenerateFaceCount": 0,
+        "signedVolume": 0.045184884480180716,
+        "result": "PASS"
+      },
+      "fold": {
+        "adjacentAngleMaximumDegrees": 6.7881297188774585,
+        "foldoverEdgeCountAt90Degrees": 0,
+        "hardEdgeCountAt45Degrees": 0,
+        "result": "PASS"
+      },
+      "selfIntersection": {
+        "triangleCount": 455880,
+        "rawUniqueOverlapPairCount": 0,
+        "nonAdjacentOverlapPairCount": 0,
+        "result": "PASS"
+      },
+      "runtimeModifierCount": 0,
+      "vertexGroupCount": 0,
+      "hasShapeKeys": false,
+      "terminalPositions": {
+        "Arm_L": [
+          -0.5541568398475647,
+          2.7836056688101962e-05,
+          0.6350701451301575
+        ],
+        "Arm_R": [
+          0.5541568398475647,
+          2.783602030831389e-05,
+          0.6350701451301575
+        ],
+        "Leg_L": [
+          -0.10021298378705978,
+          -6.295910861808807e-05,
+          0.01336390059441328
+        ],
+        "Leg_R": [
+          0.10021298378705978,
+          -6.29590722383e-05,
+          0.01336390059441328
+        ]
+      },
+      "bounds": {
+        "minimum": [
+          -0.5722323060035706,
+          -0.14314784109592438,
+          -0.004086286295205355
+        ],
+        "maximum": [
+          0.5722323060035706,
+          0.1431475728750229,
+          1.0
+        ],
+        "size": [
+          1.1444646120071411,
+          0.28629541397094727,
+          1.0040862862952054
+        ]
+      }
+    },
+    "BothHandsGrab": {
+      "geometryMode": "R16_PRESERVE_VOLUME_STATIC_BAKED",
+      "topology": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "allQuads": true,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "looseEdges": 0,
+        "degenerateFaces": 0,
+        "components": 1,
+        "eulerCharacteristic": 2,
+        "signedVolume": 0.0451838266019811
+      },
+      "manifold": {
+        "boundaryEdgeCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "looseEdgeCount": 0,
+        "connectedComponents": 1,
+        "eulerCharacteristic": 2,
+        "degenerateFaceCount": 0,
+        "signedVolume": 0.0451838266019811,
+        "result": "PASS"
+      },
+      "fold": {
+        "adjacentAngleMaximumDegrees": 8.049886785953193,
+        "foldoverEdgeCountAt90Degrees": 0,
+        "hardEdgeCountAt45Degrees": 0,
+        "result": "PASS"
+      },
+      "selfIntersection": {
+        "triangleCount": 455880,
+        "rawUniqueOverlapPairCount": 0,
+        "nonAdjacentOverlapPairCount": 0,
+        "result": "PASS"
+      },
+      "runtimeModifierCount": 0,
+      "vertexGroupCount": 0,
+      "hasShapeKeys": false,
+      "terminalPositions": {
+        "Arm_L": [
+          -0.30799534916877747,
+          -0.3515828847885132,
+          0.6350701451301575
+        ],
+        "Arm_R": [
+          0.30799534916877747,
+          -0.3515828847885132,
+          0.6350701451301575
+        ],
+        "Leg_L": [
+          -0.10021298378705978,
+          -6.295910861808807e-05,
+          0.01336390059441328
+        ],
+        "Leg_R": [
+          0.10021298378705978,
+          -6.29590722383e-05,
+          0.01336390059441328
+        ]
+      },
+      "bounds": {
+        "minimum": [
+          -0.33466455340385437,
+          -0.3703969120979309,
+          -0.004086286295205355
+        ],
+        "maximum": [
+          0.33466455340385437,
+          0.1431475728750229,
+          1.0
+        ],
+        "size": [
+          0.6693291068077087,
+          0.5135444849729538,
+          1.0040862862952054
+        ]
+      }
+    },
+    "StrikeReady_L": {
+      "geometryMode": "R16_PRESERVE_VOLUME_STATIC_BAKED",
+      "topology": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "allQuads": true,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "looseEdges": 0,
+        "degenerateFaces": 0,
+        "components": 1,
+        "eulerCharacteristic": 2,
+        "signedVolume": 0.04518448697997229
+      },
+      "manifold": {
+        "boundaryEdgeCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "looseEdgeCount": 0,
+        "connectedComponents": 1,
+        "eulerCharacteristic": 2,
+        "degenerateFaceCount": 0,
+        "signedVolume": 0.04518448697997229,
+        "result": "PASS"
+      },
+      "fold": {
+        "adjacentAngleMaximumDegrees": 6.7881297188774585,
+        "foldoverEdgeCountAt90Degrees": 0,
+        "hardEdgeCountAt45Degrees": 0,
+        "result": "PASS"
+      },
+      "selfIntersection": {
+        "triangleCount": 455880,
+        "rawUniqueOverlapPairCount": 0,
+        "nonAdjacentOverlapPairCount": 0,
+        "result": "PASS"
+      },
+      "runtimeModifierCount": 0,
+      "vertexGroupCount": 0,
+      "hasShapeKeys": false,
+      "terminalPositions": {
+        "Arm_L": [
+          -0.37824931740760803,
+          0.31731775403022766,
+          0.6350701451301575
+        ],
+        "Arm_R": [
+          0.5358529686927795,
+          -0.11559431254863739,
+          0.6350701451301575
+        ],
+        "Leg_L": [
+          -0.10021298378705978,
+          -6.295910861808807e-05,
+          0.01336390059441328
+        ],
+        "Leg_R": [
+          0.10021298378705978,
+          -6.29590722383e-05,
+          0.01336390059441328
+        ]
+      },
+      "bounds": {
+        "minimum": [
+          -0.4019785225391388,
+          -0.14314784109592438,
+          -0.004086286295205355
+        ],
+        "maximum": [
+          0.5545402765274048,
+          0.3370532691478729,
+          1.0
+        ],
+        "size": [
+          0.9565187990665436,
+          0.4802011102437973,
+          1.0040862862952054
+        ]
+      }
+    },
+    "StrikeReady_R": {
+      "geometryMode": "R16_PRESERVE_VOLUME_STATIC_BAKED",
+      "topology": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "allQuads": true,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "looseEdges": 0,
+        "degenerateFaces": 0,
+        "components": 1,
+        "eulerCharacteristic": 2,
+        "signedVolume": 0.04518448699043705
+      },
+      "manifold": {
+        "boundaryEdgeCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "looseEdgeCount": 0,
+        "connectedComponents": 1,
+        "eulerCharacteristic": 2,
+        "degenerateFaceCount": 0,
+        "signedVolume": 0.04518448699043705,
+        "result": "PASS"
+      },
+      "fold": {
+        "adjacentAngleMaximumDegrees": 6.7881297188774585,
+        "foldoverEdgeCountAt90Degrees": 0,
+        "hardEdgeCountAt45Degrees": 0,
+        "result": "PASS"
+      },
+      "selfIntersection": {
+        "triangleCount": 455880,
+        "rawUniqueOverlapPairCount": 0,
+        "nonAdjacentOverlapPairCount": 0,
+        "result": "PASS"
+      },
+      "runtimeModifierCount": 0,
+      "vertexGroupCount": 0,
+      "hasShapeKeys": false,
+      "terminalPositions": {
+        "Arm_L": [
+          -0.5358529686927795,
+          -0.11559431254863739,
+          0.6350701451301575
+        ],
+        "Arm_R": [
+          0.37824925780296326,
+          0.31731778383255005,
+          0.6350701451301575
+        ],
+        "Leg_L": [
+          -0.10021298378705978,
+          -6.295910861808807e-05,
+          0.01336390059441328
+        ],
+        "Leg_R": [
+          0.10021298378705978,
+          -6.29590722383e-05,
+          0.01336390059441328
+        ]
+      },
+      "bounds": {
+        "minimum": [
+          -0.5545403361320496,
+          -0.14314784109592438,
+          -0.004086286295205355
+        ],
+        "maximum": [
+          0.40197843313217163,
+          0.3370532691478729,
+          1.0
+        ],
+        "size": [
+          0.9565187692642212,
+          0.4802011102437973,
+          1.0040862862952054
+        ]
+      }
+    },
+    "AirKick_L": {
+      "geometryMode": "R16_PRESERVE_VOLUME_STATIC_BAKED",
+      "topology": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "allQuads": true,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "looseEdges": 0,
+        "degenerateFaces": 0,
+        "components": 1,
+        "eulerCharacteristic": 2,
+        "signedVolume": 0.04518369325674786
+      },
+      "manifold": {
+        "boundaryEdgeCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "looseEdgeCount": 0,
+        "connectedComponents": 1,
+        "eulerCharacteristic": 2,
+        "degenerateFaceCount": 0,
+        "signedVolume": 0.04518369325674786,
+        "result": "PASS"
+      },
+      "fold": {
+        "adjacentAngleMaximumDegrees": 29.627741864682022,
+        "foldoverEdgeCountAt90Degrees": 0,
+        "hardEdgeCountAt45Degrees": 0,
+        "result": "PASS"
+      },
+      "selfIntersection": {
+        "triangleCount": 455880,
+        "rawUniqueOverlapPairCount": 0,
+        "nonAdjacentOverlapPairCount": 0,
+        "result": "PASS"
+      },
+      "runtimeModifierCount": 0,
+      "vertexGroupCount": 0,
+      "hasShapeKeys": false,
+      "terminalPositions": {
+        "Arm_L": [
+          -0.5269017219543457,
+          0.14018741250038147,
+          0.7350701689720154
+        ],
+        "Arm_R": [
+          0.5358529686927795,
+          -0.11559431254863739,
+          0.7350701689720154
+        ],
+        "Leg_L": [
+          -0.10021298378705978,
+          -0.19864870607852936,
+          0.2631038725376129
+        ],
+        "Leg_R": [
+          0.10021298378705978,
+          -6.29590722383e-05,
+          0.11336389929056168
+        ]
+      },
+      "bounds": {
+        "minimum": [
+          -0.5458296537399292,
+          -0.2181243896484375,
+          0.09591371566057205
+        ],
+        "maximum": [
+          0.5545402765274048,
+          0.16629375517368317,
+          1.100000023841858
+        ],
+        "size": [
+          1.100369930267334,
+          0.38441814482212067,
+          1.0040863081812859
+        ]
+      }
+    },
+    "AirKick_R": {
+      "geometryMode": "R16_PRESERVE_VOLUME_STATIC_BAKED",
+      "topology": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "allQuads": true,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "looseEdges": 0,
+        "degenerateFaces": 0,
+        "components": 1,
+        "eulerCharacteristic": 2,
+        "signedVolume": 0.04518369324725329
+      },
+      "manifold": {
+        "boundaryEdgeCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "looseEdgeCount": 0,
+        "connectedComponents": 1,
+        "eulerCharacteristic": 2,
+        "degenerateFaceCount": 0,
+        "signedVolume": 0.04518369324725329,
+        "result": "PASS"
+      },
+      "fold": {
+        "adjacentAngleMaximumDegrees": 29.627816996762892,
+        "foldoverEdgeCountAt90Degrees": 0,
+        "hardEdgeCountAt45Degrees": 0,
+        "result": "PASS"
+      },
+      "selfIntersection": {
+        "triangleCount": 455880,
+        "rawUniqueOverlapPairCount": 0,
+        "nonAdjacentOverlapPairCount": 0,
+        "result": "PASS"
+      },
+      "runtimeModifierCount": 0,
+      "vertexGroupCount": 0,
+      "hasShapeKeys": false,
+      "terminalPositions": {
+        "Arm_L": [
+          -0.5358529686927795,
+          -0.11559431254863739,
+          0.7350701689720154
+        ],
+        "Arm_R": [
+          0.5269017219543457,
+          0.14018741250038147,
+          0.7350701689720154
+        ],
+        "Leg_L": [
+          -0.10021298378705978,
+          -6.295910861808807e-05,
+          0.11336389929056168
+        ],
+        "Leg_R": [
+          0.10021298378705978,
+          -0.19864870607852936,
+          0.2631038725376129
+        ]
+      },
+      "bounds": {
+        "minimum": [
+          -0.5545403361320496,
+          -0.2181243896484375,
+          0.09591371566057205
+        ],
+        "maximum": [
+          0.545829713344574,
+          0.16629372537136078,
+          1.100000023841858
+        ],
+        "size": [
+          1.1003700494766235,
+          0.3844181150197983,
+          1.0040863081812859
+        ]
+      }
+    },
+    "Dropkick": {
+      "geometryMode": "R16_PRESERVE_VOLUME_STATIC_BAKED",
+      "topology": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "allQuads": true,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "looseEdges": 0,
+        "degenerateFaces": 0,
+        "components": 1,
+        "eulerCharacteristic": 2,
+        "signedVolume": 0.045183031488576164
+      },
+      "manifold": {
+        "boundaryEdgeCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "looseEdgeCount": 0,
+        "connectedComponents": 1,
+        "eulerCharacteristic": 2,
+        "degenerateFaceCount": 0,
+        "signedVolume": 0.045183031488576164,
+        "result": "PASS"
+      },
+      "fold": {
+        "adjacentAngleMaximumDegrees": 28.773500350472283,
+        "foldoverEdgeCountAt90Degrees": 0,
+        "hardEdgeCountAt45Degrees": 0,
+        "result": "PASS"
+      },
+      "selfIntersection": {
+        "triangleCount": 455880,
+        "rawUniqueOverlapPairCount": 0,
+        "nonAdjacentOverlapPairCount": 0,
+        "result": "PASS"
+      },
+      "runtimeModifierCount": 0,
+      "vertexGroupCount": 0,
+      "hasShapeKeys": false,
+      "terminalPositions": {
+        "Arm_L": [
+          -0.474822461605072,
+          0.3771701157093048,
+          0.7804728746414185
+        ],
+        "Arm_R": [
+          0.474822461605072,
+          0.3771701455116272,
+          0.7804728746414185
+        ],
+        "Leg_L": [
+          -0.10021298378705978,
+          -0.15291431546211243,
+          0.4191136360168457
+        ],
+        "Leg_R": [
+          0.10021298378705978,
+          -0.15291431546211243,
+          0.4191136360168457
+        ]
+      },
+      "bounds": {
+        "minimum": [
+          -0.49525898694992065,
+          -0.17049022018909454,
+          0.30220267176628113
+        ],
+        "maximum": [
+          0.4952589273452759,
+          0.39981287717819214,
+          1.1944537162780762
+        ],
+        "size": [
+          0.9905179142951965,
+          0.5703030973672867,
+          0.892251044511795
+        ]
+      }
+    },
+    "AirHandReach": {
+      "geometryMode": "R16_PRESERVE_VOLUME_STATIC_BAKED",
+      "topology": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "allQuads": true,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "looseEdges": 0,
+        "degenerateFaces": 0,
+        "components": 1,
+        "eulerCharacteristic": 2,
+        "signedVolume": 0.04516344057765968
+      },
+      "manifold": {
+        "boundaryEdgeCount": 0,
+        "nonManifoldEdgeCount": 0,
+        "looseEdgeCount": 0,
+        "connectedComponents": 1,
+        "eulerCharacteristic": 2,
+        "degenerateFaceCount": 0,
+        "signedVolume": 0.04516344057765968,
+        "result": "PASS"
+      },
+      "fold": {
+        "adjacentAngleMaximumDegrees": 7.713018440993579,
+        "foldoverEdgeCountAt90Degrees": 0,
+        "hardEdgeCountAt45Degrees": 0,
+        "result": "PASS"
+      },
+      "selfIntersection": {
+        "triangleCount": 455880,
+        "rawUniqueOverlapPairCount": 0,
+        "nonAdjacentOverlapPairCount": 0,
+        "result": "PASS"
+      },
+      "runtimeModifierCount": 0,
+      "vertexGroupCount": 0,
+      "hasShapeKeys": false,
+      "terminalPositions": {
+        "Arm_L": [
+          -0.2618238627910614,
+          -0.2247278243303299,
+          1.0281366109848022
+        ],
+        "Arm_R": [
+          0.2618238627910614,
+          -0.2247278243303299,
+          1.0281366109848022
+        ],
+        "Leg_L": [
+          -0.10021298378705978,
+          0.06379416584968567,
+          0.14345791935920715
+        ],
+        "Leg_R": [
+          0.10021298378705978,
+          0.06379416584968567,
+          0.14345791935920715
+        ]
+      },
+      "bounds": {
+        "minimum": [
+          -0.29050061106681824,
+          -0.24631530046463013,
+          0.12343998998403549
+        ],
+        "maximum": [
+          0.2905006408691406,
+          0.1431475728750229,
+          1.1200000047683716
+        ],
+        "size": [
+          0.5810012519359589,
+          0.389462873339653,
+          0.9965600147843361
+        ]
+      }
+    }
+  },
+  "readability": {
+    "grabForwardDeltaLeft": 0.3516107208452013,
+    "grabForwardDeltaRight": 0.3516107208088215,
+    "strikeReadyBackDeltaLeft": 0.31728991797353956,
+    "strikeReadyBackDeltaRight": 0.31728994781224173,
+    "airKickForwardDeltaLeft": 0.19858574696991127,
+    "airKickForwardDeltaRight": 0.19858574700629106,
+    "dropkickForwardDeltaLeft": 0.15285135635349434,
+    "dropkickForwardDeltaRight": 0.15285135638987413,
+    "airReachHeightDeltaLeft": 0.3930664658546448,
+    "airReachHeightDeltaRight": 0.3930664658546448,
+    "strikeMirrorMaximumDeviation": 5.960464477539063e-08,
+    "kickMirrorMaximumDeviation": 0.0,
+    "grabMirrorMaximumDeviation": 0.0,
+    "dropkickMirrorMaximumDeviation": 0.0,
+    "airReachMirrorMaximumDeviation": 0.0,
+    "positiveDirectionalDeltaMinimum": 0.1,
+    "mirrorDeviationMaximum": 1e-05,
+    "result": "PASS"
+  },
+  "lineupIds": [
+    "Lineup_Overlap",
+    "Lineup_Spread"
+  ],
+  "lineups": {
+    "Lineup_Overlap": {
+      "participantCount": 4,
+      "participantPose": "Neutral",
+      "centerOffsetsH": [
+        -0.36,
+        -0.12,
+        0.12,
+        0.36
+      ],
+      "rootScales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "bounds": {
+        "minimum": [
+          -0.9322323203086853,
+          -0.14314784109592438,
+          -0.004086286295205355
+        ],
+        "maximum": [
+          0.9322323203086853,
+          0.1431475728750229,
+          1.0
+        ],
+        "size": [
+          1.8644646406173706,
+          0.28629541397094727,
+          1.0040862862952054
+        ]
+      }
+    },
+    "Lineup_Spread": {
+      "participantCount": 4,
+      "participantPose": "Neutral",
+      "centerOffsetsH": [
+        -0.9,
+        -0.3,
+        0.3,
+        0.9
+      ],
+      "rootScales": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0,
+          1.0
+        ]
+      ],
+      "bounds": {
+        "minimum": [
+          -1.4722323417663574,
+          -0.14314784109592438,
+          -0.004086286295205355
+        ],
+        "maximum": [
+          1.4722323417663574,
+          0.1431475728750229,
+          1.0
+        ],
+        "size": [
+          2.944464683532715,
+          0.28629541397094727,
+          1.0040862862952054
+        ]
+      }
+    }
+  },
+  "cameras": {
+    "Pose_Front": {
+      "object": "CAM_C1BRW017_Pose_Front",
+      "orthoScale": 1.281800389289856,
+      "location": [
+        0.0,
+        -4.0,
+        0.28733891248703003
+      ],
+      "rotationEuler": [
+        1.5707964897155762,
+        -0.0,
+        0.0
+      ]
+    },
+    "Pose_ThreeQuarter": {
+      "object": "CAM_C1BRW017_Pose_ThreeQuarter",
+      "orthoScale": 1.34236478805542,
+      "location": [
+        2.8284270763397217,
+        -2.8137190341949463,
+        0.5951837301254272
+      ],
+      "rotationEuler": [
+        1.5707963705062866,
+        -1.490736281084537e-07,
+        0.7853981256484985
+      ]
+    },
+    "Pose_ThreeQuarter_Mirror": {
+      "object": "CAM_C1BRW017_Pose_ThreeQuarter_Mirror",
+      "orthoScale": 1.1245766878128052,
+      "location": [
+        -2.7521462440490723,
+        -2.7314743995666504,
+        0.4979568421840668
+      ],
+      "rotationEuler": [
+        1.5707963705062866,
+        1.490736281084537e-07,
+        -0.7853981256484985
+      ]
+    },
+    "Lineup_Overlap": {
+      "object": "CAM_C1BRW017_Lineup_Overlap_Front",
+      "orthoScale": 2.0136218070983887,
+      "location": [
+        0.0,
+        -4.0,
+        0.4979568421840668
+      ],
+      "rotationEuler": [
+        1.5707964897155762,
+        -0.0,
+        0.0
+      ]
+    },
+    "Lineup_Spread": {
+      "object": "CAM_C1BRW017_Lineup_Spread_Front",
+      "orthoScale": 3.1800217628479004,
+      "location": [
+        0.0,
+        -4.0,
+        0.4979568421840668
+      ],
+      "rotationEuler": [
+        1.5707964897155762,
+        -0.0,
+        0.0
+      ]
+    }
+  },
+  "finalInventory": {
+    "armatureObjects": 0,
+    "armatureDatablocks": 0,
+    "actions": 0,
+    "latticeObjects": 0,
+    "shapeKeyMeshes": 0,
+    "meshModifierCount": 0,
+    "meshVertexGroupCount": 0,
+    "meshConstraintCount": 0,
+    "animatedObjects": 0,
+    "negativeScaleObjects": 0,
+    "temporaryNamedDatablocks": 0,
+    "colliderObjects": 0
+  },
+  "renderFiles": [
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_Neutral_Neutral_Front.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_Neutral_Silhouette_Front.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_BothHandsGrab_Neutral_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_BothHandsGrab_Silhouette_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_StrikeReady_L_Neutral_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_StrikeReady_L_Silhouette_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_StrikeReady_R_Neutral_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_StrikeReady_R_Silhouette_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_AirKick_L_Neutral_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_AirKick_L_Silhouette_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_AirKick_R_Neutral_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_AirKick_R_Silhouette_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_Dropkick_Neutral_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_Dropkick_Silhouette_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_AirHandReach_Neutral_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_AirHandReach_Silhouette_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_Lineup_Overlap_Neutral_Front.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_Lineup_Overlap_Silhouette_Front.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_Lineup_Spread_Neutral_Front.png",
+    "CHR_MasterCharacter_C1B_PoseLineup_r17_Lineup_Spread_Silhouette_Front.png"
+  ],
+  "missingRenderFiles": [],
+  "userPoseApprovalRecorded": false,
+  "productionTopologyApproved": false,
+  "animationClaimed": false,
+  "fbxExportExecuted": false,
+  "unityImportExecuted": false,
+  "technicalResult": "PASS"
+}

@@ -4,24 +4,29 @@
 
 | 항목 | 내용 |
 |---|---|
-| 문서 버전 | 1.9.0 C1B Static Interop Baseline + 2026-08-30 Neutral Rework Addendum |
-| 최종 수정일 | 2026-08-30 |
+| 문서 버전 | 1.9.0 C1B Static Interop Baseline + 2026-09-01 r11 Global Fair T-Pose Addendum |
+| 최종 수정일 | 2026-09-01 |
 | 상위 기준 | `01_PRD.md` 1.8.0, `02_SRS.md` 1.8.0 |
 | 기준 | `CHARACTER_TECHNICAL_SPEC.md` 0.12.0, `MAP_DESIGN_GUIDE.md` 1.8.0, `PATCH_DESIGN.md` 0.5.0 |
 | 목적 | 캐릭터·맵·무기·UI의 공통 시각 언어와 Blender→Unity 제작 품질 Gate 정의 |
 
-### 0.0 2026-08-30 Neutral Rework 시각 결정
+### 0.0 2026-09-01 r11 Global Fair T-Pose 시각 결정
 
 - C1B-002..005의 기술 PASS는 보존하지만, 현 faceted head·egg/peg body·exposed proximal cap·detached-looking
   limb는 v0.13 시각 방향을 충족하지 못하므로 current visual acceptance를 철회하고 `REWORK_REQUIRED`로 전환한다.
-- r01 Neutral source/profile과 기술 Evidence는 역사로 보존하지만 rounded-square head와 authored neck인 시각 결과는
-  `REWORK_REQUIRED`다. 현재 r02 Neutral은 round head, visible neck·authored Neck semantic node `0`, head의 torso 직접
-  overlap/attachment, torso→shoulder→arm visible seam·groove·step·cap·detached boundary `0`, continuous
-  U-crotch/leg와 rounded terminal을 사용한다.
-- C1B rework chain의 r02 fixed four-view를 `UG-C1B-NEUTRAL`에서 승인하기 전에는 Pose·Animation·FBX·Unity import를 만들지 않는다.
-- r02 candidate의 H/W/D `1/.4725346267223358/.23389440774917603`, object/closed component `1/2`, V/E/P
-  `11394/24864/13470`, topology error0, camera/render `4/8`은
-  재현용 관찰값이지 user visual approval·production topology가 아니다.
+- r01/r02 technical source·Evidence와 r03..r10 시도는 역사로 보존하지만 current visual acceptance에서는
+  `REWORK_REQUIRED / SUPERSEDED`다. 현재 r11은 round head, visible neck0와 horizontal T-pose를 유지하되,
+  r10에 남아 있던 torso/shoulder/belly/hip의 저주파 다중 bulge를 연속 profile과 전신 fairing으로 제거한다.
+- r11 torso→shoulder→arm은 cap·socket·patch·deep pit 없이 tangent-continuous하고, axilla는 짧고 둥글게 열린다.
+  팔은 capsule 하나와 monotone taper가 소유하며 몸통→골반→다리는 접합선 없이 갈라진다.
+- 표면 승인에서는 Neutral과 단일 소프트 Rake를 함께 본다. 고주파 band·terrace·normal ripple뿐 아니라
+  짧은 간격으로 방향이 반복되는 저주파 bulge도 반려한다. 어깨·허리·배·골반은 구간별 다중 혹이 아니라
+  하나의 넓고 연속적인 볼륨 곡선으로만 남긴다.
+- C1B rework chain의 r11 Neutral/Silhouette/Rake 12-view를 `UG-C1B-NEUTRAL`에서 승인하기 전에는
+  Rig·Pose clip·Animation·FBX·Unity import·Build·Commit/push/LFS 승격을 만들지 않는다.
+- r11 candidate의 Body component1, `227942V/455880E/227940F`, triangle/quad `0/227940`, adjacent angle max
+  `6.843839°`, exact mirror max `1.884956e-7H`, visible T-arm center max deviation `6.694555e-5H`는
+  재현·검토값이지 user visual approval·production topology가 아니다.
 
 ### 0.1 1.9.0 변경 요약
 
@@ -477,9 +482,9 @@ FBX 생성만으로 완료 처리하지 않는다.
 
 ### 9.2 두 단계 Gate
 
-Character rework에는 production Style Gate 앞에 `UG-C1B-NEUTRAL`이 있다. r02의
-Front·Side·Back·ThreeQuarter Neutral/Silhouette에서 round head·visible neck0·head direct torso attachment,
-torso→shoulder→arm visible seam0·U-crotch/leg·terminal을 사용자가 승인하기 전 `C1BRW-004` Pose·Animation과
+Character rework에는 production Style Gate 앞에 `UG-C1B-NEUTRAL`이 있다. r11의
+Front·Side·Back·ThreeQuarter Neutral/Silhouette/Rake에서 round head·visible neck0·head direct torso attachment,
+horizontal T-pose·tangent-continuous shoulder/axilla·bean torso·U-crotch/leg·rounded terminal을 사용자가 승인하기 전 `C1BRW-004` Pose·Animation과
 `C1BRW-005` FBX/Unity import를 시작하지 않는다. 이 Gate는 pixel-perfect
 comparison이나 production topology 승인이 아니라 현재 Neutral 방향 승인이다.
 

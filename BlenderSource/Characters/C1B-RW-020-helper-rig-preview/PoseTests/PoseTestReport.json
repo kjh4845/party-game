@@ -1,0 +1,1146 @@
+{
+  "mode": "TEMPORARY_STATIC_POSE_PREVIEW",
+  "animationClipCreated": false,
+  "keyframesCreated": false,
+  "sourceSaved": false,
+  "input": {
+    "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend",
+    "sha256Before": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    "sha256After": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    "unchanged": true
+  },
+  "r16": {
+    "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend",
+    "sha256Before": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "sha256After": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "unchanged": true
+  },
+  "driverCountBeforeAndAfter": [
+    8,
+    8
+  ],
+  "actionCountBeforeAndAfter": [
+    0,
+    0
+  ],
+  "savedInRestPose": true,
+  "poses": [
+    {
+      "id": "01_RelaxedIdle",
+      "label": "Relaxed Idle",
+      "camera": "ThreeQuarterRight",
+      "rotationsLocalEulerXYZDegrees": {
+        "Root": [
+          0,
+          4,
+          0
+        ],
+        "Pelvis": [
+          0,
+          0,
+          -3
+        ],
+        "Spine": [
+          0,
+          0,
+          3
+        ],
+        "Chest": [
+          0,
+          -3,
+          0
+        ],
+        "Clavicle_L": [
+          -4,
+          0,
+          0
+        ],
+        "Clavicle_R": [
+          -4,
+          0,
+          0
+        ],
+        "UpperArm_L": [
+          -42,
+          0,
+          4
+        ],
+        "UpperArm_R": [
+          -38,
+          0,
+          -5
+        ],
+        "Forearm_L": [
+          0,
+          0,
+          14
+        ],
+        "Forearm_R": [
+          0,
+          0,
+          -18
+        ],
+        "Thigh_L": [
+          -3,
+          0,
+          0
+        ],
+        "Thigh_R": [
+          2,
+          0,
+          0
+        ],
+        "Calf_L": [
+          8,
+          0,
+          0
+        ],
+        "Calf_R": [
+          4,
+          0,
+          0
+        ]
+      },
+      "helperEvaluation": {
+        "L": {
+          "rotationXDegrees": -0.7499999675097985,
+          "location": [
+            -5.312257144396426e-06,
+            -5.976433021714911e-05,
+            -0.00029999998514540493
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "R": {
+          "rotationXDegrees": 0.5000000494876695,
+          "location": [
+            -3.541505293469527e-06,
+            3.984289287473075e-05,
+            0.00020000000949949026
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "metrics": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "maximumVertexDisplacementMeters": 0.3259506427647373,
+        "manifold": {
+          "boundaryEdgeCount": 0,
+          "nonManifoldEdgeCount": 0,
+          "looseEdgeCount": 0,
+          "connectedComponents": 1,
+          "eulerCharacteristic": 2,
+          "degenerateFaceCount": 0,
+          "signedVolume": 0.04353415617901163,
+          "result": "PASS"
+        },
+        "fold": {
+          "adjacentAngleMaximumDegrees": 7.093096384658058,
+          "foldoverEdgeCountAt90Degrees": 0,
+          "hardEdgeCountAt45Degrees": 0,
+          "result": "PASS"
+        },
+        "selfIntersection": {
+          "triangleCount": 455880,
+          "rawUniqueOverlapPairCount": 0,
+          "nonAdjacentOverlapPairCount": 0,
+          "result": "PASS"
+        },
+        "edgeStretchRatio": {
+          "minimum": 0.6537026939796007,
+          "p01": 0.8366917262428452,
+          "p50": 0.9999935503900581,
+          "p99": 1.21779179830434,
+          "maximum": 1.313249330879625
+        }
+      },
+      "image": {
+        "filename": "C1B_R20_PoseTest_01_RelaxedIdle_ThreeQuarterRight.png",
+        "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-020-helper-rig-preview/PoseTests/C1B_R20_PoseTest_01_RelaxedIdle_ThreeQuarterRight.png",
+        "bytes": 726501,
+        "sha256": "c97942bbdf8e9c718f1c81e54bf8706ddcaf5618b43b2d6c105ce102f3b01bbb"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "02_WalkStride",
+      "label": "Walk Stride",
+      "camera": "ThreeQuarterLeft",
+      "rotationsLocalEulerXYZDegrees": {
+        "Root": [
+          0,
+          -5,
+          0
+        ],
+        "Pelvis": [
+          0,
+          6,
+          2
+        ],
+        "Spine": [
+          0,
+          -4,
+          -1
+        ],
+        "Chest": [
+          0,
+          -4,
+          0
+        ],
+        "UpperArm_L": [
+          -40,
+          0,
+          -14
+        ],
+        "UpperArm_R": [
+          -40,
+          0,
+          -18
+        ],
+        "Forearm_L": [
+          0,
+          0,
+          16
+        ],
+        "Forearm_R": [
+          0,
+          0,
+          -20
+        ],
+        "Thigh_L": [
+          -22,
+          0,
+          0
+        ],
+        "Thigh_R": [
+          14,
+          0,
+          0
+        ],
+        "Calf_L": [
+          10,
+          0,
+          0
+        ],
+        "Calf_R": [
+          18,
+          0,
+          0
+        ]
+      },
+      "helperEvaluation": {
+        "L": {
+          "rotationXDegrees": -5.500000010755836,
+          "location": [
+            -3.895655390806496e-05,
+            -0.00043827175977639854,
+            -0.002199999988079071
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "R": {
+          "rotationXDegrees": 3.500000239691981,
+          "location": [
+            -2.479053546267096e-05,
+            0.0002789002319332212,
+            0.0014000000664964318
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "metrics": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "maximumVertexDisplacementMeters": 0.3558816493528723,
+        "manifold": {
+          "boundaryEdgeCount": 0,
+          "nonManifoldEdgeCount": 0,
+          "looseEdgeCount": 0,
+          "connectedComponents": 1,
+          "eulerCharacteristic": 2,
+          "degenerateFaceCount": 0,
+          "signedVolume": 0.04366880537432998,
+          "result": "PASS"
+        },
+        "fold": {
+          "adjacentAngleMaximumDegrees": 8.643269715381805,
+          "foldoverEdgeCountAt90Degrees": 0,
+          "hardEdgeCountAt45Degrees": 0,
+          "result": "PASS"
+        },
+        "selfIntersection": {
+          "triangleCount": 455880,
+          "rawUniqueOverlapPairCount": 0,
+          "nonAdjacentOverlapPairCount": 0,
+          "result": "PASS"
+        },
+        "edgeStretchRatio": {
+          "minimum": 0.6621761554869621,
+          "p01": 0.7886563819671372,
+          "p50": 0.9999979823297042,
+          "p99": 1.2187805662873012,
+          "maximum": 1.3592033499805845
+        }
+      },
+      "image": {
+        "filename": "C1B_R20_PoseTest_02_WalkStride_ThreeQuarterLeft.png",
+        "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-020-helper-rig-preview/PoseTests/C1B_R20_PoseTest_02_WalkStride_ThreeQuarterLeft.png",
+        "bytes": 732019,
+        "sha256": "d00cfd91b991eb8cff988a0f170eb75aaa0e168c5471fcbd4204cf08f7059286"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "03_CrouchBrace",
+      "label": "Crouch / Brace",
+      "camera": "SideLeft",
+      "rotationsLocalEulerXYZDegrees": {
+        "Pelvis": [
+          5,
+          0,
+          0
+        ],
+        "Spine": [
+          8,
+          0,
+          0
+        ],
+        "Chest": [
+          -3,
+          0,
+          0
+        ],
+        "UpperArm_L": [
+          -28,
+          0,
+          22
+        ],
+        "UpperArm_R": [
+          -28,
+          0,
+          -22
+        ],
+        "Forearm_L": [
+          0,
+          0,
+          35
+        ],
+        "Forearm_R": [
+          0,
+          0,
+          -35
+        ],
+        "Thigh_L": [
+          -18,
+          0,
+          0
+        ],
+        "Thigh_R": [
+          -18,
+          0,
+          0
+        ],
+        "Calf_L": [
+          38,
+          0,
+          0
+        ],
+        "Calf_R": [
+          38,
+          0,
+          0
+        ]
+      },
+      "helperEvaluation": {
+        "L": {
+          "rotationXDegrees": -4.499999698337085,
+          "location": [
+            -3.187354013789445e-05,
+            -0.0003585859667509794,
+            -0.0017999998526647687
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "R": {
+          "rotationXDegrees": -4.499999698337085,
+          "location": [
+            3.187354013789445e-05,
+            -0.0003585859667509794,
+            -0.0017999998526647687
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "metrics": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "maximumVertexDisplacementMeters": 0.37485162491419555,
+        "manifold": {
+          "boundaryEdgeCount": 0,
+          "nonManifoldEdgeCount": 0,
+          "looseEdgeCount": 0,
+          "connectedComponents": 1,
+          "eulerCharacteristic": 2,
+          "degenerateFaceCount": 0,
+          "signedVolume": 0.04387885629742735,
+          "result": "PASS"
+        },
+        "fold": {
+          "adjacentAngleMaximumDegrees": 6.560048358149577,
+          "foldoverEdgeCountAt90Degrees": 0,
+          "hardEdgeCountAt45Degrees": 0,
+          "result": "PASS"
+        },
+        "selfIntersection": {
+          "triangleCount": 455880,
+          "rawUniqueOverlapPairCount": 0,
+          "nonAdjacentOverlapPairCount": 0,
+          "result": "PASS"
+        },
+        "edgeStretchRatio": {
+          "minimum": 0.5158920912445145,
+          "p01": 0.6970949359078671,
+          "p50": 0.9999922869168298,
+          "p99": 1.2723989761597567,
+          "maximum": 1.4567158155303814
+        }
+      },
+      "image": {
+        "filename": "C1B_R20_PoseTest_03_CrouchBrace_SideLeft.png",
+        "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-020-helper-rig-preview/PoseTests/C1B_R20_PoseTest_03_CrouchBrace_SideLeft.png",
+        "bytes": 716521,
+        "sha256": "7aed495c3c747e6243151f6a33749712478768dc63ac963b48224b88732502bc"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "04_HighReach",
+      "label": "High Reach",
+      "camera": "ThreeQuarterRight",
+      "rotationsLocalEulerXYZDegrees": {
+        "Root": [
+          0,
+          0,
+          -2
+        ],
+        "Pelvis": [
+          0,
+          0,
+          -4
+        ],
+        "Spine": [
+          0,
+          0,
+          8
+        ],
+        "Chest": [
+          -2,
+          0,
+          6
+        ],
+        "Clavicle_L": [
+          12,
+          0,
+          0
+        ],
+        "Clavicle_R": [
+          -5,
+          0,
+          0
+        ],
+        "UpperArm_L": [
+          42,
+          0,
+          5
+        ],
+        "UpperArm_R": [
+          -42,
+          0,
+          -5
+        ],
+        "Forearm_L": [
+          0,
+          0,
+          12
+        ],
+        "Forearm_R": [
+          0,
+          0,
+          -18
+        ],
+        "Thigh_L": [
+          -4,
+          0,
+          0
+        ],
+        "Thigh_R": [
+          4,
+          0,
+          0
+        ],
+        "Calf_L": [
+          6,
+          0,
+          0
+        ],
+        "Calf_R": [
+          3,
+          0,
+          0
+        ]
+      },
+      "helperEvaluation": {
+        "L": {
+          "rotationXDegrees": -0.9999997788102217,
+          "location": [
+            -7.083008313202299e-06,
+            -7.968575664563105e-05,
+            -0.0003999999025836587
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "R": {
+          "rotationXDegrees": 0.9999997788102217,
+          "location": [
+            -7.083008313202299e-06,
+            7.968575664563105e-05,
+            0.0003999999025836587
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "metrics": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "maximumVertexDisplacementMeters": 0.30886322405775074,
+        "manifold": {
+          "boundaryEdgeCount": 0,
+          "nonManifoldEdgeCount": 0,
+          "looseEdgeCount": 0,
+          "connectedComponents": 1,
+          "eulerCharacteristic": 2,
+          "degenerateFaceCount": 0,
+          "signedVolume": 0.045278750353957266,
+          "result": "PASS"
+        },
+        "fold": {
+          "adjacentAngleMaximumDegrees": 7.011736451925336,
+          "foldoverEdgeCountAt90Degrees": 0,
+          "hardEdgeCountAt45Degrees": 0,
+          "result": "PASS"
+        },
+        "selfIntersection": {
+          "triangleCount": 455880,
+          "rawUniqueOverlapPairCount": 0,
+          "nonAdjacentOverlapPairCount": 0,
+          "result": "PASS"
+        },
+        "edgeStretchRatio": {
+          "minimum": 0.47867233450373026,
+          "p01": 0.7100236085588683,
+          "p50": 0.9999967694968104,
+          "p99": 1.3091705048552187,
+          "maximum": 1.5821180230538785
+        }
+      },
+      "image": {
+        "filename": "C1B_R20_PoseTest_04_HighReach_ThreeQuarterRight.png",
+        "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-020-helper-rig-preview/PoseTests/C1B_R20_PoseTest_04_HighReach_ThreeQuarterRight.png",
+        "bytes": 730235,
+        "sha256": "2d54848978e6eecce48773b56b584e397e4108757f1157fc3f737cfb2a46b786"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "05_TwoHandGuard",
+      "label": "Two-hand Guard",
+      "camera": "ThreeQuarterSide",
+      "rotationsLocalEulerXYZDegrees": {
+        "Root": [
+          2,
+          0,
+          0
+        ],
+        "Pelvis": [
+          4,
+          0,
+          0
+        ],
+        "Spine": [
+          7,
+          0,
+          0
+        ],
+        "Chest": [
+          3,
+          0,
+          0
+        ],
+        "Clavicle_L": [
+          -8,
+          0,
+          0
+        ],
+        "Clavicle_R": [
+          -8,
+          0,
+          0
+        ],
+        "UpperArm_L": [
+          -22,
+          0,
+          30
+        ],
+        "UpperArm_R": [
+          -22,
+          0,
+          -30
+        ],
+        "Forearm_L": [
+          0,
+          0,
+          42
+        ],
+        "Forearm_R": [
+          0,
+          0,
+          -42
+        ],
+        "Thigh_L": [
+          -6,
+          0,
+          0
+        ],
+        "Thigh_R": [
+          -6,
+          0,
+          0
+        ],
+        "Calf_L": [
+          12,
+          0,
+          0
+        ],
+        "Calf_R": [
+          12,
+          0,
+          0
+        ]
+      },
+      "helperEvaluation": {
+        "L": {
+          "rotationXDegrees": -1.5000000417413029,
+          "location": [
+            -1.0624515198287554e-05,
+            -0.00011952866771025583,
+            -0.0006000000284984708
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "R": {
+          "rotationXDegrees": -1.5000000417413029,
+          "location": [
+            1.0624515198287554e-05,
+            -0.00011952866771025583,
+            -0.0006000000284984708
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "metrics": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "maximumVertexDisplacementMeters": 0.45855657932527644,
+        "manifold": {
+          "boundaryEdgeCount": 0,
+          "nonManifoldEdgeCount": 0,
+          "looseEdgeCount": 0,
+          "connectedComponents": 1,
+          "eulerCharacteristic": 2,
+          "degenerateFaceCount": 0,
+          "signedVolume": 0.04392019302771077,
+          "result": "PASS"
+        },
+        "fold": {
+          "adjacentAngleMaximumDegrees": 6.419548378714652,
+          "foldoverEdgeCountAt90Degrees": 0,
+          "hardEdgeCountAt45Degrees": 0,
+          "result": "PASS"
+        },
+        "selfIntersection": {
+          "triangleCount": 455880,
+          "rawUniqueOverlapPairCount": 0,
+          "nonAdjacentOverlapPairCount": 0,
+          "result": "PASS"
+        },
+        "edgeStretchRatio": {
+          "minimum": 0.5986733907639966,
+          "p01": 0.7810206112008616,
+          "p50": 0.9999912562055258,
+          "p99": 1.246682667247015,
+          "maximum": 1.3999027746011894
+        }
+      },
+      "image": {
+        "filename": "C1B_R20_PoseTest_05_TwoHandGuard_ThreeQuarterSide.png",
+        "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-020-helper-rig-preview/PoseTests/C1B_R20_PoseTest_05_TwoHandGuard_ThreeQuarterSide.png",
+        "bytes": 737856,
+        "sha256": "c22560bc237093704de45cb39d960fc562358697988297f114be501db0b74553"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "06_KneeLiftStep",
+      "label": "Knee Lift / Step",
+      "camera": "SideLeft",
+      "rotationsLocalEulerXYZDegrees": {
+        "Pelvis": [
+          0,
+          0,
+          -4
+        ],
+        "Spine": [
+          0,
+          0,
+          4
+        ],
+        "Chest": [
+          0,
+          -5,
+          0
+        ],
+        "UpperArm_L": [
+          -35,
+          0,
+          -12
+        ],
+        "UpperArm_R": [
+          -35,
+          0,
+          -18
+        ],
+        "Forearm_L": [
+          0,
+          0,
+          25
+        ],
+        "Forearm_R": [
+          0,
+          0,
+          -25
+        ],
+        "Thigh_L": [
+          -35,
+          0,
+          0
+        ],
+        "Thigh_R": [
+          4,
+          0,
+          0
+        ],
+        "Calf_L": [
+          40,
+          0,
+          0
+        ],
+        "Calf_R": [
+          6,
+          0,
+          0
+        ]
+      },
+      "helperEvaluation": {
+        "L": {
+          "rotationXDegrees": -8.749999958899718,
+          "location": [
+            -6.19763377471827e-05,
+            -0.0006972505361773074,
+            -0.003499999875202775
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "R": {
+          "rotationXDegrees": 0.9999997788102217,
+          "location": [
+            -7.083008313202299e-06,
+            7.968575664563105e-05,
+            0.0003999999025836587
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "metrics": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "maximumVertexDisplacementMeters": 0.33383665237519866,
+        "manifold": {
+          "boundaryEdgeCount": 0,
+          "nonManifoldEdgeCount": 0,
+          "looseEdgeCount": 0,
+          "connectedComponents": 1,
+          "eulerCharacteristic": 2,
+          "degenerateFaceCount": 0,
+          "signedVolume": 0.04367730928465837,
+          "result": "PASS"
+        },
+        "fold": {
+          "adjacentAngleMaximumDegrees": 12.269257490069727,
+          "foldoverEdgeCountAt90Degrees": 0,
+          "hardEdgeCountAt45Degrees": 0,
+          "result": "PASS"
+        },
+        "selfIntersection": {
+          "triangleCount": 455880,
+          "rawUniqueOverlapPairCount": 0,
+          "nonAdjacentOverlapPairCount": 0,
+          "result": "PASS"
+        },
+        "edgeStretchRatio": {
+          "minimum": 0.5664766271574281,
+          "p01": 0.7558803946340218,
+          "p50": 0.9999980755517117,
+          "p99": 1.2404309680047552,
+          "maximum": 1.5684507445855616
+        }
+      },
+      "image": {
+        "filename": "C1B_R20_PoseTest_06_KneeLiftStep_SideLeft.png",
+        "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-020-helper-rig-preview/PoseTests/C1B_R20_PoseTest_06_KneeLiftStep_SideLeft.png",
+        "bytes": 717268,
+        "sha256": "4111fd4be1c44c63ec983d575e0b8c98de12abf98fea366386ca0806e31e5765"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "07_WideStance",
+      "label": "Wide Stance",
+      "camera": "Front",
+      "rotationsLocalEulerXYZDegrees": {
+        "Pelvis": [
+          2,
+          0,
+          0
+        ],
+        "Spine": [
+          -2,
+          0,
+          0
+        ],
+        "UpperArm_L": [
+          -25,
+          0,
+          12
+        ],
+        "UpperArm_R": [
+          -25,
+          0,
+          -12
+        ],
+        "Forearm_L": [
+          0,
+          0,
+          18
+        ],
+        "Forearm_R": [
+          0,
+          0,
+          -18
+        ],
+        "Thigh_L": [
+          0,
+          0,
+          10
+        ],
+        "Thigh_R": [
+          0,
+          0,
+          -10
+        ],
+        "Calf_L": [
+          8,
+          0,
+          0
+        ],
+        "Calf_R": [
+          8,
+          0,
+          0
+        ]
+      },
+      "helperEvaluation": {
+        "L": {
+          "rotationXDegrees": 0.0,
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "R": {
+          "rotationXDegrees": 0.0,
+          "location": [
+            -0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "metrics": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "maximumVertexDisplacementMeters": 0.22427171717894703,
+        "manifold": {
+          "boundaryEdgeCount": 0,
+          "nonManifoldEdgeCount": 0,
+          "looseEdgeCount": 0,
+          "connectedComponents": 1,
+          "eulerCharacteristic": 2,
+          "degenerateFaceCount": 0,
+          "signedVolume": 0.04419861423185811,
+          "result": "PASS"
+        },
+        "fold": {
+          "adjacentAngleMaximumDegrees": 11.948702198169041,
+          "foldoverEdgeCountAt90Degrees": 0,
+          "hardEdgeCountAt45Degrees": 0,
+          "result": "PASS"
+        },
+        "selfIntersection": {
+          "triangleCount": 455880,
+          "rawUniqueOverlapPairCount": 0,
+          "nonAdjacentOverlapPairCount": 0,
+          "result": "PASS"
+        },
+        "edgeStretchRatio": {
+          "minimum": 0.8013058843372034,
+          "p01": 0.8665636703594305,
+          "p50": 0.9999987545328185,
+          "p99": 1.1393454524828117,
+          "maximum": 1.4339619038742413
+        }
+      },
+      "image": {
+        "filename": "C1B_R20_PoseTest_07_WideStance_Front.png",
+        "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-020-helper-rig-preview/PoseTests/C1B_R20_PoseTest_07_WideStance_Front.png",
+        "bytes": 723365,
+        "sha256": "d44ce81283f614aecd421142ccd794e4a7389573ddeb1fbdd6039bca04074aeb"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "08_TurnAndPoint",
+      "label": "Turn and Point",
+      "camera": "ThreeQuarterLeft",
+      "rotationsLocalEulerXYZDegrees": {
+        "Root": [
+          0,
+          10,
+          0
+        ],
+        "Pelvis": [
+          0,
+          -7,
+          0
+        ],
+        "Spine": [
+          0,
+          7,
+          0
+        ],
+        "Chest": [
+          0,
+          10,
+          0
+        ],
+        "Neck": [
+          0,
+          6,
+          0
+        ],
+        "Head": [
+          0,
+          6,
+          0
+        ],
+        "UpperArm_L": [
+          -40,
+          0,
+          5
+        ],
+        "UpperArm_R": [
+          -18,
+          0,
+          -32
+        ],
+        "Forearm_L": [
+          0,
+          0,
+          20
+        ],
+        "Forearm_R": [
+          0,
+          0,
+          -10
+        ],
+        "Thigh_L": [
+          -7,
+          0,
+          0
+        ],
+        "Thigh_R": [
+          6,
+          0,
+          0
+        ],
+        "Calf_L": [
+          8,
+          0,
+          0
+        ],
+        "Calf_R": [
+          12,
+          0,
+          0
+        ]
+      },
+      "helperEvaluation": {
+        "L": {
+          "rotationXDegrees": -1.7500001198459905,
+          "location": [
+            -1.239526773133548e-05,
+            -0.0001394501159666106,
+            -0.0007000000332482159
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "R": {
+          "rotationXDegrees": 1.5000001484630086,
+          "location": [
+            -1.0624515198287554e-05,
+            0.00011952867498621345,
+            0.0006000000284984708
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "metrics": {
+        "vertices": 227942,
+        "edges": 455880,
+        "faces": 227940,
+        "maximumVertexDisplacementMeters": 0.38896607240140885,
+        "manifold": {
+          "boundaryEdgeCount": 0,
+          "nonManifoldEdgeCount": 0,
+          "looseEdgeCount": 0,
+          "connectedComponents": 1,
+          "eulerCharacteristic": 2,
+          "degenerateFaceCount": 0,
+          "signedVolume": 0.04399157772958815,
+          "result": "PASS"
+        },
+        "fold": {
+          "adjacentAngleMaximumDegrees": 7.295706689310494,
+          "foldoverEdgeCountAt90Degrees": 0,
+          "hardEdgeCountAt45Degrees": 0,
+          "result": "PASS"
+        },
+        "selfIntersection": {
+          "triangleCount": 455880,
+          "rawUniqueOverlapPairCount": 0,
+          "nonAdjacentOverlapPairCount": 0,
+          "result": "PASS"
+        },
+        "edgeStretchRatio": {
+          "minimum": 0.7048391489115667,
+          "p01": 0.8231682606139882,
+          "p50": 0.9999999285434955,
+          "p99": 1.1835792460035557,
+          "maximum": 1.3055613042499403
+        }
+      },
+      "image": {
+        "filename": "C1B_R20_PoseTest_08_TurnAndPoint_ThreeQuarterLeft.png",
+        "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-020-helper-rig-preview/PoseTests/C1B_R20_PoseTest_08_TurnAndPoint_ThreeQuarterLeft.png",
+        "bytes": 719638,
+        "sha256": "da567f132e713cc3ebde0ffc0d7c44bf9d5ea3321aba232386eaf325bb50b1d1"
+      },
+      "result": "PASS"
+    }
+  ],
+  "result": "PASS"
+}

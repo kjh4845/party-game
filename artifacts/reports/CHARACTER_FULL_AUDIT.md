@@ -2,19 +2,19 @@
 
 > **역사·superseded 범위 공지:** 이 보고서 본문의 `C1B-002..005 PASS`는 old faceted/part-based START
 > Blockout과 그 Pose·FBX/Unity 전달이 당시 기술 완료조건을 충족했다는 역사 감사다. 최신 캐릭터 시각 acceptance가
-> 아니며, 해당 결과의 current status는 `REWORK_REQUIRED`다. 현재 입력은 round head·visible neck0·head direct
-> torso attachment·torso-arm visible seam0의 C1BRW r02 Neutral이고, 합법적인 다음 단계는
-> `C1BRW-003 / UG-C1B-NEUTRAL` 사용자 승인이다. 이 승인 전 Pose·Animation·FBX·Unity import를 진행하지 않으며
+> 아니며, 해당 결과의 current status는 `REWORK_REQUIRED`다. 현재 입력은 round head·visible neck0·bean torso/continuous leg,
+> deep-root→horizontal-visible-span T-pose와 globally-faired torso/shoulder/axilla를 가진 C1BRW r11이고, 합법적인 다음 단계는
+> `C1BRW-003 / UG-C1B-NEUTRAL` 사용자 승인이다. 이 승인 전 Rig·Pose clip·Animation·FBX·Unity import·Build를 진행하지 않으며
 > `C1B-006 / UG-C1B`로 바로 건너뛰지 않는다.
 
 ## 0. 문서 정보
 
 | 항목 | 내용 |
 |---|---|
-| 감사 범위 | 역사 `C1B-001..005` 기술 감사; current acceptance는 별도 C1BRW r02 Neutral |
-| 기준일 | 2026-08-30 KST |
+| 감사 범위 | 역사 `C1B-001..005` 기술 감사; current acceptance는 별도 C1BRW r11 globally-faired T-pose |
+| 기준일 | 2026-09-01 KST |
 | 감사 성격 | `C1B-001..005` 당시 산출물의 독립 read-only 구조·수치·시각·권리 역사 감사 |
-| 결론 | `C1B-001..005`의 당시 기술 범위만 통과. old visual result는 `REWORK_REQUIRED`; current r02는 `UG-C1B-NEUTRAL` USER_REVIEW이며 Animation·C2/C4·`UG-C1B`는 미완료 |
+| 결론 | `C1B-001..005`의 당시 기술 범위만 통과. old visual result와 r02..r10은 `REWORK_REQUIRED/SUPERSEDED`; current r11은 `UG-C1B-NEUTRAL` USER_REVIEW이며 Rig·Animation·C2/C4·`UG-C1B`는 미완료 |
 | 자동 실행 제외 | Unity Player Build, PlayMode gameplay, Steam, Docker, Deploy |
 
 이 문서는 “당시 만든 것이 무엇을 증명했는가”와 “현재도 무엇을 증명하지 않았는가”를 한곳에서 확인하기 위한
@@ -42,7 +42,7 @@
 | Animation/motion 자연스러움 | 후속 | Armature·Action·Animator 0, 정적 Pose만 존재 | locomotion·Punch·Kick·Dropkick 전환과 Ragdoll blend |
 | LFS 복구성 | PASS | Binary75, LFS `5/5`; r02 pointer131 bytes→fresh fetch/checkout SHA `548a786a…6e252`·520225 일치 | 향후 모든 대형 asset 복구성 |
 | 권리/배포 경계 | PASS | firstParty57·review18·shipping0, license inventory 누락 0 | 실제 Player 포함 결과와 최종 release NOTICE |
-| `UG-C1B-NEUTRAL` | 후속 / USER_REVIEW | r02 technical candidate 준비, visual approval 0 | r02 Neutral 사용자 승인 |
+| `UG-C1B-NEUTRAL` | 후속 / USER_REVIEW | r11 technical/independent visual gate PASS, reviewer3 blocker0, user visual approval 0 | r11 globally-faired T-pose 사용자 승인 |
 | `UG-C1B` | 후속 | Neutral Gate 이후 Pose·Unity 결과와 locked value 0 | exact C1b 최종 사용자 승인 |
 
 ## 2. Evidence chain
@@ -55,6 +55,8 @@
 | C1B-004 | [Pose source](../../BlenderSource/Characters/C1B-004/CHR_MasterCharacter_C1B_PoseLineup_r02.blend) · [Manifest](../../BlenderSource/Characters/C1B-004/GenerationManifest.yaml) · [Pose report](../../BlenderSource/Characters/C1B-004/PoseLineupReport.yaml) | source SHA `83c2e100…17c2b`, `151456` bytes |
 | C1B-005 | [Interop manifest](../../BlenderSource/Characters/C1B-005/GenerationManifest.yaml) · [Comparison report](../../BlenderSource/Characters/C1B-005/InteropComparisonReport.yaml) · [Unity inspection](../evidence/G0/C1B-005/UnityImportInspection.json) | FBX SHA `e2049505…d9d`, Prefab SHA `ae76d098…8c43` |
 | C1B-005 profile | [ModelInterop r02](../../config/art/ModelInteropProfile-r02.yaml) · [AlphaVisualQA r02](../../config/art/AlphaVisualQAProfile-r02.yaml) | C1BBlockout-only handedness·UV/tangent override |
+| C1BRW r10 local history | [Superseded smooth source](../../BlenderSource/Characters/C1B-RW-010-preview/CHR_MasterCharacter_C1B_NeutralRework_r10.blend) · [Smooth QA](../../BlenderSource/Characters/C1B-RW-010-preview/SmoothQAReport.json) | high-frequency cleanup만 수행해 low-frequency torso bulge가 남은 superseded local preview |
+| C1BRW r11 local review | [Globally-faired source](../../BlenderSource/Characters/C1B-RW-011-preview/CHR_MasterCharacter_C1B_NeutralRework_r11.blend) · [Global fair QA](../../BlenderSource/Characters/C1B-RW-011-preview/GlobalFairQAReport.json) · [review record](CHARACTER_REWORK_NEUTRAL_REVIEW.md) | source SHA `7638651a…4fc1`, `8745219` bytes; local review only, LFS/Evidence 승격0 |
 
 `C1B-003`과 `C1B-004`의 r01 profile reference는 당시의 역사 사실이다. `C1B-005`가 사용하는 r02 override가
 이전 Manifest를 소급 변경하지 않는다. C1B-004 source도 C1B-005 export 과정에서 수정되지 않았다.
@@ -207,10 +209,10 @@ Player Build가 없으므로 최종 Windows Player 포함물과 release NOTICE�
 
 ## 9. 명시적 후속
 
-1. `C1BRW-003 / UG-C1B-NEUTRAL`: r02 Neutral four-view의 round head·visible neck0·direct torso attachment와
-   torso-arm visible seam0를 사용자가 명시적으로 승인한다. 승인 전 Pose·Animation·FBX·Unity import는 `0`이다.
-2. `C1BRW-004..005`: 승인 r02에서 Pose/lineup과 FBX/Unity parity를 재생성한다.
-3. `C1B-006 / UG-C1B`: r02 profile ID/version/수치와 승인 뒤 생성한 Pose/lineup·Unity 결과를 최종 승인한다.
+1. `C1BRW-003 / UG-C1B-NEUTRAL`: r11 12-view의 round head·visible neck0·horizontal T-pose,
+   tangent-continuous shoulder/axilla와 bean torso/continuous leg를 사용자가 명시적으로 승인한다. 승인 전 Rig·Pose clip·Animation·FBX·Unity import·Build는 `0`이다.
+2. `C1BRW-004..005`: 승인 r11에서 Pose/lineup과 FBX/Unity parity를 재생성한다.
+3. `C1B-006 / UG-C1B`: 승인된 r11 lineage의 ID/version/수치와 승인 뒤 생성한 Pose/lineup·Unity 결과를 최종 승인한다.
 4. `CHR-001..012`, `AIR-001..002`, `ANP-001..003`: prototype Rig·Collider·Joint·Anchor, locomotion, Punch,
    Grab, AirKick, Dropkick, Ragdoll/GetUp과 motion 자연스러움을 검증한다.
 5. `CAM-005`와 downstream QA: 실제 Unity 2/3/4인, 세 화면비, Min/Max gameplay Camera를 실행한다.
@@ -284,6 +286,6 @@ Player Build가 없으므로 최종 Windows Player 포함물과 release NOTICE�
 FBX→Unity static parity와 LFS/rights 경계를 당시 기술 범위에서 통과했다. 이 결론은 old shape의 현재 시각
 acceptance가 아니며 old C1B-002..005는 `REWORK_REQUIRED`다.
 
-Current r02 Neutral은 기술 후보일 뿐 exact C1b 사용자 승인도, 움직이는 캐릭터도, production character도 아니다.
+Current r11 globally-faired T-pose는 기술·독립 시각 gate를 통과한 후보일 뿐 exact C1b 사용자 승인도, 움직이는 캐릭터도, production character도 아니다.
 다음 합법적인 순서는 `C1BRW-003 / UG-C1B-NEUTRAL`이며 `C1B-006 / UG-C1B`로 바로 건너뛰지 않는다. Motion
 자연스러움은 C2/ANP, 최종 Mesh·UV·weight·deformation은 C4/ANM에서 검증한다.

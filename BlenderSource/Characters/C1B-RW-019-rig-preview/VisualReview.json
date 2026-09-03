@@ -1,0 +1,38 @@
+{
+  "revision": "r19-weight-only-candidate",
+  "status": "REJECTED_VISUAL",
+  "productionApproved": false,
+  "blendPath": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-019-rig-preview/CHR_MasterCharacter_C1B_Rig_r19.blend",
+  "blendSha256": "60d67d5111beb9b61855ad6ee70e4db399430fc0bdf8e1e4113b81d9a6f25cea",
+  "technicalReportPath": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-019-rig-preview/RigQAReport.json",
+  "technicalReportSha256": "55a761b62cc45b7793ff077d88c00620225901706276b1a0f3287dfc6dc17469",
+  "technicalReportResult": "PASS",
+  "technicalReportGeneratorSha256": "74b4690b98bec7278a8928326d2555636243ee22607c54ced5115ec1f22e2ed5",
+  "currentGeneratorSha256": "02150274cfa25df478a3e0364d1692281af81764be96ee4d4f4e1964e992fdd3",
+  "technicalReportIsStaleAgainstCurrentGenerator": true,
+  "source": {
+    "revision": "r16",
+    "sha256": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "geometryExactVerification": "PASS"
+  },
+  "visualChecks": {
+    "restExterior": "PASS",
+    "shoulderRegression": "PASS",
+    "elbowRegression": "PASS",
+    "kneeRegression": "PASS",
+    "hipFlexTargetNotch": "FAIL"
+  },
+  "failureReason": "The target screen-right body-to-moving-leg notch is unchanged from r18 over the inspected contour range. The weight change moved the opposite contour instead.",
+  "followupSearch": {
+    "weightOnlyCandidatesTested": 1780,
+    "pivotAndWeightCandidatesTested": 4428,
+    "viableCandidates": 0,
+    "localRetopologyFamiliesTested": 2,
+    "retopologyTargetContourImprovementPixels": 0
+  },
+  "decisionRequired": [
+    "Allow two additional hip deformation bones and animation/runtime driving",
+    "Allow pose-space corrective blend shapes driven by thigh angle",
+    "Keep exact 20 bones and accept the near-limit 45-degree deformation candidate"
+  ]
+}

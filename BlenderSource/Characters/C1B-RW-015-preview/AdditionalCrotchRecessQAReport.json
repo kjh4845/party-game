@@ -1,0 +1,183 @@
+{
+  "assetId": "CHR_MasterCharacter_C1B_NeutralRework",
+  "revision": "r15",
+  "assetVersion": "0.15.0-local-preview",
+  "sourceRevision": "r14",
+  "sourceIdentity": {
+    "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-014-preview/CHR_MasterCharacter_C1B_NeutralRework_r14.blend",
+    "sha256Before": "5c5096e781ecefa653b5eda9addf64336e5b7a82b0504ed6479fe80f4cc3f717",
+    "sha256After": "5c5096e781ecefa653b5eda9addf64336e5b7a82b0504ed6479fe80f4cc3f717",
+    "sizeBytes": 8749944,
+    "unchanged": true
+  },
+  "construction": "R14_SAME_CROTCH_SUPPORT_ADDITIONAL_4MM_FAIR_C2_RECESS",
+  "process": {
+    "additionalRecessDistance": 0.004,
+    "cumulativeNominalRecessFromR13": 0.007,
+    "zSupport": [
+      0.1265,
+      0.26
+    ],
+    "zPeak": 0.18,
+    "lowerRamp": "21t^5-35t^6+15t^7_C2",
+    "xCore": 0.03,
+    "xSupport": 0.09,
+    "sideWeightStart": 0.65,
+    "sideWeightFull": 0.95,
+    "topologyChangingOperations": 0
+  },
+  "edit": {
+    "supportVertexCount": 17226,
+    "modifiedVertexCount": 16062,
+    "maximumAbsXDelta": 0.0,
+    "maximumAbsYDelta": 0.0040000006556510925,
+    "maximumAbsZDelta": 0.0,
+    "frozenMaximumAbsYDelta": 0.0,
+    "maximumSectionCenterDelta": 1.6305723585380294e-06,
+    "minimumCoreReduction": 0.0012772402483562234,
+    "maximumCoreReduction": 0.003999933434127648,
+    "frontBackReductionMaximumDifference": 8.785749666673226e-08,
+    "minimumRemainingToCenter": 0.05064969577989671,
+    "volumeRelativeDelta": 0.0012696404624673284
+  },
+  "profileFairness": {
+    "source": {
+      "back": {
+        "sampleCount": 52,
+        "secondDerivativeRms": 20.984976572377715,
+        "thirdDerivativeRms": 1992.1250258278317,
+        "curvatureSignChanges": 2
+      },
+      "front": {
+        "sampleCount": 52,
+        "secondDerivativeRms": 20.917515803561137,
+        "thirdDerivativeRms": 2015.738813214112,
+        "curvatureSignChanges": 2
+      }
+    },
+    "final": {
+      "back": {
+        "sampleCount": 52,
+        "secondDerivativeRms": 18.327771952244586,
+        "thirdDerivativeRms": 1852.832097723864,
+        "curvatureSignChanges": 2
+      },
+      "front": {
+        "sampleCount": 52,
+        "secondDerivativeRms": 18.26167439306253,
+        "thirdDerivativeRms": 1872.8176226313922,
+        "curvatureSignChanges": 2
+      }
+    }
+  },
+  "boundaryBilaplacian": {
+    "source": {
+      "sampleCount": 4112,
+      "rms": 5.061036961201547e-06,
+      "p99": 2.9492306057363713e-05,
+      "maximum": 5.029304884374142e-05
+    },
+    "final": {
+      "sampleCount": 4112,
+      "rms": 5.06310727089913e-06,
+      "p99": 2.951134260122981e-05,
+      "maximum": 5.029304884374142e-05
+    }
+  },
+  "preservation": {
+    "headCoordinateMaximumDelta": 0.0,
+    "headMatrixMaximumDelta": 0.0
+  },
+  "sourceTopology": {
+    "vertices": 227942,
+    "edges": 455880,
+    "faces": 227940
+  },
+  "targetTopology": {
+    "vertices": 227942,
+    "edges": 455880,
+    "faces": 227940
+  },
+  "topology": {
+    "vertices": 227942,
+    "edges": 455880,
+    "faces": 227940,
+    "allQuads": true,
+    "boundaryEdges": 0,
+    "nonManifoldEdges": 0,
+    "looseEdges": 0,
+    "degenerateFaces": 0,
+    "components": 1,
+    "eulerCharacteristic": 2,
+    "signedVolume": 0.04525229374766024
+  },
+  "manifold": {
+    "boundaryEdgeCount": 0,
+    "nonManifoldEdgeCount": 0,
+    "looseEdgeCount": 0,
+    "connectedComponents": 1,
+    "eulerCharacteristic": 2,
+    "degenerateFaceCount": 0,
+    "signedVolume": 0.04525229374766024,
+    "result": "PASS"
+  },
+  "mirror": {
+    "axis": "X",
+    "tolerance": 1e-06,
+    "unmatchedVertexCount": 0,
+    "maximumPositionDeviation": 1.8849563332423713e-07,
+    "result": "PASS"
+  },
+  "fold": {
+    "adjacentAngleMaximumDegrees": 6.6016177432119205,
+    "foldoverEdgeCountAt90Degrees": 0,
+    "hardEdgeCountAt45Degrees": 0,
+    "result": "PASS"
+  },
+  "foldMaximumDiagnostic": {
+    "angleDegrees": 6.6016177432119205,
+    "vertexCoordinates": [
+      [
+        0.0024553854018449783,
+        -0.00786312110722065,
+        0.12663674354553223
+      ],
+      [
+        0.0025508308317512274,
+        -0.0050803846679627895,
+        0.12636585533618927
+      ]
+    ],
+    "midpoint": [
+      0.0025031082332134247,
+      -0.006471753120422363,
+      0.12650129199028015
+    ]
+  },
+  "bvhSelfIntersection": {
+    "triangleCount": 455880,
+    "rawUniqueOverlapPairCount": 0,
+    "nonAdjacentOverlapPairCount": 0,
+    "result": "PASS"
+  },
+  "headBodyOverlap": 0.009677767753601074,
+  "runtimeModifierCount": 0,
+  "renderFiles": [
+    "CHR_MasterCharacter_C1B_NeutralRework_r15_Neutral_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r15_Neutral_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r15_Neutral_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r15_Neutral_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r15_Silhouette_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r15_Silhouette_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r15_Silhouette_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r15_Silhouette_ThreeQuarter.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r15_RakeLight_Front.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r15_RakeLight_Side.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r15_RakeLight_Back.png",
+    "CHR_MasterCharacter_C1B_NeutralRework_r15_RakeLight_ThreeQuarter.png"
+  ],
+  "missingRenderFiles": [],
+  "userVisualApprovalRecorded": false,
+  "productionTopologyApproved": false,
+  "technicalResult": "PASS"
+}

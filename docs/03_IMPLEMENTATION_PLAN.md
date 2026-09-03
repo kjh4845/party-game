@@ -8,7 +8,7 @@
 | 기준일 | 2026-08-26 |
 | 현재 목표 | Alpha에서 2·3·4인 전체 흐름과 실제 무기 전투를 검증한 뒤 Steam 통합 |
 | 기준 문서 | PRD 1.8.0, SRS 1.8.0, PATCH_DESIGN 0.5.0과 현행 분야별 사양 |
-| 현재 구현 상태 | Foundation은 완료. C1B-002..005와 C1BRW r01 기술 Evidence/source/profile은 역사적으로 유효하지만 current visual acceptance에서는 `REWORK_REQUIRED`. Round head·visible neck0·head direct torso attachment·torso-arm visible seam0의 r02 Neutral은 기술 검증 완료, `C1BRW-003 / UG-C1B-NEUTRAL` USER_REVIEW; 승인 전 Pose·Animation·FBX·Unity import0. Gameplay/Network code·Rig/Collider·Player Build 없음 |
+| 현재 구현 상태 | Foundation은 완료. 역사 C1B와 r01/r02 기술 Evidence는 보존하며 r02 visual·r03·r04·r05·r06·r07·r08·r09·r10은 `REWORK_REQUIRED / SUPERSEDED`. Blender5.2 회색 r11은 몸통 폭·깊이의 반복 저주파 굴곡을 연속 profile로 재형성하고 shoulder/axilla broad blend와 전신 fairing을 적용한 connected Mesh다. `227942/455880/227940`, triangle/quad `0/227940`, runtime modifier0, component1/Euler2, manifold·BVH·45° hard edge·foldover·exact mirror QA, adjacent angle max `6.843839°`, visible arm center max deviation `6.694555e-5H`, r10 signed volume 복원, render12와 독립 reviewer3 blocker0가 PASS인 `LOCAL_USER_REVIEW`다. user visual/production topology approval=false, 승인 전 Rig·Commit/push/LFS/Evidence·Pose clip·Animation·FBX·Unity import·Build0. Gameplay/Network code·Collider 없음 |
 | 계획 규모 | 178 Task, 258.0 집중 개발일 |
 | 자동화 금지 | Unity Player Build, Steam 배포, 외부 서비스 배포 |
 
@@ -192,9 +192,9 @@ BLOCKED, DEFERRED, REWORK_REQUIRED를 사용한다. `REWORK_REQUIRED`는 당시 
 | C1B-003 | 2 | 역사 6-part faceted Blockout | C1B-002 | CHAR | Blender source·render8·Evidence | 당시 source/render/LFS 기술 PASS 보존; current visual acceptance=`REWORK_REQUIRED`, superseded | — | REWORK_REQUIRED |
 | C1B-004 | 1.5 | 역사 static Pose8·4인 lineup | C1B-003 | CHAR | pose/lineup bundle·Evidence | 당시 기술 PASS 보존; current visual acceptance=`REWORK_REQUIRED`, 새 Neutral에서 재파생 | — | REWORK_REQUIRED |
 | C1B-005 | 1.5 | 역사 FBX/Unity static parity | C1B-003..004,FDN-002 | CHAR | FBX·Prefab·capture8·Evidence | 당시 parity 기술 PASS 보존; current visual acceptance=`REWORK_REQUIRED`, superseded geometry 전달 결과 | — | REWORK_REQUIRED |
-| C1BRW-001 | 1.5 | v0.13 방향 lean profile revision | C1B-001,DOC-005,ART-001 | CHAR | r01 immutable history + `CharacterProportionProfile-C1BRW-001-r02` | r01 technical Evidence 보존·visual result=`REWORK_REQUIRED`; r02에 round head·visible neck0·direct attachment·torso-arm seam0와 no-pixel-overfit 기록 | — | PASSED |
-| C1BRW-002 | 2 | Neutral revision 제작·기술 검토 | C1BRW-001 | CHAR | r01 history + r02 `.blend`·fixed Neutral/Silhouette8 | r02 SHA `548a786a…6e252`, bytes520225, H/W/D `1/.4725346267223358/.23389440774917603`, object/component `1/2`, V/E/P `11394/24864/13470`, topology·UV error0, camera/render4/8, START/USER_REVIEW; visual approval·production topology·Build0 | — | PASSED |
-| C1BRW-003 | 0.5 | r02 Neutral 방향 사용자 승인 | C1BRW-002 | CHAR | decision record | round head, visible neck·authored Neck node0, head direct torso overlap, torso→shoulder→arm visible seam/groove/step/cap/detached boundary0, U-crotch/leg·terminal을 four-view 승인. 미승인 시 Pose/Animation/FBX/Unity import0 | UG-C1B-NEUTRAL | USER_REVIEW |
+| C1BRW-001 | 1.5 | v0.13 방향 profile revision | C1B-001,DOC-005,ART-001 | CHAR | immutable history + r03..011 preview decisions | r02 visual·r03·r04·r05·r06·r07·r08·r09·r10=`REWORK_REQUIRED/SUPERSEDED`; r11 globally-faired T-pose surface가 current input | — | REWORK_REQUIRED |
+| C1BRW-002 | 2 | Neutral/T-pose revision 제작·기술 검토 | C1BRW-001 | CHAR | r11 workspace generator·local `.blend`·GlobalFairQAReport·render12 | component1/Euler2, all-quad `227940`, `227942/455880/227940`, runtime modifier0, boundary/nonmanifold/loose/degenerate·BVH overlap·45° hard edge·90° foldover0, adjacent angle max `6.843839°`, exact X mirror max `1.884956e-7H`, visible arm center max deviation `6.694555e-5H`, QA PASS. torso width/depth profile refit, shoulder/axilla broad blend, high-resolution whole-body fair, r10 volume restore. Static Armature0 | — | IN_PROGRESS |
+| C1BRW-003 | 0.5 | r11 globally-faired T-pose 방향 사용자 승인 | C1BRW-002 | CHAR | decision record | Neutral4·Silhouette4·Rake4에서 horizontal T-pose, continuous torso/shoulder/arm, shallow rounded axilla, single-flow bean torso/continuous leg, direct round head, eyes/hands0와 전신 high/low-frequency ripple0를 확인. 독립 reviewer3 blocker0 `FIT_TO_SHOW`이나 userVisualApproval=false·productionTopologyApproval=false이며 미승인 시 Rig/Commit/push/LFS/Evidence/Pose clip/Animation/FBX/Unity/Build0 | UG-C1B-NEUTRAL | USER_REVIEW |
 | C1BRW-004 | 1.5 | 승인 Neutral에서 Pose8·4인 lineup 재파생 | C1BRW-003 | CHAR | new pose/lineup bundle | exact Pose8·overlap/spread, visible open hole·exposed cap0, static 방향 판독; Animation claim0 | — | NOT_STARTED |
 | C1BRW-005 | 1.5 | 승인 Neutral의 FBX/Unity parity 재검증 | C1BRW-004,FDN-002 | CHAR | new FBX·identity Prefab·capture8 | source 불변·manual correction0, scale·axis·surface·four-view parity와 LFS/license; Rig/Collider/Animation·Build0 | — | NOT_STARTED |
 | C1B-006 | 0.5 | exact profile 최종 사용자 승인 | C1B-001,C1BRW-001,C1BRW-002,C1BRW-003,C1BRW-004,C1BRW-005 | CHAR | approved profile | Neutral Gate를 통과한 ID·version·수치·Pose·Unity 결과 명시 | UG-C1B | BLOCKED |
@@ -410,8 +410,8 @@ Workshop, 공식 맵 6개, Patch40, 가격·상점·출시 운영은 Steam 통�
 4. FDN-002 Unity project, FDN-003 module boundary
 5. FDN-004..009 package·test·local storage·forbidden-infrastructure guard
 6. ART-001 style/interoperability profile, LIC-001 license inventory, BLD-001 수동 Build Profile 준비
-7. `C1BRW-002` r02 Neutral을 제시하고 `C1BRW-003 / UG-C1B-NEUTRAL` 승인. 승인 전 Pose·Animation·FBX·Unity import0
-8. 승인 r02 Neutral의 `C1BRW-004..005` Pose·Animation·Unity parity 뒤 `C1B-006 / UG-C1B` 최종 승인
+7. `C1BRW-002` local r11 globally-faired T-pose Neutral/Silhouette/Rake를 제시하고 `C1BRW-003 / UG-C1B-NEUTRAL` 승인. 승인 전 Rig·Commit·LFS·Evidence·Pose clip·Animation·FBX·Unity import·Build0
+8. 승인 r11 T-pose를 canonical 승격한 뒤 `C1BRW-004..005` Pose·Animation·Unity parity와 `C1B-006 / UG-C1B` 최종 승인
 9. G1 Character/Input·AIR·Alpha Action Animation부터 한 Task씩 실행
 10. WPA-001..003으로 네 Weapon low-poly 결과를 잠근 뒤 WPN 구현 시작
 11. UG-W1 뒤 FIR-001..003으로 7/30 no-reload state, Projectile, Recoil/Spread를 분리 구현
@@ -423,7 +423,7 @@ Player Build, Steam 배포와 외부 서비스 실행은 이 자동 순서에 �
 
 - 모든 Task는 0.5~2일이며 하나의 검증 가능한 결과를 가진다.
 - Plan은 178 Task·258.0일이며 역사 C1B PASS Evidence를 보존한 채 C1B rework chain `C1BRW-001..005`가 current acceptance를 소유한다.
-- r02 `UG-C1B-NEUTRAL` 전에는 새 Pose·Animation·FBX·Unity import를 만들지 않고, 이후 `UG-C1B` 최종 승인을 별도로 받는다.
+- r11 `UG-C1B-NEUTRAL` 전에는 Rig·Commit·LFS·Evidence 승격이나 새 Pose clip·Animation·FBX·Unity import·Build를 만들지 않고, 이후 `UG-C1B` 최종 승인을 별도로 받는다.
 - Host Start는 Guest 전원 Ready 전에는 활성화되지 않는다.
 - Shift Sprint, Esc Cursor toggle, Tab Hold/Toggle와 DownCount reset이 각각 구현·검증 Task를 가진다.
 - Ground hand Punch/Grab과 Air L/R Kick·dual-click Dropkick·Hold Ledge Grab이 결정적 resolver와

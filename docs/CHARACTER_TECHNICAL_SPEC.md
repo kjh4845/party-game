@@ -4,8 +4,8 @@
 
 | 항목 | 내용 |
 |---|---|
-| 문서 버전 | 0.12.0 C1B Static Interop Baseline + 2026-08-30 Neutral Rework Addendum |
-| 최종 수정일 | 2026-08-30 |
+| 문서 버전 | 0.12.0 C1B Static Interop Baseline + 2026-09-01 r11 Global Fair T-Pose Addendum |
+| 최종 수정일 | 2026-09-01 |
 | 상위 기준 | `01_PRD.md` 1.8.0, `02_SRS.md` 1.8.0 |
 | 목적 | `MasterCharacter`의 승인 방향, 제작 Gate, 물리·입력·Paint·Cosmetic·무기 통합 기준 정의 |
 | 우선순위 | 게임 규칙은 PRD/SRS, 패치 콘텐츠는 `PATCH_DESIGN.md` 0.5.0, 시각 언어는 `ART_DIRECTION.md` 1.9.0, 구체 캐릭터 제작은 본 문서 |
@@ -13,23 +13,23 @@
 이 문서는 결과와 승인 기준을 정의한다. 구현체의 바이너리 배치, 내부 직렬화 수식과 반복 fixture
 개수는 구현·테스트 문서에서 관리하며 캐릭터의 제품 방향으로 취급하지 않는다.
 
-### 0.0 2026-08-30 Neutral Rework 결정
+### 0.0 2026-09-01 r11 Global Fair T-Pose 결정
 
 - C1B-002..005는 당시 수치·Blender·Pose·FBX/Unity 기술 Evidence로는 PASS였지만, v0.13의 부드러운 한 몸
   방향과 다른 faceted head, egg/peg body, exposed proximal cap과 detached-looking limb 때문에 current visual
   acceptance에서는 `REWORK_REQUIRED`다. 역사 Evidence와 Commit은 수정하지 않는다.
-- r01 Neutral의 기술 Evidence와 source/profile은 역사로 보존하지만, rounded-square head와 authored neck 때문에 현재
-  시각 결과는 `REWORK_REQUIRED`이며 r02가 이를 대체한다. r02는 round head, visible neck `0`, head와 torso의 직접
-  overlap/attachment, torso→shoulder→arm visible seam·groove·step·cap·detached boundary `0`, continuous
-  U-crotch/leg와 rounded terminal을 사용한다. Pixel distance, vertex 수 또는 특정 topology를 v0.13에서 역산하지 않는다.
-- C1B rework chain의 r02 Neutral four-view를 사용자가 `UG-C1B-NEUTRAL`에서 먼저 승인해야 한다. 이 Gate 전에는 새 Pose,
-  FBX, Unity import, Rig와 Collider를 만들지 않는다.
-- 현재 USER_REVIEW candidate `CHR_MasterCharacter_C1B_NeutralRework_r02`는 SHA-256
-  `548a786a50eb28dc8e2b12fe2cf2ddc4032471d8774ff1fa4c02e0f667d6e252`, `520225 bytes`, H/W/D
-  `1/.4725346267223358/.23389440774917603`, object `1`, closed component `2`, V/E/P
-  `11394/24864/13470`, topology error·UV layer `0`, camera/render `4/8`, scene `START/USER_REVIEW`다. 두 component는 seamless body field와 직접
-  overlap한 closed round head이며 visible neck이나 authored Neck semantic node는 `0`이다. 이 수치는 재현 identity이며 visual approval이나
-  production topology lock이 아니다.
+- r01/r02 technical source·Evidence와 r03..r10 시도는 역사로 보존하지만 current visual result는
+  `REWORK_REQUIRED / SUPERSEDED`다. r11은 r10의 round head, visible neck0와 T-pose를 유지하면서 몸통 폭·깊이
+  저주파 profile 자체를 재형성하고 shoulder/axilla broad blend와 전신 fairing을 적용한다.
+  Pixel distance나 특정 production topology를 reference에서 역산하지 않는다.
+- C1B rework chain의 r11 Neutral/Silhouette/Rake 12-view를 사용자가 `UG-C1B-NEUTRAL`에서 먼저 승인해야 한다.
+  이 Gate 전에는 Rig, Pose clip, Animation, FBX, Unity import, Collider, Build, Commit/push/LFS 승격을 만들지 않는다.
+- 현재 USER_REVIEW candidate `CHR_MasterCharacter_C1B_NeutralRework_r11`은 Body component1/Euler2,
+  `227942V/455880E/227940F`, triangle/quad `0/227940`, runtime modifier0, topology error0,
+  adjacent angle max `6.843839°`, exact mirror max `1.884956e-7H`, visible T-arm center max deviation
+  `6.694555e-5H`, r10 signed volume 오차 `4.489624e-11`, camera/render `4/12`,
+  scene `LOCAL_USER_REVIEW`다. Head는 별도 closed round direct-contact Mesh이고 visible neck·authored Neck node·eyes·hands는0다.
+  이 수치는 visual approval이나 production topology lock이 아니다.
 
 ### 0.1 0.12.0 변경 요약
 
@@ -132,7 +132,7 @@ Material, Animation 또는 수치를 복제하지 않는다. UI 기준 이미지
 Gate를 건너뛰지 않는다. C2·C3에서 비율이나 reach 문제가 발견되면 Physics 값을 억지로 보정하지
 않고 C1b minor revision으로 돌아가 다시 승인한다.
 
-`C1b Neutral Review`는 `C1b Exact Proportion`을 대신하지 않는다. r02 Neutral 조형을 먼저 승인한 뒤에만
+`C1b Neutral Review`는 `C1b Exact Proportion`을 대신하지 않는다. r11 globally-faired T-pose 조형을 먼저 승인한 뒤에만
 Pose8·lineup/Animation과 FBX/Unity parity를 만들고, 마지막 `UG-C1B`에서 수치·Pose·Unity 결과를 함께 승인한다.
 
 ### 2.1 C1b 필수 자료
@@ -696,7 +696,7 @@ material-slot mapping, Skeleton과 mount pivot을 비교한다.
 
 ## 12. 미승인·Alpha tuning 항목
 
-- `C1BRW-002` current Neutral의 `UG-C1B-NEUTRAL` 시각 승인, 이후 C1b exact 비율과 전체 gameplay scale
+- `C1BRW-002` current r11 globally-faired T-pose의 `UG-C1B-NEUTRAL` 시각 승인, 이후 C1b exact 비율과 전체 gameplay scale
 - Collider·mass·Joint·reach와 `GrabHoldThresholdMs`
 - `DualClickChordWindow 60/80/100ms`, Kick·Dropkick impulse/knockback·steering과 DropkickRecovery tuning
 - Sprint multiplier

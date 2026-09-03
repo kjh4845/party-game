@@ -4,9 +4,9 @@
 
 | 항목 | 값 |
 |---|---|
-| 기준일 | 2026-08-30 |
+| 기준일 | 2026-09-01 |
 | 현재 목표 | `Alpha = Vertical Slice`; Steam 제품 통합 전 LAN/direct endpoint 2·3·4인 완성 |
-| 캐릭터 상태 | `Hybrid Core v0.13` C1a 방향은 유지. 역사 C1B-002..005와 C1BRW r01 기술 Evidence/source/profile은 보존하지만 current visual result는 `REWORK_REQUIRED`. Round head·visible neck0·head direct torso attachment·torso-arm visible seam0의 r02 Neutral이 현재 `C1BRW-003 / UG-C1B-NEUTRAL` USER_REVIEW이며 승인 전 Pose·Animation·FBX·Unity import0 |
+| 캐릭터 상태 | 역사 C1B-002..005와 r01/r02 기술 source·Evidence는 보존한다. r02 visual·r03·r04·r05·r06·r07·r08·r09·r10은 `REWORK_REQUIRED / SUPERSEDED`. 현재 r11은 r10의 반복되던 몸통 폭·깊이 저주파 굴곡을 연속 profile로 재형성하고 어깨/겨드랑이 broad blend와 전신 fairing을 적용한 connected Mesh다. `227942/455880/227940`, triangle/quad `0/227940`, runtime modifier0, component1/Euler2, boundary/nonmanifold/loose/degenerate·BVH overlap·45° hard edge·90° foldover0, adjacent angle max `6.843839°`, exact mirror max `1.884956e-7H`, visible arm center max deviation `6.694555e-5H`, r10 signed volume 복원, render12·독립 reviewer3 blocker0 `FIT_TO_SHOW`인 `LOCAL_USER_REVIEW / IN_PROGRESS`; 사용자 시각 승인 미기록. 승인 전 Rig·FBX·Unity·Build·Commit·push·LFS0 |
 | 제품 기준 | PRD 1.8.0 → SRS 1.8.0 → Patch Design 0.5.0·분야별 사양 → 구현계획 2.5 → 추적 부록 1.5 |
 | 충돌 처리 | 가장 최근의 명시적 사용자 결정이 최우선이며 상위 문서를 먼저 수정한 뒤 하위 문서에 전파 |
 
@@ -167,11 +167,11 @@ C1B-005 static parity까지의 현재 상태와 한계는
 
 그 감사의 기술 PASS는 old geometry 전달 결과로서 역사적으로 유효하지만 최신 사용자 시각 acceptance는 아니다.
 현재 승인 입력은 [Neutral 전면 재작업 검토](../artifacts/reports/CHARACTER_REWORK_NEUTRAL_REVIEW.md)다.
-현재 다음 Gate는 r02 `C1BRW-003 / UG-C1B-NEUTRAL`이며, 이 승인 전 Pose·Animation·FBX·Unity import 재작업을 시작하지 않는다.
+현재 다음 Gate는 local r11 globally-faired T-pose preview의 `C1BRW-003 / UG-C1B-NEUTRAL`이며, 이 승인 전 Rig·Commit·LFS·Evidence 승격과 Pose clip·Animation·FBX·Unity import·Build를 시작하지 않는다.
 
 1. 승인 Patch12 실제 기능·2/3/4인 결과 `UG-PATCH12`
-2. `C1BRW-003` r02 Neutral four-view `UG-C1B-NEUTRAL` 승인
-3. 승인 r02 Neutral에서 Pose·Animation·Unity parity를 재생성한 뒤 `C1B-006 / UG-C1B` exact 최종 승인. Collider/reach·physics feel은 후속 `UG-C2`
+2. `C1BRW-003` local r11 globally-faired T-pose Neutral/Silhouette/Rake `UG-C1B-NEUTRAL` 승인
+3. 승인 r11을 canonical source·LFS·Evidence로 승격하고 Pose·Animation·Unity parity를 재생성한 뒤 `C1B-006 / UG-C1B` exact 최종 승인. Collider/reach·physics feel은 후속 `UG-C2`
 4. Punch/Grab threshold 120·150·180ms 비교 결과
 5. Sprint multiplier·가속 tuning
 6. groggy base duration·increment·cap과 feedback
