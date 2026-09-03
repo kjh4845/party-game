@@ -9,6 +9,15 @@
 __pycache__/
 *.py[cod]
 
+# Reproducible intermediate character review output.
+# Keep source meshes, reports, scripts, and the documented/current previews.
+/BlenderSource/Characters/C1B-RW-00[4-9]-preview/Renders/
+/BlenderSource/Characters/C1B-RW-010-preview/Renders/
+/BlenderSource/Characters/C1B-RW-01[2-5]-preview/Renders/
+/BlenderSource/Characters/C1B-RW-017-pose-preview/*.blend
+/BlenderSource/Characters/C1B-RW-017-pose-preview/Renders/
+/BlenderSource/Characters/C1B-RW-019-global-candidates/*.blend
+
 # Unity generated directories (the project lives below the repository root)
 **/[Ll]ibrary/
 **/[Tt]emp/
