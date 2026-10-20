@@ -1,0 +1,469 @@
+--- a/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.cs
++++ b/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.cs
+@@ -15,8 +15,8 @@
+     {
+         private const float Dt=1f/60;
+         private Scene _scene;private ActiveGrabPairReview _pair;
+-        private string Output=>Path.GetFullPath(Path.Combine(Application.dataPath,"../../.codex_tmp/punch-drive-compact-20260917"));
+-        private string Model=>Path.GetFullPath(Path.Combine(Application.dataPath,"../../.codex_tmp/shoulder-reach-20260916/candidate-r02/ShoulderCharacter.bytes"));
++        private string Output=>Environment.GetEnvironmentVariable("PARTY_POLISH_OUTPUT") ?? Path.GetFullPath(Path.Combine(Application.dataPath,"../../.codex_tmp/punch-drive-compact-20260917"));
++        private string Model=>Environment.GetEnvironmentVariable("PARTY_POLISH_MODEL") ?? Path.GetFullPath(Path.Combine(Application.dataPath,"../../.codex_tmp/shoulder-reach-20260916/candidate-r02/ShoulderCharacter.bytes"));
+         private void Create(float distance=.5f,float targetDrop=0,bool wall=false)
+         {
+             Directory.CreateDirectory(Output);_scene=SceneManager.CreateScene("Physical punch",new CreateSceneParameters(LocalPhysicsMode.Physics3D));
+--- a/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs
++++ b/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs
+@@ -283,7 +283,7 @@
+             _punchImpactAge[side]=-1;
+             var upper=Find("UpperArm_"+(side==0?"L":"R"));var forearm=Find("Forearm_"+(side==0?"L":"R"));
+             upper.Joint.angularYLimit=upper.Joint.angularZLimit=new SoftJointLimit{limit=15};
+-            foreach(var link in new[]{upper,forearm}){link.Joint.targetRotation=Quaternion.identity;link.Joint.slerpDrive=link.Drive;link.Body.maxAngularVelocity=18;}
++            foreach(var link in new[]{upper,forearm}){link.Joint.targetRotation=Quaternion.identity;link.Joint.targetAngularVelocity=Vector3.zero;_punchPreviousTarget.Remove(link);link.Joint.slerpDrive=link.Drive;link.Body.maxAngularVelocity=18;}
+             if(!_punchReference[0]&&!_punchReference[1])
+             {
+                 _hitReaction.Clear();
+@@ -378,9 +378,14 @@
+                         var muscle=side==0?_leftPower:_rightPower;
+                         drive.positionSpring=link.Drive.positionSpring*8*muscle;
+                         drive.positionDamper=link.Drive.positionDamper*(link.Name.StartsWith("UpperArm")?2:1.25f)*muscle;
++                        var age=_punchSourceAge[side]/PhysicalPunchReview.PlaybackRate;
++                        var recovery=Smooth((age-.24f)/.11f);
++                        drive.positionSpring*=Mathf.Lerp(1,.65f,recovery);
++                        drive.positionDamper*=Mathf.Lerp(1,1.3f,recovery);
+                         drive.maximumForce=link.Drive.maximumForce*3*muscle;
+                     }
+                 }
++                ApplyPunchVelocity(link,seconds);
+                 var reaction=HitReactionScale(link,seconds);drive.positionSpring*=reaction;drive.maximumForce*=reaction;
+                 link.Joint.slerpDrive = drive;
+             }
+@@ -466,7 +471,7 @@
+         }
+         public void ResetReview()
+         {
+-            _hitReaction.Clear();_punchImpactAge[0]=_punchImpactAge[1]=-1;
++            _hitReaction.Clear();_punchPreviousTarget.Clear();_punchImpactAge[0]=_punchImpactAge[1]=-1;
+             for(var side=0;side<2;side++)
+             {
+                 _punchReference[side]=_punchEntryPending[side]=false;_punchSourceAge[side]=0;
+@@ -489,7 +494,7 @@
+                 link.Body.position = link.StartPosition; link.Body.rotation = link.StartRotation;
+                 link.Body.linearVelocity = link.Body.angularVelocity = Vector3.zero; link.Body.WakeUp();
+                 link.Body.maxAngularVelocity=18;
+-                link.Joint.targetRotation = Quaternion.identity; link.Joint.slerpDrive = link.Drive;
++                link.Joint.targetRotation = Quaternion.identity; link.Joint.targetAngularVelocity=Vector3.zero; link.Joint.slerpDrive = link.Drive;
+             }
+             TargetExercise = Exercise.Rest; LeftPowered = RightPowered = true;
+             _poseWeight = _curlWeight = 0; _leftPower = _rightPower = 1;
+--- a/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Punch.cs
++++ b/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Punch.cs
+@@ -6,18 +6,27 @@
+     public sealed partial class ActiveUpperBodyReview
+     {
+         private readonly float[] _punchImpactAge={-1,-1};
++        private readonly Quaternion[,] _impactTarget=new Quaternion[2,2];
++        private readonly Dictionary<Link,Quaternion> _punchPreviousTarget=new Dictionary<Link,Quaternion>();
+         private readonly float[] _punchCompact=new float[2];
+         private readonly Dictionary<Rigidbody,float> _hitReaction=new Dictionary<Rigidbody,float>();
+         public void ReceivePunchImpact(int side)
+         {
++            if(!_punchReference[side]||_punchImpactAge[side]>=0)return;
+             _punchImpactAge[side]=_punchSourceAge[side]/PhysicalPunchReview.PlaybackRate;
++            for(var part=0;part<2;part++)
++            {
++                var link=Find((part==0?"UpperArm_":"Forearm_")+(side==0?"L":"R"));
++                _impactTarget[side,part]=link.Joint.targetRotation;
++                link.Joint.targetAngularVelocity=Vector3.zero;
++            }
+         }
+         public void ReceivePunchReaction(Rigidbody body){if(_links.Exists(l=>l.Body==body))_hitReaction[body]=0;}
+         private float HitReactionScale(Link link,float seconds)
+         {
+             if(!_hitReaction.TryGetValue(link.Body,out var age))return 1;
+-            age+=seconds;if(age>=.12f){_hitReaction.Remove(link.Body);return 1;}
+-            _hitReaction[link.Body]=age;return Mathf.Lerp(.3f,1,Smooth(age/.12f));
++            age+=seconds;if(age>=.09f){_hitReaction.Remove(link.Body);return 1;}
++            _hitReaction[link.Body]=age;return Mathf.Lerp(.72f,1,Smooth(age/.09f));
+         }
+         private void ApplyPunchBodyReference()
+         {
+@@ -45,24 +54,58 @@
+                 _punchEntryPending[side]=false;
+             }
+             var t=_punchSourceAge[side]/PhysicalPunchReview.PlaybackRate;
+-            // A confirmed impact never skips the extension or adds an artificial
+-            // backwards kick to the fist. Let contact transfer the forward drive.
+-            var throughEnd=_punchImpactAge[side]>=0?Mathf.Clamp(_punchImpactAge[side]+.04f,.20f,.23f):.20f;
+-            var compact=_punchCompact[side];var prepareLift=Mathf.Lerp(45,25,compact);
+-            var extensionLift=Mathf.Lerp(88,55,compact);var extensionFlex=Mathf.Lerp(8,30,compact);
+-            var strikeEnd=Mathf.Lerp(.16f,.125f,compact);
++            // Compact shoulder-led preparation, brief extension, then recovery.
++            // Confirmed contact starts a continuous recoil from the last goal;
++            // it never advances the attack clock or teleports a physical body.
++            var compact=_punchCompact[side];var prepareLift=Mathf.Lerp(42,25,compact);
++            var extensionLift=Mathf.Lerp(86,55,compact);var extensionFlex=Mathf.Lerp(8,30,compact);
++            var strikeEnd=Mathf.Lerp(.15f,.125f,compact);var throughEnd=strikeEnd+1f/60;
+             float lift,flex,aim;
+-            if(t<.09f){lift=prepareLift*Smooth((t-.035f)/.055f);flex=125*Smooth(t/.055f);aim=.2f*Smooth((t-.045f)/.045f);}
+-            else if(t<strikeEnd){var k=Smooth((t-.09f)/(strikeEnd-.09f));lift=Mathf.Lerp(prepareLift,extensionLift,k);flex=Mathf.Lerp(125,extensionFlex,k);aim=Mathf.Lerp(.2f,1,k);}
++            if(t<.085f){lift=prepareLift*Smooth((t-.03f)/.055f);flex=120*Smooth(t/.055f);aim=.2f*Smooth((t-.04f)/.045f);}
++            else if(t<strikeEnd){var k=Smooth((t-.085f)/(strikeEnd-.085f));lift=Mathf.Lerp(prepareLift,extensionLift,k);flex=Mathf.Lerp(120,extensionFlex,k);aim=Mathf.Lerp(.2f,1,k);}
+             else if(t<throughEnd){lift=extensionLift;flex=extensionFlex;aim=1;}
+-            else if(t<.30f){var k=Smooth((t-throughEnd)/(.30f-throughEnd));lift=Mathf.Lerp(extensionLift,35,k);flex=Mathf.Lerp(extensionFlex,95,k);aim=Mathf.Lerp(1,.3f,k);}
+-            else {var k=1-Smooth((t-.30f)/.10f);lift=35*k;flex=95*k;aim=.3f*k;}
++            else if(t<.26f){var k=Smooth((t-throughEnd)/(.26f-throughEnd));lift=Mathf.Lerp(extensionLift,32,k);flex=Mathf.Lerp(extensionFlex,100,k);aim=Mathf.Lerp(1,.3f,k);}
++            else {var k=1-Smooth((t-.26f)/.09f);lift=32*k;flex=100*k;aim=.3f*k;}
+             var yaw=(side==0?-15:15)*aim;
+             SetJointGoal(upper,Quaternion.AngleAxis(lift,Vector3.right)*Quaternion.AngleAxis(yaw,Vector3.up));
+             SetJointGoal(forearm,Quaternion.AngleAxis(flex,Vector3.right));
++            if(_punchImpactAge[side]>=0)
++            {
++                var age=t-_punchImpactAge[side];
++                // One fixed frame of contact, followed by a short controlled recoil.
++                var recoil=Smooth((age-1f/60)/.085f);
++                var settle=1-Smooth((age-.102f)/.10f);
++                var yawSign=side==0?-1:1;
++                var upperReturn=Quaternion.AngleAxis(32*settle,Vector3.right)*Quaternion.AngleAxis(yawSign*4.5f*settle,Vector3.up);
++                var lowerReturn=Quaternion.AngleAxis(100*settle,Vector3.right);
++                SetJointGoal(upper,Quaternion.Slerp(_impactTarget[side,0],upperReturn,recoil));
++                SetJointGoal(forearm,Quaternion.Slerp(_impactTarget[side,1],lowerReturn,recoil));
++            }
+             var entry=Smooth(t/.02f);
+             upper.Goal.localRotation=Quaternion.Slerp(_punchEntry[side][0],upper.Goal.localRotation,entry);
+             forearm.Goal.localRotation=Quaternion.Slerp(_punchEntry[side][1],forearm.Goal.localRotation,entry);
++        }
++        private void ApplyPunchVelocity(Link link,float seconds)
++        {
++            var arm=link.Name.StartsWith("UpperArm")||link.Name.StartsWith("Forearm");
++            var side=link.Name.EndsWith("_L")?0:1;
++            if(!arm||!_punchReference[side]||_gripPosture[side])
++            {link.Joint.targetAngularVelocity=Vector3.zero;_punchPreviousTarget.Remove(link);return;}
++            var target=link.Joint.targetRotation;
++            if(_punchPreviousTarget.TryGetValue(link,out var previous))
++            {
++                var delta=target*Quaternion.Inverse(previous);
++                if(delta.w<0)delta=new Quaternion(-delta.x,-delta.y,-delta.z,-delta.w);
++                delta.ToAngleAxis(out var angle,out var axis);
++                // targetRotation is already the inverse relative rotation in joint
++                // axes. Unity's velocity drive uses the same convention (rad/s).
++                var velocity=angle>.0001f?axis*(Mathf.DeltaAngle(0,angle)*Mathf.Deg2Rad/seconds):Vector3.zero;
++                var impactAge=_punchSourceAge[side]/PhysicalPunchReview.PlaybackRate-_punchImpactAge[side];
++                if(_punchImpactAge[side]>=0&&impactAge<=1f/60+.0001f)velocity=Vector3.zero;
++                link.Joint.targetAngularVelocity=Vector3.ClampMagnitude(velocity,link.Name.StartsWith("UpperArm")?30:50);
++            }
++            else link.Joint.targetAngularVelocity=Vector3.zero;
++            _punchPreviousTarget[link]=target;
+         }
+         private static float Smooth(float value)=>Mathf.SmoothStep(0,1,Mathf.Clamp01(value));
+         private void SetJointGoal(Link link,Quaternion jointTarget)
+--- a/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs
++++ b/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs
+@@ -14,11 +14,11 @@
+         public const double SourceHitStart=.1575,SourceHitEnd=.35;
+         private struct Edge {public int Player,Side;public bool Down;public double? Held;}
+         private struct BodyPose {public Vector3 Position,Velocity,AngularVelocity,Center;public Quaternion Rotation;}
+-        private sealed class Candidate {public int Player,Side,Part;public Rigidbody Body;public Vector3 Point;public float Distance,EndDistance,Closing,SweptClosing,IncomingClosing;}
++        private sealed class Candidate {public int Player,Side,Part;public Rigidbody Body;public Vector3 Point,Normal;public float Distance,EndDistance,Closing,SweptClosing,IncomingClosing;}
+         [Serializable] public sealed class Hit
+         {
+             public ulong tick,action;public int attacker,target,side,points,total;
+-            public string region,part;public Vector3 position;
++            public string region,part;public Vector3 position,normal;
+             public float sourceAge,tipDistance,endTipDistance,closingSpeed,impulse,sweptClosingSpeed,incomingClosingSpeed;
+         }
+         private readonly ActiveGrabPairReview _pair;
+@@ -37,8 +37,10 @@
+         private readonly List<Hit> _hits=new List<Hit>();
+         private readonly bool[] _threshold=new bool[2];
+         private double _time;private float _seconds;private uint _generation=1;
+-        public float TipRadius=.03f,ContactTolerance=.002f,MinimumClosingSpeed=.15f;
++        public float TipRadius=.03f,ContactTolerance=.002f,MinimumClosingSpeed=.35f;
+         public float ImpulseNewtonSeconds=20,MaximumPartDeltaSpeed=1;
++        public const float MinimumFacingDot=.25f;
++        public int RejectedGlancing {get;private set;}
+         public int RejectedOutsideTip {get;private set;}
+         public int RejectedMotion {get;private set;}
+         public int PhysicalContactsInWindow {get;private set;}
+@@ -150,6 +152,10 @@
+                     // poses; never enlarge it to include the middle of the arm.
+                     var distance=SweptTipDistance(own,tip,other,point,before);
+                     if(distance>TipRadius+ContactTolerance){RejectedOutsideTip++;continue;}
++                    // Side/back grazes are physical contacts, but not a forward
++                    // punch. Require a surface facing the incoming strike.
++                    if(Vector3.Dot(-collision.GetContact(c).normal,_forward[player])<MinimumFacingDot)
++                    {RejectedGlancing++;continue;}
+                     var local=Quaternion.Inverse(other.rotation)*(point-other.position);var motion=point-(before.Position+before.Rotation*local);
+                     var sweptClosing=Vector3.Dot(tip-_tip[player,side]-motion,_forward[player])/_seconds;
+                     // The solver may already stop or rebound a real impact before
+@@ -162,7 +168,7 @@
+                     if(closing<MinimumClosingSpeed){RejectedMotion++;continue;}
+                     var part=Array.FindIndex(targetRig.Links.ToArray(),l=>l.Body==other);var previous=_candidates[player,side];
+                     if(previous==null||distance<previous.Distance-1e-6f||Mathf.Abs(distance-previous.Distance)<=1e-6f&&part<previous.Part)
+-                        _candidates[player,side]=new Candidate{Player=player,Side=side,Part=part,Body=other,Point=point,Distance=distance,EndDistance=endDistance,Closing=closing,SweptClosing=sweptClosing,IncomingClosing=incomingClosing};
++                        _candidates[player,side]=new Candidate{Player=player,Side=side,Part=part,Body=other,Point=point,Normal=collision.GetContact(c).normal,Distance=distance,EndDistance=endDistance,Closing=closing,SweptClosing=sweptClosing,IncomingClosing=incomingClosing};
+                 }
+             }
+         }
+@@ -180,7 +186,7 @@
+                 _pair.Players[player].Rig.ReceivePunchImpact(side);
+                 _pair.Players[target].Rig.ReceivePunchReaction(hit.Body);
+                 _feedback.Confirm(region==PunchHitRegion.Head,_pair.ReadKeyboard&&!_pair.ManualStep,_pair.View);
+-                _hits.Add(new Hit{tick=_pair.Tick,action=action,attacker=player,target=target,side=side,points=region==PunchHitRegion.Head?2:1,total=_scores[target].Points,region=region.ToString(),part=hit.Body.name,position=hit.Point,sourceAge=(float)_states[player].SourcePunchAge(side),tipDistance=hit.Distance,endTipDistance=hit.EndDistance,closingSpeed=hit.Closing,impulse=impulse,sweptClosingSpeed=hit.SweptClosing,incomingClosingSpeed=hit.IncomingClosing});
++                _hits.Add(new Hit{tick=_pair.Tick,action=action,attacker=player,target=target,side=side,points=region==PunchHitRegion.Head?2:1,total=_scores[target].Points,region=region.ToString(),part=hit.Body.name,position=hit.Point,normal=hit.Normal,sourceAge=(float)_states[player].SourcePunchAge(side),tipDistance=hit.Distance,endTipDistance=hit.EndDistance,closingSpeed=hit.Closing,impulse=impulse,sweptClosingSpeed=hit.SweptClosing,incomingClosingSpeed=hit.IncomingClosing});
+                 if(_pair.ReadKeyboard)Debug.Log($"Physical punch: P{player+1} {(side==0?"L":"R")} → P{target+1} {region}, {_scores[target].Points}/10"+(_threshold[target]?" — Down request recorded; transition is the next review stage.":""),_pair);
+             }
+         }
+@@ -190,7 +196,7 @@
+         }
+         public void Reset()
+         {
+-            Suppress();_generation++;_hits.Clear();ThresholdRequests=RejectedMotion=RejectedOutsideTip=PhysicalContactsInWindow=0;
++            Suppress();_generation++;_hits.Clear();ThresholdRequests=RejectedMotion=RejectedGlancing=RejectedOutsideTip=PhysicalContactsInWindow=0;
+             if(_feedback!=null)_feedback.Clear();
+             for(var p=0;p<2;p++){_states[p].Reset();_scores[p].Reset(_generation);_threshold[p]=false;}
+         }
+--- a/Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs
++++ b/Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs
+@@ -55,12 +55,15 @@
+         [MenuItem("Project Hotfix/Prototypes/Standing Skin Contact/Contact Comparison Only")]
+         public static void OpenStandingSkinComparison()=>OpenStandingContact(false);
+         [MenuItem("Project Hotfix/Prototypes/Open Physical Punch Candidate")]
+-        public static void OpenPhysicalPunchCandidate()=>OpenStandingContact(true,true);
+-        private static void OpenStandingContact(bool lift,bool punch=false)
++        public static void OpenPhysicalPunchCandidate()=>OpenStandingContact(true,true,true);
++        [MenuItem("Project Hotfix/Prototypes/Open Punch With Previous Surface")]
++        public static void OpenPunchPreviousSurface()=>OpenStandingContact(true,true);
++        private static void OpenStandingContact(bool lift,bool punch=false,bool polishedSurface=false)
+         {
+             if(!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())return;
+             EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Single);
+             var skin=System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.dataPath,"../../.codex_tmp/shoulder-reach-20260916/candidate-r02/ShoulderCharacter.bytes"));
++            if(polishedSurface)skin=System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.dataPath,"../../BlenderSource/Characters/C1B-RW-021-surface-polish-r02/SurfaceCharacter.bytes"));
+             var review=ActiveGrabPairReview.Create(SceneManager.GetActiveScene(),.65f,ActiveGrabPairReview.GrabMotion.AdaptiveReach,skin,matchHandEnvelope:true);
+             review.EnableStandingSkinContacts=true;review.EnableLiftThrow=lift;review.EnablePhysicalPunch=punch;Selection.activeGameObject=review.gameObject;
+         }
+--- /dev/null
++++ b/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Polish.cs
+@@ -0,0 +1,102 @@
++using System.Collections;
++using System.IO;
++using NUnit.Framework;
++using UnityEngine;
++using UnityEngine.SceneManagement;
++using UnityEngine.TestTools;
++namespace ProjectHotfix.Physics.Tests
++{
++    public sealed partial class PhysicalPunchCandidateTests
++    {
++        [UnityTest] public IEnumerator ProbeJointVelocityConvention()
++        {
++            _scene=SceneManager.CreateScene("Velocity convention",new CreateSceneParameters(LocalPhysicsMode.Physics3D));
++            var rows=new System.Collections.Generic.List<string>();
++            foreach(var mode in new[]{"Rotation","Velocity"})
++            {
++                var go=new GameObject(mode);SceneManager.MoveGameObjectToScene(go,_scene);var body=go.AddComponent<Rigidbody>();body.useGravity=false;body.maxAngularVelocity=20;
++                var joint=go.AddComponent<ConfigurableJoint>();joint.rotationDriveMode=RotationDriveMode.Slerp;
++                joint.slerpDrive=new JointDrive{positionSpring=mode=="Rotation"?100:0,positionDamper=10,maximumForce=100};
++                joint.targetRotation=mode=="Rotation"?Quaternion.Euler(30,0,0):Quaternion.identity;
++                joint.targetAngularVelocity=mode=="Velocity"?Vector3.right:Vector3.zero;
++                for(var i=0;i<30;i++)_scene.GetPhysicsScene().Simulate(1f/60);
++                Assert.That(Mathf.DeltaAngle(0,body.rotation.eulerAngles.x),Is.LessThan(-10),"Positive joint targets must rotate the body in the inverse direction");
++                rows.Add(mode+" angle="+Mathf.DeltaAngle(0,body.rotation.eulerAngles.x)+" angularVelocity="+body.angularVelocity.x);
++            }
++            Directory.CreateDirectory(Output);File.WriteAllLines(Path.Combine(Output,"VelocityConvention.txt"),rows);yield return null;
++        }
++        [UnityTest] public IEnumerator PunchVelocityIsBoundedAndClearsOnCancelAndReset()
++        {
++            foreach(var reset in new[]{false,true})
++            {
++                Create(.7f);Tap(0,0);var peak=0f;
++                for(var i=0;i<8;i++)
++                {
++                    Tick();foreach(var name in new[]{"UpperArm_L","Forearm_L"})
++                    {
++                        var speed=_pair.Players[0].Rig.Find(name).Joint.targetAngularVelocity.magnitude;
++                        peak=Mathf.Max(peak,speed);Assert.That(speed,Is.LessThanOrEqualTo(50.001f));
++                    }
++                }
++                Assert.That(peak,Is.GreaterThan(1));
++                if(reset)_pair.ResetReview();else _pair.SetSuppressed(true);
++                foreach(var player in _pair.Players)foreach(var link in player.Rig.Links)
++                    Assert.That(link.Joint.targetAngularVelocity.sqrMagnitude,Is.LessThan(1e-8f));
++                var op=SceneManager.UnloadSceneAsync(_scene);while(!op.isDone)yield return null;
++            }
++        }
++        private IEnumerator SidePhoto(string file)
++        {
++            yield return null;_pair.Present(1);
++            var center=(_pair.Players[0].Rig.Actor.Motor.Body.position+_pair.Players[1].Rig.Actor.Motor.Body.position)*.5f+Vector3.up*.46f;
++            _pair.View.transform.SetPositionAndRotation(center+new Vector3(-2.2f,.30f,0),Quaternion.LookRotation(new Vector3(2.2f,-.30f,0)));
++            var rt=new RenderTexture(960,640,24);rt.Create();var image=new Texture2D(960,640,TextureFormat.RGB24,false);
++            _pair.View.targetTexture=rt;_pair.View.aspect=1.5f;_pair.View.orthographicSize=.62f;_pair.View.Render();
++            var previous=RenderTexture.active;RenderTexture.active=rt;image.ReadPixels(new Rect(0,0,960,640),0,0);image.Apply();RenderTexture.active=previous;
++            File.WriteAllBytes(Path.Combine(Output,file+".png"),image.EncodeToPNG());_pair.View.targetTexture=null;rt.Release();UnityEngine.Object.Destroy(rt);UnityEngine.Object.Destroy(image);
++        }
++        [UnityTest,Timeout(300000)] public IEnumerator CapturePolishMotionAndSurface()
++        {
++            foreach(var mode in new[]{"AirMotion","ContactMotion"})
++            {
++                Create(mode=="AirMotion"?.7f:.38f);
++                _pair.View.transform.position=new Vector3(-2.2f,.95f,.5f);
++                _pair.View.transform.LookAt(new Vector3(0,.45f,0));
++                var skin=System.Linq.Enumerable.Single(_pair.Players[0].Rig.Actor.Pose.GetComponentsInChildren<SkinnedMeshRenderer>(),x=>x.name.EndsWith("SkinnedBody"));
++                var mesh=new Mesh();var triangles=skin.sharedMesh.triangles;var pairs=CameraGaitReviewTests.Pairs(triangles);var surface=0f;
++                Directory.CreateDirectory(Path.Combine(Output,mode));
++                for(var tick=0;tick<90;tick++)
++                {
++                    if(tick==10)Buttons(0,1);if(tick==12)Buttons(0,0);
++                    if(tick==50)Buttons(0,2);if(tick==52)Buttons(0,0);
++                    Tick();skin.BakeMesh(mesh);surface=Mathf.Max(surface,CameraGaitReviewTests.Surface(mesh.vertices,triangles,pairs,out _));
++                    yield return SidePhoto(mode+"/Frame_"+tick.ToString("D3"));
++                }
++                File.WriteAllText(Path.Combine(Output,mode+"_Surface.txt"),"maximumAdjacentFaceAngle="+surface);
++                Assert.That(surface,Is.LessThan(60),"No sharp folded skin during either physical punch");
++                UnityEngine.Object.Destroy(mesh);
++                var op=SceneManager.UnloadSceneAsync(_scene);while(!op.isDone)yield return null;
++            }
++        }
++        [UnityTest] public IEnumerator CapturePolishComparison()
++        {
++            foreach(var mode in new[]{"Air","Contact","Right","Wall","NonTip"})
++            {
++                var side=mode=="Right"?1:0;Create(mode=="Air"?.70f:.38f,mode=="NonTip"?.25f:0,mode=="Wall");
++                _pair.View.transform.position=new Vector3(-1.7f,.9f,1.6f);
++                _pair.View.transform.LookAt(new Vector3(0,.47f,0));
++                yield return Photo(mode+"_00");
++                Tap(0,side);
++                for(var tick=0;tick<40;tick++)
++                {
++                    Tick();
++                    if(tick==3||tick==6||tick==8||tick==11||tick==15||tick==23||tick==35)
++                        yield return Photo(mode+"_"+(tick+1).ToString("D2"));
++                }
++                File.WriteAllText(Path.Combine(Output,mode+"_Hits.json"),"["+string.Join(",",System.Linq.Enumerable.Select(_pair.PhysicalPunches.Hits,h=>JsonUtility.ToJson(h)))+"]");
++                Assert.That(_pair.PhysicalPunches.State(0).PunchCount,Is.EqualTo(1));
++                var op=SceneManager.UnloadSceneAsync(_scene);while(!op.isDone)yield return null;
++            }
++        }
++    }
++}
+--- /dev/null
++++ b/tools/blender/create_r21_surface_polish.py
+@@ -0,0 +1,79 @@
++"""Topology-preserving bounded surface fairing; writes a new Blender + Unity review pair."""
++import bpy, numpy as np, json, struct, hashlib, sys
++from pathlib import Path
++from mathutils import Vector, Matrix
++
++ROOT=Path(__file__).resolve().parents[2]
++args=sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []
++SOURCE=ROOT/'.codex_tmp/shoulder-reach-20260916/candidate-r02'
++OUT=Path(args[0]).resolve() if args else ROOT/'BlenderSource/Characters/C1B-RW-021-surface-polish-r02'
++EVIDENCE=Path(args[1]).resolve() if len(args)>1 else OUT/'Renders'
++def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
++def smoothstep(x):x=np.clip(x,0,1);return x*x*(3-2*x)
++
++bpy.ops.wm.open_mainfile(filepath=str(SOURCE/'R20_ShoulderBlendCandidate.blend'),load_ui=False)
++body=bpy.data.objects['CHR_C1B_R20_SkinnedBody']; mesh=body.data
++v=np.empty((len(mesh.vertices),3),np.float32);mesh.vertices.foreach_get('co',v.ravel())
++edges=np.empty((len(mesh.edges),2),np.int32);mesh.edges.foreach_get('vertices',edges.ravel())
++src=np.concatenate((edges[:,0],edges[:,1]));dst=np.concatenate((edges[:,1],edges[:,0]));counts=np.bincount(src,minlength=len(v))[:,None]
++def lap(p):
++ return np.column_stack([np.bincount(src,weights=p[dst,k],minlength=len(v)) for k in range(3)])/np.maximum(counts,1)-p
++before_rough=np.linalg.norm(lap(v),axis=1)
++p=v.astype(np.float64)
++# Fair a wider neighbourhood, then restore the original overall extents.
++# The final displacement cap and sole/terminal gate preserve the silhouette.
++for i in range(240):p+=.5*lap(p)
++mid=(v.min(0)+v.max(0))*.5;span=v.max(0)-v.min(0)
++p=(p-(p.min(0)+p.max(0))*.5)*(span/(p.max(0)-p.min(0)))+mid
++delta=p-v
++# Keep planted soles, ends and the approved outer dimensions fixed at their extrema.
++gate=smoothstep((v[:,2]-.012)/.025)*smoothstep((.574-np.abs(v[:,0]))/.025)
++length=np.linalg.norm(delta,axis=1);delta*=np.minimum(1,.0025/np.maximum(length,1e-12))[:,None]*gate[:,None]
++result=(v+delta).astype(np.float32)
++mesh.vertices.foreach_set('co',result.ravel());mesh.update()
++after_rough=np.linalg.norm(lap(result),axis=1)
++OUT.mkdir(parents=True,exist_ok=True);EVIDENCE.mkdir(parents=True,exist_ok=True)
++blend=OUT/'CHR_MasterCharacter_C1B_SurfacePolish_r21.blend'
++if blend.exists():raise RuntimeError('Preserve existing candidate')
++bpy.ops.wm.save_as_mainfile(filepath=str(blend))
++data=(SOURCE/'ShoulderCharacter.bytes').read_bytes();size=struct.unpack_from('<i',data)[0];header=json.loads(data[4:4+size]);offset=4+size;blocks=[]
++for rec in header['meshes']:
++ n=rec['vertices'];end=offset+n*56+rec['triangleIndices']*4;block=bytearray(data[offset:end])
++ if rec['name']==body.name:
++  original=np.frombuffer(block,dtype='<f4',count=n*3).reshape(n,3)
++  converted=v[:,[0,2,1]]*np.array([1,1,-1],np.float32)
++  assert np.max(abs(original-converted))<1e-6
++  normals=np.empty((n,3),np.float32);mesh.vertices.foreach_get('normal',normals.ravel())
++  block[:n*12]=(result[:,[0,2,1]]*np.array([1,1,-1],np.float32)).astype('<f4').tobytes()
++  block[n*12:n*24]=(normals[:,[0,2,1]]*np.array([1,1,-1],np.float32)).astype('<f4').tobytes()
++ blocks.append(block);offset=end
++assert offset==len(data)
++header['sourceSha256']=sha(blend);header['surfacePolishCandidate']=True
++encoded=json.dumps(header).encode();transport=OUT/'SurfaceCharacter.bytes';transport.write_bytes(struct.pack('<i',len(encoded))+encoded+b''.join(blocks))
++report={'source':str(SOURCE/'R20_ShoulderBlendCandidate.blend'),'sourceSha256':sha(SOURCE/'R20_ShoulderBlendCandidate.blend'),'candidate':str(blend),'candidateSha256':sha(blend),'transportSha256':sha(transport),'bodyVertices':len(v),'passes':240,'maximumDisplacementMeters':float(np.max(np.linalg.norm(result-v,axis=1))),'meanDisplacementMeters':float(np.mean(np.linalg.norm(result-v,axis=1))),'laplacianRmsBefore':float(np.sqrt(np.mean(before_rough**2))),'laplacianRmsAfter':float(np.sqrt(np.mean(after_rough**2))),'boundsBefore':[v.min(0).tolist(),v.max(0).tolist()],'boundsAfter':[result.min(0).tolist(),result.max(0).tolist()],'topologyWeightsRigActionsHeadPreserved':True}
++(OUT/'SurfaceReview.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report),flush=True)
++
++# Native Blender renders use identical light, camera and pose for each version.
++rig=bpy.data.objects['RIG_C1B_R20_Armature']
++if rig.animation_data:rig.animation_data.action=None
++for b in rig.pose.bones:
++ if not b.name.startswith('HipDeform_'):b.matrix_basis=Matrix.Identity(4)
++bpy.context.view_layer.update()
++for side,sign in [('L',-1),('R',1)]:
++ upper=rig.pose.bones['UpperArm_'+side];forearm=rig.pose.bones['Forearm_'+side]
++ q=(forearm.head-upper.head).rotation_difference(Vector((sign*.087,0,-1)))
++ m=upper.matrix.copy();pos=m.translation.copy();m=q.to_matrix().to_4x4()@m;m.translation=pos;upper.matrix=m
++ bpy.context.view_layer.update()
++scene=bpy.context.scene;scene.render.engine='CYCLES';scene.cycles.samples=24;scene.cycles.use_denoising=True
++scene.render.resolution_x=800;scene.render.resolution_y=1000;scene.render.resolution_percentage=100
++scene.world.color=(.13,.13,.13);scene.view_settings.view_transform='AgX'
++mat=bpy.data.materials.new('Comparison neutral clay');mat.diffuse_color=(.66,.72,.8,1);mat.use_nodes=True
++bsdf=mat.node_tree.nodes.get('Principled BSDF');bsdf.inputs['Base Color'].default_value=(.66,.72,.8,1);bsdf.inputs['Roughness'].default_value=.36
++for obj in [body,bpy.data.objects['CHR_C1B_R20_SkinnedHead']]:obj.data.materials.clear();obj.data.materials.append(mat)
++for name,loc,power,size in [('Key',(-2,-3,3),450,2),('Rim',(1,2,2),350,1.5),('Fill',(2,-1,1),80,2)]:
++ d=bpy.data.lights.new(name,'AREA');d.energy=power;d.shape='DISK';d.size=size;o=bpy.data.objects.new(name,d);scene.collection.objects.link(o);o.location=loc;o.rotation_euler=(Vector((0,0,.5))-o.location).to_track_quat('-Z','Y').to_euler()
++cam=bpy.data.objects.new('ComparisonCamera',bpy.data.cameras.new('ComparisonCamera'));scene.collection.objects.link(cam);scene.camera=cam;cam.data.type='ORTHO';cam.data.ortho_scale=1.05
++for label,points in [('before',v),('after',result)]:
++ mesh.vertices.foreach_set('co',points.ravel());mesh.update();bpy.context.view_layer.update()
++ for angle,loc in [('front',(0,-3,.57)),('side',(-3,0,.57)),('threequarter',(-2,-3,1.0))]:
++  cam.location=loc;cam.rotation_euler=(Vector((0,0,.48))-cam.location).to_track_quat('-Z','Y').to_euler();scene.render.filepath=str(EVIDENCE/(label+'_'+angle+'.png'));bpy.ops.render.render(write_still=True)
+--- /dev/null
++++ b/tools/blender/verify_r21_surface_polish.py
+@@ -0,0 +1,35 @@
++import bpy,numpy as np,json,sys,struct,hashlib
++from pathlib import Path
++from mathutils.kdtree import KDTree
++ROOT=Path(__file__).resolve().parents[2]
++sys.path.insert(0,str(ROOT/'tools/blender'))
++import create_c1b_rw020_lower_weight_candidate as common
++src=ROOT/'.codex_tmp/shoulder-reach-20260916/candidate-r02/R20_ShoulderBlendCandidate.blend'
++out=ROOT/'BlenderSource/Characters/C1B-RW-021-surface-polish-r02'
++def snapshot(p):
++ bpy.ops.wm.open_mainfile(filepath=str(p),load_ui=False)
++ rig=bpy.data.objects['RIG_C1B_R20_Armature'];body=bpy.data.objects['CHR_C1B_R20_SkinnedBody'];head=bpy.data.objects['CHR_C1B_R20_SkinnedHead']
++ v=np.empty((len(body.data.vertices),3),np.float32);body.data.vertices.foreach_get('co',v.ravel())
++ return {'rig':common.rig_identity(rig),'actions':{a.name:common.action_identity(a) for a in bpy.data.actions if len(a.layers)},'geometry':common.geometry_identity(body),'head':common.geometry_identity(head),'weights':common.read_weights(body),'headWeights':common.read_weights(head),'vertices':v,'faces':np.array([list(p.vertices) for p in body.data.polygons],dtype=np.int32)}
++a=snapshot(src);b=snapshot(out/'CHR_MasterCharacter_C1B_SurfacePolish_r21.blend')
++assert a['rig']==b['rig'] and a['actions']==b['actions'] and a['head']==b['head']
++assert a['geometry']['edgeHash']==b['geometry']['edgeHash'] and a['geometry']['loopHash']==b['geometry']['loopHash']
++for key in ['weights','headWeights']:
++ assert a[key][0]==b[key][0] and np.array_equal(a[key][1],b[key][1])
++v=b['vertices'];tree=KDTree(len(v))
++for i,p in enumerate(v):tree.insert(p,i)
++tree.balance();mirror=max(tree.find((-p[0],p[1],p[2]))[2] for p in v)
++assert mirror<1e-5
++face=b['faces'];pa=a['vertices'][face];pb=v[face]
++na=np.cross(pa[:,1]-pa[:,0],pa[:,2]-pa[:,0]);nb=np.cross(pb[:,1]-pb[:,0],pb[:,2]-pb[:,0]);dots=np.einsum('ij,ij->i',na,nb)
++assert np.all(dots>0)
++def transport(p):
++ data=p.read_bytes();n=struct.unpack_from('<i',data)[0];h=json.loads(data[4:4+n]);offset=4+n;blocks=[]
++ for m in h['meshes']:
++  end=offset+m['vertices']*56+m['triangleIndices']*4;blocks.append(data[offset:end]);offset=end
++ assert offset==len(data);return h,blocks
++h1,blocks1=transport(src.parent/'ShoulderCharacter.bytes');h2,blocks2=transport(out/'SurfaceCharacter.bytes')
++assert h1['bones']==h2['bones'] and h1['meshes']==h2['meshes']
++assert blocks1[0][len(v)*24:]==blocks2[0][len(v)*24:] and blocks1[1]==blocks2[1]
++report={'passed':True,'boneCount':len(h2['bones']),'actionCount':len(a['actions']),'topologyIdentical':True,'bodyWeightsIdentical':True,'headGeometryWeightsNormalsIdentical':True,'noFlippedFaces':True,'mirrorErrorMeters':mirror,'maxDisplacementMeters':float(np.linalg.norm(v-a['vertices'],axis=1).max()),'transportWeightsTrianglesIdentical':True,'sourceSha256':common.sha(src)}
++(out/'SurfaceValidation.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report),flush=True)

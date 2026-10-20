@@ -1,0 +1,4 @@
+Reach_Before: protraction=0, retraction=0, elevation=0, surface=36.1063232, jointGap=0.00374389533, skinBodyOffset=0.00479652965
+Reach_After: protraction=10, retraction=0, elevation=3.64734221, surface=24.6932163, jointGap=0.003961443, skinBodyOffset=0.005067498
+Punch_Before: protraction=0, retraction=0, elevation=0, surface=32.73685, jointGap=0.04315433, skinBodyOffset=0.0368268639
+Punch_After: protraction=12.9700136, retraction=-3.98417664, elevation=4, surface=34.2986145, jointGap=0.04294654, skinBodyOffset=0.0367705226

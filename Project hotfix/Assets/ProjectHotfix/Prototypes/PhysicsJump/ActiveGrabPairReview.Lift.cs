@@ -112,6 +112,21 @@ namespace ProjectHotfix.PhysicsJump
             }
         }
 
+        // A knocked-out body whose Down time runs out in the other player's hands struggles, then breaks free
+        // (ActiveUpperBodyReview.Struggle). Not held any more (thrown, dropped) = no struggle: it lands and gets up.
+        public int Escapes {get;private set;}
+        private void StepHeldWake(int index,float seconds)
+        {
+            var rig=Players[index].Rig;var holderIndex=1-index;var holder=Players[holderIndex];
+            if(!rig.KnockedDown){rig.EndStruggle(false);return;}
+            var held=Active(holder)&&holder.Hands.Any(h=>h.Phase==HandPhase.Holding&&h.TargetRig==rig);
+            if(!held||!rig.Knockdown.Down.State.CanStartGetUp){rig.EndStruggle(false);return;}
+            rig.StepStruggle(seconds);
+            if(!rig.StruggleDone)return;
+            for(var side=0;side<2;side++)if(holder.Hands[side].TargetRig==rig&&holder.Hands[side].Connection!=null)Release(holderIndex,side,"Struggle",true);
+            rig.EndStruggle(true);Escapes++;
+        }
+
         private Rigidbody[] ReleaseThrowBodies(int player,int side,string reason,bool broken)
         {
             var owner=Players[player];var hand=owner.Hands[side];

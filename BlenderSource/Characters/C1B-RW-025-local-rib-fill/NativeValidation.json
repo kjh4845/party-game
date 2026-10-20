@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "baseVersion": "r23",
+  "bodyVertices": 227942,
+  "changedVertices": 55242,
+  "maximumLateralBindChangeMeters": 0.030000001192092896,
+  "allOriginalYAndZCoordinatesPreserved": true,
+  "headRigTopologyAndAllWeightsPreserved": true,
+  "outsideRibPatchExactlyPreserved": true,
+  "bodyMirrorMaxMeters": 0.0,
+  "sourceAndTransportMatch": true,
+  "approvedCombatSourcesUnchanged": true,
+  "approvedCombatHashes": {
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs": "9472c49a0e120e2dbf14bcf2d77806c8d7597680703d94c3121cc146a8d2fbb8",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Punch.cs": "8c439127ea2cd02d2087d8f3cb540b97b354568435489f14efc837871b9efa04",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Impact.cs": "e1c5dfe2b17606a27f29b9d3b2fee811c1913850d35e70abd539650df7191ddf",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.cs": "4578818863197339e7f077e0df3317dd7befb0e290ff3b2dfc3ee0ca7e9a4d3b",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs": "fd0c444da4bd05f262b7392a6111324ae144bd65e98d0511dfa526ec3684fb16",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchFeedbackReview.cs": "f0584878d0f8af1aba6292efa4bad9c239fcbc94248007986645b3341c5029e7",
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralJumpPose.cs": "ef81a733b37877b6dfeef3596e004f1ac0a094808d49bbac213014f87bcba688"
+  },
+  "candidateSha256": "58ec5cac11191a578fe4dc6d7d2b1e48d2339bfde356cd0b69b0ef6b7dc5a017",
+  "transportSha256": "da181e18ed26d75ba041a3a4b483a726e39ec4cdbd503be1aadc499364af1cc5"
+}

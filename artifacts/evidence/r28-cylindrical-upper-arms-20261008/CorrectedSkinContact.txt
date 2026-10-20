@@ -1,0 +1,3 @@
+samples=48
+maximumCorrection=0.0303825159
+maximumContactError=1.365714E-07

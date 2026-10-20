@@ -1,0 +1,2908 @@
+{
+  "candidate": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/ModelCandidateO/ShoulderLineCharacter.bytes",
+  "scope": "Candidate actual Unity-baked vertices vs r34 reconstructed at the SAME recorded bone matrices; actual perpendicular plane mesh cuts and projected material rings are separate. Not whole-arm volume.",
+  "poses": [
+    {
+      "pose": "Idle",
+      "sourceMatrices": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Validation/ModelCandidateO-Unity/Captures/Idle_Matrices.bin",
+      "candidateIsActualUnityBake": true,
+      "candidateCpuCheckMaxErrorMeters": 2.812124657810381e-07,
+      "sections": {
+        "L_root_inner": {
+          "r34": {
+            "area": 0.00481611285746014,
+            "minimumDiameter": 0.06984044826743942,
+            "maximumDiameter": 0.08712067185906533,
+            "axialSpan": 0.029239043248749576,
+            "center": [
+              -0.1790453735840444,
+              0.5609873001558523,
+              0.0008033046011736085
+            ],
+            "axis": [
+              -0.12668884164500333,
+              -0.9912933583735252,
+              0.0358805664278732
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "candidate": {
+            "area": 0.005032203736768286,
+            "minimumDiameter": 0.07166801456131844,
+            "maximumDiameter": 0.08981657643905125,
+            "axialSpan": 0.03216043187871309,
+            "center": [
+              -0.17869334902284803,
+              0.5619884778463364,
+              0.001532242821404146
+            ],
+            "axis": [
+              -0.20136547605372,
+              -0.9787011997786057,
+              0.03994879980145098
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "areaRatioToR34SamePose": 1.044868317189333,
+          "minimumDiameterRatioToR34SamePose": 1.026167734303204,
+          "actualPlaneAreaRatioToR34SamePose": null
+        },
+        "L_root_outer": {
+          "r34": {
+            "area": 0.004392899883881985,
+            "minimumDiameter": 0.07154669504911536,
+            "maximumDiameter": 0.07693387758889521,
+            "axialSpan": 0.007641843832852221,
+            "center": [
+              -0.1856519318651591,
+              0.541563721931016,
+              0.0006576525440489201
+            ],
+            "axis": [
+              -0.05836028068426467,
+              -0.9979809763314365,
+              -0.025060896213159496
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "candidate": {
+            "area": 0.004392399360561011,
+            "minimumDiameter": 0.07137988716988825,
+            "maximumDiameter": 0.07824501519517535,
+            "axialSpan": 0.017309523662662078,
+            "center": [
+              -0.18545756893553167,
+              0.5439757719524796,
+              0.0012291255039135654
+            ],
+            "axis": [
+              -0.013187086162038349,
+              -0.9997923467300806,
+              -0.015535899668620377
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "areaRatioToR34SamePose": 0.9998860608404004,
+          "minimumDiameterRatioToR34SamePose": 0.9976685452890227,
+          "actualPlaneAreaRatioToR34SamePose": null
+        },
+        "L_upper_middle": {
+          "r34": {
+            "area": 0.004501948609444105,
+            "minimumDiameter": 0.0752518335169436,
+            "maximumDiameter": 0.07618252402286366,
+            "axialSpan": 0.002478802015281961,
+            "center": [
+              -0.1947431903313336,
+              0.504033846900831,
+              0.0002316582794619779
+            ],
+            "axis": [
+              -0.016826649377690725,
+              -0.9998565490806254,
+              -0.0019352341727767322
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004506016529199789,
+              "minimumDiameter": 0.07531573679257263,
+              "maximumDiameter": 0.07618539676266967,
+              "contourPoints": 324
+            }
+          },
+          "candidate": {
+            "area": 0.0043548421329865,
+            "minimumDiameter": 0.07379209647717697,
+            "maximumDiameter": 0.0756525251111779,
+            "axialSpan": 0.004176923434631657,
+            "center": [
+              -0.19347902313252413,
+              0.5046171113283581,
+              -5.1348704303723446e-05
+            ],
+            "axis": [
+              -0.057481045786437604,
+              -0.9983191890639266,
+              -0.0073977105946085335
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004359442563339815,
+              "minimumDiameter": 0.07389176595122783,
+              "maximumDiameter": 0.07563758959075526,
+              "contourPoints": 320
+            }
+          },
+          "areaRatioToR34SamePose": 0.9673238214783243,
+          "minimumDiameterRatioToR34SamePose": 0.980601973778646,
+          "actualPlaneAreaRatioToR34SamePose": 0.9674714984043781
+        },
+        "L_upper_distal": {
+          "r34": {
+            "area": 0.004522275541309514,
+            "minimumDiameter": 0.07540914578008748,
+            "maximumDiameter": 0.07625909156525384,
+            "axialSpan": 0.003033723240973195,
+            "center": [
+              -0.19505283240926136,
+              0.4625424611895788,
+              0.00010124832092298814
+            ],
+            "axis": [
+              0.009555531097699346,
+              -0.9999508158779378,
+              -0.0026566238890280256
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0045287357608723156,
+              "minimumDiameter": 0.07551312005237001,
+              "maximumDiameter": 0.07625999282818059,
+              "contourPoints": 274
+            }
+          },
+          "candidate": {
+            "area": 0.004522279466187334,
+            "minimumDiameter": 0.07540913770004207,
+            "maximumDiameter": 0.07625911407248248,
+            "axialSpan": 0.0030335800857125626,
+            "center": [
+              -0.19505277497090334,
+              0.46254258431615913,
+              0.00010125458257251436
+            ],
+            "axis": [
+              0.009554307060354738,
+              -0.9999508273624989,
+              -0.002656703530758834
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004528737437673396,
+              "minimumDiameter": 0.07551305894569764,
+              "maximumDiameter": 0.07626001450436512,
+              "contourPoints": 274
+            }
+          },
+          "areaRatioToR34SamePose": 1.0000008678988674,
+          "minimumDiameterRatioToR34SamePose": 0.9999998928505909,
+          "actualPlaneAreaRatioToR34SamePose": 1.0000003702580962
+        },
+        "L_elbow": {
+          "r34": {
+            "area": 0.004361059092019218,
+            "minimumDiameter": 0.07386960253822314,
+            "maximumDiameter": 0.07524243054382367,
+            "axialSpan": 0.0022294687960371946,
+            "center": [
+              -0.1949326769803318,
+              0.44171044703243556,
+              5.430334616059033e-05
+            ],
+            "axis": [
+              0.0033077491065444157,
+              -0.9999933611702726,
+              -0.0015285323774649987
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004365553893634248,
+              "minimumDiameter": 0.0739298552964941,
+              "maximumDiameter": 0.07524490922791915,
+              "contourPoints": 274
+            }
+          },
+          "candidate": {
+            "area": 0.004361060046829301,
+            "minimumDiameter": 0.07386962833125993,
+            "maximumDiameter": 0.07524244174960452,
+            "axialSpan": 0.0022294656901721546,
+            "center": [
+              -0.19493261890022157,
+              0.44171056733774444,
+              5.430777281327238e-05
+            ],
+            "axis": [
+              0.0033082065064275563,
+              -0.9999933595346233,
+              -0.001528612563195541
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004365554216691183,
+              "minimumDiameter": 0.07392985508455896,
+              "maximumDiameter": 0.07524492041469394,
+              "contourPoints": 274
+            }
+          },
+          "areaRatioToR34SamePose": 1.0000002189399553,
+          "minimumDiameterRatioToR34SamePose": 1.000000349169833,
+          "actualPlaneAreaRatioToR34SamePose": 1.0000000740013624
+        },
+        "L_forearm_middle": {
+          "r34": {
+            "area": 0.003604997787579379,
+            "minimumDiameter": 0.06548660303936628,
+            "maximumDiameter": 0.07010566346608926,
+            "axialSpan": 0.0004106340703542597,
+            "center": [
+              -0.19526337857560078,
+              0.3570896548031429,
+              -1.663409174714259e-05
+            ],
+            "axis": [
+              -0.00012817285998826085,
+              -0.9999995031259209,
+              -0.000988594775121661
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.003605035091223612,
+              "minimumDiameter": 0.0654873699226686,
+              "maximumDiameter": 0.07010566156769948,
+              "contourPoints": 240
+            }
+          },
+          "candidate": {
+            "area": 0.003604997770563269,
+            "minimumDiameter": 0.06548654082179466,
+            "maximumDiameter": 0.07010568065321887,
+            "axialSpan": 0.0004107330452484578,
+            "center": [
+              -0.19526331866404673,
+              0.3570897810973766,
+              -1.6637236297789126e-05
+            ],
+            "axis": [
+              -0.00012768830418692444,
+              -0.9999995030971632,
+              -0.0009886865648792646
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0036050351339017668,
+              "minimumDiameter": 0.06548730951347873,
+              "maximumDiameter": 0.07010567891522684,
+              "contourPoints": 240
+            }
+          },
+          "areaRatioToR34SamePose": 0.9999999952798556,
+          "minimumDiameterRatioToR34SamePose": 0.9999990499190867,
+          "actualPlaneAreaRatioToR34SamePose": 1.0000000118384853
+        },
+        "R_root_inner": {
+          "r34": {
+            "area": 0.004816071210584735,
+            "minimumDiameter": 0.06983983338381344,
+            "maximumDiameter": 0.08712066053413209,
+            "axialSpan": 0.029239377753990665,
+            "center": [
+              0.17904483322361145,
+              0.5609884537871888,
+              0.0008032350896878228
+            ],
+            "axis": [
+              0.12667346375616,
+              -0.9912953476405737,
+              0.035879901423652834
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "candidate": {
+            "area": 0.0050321653019037,
+            "minimumDiameter": 0.07166746620410325,
+            "maximumDiameter": 0.08981656925617346,
+            "axialSpan": 0.032160705770925536,
+            "center": [
+              0.17869282211259313,
+              0.561989615013177,
+              0.0015321595474364772
+            ],
+            "axis": [
+              0.2013496319304832,
+              -0.9787044935113398,
+              0.03994796743478616
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "areaRatioToR34SamePose": 1.044869372123077,
+          "minimumDiameterRatioToR34SamePose": 1.0261689172459192,
+          "actualPlaneAreaRatioToR34SamePose": null
+        },
+        "R_root_outer": {
+          "r34": {
+            "area": 0.004392879767527412,
+            "minimumDiameter": 0.07154634261447342,
+            "maximumDiameter": 0.07693380635786146,
+            "axialSpan": 0.007642021884537487,
+            "center": [
+              0.18565100938348694,
+              0.5415648893953884,
+              0.0006575698691422833
+            ],
+            "axis": [
+              0.058341385767641946,
+              -0.9979820688309837,
+              -0.02506138460940684
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "candidate": {
+            "area": 0.004392378444948877,
+            "minimumDiameter": 0.07137947004347844,
+            "maximumDiameter": 0.07824493100059016,
+            "axialSpan": 0.017309922637909966,
+            "center": [
+              0.1854566983321852,
+              0.5439769166265925,
+              0.0012290269927717266
+            ],
+            "axis": [
+              0.013168726771706165,
+              -0.9997925798773385,
+              -0.01553646862797194
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "areaRatioToR34SamePose": 0.9998858783747644,
+          "minimumDiameterRatioToR34SamePose": 0.9976676296104448,
+          "actualPlaneAreaRatioToR34SamePose": null
+        },
+        "R_upper_middle": {
+          "r34": {
+            "area": 0.004501936492164056,
+            "minimumDiameter": 0.07525165091919045,
+            "maximumDiameter": 0.07618251677213017,
+            "axialSpan": 0.002479587907814048,
+            "center": [
+              0.19474147623585264,
+              0.5040348271393629,
+              0.00023157072444455763
+            ],
+            "axis": [
+              0.01680465277569517,
+              -0.999856919283937,
+              -0.0019350982205220135
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004506005557424524,
+              "minimumDiameter": 0.07531557032858771,
+              "maximumDiameter": 0.07618538991044181,
+              "contourPoints": 324
+            }
+          },
+          "candidate": {
+            "area": 0.004354831307405135,
+            "minimumDiameter": 0.07379206877559578,
+            "maximumDiameter": 0.07565239570389373,
+            "axialSpan": 0.004176553259131768,
+            "center": [
+              0.19347739132402203,
+              0.5046180946131074,
+              -5.145506752552809e-05
+            ],
+            "axis": [
+              0.05746105952071914,
+              -0.9983203410736129,
+              -0.007397515624983219
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004359431300180967,
+              "minimumDiameter": 0.07389169078484689,
+              "maximumDiameter": 0.07563746001702967,
+              "contourPoints": 320
+            }
+          },
+          "areaRatioToR34SamePose": 0.967324020448763,
+          "minimumDiameterRatioToR34SamePose": 0.9806039850851638,
+          "actualPlaneAreaRatioToR34SamePose": 0.9674713545343843
+        },
+        "R_upper_distal": {
+          "r34": {
+            "area": 0.004522274104886268,
+            "minimumDiameter": 0.07540912219906172,
+            "maximumDiameter": 0.07625909164180554,
+            "axialSpan": 0.003033982306096859,
+            "center": [
+              0.1950502024594968,
+              0.46254311521451497,
+              0.00010117147898220296
+            ],
+            "axis": [
+              -0.009573877372608602,
+              -0.9999506402928876,
+              -0.002656661419565998
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004528734804778159,
+              "minimumDiameter": 0.0755131040375519,
+              "maximumDiameter": 0.07625999302836879,
+              "contourPoints": 274
+            }
+          },
+          "candidate": {
+            "area": 0.004522274598516754,
+            "minimumDiameter": 0.07540913887984724,
+            "maximumDiameter": 0.07625911020493961,
+            "axialSpan": 0.0030340310948801484,
+            "center": [
+              0.19505024645694746,
+              0.4625432225137717,
+              0.00010116524798011512
+            ],
+            "axis": [
+              -0.009574950029998537,
+              -0.9999506302722432,
+              -0.0026565673464930733
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004528737013569753,
+              "minimumDiameter": 0.07551311654178183,
+              "maximumDiameter": 0.07626001155820492,
+              "contourPoints": 274
+            }
+          },
+          "areaRatioToR34SamePose": 1.0000001091553663,
+          "minimumDiameterRatioToR34SamePose": 1.000000221203815,
+          "actualPlaneAreaRatioToR34SamePose": 1.0000004877281823
+        },
+        "R_elbow": {
+          "r34": {
+            "area": 0.004361058899875609,
+            "minimumDiameter": 0.07386959896074935,
+            "maximumDiameter": 0.07524243061116798,
+            "axialSpan": 0.002229472776615278,
+            "center": [
+              0.19492971004821497,
+              0.4417110782636689,
+              5.422097062719255e-05
+            ],
+            "axis": [
+              -0.003323080330367447,
+              -0.9999933098130052,
+              -0.0015288774800485032
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0043655537129573966,
+              "minimumDiameter": 0.07392985223783505,
+              "maximumDiameter": 0.07524490929641117,
+              "contourPoints": 274
+            }
+          },
+          "candidate": {
+            "area": 0.004361059967083887,
+            "minimumDiameter": 0.07386955379699281,
+            "maximumDiameter": 0.07524244390030096,
+            "axialSpan": 0.0022294873285405386,
+            "center": [
+              0.19492975072850474,
+              0.44171118240281976,
+              5.4216687542450636e-05
+            ],
+            "axis": [
+              -0.003323872039496475,
+              -0.999993307357256,
+              -0.001528762689694448
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004365555542918835,
+              "minimumDiameter": 0.07392983349554497,
+              "maximumDiameter": 0.07524492195304003,
+              "contourPoints": 274
+            }
+          },
+          "areaRatioToR34SamePose": 1.0000002447131082,
+          "minimumDiameterRatioToR34SamePose": 0.9999993886015739,
+          "actualPlaneAreaRatioToR34SamePose": 1.0000004191819776
+        },
+        "R_forearm_middle": {
+          "r34": {
+            "area": 0.003604997594546951,
+            "minimumDiameter": 0.06548659945019288,
+            "maximumDiameter": 0.07010566349294163,
+            "axialSpan": 0.0004107017412962172,
+            "center": [
+              0.19525903103461784,
+              0.3570903055586104,
+              -1.6736340093274628e-05
+            ],
+            "axis": [
+              0.00011089473431237168,
+              -0.9999995050624685,
+              -0.0009887250254020264
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0036050349047092372,
+              "minimumDiameter": 0.06548736646443484,
+              "maximumDiameter": 0.07010566159728912,
+              "contourPoints": 240
+            }
+          },
+          "candidate": {
+            "area": 0.0036049999836944694,
+            "minimumDiameter": 0.0654866084655205,
+            "maximumDiameter": 0.07010568119884936,
+            "axialSpan": 0.00041073446369403646,
+            "center": [
+              0.1952590321345792,
+              0.35709038746159977,
+              -1.6733088921294794e-05
+            ],
+            "axis": [
+              0.00011000384066464073,
+              -0.9999995052352931,
+              -0.0009886497478816412
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0036050373228964454,
+              "minimumDiameter": 0.06548737881214545,
+              "maximumDiameter": 0.07010567948589068,
+              "contourPoints": 240
+            }
+          },
+          "areaRatioToR34SamePose": 1.0000006627320701,
+          "minimumDiameterRatioToR34SamePose": 1.0000001376667547,
+          "actualPlaneAreaRatioToR34SamePose": 1.0000006707805256
+        }
+      }
+    },
+    {
+      "pose": "Lift45",
+      "sourceMatrices": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Validation/ModelCandidateO-Unity/Captures/Lift45_Flex0_Matrices.bin",
+      "candidateIsActualUnityBake": true,
+      "candidateCpuCheckMaxErrorMeters": 4.237505484902458e-07,
+      "sections": {
+        "L_root_inner": {
+          "r34": {
+            "area": 0.003772788231886376,
+            "minimumDiameter": 0.06392774065483055,
+            "maximumDiameter": 0.0758058651893225,
+            "axialSpan": 0.040148898932859736,
+            "center": [
+              -0.1758698643045728,
+              0.5540398911492497,
+              0.07523376048552065
+            ],
+            "axis": [
+              -0.22826027306735902,
+              -0.7047935736959224,
+              0.6716868810808687
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "candidate": {
+            "area": 0.0037092625692691492,
+            "minimumDiameter": 0.0604187747504691,
+            "maximumDiameter": 0.07957603254348748,
+            "axialSpan": 0.047893911293695586,
+            "center": [
+              -0.18168644122213745,
+              0.5509815009706254,
+              0.0778133002088679
+            ],
+            "axis": [
+              -0.32258601388350067,
+              -0.6572349854836862,
+              0.6811610951184842
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "areaRatioToR34SamePose": 0.9831621446228207,
+          "minimumDiameterRatioToR34SamePose": 0.9451104345559833,
+          "actualPlaneAreaRatioToR34SamePose": null
+        },
+        "L_root_outer": {
+          "r34": {
+            "area": 0.004111089461099473,
+            "minimumDiameter": 0.06802916727242757,
+            "maximumDiameter": 0.07516479621506691,
+            "axialSpan": 0.009529777747211594,
+            "center": [
+              -0.18340636355946127,
+              0.5392801495820384,
+              0.09121471969899425
+            ],
+            "axis": [
+              -0.09817942971078007,
+              -0.7520518310056961,
+              0.6517505988203203
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004166285229676133,
+              "minimumDiameter": 0.06937226504760126,
+              "maximumDiameter": 0.07509717120762444,
+              "contourPoints": 395
+            }
+          },
+          "candidate": {
+            "area": 0.0034301559284624326,
+            "minimumDiameter": 0.05866324408361421,
+            "maximumDiameter": 0.07393804525070208,
+            "axialSpan": 0.0211934187411958,
+            "center": [
+              -0.1889594641353874,
+              0.5392945415472215,
+              0.09146194460248414
+            ],
+            "axis": [
+              -0.11821995886935019,
+              -0.7656495053217149,
+              0.6323012544076932
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "areaRatioToR34SamePose": 0.8343666468267682,
+          "minimumDiameterRatioToR34SamePose": 0.8623248885098524,
+          "actualPlaneAreaRatioToR34SamePose": null
+        },
+        "L_upper_middle": {
+          "r34": {
+            "area": 0.004439743432043555,
+            "minimumDiameter": 0.07463077189378195,
+            "maximumDiameter": 0.07588135199552834,
+            "axialSpan": 0.0029154366203100607,
+            "center": [
+              -0.19297761745994843,
+              0.5116487055900842,
+              0.11961908257488582
+            ],
+            "axis": [
+              -0.058855037710271424,
+              -0.7474979185374468,
+              0.6616516805074306
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004441776709708949,
+              "minimumDiameter": 0.07468741383240617,
+              "maximumDiameter": 0.0758662497385118,
+              "contourPoints": 325
+            }
+          },
+          "candidate": {
+            "area": 0.0038785905914243734,
+            "minimumDiameter": 0.06680844741363448,
+            "maximumDiameter": 0.0745638645192151,
+            "axialSpan": 0.007014184203342042,
+            "center": [
+              -0.19432548834173025,
+              0.5119704291281035,
+              0.11866604019590969
+            ],
+            "axis": [
+              0.029475504260594705,
+              -0.7382642124989387,
+              0.6738673068133707
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0038700580914997834,
+              "minimumDiameter": 0.06647430996428245,
+              "maximumDiameter": 0.07468583916742033,
+              "contourPoints": 324
+            }
+          },
+          "areaRatioToR34SamePose": 0.8736069213889482,
+          "minimumDiameterRatioToR34SamePose": 0.895186338267001,
+          "actualPlaneAreaRatioToR34SamePose": 0.8712860516019437
+        },
+        "L_upper_distal": {
+          "r34": {
+            "area": 0.004429663578988396,
+            "minimumDiameter": 0.074657245843671,
+            "maximumDiameter": 0.07541548892959844,
+            "axialSpan": 0.00317454933550642,
+            "center": [
+              -0.19478306451587835,
+              0.4777671502918407,
+              0.14839615821898042
+            ],
+            "axis": [
+              -0.014262876010442878,
+              -0.7815867154115225,
+              0.6236335275305029
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004435885538567259,
+              "minimumDiameter": 0.07475718095826868,
+              "maximumDiameter": 0.07541910096309512,
+              "contourPoints": 274
+            }
+          },
+          "candidate": {
+            "area": 0.004429670150430246,
+            "minimumDiameter": 0.07465709193393241,
+            "maximumDiameter": 0.07541558542612756,
+            "axialSpan": 0.003174373142634559,
+            "center": [
+              -0.1947830950055821,
+              0.47776734687806255,
+              0.14839618266444893
+            ],
+            "axis": [
+              -0.014265739318357186,
+              -0.7815857705546915,
+              0.6236346462057167
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004435891828567918,
+              "minimumDiameter": 0.07475703616663129,
+              "maximumDiameter": 0.07541917644431109,
+              "contourPoints": 274
+            }
+          },
+          "areaRatioToR34SamePose": 1.0000014835081112,
+          "minimumDiameterRatioToR34SamePose": 0.9999979384487486,
+          "actualPlaneAreaRatioToR34SamePose": 1.0000014179808303
+        },
+        "L_elbow": {
+          "r34": {
+            "area": 0.0041550801492258645,
+            "minimumDiameter": 0.07219852795233364,
+            "maximumDiameter": 0.07332430325344824,
+            "axialSpan": 0.0021881926368548348,
+            "center": [
+              -0.1950638994889374,
+              0.4604086594971295,
+              0.16162948776457958
+            ],
+            "axis": [
+              -0.009622497563604946,
+              -0.8097278032553208,
+              0.5867267610872636
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.00416013756431402,
+              "minimumDiameter": 0.07226294443056253,
+              "maximumDiameter": 0.0733334864379287,
+              "contourPoints": 274
+            }
+          },
+          "candidate": {
+            "area": 0.004155103280451499,
+            "minimumDiameter": 0.07219877046541251,
+            "maximumDiameter": 0.07332446302784135,
+            "axialSpan": 0.0021882647506662393,
+            "center": [
+              -0.1950639226801513,
+              0.4604088148350511,
+              0.1616295618437521
+            ],
+            "axis": [
+              -0.009622181911185726,
+              -0.809728074075448,
+              0.5867263925113084
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0041601601585535015,
+              "minimumDiameter": 0.07226315224603634,
+              "maximumDiameter": 0.07333370277088783,
+              "contourPoints": 274
+            }
+          },
+          "areaRatioToR34SamePose": 1.000005566974596,
+          "minimumDiameterRatioToR34SamePose": 1.0000033589753938,
+          "actualPlaneAreaRatioToR34SamePose": 1.0000054311279691
+        },
+        "L_forearm_middle": {
+          "r34": {
+            "area": 0.0036049740808619998,
+            "minimumDiameter": 0.06548544078058036,
+            "maximumDiameter": 0.07010511541596337,
+            "axialSpan": 0.00042608422005182243,
+            "center": [
+              -0.19582613043460628,
+              0.38848978757913716,
+              0.20591460268253872
+            ],
+            "axis": [
+              -0.006338506491183465,
+              -0.8570576561914217,
+              0.5151815187864645
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0036050202010261116,
+              "minimumDiameter": 0.06548618425527479,
+              "maximumDiameter": 0.07010530914697219,
+              "contourPoints": 240
+            }
+          },
+          "candidate": {
+            "area": 0.003604973865688664,
+            "minimumDiameter": 0.0654854177983635,
+            "maximumDiameter": 0.07010512658714302,
+            "axialSpan": 0.00042606420505784514,
+            "center": [
+              -0.1958261611921411,
+              0.38848987926234374,
+              0.2059146526056524
+            ],
+            "axis": [
+              -0.0063382417341819935,
+              -0.8570577120886691,
+              0.5151814290529649
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0036050200103835495,
+              "minimumDiameter": 0.06548615974744067,
+              "maximumDiameter": 0.07010532154849267,
+              "contourPoints": 240
+            }
+          },
+          "areaRatioToR34SamePose": 0.999999940312099,
+          "minimumDiameterRatioToR34SamePose": 0.9999996490484514,
+          "actualPlaneAreaRatioToR34SamePose": 0.9999999471174774
+        },
+        "R_root_inner": {
+          "r34": {
+            "area": 0.0037727195644145866,
+            "minimumDiameter": 0.06392644369089388,
+            "maximumDiameter": 0.07580610388169359,
+            "axialSpan": 0.04014955285456412,
+            "center": [
+              0.17586762979164874,
+              0.554043638125471,
+              0.0752304966100268
+            ],
+            "axis": [
+              0.22822643511141327,
+              -0.704800384008048,
+              0.6716912333940676
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "candidate": {
+            "area": 0.0037091653633634244,
+            "minimumDiameter": 0.06041728373556525,
+            "maximumDiameter": 0.07957606304270523,
+            "axialSpan": 0.047894823918666986,
+            "center": [
+              0.18168410515900071,
+              0.5509852814051563,
+              0.07781005056311793
+            ],
+            "axis": [
+              0.32254627716436995,
+              -0.6572428114772998,
+              0.6811723613365562
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "areaRatioToR34SamePose": 0.983154273736478,
+          "minimumDiameterRatioToR34SamePose": 0.9451062854005048,
+          "actualPlaneAreaRatioToR34SamePose": null
+        },
+        "R_root_outer": {
+          "r34": {
+            "area": 0.004111047438581305,
+            "minimumDiameter": 0.0680283025300622,
+            "maximumDiameter": 0.07516454607562972,
+            "axialSpan": 0.009531183441819609,
+            "center": [
+              0.18340306086886202,
+              0.5392839771112977,
+              0.0912115532111006
+            ],
+            "axis": [
+              0.09813024382337135,
+              -0.7520503319297636,
+              0.6517597360158865
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0041662516144308805,
+              "minimumDiameter": 0.06937161302155487,
+              "maximumDiameter": 0.07509682034221819,
+              "contourPoints": 395
+            }
+          },
+          "candidate": {
+            "area": 0.003430110436374952,
+            "minimumDiameter": 0.05866240180201748,
+            "maximumDiameter": 0.0739378503759231,
+            "axialSpan": 0.021194444732460446,
+            "center": [
+              0.1889561121276148,
+              0.5392983505402178,
+              0.09145891297290117
+            ],
+            "axis": [
+              0.11816913730213541,
+              -0.7656472836344572,
+              0.6323134444659911
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "areaRatioToR34SamePose": 0.834364109784795,
+          "minimumDiameterRatioToR34SamePose": 0.8623234686194639,
+          "actualPlaneAreaRatioToR34SamePose": null
+        },
+        "R_upper_middle": {
+          "r34": {
+            "area": 0.004439718558201305,
+            "minimumDiameter": 0.07463027584995743,
+            "maximumDiameter": 0.0758810918199063,
+            "axialSpan": 0.002917358916372752,
+            "center": [
+              0.1929721354657943,
+              0.5116524606065224,
+              0.11961695821750451
+            ],
+            "axis": [
+              0.05879909575645289,
+              -0.7474856464322288,
+              0.6616705182460652
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004441752303736792,
+              "minimumDiameter": 0.07468695114597523,
+              "maximumDiameter": 0.07586599296053415,
+              "contourPoints": 325
+            }
+          },
+          "candidate": {
+            "area": 0.0038785662197864937,
+            "minimumDiameter": 0.06680835604815952,
+            "maximumDiameter": 0.07456369786440221,
+            "axialSpan": 0.007015455993719227,
+            "center": [
+              0.19432005672512362,
+              0.5119741945746419,
+              0.11866395907677932
+            ],
+            "axis": [
+              -0.029529304241562224,
+              -0.7382500264894957,
+              0.6738804928021498
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.003870033491142809,
+              "minimumDiameter": 0.06647398237347071,
+              "maximumDiameter": 0.0746856318227791,
+              "contourPoints": 324
+            }
+          },
+          "areaRatioToR34SamePose": 0.8736063263789057,
+          "minimumDiameterRatioToR34SamePose": 0.895191064045861,
+          "actualPlaneAreaRatioToR34SamePose": 0.8712853005979188
+        },
+        "R_upper_distal": {
+          "r34": {
+            "area": 0.004429661132492955,
+            "minimumDiameter": 0.07465718672774334,
+            "maximumDiameter": 0.07541546713497374,
+            "axialSpan": 0.0031748478179854365,
+            "center": [
+              0.19477499095687206,
+              0.4777706816812815,
+              0.14839575841042477
+            ],
+            "axis": [
+              0.014205119917212532,
+              -0.7815743945392675,
+              0.6236502869146417
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004435883168681256,
+              "minimumDiameter": 0.07475712344526231,
+              "maximumDiameter": 0.07541907206406198,
+              "contourPoints": 274
+            }
+          },
+          "candidate": {
+            "area": 0.004429666249434192,
+            "minimumDiameter": 0.07465717533280014,
+            "maximumDiameter": 0.07541561018372359,
+            "axialSpan": 0.0031747732363176036,
+            "center": [
+              0.19477503387551098,
+              0.4777709093877113,
+              0.1483957692625837
+            ],
+            "axis": [
+              0.014207291441987008,
+              -0.7815737210453721,
+              0.6236510814880171
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004435886968699194,
+              "minimumDiameter": 0.07475695668120637,
+              "maximumDiameter": 0.07541922002190031,
+              "contourPoints": 274
+            }
+          },
+          "areaRatioToR34SamePose": 1.0000011551541041,
+          "minimumDiameterRatioToR34SamePose": 0.9999998473697751,
+          "actualPlaneAreaRatioToR34SamePose": 1.0000008566541978
+        },
+        "R_elbow": {
+          "r34": {
+            "area": 0.004155080595489078,
+            "minimumDiameter": 0.07219853136683096,
+            "maximumDiameter": 0.07332430555148828,
+            "axialSpan": 0.0021881962908433922,
+            "center": [
+              0.19505457641601037,
+              0.46041230183666315,
+              0.16162947196477562
+            ],
+            "axis": [
+              0.009563187144914028,
+              -0.8097185491057878,
+              0.5867405019986683
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004160138068205841,
+              "minimumDiameter": 0.07226294367584368,
+              "maximumDiameter": 0.07333348485781499,
+              "contourPoints": 274
+            }
+          },
+          "candidate": {
+            "area": 0.004155101630200693,
+            "minimumDiameter": 0.07219870914955678,
+            "maximumDiameter": 0.07332455153162239,
+            "axialSpan": 0.0021882879457603755,
+            "center": [
+              0.1950546036604457,
+              0.4604124824575505,
+              0.1616295315288508
+            ],
+            "axis": [
+              0.009561684994275134,
+              -0.809718705387291,
+              0.5867403108070892
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004160159230708698,
+              "minimumDiameter": 0.07226308480968434,
+              "maximumDiameter": 0.07333373613036268,
+              "contourPoints": 274
+            }
+          },
+          "areaRatioToR34SamePose": 1.0000050624076071,
+          "minimumDiameterRatioToR34SamePose": 1.000002462414712,
+          "actualPlaneAreaRatioToR34SamePose": 1.000005086971276
+        },
+        "R_forearm_middle": {
+          "r34": {
+            "area": 0.003604973869151174,
+            "minimumDiameter": 0.06548546340224273,
+            "maximumDiameter": 0.07010511782655895,
+            "axialSpan": 0.0004270676773926703,
+            "center": [
+              0.1958102594037655,
+              0.38849454383186327,
+              0.20591657352809412
+            ],
+            "axis": [
+              0.006241585778265124,
+              -0.8570391184133087,
+              0.5152135403076196
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.003605020087331364,
+              "minimumDiameter": 0.06548620935910082,
+              "maximumDiameter": 0.07010531103206427,
+              "contourPoints": 240
+            }
+          },
+          "candidate": {
+            "area": 0.0036049746199443697,
+            "minimumDiameter": 0.0654854671422829,
+            "maximumDiameter": 0.07010511773833766,
+            "axialSpan": 0.00042707494974838275,
+            "center": [
+              0.19581025444050137,
+              0.3884946147428329,
+              0.20591661415188658
+            ],
+            "axis": [
+              0.006241273167822076,
+              -0.8570393462981121,
+              0.5152131650163353
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0036050207097995694,
+              "minimumDiameter": 0.06548621043577535,
+              "maximumDiameter": 0.07010531090858829,
+              "contourPoints": 240
+            }
+          },
+          "areaRatioToR34SamePose": 1.000000208265919,
+          "minimumDiameterRatioToR34SamePose": 1.000000057112525,
+          "actualPlaneAreaRatioToR34SamePose": 1.000000172667056
+        }
+      }
+    },
+    {
+      "pose": "Lift90",
+      "sourceMatrices": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Validation/ModelCandidateO-Unity/Captures/Lift90_Flex0_Matrices.bin",
+      "candidateIsActualUnityBake": true,
+      "candidateCpuCheckMaxErrorMeters": 4.5192377079172525e-07,
+      "sections": {
+        "L_root_inner": {
+          "r34": {
+            "area": 0.0032677532235230204,
+            "minimumDiameter": 0.05780021738669519,
+            "maximumDiameter": 0.07338742173428764,
+            "axialSpan": 0.040586240078815124,
+            "center": [
+              -0.17625911294507965,
+              0.566999349037649,
+              0.10741624112176977
+            ],
+            "axis": [
+              -0.19749204520302294,
+              -0.22876979449106843,
+              0.9532372596631131
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "candidate": {
+            "area": 0.0032001694459144678,
+            "minimumDiameter": 0.055811513096021184,
+            "maximumDiameter": 0.07759098709979143,
+            "axialSpan": 0.051690679764950224,
+            "center": [
+              -0.1817015851897166,
+              0.5624482589237769,
+              0.11236512035088496
+            ],
+            "axis": [
+              -0.25865626179658036,
+              -0.20498571218550765,
+              0.9439691711243642
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "areaRatioToR34SamePose": 0.9793179677332888,
+          "minimumDiameterRatioToR34SamePose": 0.9655934807758737,
+          "actualPlaneAreaRatioToR34SamePose": null
+        },
+        "L_root_outer": {
+          "r34": {
+            "area": 0.00373823394909989,
+            "minimumDiameter": 0.06624212812041402,
+            "maximumDiameter": 0.0734350584156214,
+            "axialSpan": 0.013050546271830207,
+            "center": [
+              -0.18374369698084458,
+              0.5639754425960735,
+              0.13715354691743484
+            ],
+            "axis": [
+              -0.06204619303060296,
+              -0.13471091428299184,
+              0.9889404630732073
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0037436160295407366,
+              "minimumDiameter": 0.06641566803693633,
+              "maximumDiameter": 0.07348454606126317,
+              "contourPoints": 384
+            }
+          },
+          "candidate": {
+            "area": 0.0031742087047278416,
+            "minimumDiameter": 0.05787031333334325,
+            "maximumDiameter": 0.07171743748878853,
+            "axialSpan": 0.027186300933968524,
+            "center": [
+              -0.18858937770224296,
+              0.5614145506473261,
+              0.13592213915860862
+            ],
+            "axis": [
+              -0.08164741239717224,
+              -0.17738182912286585,
+              0.9807494005839985
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0033180309489997304,
+              "minimumDiameter": 0.059621504989525426,
+              "maximumDiameter": 0.07221343195105284,
+              "contourPoints": 403
+            }
+          },
+          "areaRatioToR34SamePose": 0.849119864606693,
+          "minimumDiameterRatioToR34SamePose": 0.8736179675288722,
+          "actualPlaneAreaRatioToR34SamePose": 0.8863171123366472
+        },
+        "L_upper_middle": {
+          "r34": {
+            "area": 0.004118676774201612,
+            "minimumDiameter": 0.06911627838712234,
+            "maximumDiameter": 0.07489411408230723,
+            "axialSpan": 0.010094293110768333,
+            "center": [
+              -0.1922858664978706,
+              0.565059120668396,
+              0.18323793779183808
+            ],
+            "axis": [
+              -0.004391168232206321,
+              0.03356930218064274,
+              0.9994267454859617
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004078427155738527,
+              "minimumDiameter": 0.06894054152506204,
+              "maximumDiameter": 0.07486608485924467,
+              "contourPoints": 318
+            }
+          },
+          "candidate": {
+            "area": 0.00377504207039077,
+            "minimumDiameter": 0.06651659895325948,
+            "maximumDiameter": 0.07193809270005423,
+            "axialSpan": 0.012815842140307628,
+            "center": [
+              -0.19313056053720085,
+              0.5636893864199647,
+              0.18252979739350733
+            ],
+            "axis": [
+              0.03088421539964499,
+              0.029359203346340915,
+              0.9990916886942942
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0037745142624561897,
+              "minimumDiameter": 0.06619354893772814,
+              "maximumDiameter": 0.07208874120260766,
+              "contourPoints": 320
+            }
+          },
+          "areaRatioToR34SamePose": 0.916566722117335,
+          "minimumDiameterRatioToR34SamePose": 0.9623868718841895,
+          "actualPlaneAreaRatioToR34SamePose": 0.9254828193131466
+        },
+        "L_upper_distal": {
+          "r34": {
+            "area": 0.004429243161978194,
+            "minimumDiameter": 0.07464550999439132,
+            "maximumDiameter": 0.07542395761463207,
+            "axialSpan": 0.0029751770407702403,
+            "center": [
+              -0.1937186170071642,
+              0.5624169133172137,
+              0.2326649460735263
+            ],
+            "axis": [
+              -0.02148186997842973,
+              -0.09141167509180642,
+              0.9955814556926721
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004434452975628066,
+              "minimumDiameter": 0.07473053594749815,
+              "maximumDiameter": 0.07542512323690381,
+              "contourPoints": 274
+            }
+          },
+          "candidate": {
+            "area": 0.0044288280708012235,
+            "minimumDiameter": 0.07463857987590805,
+            "maximumDiameter": 0.07542497058105282,
+            "axialSpan": 0.002975591163119531,
+            "center": [
+              -0.19372066595617016,
+              0.5624187915380153,
+              0.23266414378862998
+            ],
+            "axis": [
+              -0.021485215634006214,
+              -0.09140189314206938,
+              0.9955822816016796
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.00443403427053088,
+              "minimumDiameter": 0.07472362748154612,
+              "maximumDiameter": 0.07542614027229298,
+              "contourPoints": 274
+            }
+          },
+          "areaRatioToR34SamePose": 0.9999062839492459,
+          "minimumDiameterRatioToR34SamePose": 0.9999071596070039,
+          "actualPlaneAreaRatioToR34SamePose": 0.9999055790873219
+        },
+        "L_elbow": {
+          "r34": {
+            "area": 0.004148215765422306,
+            "minimumDiameter": 0.07217762681360998,
+            "maximumDiameter": 0.07321064440090634,
+            "axialSpan": 0.002159602927914261,
+            "center": [
+              -0.19419542489242522,
+              0.5596087628587384,
+              0.2557591757396628
+            ],
+            "axis": [
+              -0.017550699615334016,
+              -0.15626149587901206,
+              0.9875597793797932
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004152485443862978,
+              "minimumDiameter": 0.07223798444164883,
+              "maximumDiameter": 0.07321428891201572,
+              "contourPoints": 274
+            }
+          },
+          "candidate": {
+            "area": 0.00414799018659745,
+            "minimumDiameter": 0.07217242098391395,
+            "maximumDiameter": 0.07321198252326952,
+            "axialSpan": 0.0021609714583630912,
+            "center": [
+              -0.19419690562910616,
+              0.5596101506771117,
+              0.2557585635761332
+            ],
+            "axis": [
+              -0.017511013188890794,
+              -0.1563013678599229,
+              0.9875541741201925
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004152259084193253,
+              "minimumDiameter": 0.07223279985623066,
+              "maximumDiameter": 0.07321580253824758,
+              "contourPoints": 274
+            }
+          },
+          "areaRatioToR34SamePose": 0.9999456202768583,
+          "minimumDiameterRatioToR34SamePose": 0.9999278747455985,
+          "actualPlaneAreaRatioToR34SamePose": 0.9999454881485355
+        },
+        "L_forearm_middle": {
+          "r34": {
+            "area": 0.0036049074551842523,
+            "minimumDiameter": 0.0654841923046754,
+            "maximumDiameter": 0.07010367421492472,
+            "axialSpan": 0.0004949748603210406,
+            "center": [
+              -0.19522129853763223,
+              0.5350026750079678,
+              0.3367764107208294
+            ],
+            "axis": [
+              -0.007669421576556003,
+              -0.31396399610022924,
+              0.9494039125290438
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0036049612789250327,
+              "minimumDiameter": 0.06548493043313808,
+              "maximumDiameter": 0.07010403473924043,
+              "contourPoints": 240
+            }
+          },
+          "candidate": {
+            "area": 0.0036049086182780264,
+            "minimumDiameter": 0.06548417719319741,
+            "maximumDiameter": 0.07010371432470192,
+            "axialSpan": 0.0004949974677628385,
+            "center": [
+              -0.19522130786322006,
+              0.5350028031234653,
+              0.33677648575143465
+            ],
+            "axis": [
+              -0.007668713782694522,
+              -0.3139637080592275,
+              0.9494040135003744
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0036049625025130418,
+              "minimumDiameter": 0.06548491351531374,
+              "maximumDiameter": 0.07010407740870606,
+              "contourPoints": 240
+            }
+          },
+          "areaRatioToR34SamePose": 1.0000003226417844,
+          "minimumDiameterRatioToR34SamePose": 0.9999997692347196,
+          "actualPlaneAreaRatioToR34SamePose": 1.0000003394177952
+        },
+        "R_root_inner": {
+          "r34": {
+            "area": 0.0032676530167000083,
+            "minimumDiameter": 0.05779921296216434,
+            "maximumDiameter": 0.07338622679354267,
+            "axialSpan": 0.04058665040943059,
+            "center": [
+              0.17626513298969487,
+              0.5669942079666539,
+              0.10741620988003463
+            ],
+            "axis": [
+              0.19750065546538328,
+              -0.22873615492503402,
+              0.9532435483762032
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "candidate": {
+            "area": 0.003200054232600841,
+            "minimumDiameter": 0.055810520383953705,
+            "maximumDiameter": 0.07758972448353763,
+            "axialSpan": 0.05169103107251913,
+            "center": [
+              0.18170747383454822,
+              0.5624430917921845,
+              0.11236513736786496
+            ],
+            "axis": [
+              0.258661117725763,
+              -0.2049493268725646,
+              0.9439757409972682
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "areaRatioToR34SamePose": 0.9793127410549131,
+          "minimumDiameterRatioToR34SamePose": 0.9655930855059836,
+          "actualPlaneAreaRatioToR34SamePose": null
+        },
+        "R_root_outer": {
+          "r34": {
+            "area": 0.0037381560405375463,
+            "minimumDiameter": 0.06624160142171413,
+            "maximumDiameter": 0.07343416630016408,
+            "axialSpan": 0.013050904442331408,
+            "center": [
+              0.18375030399254616,
+              0.5639711995345054,
+              0.13715387624401326
+            ],
+            "axis": [
+              0.062066606355525085,
+              -0.13467033957830343,
+              0.9889447082690583
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.003743534345881916,
+              "minimumDiameter": 0.06641510874451727,
+              "maximumDiameter": 0.07348362667333291,
+              "contourPoints": 384
+            }
+          },
+          "candidate": {
+            "area": 0.0031741353909337765,
+            "minimumDiameter": 0.057869914145024445,
+            "maximumDiameter": 0.07171639454215434,
+            "axialSpan": 0.027186358139184554,
+            "center": [
+              0.18859572346882533,
+              0.5614100724600151,
+              0.13592248626285558
+            ],
+            "axis": [
+              0.08166268071088051,
+              -0.17734300542281425,
+              0.9807551503850064
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.003317913595598703,
+              "minimumDiameter": 0.059620715917623225,
+              "maximumDiameter": 0.07221221623650291,
+              "contourPoints": 403
+            }
+          },
+          "areaRatioToR34SamePose": 0.8491179492007873,
+          "minimumDiameterRatioToR34SamePose": 0.8736188875719808,
+          "actualPlaneAreaRatioToR34SamePose": 0.886305103424143
+        },
+        "R_upper_middle": {
+          "r34": {
+            "area": 0.004118627828423593,
+            "minimumDiameter": 0.06911588845133951,
+            "maximumDiameter": 0.07489354877424599,
+            "axialSpan": 0.010093493285355816,
+            "center": [
+              0.19229386719005498,
+              0.5650560425847182,
+              0.18323823709607875
+            ],
+            "axis": [
+              0.0044233286354674155,
+              0.033599350754468876,
+              0.9994255939251608
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004078378501082536,
+              "minimumDiameter": 0.06894026676666405,
+              "maximumDiameter": 0.07486554685528188,
+              "contourPoints": 318
+            }
+          },
+          "candidate": {
+            "area": 0.0037749984232134815,
+            "minimumDiameter": 0.06651624960090333,
+            "maximumDiameter": 0.07193749728759355,
+            "axialSpan": 0.012814903057447419,
+            "center": [
+              0.19313833976925784,
+              0.5636862435880329,
+              0.18253013011863767
+            ],
+            "axis": [
+              -0.03085208704075386,
+              0.02939117816160988,
+              0.9990917412187443
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0037744675531319848,
+              "minimumDiameter": 0.06619321430172222,
+              "maximumDiameter": 0.07208826276387455,
+              "contourPoints": 320
+            }
+          },
+          "areaRatioToR34SamePose": 0.916567017092769,
+          "minimumDiameterRatioToR34SamePose": 0.9623872468590715,
+          "actualPlaneAreaRatioToR34SamePose": 0.9254824073170542
+        },
+        "R_upper_distal": {
+          "r34": {
+            "area": 0.004429241688481611,
+            "minimumDiameter": 0.07464555389770486,
+            "maximumDiameter": 0.07542395642241241,
+            "axialSpan": 0.0029748720571333475,
+            "center": [
+              0.19372810893557185,
+              0.5624150112018383,
+              0.2326650791237213
+            ],
+            "axis": [
+              0.02151260959785341,
+              -0.09137596773520544,
+              0.995584069854849
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0044344521383718975,
+              "minimumDiameter": 0.07473062185874464,
+              "maximumDiameter": 0.07542511407149854,
+              "contourPoints": 274
+            }
+          },
+          "candidate": {
+            "area": 0.00442882615704846,
+            "minimumDiameter": 0.07463860445459897,
+            "maximumDiameter": 0.07542496334853704,
+            "axialSpan": 0.0029753330931115846,
+            "center": [
+              0.19373004172742622,
+              0.5624168933826402,
+              0.23266427858290345
+            ],
+            "axis": [
+              0.021515699405874427,
+              -0.09136662612395115,
+              0.9955848604261729
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004434032207983367,
+              "minimumDiameter": 0.07472366933082919,
+              "maximumDiameter": 0.07542609014008501,
+              "contourPoints": 274
+            }
+          },
+          "areaRatioToR34SamePose": 0.9999061845204267,
+          "minimumDiameterRatioToR34SamePose": 0.9999069007764961,
+          "actualPlaneAreaRatioToR34SamePose": 0.999905302757719
+        },
+        "R_elbow": {
+          "r34": {
+            "area": 0.00414821753592352,
+            "minimumDiameter": 0.0721775828260514,
+            "maximumDiameter": 0.07321062260768105,
+            "axialSpan": 0.0021596129278954332,
+            "center": [
+              0.1942055948730161,
+              0.5596080094714888,
+              0.25575943398326517
+            ],
+            "axis": [
+              0.01757690772950937,
+              -0.15620237123867897,
+              0.9875686667437775
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0041524872663756965,
+              "minimumDiameter": 0.07223802217860184,
+              "maximumDiameter": 0.07321431691338393,
+              "contourPoints": 274
+            }
+          },
+          "candidate": {
+            "area": 0.004147992413059286,
+            "minimumDiameter": 0.07217240268093619,
+            "maximumDiameter": 0.07321202488703736,
+            "axialSpan": 0.0021609108684124655,
+            "center": [
+              0.19420697287869387,
+              0.5596093977997879,
+              0.25575882694444396
+            ],
+            "axis": [
+              0.017538133658236237,
+              -0.15624193300020428,
+              0.9875630978525602
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004152261038662431,
+              "minimumDiameter": 0.07223277374302625,
+              "maximumDiameter": 0.07321575320783465,
+              "contourPoints": 274
+            }
+          },
+          "areaRatioToR34SamePose": 0.9999457302173079,
+          "minimumDiameterRatioToR34SamePose": 0.9999282305542472,
+          "actualPlaneAreaRatioToR34SamePose": 0.9999455199501519
+        },
+        "R_forearm_middle": {
+          "r34": {
+            "area": 0.0036049087178125173,
+            "minimumDiameter": 0.06548406947232854,
+            "maximumDiameter": 0.07010368386360877,
+            "axialSpan": 0.0004940697083023879,
+            "center": [
+              0.19523245084318447,
+              0.5350089335591548,
+              0.3367788482231726
+            ],
+            "axis": [
+              0.0076760044901199986,
+              -0.31385657339144074,
+              0.9494393768398542
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0036049624651023,
+              "minimumDiameter": 0.06548475488113514,
+              "maximumDiameter": 0.07010404221135924,
+              "contourPoints": 240
+            }
+          },
+          "candidate": {
+            "area": 0.0036049093848951053,
+            "minimumDiameter": 0.06548404837487311,
+            "maximumDiameter": 0.07010373112129227,
+            "axialSpan": 0.0004940845741906131,
+            "center": [
+              0.1952324321259931,
+              0.5350090611423333,
+              0.3367789338589598
+            ],
+            "axis": [
+              0.007675935800494064,
+              -0.3138566833550289,
+              0.9494393410444754
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.003604963084027126,
+              "minimumDiameter": 0.06548477380971632,
+              "maximumDiameter": 0.07010409280060514,
+              "contourPoints": 240
+            }
+          },
+          "areaRatioToR34SamePose": 1.0000001850483993,
+          "minimumDiameterRatioToR34SamePose": 0.9999996778230857,
+          "actualPlaneAreaRatioToR34SamePose": 1.0000001716868987
+        }
+      }
+    },
+    {
+      "pose": "Lift120",
+      "sourceMatrices": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Validation/ModelCandidateO-Unity/Captures/Lift120_Flex0_Matrices.bin",
+      "candidateIsActualUnityBake": true,
+      "candidateCpuCheckMaxErrorMeters": 3.3111293884206263e-07,
+      "sections": {
+        "L_root_inner": {
+          "r34": {
+            "area": 0.0030366605197148493,
+            "minimumDiameter": 0.05428586116819463,
+            "maximumDiameter": 0.07222043525316356,
+            "axialSpan": 0.041319152804895946,
+            "center": [
+              -0.17604100088259245,
+              0.5714950950237491,
+              0.11056548639845377
+            ],
+            "axis": [
+              -0.18691588774958748,
+              -0.07738893776779784,
+              0.9793229310181375
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "candidate": {
+            "area": 0.002880439320055331,
+            "minimumDiameter": 0.051536094797272045,
+            "maximumDiameter": 0.07630088797351145,
+            "axialSpan": 0.04799223631818092,
+            "center": [
+              -0.1818105756688114,
+              0.5677234349675323,
+              0.11615824473534409
+            ],
+            "axis": [
+              -0.25680937176763774,
+              -0.06767375052797407,
+              0.9640898350578067
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "areaRatioToR34SamePose": 0.9485549343941193,
+          "minimumDiameterRatioToR34SamePose": 0.9493465460112542,
+          "actualPlaneAreaRatioToR34SamePose": null
+        },
+        "L_root_outer": {
+          "r34": {
+            "area": 0.003523584243664806,
+            "minimumDiameter": 0.0642962224645662,
+            "maximumDiameter": 0.07188456406126452,
+            "axialSpan": 0.017765826523841545,
+            "center": [
+              -0.18349193080978923,
+              0.5738933671270653,
+              0.14244483873586433
+            ],
+            "axis": [
+              -0.060608590817879,
+              0.06351488137520299,
+              0.9961387747512718
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.003496979277174534,
+              "minimumDiameter": 0.06380712759609086,
+              "maximumDiameter": 0.07143777352127527,
+              "contourPoints": 369
+            }
+          },
+          "candidate": {
+            "area": 0.0029593963981040194,
+            "minimumDiameter": 0.056134286219829604,
+            "maximumDiameter": 0.07111745819103302,
+            "axialSpan": 0.02708180518482657,
+            "center": [
+              -0.18857169457217562,
+              0.570771674177716,
+              0.14082573697744524
+            ],
+            "axis": [
+              -0.07533519471851954,
+              0.00995554350527112,
+              0.9971085676044696
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.002942211625536933,
+              "minimumDiameter": 0.0557883796990993,
+              "maximumDiameter": 0.07041564922259456,
+              "contourPoints": 374
+            }
+          },
+          "areaRatioToR34SamePose": 0.8398824019674959,
+          "minimumDiameterRatioToR34SamePose": 0.8730572974293371,
+          "actualPlaneAreaRatioToR34SamePose": 0.8413580385624022
+        },
+        "L_upper_middle": {
+          "r34": {
+            "area": 0.003968147585485721,
+            "minimumDiameter": 0.06887508878991105,
+            "maximumDiameter": 0.07294289049073324,
+            "axialSpan": 0.010789719306352401,
+            "center": [
+              -0.19197411998639105,
+              0.584881428452159,
+              0.1905839151087492
+            ],
+            "axis": [
+              -0.009477680869893899,
+              0.24439543707284286,
+              0.9696293332523014
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.003938588839534034,
+              "minimumDiameter": 0.06889700170802404,
+              "maximumDiameter": 0.07300573307033452,
+              "contourPoints": 316
+            }
+          },
+          "candidate": {
+            "area": 0.003635223408172816,
+            "minimumDiameter": 0.06619468117575163,
+            "maximumDiameter": 0.06970328187362922,
+            "axialSpan": 0.014366620062912637,
+            "center": [
+              -0.1928975787254774,
+              0.5834350368815171,
+              0.1900308802441693
+            ],
+            "axis": [
+              0.026939867182734,
+              0.24883176557921635,
+              0.9681719867848411
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0036407675675377144,
+              "minimumDiameter": 0.06601765362655301,
+              "maximumDiameter": 0.06974246918619084,
+              "contourPoints": 312
+            }
+          },
+          "areaRatioToR34SamePose": 0.9161008581105601,
+          "minimumDiameterRatioToR34SamePose": 0.961083061216292,
+          "actualPlaneAreaRatioToR34SamePose": 0.9243837617659135
+        },
+        "L_upper_distal": {
+          "r34": {
+            "area": 0.0043940660283509035,
+            "minimumDiameter": 0.07421542799241776,
+            "maximumDiameter": 0.07533567901137159,
+            "axialSpan": 0.003379514808095687,
+            "center": [
+              -0.19386316715654603,
+              0.5939727583805553,
+              0.24077758404059196
+            ],
+            "axis": [
+              -0.02754575372672077,
+              0.12769200262892388,
+              0.9914312804810234
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004397231052651756,
+              "minimumDiameter": 0.07428327118144996,
+              "maximumDiameter": 0.07533600406220044,
+              "contourPoints": 274
+            }
+          },
+          "candidate": {
+            "area": 0.0043964021724480955,
+            "minimumDiameter": 0.07425209361305857,
+            "maximumDiameter": 0.07533203778698336,
+            "axialSpan": 0.0033693520493777176,
+            "center": [
+              -0.19385179267281505,
+              0.5939659861227883,
+              0.24078224608831203
+            ],
+            "axis": [
+              -0.027540673048096695,
+              0.12763533692317766,
+              0.9914387182759027
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004399590572065743,
+              "minimumDiameter": 0.07431989586188575,
+              "maximumDiameter": 0.07533282023680753,
+              "contourPoints": 274
+            }
+          },
+          "areaRatioToR34SamePose": 1.0005316588513051,
+          "minimumDiameterRatioToR34SamePose": 1.0004940431071092,
+          "actualPlaneAreaRatioToR34SamePose": 1.0005365920930092
+        },
+        "L_elbow": {
+          "r34": {
+            "area": 0.004133004061396012,
+            "minimumDiameter": 0.07185184870832642,
+            "maximumDiameter": 0.07328616608228404,
+            "axialSpan": 0.0022394564244132805,
+            "center": [
+              -0.19436457858840975,
+              0.5959639408004505,
+              0.2640208534435597
+            ],
+            "axis": [
+              -0.015966361497955897,
+              0.042835668324927634,
+              0.9989545439206297
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004137154323330006,
+              "minimumDiameter": 0.07190941835036571,
+              "maximumDiameter": 0.07329224917584995,
+              "contourPoints": 274
+            }
+          },
+          "candidate": {
+            "area": 0.004134441780807909,
+            "minimumDiameter": 0.0718803783156832,
+            "maximumDiameter": 0.0732815299625269,
+            "axialSpan": 0.002233137196977888,
+            "center": [
+              -0.19435671528776938,
+              0.5959594338823326,
+              0.2640247095559849
+            ],
+            "axis": [
+              -0.01619886850173201,
+              0.0430339895683328,
+              0.9989422768113763
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004138604769398651,
+              "minimumDiameter": 0.07193852820308269,
+              "maximumDiameter": 0.07328740189884421,
+              "contourPoints": 274
+            }
+          },
+          "areaRatioToR34SamePose": 1.0003478630532512,
+          "minimumDiameterRatioToR34SamePose": 1.0003970615630586,
+          "actualPlaneAreaRatioToR34SamePose": 1.0003505902742051
+        },
+        "L_forearm_middle": {
+          "r34": {
+            "area": 0.0036048973604356997,
+            "minimumDiameter": 0.06548372251294432,
+            "maximumDiameter": 0.07010343897255492,
+            "axialSpan": 0.0005030063045112652,
+            "center": [
+              -0.1953765387003812,
+              0.5880379760886457,
+              0.3483790890963129
+            ],
+            "axis": [
+              -0.00855904158289104,
+              -0.11747725371575266,
+              0.9930386889072284
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0036049518721124876,
+              "minimumDiameter": 0.06548440268872974,
+              "maximumDiameter": 0.07010381676367768,
+              "contourPoints": 240
+            }
+          },
+          "candidate": {
+            "area": 0.0036048982994529516,
+            "minimumDiameter": 0.06548373575775879,
+            "maximumDiameter": 0.07010341444247026,
+            "axialSpan": 0.0005029845243920959,
+            "center": [
+              -0.19537650945114265,
+              0.5880381144000136,
+              0.3483791705590219
+            ],
+            "axis": [
+              -0.008559064159603738,
+              -0.11747710411489337,
+              0.9930387064105257
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0036049527138003403,
+              "minimumDiameter": 0.06548440538933072,
+              "maximumDiameter": 0.0701037969282377,
+              "contourPoints": 240
+            }
+          },
+          "areaRatioToR34SamePose": 1.0000002604837692,
+          "minimumDiameterRatioToR34SamePose": 1.000000202261172,
+          "actualPlaneAreaRatioToR34SamePose": 1.0000002334810234
+        },
+        "R_root_inner": {
+          "r34": {
+            "area": 0.003036413129983692,
+            "minimumDiameter": 0.05428550187615738,
+            "maximumDiameter": 0.07220509627688396,
+            "axialSpan": 0.041318214589882885,
+            "center": [
+              0.176021257962641,
+              0.5714843900963967,
+              0.11061291346360633
+            ],
+            "axis": [
+              0.18668948224572998,
+              -0.07740700453185875,
+              0.9793646883915236
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "candidate": {
+            "area": 0.002880433758518715,
+            "minimumDiameter": 0.0515359930694783,
+            "maximumDiameter": 0.07630080857675695,
+            "axialSpan": 0.047991727488471664,
+            "center": [
+              0.18178913753195977,
+              0.5677138825933118,
+              0.1162046719487468
+            ],
+            "axis": [
+              0.2565717330471141,
+              -0.06766165356695301,
+              0.9641539537012676
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "areaRatioToR34SamePose": 0.9486303856597356,
+          "minimumDiameterRatioToR34SamePose": 0.9493509553812067,
+          "actualPlaneAreaRatioToR34SamePose": null
+        },
+        "R_root_outer": {
+          "r34": {
+            "area": 0.00352325979436055,
+            "minimumDiameter": 0.06429373475382195,
+            "maximumDiameter": 0.07188133531980709,
+            "axialSpan": 0.017771593963659547,
+            "center": [
+              0.18346541124979232,
+              0.5738834425429807,
+              0.1424930704616912
+            ],
+            "axis": [
+              0.0604033708388936,
+              0.06357215285269678,
+              0.9961475865417595
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0034966487525600895,
+              "minimumDiameter": 0.06380462375081304,
+              "maximumDiameter": 0.07143370556389925,
+              "contourPoints": 369
+            }
+          },
+          "candidate": {
+            "area": 0.002959387865396332,
+            "minimumDiameter": 0.05613442214207634,
+            "maximumDiameter": 0.07111728484391064,
+            "axialSpan": 0.02708199449364592,
+            "center": [
+              0.18854454021134903,
+              0.5707624558531793,
+              0.14087412082444914
+            ],
+            "axis": [
+              0.07509919504587362,
+              0.009979560738773825,
+              0.9971261300712779
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.002942194489647581,
+              "minimumDiameter": 0.05578857319195465,
+              "maximumDiameter": 0.07041514179702364,
+              "contourPoints": 374
+            }
+          },
+          "areaRatioToR34SamePose": 0.8399573230827966,
+          "minimumDiameterRatioToR34SamePose": 0.8730931926261978,
+          "actualPlaneAreaRatioToR34SamePose": 0.8414326682065043
+        },
+        "R_upper_middle": {
+          "r34": {
+            "area": 0.003968099920867064,
+            "minimumDiameter": 0.06887513429788361,
+            "maximumDiameter": 0.07294256045027028,
+            "axialSpan": 0.010793844834719735,
+            "center": [
+              0.19193601420380388,
+              0.5848731742210579,
+              0.19063310734007607
+            ],
+            "axis": [
+              0.00918164197742765,
+              0.24446429833944314,
+              0.9696148226424771
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.003938453139921882,
+              "minimumDiameter": 0.06889687066295841,
+              "maximumDiameter": 0.07300544894894208,
+              "contourPoints": 316
+            }
+          },
+          "candidate": {
+            "area": 0.00363522089254446,
+            "minimumDiameter": 0.06619470931838847,
+            "maximumDiameter": 0.06970306117015172,
+            "axialSpan": 0.014365748211520347,
+            "center": [
+              0.19285934525000636,
+              0.583426859748307,
+              0.19008027855420226
+            ],
+            "axis": [
+              -0.027155567536100177,
+              0.24885263494147022,
+              0.9681605968198044
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.003640763772819264,
+              "minimumDiameter": 0.06601775490531306,
+              "maximumDiameter": 0.06974226567681782,
+              "contourPoints": 312
+            }
+          },
+          "areaRatioToR34SamePose": 0.9161112283054941,
+          "minimumDiameterRatioToR34SamePose": 0.9610828348021457,
+          "actualPlaneAreaRatioToR34SamePose": 0.9244146479527435
+        },
+        "R_upper_distal": {
+          "r34": {
+            "area": 0.004394060796458008,
+            "minimumDiameter": 0.07421546224399762,
+            "maximumDiameter": 0.07533573698582074,
+            "axialSpan": 0.0033782756756428095,
+            "center": [
+              0.19381359805152812,
+              0.5939657003005606,
+              0.2408269637640102
+            ],
+            "axis": [
+              0.02731863456011697,
+              0.12772995362009706,
+              0.9914326760572191
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004397225750512094,
+              "minimumDiameter": 0.07428323715060561,
+              "maximumDiameter": 0.07533605774528052,
+              "contourPoints": 274
+            }
+          },
+          "candidate": {
+            "area": 0.0043964041480284224,
+            "minimumDiameter": 0.07425219735236009,
+            "maximumDiameter": 0.07533215901112417,
+            "axialSpan": 0.0033682259892691252,
+            "center": [
+              0.19380222675283126,
+              0.5939589133205222,
+              0.2408316285106078
+            ],
+            "axis": [
+              0.027312042226636017,
+              0.1276736483797655,
+              0.9914401100716121
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004399592090159136,
+              "minimumDiameter": 0.0743198972611662,
+              "maximumDiameter": 0.0753328940301684,
+              "contourPoints": 274
+            }
+          },
+          "areaRatioToR34SamePose": 1.0005332997605094,
+          "minimumDiameterRatioToR34SamePose": 1.000494979176195,
+          "actualPlaneAreaRatioToR34SamePose": 1.000538143770937
+        },
+        "R_elbow": {
+          "r34": {
+            "area": 0.004133001425834589,
+            "minimumDiameter": 0.07185176073096222,
+            "maximumDiameter": 0.07328621313656641,
+            "axialSpan": 0.002239453532745965,
+            "center": [
+              0.194309570950854,
+              0.595958174109741,
+              0.2640702867784396
+            ],
+            "axis": [
+              0.015728804206457565,
+              0.04290684729351312,
+              0.9989552578436964
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.00413715176241332,
+              "minimumDiameter": 0.07190927757393287,
+              "maximumDiameter": 0.0732922966174144,
+              "contourPoints": 274
+            }
+          },
+          "candidate": {
+            "area": 0.004134444240294305,
+            "minimumDiameter": 0.07188031806002118,
+            "maximumDiameter": 0.07328149135700557,
+            "axialSpan": 0.0022331365523808903,
+            "center": [
+              0.1943017137042196,
+              0.595953655375033,
+              0.26407414166150156
+            ],
+            "axis": [
+              0.015962122855324258,
+              0.04310596828124702,
+              0.9989429844252812
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.004138606959714245,
+              "minimumDiameter": 0.0719385493758484,
+              "maximumDiameter": 0.07328738231344663,
+              "contourPoints": 274
+            }
+          },
+          "areaRatioToR34SamePose": 1.0003490960469303,
+          "minimumDiameterRatioToR34SamePose": 1.0003974478672262,
+          "actualPlaneAreaRatioToR34SamePose": 1.000351738921967
+        },
+        "R_forearm_middle": {
+          "r34": {
+            "area": 0.003604899930575219,
+            "minimumDiameter": 0.06548366455754048,
+            "maximumDiameter": 0.07010347585197957,
+            "axialSpan": 0.0005006449581230052,
+            "center": [
+              0.19530067877281546,
+              0.5880433341622041,
+              0.3484299523663183
+            ],
+            "axis": [
+              0.008310174759025046,
+              -0.11728722327018173,
+              0.9930632649801547
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0036049542292259148,
+              "minimumDiameter": 0.06548434539715521,
+              "maximumDiameter": 0.07010384884854821,
+              "contourPoints": 240
+            }
+          },
+          "candidate": {
+            "area": 0.003604901227431269,
+            "minimumDiameter": 0.06548372549401252,
+            "maximumDiameter": 0.07010351132386934,
+            "axialSpan": 0.0005006834477838775,
+            "center": [
+              0.1953006792299753,
+              0.5880434753092403,
+              0.3484300251071006
+            ],
+            "axis": [
+              0.008309816971125785,
+              -0.11728725305603559,
+              0.9930632644562359
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.003604955567548589,
+              "minimumDiameter": 0.06548440514235898,
+              "maximumDiameter": 0.07010389006833523,
+              "contourPoints": 240
+            }
+          },
+          "areaRatioToR34SamePose": 1.0000003597481415,
+          "minimumDiameterRatioToR34SamePose": 1.0000009305598954,
+          "actualPlaneAreaRatioToR34SamePose": 1.0000003712453998
+        }
+      }
+    },
+    {
+      "pose": "HighBent",
+      "sourceMatrices": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Validation/ModelCandidateO-Unity/Captures/Sweep_0270_Matrices.bin",
+      "candidateIsActualUnityBake": true,
+      "candidateCpuCheckMaxErrorMeters": 3.255302960881429e-07,
+      "sections": {
+        "L_root_inner": {
+          "r34": {
+            "area": 0.002790896512801985,
+            "minimumDiameter": 0.05075349345372662,
+            "maximumDiameter": 0.07083531455710161,
+            "axialSpan": 0.04570359021808987,
+            "center": [
+              -0.1757010539268616,
+              0.5734920032983006,
+              0.10081687975816404
+            ],
+            "axis": [
+              -0.19154781992631933,
+              0.006830481113702878,
+              0.9814595137901664
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "candidate": {
+            "area": 0.0025868378348087337,
+            "minimumDiameter": 0.04887707832187324,
+            "maximumDiameter": 0.0721889618032436,
+            "axialSpan": 0.05025580735734371,
+            "center": [
+              -0.18236530534611098,
+              0.5712109816714048,
+              0.10823298893884058
+            ],
+            "axis": [
+              -0.24844788344280622,
+              -0.02075514668808877,
+              0.9684228792726584
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "areaRatioToR34SamePose": 0.9268841832517889,
+          "minimumDiameterRatioToR34SamePose": 0.963028847786327,
+          "actualPlaneAreaRatioToR34SamePose": null
+        },
+        "L_root_outer": {
+          "r34": {
+            "area": 0.003024868659249306,
+            "minimumDiameter": 0.05819298711574365,
+            "maximumDiameter": 0.06709153042704777,
+            "axialSpan": 0.031373783834852044,
+            "center": [
+              -0.18373842872089097,
+              0.5788900614598607,
+              0.13308557818382688
+            ],
+            "axis": [
+              -0.0866824005329944,
+              0.15136677379225555,
+              0.9846696203445914
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.002960111210017161,
+              "minimumDiameter": 0.05757261636013876,
+              "maximumDiameter": 0.06555822818047875,
+              "contourPoints": 352
+            }
+          },
+          "candidate": {
+            "area": 0.00267827632177483,
+            "minimumDiameter": 0.053692517088254364,
+            "maximumDiameter": 0.06776784121557246,
+            "axialSpan": 0.03144263506301027,
+            "center": [
+              -0.18911681613147263,
+              0.5754823395434845,
+              0.13367009020671064
+            ],
+            "axis": [
+              -0.07986139622436403,
+              0.06774544028406218,
+              0.9945012381660536
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0026194030181632844,
+              "minimumDiameter": 0.05314735439881895,
+              "maximumDiameter": 0.06598920385150409,
+              "contourPoints": 368
+            }
+          },
+          "areaRatioToR34SamePose": 0.8854190457444552,
+          "minimumDiameterRatioToR34SamePose": 0.9226630174777242,
+          "actualPlaneAreaRatioToR34SamePose": 0.8849002055392705
+        },
+        "L_upper_middle": {
+          "r34": {
+            "area": 0.0034839559894417702,
+            "minimumDiameter": 0.06451944904376819,
+            "maximumDiameter": 0.06935967928930709,
+            "axialSpan": 0.015107403247948903,
+            "center": [
+              -0.19211420150949712,
+              0.5920334876756173,
+              0.1848710212998605
+            ],
+            "axis": [
+              -0.042789287986265835,
+              0.21414826775064613,
+              0.9758635131272334
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.00346349267423925,
+              "minimumDiameter": 0.06417767908450867,
+              "maximumDiameter": 0.06918060665154843,
+              "contourPoints": 308
+            }
+          },
+          "candidate": {
+            "area": 0.0031489719818350616,
+            "minimumDiameter": 0.06216155401226458,
+            "maximumDiameter": 0.06468962618870622,
+            "axialSpan": 0.017894280986680583,
+            "center": [
+              -0.19355801305410153,
+              0.5907077672855046,
+              0.18502532880763362
+            ],
+            "axis": [
+              0.020705871262065696,
+              0.2794467648831246,
+              0.9599379003308675
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.003173852922738959,
+              "minimumDiameter": 0.062393771123480005,
+              "maximumDiameter": 0.06482388312781061,
+              "contourPoints": 308
+            }
+          },
+          "areaRatioToR34SamePose": 0.9038495294940903,
+          "minimumDiameterRatioToR34SamePose": 0.9634545076492503,
+          "actualPlaneAreaRatioToR34SamePose": 0.9163735053766471
+        },
+        "L_upper_distal": {
+          "r34": {
+            "area": 0.0036897213843755756,
+            "minimumDiameter": 0.06542794654122713,
+            "maximumDiameter": 0.07190974791325193,
+            "axialSpan": 0.001471006423558137,
+            "center": [
+              -0.19458750392436264,
+              0.6047296336048463,
+              0.2351971073955349
+            ],
+            "axis": [
+              -0.02289940065054277,
+              0.2558218402532639,
+              0.9664526907714001
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.003691458256060259,
+              "minimumDiameter": 0.06543177281720497,
+              "maximumDiameter": 0.0719408572621199,
+              "contourPoints": 274
+            }
+          },
+          "candidate": {
+            "area": 0.0036894954138484712,
+            "minimumDiameter": 0.0654278387828929,
+            "maximumDiameter": 0.07190617125500293,
+            "axialSpan": 0.0014706549387349518,
+            "center": [
+              -0.19458996653049765,
+              0.6047330189833088,
+              0.23519824207496082
+            ],
+            "axis": [
+              -0.022886046095839087,
+              0.25579728161115073,
+              0.9664595074882572
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0036912331819132695,
+              "minimumDiameter": 0.06543165381927388,
+              "maximumDiameter": 0.07193726501379188,
+              "contourPoints": 274
+            }
+          },
+          "areaRatioToR34SamePose": 0.9999387567505608,
+          "minimumDiameterRatioToR34SamePose": 0.9999983530228301,
+          "actualPlaneAreaRatioToR34SamePose": 0.9999390283916607
+        },
+        "L_elbow": {
+          "r34": {
+            "area": 0.0033815044811324685,
+            "minimumDiameter": 0.06090268258544708,
+            "maximumDiameter": 0.07066361394620096,
+            "axialSpan": 0.002668387015627711,
+            "center": [
+              -0.19469621815446234,
+              0.6104569260127246,
+              0.2537557512229824
+            ],
+            "axis": [
+              0.0031002422323679955,
+              0.36956455962687595,
+              0.9291998841831038
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0033867802946881903,
+              "minimumDiameter": 0.060953918318824636,
+              "maximumDiameter": 0.07067986491649608,
+              "contourPoints": 276
+            }
+          },
+          "candidate": {
+            "area": 0.0033814013046619684,
+            "minimumDiameter": 0.06090409771183479,
+            "maximumDiameter": 0.07065970257508498,
+            "axialSpan": 0.002670870109296877,
+            "center": [
+              -0.1946977409833175,
+              0.6104579870501374,
+              0.25375573034312654
+            ],
+            "axis": [
+              0.0031660843079639837,
+              0.3694550044656903,
+              0.9292432273551481
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.003386670205075706,
+              "minimumDiameter": 0.06095524654062169,
+              "maximumDiameter": 0.07067592654852672,
+              "contourPoints": 276
+            }
+          },
+          "areaRatioToR34SamePose": 0.9999694879982931,
+          "minimumDiameterRatioToR34SamePose": 1.0000232358629806,
+          "actualPlaneAreaRatioToR34SamePose": 0.9999674943152773
+        },
+        "L_forearm_middle": {
+          "r34": {
+            "area": 0.0023826004360576313,
+            "minimumDiameter": 0.04633341355952682,
+            "maximumDiameter": 0.06549421974697889,
+            "axialSpan": 0.02522158459118545,
+            "center": [
+              -0.19532327827509474,
+              0.6660842798189247,
+              0.2850065293229889
+            ],
+            "axis": [
+              -0.009288699157221986,
+              0.9999416601788198,
+              -0.0055132845738595495
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.002367068414775631,
+              "minimumDiameter": 0.04594363755171588,
+              "maximumDiameter": 0.06549392531743424,
+              "contourPoints": 262
+            }
+          },
+          "candidate": {
+            "area": 0.002382601474501312,
+            "minimumDiameter": 0.04633344627292997,
+            "maximumDiameter": 0.06549423370959662,
+            "axialSpan": 0.025221529725407303,
+            "center": [
+              -0.19532328778866154,
+              0.6660844388082039,
+              0.28500659708819465
+            ],
+            "axis": [
+              -0.00928892496573273,
+              0.9999416579115828,
+              -0.005513315337980419
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0023670690724065116,
+              "minimumDiameter": 0.04594362955462857,
+              "maximumDiameter": 0.06549394308490714,
+              "contourPoints": 262
+            }
+          },
+          "areaRatioToR34SamePose": 1.0000004358446617,
+          "minimumDiameterRatioToR34SamePose": 1.00000070604345,
+          "actualPlaneAreaRatioToR34SamePose": 1.0000002778250416
+        },
+        "R_root_inner": {
+          "r34": {
+            "area": 0.002789756978465818,
+            "minimumDiameter": 0.050768604885330776,
+            "maximumDiameter": 0.07078991657086664,
+            "axialSpan": 0.04554266921658544,
+            "center": [
+              0.17568783083805833,
+              0.5734894053873537,
+              0.10082316267432426
+            ],
+            "axis": [
+              0.19126481187169125,
+              0.006681815027178196,
+              0.981515728395439
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "candidate": {
+            "area": 0.002586808778932647,
+            "minimumDiameter": 0.04887731380116435,
+            "maximumDiameter": 0.07218981497841018,
+            "axialSpan": 0.05025567090667493,
+            "center": [
+              0.18235518252900726,
+              0.571212925681437,
+              0.10824290237392642
+            ],
+            "axis": [
+              0.24832813648762966,
+              -0.02075536776235785,
+              0.9684535876011975
+            ],
+            "actualPerpendicularPlaneSection": {
+              "invalid": "No isolated arm loop at this root/bend; do not treat the projected material ring as a literal plane cut."
+            }
+          },
+          "areaRatioToR34SamePose": 0.9272523731996258,
+          "minimumDiameterRatioToR34SamePose": 0.9627468375694346,
+          "actualPlaneAreaRatioToR34SamePose": null
+        },
+        "R_root_outer": {
+          "r34": {
+            "area": 0.0030234218202936825,
+            "minimumDiameter": 0.05819023637875566,
+            "maximumDiameter": 0.06708626609030634,
+            "axialSpan": 0.03140164720518695,
+            "center": [
+              0.18372845865991466,
+              0.5788867901589151,
+              0.13309688069694559
+            ],
+            "axis": [
+              0.08689770680370862,
+              0.15142716731029343,
+              0.9846413568160933
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.002958912459992679,
+              "minimumDiameter": 0.05758630312275754,
+              "maximumDiameter": 0.06554977708121723,
+              "contourPoints": 352
+            }
+          },
+          "candidate": {
+            "area": 0.002678265163270458,
+            "minimumDiameter": 0.05369208112347568,
+            "maximumDiameter": 0.06776847667656508,
+            "axialSpan": 0.031443676560106645,
+            "center": [
+              0.18910332602439447,
+              0.5754845427364896,
+              0.13368083359761376
+            ],
+            "axis": [
+              0.07972853632668342,
+              0.06775596930241236,
+              0.994511180992499
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.002619378975504747,
+              "minimumDiameter": 0.0531467202444289,
+              "maximumDiameter": 0.06598967662481019,
+              "contourPoints": 368
+            }
+          },
+          "areaRatioToR34SamePose": 0.8858390666143643,
+          "minimumDiameterRatioToR34SamePose": 0.922699141037994,
+          "actualPlaneAreaRatioToR34SamePose": 0.8852505813947696
+        },
+        "R_upper_middle": {
+          "r34": {
+            "area": 0.0034838843059233765,
+            "minimumDiameter": 0.06451575133871808,
+            "maximumDiameter": 0.0693617889729582,
+            "axialSpan": 0.015112440145696585,
+            "center": [
+              0.19209404809856806,
+              0.5920362304051603,
+              0.18488275966363799
+            ],
+            "axis": [
+              0.04229251462650519,
+              0.21439027566370678,
+              0.9758320310931623
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.003463233849585956,
+              "minimumDiameter": 0.06417072209871758,
+              "maximumDiameter": 0.06918083131775281,
+              "contourPoints": 308
+            }
+          },
+          "candidate": {
+            "area": 0.0031489607974576,
+            "minimumDiameter": 0.06216105916359756,
+            "maximumDiameter": 0.0646900181482171,
+            "axialSpan": 0.017895840859830484,
+            "center": [
+              0.19353695611811914,
+              0.5907111801756615,
+              0.18503747188247116
+            ],
+            "axis": [
+              -0.020859487428556853,
+              0.27947134112263705,
+              0.9599274197955451
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0031738415111362264,
+              "minimumDiameter": 0.0623934498488776,
+              "maximumDiameter": 0.06482423862457798,
+              "contourPoints": 308
+            }
+          },
+          "areaRatioToR34SamePose": 0.9038649165541083,
+          "minimumDiameterRatioToR34SamePose": 0.9635020576175575,
+          "actualPlaneAreaRatioToR34SamePose": 0.9164386954452043
+        },
+        "R_upper_distal": {
+          "r34": {
+            "area": 0.003689702021801503,
+            "minimumDiameter": 0.06542762002467313,
+            "maximumDiameter": 0.07190970222453563,
+            "axialSpan": 0.0014714187142235973,
+            "center": [
+              0.19455803111369,
+              0.6047347333778508,
+              0.23521069592578173
+            ],
+            "axis": [
+              0.02274837714008514,
+              0.25584410076838193,
+              0.9664503647055602
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.003691438979201838,
+              "minimumDiameter": 0.06543144760952334,
+              "maximumDiameter": 0.0719408143804234,
+              "contourPoints": 274
+            }
+          },
+          "candidate": {
+            "area": 0.003689514574212179,
+            "minimumDiameter": 0.0654278889019976,
+            "maximumDiameter": 0.07190621772857911,
+            "axialSpan": 0.0014712332638323312,
+            "center": [
+              0.19456048625840924,
+              0.6047386089621557,
+              0.23521183905329515
+            ],
+            "axis": [
+              0.022733212084171017,
+              0.2558203339882478,
+              0.9664570129014934
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0036912522268311375,
+              "minimumDiameter": 0.06543171051627714,
+              "maximumDiameter": 0.07193728121495702,
+              "contourPoints": 274
+            }
+          },
+          "areaRatioToR34SamePose": 0.9999491970928231,
+          "minimumDiameterRatioToR34SamePose": 1.0000041095385155,
+          "actualPlaneAreaRatioToR34SamePose": 0.9999494093301412
+        },
+        "R_elbow": {
+          "r34": {
+            "area": 0.003381495767674981,
+            "minimumDiameter": 0.060902622286849145,
+            "maximumDiameter": 0.07066346041210142,
+            "axialSpan": 0.002666547095922911,
+            "center": [
+              0.19466421066841558,
+              0.6104626281378691,
+              0.253769594896531
+            ],
+            "axis": [
+              -0.0032119494871287813,
+              0.369588950448155,
+              0.9291898035854264
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.003386769819113412,
+              "minimumDiameter": 0.060953846069618574,
+              "maximumDiameter": 0.07067966768332881,
+              "contourPoints": 276
+            }
+          },
+          "candidate": {
+            "area": 0.0033814349323934107,
+            "minimumDiameter": 0.06090462535505772,
+            "maximumDiameter": 0.07065968798141342,
+            "axialSpan": 0.002669131549400052,
+            "center": [
+              0.19466567628082604,
+              0.6104639396349428,
+              0.25376949059593895
+            ],
+            "axis": [
+              -0.003279640023398068,
+              0.3694652335400074,
+              0.9292387665000554
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.003386701986348547,
+              "minimumDiameter": 0.06095578857133484,
+              "maximumDiameter": 0.07067591890439927,
+              "contourPoints": 276
+            }
+          },
+          "areaRatioToR34SamePose": 0.9999820093574708,
+          "minimumDiameterRatioToR34SamePose": 1.0000328896873956,
+          "actualPlaneAreaRatioToR34SamePose": 0.9999799712503393
+        },
+        "R_forearm_middle": {
+          "r34": {
+            "area": 0.0023826313052931537,
+            "minimumDiameter": 0.04633422631865892,
+            "maximumDiameter": 0.06549426541869309,
+            "axialSpan": 0.025221605825271654,
+            "center": [
+              0.1952901363547183,
+              0.6660905237136363,
+              0.28502108770515044
+            ],
+            "axis": [
+              0.009346421111058089,
+              0.9999411911479567,
+              -0.005500787036450603
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.0023671000104171142,
+              "minimumDiameter": 0.04594449292457323,
+              "maximumDiameter": 0.06549396695452134,
+              "contourPoints": 262
+            }
+          },
+          "candidate": {
+            "area": 0.0023826319417605303,
+            "minimumDiameter": 0.046334252845385615,
+            "maximumDiameter": 0.0654942477452964,
+            "axialSpan": 0.025221648974405344,
+            "center": [
+              0.19529010691175744,
+              0.6660906802604288,
+              0.28502115449433396
+            ],
+            "axis": [
+              0.009346506535825638,
+              0.9999411890682713,
+              -0.005501019933376127
+            ],
+            "actualPerpendicularPlaneSection": {
+              "area": 0.002367100466952398,
+              "minimumDiameter": 0.04594450960923316,
+              "maximumDiameter": 0.06549395058432371,
+              "contourPoints": 262
+            }
+          },
+          "areaRatioToR34SamePose": 1.0000002671279333,
+          "minimumDiameterRatioToR34SamePose": 1.0000005725082473,
+          "actualPlaneAreaRatioToR34SamePose": 1.0000001928669182
+        }
+      }
+    }
+  ]
+}

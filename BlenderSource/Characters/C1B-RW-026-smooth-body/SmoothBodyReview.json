@@ -1,0 +1,36 @@
+{
+  "source": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-025-local-rib-fill/CHR_MasterCharacter_C1B_LocalRibFill_r25.blend",
+  "sourceSha256": "58ec5cac11191a578fe4dc6d7d2b1e48d2339bfde356cd0b69b0ef6b7dc5a017",
+  "candidateSha256": "f063912260e6358692fa556b0a247baa40ddcb8d51311f78a3c4d77a555b864c",
+  "transportSha256": "f35d3da2886c439379d3655f4369abb474106c98d9ebe2f8ad928b7bab1e9e25",
+  "bodyVertices": 227942,
+  "editedVertices": 118361,
+  "headSkeletonTopologyWeightsPreserved": true,
+  "outsideTorsoCoordinatesPreserved": true,
+  "customNormalsFromNeutralSurface": true,
+  "maximumNeutralShapeChangeMeters": 0.012605617399684955,
+  "mirrorMaxMeters": 0.0,
+  "visualApproved": false,
+  "normalPoseCorrectives": 6,
+  "normalPoseGeometryDeltas": "zero; normals only",
+  "normalPoseReferences": [
+    {
+      "pose": "Raise45",
+      "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-026-smooth-body/ReferencePoses/Raised_45_Matrices.bin",
+      "sha256": "11139323b27c7ead8efa96428a54745eecd8d38db2ae254d9076574d0540de26"
+    },
+    {
+      "pose": "Raise90",
+      "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-026-smooth-body/ReferencePoses/Raised_90_Matrices.bin",
+      "sha256": "06423eb2fcf42a0b6b4d32aab5162eba38fb8a7fd7af27a713253aa3d3271271"
+    },
+    {
+      "pose": "Strike",
+      "path": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-026-smooth-body/ReferencePoses/Punch_08_Matrices.bin",
+      "sha256": "8e556bc64bf5a838c3efea97aa5cf5eb681159a051f90964a3812262f5862c74"
+    }
+  ],
+  "normalBaseAttribute": "r26_normal_base",
+  "validationPayloadUnchanged": true,
+  "validationPayloadSha256": "164980ffaeec649aa450a3ff881c3e8732f912bb2e407098a4259c42fecb9726"
+}

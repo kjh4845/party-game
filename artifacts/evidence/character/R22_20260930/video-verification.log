@@ -1,0 +1,42 @@
+punch-r22/verify_abc.swift:4:70: warning: 'tracks(withMediaType:)' was deprecated in macOS 13.0: Use loadTracks(withMediaType:) instead [#DeprecatedDeclaration]
+ 2 | import AVFoundation
+ 3 | for path in CommandLine.arguments.dropFirst() {
+ 4 |  let asset=AVURLAsset(url:URL(fileURLWithPath:path));let track=asset.tracks(withMediaType:.video)[0]
+   |                                                                      `- warning: 'tracks(withMediaType:)' was deprecated in macOS 13.0: Use loadTracks(withMediaType:) instead [#DeprecatedDeclaration]
+ 5 |  let reader=try AVAssetReader(asset:asset);let output=AVAssetReaderTrackOutput(track:track,outputSettings:[kCVPixelBufferPixelFormatTypeKey as String:kCVPixelFormatType_32BGRA]);reader.add(output);reader.startReading();var n=0
+ 6 |  while output.copyNextSampleBuffer() != nil {n += 1}
+
+punch-r22/verify_abc.swift:8:21: warning: 'tracks(withMediaType:)' was deprecated in macOS 13.0: Use loadTracks(withMediaType:) instead [#DeprecatedDeclaration]
+ 6 |  while output.copyNextSampleBuffer() != nil {n += 1}
+ 7 |  precondition(reader.status == .completed && n == 1080)
+ 8 |  precondition(asset.tracks(withMediaType:.audio).isEmpty)
+   |                     `- warning: 'tracks(withMediaType:)' was deprecated in macOS 13.0: Use loadTracks(withMediaType:) instead [#DeprecatedDeclaration]
+ 9 |  print("\(URL(fileURLWithPath:path).lastPathComponent): \(n) frames, \(track.nominalFrameRate) fps, \(CMTimeGetSeconds(asset.duration)) s, \(track.naturalSize)")
+10 | }
+
+punch-r22/verify_abc.swift:9:78: warning: 'nominalFrameRate' was deprecated in macOS 13.0: Use load(.nominalFrameRate) instead [#DeprecatedDeclaration]
+ 7 |  precondition(reader.status == .completed && n == 1080)
+ 8 |  precondition(asset.tracks(withMediaType:.audio).isEmpty)
+ 9 |  print("\(URL(fileURLWithPath:path).lastPathComponent): \(n) frames, \(track.nominalFrameRate) fps, \(CMTimeGetSeconds(asset.duration)) s, \(track.naturalSize)")
+   |                                                                              `- warning: 'nominalFrameRate' was deprecated in macOS 13.0: Use load(.nominalFrameRate) instead [#DeprecatedDeclaration]
+10 | }
+11 | 
+
+punch-r22/verify_abc.swift:9:126: warning: 'duration' was deprecated in macOS 13.0: Use load(.duration) instead [#DeprecatedDeclaration]
+ 7 |  precondition(reader.status == .completed && n == 1080)
+ 8 |  precondition(asset.tracks(withMediaType:.audio).isEmpty)
+ 9 |  print("\(URL(fileURLWithPath:path).lastPathComponent): \(n) frames, \(track.nominalFrameRate) fps, \(CMTimeGetSeconds(asset.duration)) s, \(track.naturalSize)")
+   |                                                                                                                              `- warning: 'duration' was deprecated in macOS 13.0: Use load(.duration) instead [#DeprecatedDeclaration]
+10 | }
+11 | 
+
+punch-r22/verify_abc.swift:9:148: warning: 'naturalSize' was deprecated in macOS 13.0: Use load(.naturalSize) instead [#DeprecatedDeclaration]
+ 7 |  precondition(reader.status == .completed && n == 1080)
+ 8 |  precondition(asset.tracks(withMediaType:.audio).isEmpty)
+ 9 |  print("\(URL(fileURLWithPath:path).lastPathComponent): \(n) frames, \(track.nominalFrameRate) fps, \(CMTimeGetSeconds(asset.duration)) s, \(track.naturalSize)")
+   |                                                                                                                                                    `- warning: 'naturalSize' was deprecated in macOS 13.0: Use load(.naturalSize) instead [#DeprecatedDeclaration]
+10 | }
+11 | 
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+R22_Punch_ABC_1x_Silent.mp4: 1080 frames, 59.999996 fps, 18.0 s, (1920.0, 704.0)

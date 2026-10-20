@@ -1,0 +1,5046 @@
+{
+    "model": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/ModelCandidateO/ShoulderLineCharacter.bytes",
+    "maximumSurfaceAngle": 39.471885681152347,
+    "frames": [
+        {
+            "frame": 0,
+            "phase": "StraightArmLift",
+            "requestedLift": 0.0,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.71537971496582,
+            "worstPoint": {
+                "x": -0.1545674353837967,
+                "y": 0.5389239192008972,
+                "z": 0.010928388684988022
+            }
+        },
+        {
+            "frame": 1,
+            "phase": "StraightArmLift",
+            "requestedLift": 0.03696084022521973,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.732633590698243,
+            "worstPoint": {
+                "x": -0.1545674055814743,
+                "y": 0.5389213562011719,
+                "z": 0.011112156324088574
+            }
+        },
+        {
+            "frame": 2,
+            "phase": "StraightArmLift",
+            "requestedLift": 0.14779329299926759,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.719924926757814,
+            "worstPoint": {
+                "x": 0.15456674993038178,
+                "y": 0.5389171242713928,
+                "z": 0.011420714668929577
+            }
+        },
+        {
+            "frame": 3,
+            "phase": "StraightArmLift",
+            "requestedLift": 0.3323650360107422,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.793243408203126,
+            "worstPoint": {
+                "x": 0.15452656149864198,
+                "y": 0.5389298796653748,
+                "z": 0.011670605279505253
+            }
+        },
+        {
+            "frame": 4,
+            "phase": "StraightArmLift",
+            "requestedLift": 0.590447187423706,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.88974380493164,
+            "worstPoint": {
+                "x": 0.15447907149791718,
+                "y": 0.5389637351036072,
+                "z": 0.012089341878890992
+            }
+        },
+        {
+            "frame": 5,
+            "phase": "StraightArmLift",
+            "requestedLift": 0.9217214584350586,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.959102630615236,
+            "worstPoint": {
+                "x": -0.15445147454738618,
+                "y": 0.5389834046363831,
+                "z": 0.012628729455173016
+            }
+        },
+        {
+            "frame": 6,
+            "phase": "StraightArmLift",
+            "requestedLift": 1.3257801532745362,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.967723846435548,
+            "worstPoint": {
+                "x": -0.154437854886055,
+                "y": 0.5389900207519531,
+                "z": 0.01330759096890688
+            }
+        },
+        {
+            "frame": 7,
+            "phase": "StraightArmLift",
+            "requestedLift": 1.802126169204712,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 20.00397491455078,
+            "worstPoint": {
+                "x": 0.15443165600299836,
+                "y": 0.5389894843101502,
+                "z": 0.014133007265627385
+            }
+        },
+        {
+            "frame": 8,
+            "phase": "StraightArmLift",
+            "requestedLift": 2.3501694202423097,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.979951858520509,
+            "worstPoint": {
+                "x": 0.15443143248558045,
+                "y": 0.538978636264801,
+                "z": 0.015093759633600712
+            }
+        },
+        {
+            "frame": 9,
+            "phase": "StraightArmLift",
+            "requestedLift": 2.9692375659942629,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.98390007019043,
+            "worstPoint": {
+                "x": 0.1544325202703476,
+                "y": 0.5389625430107117,
+                "z": 0.016196243464946748
+            }
+        },
+        {
+            "frame": 10,
+            "phase": "StraightArmLift",
+            "requestedLift": 3.658568859100342,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 20.00136947631836,
+            "worstPoint": {
+                "x": 0.15443213284015656,
+                "y": 0.5389416217803955,
+                "z": 0.01743798516690731
+            }
+        },
+        {
+            "frame": 11,
+            "phase": "StraightArmLift",
+            "requestedLift": 4.417312145233154,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.99822425842285,
+            "worstPoint": {
+                "x": 0.15442894399166108,
+                "y": 0.5389145016670227,
+                "z": 0.018814817070961
+            }
+        },
+        {
+            "frame": 12,
+            "phase": "StraightArmLift",
+            "requestedLift": 5.24453067779541,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.97310447692871,
+            "worstPoint": {
+                "x": 0.15442247688770295,
+                "y": 0.5388797521591187,
+                "z": 0.020321957767009736
+            }
+        },
+        {
+            "frame": 13,
+            "phase": "StraightArmLift",
+            "requestedLift": 6.139211654663086,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.993438720703126,
+            "worstPoint": {
+                "x": -0.1544143408536911,
+                "y": 0.5388302206993103,
+                "z": 0.021946802735328676
+            }
+        },
+        {
+            "frame": 14,
+            "phase": "StraightArmLift",
+            "requestedLift": 7.10024356842041,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.957611083984376,
+            "worstPoint": {
+                "x": 0.15440532565116883,
+                "y": 0.5387735962867737,
+                "z": 0.0237069483846426
+            }
+        },
+        {
+            "frame": 15,
+            "phase": "StraightArmLift",
+            "requestedLift": 8.126453399658204,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.975202560424806,
+            "worstPoint": {
+                "x": 0.15440015494823457,
+                "y": 0.5386966466903687,
+                "z": 0.025528037920594217
+            }
+        },
+        {
+            "frame": 16,
+            "phase": "StraightArmLift",
+            "requestedLift": 9.216567039489746,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.973814010620118,
+            "worstPoint": {
+                "x": -0.15440428256988526,
+                "y": 0.5385935306549072,
+                "z": 0.027391202747821809
+            }
+        },
+        {
+            "frame": 17,
+            "phase": "StraightArmLift",
+            "requestedLift": 10.369248390197754,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.941476821899415,
+            "worstPoint": {
+                "x": -0.15442432463169099,
+                "y": 0.5384659171104431,
+                "z": 0.029306014999747278
+            }
+        },
+        {
+            "frame": 18,
+            "phase": "StraightArmLift",
+            "requestedLift": 11.583072662353516,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.819820404052736,
+            "worstPoint": {
+                "x": 0.15447217226028443,
+                "y": 0.5383012294769287,
+                "z": 0.03126539662480354
+            }
+        },
+        {
+            "frame": 19,
+            "phase": "StraightArmLift",
+            "requestedLift": 12.856546401977539,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.734554290771486,
+            "worstPoint": {
+                "x": 0.15456773340702058,
+                "y": 0.5380734801292419,
+                "z": 0.03326064348220825
+            }
+        },
+        {
+            "frame": 20,
+            "phase": "StraightArmLift",
+            "requestedLift": 14.188102722167969,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.554689407348634,
+            "worstPoint": {
+                "x": -0.1547398865222931,
+                "y": 0.5377532243728638,
+                "z": 0.035294320434331897
+            }
+        },
+        {
+            "frame": 21,
+            "phase": "StraightArmLift",
+            "requestedLift": 15.576099395751954,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.25262451171875,
+            "worstPoint": {
+                "x": -0.15502607822418214,
+                "y": 0.5373088717460632,
+                "z": 0.037375643849372867
+            }
+        },
+        {
+            "frame": 22,
+            "phase": "StraightArmLift",
+            "requestedLift": 17.018823623657228,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 18.823503494262697,
+            "worstPoint": {
+                "x": -0.1554860919713974,
+                "y": 0.5366759300231934,
+                "z": 0.039505165070295337
+            }
+        },
+        {
+            "frame": 23,
+            "phase": "StraightArmLift",
+            "requestedLift": 18.514501571655275,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 18.125856399536134,
+            "worstPoint": {
+                "x": -0.15619228780269624,
+                "y": 0.535780131816864,
+                "z": 0.04168914258480072
+            }
+        },
+        {
+            "frame": 24,
+            "phase": "StraightArmLift",
+            "requestedLift": 20.061288833618165,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.271408081054689,
+            "worstPoint": {
+                "x": -0.15721701085567475,
+                "y": 0.5345475673675537,
+                "z": 0.04393760487437248
+            }
+        },
+        {
+            "frame": 25,
+            "phase": "StraightArmLift",
+            "requestedLift": 21.657278060913087,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 16.135704040527345,
+            "worstPoint": {
+                "x": 0.1585969179868698,
+                "y": 0.5329418778419495,
+                "z": 0.046269357204437259
+            }
+        },
+        {
+            "frame": 26,
+            "phase": "StraightArmLift",
+            "requestedLift": 23.30051040649414,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 14.637235641479493,
+            "worstPoint": {
+                "x": 0.16028465330600739,
+                "y": 0.5310127139091492,
+                "z": 0.04869045689702034
+            }
+        },
+        {
+            "frame": 27,
+            "phase": "StraightArmLift",
+            "requestedLift": 24.988954544067384,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 15.458724975585938,
+            "worstPoint": {
+                "x": 0.16298861801624299,
+                "y": 0.5293517112731934,
+                "z": 0.05479065701365471
+            }
+        },
+        {
+            "frame": 28,
+            "phase": "StraightArmLift",
+            "requestedLift": 26.720531463623048,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.62551498413086,
+            "worstPoint": {
+                "x": 0.16457675397396089,
+                "y": 0.5276382565498352,
+                "z": 0.05739656090736389
+            }
+        },
+        {
+            "frame": 29,
+            "phase": "StraightArmLift",
+            "requestedLift": 28.493106842041017,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 18.906551361083986,
+            "worstPoint": {
+                "x": 0.16585634648799897,
+                "y": 0.5262380838394165,
+                "z": 0.060125406831502917
+            }
+        },
+        {
+            "frame": 30,
+            "phase": "StraightArmLift",
+            "requestedLift": 30.30450439453125,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 18.80007553100586,
+            "worstPoint": {
+                "x": 0.16674558818340302,
+                "y": 0.5252390503883362,
+                "z": 0.06295493245124817
+            }
+        },
+        {
+            "frame": 31,
+            "phase": "StraightArmLift",
+            "requestedLift": 32.15248107910156,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.90553092956543,
+            "worstPoint": {
+                "x": 0.16727803647518159,
+                "y": 0.5246223211288452,
+                "z": 0.06585189700126648
+            }
+        },
+        {
+            "frame": 32,
+            "phase": "StraightArmLift",
+            "requestedLift": 34.034767150878909,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 16.50832748413086,
+            "worstPoint": {
+                "x": -0.16740190982818604,
+                "y": 0.5243970155715942,
+                "z": 0.0689132884144783
+            }
+        },
+        {
+            "frame": 33,
+            "phase": "StraightArmLift",
+            "requestedLift": 35.949039459228519,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 14.979166984558106,
+            "worstPoint": {
+                "x": 0.16763293743133546,
+                "y": 0.5241934657096863,
+                "z": 0.07172591239213944
+            }
+        },
+        {
+            "frame": 34,
+            "phase": "StraightArmLift",
+            "requestedLift": 37.89295196533203,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 13.42650032043457,
+            "worstPoint": {
+                "x": 0.16762113571166993,
+                "y": 0.5242230296134949,
+                "z": 0.07466155290603638
+            }
+        },
+        {
+            "frame": 35,
+            "phase": "StraightArmLift",
+            "requestedLift": 39.86408996582031,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 12.212333679199219,
+            "worstPoint": {
+                "x": 0.1672372817993164,
+                "y": 0.525010347366333,
+                "z": 0.07900987565517426
+            }
+        },
+        {
+            "frame": 36,
+            "phase": "StraightArmLift",
+            "requestedLift": 41.860042572021487,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 11.698713302612305,
+            "worstPoint": {
+                "x": 0.16713805496692658,
+                "y": 0.5252209901809692,
+                "z": 0.08187699317932129
+            }
+        },
+        {
+            "frame": 37,
+            "phase": "StraightArmLift",
+            "requestedLift": 43.878334045410159,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 11.166254043579102,
+            "worstPoint": {
+                "x": 0.16702723503112794,
+                "y": 0.5254891514778137,
+                "z": 0.08471006900072098
+            }
+        },
+        {
+            "frame": 38,
+            "phase": "StraightArmLift",
+            "requestedLift": 45.916500091552737,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 12.9298734664917,
+            "worstPoint": {
+                "x": 0.1727326363325119,
+                "y": 0.5762500166893005,
+                "z": 0.10979688167572022
+            }
+        },
+        {
+            "frame": 39,
+            "phase": "StraightArmLift",
+            "requestedLift": 47.97200393676758,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 15.208792686462403,
+            "worstPoint": {
+                "x": 0.1724943071603775,
+                "y": 0.5766340494155884,
+                "z": 0.11151095479726792
+            }
+        },
+        {
+            "frame": 40,
+            "phase": "StraightArmLift",
+            "requestedLift": 50.042335510253909,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.43678092956543,
+            "worstPoint": {
+                "x": 0.17225635051727296,
+                "y": 0.5770485997200012,
+                "z": 0.11316245049238205
+            }
+        },
+        {
+            "frame": 41,
+            "phase": "StraightArmLift",
+            "requestedLift": 52.12492752075195,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.554609298706056,
+            "worstPoint": {
+                "x": 0.17202264070510865,
+                "y": 0.5774903893470764,
+                "z": 0.11475344747304917
+            }
+        },
+        {
+            "frame": 42,
+            "phase": "StraightArmLift",
+            "requestedLift": 54.21723175048828,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 21.590970993041993,
+            "worstPoint": {
+                "x": 0.17104685306549073,
+                "y": 0.5799363255500794,
+                "z": 0.1155601367354393
+            }
+        },
+        {
+            "frame": 43,
+            "phase": "StraightArmLift",
+            "requestedLift": 56.316650390625,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 23.58796501159668,
+            "worstPoint": {
+                "x": 0.1707274466753006,
+                "y": 0.5810253024101257,
+                "z": 0.11666256189346314
+            }
+        },
+        {
+            "frame": 44,
+            "phase": "StraightArmLift",
+            "requestedLift": 58.420616149902347,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 25.02301597595215,
+            "worstPoint": {
+                "x": 0.1705700159072876,
+                "y": 0.5814235806465149,
+                "z": 0.11809954792261124
+            }
+        },
+        {
+            "frame": 45,
+            "phase": "StraightArmLift",
+            "requestedLift": 60.52651596069336,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 25.512231826782228,
+            "worstPoint": {
+                "x": 0.17047996819019319,
+                "y": 0.5817975997924805,
+                "z": 0.1196247935295105
+            }
+        },
+        {
+            "frame": 46,
+            "phase": "StraightArmLift",
+            "requestedLift": 62.631778717041019,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 24.41080665588379,
+            "worstPoint": {
+                "x": 0.1704871505498886,
+                "y": 0.5821284651756287,
+                "z": 0.12132706493139267
+            }
+        },
+        {
+            "frame": 47,
+            "phase": "StraightArmLift",
+            "requestedLift": 64.7337875366211,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 21.68317413330078,
+            "worstPoint": {
+                "x": 0.17148667573928834,
+                "y": 0.5801185369491577,
+                "z": 0.12470859289169312
+            }
+        },
+        {
+            "frame": 48,
+            "phase": "StraightArmLift",
+            "requestedLift": 66.8299789428711,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 18.254823684692384,
+            "worstPoint": {
+                "x": -0.15555699169635774,
+                "y": 0.5338205099105835,
+                "z": 0.11758197098970413
+            }
+        },
+        {
+            "frame": 49,
+            "phase": "StraightArmLift",
+            "requestedLift": 68.91773986816406,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.83932113647461,
+            "worstPoint": {
+                "x": 0.15562011301517487,
+                "y": 0.5330187678337097,
+                "z": 0.12030411511659622
+            }
+        },
+        {
+            "frame": 50,
+            "phase": "StraightArmLift",
+            "requestedLift": 70.9945297241211,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.189260482788087,
+            "worstPoint": {
+                "x": 0.15595458447933198,
+                "y": 0.5326182246208191,
+                "z": 0.12293035537004471
+            }
+        },
+        {
+            "frame": 51,
+            "phase": "StraightArmLift",
+            "requestedLift": 73.0577621459961,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.41907501220703,
+            "worstPoint": {
+                "x": 0.14100690186023713,
+                "y": 0.5810849666595459,
+                "z": 0.1348554491996765
+            }
+        },
+        {
+            "frame": 52,
+            "phase": "StraightArmLift",
+            "requestedLift": 75.10491180419922,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.82322883605957,
+            "worstPoint": {
+                "x": -0.14100991189479829,
+                "y": 0.5808959603309631,
+                "z": 0.1357971429824829
+            }
+        },
+        {
+            "frame": 53,
+            "phase": "StraightArmLift",
+            "requestedLift": 77.13346099853516,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.971250534057618,
+            "worstPoint": {
+                "x": -0.14099612832069398,
+                "y": 0.5806968808174133,
+                "z": 0.13637106120586396
+            }
+        },
+        {
+            "frame": 54,
+            "phase": "StraightArmLift",
+            "requestedLift": 79.14088439941406,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.986364364624025,
+            "worstPoint": {
+                "x": -0.14097531139850617,
+                "y": 0.5805215835571289,
+                "z": 0.13669241964817048
+            }
+        },
+        {
+            "frame": 55,
+            "phase": "StraightArmLift",
+            "requestedLift": 81.12474060058594,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.900476455688478,
+            "worstPoint": {
+                "x": -0.14094741642475129,
+                "y": 0.580383837223053,
+                "z": 0.1368933469057083
+            }
+        },
+        {
+            "frame": 56,
+            "phase": "StraightArmLift",
+            "requestedLift": 83.08256530761719,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.7803897857666,
+            "worstPoint": {
+                "x": 0.1409093290567398,
+                "y": 0.5802797675132752,
+                "z": 0.13701294362545014
+            }
+        },
+        {
+            "frame": 57,
+            "phase": "StraightArmLift",
+            "requestedLift": 85.01194763183594,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.59100341796875,
+            "worstPoint": {
+                "x": -0.14086872339248658,
+                "y": 0.5802028775215149,
+                "z": 0.13707423210144044
+            }
+        },
+        {
+            "frame": 58,
+            "phase": "StraightArmLift",
+            "requestedLift": 86.9105224609375,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.340564727783204,
+            "worstPoint": {
+                "x": 0.14082038402557374,
+                "y": 0.5801608562469482,
+                "z": 0.13708649575710298
+            }
+        },
+        {
+            "frame": 59,
+            "phase": "StraightArmLift",
+            "requestedLift": 88.77594757080078,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 16.99717903137207,
+            "worstPoint": {
+                "x": -0.1407705694437027,
+                "y": 0.5801467299461365,
+                "z": 0.13706813752651215
+            }
+        },
+        {
+            "frame": 60,
+            "phase": "StraightArmLift",
+            "requestedLift": 90.60591888427735,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.101682662963868,
+            "worstPoint": {
+                "x": 0.16217152774333955,
+                "y": 0.5923638343811035,
+                "z": 0.13099534809589387
+            }
+        },
+        {
+            "frame": 61,
+            "phase": "StraightArmLift",
+            "requestedLift": 92.3981704711914,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.367847442626954,
+            "worstPoint": {
+                "x": 0.16201530396938325,
+                "y": 0.5927998423576355,
+                "z": 0.13077156245708466
+            }
+        },
+        {
+            "frame": 62,
+            "phase": "StraightArmLift",
+            "requestedLift": 94.15052032470703,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 16.97054672241211,
+            "worstPoint": {
+                "x": 0.16181308031082154,
+                "y": 0.592284619808197,
+                "z": 0.1309525966644287
+            }
+        },
+        {
+            "frame": 63,
+            "phase": "StraightArmLift",
+            "requestedLift": 95.86080169677735,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 14.237749099731446,
+            "worstPoint": {
+                "x": 0.16192634403705598,
+                "y": 0.5935654640197754,
+                "z": 0.12991531193256379
+            }
+        },
+        {
+            "frame": 64,
+            "phase": "StraightArmLift",
+            "requestedLift": 97.52689361572266,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.738173484802246,
+            "worstPoint": {
+                "x": -0.15819373726844788,
+                "y": 0.5694989562034607,
+                "z": 0.13664674758911134
+            }
+        },
+        {
+            "frame": 65,
+            "phase": "StraightArmLift",
+            "requestedLift": 99.14674377441406,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.11658000946045,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 66,
+            "phase": "StraightArmLift",
+            "requestedLift": 100.71837615966797,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": -0.008841988630592823,
+                "y": 0.11784093827009201,
+                "z": -0.0256186593323946
+            }
+        },
+        {
+            "frame": 67,
+            "phase": "StraightArmLift",
+            "requestedLift": 102.23985290527344,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": -0.008841988630592823,
+                "y": 0.11784093827009201,
+                "z": -0.02561863325536251
+            }
+        },
+        {
+            "frame": 68,
+            "phase": "StraightArmLift",
+            "requestedLift": 103.70927429199219,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419265031814576
+            }
+        },
+        {
+            "frame": 69,
+            "phase": "StraightArmLift",
+            "requestedLift": 105.12484741210938,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 70,
+            "phase": "StraightArmLift",
+            "requestedLift": 106.48483276367188,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": -0.008841988630592823,
+                "y": 0.11784093827009201,
+                "z": -0.02561863325536251
+            }
+        },
+        {
+            "frame": 71,
+            "phase": "StraightArmLift",
+            "requestedLift": 107.78755187988281,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419265031814576
+            }
+        },
+        {
+            "frame": 72,
+            "phase": "StraightArmLift",
+            "requestedLift": 109.0313949584961,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": -0.008841988630592823,
+                "y": 0.11784093827009201,
+                "z": -0.0256186630576849
+            }
+        },
+        {
+            "frame": 73,
+            "phase": "StraightArmLift",
+            "requestedLift": 110.21482849121094,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": -0.008841988630592823,
+                "y": 0.11784093827009201,
+                "z": -0.02561863325536251
+            }
+        },
+        {
+            "frame": 74,
+            "phase": "StraightArmLift",
+            "requestedLift": 111.33639526367188,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 75,
+            "phase": "StraightArmLift",
+            "requestedLift": 112.39472198486328,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736172527074814,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 76,
+            "phase": "StraightArmLift",
+            "requestedLift": 113.38849639892578,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": -0.008841988630592823,
+                "y": 0.11784093827009201,
+                "z": -0.0256186593323946
+            }
+        },
+        {
+            "frame": 77,
+            "phase": "StraightArmLift",
+            "requestedLift": 114.31649780273438,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": -0.008841988630592823,
+                "y": 0.11784093827009201,
+                "z": -0.02561863325536251
+            }
+        },
+        {
+            "frame": 78,
+            "phase": "StraightArmLift",
+            "requestedLift": 115.17757415771485,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116531372070313,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419265031814576
+            }
+        },
+        {
+            "frame": 79,
+            "phase": "StraightArmLift",
+            "requestedLift": 115.9706802368164,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": -0.008841988630592823,
+                "y": 0.11784093827009201,
+                "z": -0.02561863325536251
+            }
+        },
+        {
+            "frame": 80,
+            "phase": "StraightArmLift",
+            "requestedLift": 116.69483184814453,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 81,
+            "phase": "StraightArmLift",
+            "requestedLift": 117.34913635253906,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 82,
+            "phase": "StraightArmLift",
+            "requestedLift": 117.93277740478516,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": -0.008841988630592823,
+                "y": 0.11784093827009201,
+                "z": -0.0256186593323946
+            }
+        },
+        {
+            "frame": 83,
+            "phase": "StraightArmLift",
+            "requestedLift": 118.4450454711914,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 84,
+            "phase": "StraightArmLift",
+            "requestedLift": 118.88532257080078,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.11658000946045,
+            "worstPoint": {
+                "x": -0.008841988630592823,
+                "y": 0.11784093827009201,
+                "z": -0.0256186630576849
+            }
+        },
+        {
+            "frame": 85,
+            "phase": "StraightArmLift",
+            "requestedLift": 119.25304412841797,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": -0.008841988630592823,
+                "y": 0.11784093827009201,
+                "z": -0.0256186593323946
+            }
+        },
+        {
+            "frame": 86,
+            "phase": "StraightArmLift",
+            "requestedLift": 119.54776763916016,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": -0.008841988630592823,
+                "y": 0.11784093827009201,
+                "z": -0.02561863325536251
+            }
+        },
+        {
+            "frame": 87,
+            "phase": "StraightArmLift",
+            "requestedLift": 119.76912689208985,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": -0.008841988630592823,
+                "y": 0.11784093827009201,
+                "z": -0.02561863325536251
+            }
+        },
+        {
+            "frame": 88,
+            "phase": "StraightArmLift",
+            "requestedLift": 119.91685485839844,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116531372070313,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419265031814576
+            }
+        },
+        {
+            "frame": 89,
+            "phase": "StraightArmLift",
+            "requestedLift": 119.99076080322266,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419265031814576
+            }
+        },
+        {
+            "frame": 90,
+            "phase": "StraightArmLift",
+            "requestedLift": 119.99076080322266,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419265031814576
+            }
+        },
+        {
+            "frame": 91,
+            "phase": "StraightArmLift",
+            "requestedLift": 119.91685485839844,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419265031814576
+            }
+        },
+        {
+            "frame": 92,
+            "phase": "StraightArmLift",
+            "requestedLift": 119.76912689208985,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": -0.008841988630592823,
+                "y": 0.11784093827009201,
+                "z": -0.0256186593323946
+            }
+        },
+        {
+            "frame": 93,
+            "phase": "StraightArmLift",
+            "requestedLift": 119.54776000976563,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 94,
+            "phase": "StraightArmLift",
+            "requestedLift": 119.25304412841797,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 95,
+            "phase": "StraightArmLift",
+            "requestedLift": 118.88531494140625,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419265031814576
+            }
+        },
+        {
+            "frame": 96,
+            "phase": "StraightArmLift",
+            "requestedLift": 118.4450454711914,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419265031814576
+            }
+        },
+        {
+            "frame": 97,
+            "phase": "StraightArmLift",
+            "requestedLift": 117.93276977539063,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116531372070313,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419265031814576
+            }
+        },
+        {
+            "frame": 98,
+            "phase": "StraightArmLift",
+            "requestedLift": 117.34912872314453,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 99,
+            "phase": "StraightArmLift",
+            "requestedLift": 116.69483184814453,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 100,
+            "phase": "StraightArmLift",
+            "requestedLift": 115.9706802368164,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 101,
+            "phase": "StraightArmLift",
+            "requestedLift": 115.17757415771485,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": -0.008841988630592823,
+                "y": 0.11784093827009201,
+                "z": -0.0256186630576849
+            }
+        },
+        {
+            "frame": 102,
+            "phase": "StraightArmLift",
+            "requestedLift": 114.31649780273438,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 103,
+            "phase": "StraightArmLift",
+            "requestedLift": 113.38849639892578,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 104,
+            "phase": "StraightArmLift",
+            "requestedLift": 112.39471435546875,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": -0.008841988630592823,
+                "y": 0.11784093827009201,
+                "z": -0.0256186630576849
+            }
+        },
+        {
+            "frame": 105,
+            "phase": "StraightArmLift",
+            "requestedLift": 111.33639526367188,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419265031814576
+            }
+        },
+        {
+            "frame": 106,
+            "phase": "StraightArmLift",
+            "requestedLift": 110.2148208618164,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 107,
+            "phase": "StraightArmLift",
+            "requestedLift": 109.03138732910156,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116531372070313,
+            "worstPoint": {
+                "x": 0.007736172527074814,
+                "y": 0.1180083379149437,
+                "z": -0.025419265031814576
+            }
+        },
+        {
+            "frame": 108,
+            "phase": "StraightArmLift",
+            "requestedLift": 107.78755187988281,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.11658000946045,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 109,
+            "phase": "StraightArmLift",
+            "requestedLift": 106.48482513427735,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116531372070313,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419265031814576
+            }
+        },
+        {
+            "frame": 110,
+            "phase": "StraightArmLift",
+            "requestedLift": 105.12483978271485,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 111,
+            "phase": "StraightArmLift",
+            "requestedLift": 103.70927429199219,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736172527074814,
+                "y": 0.1180083379149437,
+                "z": -0.025419265031814576
+            }
+        },
+        {
+            "frame": 112,
+            "phase": "StraightArmLift",
+            "requestedLift": 102.2398452758789,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419265031814576
+            }
+        },
+        {
+            "frame": 113,
+            "phase": "StraightArmLift",
+            "requestedLift": 100.71836853027344,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 114,
+            "phase": "StraightArmLift",
+            "requestedLift": 99.14674377441406,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419235229492189
+            }
+        },
+        {
+            "frame": 115,
+            "phase": "StraightArmLift",
+            "requestedLift": 97.52687072753906,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116531372070313,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419265031814576
+            }
+        },
+        {
+            "frame": 116,
+            "phase": "StraightArmLift",
+            "requestedLift": 95.86078643798828,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": 0.007736170664429665,
+                "y": 0.1180083379149437,
+                "z": -0.025419265031814576
+            }
+        },
+        {
+            "frame": 117,
+            "phase": "StraightArmLift",
+            "requestedLift": 94.15052032470703,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 8.116555213928223,
+            "worstPoint": {
+                "x": -0.008841990493237973,
+                "y": 0.11784093827009201,
+                "z": -0.0256186593323946
+            }
+        },
+        {
+            "frame": 118,
+            "phase": "StraightArmLift",
+            "requestedLift": 92.39816284179688,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 12.614649772644043,
+            "worstPoint": {
+                "x": 0.15790368616580964,
+                "y": 0.5727877616882324,
+                "z": 0.1340075433254242
+            }
+        },
+        {
+            "frame": 119,
+            "phase": "StraightArmLift",
+            "requestedLift": 90.60591125488281,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.832876205444337,
+            "worstPoint": {
+                "x": 0.16167742013931275,
+                "y": 0.5961000323295593,
+                "z": 0.12663276493549348
+            }
+        },
+        {
+            "frame": 120,
+            "phase": "StraightArmLift",
+            "requestedLift": 88.77592468261719,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 18.384422302246095,
+            "worstPoint": {
+                "x": 0.16178806126117707,
+                "y": 0.5959710478782654,
+                "z": 0.1264003962278366
+            }
+        },
+        {
+            "frame": 121,
+            "phase": "StraightArmLift",
+            "requestedLift": 86.91051483154297,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.846141815185548,
+            "worstPoint": {
+                "x": 0.1620454043149948,
+                "y": 0.5966439247131348,
+                "z": 0.12565553188323975
+            }
+        },
+        {
+            "frame": 122,
+            "phase": "StraightArmLift",
+            "requestedLift": 85.01194763183594,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.32940101623535,
+            "worstPoint": {
+                "x": 0.16223084926605225,
+                "y": 0.5963137745857239,
+                "z": 0.1255238801240921
+            }
+        },
+        {
+            "frame": 123,
+            "phase": "StraightArmLift",
+            "requestedLift": 83.08255004882813,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.576377868652345,
+            "worstPoint": {
+                "x": 0.14079366624355317,
+                "y": 0.5844252705574036,
+                "z": 0.13170205056667329
+            }
+        },
+        {
+            "frame": 124,
+            "phase": "StraightArmLift",
+            "requestedLift": 81.1247329711914,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.855100631713868,
+            "worstPoint": {
+                "x": -0.14084412157535554,
+                "y": 0.5844056010246277,
+                "z": 0.13165101408958436
+            }
+        },
+        {
+            "frame": 125,
+            "phase": "StraightArmLift",
+            "requestedLift": 79.1408920288086,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 18.051876068115236,
+            "worstPoint": {
+                "x": -0.14089561998844148,
+                "y": 0.5843339562416077,
+                "z": 0.13167952001094819
+            }
+        },
+        {
+            "frame": 126,
+            "phase": "StraightArmLift",
+            "requestedLift": 77.13343811035156,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 18.172199249267579,
+            "worstPoint": {
+                "x": 0.1409381777048111,
+                "y": 0.5842121243476868,
+                "z": 0.13176974654197694
+            }
+        },
+        {
+            "frame": 127,
+            "phase": "StraightArmLift",
+            "requestedLift": 75.10491180419922,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 18.251956939697267,
+            "worstPoint": {
+                "x": 0.14096826314926148,
+                "y": 0.5840386748313904,
+                "z": 0.13189274072647096
+            }
+        },
+        {
+            "frame": 128,
+            "phase": "StraightArmLift",
+            "requestedLift": 73.05774688720703,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 18.265602111816408,
+            "worstPoint": {
+                "x": -0.14099091291427613,
+                "y": 0.5838050246238709,
+                "z": 0.13201124966144563
+            }
+        },
+        {
+            "frame": 129,
+            "phase": "StraightArmLift",
+            "requestedLift": 70.99451446533203,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 18.16838836669922,
+            "worstPoint": {
+                "x": -0.14100569486618043,
+                "y": 0.5835040211677551,
+                "z": 0.1320846527814865
+            }
+        },
+        {
+            "frame": 130,
+            "phase": "StraightArmLift",
+            "requestedLift": 68.9177474975586,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.899288177490236,
+            "worstPoint": {
+                "x": 0.1410091519355774,
+                "y": 0.5831291079521179,
+                "z": 0.13207441568374635
+            }
+        },
+        {
+            "frame": 131,
+            "phase": "StraightArmLift",
+            "requestedLift": 66.8299560546875,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.297521591186525,
+            "worstPoint": {
+                "x": -0.14100898802280427,
+                "y": 0.5826680064201355,
+                "z": 0.1319616436958313
+            }
+        },
+        {
+            "frame": 132,
+            "phase": "StraightArmLift",
+            "requestedLift": 64.7337875366211,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.573062896728517,
+            "worstPoint": {
+                "x": 0.15573380887508393,
+                "y": 0.5338067412376404,
+                "z": 0.1206427589058876
+            }
+        },
+        {
+            "frame": 133,
+            "phase": "StraightArmLift",
+            "requestedLift": 62.631752014160159,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 18.171388626098634,
+            "worstPoint": {
+                "x": 0.15535375475883485,
+                "y": 0.5336331725120544,
+                "z": 0.1187722310423851
+            }
+        },
+        {
+            "frame": 134,
+            "phase": "StraightArmLift",
+            "requestedLift": 60.52650833129883,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 20.70767593383789,
+            "worstPoint": {
+                "x": 0.17150914669036866,
+                "y": 0.5800350904464722,
+                "z": 0.12693311274051667
+            }
+        },
+        {
+            "frame": 135,
+            "phase": "StraightArmLift",
+            "requestedLift": 58.42061233520508,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 23.957416534423829,
+            "worstPoint": {
+                "x": 0.17045986652374268,
+                "y": 0.5813655257225037,
+                "z": 0.12463026493787766
+            }
+        },
+        {
+            "frame": 136,
+            "phase": "StraightArmLift",
+            "requestedLift": 56.31663131713867,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 25.864686965942384,
+            "worstPoint": {
+                "x": 0.170396625995636,
+                "y": 0.5804110765457153,
+                "z": 0.124030701816082
+            }
+        },
+        {
+            "frame": 137,
+            "phase": "StraightArmLift",
+            "requestedLift": 54.217220306396487,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 26.080825805664064,
+            "worstPoint": {
+                "x": 0.1704360693693161,
+                "y": 0.5794228911399841,
+                "z": 0.123624287545681
+            }
+        },
+        {
+            "frame": 138,
+            "phase": "StraightArmLift",
+            "requestedLift": 52.124935150146487,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 25.154226303100587,
+            "worstPoint": {
+                "x": 0.1705530434846878,
+                "y": 0.5784226655960083,
+                "z": 0.1233123168349266
+            }
+        },
+        {
+            "frame": 139,
+            "phase": "StraightArmLift",
+            "requestedLift": 50.042320251464847,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 23.48448371887207,
+            "worstPoint": {
+                "x": 0.1708388775587082,
+                "y": 0.5767512917518616,
+                "z": 0.12332108616828919
+            }
+        },
+        {
+            "frame": 140,
+            "phase": "StraightArmLift",
+            "requestedLift": 47.97200012207031,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 21.53876304626465,
+            "worstPoint": {
+                "x": -0.17104239761829377,
+                "y": 0.5757834911346436,
+                "z": 0.12289980053901673
+            }
+        },
+        {
+            "frame": 141,
+            "phase": "StraightArmLift",
+            "requestedLift": 45.916473388671878,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.360307693481447,
+            "worstPoint": {
+                "x": -0.17174558341503144,
+                "y": 0.5733610987663269,
+                "z": 0.12268664687871933
+            }
+        },
+        {
+            "frame": 142,
+            "phase": "StraightArmLift",
+            "requestedLift": 43.878326416015628,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.293846130371095,
+            "worstPoint": {
+                "x": -0.1719694882631302,
+                "y": 0.5725098252296448,
+                "z": 0.12194105982780457
+            }
+        },
+        {
+            "frame": 143,
+            "phase": "StraightArmLift",
+            "requestedLift": 41.86003875732422,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 15.13861083984375,
+            "worstPoint": {
+                "x": -0.1721990555524826,
+                "y": 0.5717347264289856,
+                "z": 0.12109742313623429
+            }
+        },
+        {
+            "frame": 144,
+            "phase": "StraightArmLift",
+            "requestedLift": 39.864070892333987,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 12.937960624694825,
+            "worstPoint": {
+                "x": -0.17243172228336335,
+                "y": 0.5710384845733643,
+                "z": 0.12015535682439804
+            }
+        },
+        {
+            "frame": 145,
+            "phase": "StraightArmLift",
+            "requestedLift": 37.892940521240237,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 11.36277961730957,
+            "worstPoint": {
+                "x": 0.1668740063905716,
+                "y": 0.5208838582038879,
+                "z": 0.09266962856054306
+            }
+        },
+        {
+            "frame": 146,
+            "phase": "StraightArmLift",
+            "requestedLift": 35.94904327392578,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 11.896896362304688,
+            "worstPoint": {
+                "x": 0.16698288917541505,
+                "y": 0.5205328464508057,
+                "z": 0.09035330265760422
+            }
+        },
+        {
+            "frame": 147,
+            "phase": "StraightArmLift",
+            "requestedLift": 34.034751892089847,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 12.382840156555176,
+            "worstPoint": {
+                "x": 0.16707806289196015,
+                "y": 0.520295262336731,
+                "z": 0.08792603760957718
+            }
+        },
+        {
+            "frame": 148,
+            "phase": "StraightArmLift",
+            "requestedLift": 32.1524772644043,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 13.621908187866211,
+            "worstPoint": {
+                "x": -0.16729147732257844,
+                "y": 0.5197044014930725,
+                "z": 0.08399022370576859
+            }
+        },
+        {
+            "frame": 149,
+            "phase": "StraightArmLift",
+            "requestedLift": 30.30448341369629,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 15.16784954071045,
+            "worstPoint": {
+                "x": 0.16743910312652589,
+                "y": 0.5196926593780518,
+                "z": 0.08126407861709595
+            }
+        },
+        {
+            "frame": 150,
+            "phase": "StraightArmLift",
+            "requestedLift": 28.493099212646486,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 16.594270706176759,
+            "worstPoint": {
+                "x": 0.16731493175029756,
+                "y": 0.519938051700592,
+                "z": 0.07855831831693649
+            }
+        },
+        {
+            "frame": 151,
+            "phase": "StraightArmLift",
+            "requestedLift": 26.720531463623048,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.8247013092041,
+            "worstPoint": {
+                "x": -0.16685013473033906,
+                "y": 0.5205074548721314,
+                "z": 0.07602197676897049
+            }
+        },
+        {
+            "frame": 152,
+            "phase": "StraightArmLift",
+            "requestedLift": 24.98893928527832,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 18.50101089477539,
+            "worstPoint": {
+                "x": 0.16641896963119508,
+                "y": 0.5212605595588684,
+                "z": 0.07305160909891129
+            }
+        },
+        {
+            "frame": 153,
+            "phase": "StraightArmLift",
+            "requestedLift": 23.30050277709961,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 18.255128860473634,
+            "worstPoint": {
+                "x": -0.16533896327018739,
+                "y": 0.5225630402565002,
+                "z": 0.07058415561914444
+            }
+        },
+        {
+            "frame": 154,
+            "phase": "StraightArmLift",
+            "requestedLift": 21.65726089477539,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 16.886062622070314,
+            "worstPoint": {
+                "x": -0.16405248641967774,
+                "y": 0.5241804718971252,
+                "z": 0.06793586164712906
+            }
+        },
+        {
+            "frame": 155,
+            "phase": "StraightArmLift",
+            "requestedLift": 20.061279296875,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 14.755184173583985,
+            "worstPoint": {
+                "x": -0.1625022143125534,
+                "y": 0.5260823369026184,
+                "z": 0.06536594778299332
+            }
+        },
+        {
+            "frame": 156,
+            "phase": "StraightArmLift",
+            "requestedLift": 18.514497756958009,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 14.961385726928711,
+            "worstPoint": {
+                "x": 0.16000030934810639,
+                "y": 0.5280479788780212,
+                "z": 0.05899284407496452
+            }
+        },
+        {
+            "frame": 157,
+            "phase": "StraightArmLift",
+            "requestedLift": 17.018810272216798,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 16.335453033447267,
+            "worstPoint": {
+                "x": -0.1584004908800125,
+                "y": 0.5300583243370056,
+                "z": 0.05657267943024635
+            }
+        },
+        {
+            "frame": 158,
+            "phase": "StraightArmLift",
+            "requestedLift": 15.576091766357422,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 17.48883628845215,
+            "worstPoint": {
+                "x": 0.15709659457206727,
+                "y": 0.5317956209182739,
+                "z": 0.05413849279284477
+            }
+        },
+        {
+            "frame": 159,
+            "phase": "StraightArmLift",
+            "requestedLift": 14.188102722167969,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 18.301504135131837,
+            "worstPoint": {
+                "x": -0.1561235934495926,
+                "y": 0.5331354737281799,
+                "z": 0.05179336667060852
+            }
+        },
+        {
+            "frame": 160,
+            "phase": "StraightArmLift",
+            "requestedLift": 12.856535911560059,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 18.85587501525879,
+            "worstPoint": {
+                "x": 0.15545330941677094,
+                "y": 0.5341817736625671,
+                "z": 0.04943454638123512
+            }
+        },
+        {
+            "frame": 161,
+            "phase": "StraightArmLift",
+            "requestedLift": 11.583069801330567,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.300975799560548,
+            "worstPoint": {
+                "x": 0.15501289069652558,
+                "y": 0.534952700138092,
+                "z": 0.047147780656814578
+            }
+        },
+        {
+            "frame": 162,
+            "phase": "StraightArmLift",
+            "requestedLift": 10.369234085083008,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.591754913330079,
+            "worstPoint": {
+                "x": -0.15473304688930512,
+                "y": 0.5355245471000671,
+                "z": 0.044940654188394549
+            }
+        },
+        {
+            "frame": 163,
+            "phase": "StraightArmLift",
+            "requestedLift": 9.216560363769532,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.71735382080078,
+            "worstPoint": {
+                "x": -0.15456758439540864,
+                "y": 0.5359711647033691,
+                "z": 0.04278339445590973
+            }
+        },
+        {
+            "frame": 164,
+            "phase": "StraightArmLift",
+            "requestedLift": 8.126453399658204,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.85284996032715,
+            "worstPoint": {
+                "x": -0.15447376668453217,
+                "y": 0.5363218784332275,
+                "z": 0.04071182385087013
+            }
+        },
+        {
+            "frame": 165,
+            "phase": "StraightArmLift",
+            "requestedLift": 7.100236415863037,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.948904037475587,
+            "worstPoint": {
+                "x": -0.15442489087581635,
+                "y": 0.5366038084030151,
+                "z": 0.03873760625720024
+            }
+        },
+        {
+            "frame": 166,
+            "phase": "StraightArmLift",
+            "requestedLift": 6.139204502105713,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.9854679107666,
+            "worstPoint": {
+                "x": -0.154403418302536,
+                "y": 0.5368359684944153,
+                "z": 0.03687078878283501
+            }
+        },
+        {
+            "frame": 167,
+            "phase": "StraightArmLift",
+            "requestedLift": 5.24453067779541,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.950727462768556,
+            "worstPoint": {
+                "x": -0.15439815819263459,
+                "y": 0.5370301604270935,
+                "z": 0.03511935845017433
+            }
+        },
+        {
+            "frame": 168,
+            "phase": "StraightArmLift",
+            "requestedLift": 4.417304992675781,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.998292922973634,
+            "worstPoint": {
+                "x": 0.15440909564495088,
+                "y": 0.5371906161308289,
+                "z": 0.033482473343610767
+            }
+        },
+        {
+            "frame": 169,
+            "phase": "StraightArmLift",
+            "requestedLift": 3.6585652828216554,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.985248565673829,
+            "worstPoint": {
+                "x": 0.1544184535741806,
+                "y": 0.5373302102088928,
+                "z": 0.03197931870818138
+            }
+        },
+        {
+            "frame": 170,
+            "phase": "StraightArmLift",
+            "requestedLift": 2.9692304134368898,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.969444274902345,
+            "worstPoint": {
+                "x": -0.15442109107971192,
+                "y": 0.5374588370323181,
+                "z": 0.030593788251280786
+            }
+        },
+        {
+            "frame": 171,
+            "phase": "StraightArmLift",
+            "requestedLift": 2.350165843963623,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.968124389648439,
+            "worstPoint": {
+                "x": 0.15444135665893556,
+                "y": 0.5375580191612244,
+                "z": 0.029317528009414674
+            }
+        },
+        {
+            "frame": 172,
+            "phase": "StraightArmLift",
+            "requestedLift": 1.802126169204712,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.95374870300293,
+            "worstPoint": {
+                "x": 0.15445250272750855,
+                "y": 0.5376500487327576,
+                "z": 0.028163738548755647
+            }
+        },
+        {
+            "frame": 173,
+            "phase": "StraightArmLift",
+            "requestedLift": 1.3257765769958497,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.933692932128908,
+            "worstPoint": {
+                "x": 0.15446297824382783,
+                "y": 0.5377292037010193,
+                "z": 0.02713056467473507
+            }
+        },
+        {
+            "frame": 174,
+            "phase": "StraightArmLift",
+            "requestedLift": 0.9217214584350586,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.913822174072267,
+            "worstPoint": {
+                "x": 0.1544722467660904,
+                "y": 0.5377966165542603,
+                "z": 0.02621917985379696
+            }
+        },
+        {
+            "frame": 175,
+            "phase": "StraightArmLift",
+            "requestedLift": 0.590447187423706,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.915075302124025,
+            "worstPoint": {
+                "x": 0.15448017418384553,
+                "y": 0.537853479385376,
+                "z": 0.025430144742131234
+            }
+        },
+        {
+            "frame": 176,
+            "phase": "StraightArmLift",
+            "requestedLift": 0.3323650360107422,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.881874084472658,
+            "worstPoint": {
+                "x": -0.1544751673936844,
+                "y": 0.5379109382629395,
+                "z": 0.024759767577052118
+            }
+        },
+        {
+            "frame": 177,
+            "phase": "StraightArmLift",
+            "requestedLift": 0.14779329299926759,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.899690628051759,
+            "worstPoint": {
+                "x": 0.15449188649654389,
+                "y": 0.5379388928413391,
+                "z": 0.024219609797000886
+            }
+        },
+        {
+            "frame": 178,
+            "phase": "StraightArmLift",
+            "requestedLift": 0.03696084022521973,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.88189125061035,
+            "worstPoint": {
+                "x": -0.1544840782880783,
+                "y": 0.5379793047904968,
+                "z": 0.023792752996087076
+            }
+        },
+        {
+            "frame": 179,
+            "phase": "StraightArmLift",
+            "requestedLift": 0.0,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.864442825317384,
+            "worstPoint": {
+                "x": 0.1544979065656662,
+                "y": 0.5379927754402161,
+                "z": 0.023496488109230996
+            }
+        },
+        {
+            "frame": 180,
+            "phase": "BentArmLift",
+            "requestedLift": 0.0,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.71537971496582,
+            "worstPoint": {
+                "x": -0.1545674353837967,
+                "y": 0.5389239192008972,
+                "z": 0.010928388684988022
+            }
+        },
+        {
+            "frame": 181,
+            "phase": "BentArmLift",
+            "requestedLift": 0.03696084022521973,
+            "requestedFlex": 0.42047998309135439,
+            "surfaceAngle": 19.71687889099121,
+            "worstPoint": {
+                "x": -0.15456803143024445,
+                "y": 0.5389165878295898,
+                "z": 0.011102121323347092
+            }
+        },
+        {
+            "frame": 182,
+            "phase": "BentArmLift",
+            "requestedLift": 0.14779329299926759,
+            "requestedFlex": 1.6358399391174317,
+            "surfaceAngle": 19.696359634399415,
+            "worstPoint": {
+                "x": 0.15456926822662354,
+                "y": 0.5388969779014587,
+                "z": 0.01138746365904808
+            }
+        },
+        {
+            "frame": 183,
+            "phase": "BentArmLift",
+            "requestedLift": 0.3323650360107422,
+            "requestedFlex": 3.5769598484039308,
+            "surfaceAngle": 19.7924861907959,
+            "worstPoint": {
+                "x": 0.15453197062015534,
+                "y": 0.5388863682746887,
+                "z": 0.011505324393510819
+            }
+        },
+        {
+            "frame": 184,
+            "phase": "BentArmLift",
+            "requestedLift": 0.590447187423706,
+            "requestedFlex": 6.174719333648682,
+            "surfaceAngle": 19.897602081298829,
+            "worstPoint": {
+                "x": -0.15448734164237977,
+                "y": 0.5388879179954529,
+                "z": 0.011776718311011792
+            }
+        },
+        {
+            "frame": 185,
+            "phase": "BentArmLift",
+            "requestedLift": 0.9217214584350586,
+            "requestedFlex": 9.360000610351563,
+            "surfaceAngle": 19.928354263305665,
+            "worstPoint": {
+                "x": -0.15446539223194123,
+                "y": 0.5388820171356201,
+                "z": 0.012193284928798676
+            }
+        },
+        {
+            "frame": 186,
+            "phase": "BentArmLift",
+            "requestedLift": 1.3257801532745362,
+            "requestedFlex": 13.063678741455079,
+            "surfaceAngle": 19.95836067199707,
+            "worstPoint": {
+                "x": 0.15446725487709046,
+                "y": 0.5388535857200623,
+                "z": 0.012801318429410458
+            }
+        },
+        {
+            "frame": 187,
+            "phase": "BentArmLift",
+            "requestedLift": 1.802126169204712,
+            "requestedFlex": 17.21664047241211,
+            "surfaceAngle": 19.944149017333986,
+            "worstPoint": {
+                "x": -0.15451768040657044,
+                "y": 0.5387730002403259,
+                "z": 0.013584454543888569
+            }
+        },
+        {
+            "frame": 188,
+            "phase": "BentArmLift",
+            "requestedLift": 2.3501694202423097,
+            "requestedFlex": 21.749759674072267,
+            "surfaceAngle": 19.828218460083009,
+            "worstPoint": {
+                "x": -0.15467806160449983,
+                "y": 0.538590133190155,
+                "z": 0.014608810655772686
+            }
+        },
+        {
+            "frame": 189,
+            "phase": "BentArmLift",
+            "requestedLift": 2.9692375659942629,
+            "requestedFlex": 26.593923568725587,
+            "surfaceAngle": 19.527000427246095,
+            "worstPoint": {
+                "x": 0.15507468581199647,
+                "y": 0.5381818413734436,
+                "z": 0.015949124470353128
+            }
+        },
+        {
+            "frame": 190,
+            "phase": "BentArmLift",
+            "requestedLift": 3.658568859100342,
+            "requestedFlex": 31.68000030517578,
+            "surfaceAngle": 18.847217559814454,
+            "worstPoint": {
+                "x": 0.15589158236980439,
+                "y": 0.5373741984367371,
+                "z": 0.017541101202368737
+            }
+        },
+        {
+            "frame": 191,
+            "phase": "BentArmLift",
+            "requestedLift": 4.417312145233154,
+            "requestedFlex": 36.938880920410159,
+            "surfaceAngle": 17.40110969543457,
+            "worstPoint": {
+                "x": -0.15726497769355775,
+                "y": 0.536056637763977,
+                "z": 0.01931036449968815
+            }
+        },
+        {
+            "frame": 192,
+            "phase": "BentArmLift",
+            "requestedLift": 5.24453067779541,
+            "requestedFlex": 42.30143737792969,
+            "surfaceAngle": 17.26632308959961,
+            "worstPoint": {
+                "x": 0.1602402627468109,
+                "y": 0.5342850685119629,
+                "z": 0.022959018126130105
+            }
+        },
+        {
+            "frame": 193,
+            "phase": "BentArmLift",
+            "requestedLift": 6.139211654663086,
+            "requestedFlex": 47.69855880737305,
+            "surfaceAngle": 21.418249130249025,
+            "worstPoint": {
+                "x": -0.1617535948753357,
+                "y": 0.5331829190254211,
+                "z": 0.025497734546661378
+            }
+        },
+        {
+            "frame": 194,
+            "phase": "BentArmLift",
+            "requestedLift": 7.10024356842041,
+            "requestedFlex": 53.06112289428711,
+            "surfaceAngle": 21.642681121826173,
+            "worstPoint": {
+                "x": 0.16314278542995454,
+                "y": 0.5321672558784485,
+                "z": 0.027447594329714776
+            }
+        },
+        {
+            "frame": 195,
+            "phase": "BentArmLift",
+            "requestedLift": 8.126453399658204,
+            "requestedFlex": 58.32000732421875,
+            "surfaceAngle": 20.37971305847168,
+            "worstPoint": {
+                "x": 0.1642741709947586,
+                "y": 0.5312833786010742,
+                "z": 0.028546616435050966
+            }
+        },
+        {
+            "frame": 196,
+            "phase": "BentArmLift",
+            "requestedLift": 9.216567039489746,
+            "requestedFlex": 63.40607833862305,
+            "surfaceAngle": 19.990182876586915,
+            "worstPoint": {
+                "x": -0.16474004089832307,
+                "y": 0.5309870839118958,
+                "z": 0.03163846209645271
+            }
+        },
+        {
+            "frame": 197,
+            "phase": "BentArmLift",
+            "requestedLift": 10.369248390197754,
+            "requestedFlex": 68.250244140625,
+            "surfaceAngle": 19.386632919311525,
+            "worstPoint": {
+                "x": 0.1651463806629181,
+                "y": 0.5306591987609863,
+                "z": 0.03482826054096222
+            }
+        },
+        {
+            "frame": 198,
+            "phase": "BentArmLift",
+            "requestedLift": 11.583072662353516,
+            "requestedFlex": 72.78336334228516,
+            "surfaceAngle": 19.090103149414064,
+            "worstPoint": {
+                "x": 0.16567863523960114,
+                "y": 0.5301603674888611,
+                "z": 0.03792009875178337
+            }
+        },
+        {
+            "frame": 199,
+            "phase": "BentArmLift",
+            "requestedLift": 12.856546401977539,
+            "requestedFlex": 76.93631744384766,
+            "surfaceAngle": 19.094959259033204,
+            "worstPoint": {
+                "x": -0.16636791825294496,
+                "y": 0.5295025706291199,
+                "z": 0.040853261947631839
+            }
+        },
+        {
+            "frame": 200,
+            "phase": "BentArmLift",
+            "requestedLift": 14.188102722167969,
+            "requestedFlex": 80.63999938964844,
+            "surfaceAngle": 19.21074867248535,
+            "worstPoint": {
+                "x": 0.16707880795001985,
+                "y": 0.5288224220275879,
+                "z": 0.04369761049747467
+            }
+        },
+        {
+            "frame": 201,
+            "phase": "BentArmLift",
+            "requestedLift": 15.576099395751954,
+            "requestedFlex": 83.82527923583985,
+            "surfaceAngle": 19.056400299072267,
+            "worstPoint": {
+                "x": 0.16767357289791108,
+                "y": 0.5282608866691589,
+                "z": 0.04646487161517143
+            }
+        },
+        {
+            "frame": 202,
+            "phase": "BentArmLift",
+            "requestedLift": 17.018823623657228,
+            "requestedFlex": 86.42303466796875,
+            "surfaceAngle": 18.820178985595704,
+            "worstPoint": {
+                "x": -0.16807298362255097,
+                "y": 0.5278801321983337,
+                "z": 0.04918169975280762
+            }
+        },
+        {
+            "frame": 203,
+            "phase": "BentArmLift",
+            "requestedLift": 18.514501571655275,
+            "requestedFlex": 88.3641586303711,
+            "surfaceAngle": 18.2470703125,
+            "worstPoint": {
+                "x": 0.1682884246110916,
+                "y": 0.5276577472686768,
+                "z": 0.051879316568374637
+            }
+        },
+        {
+            "frame": 204,
+            "phase": "BentArmLift",
+            "requestedLift": 20.061288833618165,
+            "requestedFlex": 89.57952117919922,
+            "surfaceAngle": 17.598697662353517,
+            "worstPoint": {
+                "x": 0.16816341876983643,
+                "y": 0.5279648900032044,
+                "z": 0.05589614808559418
+            }
+        },
+        {
+            "frame": 205,
+            "phase": "BentArmLift",
+            "requestedLift": 21.657278060913087,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 17.04484748840332,
+            "worstPoint": {
+                "x": -0.16798706352710725,
+                "y": 0.5280517935752869,
+                "z": 0.058857645839452746
+            }
+        },
+        {
+            "frame": 206,
+            "phase": "BentArmLift",
+            "requestedLift": 23.30051040649414,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 16.347675323486329,
+            "worstPoint": {
+                "x": 0.16820771992206574,
+                "y": 0.5278252959251404,
+                "z": 0.06086793541908264
+            }
+        },
+        {
+            "frame": 207,
+            "phase": "BentArmLift",
+            "requestedLift": 24.988954544067384,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 15.530708312988282,
+            "worstPoint": {
+                "x": -0.16796517372131349,
+                "y": 0.5279161334037781,
+                "z": 0.06364569813013077
+            }
+        },
+        {
+            "frame": 208,
+            "phase": "BentArmLift",
+            "requestedLift": 26.720531463623048,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 14.877115249633789,
+            "worstPoint": {
+                "x": -0.16778777539730073,
+                "y": 0.5277019143104553,
+                "z": 0.06553734093904495
+            }
+        },
+        {
+            "frame": 209,
+            "phase": "BentArmLift",
+            "requestedLift": 28.493106842041017,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 14.152841567993164,
+            "worstPoint": {
+                "x": -0.1677447408437729,
+                "y": 0.5276333689689636,
+                "z": 0.06784917414188385
+            }
+        },
+        {
+            "frame": 210,
+            "phase": "BentArmLift",
+            "requestedLift": 30.30450439453125,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 13.363509178161621,
+            "worstPoint": {
+                "x": -0.16770021617412568,
+                "y": 0.5275918245315552,
+                "z": 0.07017568498849869
+            }
+        },
+        {
+            "frame": 211,
+            "phase": "BentArmLift",
+            "requestedLift": 32.15248107910156,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 12.522542953491211,
+            "worstPoint": {
+                "x": -0.16765613853931428,
+                "y": 0.5275888442993164,
+                "z": 0.07252015918493271
+            }
+        },
+        {
+            "frame": 212,
+            "phase": "BentArmLift",
+            "requestedLift": 34.034767150878909,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 11.671819686889649,
+            "worstPoint": {
+                "x": 0.16778886318206788,
+                "y": 0.5275765657424927,
+                "z": 0.07489504665136337
+            }
+        },
+        {
+            "frame": 213,
+            "phase": "BentArmLift",
+            "requestedLift": 35.949039459228519,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 11.275398254394532,
+            "worstPoint": {
+                "x": -0.16746419668197633,
+                "y": 0.5282848477363586,
+                "z": 0.07871347665786743
+            }
+        },
+        {
+            "frame": 214,
+            "phase": "BentArmLift",
+            "requestedLift": 37.89295196533203,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 10.957182884216309,
+            "worstPoint": {
+                "x": 0.16740882396697999,
+                "y": 0.528421938419342,
+                "z": 0.08109322190284729
+            }
+        },
+        {
+            "frame": 215,
+            "phase": "BentArmLift",
+            "requestedLift": 39.86408996582031,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 11.838642120361329,
+            "worstPoint": {
+                "x": 0.1736629456281662,
+                "y": 0.5750753283500671,
+                "z": 0.11003633588552475
+            }
+        },
+        {
+            "frame": 216,
+            "phase": "BentArmLift",
+            "requestedLift": 41.860042572021487,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 13.313104629516602,
+            "worstPoint": {
+                "x": 0.17342369258403779,
+                "y": 0.575402557849884,
+                "z": 0.11157053709030152
+            }
+        },
+        {
+            "frame": 217,
+            "phase": "BentArmLift",
+            "requestedLift": 43.878334045410159,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 14.635695457458496,
+            "worstPoint": {
+                "x": 0.1731318086385727,
+                "y": 0.5757421851158142,
+                "z": 0.1131129264831543
+            }
+        },
+        {
+            "frame": 218,
+            "phase": "BentArmLift",
+            "requestedLift": 45.916500091552737,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 15.736739158630371,
+            "worstPoint": {
+                "x": 0.17278216779232026,
+                "y": 0.5760903358459473,
+                "z": 0.11467231065034867
+            }
+        },
+        {
+            "frame": 219,
+            "phase": "BentArmLift",
+            "requestedLift": 47.97200393676758,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 16.636049270629884,
+            "worstPoint": {
+                "x": 0.17238669097423554,
+                "y": 0.5764537453651428,
+                "z": 0.11622907966375351
+            }
+        },
+        {
+            "frame": 220,
+            "phase": "BentArmLift",
+            "requestedLift": 50.042335510253909,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 17.36690902709961,
+            "worstPoint": {
+                "x": 0.1719733625650406,
+                "y": 0.5768484473228455,
+                "z": 0.11773860454559326
+            }
+        },
+        {
+            "frame": 221,
+            "phase": "BentArmLift",
+            "requestedLift": 52.12492752075195,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 18.194665908813478,
+            "worstPoint": {
+                "x": 0.17155082523822785,
+                "y": 0.5772531628608704,
+                "z": 0.11926911026239395
+            }
+        },
+        {
+            "frame": 222,
+            "phase": "BentArmLift",
+            "requestedLift": 54.21723175048828,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 19.133787155151368,
+            "worstPoint": {
+                "x": 0.17113946378231049,
+                "y": 0.5776769518852234,
+                "z": 0.1208018958568573
+            }
+        },
+        {
+            "frame": 223,
+            "phase": "BentArmLift",
+            "requestedLift": 56.316650390625,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 19.999671936035158,
+            "worstPoint": {
+                "x": 0.17078256607055665,
+                "y": 0.5781623125076294,
+                "z": 0.12219788879156113
+            }
+        },
+        {
+            "frame": 224,
+            "phase": "BentArmLift",
+            "requestedLift": 58.420616149902347,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 20.7200927734375,
+            "worstPoint": {
+                "x": 0.17048807442188264,
+                "y": 0.5786963105201721,
+                "z": 0.12346997112035752
+            }
+        },
+        {
+            "frame": 225,
+            "phase": "BentArmLift",
+            "requestedLift": 60.52651596069336,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 21.25359344482422,
+            "worstPoint": {
+                "x": 0.17026054859161378,
+                "y": 0.5792739987373352,
+                "z": 0.12457877397537232
+            }
+        },
+        {
+            "frame": 226,
+            "phase": "BentArmLift",
+            "requestedLift": 62.631778717041019,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 21.49968910217285,
+            "worstPoint": {
+                "x": 0.1701023429632187,
+                "y": 0.5798892378807068,
+                "z": 0.12551061809062959
+            }
+        },
+        {
+            "frame": 227,
+            "phase": "BentArmLift",
+            "requestedLift": 64.7337875366211,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 21.390625,
+            "worstPoint": {
+                "x": 0.17001505196094514,
+                "y": 0.5805261731147766,
+                "z": 0.126332089304924
+            }
+        },
+        {
+            "frame": 228,
+            "phase": "BentArmLift",
+            "requestedLift": 66.8299789428711,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 20.826723098754884,
+            "worstPoint": {
+                "x": 0.17000126838684083,
+                "y": 0.5811684727668762,
+                "z": 0.1270846575498581
+            }
+        },
+        {
+            "frame": 229,
+            "phase": "BentArmLift",
+            "requestedLift": 68.91773986816406,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 19.69916534423828,
+            "worstPoint": {
+                "x": 0.17006461322307588,
+                "y": 0.5817992091178894,
+                "z": 0.127790167927742
+            }
+        },
+        {
+            "frame": 230,
+            "phase": "BentArmLift",
+            "requestedLift": 70.9945297241211,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 17.942283630371095,
+            "worstPoint": {
+                "x": 0.17020724713802339,
+                "y": 0.5824132561683655,
+                "z": 0.12846851348876954
+            }
+        },
+        {
+            "frame": 231,
+            "phase": "BentArmLift",
+            "requestedLift": 73.0577621459961,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 15.521279335021973,
+            "worstPoint": {
+                "x": 0.17042843997478486,
+                "y": 0.5830039381980896,
+                "z": 0.12913091480731965
+            }
+        },
+        {
+            "frame": 232,
+            "phase": "BentArmLift",
+            "requestedLift": 75.10491180419922,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 12.915855407714844,
+            "worstPoint": {
+                "x": 0.1639728546142578,
+                "y": 0.5793649554252625,
+                "z": 0.12868545949459077
+            }
+        },
+        {
+            "frame": 233,
+            "phase": "BentArmLift",
+            "requestedLift": 77.13346099853516,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 10.379984855651856,
+            "worstPoint": {
+                "x": 0.1644078642129898,
+                "y": 0.5796358585357666,
+                "z": 0.12937743961811067
+            }
+        },
+        {
+            "frame": 234,
+            "phase": "BentArmLift",
+            "requestedLift": 79.14088439941406,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.186211585998536,
+            "worstPoint": {
+                "x": 0.22019393742084504,
+                "y": 0.5718503594398499,
+                "z": 0.13760235905647279
+            }
+        },
+        {
+            "frame": 235,
+            "phase": "BentArmLift",
+            "requestedLift": 81.12474060058594,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.147000312805176,
+            "worstPoint": {
+                "x": -0.2200535088777542,
+                "y": 0.5737134218215942,
+                "z": 0.1386619359254837
+            }
+        },
+        {
+            "frame": 236,
+            "phase": "BentArmLift",
+            "requestedLift": 83.08256530761719,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 10.139427185058594,
+            "worstPoint": {
+                "x": -0.1713218241930008,
+                "y": 0.5867118239402771,
+                "z": 0.1303802877664566
+            }
+        },
+        {
+            "frame": 237,
+            "phase": "BentArmLift",
+            "requestedLift": 85.01194763183594,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 12.737457275390625,
+            "worstPoint": {
+                "x": -0.17150570452213288,
+                "y": 0.5872958302497864,
+                "z": 0.13060341775417329
+            }
+        },
+        {
+            "frame": 238,
+            "phase": "BentArmLift",
+            "requestedLift": 86.9105224609375,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 14.03564167022705,
+            "worstPoint": {
+                "x": -0.17159758508205415,
+                "y": 0.5879425406455994,
+                "z": 0.13073034584522248
+            }
+        },
+        {
+            "frame": 239,
+            "phase": "BentArmLift",
+            "requestedLift": 88.77594757080078,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 14.115948677062989,
+            "worstPoint": {
+                "x": -0.17160797119140626,
+                "y": 0.5886428356170654,
+                "z": 0.13077493011951447
+            }
+        },
+        {
+            "frame": 240,
+            "phase": "BentArmLift",
+            "requestedLift": 90.60591888427735,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 13.362060546875,
+            "worstPoint": {
+                "x": -0.17155563831329347,
+                "y": 0.58938068151474,
+                "z": 0.1307549625635147
+            }
+        },
+        {
+            "frame": 241,
+            "phase": "BentArmLift",
+            "requestedLift": 92.3981704711914,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 12.082303047180176,
+            "worstPoint": {
+                "x": -0.1714596301317215,
+                "y": 0.5901393890380859,
+                "z": 0.13068430125713349
+            }
+        },
+        {
+            "frame": 242,
+            "phase": "BentArmLift",
+            "requestedLift": 94.15052032470703,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 10.54404067993164,
+            "worstPoint": {
+                "x": -0.17133696377277375,
+                "y": 0.590904712677002,
+                "z": 0.1305719017982483
+            }
+        },
+        {
+            "frame": 243,
+            "phase": "BentArmLift",
+            "requestedLift": 95.86080169677735,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.955347061157227,
+            "worstPoint": {
+                "x": 0.1712028980255127,
+                "y": 0.5916691422462463,
+                "z": 0.13041113317012788
+            }
+        },
+        {
+            "frame": 244,
+            "phase": "BentArmLift",
+            "requestedLift": 97.52689361572266,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.4670991897583,
+            "worstPoint": {
+                "x": -0.21921975910663606,
+                "y": 0.5894936323165894,
+                "z": 0.14620007574558259
+            }
+        },
+        {
+            "frame": 245,
+            "phase": "BentArmLift",
+            "requestedLift": 99.14674377441406,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.509624481201172,
+            "worstPoint": {
+                "x": 0.21913893520832063,
+                "y": 0.5911746621131897,
+                "z": 0.14670024812221528
+            }
+        },
+        {
+            "frame": 246,
+            "phase": "BentArmLift",
+            "requestedLift": 100.71837615966797,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.541918754577637,
+            "worstPoint": {
+                "x": 0.21905477344989777,
+                "y": 0.5928340554237366,
+                "z": 0.14713241159915925
+            }
+        },
+        {
+            "frame": 247,
+            "phase": "BentArmLift",
+            "requestedLift": 102.23985290527344,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.557448387145996,
+            "worstPoint": {
+                "x": 0.21897156536579133,
+                "y": 0.5944696068763733,
+                "z": 0.14749369025230409
+            }
+        },
+        {
+            "frame": 248,
+            "phase": "BentArmLift",
+            "requestedLift": 103.70927429199219,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.575514793395996,
+            "worstPoint": {
+                "x": 0.21892398595809937,
+                "y": 0.595876157283783,
+                "z": 0.14747029542922975
+            }
+        },
+        {
+            "frame": 249,
+            "phase": "BentArmLift",
+            "requestedLift": 105.12484741210938,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.578079223632813,
+            "worstPoint": {
+                "x": -0.21893031895160676,
+                "y": 0.5967252254486084,
+                "z": 0.14669939875602723
+            }
+        },
+        {
+            "frame": 250,
+            "phase": "BentArmLift",
+            "requestedLift": 106.48483276367188,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.564927101135254,
+            "worstPoint": {
+                "x": -0.21893036365509034,
+                "y": 0.5972670912742615,
+                "z": 0.1457405835390091
+            }
+        },
+        {
+            "frame": 251,
+            "phase": "BentArmLift",
+            "requestedLift": 107.78755187988281,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.578125,
+            "worstPoint": {
+                "x": -0.21892647445201875,
+                "y": 0.5976905226707459,
+                "z": 0.1448259800672531
+            }
+        },
+        {
+            "frame": 252,
+            "phase": "BentArmLift",
+            "requestedLift": 109.0313949584961,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.58704948425293,
+            "worstPoint": {
+                "x": 0.21892452239990235,
+                "y": 0.5980632901191711,
+                "z": 0.14400620758533479
+            }
+        },
+        {
+            "frame": 253,
+            "phase": "BentArmLift",
+            "requestedLift": 110.21482849121094,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.580368995666504,
+            "worstPoint": {
+                "x": -0.218919038772583,
+                "y": 0.5983975529670715,
+                "z": 0.14331026375293733
+            }
+        },
+        {
+            "frame": 254,
+            "phase": "BentArmLift",
+            "requestedLift": 111.33639526367188,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.58160400390625,
+            "worstPoint": {
+                "x": 0.21891550719738007,
+                "y": 0.5987212657928467,
+                "z": 0.14270377159118653
+            }
+        },
+        {
+            "frame": 255,
+            "phase": "BentArmLift",
+            "requestedLift": 112.39472198486328,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.580964088439942,
+            "worstPoint": {
+                "x": 0.21891145408153535,
+                "y": 0.59902024269104,
+                "z": 0.14218276739120484
+            }
+        },
+        {
+            "frame": 256,
+            "phase": "BentArmLift",
+            "requestedLift": 113.38849639892578,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.575010299682618,
+            "worstPoint": {
+                "x": 0.2189071625471115,
+                "y": 0.5992967486381531,
+                "z": 0.1417284458875656
+            }
+        },
+        {
+            "frame": 257,
+            "phase": "BentArmLift",
+            "requestedLift": 114.31649780273438,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.577003479003907,
+            "worstPoint": {
+                "x": -0.2189062088727951,
+                "y": 0.5995444655418396,
+                "z": 0.14132647216320039
+            }
+        },
+        {
+            "frame": 258,
+            "phase": "BentArmLift",
+            "requestedLift": 115.17757415771485,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.569924354553223,
+            "worstPoint": {
+                "x": -0.21888279914855958,
+                "y": 0.5997533798217773,
+                "z": 0.1409713178873062
+            }
+        },
+        {
+            "frame": 259,
+            "phase": "BentArmLift",
+            "requestedLift": 115.9706802368164,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.593086242675782,
+            "worstPoint": {
+                "x": 0.2188699096441269,
+                "y": 0.5999377369880676,
+                "z": 0.1406678557395935
+            }
+        },
+        {
+            "frame": 260,
+            "phase": "BentArmLift",
+            "requestedLift": 116.69483184814453,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.577461242675782,
+            "worstPoint": {
+                "x": -0.21888010203838349,
+                "y": 0.6000926494598389,
+                "z": 0.1404048353433609
+            }
+        },
+        {
+            "frame": 261,
+            "phase": "BentArmLift",
+            "requestedLift": 117.34913635253906,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.581879615783692,
+            "worstPoint": {
+                "x": 0.2188825160264969,
+                "y": 0.6002234220504761,
+                "z": 0.14020328223705293
+            }
+        },
+        {
+            "frame": 262,
+            "phase": "BentArmLift",
+            "requestedLift": 117.93277740478516,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.588033676147461,
+            "worstPoint": {
+                "x": -0.2189045399427414,
+                "y": 0.6003192067146301,
+                "z": 0.14003191888332368
+            }
+        },
+        {
+            "frame": 263,
+            "phase": "BentArmLift",
+            "requestedLift": 118.4450454711914,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.575858116149903,
+            "worstPoint": {
+                "x": -0.21891413629055024,
+                "y": 0.6003859639167786,
+                "z": 0.1399206966161728
+            }
+        },
+        {
+            "frame": 264,
+            "phase": "BentArmLift",
+            "requestedLift": 118.88532257080078,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.582108497619629,
+            "worstPoint": {
+                "x": 0.2189064770936966,
+                "y": 0.6004226207733154,
+                "z": 0.13987639546394349
+            }
+        },
+        {
+            "frame": 265,
+            "phase": "BentArmLift",
+            "requestedLift": 119.25304412841797,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.586477279663086,
+            "worstPoint": {
+                "x": -0.2189231663942337,
+                "y": 0.6004250049591065,
+                "z": 0.13985054194927216
+            }
+        },
+        {
+            "frame": 266,
+            "phase": "BentArmLift",
+            "requestedLift": 119.54776763916016,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.580368995666504,
+            "worstPoint": {
+                "x": 0.2189093381166458,
+                "y": 0.6003998517990112,
+                "z": 0.13990731537342072
+            }
+        },
+        {
+            "frame": 267,
+            "phase": "BentArmLift",
+            "requestedLift": 119.76912689208985,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.591737747192383,
+            "worstPoint": {
+                "x": -0.2189234048128128,
+                "y": 0.6003422737121582,
+                "z": 0.1399775594472885
+            }
+        },
+        {
+            "frame": 268,
+            "phase": "BentArmLift",
+            "requestedLift": 119.91685485839844,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.600762367248536,
+            "worstPoint": {
+                "x": -0.21892239153385163,
+                "y": 0.6002581715583801,
+                "z": 0.14011062681674958
+            }
+        },
+        {
+            "frame": 269,
+            "phase": "BentArmLift",
+            "requestedLift": 119.99076080322266,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.58270263671875,
+            "worstPoint": {
+                "x": 0.2189064472913742,
+                "y": 0.6001501083374023,
+                "z": 0.1403026580810547
+            }
+        },
+        {
+            "frame": 270,
+            "phase": "BentArmLift",
+            "requestedLift": 119.99076080322266,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.568503379821778,
+            "worstPoint": {
+                "x": 0.2189054936170578,
+                "y": 0.6000152826309204,
+                "z": 0.14051808416843415
+            }
+        },
+        {
+            "frame": 271,
+            "phase": "BentArmLift",
+            "requestedLift": 119.91685485839844,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.566532135009766,
+            "worstPoint": {
+                "x": -0.2189195156097412,
+                "y": 0.599853515625,
+                "z": 0.14075647294521333
+            }
+        },
+        {
+            "frame": 272,
+            "phase": "BentArmLift",
+            "requestedLift": 119.76912689208985,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.576544761657715,
+            "worstPoint": {
+                "x": 0.21890413761138917,
+                "y": 0.5996786952018738,
+                "z": 0.14105574786663056
+            }
+        },
+        {
+            "frame": 273,
+            "phase": "BentArmLift",
+            "requestedLift": 119.54776000976563,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.57104778289795,
+            "worstPoint": {
+                "x": -0.21891796588897706,
+                "y": 0.5994758009910584,
+                "z": 0.1413598209619522
+            }
+        },
+        {
+            "frame": 274,
+            "phase": "BentArmLift",
+            "requestedLift": 119.25304412841797,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.576682090759278,
+            "worstPoint": {
+                "x": -0.21891720592975617,
+                "y": 0.5992607474327087,
+                "z": 0.1417025774717331
+            }
+        },
+        {
+            "frame": 275,
+            "phase": "BentArmLift",
+            "requestedLift": 118.88531494140625,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.568388938903809,
+            "worstPoint": {
+                "x": 0.218901589512825,
+                "y": 0.5990374684333801,
+                "z": 0.14207658171653748
+            }
+        },
+        {
+            "frame": 276,
+            "phase": "BentArmLift",
+            "requestedLift": 118.4450454711914,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.569305419921875,
+            "worstPoint": {
+                "x": 0.2189003825187683,
+                "y": 0.5987961292266846,
+                "z": 0.1424589902162552
+            }
+        },
+        {
+            "frame": 277,
+            "phase": "BentArmLift",
+            "requestedLift": 117.93276977539063,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.569581031799317,
+            "worstPoint": {
+                "x": 0.21889884769916535,
+                "y": 0.5985447764396668,
+                "z": 0.14285600185394288
+            }
+        },
+        {
+            "frame": 278,
+            "phase": "BentArmLift",
+            "requestedLift": 117.34912872314453,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.571711540222168,
+            "worstPoint": {
+                "x": -0.21891100704669953,
+                "y": 0.5982783436775208,
+                "z": 0.1432575285434723
+            }
+        },
+        {
+            "frame": 279,
+            "phase": "BentArmLift",
+            "requestedLift": 116.69483184814453,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.576018333435059,
+            "worstPoint": {
+                "x": 0.21889431774616242,
+                "y": 0.5980210304260254,
+                "z": 0.14367888867855073
+            }
+        },
+        {
+            "frame": 280,
+            "phase": "BentArmLift",
+            "requestedLift": 115.9706802368164,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.579728126525879,
+            "worstPoint": {
+                "x": 0.21889150142669679,
+                "y": 0.5977529883384705,
+                "z": 0.1440974771976471
+            }
+        },
+        {
+            "frame": 281,
+            "phase": "BentArmLift",
+            "requestedLift": 115.17757415771485,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.579522132873536,
+            "worstPoint": {
+                "x": 0.21889114379882813,
+                "y": 0.5974840521812439,
+                "z": 0.14451628923416139
+            }
+        },
+        {
+            "frame": 282,
+            "phase": "BentArmLift",
+            "requestedLift": 114.31649780273438,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.572237968444825,
+            "worstPoint": {
+                "x": -0.21891961991786958,
+                "y": 0.597223699092865,
+                "z": 0.14493267238140107
+            }
+        },
+        {
+            "frame": 283,
+            "phase": "BentArmLift",
+            "requestedLift": 113.38849639892578,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.572834014892579,
+            "worstPoint": {
+                "x": 0.21891207993030549,
+                "y": 0.5969768166542053,
+                "z": 0.14535368978977204
+            }
+        },
+        {
+            "frame": 284,
+            "phase": "BentArmLift",
+            "requestedLift": 112.39471435546875,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.582908630371094,
+            "worstPoint": {
+                "x": -0.21891991794109345,
+                "y": 0.5967124104499817,
+                "z": 0.14574773609638215
+            }
+        },
+        {
+            "frame": 285,
+            "phase": "BentArmLift",
+            "requestedLift": 111.33639526367188,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.577071189880371,
+            "worstPoint": {
+                "x": 0.21890272200107575,
+                "y": 0.59647136926651,
+                "z": 0.14614425599575044
+            }
+        },
+        {
+            "frame": 286,
+            "phase": "BentArmLift",
+            "requestedLift": 110.2148208618164,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.583389282226563,
+            "worstPoint": {
+                "x": 0.2188984751701355,
+                "y": 0.5962280631065369,
+                "z": 0.14651618897914887
+            }
+        },
+        {
+            "frame": 287,
+            "phase": "BentArmLift",
+            "requestedLift": 109.03138732910156,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.5828857421875,
+            "worstPoint": {
+                "x": 0.21889756619930268,
+                "y": 0.595994770526886,
+                "z": 0.14686955511569978
+            }
+        },
+        {
+            "frame": 288,
+            "phase": "BentArmLift",
+            "requestedLift": 107.78755187988281,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.57958984375,
+            "worstPoint": {
+                "x": -0.2189091444015503,
+                "y": 0.5957652926445007,
+                "z": 0.14719414710998536
+            }
+        },
+        {
+            "frame": 289,
+            "phase": "BentArmLift",
+            "requestedLift": 106.48482513427735,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.574392318725586,
+            "worstPoint": {
+                "x": 0.21890360116958619,
+                "y": 0.5955650210380554,
+                "z": 0.14751392602920533
+            }
+        },
+        {
+            "frame": 290,
+            "phase": "BentArmLift",
+            "requestedLift": 105.12483978271485,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.585334777832032,
+            "worstPoint": {
+                "x": 0.2189083695411682,
+                "y": 0.5953714847564697,
+                "z": 0.14780186116695405
+            }
+        },
+        {
+            "frame": 291,
+            "phase": "BentArmLift",
+            "requestedLift": 103.70927429199219,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.579041481018067,
+            "worstPoint": {
+                "x": -0.21892063319683076,
+                "y": 0.5951870083808899,
+                "z": 0.14805693924427033
+            }
+        },
+        {
+            "frame": 292,
+            "phase": "BentArmLift",
+            "requestedLift": 102.2398452758789,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.575376510620118,
+            "worstPoint": {
+                "x": -0.21892382204532624,
+                "y": 0.5950256586074829,
+                "z": 0.1482950896024704
+            }
+        },
+        {
+            "frame": 293,
+            "phase": "BentArmLift",
+            "requestedLift": 100.71836853027344,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.565431594848633,
+            "worstPoint": {
+                "x": -0.21894024312496186,
+                "y": 0.5947892069816589,
+                "z": 0.14835835993289948
+            }
+        },
+        {
+            "frame": 294,
+            "phase": "BentArmLift",
+            "requestedLift": 99.14674377441406,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.56827449798584,
+            "worstPoint": {
+                "x": 0.2189803123474121,
+                "y": 0.5943408608436585,
+                "z": 0.14803314208984376
+            }
+        },
+        {
+            "frame": 295,
+            "phase": "BentArmLift",
+            "requestedLift": 97.52687072753906,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.538493156433106,
+            "worstPoint": {
+                "x": 0.2190435379743576,
+                "y": 0.5936033129692078,
+                "z": 0.1473599672317505
+            }
+        },
+        {
+            "frame": 296,
+            "phase": "BentArmLift",
+            "requestedLift": 95.86078643798828,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.523690223693848,
+            "worstPoint": {
+                "x": 0.21911849081516267,
+                "y": 0.5926181674003601,
+                "z": 0.1464243084192276
+            }
+        },
+        {
+            "frame": 297,
+            "phase": "BentArmLift",
+            "requestedLift": 94.15052032470703,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.460533142089844,
+            "worstPoint": {
+                "x": -0.21919994056224824,
+                "y": 0.5914291143417358,
+                "z": 0.14533022046089173
+            }
+        },
+        {
+            "frame": 298,
+            "phase": "BentArmLift",
+            "requestedLift": 92.39816284179688,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.438453674316407,
+            "worstPoint": {
+                "x": 0.21928350627422334,
+                "y": 0.590097963809967,
+                "z": 0.14415211975574494
+            }
+        },
+        {
+            "frame": 299,
+            "phase": "BentArmLift",
+            "requestedLift": 90.60591125488281,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 9.756348609924317,
+            "worstPoint": {
+                "x": 0.17127765715122224,
+                "y": 0.5927969813346863,
+                "z": 0.12808707356452943
+            }
+        },
+        {
+            "frame": 300,
+            "phase": "BentArmLift",
+            "requestedLift": 88.77592468261719,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 11.398846626281739,
+            "worstPoint": {
+                "x": -0.17141424119472505,
+                "y": 0.5922736525535584,
+                "z": 0.12771810591220857
+            }
+        },
+        {
+            "frame": 301,
+            "phase": "BentArmLift",
+            "requestedLift": 86.91051483154297,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 12.868451118469239,
+            "worstPoint": {
+                "x": -0.17152835428714753,
+                "y": 0.5917286276817322,
+                "z": 0.12738271057605744
+            }
+        },
+        {
+            "frame": 302,
+            "phase": "BentArmLift",
+            "requestedLift": 85.01194763183594,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 13.928703308105469,
+            "worstPoint": {
+                "x": -0.17160452902317048,
+                "y": 0.5911797285079956,
+                "z": 0.12706689536571504
+            }
+        },
+        {
+            "frame": 303,
+            "phase": "BentArmLift",
+            "requestedLift": 83.08255004882813,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 14.25619125366211,
+            "worstPoint": {
+                "x": -0.17162387073040009,
+                "y": 0.5906447768211365,
+                "z": 0.1267489194869995
+            }
+        },
+        {
+            "frame": 304,
+            "phase": "BentArmLift",
+            "requestedLift": 81.1247329711914,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 13.483960151672364,
+            "worstPoint": {
+                "x": -0.17156697809696198,
+                "y": 0.5901393294334412,
+                "z": 0.12640483677387238
+            }
+        },
+        {
+            "frame": 305,
+            "phase": "BentArmLift",
+            "requestedLift": 79.1408920288086,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 11.39870834350586,
+            "worstPoint": {
+                "x": -0.17141921818256379,
+                "y": 0.5896725058555603,
+                "z": 0.12601415812969209
+            }
+        },
+        {
+            "frame": 306,
+            "phase": "BentArmLift",
+            "requestedLift": 77.13343811035156,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.211260795593262,
+            "worstPoint": {
+                "x": -0.2200208306312561,
+                "y": 0.5775193572044373,
+                "z": 0.1347409188747406
+            }
+        },
+        {
+            "frame": 307,
+            "phase": "BentArmLift",
+            "requestedLift": 75.10491180419922,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 8.209228515625,
+            "worstPoint": {
+                "x": 0.22015587985515595,
+                "y": 0.5757482647895813,
+                "z": 0.1336183100938797
+            }
+        },
+        {
+            "frame": 308,
+            "phase": "BentArmLift",
+            "requestedLift": 73.05774688720703,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 9.32569408416748,
+            "worstPoint": {
+                "x": 0.16458924114704133,
+                "y": 0.5827552080154419,
+                "z": 0.12496286630630493
+            }
+        },
+        {
+            "frame": 309,
+            "phase": "BentArmLift",
+            "requestedLift": 70.99451446533203,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 12.035224914550782,
+            "worstPoint": {
+                "x": 0.16413463652133943,
+                "y": 0.5825061202049255,
+                "z": 0.12425420433282852
+            }
+        },
+        {
+            "frame": 310,
+            "phase": "BentArmLift",
+            "requestedLift": 68.9177474975586,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 14.53095817565918,
+            "worstPoint": {
+                "x": 0.1705254465341568,
+                "y": 0.5862670540809631,
+                "z": 0.12462177127599716
+            }
+        },
+        {
+            "frame": 311,
+            "phase": "BentArmLift",
+            "requestedLift": 66.8299560546875,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 17.21802520751953,
+            "worstPoint": {
+                "x": 0.17026539146900178,
+                "y": 0.5856279134750366,
+                "z": 0.12408313900232315
+            }
+        },
+        {
+            "frame": 312,
+            "phase": "BentArmLift",
+            "requestedLift": 64.7337875366211,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 19.263486862182618,
+            "worstPoint": {
+                "x": 0.17008130252361298,
+                "y": 0.584924042224884,
+                "z": 0.12359615415334702
+            }
+        },
+        {
+            "frame": 313,
+            "phase": "BentArmLift",
+            "requestedLift": 62.631752014160159,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 20.660173416137697,
+            "worstPoint": {
+                "x": 0.16997571289539338,
+                "y": 0.5841637253761292,
+                "z": 0.12315250188112259
+            }
+        },
+        {
+            "frame": 314,
+            "phase": "BentArmLift",
+            "requestedLift": 60.52650833129883,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 21.48838233947754,
+            "worstPoint": {
+                "x": 0.16994623839855195,
+                "y": 0.5833601951599121,
+                "z": 0.12273500114679337
+            }
+        },
+        {
+            "frame": 315,
+            "phase": "BentArmLift",
+            "requestedLift": 58.42061233520508,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 21.834177017211915,
+            "worstPoint": {
+                "x": 0.1699889451265335,
+                "y": 0.5825278162956238,
+                "z": 0.1223205104470253
+            }
+        },
+        {
+            "frame": 316,
+            "phase": "BentArmLift",
+            "requestedLift": 56.31663131713867,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 21.805870056152345,
+            "worstPoint": {
+                "x": 0.17010223865509034,
+                "y": 0.581672728061676,
+                "z": 0.12187942117452622
+            }
+        },
+        {
+            "frame": 317,
+            "phase": "BentArmLift",
+            "requestedLift": 54.217220306396487,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 21.467992782592775,
+            "worstPoint": {
+                "x": 0.17028461396694184,
+                "y": 0.5808075070381165,
+                "z": 0.1213819682598114
+            }
+        },
+        {
+            "frame": 318,
+            "phase": "BentArmLift",
+            "requestedLift": 52.124935150146487,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 20.91274070739746,
+            "worstPoint": {
+                "x": 0.1705358773469925,
+                "y": 0.5799493193626404,
+                "z": 0.12079914659261704
+            }
+        },
+        {
+            "frame": 319,
+            "phase": "BentArmLift",
+            "requestedLift": 50.042320251464847,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 20.212499618530275,
+            "worstPoint": {
+                "x": 0.17085547745227815,
+                "y": 0.5791140198707581,
+                "z": 0.12010512501001358
+            }
+        },
+        {
+            "frame": 320,
+            "phase": "BentArmLift",
+            "requestedLift": 47.97200012207031,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 19.40379524230957,
+            "worstPoint": {
+                "x": 0.171238973736763,
+                "y": 0.5783159732818604,
+                "z": 0.1192823126912117
+            }
+        },
+        {
+            "frame": 321,
+            "phase": "BentArmLift",
+            "requestedLift": 45.916473388671878,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 18.48309326171875,
+            "worstPoint": {
+                "x": 0.17167456448078156,
+                "y": 0.5775642395019531,
+                "z": 0.11832978576421738
+            }
+        },
+        {
+            "frame": 322,
+            "phase": "BentArmLift",
+            "requestedLift": 43.878326416015628,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 17.44516944885254,
+            "worstPoint": {
+                "x": 0.17213869094848634,
+                "y": 0.5768589973449707,
+                "z": 0.11726927757263184
+            }
+        },
+        {
+            "frame": 323,
+            "phase": "BentArmLift",
+            "requestedLift": 41.86003875732422,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 16.27566909790039,
+            "worstPoint": {
+                "x": 0.17259281873703004,
+                "y": 0.5761813521385193,
+                "z": 0.11617638915777207
+            }
+        },
+        {
+            "frame": 324,
+            "phase": "BentArmLift",
+            "requestedLift": 39.864070892333987,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 15.27072525024414,
+            "worstPoint": {
+                "x": 0.17296554148197175,
+                "y": 0.5754542350769043,
+                "z": 0.11530109494924545
+            }
+        },
+        {
+            "frame": 325,
+            "phase": "BentArmLift",
+            "requestedLift": 37.892940521240237,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 14.057563781738282,
+            "worstPoint": {
+                "x": 0.17328011989593507,
+                "y": 0.5747401118278503,
+                "z": 0.11446332931518555
+            }
+        },
+        {
+            "frame": 326,
+            "phase": "BentArmLift",
+            "requestedLift": 35.94904327392578,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 12.67407512664795,
+            "worstPoint": {
+                "x": 0.1735348254442215,
+                "y": 0.5740365386009216,
+                "z": 0.11366870254278183
+            }
+        },
+        {
+            "frame": 327,
+            "phase": "BentArmLift",
+            "requestedLift": 34.034751892089847,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 11.16159725189209,
+            "worstPoint": {
+                "x": 0.17374366521835328,
+                "y": 0.5733509659767151,
+                "z": 0.11289145797491074
+            }
+        },
+        {
+            "frame": 328,
+            "phase": "BentArmLift",
+            "requestedLift": 32.1524772644043,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 11.148959159851075,
+            "worstPoint": {
+                "x": 0.16739095747470857,
+                "y": 0.5270876288414002,
+                "z": 0.08325556665658951
+            }
+        },
+        {
+            "frame": 329,
+            "phase": "BentArmLift",
+            "requestedLift": 30.30448341369629,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 11.421011924743653,
+            "worstPoint": {
+                "x": 0.16743381321430207,
+                "y": 0.5267302989959717,
+                "z": 0.0814729705452919
+            }
+        },
+        {
+            "frame": 330,
+            "phase": "BentArmLift",
+            "requestedLift": 28.493099212646486,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 12.197035789489746,
+            "worstPoint": {
+                "x": 0.1677493304014206,
+                "y": 0.5258601903915405,
+                "z": 0.07819608598947525
+            }
+        },
+        {
+            "frame": 331,
+            "phase": "BentArmLift",
+            "requestedLift": 26.720531463623048,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 13.08893871307373,
+            "worstPoint": {
+                "x": 0.16778425872325898,
+                "y": 0.5256192684173584,
+                "z": 0.07633674889802933
+            }
+        },
+        {
+            "frame": 332,
+            "phase": "BentArmLift",
+            "requestedLift": 24.98893928527832,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 13.909934997558594,
+            "worstPoint": {
+                "x": -0.16764946281909944,
+                "y": 0.5254765748977661,
+                "z": 0.07454698532819748
+            }
+        },
+        {
+            "frame": 333,
+            "phase": "BentArmLift",
+            "requestedLift": 23.30050277709961,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 14.669918060302735,
+            "worstPoint": {
+                "x": -0.16768847405910493,
+                "y": 0.5253373384475708,
+                "z": 0.07266025990247727
+            }
+        },
+        {
+            "frame": 334,
+            "phase": "BentArmLift",
+            "requestedLift": 21.65726089477539,
+            "requestedFlex": 90.0,
+            "surfaceAngle": 15.436620712280274,
+            "worstPoint": {
+                "x": 0.16808326542377473,
+                "y": 0.5252227187156677,
+                "z": 0.07079783827066422
+            }
+        },
+        {
+            "frame": 335,
+            "phase": "BentArmLift",
+            "requestedLift": 20.061279296875,
+            "requestedFlex": 89.57952117919922,
+            "surfaceAngle": 16.27789878845215,
+            "worstPoint": {
+                "x": 0.16811318695545197,
+                "y": 0.5251902937889099,
+                "z": 0.06877347081899643
+            }
+        },
+        {
+            "frame": 336,
+            "phase": "BentArmLift",
+            "requestedLift": 18.514497756958009,
+            "requestedFlex": 88.3641586303711,
+            "surfaceAngle": 17.031864166259767,
+            "worstPoint": {
+                "x": -0.16791589558124543,
+                "y": 0.5253514647483826,
+                "z": 0.06719847768545151
+            }
+        },
+        {
+            "frame": 337,
+            "phase": "BentArmLift",
+            "requestedLift": 17.018810272216798,
+            "requestedFlex": 86.42303466796875,
+            "surfaceAngle": 17.639801025390626,
+            "worstPoint": {
+                "x": -0.16790764033794404,
+                "y": 0.5254257917404175,
+                "z": 0.06519448757171631
+            }
+        },
+        {
+            "frame": 338,
+            "phase": "BentArmLift",
+            "requestedLift": 15.576091766357422,
+            "requestedFlex": 83.82527923583985,
+            "surfaceAngle": 18.178747177124025,
+            "worstPoint": {
+                "x": 0.16828642785549165,
+                "y": 0.525080680847168,
+                "z": 0.06124105677008629
+            }
+        },
+        {
+            "frame": 339,
+            "phase": "BentArmLift",
+            "requestedLift": 14.188102722167969,
+            "requestedFlex": 80.63999938964844,
+            "surfaceAngle": 18.80312728881836,
+            "worstPoint": {
+                "x": 0.16811467707157136,
+                "y": 0.5252789855003357,
+                "z": 0.059272170066833499
+            }
+        },
+        {
+            "frame": 340,
+            "phase": "BentArmLift",
+            "requestedLift": 12.856535911560059,
+            "requestedFlex": 76.93631744384766,
+            "surfaceAngle": 19.111101150512697,
+            "worstPoint": {
+                "x": -0.1677706241607666,
+                "y": 0.5255909562110901,
+                "z": 0.05742136761546135
+            }
+        },
+        {
+            "frame": 341,
+            "phase": "BentArmLift",
+            "requestedLift": 11.583069801330567,
+            "requestedFlex": 72.78336334228516,
+            "surfaceAngle": 19.095491409301759,
+            "worstPoint": {
+                "x": 0.1672029048204422,
+                "y": 0.5260686874389648,
+                "z": 0.0556875579059124
+            }
+        },
+        {
+            "frame": 342,
+            "phase": "BentArmLift",
+            "requestedLift": 10.369234085083008,
+            "requestedFlex": 68.250244140625,
+            "surfaceAngle": 18.936124801635743,
+            "worstPoint": {
+                "x": -0.16647006571292878,
+                "y": 0.5266655087471008,
+                "z": 0.05410716310143471
+            }
+        },
+        {
+            "frame": 343,
+            "phase": "BentArmLift",
+            "requestedLift": 9.216560363769532,
+            "requestedFlex": 63.40607833862305,
+            "surfaceAngle": 18.81968116760254,
+            "worstPoint": {
+                "x": 0.1657382994890213,
+                "y": 0.5272430777549744,
+                "z": 0.052528828382492068
+            }
+        },
+        {
+            "frame": 344,
+            "phase": "BentArmLift",
+            "requestedLift": 8.126453399658204,
+            "requestedFlex": 58.32000732421875,
+            "surfaceAngle": 18.856645584106447,
+            "worstPoint": {
+                "x": -0.16515837609767915,
+                "y": 0.5276613831520081,
+                "z": 0.050921883434057239
+            }
+        },
+        {
+            "frame": 345,
+            "phase": "BentArmLift",
+            "requestedLift": 7.100236415863037,
+            "requestedFlex": 53.06112289428711,
+            "surfaceAngle": 19.223676681518556,
+            "worstPoint": {
+                "x": -0.16473247110843659,
+                "y": 0.5278983116149902,
+                "z": 0.0492200069129467
+            }
+        },
+        {
+            "frame": 346,
+            "phase": "BentArmLift",
+            "requestedLift": 6.139204502105713,
+            "requestedFlex": 47.69855880737305,
+            "surfaceAngle": 19.517915725708009,
+            "worstPoint": {
+                "x": 0.1643034666776657,
+                "y": 0.5280728936195374,
+                "z": 0.04748552665114403
+            }
+        },
+        {
+            "frame": 347,
+            "phase": "BentArmLift",
+            "requestedLift": 5.24453067779541,
+            "requestedFlex": 42.30143737792969,
+            "surfaceAngle": 20.886125564575197,
+            "worstPoint": {
+                "x": 0.16323637962341309,
+                "y": 0.5286807417869568,
+                "z": 0.04757924750447273
+            }
+        },
+        {
+            "frame": 348,
+            "phase": "BentArmLift",
+            "requestedLift": 4.417304992675781,
+            "requestedFlex": 36.938880920410159,
+            "surfaceAngle": 20.763620376586915,
+            "worstPoint": {
+                "x": -0.16192324459552766,
+                "y": 0.5295447707176209,
+                "z": 0.0466584675014019
+            }
+        },
+        {
+            "frame": 349,
+            "phase": "BentArmLift",
+            "requestedLift": 3.6585652828216554,
+            "requestedFlex": 31.68000030517578,
+            "surfaceAngle": 16.881149291992189,
+            "worstPoint": {
+                "x": 0.16045308113098145,
+                "y": 0.5306996703147888,
+                "z": 0.04486542567610741
+            }
+        },
+        {
+            "frame": 350,
+            "phase": "BentArmLift",
+            "requestedLift": 2.9692304134368898,
+            "requestedFlex": 26.593923568725587,
+            "surfaceAngle": 17.136186599731447,
+            "worstPoint": {
+                "x": 0.15747228264808656,
+                "y": 0.5327821373939514,
+                "z": 0.04141423478722572
+            }
+        },
+        {
+            "frame": 351,
+            "phase": "BentArmLift",
+            "requestedLift": 2.350165843963623,
+            "requestedFlex": 21.749759674072267,
+            "surfaceAngle": 18.709728240966798,
+            "worstPoint": {
+                "x": -0.15600989758968354,
+                "y": 0.5343603491783142,
+                "z": 0.03975766524672508
+            }
+        },
+        {
+            "frame": 352,
+            "phase": "BentArmLift",
+            "requestedLift": 1.802126169204712,
+            "requestedFlex": 17.21664047241211,
+            "surfaceAngle": 19.509675979614259,
+            "worstPoint": {
+                "x": 0.15513719618320466,
+                "y": 0.5354509353637695,
+                "z": 0.03789063170552254
+            }
+        },
+        {
+            "frame": 353,
+            "phase": "BentArmLift",
+            "requestedLift": 1.3257765769958497,
+            "requestedFlex": 13.063678741455079,
+            "surfaceAngle": 19.79973602294922,
+            "worstPoint": {
+                "x": -0.15469713509082795,
+                "y": 0.5360849499702454,
+                "z": 0.03602215275168419
+            }
+        },
+        {
+            "frame": 354,
+            "phase": "BentArmLift",
+            "requestedLift": 0.9217214584350586,
+            "requestedFlex": 9.360000610351563,
+            "surfaceAngle": 19.90995979309082,
+            "worstPoint": {
+                "x": -0.15452787280082704,
+                "y": 0.5364535450935364,
+                "z": 0.0342307984828949
+            }
+        },
+        {
+            "frame": 355,
+            "phase": "BentArmLift",
+            "requestedLift": 0.590447187423706,
+            "requestedFlex": 6.174719333648682,
+            "surfaceAngle": 19.918703079223634,
+            "worstPoint": {
+                "x": -0.15447859466075898,
+                "y": 0.5366733074188232,
+                "z": 0.03263084962964058
+            }
+        },
+        {
+            "frame": 356,
+            "phase": "BentArmLift",
+            "requestedLift": 0.3323650360107422,
+            "requestedFlex": 3.5769598484039308,
+            "surfaceAngle": 19.948965072631837,
+            "worstPoint": {
+                "x": 0.15448437631130219,
+                "y": 0.5368302464485169,
+                "z": 0.03125818818807602
+            }
+        },
+        {
+            "frame": 357,
+            "phase": "BentArmLift",
+            "requestedLift": 0.14779329299926759,
+            "requestedFlex": 1.6358399391174317,
+            "surfaceAngle": 19.897863388061525,
+            "worstPoint": {
+                "x": 0.15449118614196778,
+                "y": 0.5369425415992737,
+                "z": 0.030092738568782808
+            }
+        },
+        {
+            "frame": 358,
+            "phase": "BentArmLift",
+            "requestedLift": 0.03696084022521973,
+            "requestedFlex": 0.42047998309135439,
+            "surfaceAngle": 19.879602432250978,
+            "worstPoint": {
+                "x": -0.15449313819408418,
+                "y": 0.5370318293571472,
+                "z": 0.029084721580147744
+            }
+        },
+        {
+            "frame": 359,
+            "phase": "BentArmLift",
+            "requestedLift": 0.0,
+            "requestedFlex": 0.0,
+            "surfaceAngle": 19.866079330444337,
+            "worstPoint": {
+                "x": 0.1545049250125885,
+                "y": 0.5371319651603699,
+                "z": 0.028216203674674035
+            }
+        },
+        {
+            "frame": 360,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 20.428789138793947,
+            "worstPoint": {
+                "x": -0.15465696156024934,
+                "y": 0.5394530296325684,
+                "z": 0.007091863546520472
+            }
+        },
+        {
+            "frame": 361,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 28.408185958862306,
+            "worstPoint": {
+                "x": -0.06744014471769333,
+                "y": 0.10869564861059189,
+                "z": -0.04301925003528595
+            }
+        },
+        {
+            "frame": 362,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 37.394744873046878,
+            "worstPoint": {
+                "x": 0.06559907644987107,
+                "y": 0.10623414069414139,
+                "z": -0.03301926329731941
+            }
+        },
+        {
+            "frame": 363,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 38.132999420166019,
+            "worstPoint": {
+                "x": 0.06564956158399582,
+                "y": 0.10618612170219422,
+                "z": -0.032595306634902957
+            }
+        },
+        {
+            "frame": 364,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 36.362674713134769,
+            "worstPoint": {
+                "x": 0.06513192504644394,
+                "y": 0.10615184158086777,
+                "z": -0.03387832269072533
+            }
+        },
+        {
+            "frame": 365,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 31.008180618286134,
+            "worstPoint": {
+                "x": 0.06690333038568497,
+                "y": 0.10716795921325684,
+                "z": -0.03839488327503204
+            }
+        },
+        {
+            "frame": 366,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 23.862655639648439,
+            "worstPoint": {
+                "x": -0.06909048557281494,
+                "y": 0.10831451416015625,
+                "z": -0.044938862323760989
+            }
+        },
+        {
+            "frame": 367,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 14.080926895141602,
+            "worstPoint": {
+                "x": -0.1744481325149536,
+                "y": 0.6054547429084778,
+                "z": 0.06381138414144516
+            }
+        },
+        {
+            "frame": 368,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 23.639801025390626,
+            "worstPoint": {
+                "x": -0.17124326527118684,
+                "y": 0.5942306518554688,
+                "z": 0.08366111665964127
+            }
+        },
+        {
+            "frame": 369,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 29.630327224731447,
+            "worstPoint": {
+                "x": -0.16254906356334687,
+                "y": 0.5929021239280701,
+                "z": 0.10084348917007446
+            }
+        },
+        {
+            "frame": 370,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 34.23163986206055,
+            "worstPoint": {
+                "x": -0.1541292518377304,
+                "y": 0.5931790471076965,
+                "z": 0.11696293205022812
+            }
+        },
+        {
+            "frame": 371,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 34.74663543701172,
+            "worstPoint": {
+                "x": -0.14559967815876008,
+                "y": 0.5918819308280945,
+                "z": 0.13281330466270448
+            }
+        },
+        {
+            "frame": 372,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 33.72411346435547,
+            "worstPoint": {
+                "x": -0.13724581897258759,
+                "y": 0.587830126285553,
+                "z": 0.147939071059227
+            }
+        },
+        {
+            "frame": 373,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 32.438846588134769,
+            "worstPoint": {
+                "x": -0.13129423558712007,
+                "y": 0.5933287739753723,
+                "z": 0.15619498491287232
+            }
+        },
+        {
+            "frame": 374,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 31.035051345825197,
+            "worstPoint": {
+                "x": -0.1252899467945099,
+                "y": 0.5882463455200195,
+                "z": 0.16850316524505616
+            }
+        },
+        {
+            "frame": 375,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 27.490556716918947,
+            "worstPoint": {
+                "x": -0.12078992277383805,
+                "y": 0.5825713872909546,
+                "z": 0.17843292653560639
+            }
+        },
+        {
+            "frame": 376,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 34.5142707824707,
+            "worstPoint": {
+                "x": -0.12225080281496048,
+                "y": 0.5682960152626038,
+                "z": 0.18897204101085664
+            }
+        },
+        {
+            "frame": 377,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 39.471885681152347,
+            "worstPoint": {
+                "x": -0.12323745340108872,
+                "y": 0.5620078444480896,
+                "z": 0.1928509920835495
+            }
+        },
+        {
+            "frame": 378,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 31.9226131439209,
+            "worstPoint": {
+                "x": -0.12520869076251985,
+                "y": 0.5551221966743469,
+                "z": 0.19624848663806916
+            }
+        },
+        {
+            "frame": 379,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 22.219459533691408,
+            "worstPoint": {
+                "x": -0.1289772242307663,
+                "y": 0.5487374067306519,
+                "z": 0.19669263064861298
+            }
+        },
+        {
+            "frame": 380,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.890929222106934,
+            "worstPoint": {
+                "x": 0.17001627385616303,
+                "y": 0.5365140438079834,
+                "z": 0.035680755972862247
+            }
+        },
+        {
+            "frame": 381,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.65416431427002,
+            "worstPoint": {
+                "x": 0.17148832976818086,
+                "y": 0.5345465540885925,
+                "z": 0.04323090240359306
+            }
+        },
+        {
+            "frame": 382,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.395328521728516,
+            "worstPoint": {
+                "x": 0.17290502786636353,
+                "y": 0.5315845012664795,
+                "z": 0.05152444168925285
+            }
+        },
+        {
+            "frame": 383,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.295028686523438,
+            "worstPoint": {
+                "x": -0.1549566388130188,
+                "y": 0.5101978778839111,
+                "z": 0.10467047244310379
+            }
+        },
+        {
+            "frame": 384,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.808424949645996,
+            "worstPoint": {
+                "x": -0.15622614324092866,
+                "y": 0.5139389038085938,
+                "z": 0.09771890193223953
+            }
+        },
+        {
+            "frame": 385,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.936092376708985,
+            "worstPoint": {
+                "x": -0.15765877068042756,
+                "y": 0.5180043578147888,
+                "z": 0.09082033485174179
+            }
+        },
+        {
+            "frame": 386,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.875585556030274,
+            "worstPoint": {
+                "x": -0.15813179314136506,
+                "y": 0.5220863223075867,
+                "z": 0.08592808991670609
+            }
+        },
+        {
+            "frame": 387,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.827383995056153,
+            "worstPoint": {
+                "x": -0.15864033997058869,
+                "y": 0.5259652137756348,
+                "z": 0.08121505379676819
+            }
+        },
+        {
+            "frame": 388,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.658879280090332,
+            "worstPoint": {
+                "x": -0.1587354987859726,
+                "y": 0.5294684767723084,
+                "z": 0.07757575809955597
+            }
+        },
+        {
+            "frame": 389,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.644148826599121,
+            "worstPoint": {
+                "x": 0.17142172157764436,
+                "y": 0.5118564963340759,
+                "z": 0.08441948890686035
+            }
+        },
+        {
+            "frame": 390,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.752898216247559,
+            "worstPoint": {
+                "x": 0.171001598238945,
+                "y": 0.5113469958305359,
+                "z": 0.08602619916200638
+            }
+        },
+        {
+            "frame": 391,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.783061981201172,
+            "worstPoint": {
+                "x": 0.17053456604480744,
+                "y": 0.5115857124328613,
+                "z": 0.08671524375677109
+            }
+        },
+        {
+            "frame": 392,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.789338111877442,
+            "worstPoint": {
+                "x": 0.1701555699110031,
+                "y": 0.5124921202659607,
+                "z": 0.08622056245803833
+            }
+        },
+        {
+            "frame": 393,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.812816619873047,
+            "worstPoint": {
+                "x": 0.1697704941034317,
+                "y": 0.5139709115028381,
+                "z": 0.08478963375091553
+            }
+        },
+        {
+            "frame": 394,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.78672981262207,
+            "worstPoint": {
+                "x": 0.1694125384092331,
+                "y": 0.5159063339233398,
+                "z": 0.08246008306741715
+            }
+        },
+        {
+            "frame": 395,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.882647514343262,
+            "worstPoint": {
+                "x": 0.16902875900268556,
+                "y": 0.5181789994239807,
+                "z": 0.07946125417947769
+            }
+        },
+        {
+            "frame": 396,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.901379585266114,
+            "worstPoint": {
+                "x": 0.1686195284128189,
+                "y": 0.5206732749938965,
+                "z": 0.07592847943305969
+            }
+        },
+        {
+            "frame": 397,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.885323524475098,
+            "worstPoint": {
+                "x": -0.16218163073062898,
+                "y": 0.5387375950813294,
+                "z": 0.055570196360349658
+            }
+        },
+        {
+            "frame": 398,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 13.98723316192627,
+            "worstPoint": {
+                "x": -0.16293366253376008,
+                "y": 0.5383161902427673,
+                "z": 0.0535547100007534
+            }
+        },
+        {
+            "frame": 399,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 14.036712646484375,
+            "worstPoint": {
+                "x": -0.16370634734630586,
+                "y": 0.5378251075744629,
+                "z": 0.05161421000957489
+            }
+        },
+        {
+            "frame": 400,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 14.089570045471192,
+            "worstPoint": {
+                "x": -0.1644819974899292,
+                "y": 0.5373032093048096,
+                "z": 0.04974425211548805
+            }
+        },
+        {
+            "frame": 401,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 14.103606224060059,
+            "worstPoint": {
+                "x": -0.16524769365787507,
+                "y": 0.5367797613143921,
+                "z": 0.04793569818139076
+            }
+        },
+        {
+            "frame": 402,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 14.178475379943848,
+            "worstPoint": {
+                "x": -0.1659926325082779,
+                "y": 0.5362758040428162,
+                "z": 0.046182841062545779
+            }
+        },
+        {
+            "frame": 403,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 14.16120433807373,
+            "worstPoint": {
+                "x": -0.16670823097229005,
+                "y": 0.5358043313026428,
+                "z": 0.0444825142621994
+            }
+        },
+        {
+            "frame": 404,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 14.201629638671875,
+            "worstPoint": {
+                "x": -0.1673879623413086,
+                "y": 0.5353736281394959,
+                "z": 0.04283643141388893
+            }
+        },
+        {
+            "frame": 405,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 14.158608436584473,
+            "worstPoint": {
+                "x": -0.1680261343717575,
+                "y": 0.534986674785614,
+                "z": 0.041251324117183688
+            }
+        },
+        {
+            "frame": 406,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 14.152450561523438,
+            "worstPoint": {
+                "x": -0.1686183363199234,
+                "y": 0.5346442461013794,
+                "z": 0.03973786532878876
+            }
+        },
+        {
+            "frame": 407,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 14.171210289001465,
+            "worstPoint": {
+                "x": 0.16182531416416169,
+                "y": 0.5435404777526856,
+                "z": 0.036983370780944827
+            }
+        },
+        {
+            "frame": 408,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 14.205679893493653,
+            "worstPoint": {
+                "x": -0.16965068876743318,
+                "y": 0.5340880155563355,
+                "z": 0.03698275238275528
+            }
+        },
+        {
+            "frame": 409,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 14.201699256896973,
+            "worstPoint": {
+                "x": 0.16079850494861604,
+                "y": 0.5454039573669434,
+                "z": 0.033276502043008807
+            }
+        },
+        {
+            "frame": 410,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 14.17380428314209,
+            "worstPoint": {
+                "x": 0.16037829220294953,
+                "y": 0.5460885167121887,
+                "z": 0.03192624822258949
+            }
+        },
+        {
+            "frame": 411,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 14.243760108947754,
+            "worstPoint": {
+                "x": 0.16002517938613892,
+                "y": 0.5466220378875732,
+                "z": 0.03090219758450985
+            }
+        },
+        {
+            "frame": 412,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 14.304357528686524,
+            "worstPoint": {
+                "x": 0.15974146127700807,
+                "y": 0.5470141768455505,
+                "z": 0.03019247017800808
+            }
+        },
+        {
+            "frame": 413,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 14.478489875793457,
+            "worstPoint": {
+                "x": 0.15964335203170777,
+                "y": 0.5473597645759583,
+                "z": 0.029217323288321496
+            }
+        },
+        {
+            "frame": 414,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 14.79023551940918,
+            "worstPoint": {
+                "x": 0.1596718430519104,
+                "y": 0.5472438931465149,
+                "z": 0.028170622885227205
+            }
+        },
+        {
+            "frame": 415,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 15.201448440551758,
+            "worstPoint": {
+                "x": 0.1597892791032791,
+                "y": 0.5465903878211975,
+                "z": 0.027209004387259485
+            }
+        },
+        {
+            "frame": 416,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 15.403353691101075,
+            "worstPoint": {
+                "x": 0.15998947620391847,
+                "y": 0.5454369783401489,
+                "z": 0.026531031355261804
+            }
+        },
+        {
+            "frame": 417,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 15.160537719726563,
+            "worstPoint": {
+                "x": 0.16041575372219087,
+                "y": 0.5439910292625427,
+                "z": 0.026502341032028199
+            }
+        },
+        {
+            "frame": 418,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 15.105463981628418,
+            "worstPoint": {
+                "x": 0.16053153574466706,
+                "y": 0.5423893928527832,
+                "z": 0.02636745013296604
+            }
+        },
+        {
+            "frame": 419,
+            "phase": "Punch",
+            "requestedLift": -1.0,
+            "requestedFlex": -1.0,
+            "surfaceAngle": 15.475436210632325,
+            "worstPoint": {
+                "x": 0.16020755469799043,
+                "y": 0.54109126329422,
+                "z": 0.02601701021194458
+            }
+        }
+    ]
+}

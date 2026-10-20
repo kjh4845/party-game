@@ -1,0 +1,40 @@
+{
+  "allSucceeded": true,
+  "files": [
+    {
+      "filename": "Model_BeforeAfter.png",
+      "library_file_id": "libfile_06d5ac69e8d881918bbed8cc58a33cc2",
+      "file_id": "file_000000008bf882308bee728b096c41dc",
+      "status": "succeeded",
+      "local_path": "/Users/kjh/Documents/Codex/2026-09-30/task-2/evidence/Model_BeforeAfter.png"
+    },
+    {
+      "filename": "Model_SurfaceDetail.png",
+      "library_file_id": "libfile_bd2f2bf124308191b6b5b17654229cd9",
+      "file_id": "file_00000000ac648230ad896193bee433b3",
+      "status": "succeeded",
+      "local_path": "/Users/kjh/Documents/Codex/2026-09-30/task-2/evidence/Model_SurfaceDetail.png"
+    },
+    {
+      "filename": "Punch_BeforeAfter.png",
+      "library_file_id": "libfile_4473c6bcf84881918e0080ee0d736c2d",
+      "file_id": "file_00000000cbd48230b21eaa65f71f0c6f",
+      "status": "succeeded",
+      "local_path": "/Users/kjh/Documents/Codex/2026-09-30/task-2/evidence/Punch_BeforeAfter.png"
+    },
+    {
+      "filename": "Punch_Contact_Side_60fps.mp4",
+      "library_file_id": "libfile_720daa50903081918ac8b2bcfdce7d8c",
+      "file_id": "file_0000000018588230993d0bdce91263d0",
+      "status": "succeeded",
+      "local_path": "/Users/kjh/Documents/Codex/2026-09-30/task-2/evidence/Punch_Contact_Side_60fps.mp4"
+    },
+    {
+      "filename": "Punch_Air_Side_60fps.mp4",
+      "library_file_id": "libfile_5838c3a86d488191af28ee8c8a3d2d27",
+      "file_id": "file_0000000095c082308a4d0391889e7814",
+      "status": "succeeded",
+      "local_path": "/Users/kjh/Documents/Codex/2026-09-30/task-2/evidence/Punch_Air_Side_60fps.mp4"
+    }
+  ]
+}

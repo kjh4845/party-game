@@ -1,0 +1,167 @@
+{
+  "modelSha256": "eb7055cb4e47cff3777c25d4dd9d25ecb002a3a1b6363959339ef4ab2d00feaa",
+  "boundaryEdges": 0,
+  "nonManifoldEdges": 0,
+  "poses": [
+    {
+      "pose": "Idle",
+      "maximumAdjacentFaceAngle": 17.093383821097788,
+      "edgesAbove60Degrees": 0,
+      "worstPosition": [
+        0.1542912224928538,
+        0.5391274690628052,
+        0.006297810934484005
+      ],
+      "degenerateTriangles": 0,
+      "worstMaterialPosition": [
+        0.2374773770570755,
+        0.5541077256202698,
+        0.007620032876729965
+      ]
+    },
+    {
+      "pose": "Lift120_Flex0",
+      "maximumAdjacentFaceAngle": 43.41800151344768,
+      "edgesAbove60Degrees": 0,
+      "worstPosition": [
+        -0.14072116216023764,
+        0.5005210340023041,
+        0.11067376285791397
+      ],
+      "degenerateTriangles": 0,
+      "worstMaterialPosition": [
+        -0.17947439849376678,
+        0.48967888951301575,
+        0.06579052656888962
+      ]
+    },
+    {
+      "pose": "Lift45_Flex0",
+      "maximumAdjacentFaceAngle": 25.91311513477593,
+      "edgesAbove60Degrees": 0,
+      "worstPosition": [
+        -0.14936415354410806,
+        0.5139339963595072,
+        0.11365019033352534
+      ],
+      "degenerateTriangles": 0,
+      "worstMaterialPosition": [
+        -0.1542080193758011,
+        0.5136501789093018,
+        0.08680326491594315
+      ]
+    },
+    {
+      "pose": "Lift90_Flex0",
+      "maximumAdjacentFaceAngle": 35.85638676971898,
+      "edgesAbove60Degrees": 0,
+      "worstPosition": [
+        0.147857998808225,
+        0.5155264933904012,
+        0.12211284538110097
+      ],
+      "degenerateTriangles": 0,
+      "worstMaterialPosition": [
+        0.1556890904903412,
+        0.5150037407875061,
+        0.08612719178199768
+      ]
+    },
+    {
+      "pose": "Lift90_Flex120",
+      "maximumAdjacentFaceAngle": 48.027069465270294,
+      "edgesAbove60Degrees": 0,
+      "worstPosition": [
+        0.13989112277825674,
+        0.5016439159711202,
+        0.10406862199306488
+      ],
+      "degenerateTriangles": 0,
+      "worstMaterialPosition": [
+        0.1796245574951172,
+        0.4881223142147064,
+        0.06553447991609573
+      ]
+    },
+    {
+      "pose": "Lift90_Flex45",
+      "maximumAdjacentFaceAngle": 44.27975914113741,
+      "edgesAbove60Degrees": 0,
+      "worstPosition": [
+        -0.14079232513904572,
+        0.502680758635203,
+        0.11112706114848454
+      ],
+      "degenerateTriangles": 0,
+      "worstMaterialPosition": [
+        -0.1792384535074234,
+        0.49286866188049316,
+        0.06628336757421494
+      ]
+    },
+    {
+      "pose": "Lift90_Flex90",
+      "maximumAdjacentFaceAngle": 48.643279828083294,
+      "edgesAbove60Degrees": 0,
+      "worstPosition": [
+        -0.14016822477181753,
+        0.5002658565839132,
+        0.10816726336876552
+      ],
+      "degenerateTriangles": 0,
+      "worstMaterialPosition": [
+        -0.17947439849376678,
+        0.48967888951301575,
+        0.06579052656888962
+      ]
+    },
+    {
+      "pose": "Punch18",
+      "maximumAdjacentFaceAngle": 23.033350190851298,
+      "edgesAbove60Degrees": 0,
+      "worstPosition": [
+        -0.10593078037103017,
+        0.49185727039972943,
+        0.17430264751116434
+      ],
+      "degenerateTriangles": 0,
+      "worstMaterialPosition": [
+        -0.1542080193758011,
+        0.5136501789093018,
+        0.08680326491594315
+      ]
+    },
+    {
+      "pose": "Punch2",
+      "maximumAdjacentFaceAngle": 37.394920257415535,
+      "edgesAbove60Degrees": 0,
+      "worstPosition": [
+        0.06559907893339793,
+        0.10623415062824886,
+        -0.033019259572029114
+      ],
+      "degenerateTriangles": 0,
+      "worstMaterialPosition": [
+        0.06485449522733688,
+        0.10035019367933273,
+        -0.061314452439546585
+      ]
+    },
+    {
+      "pose": "Punch8",
+      "maximumAdjacentFaceAngle": 20.321002249504833,
+      "edgesAbove60Degrees": 0,
+      "worstPosition": [
+        -0.1580226868391037,
+        0.5250568787256876,
+        0.08834245800971985
+      ],
+      "degenerateTriangles": 0,
+      "worstMaterialPosition": [
+        -0.1542080193758011,
+        0.5136501789093018,
+        0.08680326491594315
+      ]
+    }
+  ]
+}

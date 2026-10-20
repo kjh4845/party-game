@@ -1,0 +1,427 @@
+[
+ {
+  "visibleFoldVertices45": 0,
+  "shoulderFold": 0.0009308226130135822,
+  "elbowFold": 0.0004699623297508282,
+  "collapse": 0.9999729401814927,
+  "intersections": 0,
+  "intersectionAt": null,
+  "pose": "bind"
+ },
+ {
+  "visibleFoldVertices45": 48,
+  "shoulderFold": 149.73039350626306,
+  "elbowFold": 0.5645303198001668,
+  "collapse": 0.007479408189962146,
+  "intersections": 206,
+  "intersectionAt": [
+   0.15,
+   0.507,
+   0.037
+  ],
+  "pose": "idle"
+ },
+ {
+  "visibleFoldVertices45": 102,
+  "shoulderFold": 172.8701025984536,
+  "elbowFold": 172.8701025984536,
+  "collapse": 0.026080956009335198,
+  "intersections": 446,
+  "intersectionAt": [
+   -0.14,
+   0.544,
+   -0.055
+  ],
+  "pose": "Punch2"
+ },
+ {
+  "visibleFoldVertices45": 157,
+  "shoulderFold": 165.6880894320116,
+  "elbowFold": 112.43298226513956,
+  "collapse": 0.022674653548180948,
+  "intersections": 546,
+  "intersectionAt": [
+   0.121,
+   0.542,
+   0.102
+  ],
+  "pose": "Punch8"
+ },
+ {
+  "visibleFoldVertices45": 250,
+  "shoulderFold": 174.68701269790824,
+  "elbowFold": 166.79118511420094,
+  "collapse": 0.021873836010211846,
+  "intersections": 699,
+  "intersectionAt": [
+   -0.052,
+   0.452,
+   0.237
+  ],
+  "pose": "Punch18"
+ },
+ {
+  "visibleFoldVertices45": 134,
+  "shoulderFold": 173.5154464901973,
+  "elbowFold": 104.04622702354546,
+  "collapse": 0.0061051606397886,
+  "intersections": 720,
+  "intersectionAt": [
+   0.131,
+   0.522,
+   0.094
+  ],
+  "pose": "LeftBody_Worst"
+ },
+ {
+  "visibleFoldVertices45": 86,
+  "shoulderFold": 160.4763434138416,
+  "elbowFold": 4.745357578912755,
+  "collapse": 0.021000511826798785,
+  "intersections": 241,
+  "intersectionAt": [
+   -0.038,
+   0.598,
+   0.064
+  ],
+  "pose": "RightBody_Worst"
+ },
+ {
+  "visibleFoldVertices45": 65,
+  "shoulderFold": 170.95118000918944,
+  "elbowFold": 11.939038066753339,
+  "collapse": 0.022275583160011436,
+  "intersections": 278,
+  "intersectionAt": [
+   -0.19,
+   0.436,
+   0.027
+  ],
+  "pose": "Head_Worst"
+ },
+ {
+  "visibleFoldVertices45": 74,
+  "shoulderFold": 172.24138182494244,
+  "elbowFold": 172.24138182494244,
+  "collapse": 0.014920418382972582,
+  "intersections": 223,
+  "intersectionAt": [
+   -0.08,
+   0.604,
+   -0.025
+  ],
+  "pose": "Alternating_Worst"
+ },
+ {
+  "visibleFoldVertices45": 188,
+  "shoulderFold": 174.38073029863088,
+  "elbowFold": 172.66161356026066,
+  "collapse": 0.013094178761844561,
+  "intersections": 750,
+  "intersectionAt": [
+   0.144,
+   0.46,
+   0.181
+  ],
+  "pose": "Moving_Worst"
+ },
+ {
+  "visibleFoldVertices45": 138,
+  "shoulderFold": 175.27792159149647,
+  "elbowFold": 105.22304000946102,
+  "collapse": 0.0047706936550926515,
+  "intersections": 719,
+  "intersectionAt": [
+   0.129,
+   0.532,
+   0.082
+  ],
+  "pose": "Far_Worst"
+ },
+ {
+  "visibleFoldVertices45": 163,
+  "shoulderFold": 174.98780229940476,
+  "elbowFold": 165.27522577527148,
+  "collapse": 0.00868218468790328,
+  "intersections": 513,
+  "intersectionAt": [
+   0.121,
+   0.511,
+   0.128
+  ],
+  "pose": "Wall_Worst"
+ },
+ {
+  "visibleFoldVertices45": 259,
+  "shoulderFold": 174.5146986064997,
+  "elbowFold": 164.91361063643396,
+  "collapse": 0.0035834348945196796,
+  "intersections": 1158,
+  "intersectionAt": [
+   -0.168,
+   0.55,
+   0.153
+  ],
+  "pose": "GrabPunch_Worst"
+ },
+ {
+  "visibleFoldVertices45": 81,
+  "shoulderFold": 172.32709375341963,
+  "elbowFold": 123.061480597858,
+  "collapse": 0.01913649656559115,
+  "intersections": 483,
+  "intersectionAt": [
+   0.122,
+   0.557,
+   0.082
+  ],
+  "pose": "Exchange_Worst"
+ },
+ {
+  "visibleFoldVertices45": 169,
+  "shoulderFold": 174.06163264770254,
+  "elbowFold": 1.135417742105893,
+  "collapse": 0.0172549839428149,
+  "intersections": 363,
+  "intersectionAt": [
+   0.138,
+   0.514,
+   0.101
+  ],
+  "pose": "Lift45_Flex0"
+ },
+ {
+  "visibleFoldVertices45": 274,
+  "shoulderFold": 171.14689166495762,
+  "elbowFold": 1.4900629959547311,
+  "collapse": 0.014569854077891825,
+  "intersections": 1034,
+  "intersectionAt": [
+   0.133,
+   0.524,
+   0.124
+  ],
+  "pose": "Lift90_Flex0"
+ },
+ {
+  "visibleFoldVertices45": 285,
+  "shoulderFold": 173.51090834143764,
+  "elbowFold": 51.77388100661552,
+  "collapse": 0.010889216964933566,
+  "intersections": 1049,
+  "intersectionAt": [
+   0.135,
+   0.522,
+   0.118
+  ],
+  "pose": "Lift90_Flex45"
+ },
+ {
+  "visibleFoldVertices45": 339,
+  "shoulderFold": 172.7087471886614,
+  "elbowFold": 147.3790661394791,
+  "collapse": 0.008838014887706533,
+  "intersections": 1440,
+  "intersectionAt": [
+   0.138,
+   0.551,
+   0.241
+  ],
+  "pose": "Lift90_Flex90"
+ },
+ {
+  "visibleFoldVertices45": 295,
+  "shoulderFold": 172.6090798716714,
+  "elbowFold": 138.71955427986174,
+  "collapse": 0.006865489332404782,
+  "intersections": 1330,
+  "intersectionAt": [
+   0.134,
+   0.549,
+   0.237
+  ],
+  "pose": "Lift90_Flex120"
+ },
+ {
+  "visibleFoldVertices45": 252,
+  "shoulderFold": 176.68369282670645,
+  "elbowFold": 1.5914109366500335,
+  "collapse": 0.0009528215738016435,
+  "intersections": 1032,
+  "intersectionAt": [
+   0.138,
+   0.579,
+   0.136
+  ],
+  "pose": "Lift120_Flex0"
+ },
+ {
+  "visibleFoldVertices45": 239,
+  "shoulderFold": 173.7268052987677,
+  "elbowFold": 161.06644050724898,
+  "collapse": 0.01899379603335934,
+  "intersections": 555,
+  "intersectionAt": [
+   -0.063,
+   0.483,
+   0.268
+  ],
+  "pose": "SweepWorst"
+ },
+ {
+  "visibleFoldVertices45": 249,
+  "shoulderFold": 176.70009051544488,
+  "elbowFold": 1.5914401977941306,
+  "collapse": 0.0008336363523254558,
+  "intersections": 1036,
+  "intersectionAt": [
+   0.138,
+   0.579,
+   0.132
+  ],
+  "pose": "Sweep_0090"
+ },
+ {
+  "visibleFoldVertices45": 298,
+  "shoulderFold": 176.6626296357564,
+  "elbowFold": 151.57275844058904,
+  "collapse": 0.001386658986975475,
+  "intersections": 1426,
+  "intersectionAt": [
+   0.139,
+   0.597,
+   0.235
+  ],
+  "pose": "Sweep_0270"
+ },
+ {
+  "visibleFoldVertices45": 141,
+  "shoulderFold": 175.12142263002377,
+  "elbowFold": 72.98863882961525,
+  "collapse": 0.01106647951028314,
+  "intersections": 507,
+  "intersectionAt": [
+   -0.099,
+   0.518,
+   0.105
+  ],
+  "pose": "r40:Alternating_Worst"
+ },
+ {
+  "visibleFoldVertices45": 155,
+  "shoulderFold": 171.44826008419813,
+  "elbowFold": 102.51468661938937,
+  "collapse": 0.011830271253809999,
+  "intersections": 509,
+  "intersectionAt": [
+   -0.094,
+   0.515,
+   0.112
+  ],
+  "pose": "r40:Far_Worst"
+ },
+ {
+  "visibleFoldVertices45": 154,
+  "shoulderFold": 168.27765453026814,
+  "elbowFold": 8.639242551247978,
+  "collapse": 0.025526449374633286,
+  "intersections": 324,
+  "intersectionAt": [
+   -0.151,
+   0.575,
+   0.131
+  ],
+  "pose": "r40:GrabPunch_Worst"
+ },
+ {
+  "visibleFoldVertices45": 146,
+  "shoulderFold": 171.86583912020774,
+  "elbowFold": 159.4390038391226,
+  "collapse": 0.012870922235897942,
+  "intersections": 519,
+  "intersectionAt": [
+   -0.085,
+   0.473,
+   0.159
+  ],
+  "pose": "r40:Moving_Worst"
+ },
+ {
+  "visibleFoldVertices45": 48,
+  "shoulderFold": 149.7268092571429,
+  "elbowFold": 0.5645303198001668,
+  "collapse": 0.007479408189962146,
+  "intersections": 295,
+  "intersectionAt": [
+   -0.151,
+   0.508,
+   0.04
+  ],
+  "pose": "syn:1:90:0:0:0"
+ },
+ {
+  "visibleFoldVertices45": 58,
+  "shoulderFold": 149.7268092571429,
+  "elbowFold": 73.18052090106694,
+  "collapse": 0.007479408189962146,
+  "intersections": 451,
+  "intersectionAt": [
+   0.122,
+   0.576,
+   0.169
+  ],
+  "pose": "syn:1:90:0:90:0"
+ },
+ {
+  "visibleFoldVertices45": 47,
+  "shoulderFold": 159.40927957877946,
+  "elbowFold": 0.5645303198001668,
+  "collapse": 0.007479408189962146,
+  "intersections": 392,
+  "intersectionAt": [
+   -0.151,
+   0.508,
+   0.04
+  ],
+  "pose": "syn:1:130:0:0:0"
+ },
+ {
+  "visibleFoldVertices45": 24,
+  "shoulderFold": 149.7268092571429,
+  "elbowFold": 0.5645303198001668,
+  "collapse": 0.007479408189962146,
+  "intersections": 103,
+  "intersectionAt": [
+   -0.15,
+   0.509,
+   0.038
+  ],
+  "pose": "syn:1:90:90:0:0"
+ },
+ {
+  "visibleFoldVertices45": 62,
+  "shoulderFold": 149.7268092571429,
+  "elbowFold": 0.5645303198001668,
+  "collapse": 0.007479408189962146,
+  "intersections": 282,
+  "intersectionAt": [
+   0.157,
+   0.605,
+   0.06
+  ],
+  "pose": "syn:1:160:45:0:0"
+ },
+ {
+  "visibleFoldVertices45": 77,
+  "shoulderFold": 168.97011078999313,
+  "elbowFold": 115.32593829866697,
+  "collapse": 0.007479408189962146,
+  "intersections": 528,
+  "intersectionAt": [
+   0.142,
+   0.493,
+   0.147
+  ],
+  "pose": "syn:1:60:0:120:0"
+ }
+]

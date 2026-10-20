@@ -1,0 +1,23 @@
+{
+  "media": [
+    {
+      "path": "artifacts/previews/r24-body-impact-20261008/Impact_Review_Silent_60.mp4",
+      "frames": 720,
+      "fps": 60,
+      "sha256": "9e82c76380e03c3e30631247a3d1db424af00d2e6c9f2b9a763d4fcb477daad2"
+    },
+    {
+      "path": "artifacts/previews/r24-body-impact-20261008/Impact_Review_60.mp4",
+      "frames": 720,
+      "fps": 60,
+      "sha256": "076918e2a7ad793bf1996564affaec15f51910bd0c799a4c2f4348b815cf5276"
+    },
+    {
+      "path": "artifacts/previews/r24-body-impact-20261008/Impact_BeforeAfter_Silent_60.mp4",
+      "frames": 240,
+      "fps": 60,
+      "sha256": "e7414d43213ff2016ef8c1449c890b932a706c82beec8f26eab3e2ed4cc64288"
+    }
+  ],
+  "audio": "PCM emitted only at captured confirmed Hit events; silent version supplied"
+}

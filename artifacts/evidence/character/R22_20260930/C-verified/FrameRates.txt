@@ -1,0 +1,3 @@
+fps=60, maxPhysicalDifference=0, hits=2
+fps=15, maxPhysicalDifference=0, hits=2
+fps=144, maxPhysicalDifference=0, hits=2

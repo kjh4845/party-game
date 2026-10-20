@@ -1,0 +1,32 @@
+{
+  "backgroundRGB": [
+    31,
+    43,
+    59
+  ],
+  "shoulderSilhouettePixelsUnchangedAboveRow400": true,
+  "gaps": [
+    {
+      "side": "left",
+      "regionPixels": [
+        385,
+        450,
+        410,
+        550
+      ],
+      "originalBackgroundPixels": 208,
+      "candidateBackgroundPixels": 46
+    },
+    {
+      "side": "right",
+      "regionPixels": [
+        690,
+        450,
+        715,
+        550
+      ],
+      "originalBackgroundPixels": 208,
+      "candidateBackgroundPixels": 47
+    }
+  ]
+}

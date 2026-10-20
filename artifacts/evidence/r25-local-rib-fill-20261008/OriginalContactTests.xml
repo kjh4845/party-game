@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-07 17:39:44Z" end-time="2026-10-07 17:40:05Z" duration="21.4365362">
+  <test-suite type="TestSuite" id="1295" name="Project Hotfix" fullname="Project Hotfix" runstate="Runnable" testcasecount="229" result="Failed" site="Child" start-time="2026-10-07 17:39:44Z" end-time="2026-10-07 17:40:05Z" duration="21.436536" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1281" name="ProjectHotfix.Physics.Tests.PlayMode.dll" fullname="/Users/kjh/local_dev/party game/Project hotfix/Library/ScriptAssemblies/ProjectHotfix.Physics.Tests.PlayMode.dll" runstate="Runnable" testcasecount="227" result="Failed" site="Child" start-time="2026-10-07 17:39:44Z" end-time="2026-10-07 17:40:05Z" duration="21.432052" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="37842" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1282" name="ProjectHotfix" fullname="ProjectHotfix" runstate="Runnable" testcasecount="227" result="Failed" site="Child" start-time="2026-10-07 17:39:44Z" end-time="2026-10-07 17:40:05Z" duration="21.430682" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1283" name="Physics" fullname="ProjectHotfix.Physics" runstate="Runnable" testcasecount="227" result="Failed" site="Child" start-time="2026-10-07 17:39:44Z" end-time="2026-10-07 17:40:05Z" duration="21.429402" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1284" name="Tests" fullname="ProjectHotfix.Physics.Tests" runstate="Runnable" testcasecount="227" result="Failed" site="Child" start-time="2026-10-07 17:39:44Z" end-time="2026-10-07 17:40:05Z" duration="21.428141" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1147" name="PhysicalPunchCandidateTests" fullname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests" classname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests" runstate="Runnable" testcasecount="38" result="Failed" site="Child" start-time="2026-10-07 17:39:44Z" end-time="2026-10-07 17:40:05Z" duration="21.425917" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1150" name="CapturePhysicalPunchScenarios" fullname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests.CapturePhysicalPunchScenarios" methodname="CapturePhysicalPunchScenarios" classname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests" runstate="Runnable" seed="1848891637" result="Failed" start-time="2026-10-07 17:39:44Z" end-time="2026-10-07 17:40:05Z" duration="21.419614" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="600000" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  LeftBody skin 179.9115
+GrabPunch skin 179.4273
+  Expected: <empty>
+  But was:  < "LeftBody skin 179.9115", "GrabPunch skin 179.4273" >
+]]></message>
+                  <stack-trace><![CDATA[at ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests+<CapturePhysicalPunchScenarios>d__10.MoveNext () [0x00a85] in /Users/kjh/local_dev/party game/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Capture.cs:95
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44
+]]></stack-trace>
+                </failure>
+                <output><![CDATA[Saving results to: /Users/kjh/Library/Application Support/KJH4845/Project Hotfix/TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

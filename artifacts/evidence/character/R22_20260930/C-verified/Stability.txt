@@ -1,0 +1,2 @@
+side=0 maxElbowSwing=0 peakTipAcceleration=329.5074 lastStepMotion=0.00022552532 preparedFlex=128.747162 strikeSpeed=5.64973354
+side=1 maxElbowSwing=0 peakTipAcceleration=325.4985 lastStepMotion=0.00024125968 preparedFlex=128.739624 strikeSpeed=5.657945

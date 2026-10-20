@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "sourceUnchanged": true,
+  "headSkeletonActionsTopologyPreserved": true,
+  "lowerBodyCoordinatesAndWeightsPreserved": true,
+  "nativeTransportGeometryAndWeightsMatch": true,
+  "nativeTransportBaseAndPoseNormalsMatch": true,
+  "positionalCorrectiveCount": 24,
+  "maximumNativeShapeKeyRoundingErrorMeters": 2.9802322387695312e-08,
+  "bodyMirrorErrorMeters": 0.0,
+  "weightMirrorError": 0.0,
+  "candidateSha256": "14ec83ba4e2fe644155ef436b34ab39191ff2cd18cd603992bb2c50be8f58fe0",
+  "transportSha256": "d4154963ad3751873cc28740e8f316f2bc3d261ff7e4e00bc2fcf52cb79b8854"
+}

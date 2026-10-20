@@ -1,0 +1,2 @@
+armRaise=45, maximumAdjacentFaceAngle=10.1289654
+armRaise=90, maximumAdjacentFaceAngle=34.48648

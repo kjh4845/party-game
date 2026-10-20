@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-09 21:51:29Z" end-time="2026-10-09 21:51:29Z" duration="0.0162028">
+  <test-suite type="TestSuite" id="1000" name="Project Hotfix" fullname="Project Hotfix" runstate="Runnable" testcasecount="146" result="Passed" start-time="2026-10-09 21:51:29Z" end-time="2026-10-09 21:51:29Z" duration="0.016203" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1179" name="ProjectHotfix.Architecture.Tests.Editor.dll" fullname="/Users/kjh/local_dev/party game/Project hotfix/Library/ScriptAssemblies/ProjectHotfix.Architecture.Tests.Editor.dll" runstate="Runnable" testcasecount="139" result="Passed" start-time="2026-10-09 21:51:29Z" end-time="2026-10-09 21:51:29Z" duration="0.012862" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="90640" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1180" name="ProjectHotfix" fullname="ProjectHotfix" runstate="Runnable" testcasecount="139" result="Passed" start-time="2026-10-09 21:51:29Z" end-time="2026-10-09 21:51:29Z" duration="0.012189" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1185" name="Architecture" fullname="ProjectHotfix.Architecture" runstate="Runnable" testcasecount="108" result="Passed" start-time="2026-10-09 21:51:29Z" end-time="2026-10-09 21:51:29Z" duration="0.011440" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1186" name="Tests" fullname="ProjectHotfix.Architecture.Tests" runstate="Runnable" testcasecount="108" result="Passed" start-time="2026-10-09 21:51:29Z" end-time="2026-10-09 21:51:29Z" duration="0.010804" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1076" name="ExternalLaunchTests" fullname="ProjectHotfix.Architecture.Tests.ExternalLaunchTests" classname="ProjectHotfix.Architecture.Tests.ExternalLaunchTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-09 21:51:29Z" end-time="2026-10-09 21:51:29Z" duration="0.009569" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1077" name="ExternalLaunchConsumesAirJumpAndStartsAFreshLandingImpactInterval" fullname="ProjectHotfix.Architecture.Tests.ExternalLaunchTests.ExternalLaunchConsumesAirJumpAndStartsAFreshLandingImpactInterval" methodname="ExternalLaunchConsumesAirJumpAndStartsAFreshLandingImpactInterval" classname="ProjectHotfix.Architecture.Tests.ExternalLaunchTests" runstate="Runnable" seed="968618972" result="Passed" start-time="2026-10-09 21:51:29Z" end-time="2026-10-09 21:51:29Z" duration="0.005227" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: /Users/kjh/Library/Application Support/KJH4845/Project Hotfix/TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

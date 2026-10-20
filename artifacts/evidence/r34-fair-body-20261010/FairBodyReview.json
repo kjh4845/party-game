@@ -1,0 +1,12 @@
+{
+  "sourceSha256": "563be29d7a0abc422dbc703cba90e64c21347a8a9a6cd048c318997ba096ed45",
+  "candidateSha256": "9909489215a90ed80c0e98d5d96cee49cb035d0f23675f3ada575c1bdd1ac488",
+  "transportSha256": "eb7055cb4e47cff3777c25d4dd9d25ecb002a3a1b6363959339ef4ab2d00feaa",
+  "controlCageVertices": 9043,
+  "changedVertices": 123202,
+  "maximumNeutralChangeMeters": 0.007056656520618587,
+  "facesRotatedBeyond90DegreesFromSource": 0,
+  "shouldersArmShaftsRigWeightsTopologyHeadPreserved": true,
+  "mirrorError": 0.0,
+  "visualApproved": false
+}

@@ -14,7 +14,7 @@ namespace ProjectHotfix.Presentation
         private readonly Dictionary<string, Vector3> _positions = new Dictionary<string, Vector3>();
         private readonly Quaternion[] _clavicle = new Quaternion[2];
         private readonly Quaternion[] _footWorld = new Quaternion[2];
-        private readonly Vector3[] _anchors = new Vector3[2];
+        private readonly Vector3[] _anchors = new Vector3[2], _entryHands = new Vector3[2];
         private readonly Vector3[] _footLocal = new Vector3[2], _footGoals = new Vector3[2];
         private Quaternion _standingRotation;
         public float MaximumFootPlantError { get; private set; }
@@ -129,6 +129,7 @@ namespace ProjectHotfix.Presentation
             if (!Procedural && (_faceUp == null || _faceDown == null)) throw new InvalidOperationException("Generate the two GetUp clips before playing recovery.");
             _standingRotation = standingRotation; for (var side=0;side<2;side++) _footGoals[side] = standingRoot + standingRotation * _footLocal[side];
             _up = faceUp; _anchors[0] = leftAnchor; _anchors[1] = rightAnchor; _entry.Clear();
+            for (var side = 0; side < 2; side++) _entryHands[side] = Terminal(side);
             foreach (var bone in AnimatedBones) _entry[bone.name] = bone.localRotation;
             _entryPelvisPosition = _bones["Pelvis"].localPosition;
             Playing = true; _fading = false; _resumeAge=-1; Starts++;
@@ -159,6 +160,16 @@ namespace ProjectHotfix.Presentation
             var entryWeight = Smooth(0, .35f, age)*resumeWeight;
             foreach (var bone in AnimatedBones) bone.localRotation = Quaternion.Slerp(_entry[bone.name], bone.localRotation, entryWeight);
             _bones["Pelvis"].localPosition = Vector3.Lerp(_entryPelvisPosition,_bones["Pelvis"].localPosition,entryWeight);
+            // Planted: each hand slides from where it lay to where it will push, instead of the arm's joint angles
+            // blending from the limp pose, which swung the arm over the back on the way (2026-10-20 review).
+            if (PlantedFeet && age < .36f)
+                for (var side = 0; side < 2; side++)
+                {
+                    var suffix = side == 0 ? "L" : "R"; var upper = _bones["UpperArm_" + suffix]; var forearm = _bones["Forearm_" + suffix];
+                    var u = upper.localRotation; var f = forearm.localRotation;
+                    SolveArm(side, Vector3.Lerp(_entryHands[side], _anchors[side], Smooth(0, .36f, age)));
+                    upper.localRotation = Quaternion.Slerp(u, upper.localRotation, resumeWeight); forearm.localRotation = Quaternion.Slerp(f, forearm.localRotation, resumeWeight);
+                }
             for (var side = 0; side < 2; side++)
             {
                 var suffix = side == 0 ? "L" : "R"; var upper = _bones["UpperArm_" + suffix]; var forearm = _bones["Forearm_" + suffix];

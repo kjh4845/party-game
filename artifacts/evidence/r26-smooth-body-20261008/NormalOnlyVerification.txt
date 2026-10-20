@@ -1,0 +1,3 @@
+frames=6
+maximumVertexDisplacement=0
+maximumNormalChange=0.9867528

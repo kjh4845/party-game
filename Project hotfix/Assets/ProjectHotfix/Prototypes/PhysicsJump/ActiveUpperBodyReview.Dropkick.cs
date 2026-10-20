@@ -25,7 +25,7 @@ namespace ProjectHotfix.PhysicsJump
             var direction = Vector3.ProjectOnPlane(root.rotation * Vector3.forward, Vector3.up).normalized;
             var run = Mathf.Max(0, Vector3.Dot(root.linearVelocity, direction));
             if (!EnterRagdoll(false)) return false;
-            Dropkicking = true; DropkickAge = 0; root.constraints = RigidbodyConstraints.None;
+            EndDownProtection(); Dropkicking = true; DropkickAge = 0; root.constraints = RigidbodyConstraints.None;
             Knockdown.TumbleHoldSpring = DropkickStiffness;
             var bodies = new Rigidbody[16]; var count = Knockdown.CopyDynamicBodies(bodies);
             var mass = 0f; var center = Vector3.zero;

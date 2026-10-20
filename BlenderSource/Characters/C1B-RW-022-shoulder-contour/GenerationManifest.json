@@ -1,0 +1,24 @@
+{
+  "status": "FIRST_PARTY_LOCAL_REVIEW",
+  "shippingAllowed": false,
+  "source": "BlenderSource/Characters/C1B-RW-021-surface-polish-r02/CHR_MasterCharacter_C1B_SurfacePolish_r21.blend",
+  "generator": {
+    "path": "tools/blender/create_r22_shoulder_contour.py",
+    "sha256": "addde5cf9847a029bcdfd5f86e1b77ab5933b387eae4e0e479ab323c205dd8e7"
+  },
+  "files": [
+    {
+      "path": "BlenderSource/Characters/C1B-RW-022-shoulder-contour/CHR_MasterCharacter_C1B_ShoulderContour_r22.blend",
+      "bytes": 12102431,
+      "sha256": "9ca0582978dc5e3abdd352de829ef8bbf7b0a82c1868111fe69f42d81b285530"
+    },
+    {
+      "path": "BlenderSource/Characters/C1B-RW-022-shoulder-contour/ShoulderCharacter.bytes",
+      "bytes": 18724265,
+      "sha256": "ebc896e3c9b2f9076ac24502c5280504bd093b276e7c1a36df9a9f9ec3e7c9c0"
+    }
+  ],
+  "authorization": "2026-10-07 user requested shoulder/armpit model repair and punch rework",
+  "playerAssetImport": false,
+  "userVisualApproval": false
+}

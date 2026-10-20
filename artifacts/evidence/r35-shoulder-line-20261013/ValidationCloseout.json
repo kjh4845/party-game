@@ -1,0 +1,75 @@
+{
+  "status": "NO_CANDIDATE_ADOPTED; default model remains r34",
+  "defaultModel": {
+    "menu": "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs:71",
+    "transport": "BlenderSource/Characters/C1B-RW-034-fair-body/FairBodyCharacter.bytes",
+    "blendAndTransportHashMatchAppliedR34": true,
+    "acceptedMotionSourceHashesUnchanged": 9,
+    "evidence": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Validation/PreservationAndAvailableHeldout.json"
+  },
+  "freshUnityCandidateO": {
+    "result": "9 passed /1 failed",
+    "xml": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Validation/ModelCandidateO-Unity/PlayMode.xml",
+    "summary": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Validation/ModelCandidateO-Unity/ResultSummary.json",
+    "continuousSweep": {
+      "frames": 420,
+      "maxAngle": 39.471885681152344,
+      "passed": true
+    },
+    "failedTest": "CapturePhysicalPunchScenarios",
+    "worstCombatAngle": 175.23631286621094,
+    "sevenCombatScenariosFailed": true,
+    "notVisuallyApproved": true
+  },
+  "baselineDistinction": {
+    "r34HistoricalFullRegression": "2026-10-10,9/9 passed; combat maximum59.8953deg",
+    "r34NewContinuousSweep": "2026-10-13,420frames,maximum64.0436deg; failed60deg assertion",
+    "samePaletteCounterfactuals": "r34 replay at O combat worst matrices is CPU prediction, not a fresh full r34 game run"
+  },
+  "additionalChecks": {
+    "candidateP": "Native parity, source per-side extra-reference baseline and protected geometry pass; not a combat fix and not full Unity tested",
+    "candidateQ": "CPU replay rejected: sweep max111.2648deg; Far139.092deg/Moving171.580deg still fail; no extra full Unity run",
+    "candidateOActualSections": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Validation/ModelCandidateO-ActualSections.json",
+    "sectionMeaning": "Actual perpendicular mesh cut where isolated arm loop exists; candidate uses fresh Unity baked vertices, r34 reconstructed at exactly same bone matrices. Projected material-ring areas are separate; no claim of total limb volume.",
+    "samePoseR34RelativeUpperMiddlePlaneAreaRatios": {
+      "Lift45": 0.8712860516,
+      "Lift90": 0.9254828193,
+      "Lift120": 0.9243837618,
+      "HighBent": 0.9163735054
+    }
+  },
+  "newSweepDiagnostic": {
+    "source": "/Users/kjh/local_dev/party game/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.ShoulderLineSweep.cs",
+    "attributes": [
+      "UnityTest",
+      "Explicit(\"Local visual diagnostic; select this test explicitly\")",
+      "Category(\"VisualDiagnostics\")",
+      "Timeout(300000)"
+    ],
+    "assertionUnchanged": "Assert.That(maximum, Is.LessThan(60))",
+    "defaultUnfilteredRun": "NUnit Explicit prevents normal RunAll from automatically running this diagnostic. Explicit test/fixture name selection may run it intentionally.",
+    "explicitInvocationTemplate": "PARTY_POLISH_MODEL='<absolute-candidate-transport.bytes>' PARTY_POLISH_OUTPUT='<absolute-output-directory>' PARTY_STRIKE_STYLE=BodyStrike PARTY_BALANCED_REVIEW=1 PARTY_EXPORT_SURFACE=1 unity test 'Project hotfix' --mode PlayMode --filter 'ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests.CaptureShoulderLineSweep' --output '<absolute-output-directory>/PlayMode.xml' --timeout 900 --format json",
+    "compileVerification": {
+      "command": "unity test 'Project hotfix' --mode EditMode --filter 'SimulationKernelUnitTests' --output '<absolute-output-directory>/SweepDiagnosticCompile.xml' --timeout 300 --format json",
+      "passed": 7,
+      "failed": 0,
+      "xml": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Validation/SweepDiagnosticCompile.xml",
+      "fullDiagnosticWasNotRerunAfterTagging": true
+    }
+  },
+  "heldout": {
+    "status": "Existing source inventory only; no joint fit, no new Unity collection",
+    "manifest": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Validation/AvailableHeldoutInventory.json",
+    "count": 10,
+    "strongExistingSource": "O fresh sweep actual frame377 has matrices, exactweights and bakedvertices outside30frame samples",
+    "limitations": "Other historical candidate heldouts have not been checked for effective joint-feature distance; images alone do not yield exact intermediate matrices."
+  },
+  "representativeGeometryRenders": {
+    "candidateO": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Validation/ModelCandidateO-Poses",
+    "sourceR34": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Validation/R34-Poses",
+    "rejectedL": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Validation/ModelCandidateL-Poses",
+    "rejectedM": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Validation/ModelCandidateM-Poses",
+    "scope": "Actual model vertices and skin/morph math rendered at recorded Unity matrices; separate from fresh Unity screenshots in ModelCandidateO-Unity/Captures"
+  },
+  "noFurtherFullUnityRuns": true
+}

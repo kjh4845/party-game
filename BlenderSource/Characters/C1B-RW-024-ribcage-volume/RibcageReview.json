@@ -1,0 +1,12 @@
+{
+  "source": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-023-shallow-axilla/CHR_MasterCharacter_C1B_ShallowAxilla_r23.blend",
+  "sourceSha256": "213e374fc0703bb1181fc9f7032ca13f9917995ef71a86be7aaa38931b62e3fb",
+  "candidateSha256": "8e42c9f0ac742673b93960f98915afd68bb911af0ab61197c0a177827c71a7d7",
+  "transportSha256": "38e17e68c079aa8e24cd7642313e1bd9341e8750ec4d4ff513b8e4a1c3d82acb",
+  "vertices": 203434,
+  "triangleIndices": 1220592,
+  "mirrorMaxMeters": 0.0,
+  "headAndSkeletonPreserved": true,
+  "topologyPreserved": false,
+  "visualApproved": false
+}

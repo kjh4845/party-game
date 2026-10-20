@@ -312,7 +312,7 @@ CHR-006/007은 local 부분 구현으로 추적한다. Lift/Throw·피해/Down·
 
 사용자 후속 지시로 [골반·Spine·Chest 물리 분할](../artifacts/reports/R20_ARTICULATED_TORSO_REVIEW_20260908.md)을 별도12 body 후보로 검토한다. 기존20kg·rig/skin·고정 타격/누적 시간 규칙을 유지하고, 실제 torso 운동과 GetUp 및 반복 Down의 joint 재활성화 방향을 검증한다. 정식 CHR-002/CHR-012 Gate나 다인 성능 완료를 대신하지 않는다.
 
-[잡기·하중·회복 연결](../artifacts/reports/R20_RAGDOLL_GRAB_INTEGRATION_20260908.md)의 로컬 구현은 분할된 대상의 전체 질량, 실제 부위 접점, 중복 없는 점프/Throw와 상태 전환 시 grab 유지를 반영했다. 사용자는 지지/공간이 확보되면 잡힌 상태에서도 회복하도록 선택했다. 정식 Input/peer/다인 체감 Gate는 후속이다.
+(2026-10-20 대체: r46 시제품은 잡힌 채 대기가 끝나면 버둥거린 뒤 빠져나온다. PRD 2026-10-20 결정 참조.) [잡기·하중·회복 연결](../artifacts/reports/R20_RAGDOLL_GRAB_INTEGRATION_20260908.md)의 로컬 구현은 분할된 대상의 전체 질량, 실제 부위 접점, 중복 없는 점프/Throw와 상태 전환 시 grab 유지를 반영했다. 사용자는 지지/공간이 확보되면 잡힌 상태에서도 회복하도록 선택했다. 정식 Input/peer/다인 체감 Gate는 후속이다.
 
 2026-09-05 후속 진행 지시로 ANP-002의 독립 검토용 Punch L/R Action2와 Grab/Wall L/R/LR IK 시나리오를 제작했다.
 200표본·저장 Action98샘플은 통과했으나 게임용 Prefab·Hit/contact·physics/전환 통합은 미완료다.

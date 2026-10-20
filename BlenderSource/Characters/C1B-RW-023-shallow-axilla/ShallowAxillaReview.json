@@ -1,0 +1,17 @@
+{
+  "source": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-022-shoulder-contour/CHR_MasterCharacter_C1B_ShoulderContour_r22.blend",
+  "sourceSha256": "9ca0582978dc5e3abdd352de829ef8bbf7b0a82c1868111fe69f42d81b285530",
+  "candidateSha256": "213e374fc0703bb1181fc9f7032ca13f9917995ef71a86be7aaa38931b62e3fb",
+  "transportSha256": "31b2daf97f99e84644c23d63e6afc2fc6acc98e6d23f6281d757ac76780c5a8e",
+  "fillDepthMeters": 0.035,
+  "appliedScale": 1.0,
+  "maximumBindChangeMeters": 0.040560007095336914,
+  "mirrorMaxMeters": 0.0,
+  "maximumInfluences": 4,
+  "headAndSkeletonPreserved": true,
+  "topologyPreserved": true,
+  "visualApproved": false,
+  "candidatePath": "BlenderSource/Characters/C1B-RW-023-shallow-axilla/CHR_MasterCharacter_C1B_ShallowAxilla_r23.blend",
+  "transportPath": "BlenderSource/Characters/C1B-RW-023-shallow-axilla/ShallowCharacter.bytes",
+  "previousCandidateUserRejected": true
+}

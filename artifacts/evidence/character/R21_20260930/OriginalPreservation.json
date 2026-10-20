@@ -1,0 +1,22 @@
+{
+  ".codex_tmp/shoulder-reach-20260916/candidate-r02/R20_ShoulderBlendCandidate.blend": {
+    "before": "40730ebda748729eb4df512b9827e2569dd15ff094dd9df9270122b7451cc1e5",
+    "after": "40730ebda748729eb4df512b9827e2569dd15ff094dd9df9270122b7451cc1e5",
+    "preserved": true
+  },
+  ".codex_tmp/shoulder-reach-20260916/candidate-r02/ShoulderCharacter.bytes": {
+    "before": "21c9c8079eb2be506e2daf822c19f1af3db99a638a4d6470d45e11fb5b4b79a5",
+    "after": "21c9c8079eb2be506e2daf822c19f1af3db99a638a4d6470d45e11fb5b4b79a5",
+    "preserved": true
+  },
+  ".codex_tmp/punch-unity-20260906/ApprovedPunch.json": {
+    "before": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac",
+    "after": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac",
+    "preserved": true
+  },
+  "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": {
+    "before": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    "after": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    "preserved": true
+  }
+}

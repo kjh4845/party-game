@@ -280,6 +280,7 @@ namespace ProjectHotfix.PhysicsJump
         }
         public void SetHandTarget(int side,bool active,Vector3 worldPoint)
         {
+            if(active)EndDownProtection();
             _handActive[side]=active;
             _handTargets[side]=Quaternion.Inverse(Actor.Motor.Body.rotation)*(worldPoint-Actor.Motor.Body.position);
         }
@@ -291,7 +292,7 @@ namespace ProjectHotfix.PhysicsJump
         public void SetOverheadReach(int side,bool on)=>_overheadReach[side]=on;
         public void SetPunchReference(int side,bool active,float sourceAge,float compactness=0)
         {
-            if(active&&!_punchReference[side]){_strikeTouchAge[side]=-1;_plantStarted[side]=false;_punchEntryPending[side]=true;_punchCompact[side]=Mathf.Clamp01(compactness);_punchOriginalHighX[side]=Find("UpperArm_"+(side==0?"L":"R")).Joint.highAngularXLimit.limit;}
+            if(active&&!_punchReference[side]){EndDownProtection();_strikeTouchAge[side]=-1;_plantStarted[side]=false;_punchEntryPending[side]=true;_punchCompact[side]=Mathf.Clamp01(compactness);_punchOriginalHighX[side]=Find("UpperArm_"+(side==0?"L":"R")).Joint.highAngularXLimit.limit;}
             if(!active)_punchBlocked[side]=false;
             _punchReference[side]=active;_punchSourceAge[side]=sourceAge;
         }
@@ -354,7 +355,7 @@ namespace ProjectHotfix.PhysicsJump
         {
             if (!_ready) throw new InvalidOperationException("Stage 1 lab has not been built.");
             if (seconds <= 0 || float.IsNaN(seconds) || float.IsInfinity(seconds)) throw new ArgumentOutOfRangeException(nameof(seconds));
-            _stepSeconds=seconds;
+            _stepSeconds=seconds;_downProtection=Mathf.Max(0,_downProtection-seconds);
             for(var side=0;side<2;side++)_handWeights[side]=Mathf.MoveTowards(_handWeights[side],_handActive[side]?1:0,seconds/.12f);
             _poseWeight = Mathf.MoveTowards(_poseWeight, TargetExercise == Exercise.Rest ? 0 : 1, seconds * 4);
             _curlWeight = Mathf.MoveTowards(_curlWeight, TargetExercise == Exercise.Curl ? 1 : 0, seconds * 4);
@@ -513,6 +514,7 @@ namespace ProjectHotfix.PhysicsJump
         public void ResetReview()
         {
             if(_linksSuspended){Knockdown.AbortForReset();ResumeLinks();}
+            EndDownProtection();
             _plantValid=false;_plantTimer=0;_settleLean=0;
             ClearImpactReaction();
             RestoreBodyStrikePose();

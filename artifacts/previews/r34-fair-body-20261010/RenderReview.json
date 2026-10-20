@@ -1,0 +1,11 @@
+{
+  "beforeSha256": "454d01d8c60af92451c0c5063947e68ec9ee1bf54497531477784688eaf3a17c",
+  "afterSha256": "eb7055cb4e47cff3777c25d4dd9d25ecb002a3a1b6363959339ef4ab2d00feaa",
+  "geometry": "Transport positions and corrective deltas with recorded Unity neutral matrices; normals recomputed from the actual geometry.",
+  "sameCameraLightMaterialAndSeed": true,
+  "views": [
+    "TorsoFront",
+    "GroinFront",
+    "TorsoThreeQuarter"
+  ]
+}

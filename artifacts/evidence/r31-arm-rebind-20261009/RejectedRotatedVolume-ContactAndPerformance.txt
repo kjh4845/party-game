@@ -1,0 +1,5 @@
+samples=240
+maximumContactError=2.16066837E-07
+maximumFixedRenderMatrixError=7.15255737E-07
+fairingMeanMilliseconds=35.018495881383821
+fairingMaximumMilliseconds=37.3315

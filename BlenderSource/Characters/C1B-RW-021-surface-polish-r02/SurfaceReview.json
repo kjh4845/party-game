@@ -1,0 +1,38 @@
+{
+  "source": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-reach-20260916/candidate-r02/R20_ShoulderBlendCandidate.blend",
+  "sourceSha256": "40730ebda748729eb4df512b9827e2569dd15ff094dd9df9270122b7451cc1e5",
+  "candidate": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-021-surface-polish-r02/CHR_MasterCharacter_C1B_SurfacePolish_r21.blend",
+  "candidateSha256": "31776e84008817c82a07f7ec3a7862a866d6c9a42963880fd0ed5ffe920104db",
+  "transportSha256": "afb1b504d0d6ac2271bc1569e984ce2668edcc26c8e97ed79ee2494328c2d888",
+  "bodyVertices": 227942,
+  "passes": 240,
+  "maximumDisplacementMeters": 0.002500037895515561,
+  "meanDisplacementMeters": 0.001536639640107751,
+  "laplacianRmsBefore": 1.9457948960139886e-05,
+  "laplacianRmsAfter": 1.6794800040264674e-05,
+  "boundsBefore": [
+    [
+      -0.5722323060035706,
+      -0.14314784109592438,
+      -0.004086286295205355
+    ],
+    [
+      0.5722323060035706,
+      0.1431475728750229,
+      0.7196778059005737
+    ]
+  ],
+  "boundsAfter": [
+    [
+      -0.5722318887710571,
+      -0.14314784109592438,
+      -0.004086286295205355
+    ],
+    [
+      0.5722318887710571,
+      0.1431475728750229,
+      0.7196778059005737
+    ]
+  ],
+  "topologyWeightsRigActionsHeadPreserved": true
+}

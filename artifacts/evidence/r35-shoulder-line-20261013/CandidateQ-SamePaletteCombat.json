@@ -1,0 +1,2012 @@
+{
+  "scope": "Actual candidateO Unity worst-frame palettes replayed on r34, P, O, and candidate. Only actualUnityMaxAngle is fresh Unity observation forO; all model fields are CPU predictions at the same palettes.",
+  "poses": [
+    {
+      "scenario": "LeftBody",
+      "actualUnityMaxAngle": 72.29627990722656,
+      "actualWorstTick": 74,
+      "models": {
+        "r34": {
+          "maximumDegrees": 28.654513334298198,
+          "p95Degrees": 3.081385257876631,
+          "p99Degrees": 7.153488644377409,
+          "edgesOver15Degrees": 252,
+          "edgesOver30Degrees": 0,
+          "edgesOver60Degrees": 0,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            30984,
+            58053,
+            202135
+          ],
+          "worstPosition": [
+            -0.1582150586702342,
+            0.511137110111925,
+            0.08679542418571806
+          ],
+          "worstMaterial": [
+            -0.15414226055145264,
+            0.5118826031684875,
+            0.0864671841263771
+          ],
+          "topPoseWeights": [
+            [
+              "Deflect_L",
+              0.6149168610572815
+            ],
+            [
+              "Prepare_R",
+              0.2921221852302551
+            ],
+            [
+              "Grab_R",
+              0.24738147854804993
+            ],
+            [
+              "Prepare_L",
+              0.19645161926746368
+            ],
+            [
+              "Accelerate_L",
+              0.14354217052459717
+            ],
+            [
+              "Recover_R",
+              0.1336633563041687
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9971868991851807,
+            "R": 0.9577884674072266
+          }
+        },
+        "P": {
+          "maximumDegrees": 72.49939619171701,
+          "p95Degrees": 2.6080421914016676,
+          "p99Degrees": 4.538579660165182,
+          "edgesOver15Degrees": 137,
+          "edgesOver30Degrees": 32,
+          "edgesOver60Degrees": 3,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            206382,
+            35809,
+            102192
+          ],
+          "worstPosition": [
+            -0.16875014575832123,
+            0.5240122829388677,
+            0.04682352437158558
+          ],
+          "worstMaterial": [
+            -0.2495947927236557,
+            0.5636962056159973,
+            0.00825265422463417
+          ],
+          "topPoseWeights": [
+            [
+              "BentLow_R",
+              0.8062378764152527
+            ],
+            [
+              "Deflect_L",
+              0.5603499412536621
+            ],
+            [
+              "Prepare_L",
+              0.1790187507867813
+            ],
+            [
+              "Accelerate_L",
+              0.1308044195175171
+            ],
+            [
+              "BentLow_L",
+              0.0855640396475792
+            ],
+            [
+              "Prepare_R",
+              0.05572185292840004
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9974364638328552,
+            "R": 0.9919481873512268
+          }
+        },
+        "O": {
+          "maximumDegrees": 72.49939619171701,
+          "p95Degrees": 2.6049173170742015,
+          "p99Degrees": 4.5252589871127515,
+          "edgesOver15Degrees": 137,
+          "edgesOver30Degrees": 32,
+          "edgesOver60Degrees": 3,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            206382,
+            35809,
+            102192
+          ],
+          "worstPosition": [
+            -0.16875014575832123,
+            0.5240122829388677,
+            0.04682352437158558
+          ],
+          "worstMaterial": [
+            -0.2495947927236557,
+            0.5636962056159973,
+            0.00825265422463417
+          ],
+          "topPoseWeights": [
+            [
+              "BentLow_R",
+              0.8062423467636108
+            ],
+            [
+              "Deflect_L",
+              0.5603499412536621
+            ],
+            [
+              "Prepare_L",
+              0.1790187507867813
+            ],
+            [
+              "Accelerate_L",
+              0.1308044195175171
+            ],
+            [
+              "BentLow_L",
+              0.0855640396475792
+            ],
+            [
+              "Prepare_R",
+              0.05572063475847244
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9974364638328552,
+            "R": 0.9919483661651611
+          }
+        },
+        "candidate": {
+          "maximumDegrees": 72.49939619171701,
+          "p95Degrees": 2.8716968981038624,
+          "p99Degrees": 5.516523909572228,
+          "edgesOver15Degrees": 171,
+          "edgesOver30Degrees": 32,
+          "edgesOver60Degrees": 3,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            206382,
+            35809,
+            102192
+          ],
+          "worstPosition": [
+            -0.16875014575832123,
+            0.5240122829388677,
+            0.04682352437158558
+          ],
+          "worstMaterial": [
+            -0.2495947927236557,
+            0.5636962056159973,
+            0.00825265422463417
+          ],
+          "topPoseWeights": [
+            [
+              "BentLow_R",
+              0.8062378764152527
+            ],
+            [
+              "Deflect_L",
+              0.5603499412536621
+            ],
+            [
+              "Prepare_L",
+              0.1790187507867813
+            ],
+            [
+              "Accelerate_L",
+              0.1308044195175171
+            ],
+            [
+              "BentLow_L",
+              0.0855640396475792
+            ],
+            [
+              "Prepare_R",
+              0.05572185292840004
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9974364638328552,
+            "R": 0.9919481873512268
+          }
+        }
+      }
+    },
+    {
+      "scenario": "RightBody",
+      "actualUnityMaxAngle": 66.89171600341797,
+      "actualWorstTick": 162,
+      "models": {
+        "r34": {
+          "maximumDegrees": 18.55236417569807,
+          "p95Degrees": 3.1878751611917395,
+          "p99Degrees": 6.727994773804431,
+          "edgesOver15Degrees": 73,
+          "edgesOver30Degrees": 0,
+          "edgesOver60Degrees": 0,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            206969,
+            71093,
+            34772
+          ],
+          "worstPosition": [
+            -0.048589720368377894,
+            0.6080714111502102,
+            0.015945352692406187
+          ],
+          "worstMaterial": [
+            -0.2374773770570755,
+            0.5541077256202698,
+            0.007620032876729965
+          ],
+          "topPoseWeights": [
+            [
+              "Impact_L",
+              0.214431032538414
+            ],
+            [
+              "Exchange_R",
+              0.18954883515834808
+            ],
+            [
+              "Raise45_L",
+              0.17921145260334015
+            ],
+            [
+              "Raise45_R",
+              0.11598402261734009
+            ],
+            [
+              "Grab_L",
+              0.0943773165345192
+            ],
+            [
+              "Prepare_R",
+              0.061804819852113724
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.6747549772262573,
+            "R": 0.5208484530448914
+          }
+        },
+        "P": {
+          "maximumDegrees": 66.90123311617128,
+          "p95Degrees": 2.813321283262863,
+          "p99Degrees": 5.986410044826498,
+          "edgesOver15Degrees": 148,
+          "edgesOver30Degrees": 14,
+          "edgesOver60Degrees": 2,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            136180,
+            152887,
+            10974
+          ],
+          "worstPosition": [
+            0.18882495944707056,
+            0.40494701844736053,
+            0.02945365389683058
+          ],
+          "worstMaterial": [
+            0.19432063400745392,
+            0.4453206956386566,
+            0.04345441237092018
+          ],
+          "topPoseWeights": [
+            [
+              "Impact_L",
+              0.20199304819107056
+            ],
+            [
+              "Exchange_R",
+              0.18088506162166595
+            ],
+            [
+              "Raise45_L",
+              0.16881637275218964
+            ],
+            [
+              "Raise45_R",
+              0.11068269610404968
+            ],
+            [
+              "Grab_L",
+              0.08890300244092941
+            ],
+            [
+              "Prepare_R",
+              0.058979880064725876
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.6936206817626953,
+            "R": 0.5427492260932922
+          }
+        },
+        "O": {
+          "maximumDegrees": 66.90040109193122,
+          "p95Degrees": 2.8132828735109414,
+          "p99Degrees": 5.9853757694898135,
+          "edgesOver15Degrees": 148,
+          "edgesOver30Degrees": 14,
+          "edgesOver60Degrees": 2,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            136180,
+            152887,
+            10974
+          ],
+          "worstPosition": [
+            0.18882495577297057,
+            0.4049470209907768,
+            0.029453647656578763
+          ],
+          "worstMaterial": [
+            0.19432063400745392,
+            0.4453206956386566,
+            0.04345441237092018
+          ],
+          "topPoseWeights": [
+            [
+              "Impact_L",
+              0.20199304819107056
+            ],
+            [
+              "Exchange_R",
+              0.1808844804763794
+            ],
+            [
+              "Raise45_L",
+              0.16881637275218964
+            ],
+            [
+              "Raise45_R",
+              0.11068233847618103
+            ],
+            [
+              "Grab_L",
+              0.08890300244092941
+            ],
+            [
+              "Prepare_R",
+              0.058979690074920654
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.6936206817626953,
+            "R": 0.5427507162094116
+          }
+        },
+        "candidate": {
+          "maximumDegrees": 46.61906175290555,
+          "p95Degrees": 2.823331163427673,
+          "p99Degrees": 5.433750992399012,
+          "edgesOver15Degrees": 105,
+          "edgesOver30Degrees": 3,
+          "edgesOver60Degrees": 0,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            206380,
+            158609,
+            35808
+          ],
+          "worstPosition": [
+            -0.057739772586942704,
+            0.6089782627300818,
+            0.02375803528354418
+          ],
+          "worstMaterial": [
+            -0.24810034036636353,
+            0.5627216696739197,
+            0.012065201997756958
+          ],
+          "topPoseWeights": [
+            [
+              "Impact_L",
+              0.20199304819107056
+            ],
+            [
+              "Exchange_R",
+              0.18088506162166595
+            ],
+            [
+              "Raise45_L",
+              0.16881637275218964
+            ],
+            [
+              "Raise45_R",
+              0.11068269610404968
+            ],
+            [
+              "Grab_L",
+              0.08890300244092941
+            ],
+            [
+              "Prepare_R",
+              0.058979880064725876
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.6936206817626953,
+            "R": 0.5427492260932922
+          }
+        }
+      }
+    },
+    {
+      "scenario": "Head",
+      "actualUnityMaxAngle": 85.90325927734375,
+      "actualWorstTick": 161,
+      "models": {
+        "r34": {
+          "maximumDegrees": 22.804530270458287,
+          "p95Degrees": 3.1497363962107356,
+          "p99Degrees": 6.990735671466328,
+          "edgesOver15Degrees": 148,
+          "edgesOver30Degrees": 0,
+          "edgesOver60Degrees": 0,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            178532,
+            6486,
+            98892
+          ],
+          "worstPosition": [
+            0.04905157416224879,
+            0.6104323437348252,
+            0.0011576511525308864
+          ],
+          "worstMaterial": [
+            0.2374773770570755,
+            0.5541077256202698,
+            0.007620032876729965
+          ],
+          "topPoseWeights": [
+            [
+              "Exchange_L",
+              0.42422977089881897
+            ],
+            [
+              "Impact_R",
+              0.3896730840206146
+            ],
+            [
+              "Raise45_R",
+              0.17953410744667053
+            ],
+            [
+              "Grab_R",
+              0.11445137113332748
+            ],
+            [
+              "Raise45_L",
+              0.09974757581949234
+            ],
+            [
+              "Prepare_L",
+              0.0751710832118988
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.7883025407791138,
+            "R": 0.8688828349113464
+          }
+        },
+        "P": {
+          "maximumDegrees": 85.91277132560502,
+          "p95Degrees": 2.7243584034600303,
+          "p99Degrees": 4.853819582316892,
+          "edgesOver15Degrees": 137,
+          "edgesOver30Degrees": 42,
+          "edgesOver60Degrees": 9,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            177205,
+            84009,
+            7555
+          ],
+          "worstPosition": [
+            0.05894285674362195,
+            0.6134463725898663,
+            0.011841087805825932
+          ],
+          "worstMaterial": [
+            0.24874325096607208,
+            0.5633232593536377,
+            0.012864003889262676
+          ],
+          "topPoseWeights": [
+            [
+              "Exchange_L",
+              0.39938002824783325
+            ],
+            [
+              "Impact_R",
+              0.3691512644290924
+            ],
+            [
+              "Raise45_R",
+              0.1700790822505951
+            ],
+            [
+              "Grab_R",
+              0.1084238812327385
+            ],
+            [
+              "Raise45_L",
+              0.09390474110841751
+            ],
+            [
+              "Prepare_L",
+              0.070767842233181
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.8007029891014099,
+            "R": 0.8757879734039307
+          }
+        },
+        "O": {
+          "maximumDegrees": 85.9092423642861,
+          "p95Degrees": 2.7240354152189914,
+          "p99Degrees": 4.8539757596860955,
+          "edgesOver15Degrees": 137,
+          "edgesOver30Degrees": 42,
+          "edgesOver60Degrees": 9,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            177205,
+            84009,
+            7555
+          ],
+          "worstPosition": [
+            0.0589427883772222,
+            0.613446432129732,
+            0.011841374442739498
+          ],
+          "worstMaterial": [
+            0.24874325096607208,
+            0.5633232593536377,
+            0.012864003889262676
+          ],
+          "topPoseWeights": [
+            [
+              "Exchange_L",
+              0.39938002824783325
+            ],
+            [
+              "Impact_R",
+              0.3691534698009491
+            ],
+            [
+              "Raise45_R",
+              0.17008009552955627
+            ],
+            [
+              "Grab_R",
+              0.10842452943325043
+            ],
+            [
+              "Raise45_L",
+              0.09390474110841751
+            ],
+            [
+              "Prepare_L",
+              0.070767842233181
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.8007029891014099,
+            "R": 0.8757872581481934
+          }
+        },
+        "candidate": {
+          "maximumDegrees": 85.85543377870586,
+          "p95Degrees": 2.837386356650268,
+          "p99Degrees": 5.351388807934003,
+          "edgesOver15Degrees": 164,
+          "edgesOver30Degrees": 42,
+          "edgesOver60Degrees": 9,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            177205,
+            84009,
+            7555
+          ],
+          "worstPosition": [
+            0.058942828095092915,
+            0.6134463841678756,
+            0.011841076854696752
+          ],
+          "worstMaterial": [
+            0.24874325096607208,
+            0.5633232593536377,
+            0.012864003889262676
+          ],
+          "topPoseWeights": [
+            [
+              "Exchange_L",
+              0.39938002824783325
+            ],
+            [
+              "Impact_R",
+              0.3691512644290924
+            ],
+            [
+              "Raise45_R",
+              0.1700790822505951
+            ],
+            [
+              "Grab_R",
+              0.1084238812327385
+            ],
+            [
+              "Raise45_L",
+              0.09390474110841751
+            ],
+            [
+              "Prepare_L",
+              0.070767842233181
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.8007029891014099,
+            "R": 0.8757879734039307
+          }
+        }
+      }
+    },
+    {
+      "scenario": "Far",
+      "actualUnityMaxAngle": 139.20518493652344,
+      "actualWorstTick": 74,
+      "models": {
+        "r34": {
+          "maximumDegrees": 28.969314905602605,
+          "p95Degrees": 3.097905263750525,
+          "p99Degrees": 7.256797933496391,
+          "edgesOver15Degrees": 283,
+          "edgesOver30Degrees": 0,
+          "edgesOver60Degrees": 0,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            30984,
+            58053,
+            202135
+          ],
+          "worstPosition": [
+            -0.16016227679788764,
+            0.5202622928356577,
+            0.0688684025162275
+          ],
+          "worstMaterial": [
+            -0.15414226055145264,
+            0.5118826031684875,
+            0.0864671841263771
+          ],
+          "topPoseWeights": [
+            [
+              "Deflect_L",
+              0.7504099011421204
+            ],
+            [
+              "Prepare_R",
+              0.2958338260650635
+            ],
+            [
+              "Grab_R",
+              0.2509806752204895
+            ],
+            [
+              "Accelerate_L",
+              0.15174633264541626
+            ],
+            [
+              "Recover_R",
+              0.12923626601696014
+            ],
+            [
+              "Accelerate_R",
+              0.0793273001909256
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9985414147377014,
+            "R": 0.9573411345481873
+          }
+        },
+        "P": {
+          "maximumDegrees": 139.09196531299057,
+          "p95Degrees": 2.5874954409940103,
+          "p99Degrees": 4.466191063119747,
+          "edgesOver15Degrees": 155,
+          "edgesOver30Degrees": 49,
+          "edgesOver60Degrees": 13,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            102192,
+            158609,
+            206380
+          ],
+          "worstPosition": [
+            -0.1684355729104791,
+            0.5295930015795457,
+            0.030492050445408963
+          ],
+          "worstMaterial": [
+            -0.2492653876543045,
+            0.5635494589805603,
+            0.010437153279781342
+          ],
+          "topPoseWeights": [
+            [
+              "BentLow_R",
+              0.8259676098823547
+            ],
+            [
+              "Deflect_L",
+              0.7093895077705383
+            ],
+            [
+              "Accelerate_L",
+              0.1434512734413147
+            ],
+            [
+              "Prepare_L",
+              0.06411456316709518
+            ],
+            [
+              "BentLow_L",
+              0.052586644887924194
+            ],
+            [
+              "Prepare_R",
+              0.05073290318250656
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9986212253570557,
+            "R": 0.9926844239234924
+          }
+        },
+        "O": {
+          "maximumDegrees": 139.09196531299057,
+          "p95Degrees": 2.5857859891954273,
+          "p99Degrees": 4.443813690843836,
+          "edgesOver15Degrees": 155,
+          "edgesOver30Degrees": 49,
+          "edgesOver60Degrees": 13,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            102192,
+            158609,
+            206380
+          ],
+          "worstPosition": [
+            -0.1684355729104791,
+            0.5295930015795457,
+            0.030492050445408963
+          ],
+          "worstMaterial": [
+            -0.2492653876543045,
+            0.5635494589805603,
+            0.010437153279781342
+          ],
+          "topPoseWeights": [
+            [
+              "BentLow_R",
+              0.8259583711624146
+            ],
+            [
+              "Deflect_L",
+              0.7093895077705383
+            ],
+            [
+              "Accelerate_L",
+              0.1434512734413147
+            ],
+            [
+              "Prepare_L",
+              0.06411456316709518
+            ],
+            [
+              "BentLow_L",
+              0.052586644887924194
+            ],
+            [
+              "Prepare_R",
+              0.050735652446746826
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9986212253570557,
+            "R": 0.9926839470863342
+          }
+        },
+        "candidate": {
+          "maximumDegrees": 139.09196531299057,
+          "p95Degrees": 2.8489499386618142,
+          "p99Degrees": 5.565724587826087,
+          "edgesOver15Degrees": 187,
+          "edgesOver30Degrees": 49,
+          "edgesOver60Degrees": 13,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            102192,
+            158609,
+            206380
+          ],
+          "worstPosition": [
+            -0.1684355729104791,
+            0.5295930015795457,
+            0.030492050445408963
+          ],
+          "worstMaterial": [
+            -0.2492653876543045,
+            0.5635494589805603,
+            0.010437153279781342
+          ],
+          "topPoseWeights": [
+            [
+              "BentLow_R",
+              0.8259676098823547
+            ],
+            [
+              "Deflect_L",
+              0.7093895077705383
+            ],
+            [
+              "Accelerate_L",
+              0.1434512734413147
+            ],
+            [
+              "Prepare_L",
+              0.06411456316709518
+            ],
+            [
+              "BentLow_L",
+              0.052586644887924194
+            ],
+            [
+              "Prepare_R",
+              0.05073290318250656
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9986212253570557,
+            "R": 0.9926844239234924
+          }
+        }
+      }
+    },
+    {
+      "scenario": "Wall",
+      "actualUnityMaxAngle": 175.23631286621094,
+      "actualWorstTick": 21,
+      "models": {
+        "r34": {
+          "maximumDegrees": 19.612601269540804,
+          "p95Degrees": 3.056315423604093,
+          "p99Degrees": 6.7957814243178625,
+          "edgesOver15Degrees": 139,
+          "edgesOver30Degrees": 0,
+          "edgesOver60Degrees": 0,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            58047,
+            209757,
+            156824
+          ],
+          "worstPosition": [
+            -0.1674302766706833,
+            0.49127765642787896,
+            0.05873261026337601
+          ],
+          "worstMaterial": [
+            -0.15199531614780426,
+            0.5091059803962708,
+            0.08723533153533936
+          ],
+          "topPoseWeights": [
+            [
+              "Reach_L",
+              0.29984596371650696
+            ],
+            [
+              "Prepare_R",
+              0.21961067616939545
+            ],
+            [
+              "Raise90_L",
+              0.12809798121452332
+            ],
+            [
+              "Strike_L",
+              0.1157592311501503
+            ],
+            [
+              "Recover_R",
+              0.10648991912603378
+            ],
+            [
+              "Raise45_L",
+              0.10592104494571686
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9730428457260132,
+            "R": 0.7539203763008118
+          }
+        },
+        "P": {
+          "maximumDegrees": 175.23788840659788,
+          "p95Degrees": 3.080053679277117,
+          "p99Degrees": 7.7202120379373556,
+          "edgesOver15Degrees": 533,
+          "edgesOver30Degrees": 125,
+          "edgesOver60Degrees": 5,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            128865,
+            39635,
+            114660
+          ],
+          "worstPosition": [
+            -0.12234945638924256,
+            0.4539394048904197,
+            0.0941440347610632
+          ],
+          "worstMaterial": [
+            -0.09492019563913345,
+            0.49971795082092285,
+            0.1173953115940094
+          ],
+          "topPoseWeights": [
+            [
+              "Reach_L",
+              0.2520699203014374
+            ],
+            [
+              "BentLow_R",
+              0.2069821059703827
+            ],
+            [
+              "Prepare_R",
+              0.17516276240348816
+            ],
+            [
+              "Raise90_L",
+              0.10768745094537735
+            ],
+            [
+              "Strike_L",
+              0.09731470048427582
+            ],
+            [
+              "Raise45_L",
+              0.08904408663511276
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9764111042022705,
+            "R": 0.830232560634613
+          }
+        },
+        "O": {
+          "maximumDegrees": 175.23788840659788,
+          "p95Degrees": 3.0756844468707607,
+          "p99Degrees": 7.7202120379373556,
+          "edgesOver15Degrees": 533,
+          "edgesOver30Degrees": 125,
+          "edgesOver60Degrees": 5,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            128865,
+            39635,
+            114660
+          ],
+          "worstPosition": [
+            -0.12234945638924256,
+            0.4539394048904197,
+            0.0941440347610632
+          ],
+          "worstMaterial": [
+            -0.09492019563913345,
+            0.49971795082092285,
+            0.1173953115940094
+          ],
+          "topPoseWeights": [
+            [
+              "Reach_L",
+              0.2520699203014374
+            ],
+            [
+              "BentLow_R",
+              0.20701338350772858
+            ],
+            [
+              "Prepare_R",
+              0.17516560852527618
+            ],
+            [
+              "Raise90_L",
+              0.10768745094537735
+            ],
+            [
+              "Strike_L",
+              0.09731470048427582
+            ],
+            [
+              "Raise45_L",
+              0.08904408663511276
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9764111042022705,
+            "R": 0.8302727341651917
+          }
+        },
+        "candidate": {
+          "maximumDegrees": 37.76663417725312,
+          "p95Degrees": 3.0698536120739837,
+          "p99Degrees": 6.4126369729776185,
+          "edgesOver15Degrees": 248,
+          "edgesOver30Degrees": 5,
+          "edgesOver60Degrees": 0,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            68512,
+            126430,
+            4910
+          ],
+          "worstPosition": [
+            0.15470099458239514,
+            0.5261171791717728,
+            0.07660350159718247
+          ],
+          "worstMaterial": [
+            0.2401750087738037,
+            0.5575031638145447,
+            -0.016593562439084053
+          ],
+          "topPoseWeights": [
+            [
+              "Reach_L",
+              0.2520699203014374
+            ],
+            [
+              "BentLow_R",
+              0.2069821059703827
+            ],
+            [
+              "Prepare_R",
+              0.17516276240348816
+            ],
+            [
+              "Raise90_L",
+              0.10768745094537735
+            ],
+            [
+              "Strike_L",
+              0.09731470048427582
+            ],
+            [
+              "Raise45_L",
+              0.08904408663511276
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9764111042022705,
+            "R": 0.830232560634613
+          }
+        }
+      }
+    },
+    {
+      "scenario": "GrabPunch",
+      "actualUnityMaxAngle": 55.185813903808594,
+      "actualWorstTick": 97,
+      "models": {
+        "r34": {
+          "maximumDegrees": 37.327845489398406,
+          "p95Degrees": 3.0181794202553025,
+          "p99Degrees": 6.827051949718681,
+          "edgesOver15Degrees": 320,
+          "edgesOver30Degrees": 46,
+          "edgesOver60Degrees": 0,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            210892,
+            141852,
+            39051
+          ],
+          "worstPosition": [
+            -0.1469943575832996,
+            0.4566982796591667,
+            0.11722491265098783
+          ],
+          "worstMaterial": [
+            -0.1754744052886963,
+            0.48502716422080994,
+            0.06774863600730896
+          ],
+          "topPoseWeights": [
+            [
+              "Raise90_L",
+              0.5244467258453369
+            ],
+            [
+              "Reach_L",
+              0.3066621422767639
+            ],
+            [
+              "Accelerate_R",
+              0.25323131680488586
+            ],
+            [
+              "Deflect_R",
+              0.19540593028068542
+            ],
+            [
+              "Grab_R",
+              0.1790621131658554
+            ],
+            [
+              "Prepare_R",
+              0.14302831888198853
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9974439144134521,
+            "R": 0.9847602248191833
+          }
+        },
+        "P": {
+          "maximumDegrees": 55.194319682817536,
+          "p95Degrees": 2.731117896300379,
+          "p99Degrees": 5.217210905497003,
+          "edgesOver15Degrees": 61,
+          "edgesOver30Degrees": 10,
+          "edgesOver60Degrees": 0,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            39189,
+            156334,
+            210571
+          ],
+          "worstPosition": [
+            -0.16409033011143284,
+            0.444347576439196,
+            0.09171378445027788
+          ],
+          "worstMaterial": [
+            -0.2091721147298813,
+            0.4440036714076996,
+            0.022534655407071114
+          ],
+          "topPoseWeights": [
+            [
+              "BentLow_R",
+              0.6936939358711243
+            ],
+            [
+              "Raise90_L",
+              0.37599921226501465
+            ],
+            [
+              "StraightHigh_L",
+              0.26823392510414124
+            ],
+            [
+              "Reach_L",
+              0.21985973417758942
+            ],
+            [
+              "Accelerate_R",
+              0.07496599853038788
+            ],
+            [
+              "Deflect_R",
+              0.057847507297992706
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9981673955917358,
+            "R": 0.9954884648323059
+          }
+        },
+        "O": {
+          "maximumDegrees": 55.194319682817536,
+          "p95Degrees": 2.7276128283873744,
+          "p99Degrees": 5.19047383947378,
+          "edgesOver15Degrees": 61,
+          "edgesOver30Degrees": 10,
+          "edgesOver60Degrees": 0,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            39189,
+            156334,
+            210571
+          ],
+          "worstPosition": [
+            -0.16409033011143284,
+            0.444347576439196,
+            0.09171378445027788
+          ],
+          "worstMaterial": [
+            -0.2091721147298813,
+            0.4440036714076996,
+            0.022534655407071114
+          ],
+          "topPoseWeights": [
+            [
+              "BentLow_R",
+              0.6936352849006653
+            ],
+            [
+              "Raise90_L",
+              0.37599921226501465
+            ],
+            [
+              "StraightHigh_L",
+              0.26823392510414124
+            ],
+            [
+              "Reach_L",
+              0.21985973417758942
+            ],
+            [
+              "Accelerate_R",
+              0.0749807357788086
+            ],
+            [
+              "Deflect_R",
+              0.05785888433456421
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9981673955917358,
+            "R": 0.9954875707626343
+          }
+        },
+        "candidate": {
+          "maximumDegrees": 33.91299867927848,
+          "p95Degrees": 2.913194017468632,
+          "p99Degrees": 5.7564397964311,
+          "edgesOver15Degrees": 89,
+          "edgesOver30Degrees": 8,
+          "edgesOver60Degrees": 0,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            39177,
+            99885,
+            210586
+          ],
+          "worstPosition": [
+            -0.16235215969622674,
+            0.4493461875353432,
+            0.10387503835740293
+          ],
+          "worstMaterial": [
+            -0.2111775428056717,
+            0.4654950201511383,
+            0.03278256580233574
+          ],
+          "topPoseWeights": [
+            [
+              "BentLow_R",
+              0.6936939358711243
+            ],
+            [
+              "Raise90_L",
+              0.37599921226501465
+            ],
+            [
+              "StraightHigh_L",
+              0.26823392510414124
+            ],
+            [
+              "Reach_L",
+              0.21985973417758942
+            ],
+            [
+              "Accelerate_R",
+              0.07496599853038788
+            ],
+            [
+              "Deflect_R",
+              0.057847507297992706
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9981673955917358,
+            "R": 0.9954884648323059
+          }
+        }
+      }
+    },
+    {
+      "scenario": "Alternating",
+      "actualUnityMaxAngle": 171.8832550048828,
+      "actualWorstTick": 61,
+      "models": {
+        "r34": {
+          "maximumDegrees": 19.447888912297685,
+          "p95Degrees": 3.236408651173872,
+          "p99Degrees": 7.317431823282847,
+          "edgesOver15Degrees": 105,
+          "edgesOver30Degrees": 0,
+          "edgesOver60Degrees": 0,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            72128,
+            30984,
+            72127
+          ],
+          "worstPosition": [
+            -0.08949623621314391,
+            0.5893290619338892,
+            0.004077089005490549
+          ],
+          "worstMaterial": [
+            -0.1542080193758011,
+            0.5136501789093018,
+            0.08680326491594315
+          ],
+          "topPoseWeights": [
+            [
+              "Grab_L",
+              0.1760375052690506
+            ],
+            [
+              "Exchange_L",
+              0.14343488216400146
+            ],
+            [
+              "Impact_R",
+              0.13859817385673523
+            ],
+            [
+              "Prepare_R",
+              0.13229230046272278
+            ],
+            [
+              "Prepare_L",
+              0.1279347687959671
+            ],
+            [
+              "Raise45_L",
+              0.08722946047782898
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.8636017441749573,
+            "R": 0.5711901783943176
+          }
+        },
+        "P": {
+          "maximumDegrees": 171.85366678689712,
+          "p95Degrees": 3.065553914531704,
+          "p99Degrees": 7.731908062122744,
+          "edgesOver15Degrees": 573,
+          "edgesOver30Degrees": 193,
+          "edgesOver60Degrees": 7,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            180090,
+            140991,
+            8425
+          ],
+          "worstPosition": [
+            0.18948556172118766,
+            0.4144157279826137,
+            -0.057682995562348106
+          ],
+          "worstMaterial": [
+            0.15489500761032104,
+            0.47538304328918457,
+            -0.07512912899255753
+          ],
+          "topPoseWeights": [
+            [
+              "Grab_L",
+              0.15356408059597015
+            ],
+            [
+              "Exchange_L",
+              0.12512360513210297
+            ],
+            [
+              "Impact_R",
+              0.12366650998592377
+            ],
+            [
+              "Prepare_R",
+              0.11803999543190002
+            ],
+            [
+              "Prepare_L",
+              0.11160227656364441
+            ],
+            [
+              "BentLow_L",
+              0.10029801726341248
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.8754534721374512,
+            "R": 0.5964639186859131
+          }
+        },
+        "O": {
+          "maximumDegrees": 171.8482105506165,
+          "p95Degrees": 3.065013232368981,
+          "p99Degrees": 7.731946239131876,
+          "edgesOver15Degrees": 573,
+          "edgesOver30Degrees": 193,
+          "edgesOver60Degrees": 7,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            180090,
+            140991,
+            8425
+          ],
+          "worstPosition": [
+            0.18948555104175682,
+            0.41441570196815486,
+            -0.057682989940756324
+          ],
+          "worstMaterial": [
+            0.15489500761032104,
+            0.47538304328918457,
+            -0.07512912899255753
+          ],
+          "topPoseWeights": [
+            [
+              "Grab_L",
+              0.15356408059597015
+            ],
+            [
+              "Exchange_L",
+              0.12512360513210297
+            ],
+            [
+              "Impact_R",
+              0.12366573512554169
+            ],
+            [
+              "Prepare_R",
+              0.11803925782442093
+            ],
+            [
+              "Prepare_L",
+              0.11160227656364441
+            ],
+            [
+              "BentLow_L",
+              0.10029801726341248
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.8754534721374512,
+            "R": 0.5964653491973877
+          }
+        },
+        "candidate": {
+          "maximumDegrees": 142.54816920336228,
+          "p95Degrees": 3.0944387586521604,
+          "p99Degrees": 7.155871435179085,
+          "edgesOver15Degrees": 395,
+          "edgesOver30Degrees": 101,
+          "edgesOver60Degrees": 13,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            180090,
+            8425,
+            70509
+          ],
+          "worstPosition": [
+            0.18917244857317972,
+            0.41372103651717324,
+            -0.05812334645367987
+          ],
+          "worstMaterial": [
+            0.15450245141983032,
+            0.4750504493713379,
+            -0.07542470842599869
+          ],
+          "topPoseWeights": [
+            [
+              "Grab_L",
+              0.15356408059597015
+            ],
+            [
+              "Exchange_L",
+              0.12512360513210297
+            ],
+            [
+              "Impact_R",
+              0.12366650998592377
+            ],
+            [
+              "Prepare_R",
+              0.11803999543190002
+            ],
+            [
+              "Prepare_L",
+              0.11160227656364441
+            ],
+            [
+              "BentLow_L",
+              0.10029801726341248
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.8754534721374512,
+            "R": 0.5964639186859131
+          }
+        }
+      }
+    },
+    {
+      "scenario": "Moving",
+      "actualUnityMaxAngle": 171.49716186523438,
+      "actualWorstTick": 47,
+      "models": {
+        "r34": {
+          "maximumDegrees": 34.58052731178445,
+          "p95Degrees": 3.0716002684625567,
+          "p99Degrees": 7.140483723188929,
+          "edgesOver15Degrees": 378,
+          "edgesOver30Degrees": 3,
+          "edgesOver60Degrees": 0,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            206969,
+            34772,
+            85157
+          ],
+          "worstPosition": [
+            -0.12344615480760618,
+            0.5856136468950256,
+            0.02987471025029918
+          ],
+          "worstMaterial": [
+            -0.23803220689296722,
+            0.5545658469200134,
+            0.008383721113204956
+          ],
+          "topPoseWeights": [
+            [
+              "Deflect_L",
+              0.6230950951576233
+            ],
+            [
+              "Recover_R",
+              0.35296911001205444
+            ],
+            [
+              "Accelerate_L",
+              0.3338014781475067
+            ],
+            [
+              "Accelerate_R",
+              0.17558687925338745
+            ],
+            [
+              "Deflect_R",
+              0.16337335109710693
+            ],
+            [
+              "Grab_R",
+              0.11796963959932327
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9988453388214111,
+            "R": 0.989941418170929
+          }
+        },
+        "P": {
+          "maximumDegrees": 171.58010487679553,
+          "p95Degrees": 2.5672674913061533,
+          "p99Degrees": 4.764645322287179,
+          "edgesOver15Degrees": 166,
+          "edgesOver30Degrees": 53,
+          "edgesOver60Degrees": 15,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            102192,
+            158609,
+            206380
+          ],
+          "worstPosition": [
+            -0.1326324431917044,
+            0.5818955950485812,
+            0.03599480080440218
+          ],
+          "worstMaterial": [
+            -0.2492653876543045,
+            0.5635494589805603,
+            0.010437153279781342
+          ],
+          "topPoseWeights": [
+            [
+              "Deflect_L",
+              0.6087548732757568
+            ],
+            [
+              "BentLow_R",
+              0.3727220296859741
+            ],
+            [
+              "Accelerate_L",
+              0.32611921429634094
+            ],
+            [
+              "Recover_R",
+              0.20990359783172607
+            ],
+            [
+              "Accelerate_R",
+              0.10441797226667404
+            ],
+            [
+              "Deflect_R",
+              0.09715483337640762
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9988718032836914,
+            "R": 0.9940183162689209
+          }
+        },
+        "O": {
+          "maximumDegrees": 171.58010487679553,
+          "p95Degrees": 2.563811369874899,
+          "p99Degrees": 4.758285582557804,
+          "edgesOver15Degrees": 166,
+          "edgesOver30Degrees": 53,
+          "edgesOver60Degrees": 15,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            102192,
+            158609,
+            206380
+          ],
+          "worstPosition": [
+            -0.1326324431917044,
+            0.5818955950485812,
+            0.03599480080440218
+          ],
+          "worstMaterial": [
+            -0.2492653876543045,
+            0.5635494589805603,
+            0.010437153279781342
+          ],
+          "topPoseWeights": [
+            [
+              "Deflect_L",
+              0.6087548732757568
+            ],
+            [
+              "BentLow_R",
+              0.37272724509239197
+            ],
+            [
+              "Accelerate_L",
+              0.32611921429634094
+            ],
+            [
+              "Recover_R",
+              0.20990349352359772
+            ],
+            [
+              "Accelerate_R",
+              0.10441792011260986
+            ],
+            [
+              "Deflect_R",
+              0.09715478867292404
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9988718032836914,
+            "R": 0.9940183162689209
+          }
+        },
+        "candidate": {
+          "maximumDegrees": 171.58010487679553,
+          "p95Degrees": 2.7996705624729263,
+          "p99Degrees": 5.509527339923066,
+          "edgesOver15Degrees": 264,
+          "edgesOver30Degrees": 53,
+          "edgesOver60Degrees": 15,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            102192,
+            158609,
+            206380
+          ],
+          "worstPosition": [
+            -0.1326324431917044,
+            0.5818955950485812,
+            0.03599480080440218
+          ],
+          "worstMaterial": [
+            -0.2492653876543045,
+            0.5635494589805603,
+            0.010437153279781342
+          ],
+          "topPoseWeights": [
+            [
+              "Deflect_L",
+              0.6087548732757568
+            ],
+            [
+              "BentLow_R",
+              0.3727220296859741
+            ],
+            [
+              "Accelerate_L",
+              0.32611921429634094
+            ],
+            [
+              "Recover_R",
+              0.20990359783172607
+            ],
+            [
+              "Accelerate_R",
+              0.10441797226667404
+            ],
+            [
+              "Deflect_R",
+              0.09715483337640762
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9988718032836914,
+            "R": 0.9940183162689209
+          }
+        }
+      }
+    },
+    {
+      "scenario": "Exchange",
+      "actualUnityMaxAngle": 41.021278381347656,
+      "actualWorstTick": 125,
+      "models": {
+        "r34": {
+          "maximumDegrees": 22.761551582351366,
+          "p95Degrees": 3.101951023447179,
+          "p99Degrees": 6.681113183371192,
+          "edgesOver15Degrees": 149,
+          "edgesOver30Degrees": 0,
+          "edgesOver60Degrees": 0,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            142635,
+            128558,
+            39572
+          ],
+          "worstPosition": [
+            -0.1746404370223725,
+            0.49047284312831646,
+            0.06200343668774557
+          ],
+          "worstMaterial": [
+            -0.15542598068714142,
+            0.5019107460975647,
+            0.08350026607513428
+          ],
+          "topPoseWeights": [
+            [
+              "Deflect_L",
+              0.45949292182922363
+            ],
+            [
+              "Prepare_L",
+              0.3591950833797455
+            ],
+            [
+              "Prepare_R",
+              0.22087593376636505
+            ],
+            [
+              "Grab_R",
+              0.14823506772518158
+            ],
+            [
+              "Accelerate_L",
+              0.12768465280532837
+            ],
+            [
+              "Raise45_R",
+              0.10551528632640839
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9957172870635986,
+            "R": 0.7564534544944763
+          }
+        },
+        "P": {
+          "maximumDegrees": 23.001460174418487,
+          "p95Degrees": 2.7539943837571843,
+          "p99Degrees": 5.288294444210642,
+          "edgesOver15Degrees": 80,
+          "edgesOver30Degrees": 0,
+          "edgesOver60Degrees": 0,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            7547,
+            177205,
+            166863
+          ],
+          "worstPosition": [
+            0.144833133561558,
+            0.5484205140595863,
+            0.027631501931418296
+          ],
+          "worstMaterial": [
+            0.25079381465911865,
+            0.5647826790809631,
+            0.009656370617449284
+          ],
+          "topPoseWeights": [
+            [
+              "Deflect_L",
+              0.41900697350502014
+            ],
+            [
+              "Prepare_L",
+              0.3275463879108429
+            ],
+            [
+              "BentLow_R",
+              0.21670591831207275
+            ],
+            [
+              "Prepare_R",
+              0.1704457551240921
+            ],
+            [
+              "Accelerate_L",
+              0.11643435060977936
+            ],
+            [
+              "Grab_R",
+              0.11439018696546555
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9960946440696716,
+            "R": 0.8120598196983337
+          }
+        },
+        "O": {
+          "maximumDegrees": 22.99277483576961,
+          "p95Degrees": 2.7526336537898697,
+          "p99Degrees": 5.286818640330439,
+          "edgesOver15Degrees": 80,
+          "edgesOver30Degrees": 0,
+          "edgesOver60Degrees": 0,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            7547,
+            177205,
+            166863
+          ],
+          "worstPosition": [
+            0.14483279651835368,
+            0.5484201686142994,
+            0.027632864469033225
+          ],
+          "worstMaterial": [
+            0.25079381465911865,
+            0.5647826790809631,
+            0.009656370617449284
+          ],
+          "topPoseWeights": [
+            [
+              "Deflect_L",
+              0.41900697350502014
+            ],
+            [
+              "Prepare_L",
+              0.3275463879108429
+            ],
+            [
+              "BentLow_R",
+              0.21670503914356232
+            ],
+            [
+              "Prepare_R",
+              0.1704459935426712
+            ],
+            [
+              "Accelerate_L",
+              0.11643435060977936
+            ],
+            [
+              "Grab_R",
+              0.11439033597707748
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9960946440696716,
+            "R": 0.8120595216751099
+          }
+        },
+        "candidate": {
+          "maximumDegrees": 22.999166648126142,
+          "p95Degrees": 2.8865315012432693,
+          "p99Degrees": 5.617852078901,
+          "edgesOver15Degrees": 108,
+          "edgesOver30Degrees": 0,
+          "edgesOver60Degrees": 0,
+          "degenerateTriangles": 0,
+          "worstTriangleVertices": [
+            7547,
+            177205,
+            166863
+          ],
+          "worstPosition": [
+            0.14483296847264268,
+            0.5484206770080015,
+            0.027631550591214877
+          ],
+          "worstMaterial": [
+            0.25079381465911865,
+            0.5647826790809631,
+            0.009656370617449284
+          ],
+          "topPoseWeights": [
+            [
+              "Deflect_L",
+              0.41900697350502014
+            ],
+            [
+              "Prepare_L",
+              0.3275463879108429
+            ],
+            [
+              "BentLow_R",
+              0.21670591831207275
+            ],
+            [
+              "Prepare_R",
+              0.1704457551240921
+            ],
+            [
+              "Accelerate_L",
+              0.11643435060977936
+            ],
+            [
+              "Grab_R",
+              0.11439018696546555
+            ]
+          ],
+          "coverageWeightSumBySide": {
+            "L": 0.9960946440696716,
+            "R": 0.8120598196983337
+          }
+        }
+      }
+    }
+  ]
+}

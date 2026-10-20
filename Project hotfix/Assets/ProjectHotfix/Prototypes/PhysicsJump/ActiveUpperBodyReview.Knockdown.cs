@@ -22,6 +22,13 @@ namespace ProjectHotfix.PhysicsJump
         // 0 = the same fall for the same shove. Seeded from the rig, its knockdown count and the shove,
         // so a replay of the same fight falls the same way.
         public float KnockdownVariation = 1f;
+        // After a knockdown's get-up no new Down starts for GetUpProtectionSeconds (hits only push); the rig's own
+        // punch, grab or dropkick ends it early (2026-10-20: stops chained knockdowns such as a dropkick landing the
+        // moment the body stands).
+        public float GetUpProtectionSeconds = .6f;
+        private float _downProtection;
+        public bool DownProtected => _downProtection > 0 && !RagdollActive;
+        public void EndDownProtection() => _downProtection = 0;
         private bool _linksSuspended;private int _koDebugTick;private Quaternion[] _shownPose;
         private struct RootState
         {
@@ -37,7 +44,7 @@ namespace ProjectHotfix.PhysicsJump
         {
             var ragdoll = Actor.gameObject.AddComponent<RagdollRecoveryReview>();
             ragdoll.ArticulatedTorso = true; ragdoll.RelaxedRagdoll = true; ragdoll.UseGetUpAnimation = true; ragdoll.UprightReturnWithoutGrip = true; ragdoll.ProbeFromPelvis = true; ragdoll.SnapCompleteAfterAnimation = true; ragdoll.ProceduralGetUp = true;
-            ragdoll.LooseLegs = true; ragdoll.LooseUpperBody = true; ragdoll.SelfCollision = true; ragdoll.FeetPlantedGetUp = true;
+            ragdoll.LooseLegs = true; ragdoll.LooseUpperBody = true; ragdoll.SelfCollision = true; ragdoll.LooseElbowBend = 90f; ragdoll.FeetPlantedGetUp = true;
             // Slimmer than the standing torso (.15): at full thickness the limp body read as a block and
             // propped itself up (2026-10-17 review). Arm proxies use the transport radii; legs the r20 sizes.
             // Also the longer review Down wait (2026-10-17: 2.5 s, +.5 s per
@@ -168,7 +175,7 @@ namespace ProjectHotfix.PhysicsJump
             if (System.Environment.GetEnvironmentVariable("PARTY_KO_DEBUG") == "1" && (_koDebugTick++ % 6) == 0)
             {
                 var root = Actor.Motor.Body;
-                Debug.Log($"KO {name} active={Knockdown.Active} phase={Knockdown.Down.State.Phase} remain={Knockdown.Down.State.RemainingSeconds:F2} align={Knockdown.ReadyAngle:F0}/{Knockdown.ReadyAngular:F2} root={root.position:F3} up={(root.rotation * Vector3.up):F2}");
+                Debug.Log($"KO {name} active={Knockdown.Active} phase={Knockdown.Down.State.Phase} remain={Knockdown.Down.State.RemainingSeconds:F2} align={Knockdown.ReadyAngle:F0}/{Knockdown.ReadyAngular:F2} root={root.position:F3}{(Knockdown.Active?Knockdown.ElbowDebug():"")} up={(root.rotation * Vector3.up):F2}");
             }
             if (!Knockdown.Active) ResumeLinks();
         }
@@ -195,6 +202,7 @@ namespace ProjectHotfix.PhysicsJump
         private void ResumeLinks()
         {
             if (!_linksSuspended) return;
+            var wasDown = !ClimbingRagdoll && !Dropkicking;
             var root = Actor.Motor.Body;
             root.mass = _rootState.Mass; root.angularDamping = _rootState.AngularDamping; root.maxAngularVelocity = _rootState.MaxAngularVelocity;
             root.maxDepenetrationVelocity = _rootState.MaxDepenetration; root.solverIterations = _rootState.Iterations;
@@ -227,7 +235,7 @@ namespace ProjectHotfix.PhysicsJump
                     link.Body.position = position; link.Body.rotation = _shownPose[i];
                 }
             ResetShoulderMotion();
-            _linksSuspended = false; ClimbingRagdoll = false; Knockdown.HoldTumble = false; EndDropkick();
+            _linksSuspended = false; ClimbingRagdoll = false; Knockdown.HoldTumble = false; EndDropkick(); ClearStruggle(); _downProtection = wasDown ? GetUpProtectionSeconds : 0;
             Physics.SyncTransforms();
         }
 

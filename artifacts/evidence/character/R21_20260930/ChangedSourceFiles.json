@@ -1,0 +1,10 @@
+[
+  "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.cs",
+  "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs",
+  "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Punch.cs",
+  "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs",
+  "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+  "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Polish.cs",
+  "tools/blender/create_r21_surface_polish.py",
+  "tools/blender/verify_r21_surface_polish.py"
+]

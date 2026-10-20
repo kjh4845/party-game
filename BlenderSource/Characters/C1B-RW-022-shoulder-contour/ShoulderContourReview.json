@@ -1,0 +1,20 @@
+{
+  "source": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-021-surface-polish-r02/CHR_MasterCharacter_C1B_SurfacePolish_r21.blend",
+  "sourceSha256": "31776e84008817c82a07f7ec3a7862a866d6c9a42963880fd0ed5ffe920104db",
+  "candidate": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-022-shoulder-contour/CHR_MasterCharacter_C1B_ShoulderContour_r22.blend",
+  "candidateSha256": "9ca0582978dc5e3abdd352de829ef8bbf7b0a82c1868111fe69f42d81b285530",
+  "transportSha256": "ebc896e3c9b2f9076ac24502c5280504bd093b276e7c1a36df9a9f9ec3e7c9c0",
+  "changedVertices": 65060,
+  "maximumBindDisplacementMeters": 0.020192965865135193,
+  "maximumIdleDisplacementMeters": 0.018883143387349123,
+  "idleLocalLaplacianRmsBefore": 1.456445827377481e-05,
+  "idleLocalLaplacianRmsAfter": 8.810934912644689e-06,
+  "correctionScale": 1.0,
+  "passes": 1100,
+  "boneCount": 24,
+  "shoulderWeightVerticesChanged": 54629,
+  "topologySkeletonHeadLowerBodyDistalArmsUnchanged": true,
+  "restFaceOrientationPreserved": true,
+  "visualApproved": false,
+  "transport": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-022-shoulder-contour/ShoulderCharacter.bytes"
+}

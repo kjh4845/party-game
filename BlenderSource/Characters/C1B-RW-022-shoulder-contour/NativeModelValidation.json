@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "original24BonesAndActionsPreserved": true,
+  "topologyPreserved": true,
+  "headGeometryWeightsPreserved": true,
+  "exactLowerBodyAndDistalArmPreservation": true,
+  "transportGeometryMatchesBlender": true,
+  "maximumTransportWeightDifference": 9.96515154838562e-08,
+  "candidateSha256": "9ca0582978dc5e3abdd352de829ef8bbf7b0a82c1868111fe69f42d81b285530"
+}

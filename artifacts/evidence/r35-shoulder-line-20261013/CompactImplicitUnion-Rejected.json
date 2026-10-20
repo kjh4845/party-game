@@ -1,0 +1,38 @@
+{
+  "source": "RetopoMapped.npz",
+  "torsoGuide": "elliptical wall rx(y)=.143\u2192.170,rz(y)=.125\u2192.140 across y.500\u2192.575",
+  "armGuide": "elliptical capsule centrex .187, radiusx .045,radiusz .040,topcentre .582",
+  "smoothUnionMeters": 0.022,
+  "maximumGuideMoveCapMeters": 0.035,
+  "maxActualMoveMeters": 0.0335902214092262,
+  "facesRotatedBeyond90Degrees": 784,
+  "widthBefore": 0.45583178188279766,
+  "widthAfter": 0.45583178188279766,
+  "sourceBoundaryAndOutsidePreserved": true,
+  "visualApproved": false,
+  "verdict": "rejected; no further candidate expansion",
+  "visualFindings": [
+    "Original total outer width is preserved, but local shoulder contour becomes uneven with raised ridges.",
+    "The deeper front/back guide does not remove the inherited crease smoothly at the fixed lower and lateral collars.",
+    "784 faces rotate more than90degrees relative to the retopologized baseline."
+  ],
+  "interpretation": "This one explicit smooth-union guide failed to reconcile the larger torso depth with the slim arm depth inside the chosen compact boundary collars. The result does not prove that every possible custom blend surface is impossible.",
+  "constraintConflict": "A smooth-union surface needs additional transition volume. Confining the change to the existing width and short axial junction displaced the inner surface toward upper/lateral ridges and over-compressed its transition back to preserved boundaries.",
+  "images": {
+    "Idle_Front": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Alternative/RetopoImplicitClay/Idle_Front.png",
+    "Idle_ThreeQuarter": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Alternative/RetopoImplicitClay/Idle_ThreeQuarter.png",
+    "Idle_Side": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Alternative/RetopoImplicitClay/Idle_Side.png"
+  },
+  "failureScopeClarification": {
+    "userConstraints": [
+      "Original overall shoulder width and present arm shaft thickness",
+      "Smooth round connected upper body and a narrow lower arm-torso gap"
+    ],
+    "implementationChoicesThatFailed": [
+      "Short transition region bounded at material absX about .09 and neutral Y about .45\u2013.65",
+      "Original upper chest/back held fixed close to the deep axilla saddle"
+    ],
+    "conclusion": "The short fixed-boundary local surgery failed. This does not establish that the requested shoulder shape is impossible.",
+    "untestedAlternative": "Broaden the patch medially into upper chest/back (material absX about .04\u2013.06 rather than .09), upwards toward the shoulder crest/neck-side transition, while retaining the arm shaft cross-section boundary near material absX .30 and original outer silhouette constraints. Author front/back depth transition over the wider region instead of inserting volume into the small existing saddle. Actual dimensions and improvement must be verified before adoption."
+  }
+}

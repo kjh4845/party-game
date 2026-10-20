@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "headSkeletonTopologyWeightsPreserved": true,
+  "limbEndsAndShoulderCapPreserved": true,
+  "bodyMirrorMaxMeters": 0.0,
+  "sourceTransportGeometryAndWeightsMatch": true,
+  "nativeBaseNormalAttributeMatchesTransport": true,
+  "nativeCornerNormalMaxAngularErrorDegrees": 0.6909360661513052,
+  "normalPoseAttributeFramesMatchTransport": 6,
+  "normalPosePointDeltas": "zero by importer; tested by Unity bake comparison",
+  "approvedCombatSourcesUnchanged": true,
+  "candidateSha256": "f063912260e6358692fa556b0a247baa40ddcb8d51311f78a3c4d77a555b864c",
+  "transportSha256": "f35d3da2886c439379d3655f4369abb474106c98d9ebe2f8ad928b7bab1e9e25"
+}

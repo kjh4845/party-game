@@ -24,7 +24,7 @@ namespace ProjectHotfix.Presentation
         public bool WorldFootPlant;
         public bool IsFootPlanted(int side) => _planted[side];
         private float _compression;
-        private float _tuck;
+        private float _tuck, _easedTuck;
         private float _gaitWeight;
         private float _gaitPhase;
         private float _sprintBlend;
@@ -35,6 +35,13 @@ namespace ProjectHotfix.Presentation
         public float GaitPhase => _gaitPhase;
         public float SprintBlend => _sprintBlend;
         public Vector3 TravelVelocity => _travel;
+        // Rate (1/s) at which the stride fades once airborne; negative = the grounded rate (reviewed gait). The
+        // r43/r46 stump legs otherwise flew on frozen mid-stride with a bent knee (2026-10-20 review).
+        public float AirborneGaitFade = -1f;
+        // Eased jump tuck (time constant, s; 0 = the reviewed curve). The knees still fold in the air, but they open
+        // gradually from ~25 cm above the floor and finish easing after touchdown, instead of snapping straight over
+        // the last 12 cm and on contact (2026-10-20 review: "무릎을 탁 피는 느낌").
+        public float JumpTuckEase;
         public float MaximumCompression = 0.025f;
         public float MaximumTuck = 0.025f;
         public float AdditionalPelvisDrop;
@@ -97,7 +104,7 @@ namespace ProjectHotfix.Presentation
             if (_resetVersion != state.ResetVersion)
             {
                 _resetVersion = state.ResetVersion;
-                _compression = _tuck = _gaitWeight = _gaitPhase = _sprintBlend = 0f;
+                _compression = _tuck = _easedTuck = _gaitWeight = _gaitPhase = _sprintBlend = 0f;
                 _travel = Vector3.zero;
                 for (var i = 0; i < 2; i++) { _planted[i] = false; _plantOffsets[i] = Vector3.zero; }
                 _previousRootRotation = transform.rotation;
@@ -112,7 +119,8 @@ namespace ProjectHotfix.Presentation
             var speedWeight = Mathf.Clamp01(_travel.magnitude / referenceSpeed);
             var facingMatch=_travel.sqrMagnitude>.0001f ? Mathf.Clamp01(Vector3.Dot(transform.forward,_travel.normalized)) : 1f;
             var turnStride=Mathf.Lerp(TurnStrideMinimum,1f,Mathf.SmoothStep(0,1,facingMatch));
-            _gaitWeight = Mathf.Lerp(_gaitWeight, state.Grounded ? speedWeight : 0f, 1f - Mathf.Exp(-(WorldFootPlant ? 8f : 14f) * deltaTime));
+            var gaitFade = !state.Grounded && AirborneGaitFade >= 0f ? AirborneGaitFade : WorldFootPlant ? 8f : 14f;
+            _gaitWeight = Mathf.Lerp(_gaitWeight, state.Grounded ? speedWeight : 0f, 1f - Mathf.Exp(-gaitFade * deltaTime));
             // Continue the same alternating-foot phase through landing; never restart a cycle on contact.
             _gaitPhase = Mathf.Repeat(_gaitPhase + deltaTime * cadence
                 * _gaitWeight, 1f);
@@ -132,6 +140,13 @@ namespace ProjectHotfix.Presentation
             var desiredAmount = Mathf.Sqrt(Mathf.Clamp01(desiredTuck / tuckScale));
             tuckAmount = Mathf.MoveTowards(tuckAmount, desiredAmount, 5f * deltaTime);
             _tuck = state.Grounded ? 0f : Mathf.Min(MaximumTuck * tuckAmount * tuckAmount, MaximumTuck * clearance);
+            if (JumpTuckEase > 0f)
+            {
+                var landingRoom = state.VerticalSpeed < 0f ? Mathf.SmoothStep(0f, 1f, state.GroundDistance / .25f) : 1f;
+                var easedGoal = state.Grounded ? 0f : MaximumTuck * Mathf.Clamp01((state.VerticalSpeed + 2f) / 3f) * landingRoom;
+                _easedTuck = Mathf.Lerp(_easedTuck, easedGoal, 1f - Mathf.Exp(-deltaTime / JumpTuckEase));
+                _tuck = _easedTuck;
+            }
             foreach (var name in LowerBones)
             {
                 var bone = _bones[name]; bone.localPosition = _positions[name]; bone.localRotation = _rotations[name];
@@ -275,7 +290,7 @@ namespace ProjectHotfix.Presentation
 
         public void ResetTransientGait()
         {
-            _compression=_tuck=_gaitWeight=_gaitPhase=_sprintBlend=0f;_travel=Vector3.zero;
+            _compression=_tuck=_easedTuck=_gaitWeight=_gaitPhase=_sprintBlend=0f;_travel=Vector3.zero;
             for(var i=0;i<2;i++){_planted[i]=false;_plantOffsets[i]=Vector3.zero;}
             _previousRootRotation=transform.rotation;
         }

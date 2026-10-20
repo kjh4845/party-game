@@ -1,0 +1,25 @@
+{
+  "status": "NO_CANDIDATE_ADOPTED",
+  "sourceStage": ".codex_tmp/shoulder-line-20261013",
+  "files": {
+    "BaselineSweep/ShoulderSweep.json": "R34-ContinuousSweep.json",
+    "Validation/ModelCandidateO-Unity/PlayMode.xml": "CandidateO-PlayMode.xml",
+    "Validation/ModelCandidateO-Unity/Captures/Capture.json": "CandidateO-CombatCapture.json",
+    "Validation/ModelCandidateO-Unity/Captures/ShoulderSweep.json": "CandidateO-ContinuousSweep.json",
+    "Validation/ModelCandidateO-ActualSections.json": "CandidateO-ActualSections.json",
+    "Validation/ModelCandidateQ-CombatPoseDiagnosis.json": "CandidateQ-SamePaletteCombat.json",
+    "Validation/ModelCandidateQ-PredictedSweep.json": "CandidateQ-PredictedSweep.json",
+    "Alternative/RetopoImplicitUnion.json": "CompactImplicitUnion-Rejected.json",
+    "Validation/ModelCandidateO-Poses/HighBent_ThreeQuarter.png": "CandidateO-HighBent-Rejected.png",
+    "Alternative/ConstrainedClay/Idle_ThreeQuarter.png": "LocalFair-Neutral-Rejected.png",
+    "Alternative/RetopoImplicitClay/Idle_ThreeQuarter.png": "CompactImplicitUnion-Neutral-Rejected.png",
+    "Alternative/WideExplicit/WideExplicitGuide.json": "WideExplicit-Rejected.json",
+    "Alternative/WideExplicit/Clay/Idle_Front.png": "WideExplicit-Front-Rejected.png",
+    "Alternative/WideExplicit/Clay/Idle_Side.png": "WideExplicit-Side-Rejected.png",
+    "Alternative/WideExplicit/Clay/Idle_ThreeQuarter.png": "WideExplicit-ThreeQuarter-Rejected.png",
+    "Alternative/WideExplicit/Clay/Idle_Back.png": "WideExplicit-Back-Rejected.png",
+    "Validation/SweepDiagnosticCompile.xml": "SweepDiagnosticCompile.xml",
+    "Validation/ValidationCloseout.json": "ValidationCloseout.json"
+  },
+  "note": "Every candidate image is diagnostic evidence of an unadopted candidate. O actual Unity output and Q CPU predictions are distinct."
+}

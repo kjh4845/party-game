@@ -254,8 +254,10 @@ namespace ProjectHotfix.PhysicsJump
                 var result=_scores[target].Receive(_generation,player+1,action,false,region,downCount);if(result==PunchDownResult.Rejected)continue;
                 // A rig with a knockdown ragdoll goes down now (PRD 4.5): the accumulation is consumed and
                 // the threshold drops with DownCount. Without one, the request is only recorded.
-                var knockdown=result==PunchDownResult.ThresholdReached&&targetKnockdown!=null;
-                if(result==PunchDownResult.ThresholdReached){ThresholdRequests++;if(!knockdown)_threshold[target]=true;}
+                // Just after standing up the threshold is held, not spent: the next hit after the protection downs.
+                var protectedTarget=_pair.Players[target].Rig.DownProtected;
+                var knockdown=result==PunchDownResult.ThresholdReached&&targetKnockdown!=null&&!protectedTarget;
+                if(result==PunchDownResult.ThresholdReached&&!protectedTarget){ThresholdRequests++;if(!knockdown)_threshold[target]=true;}
                 var bodyStrike=_pair.Players[player].Rig.StrikeStyle==ActiveUpperBodyReview.ReviewStrikeStyle.BodyStrike;
                 var power=Mathf.InverseLerp(.35f,3.5f,hit.Closing);
                 var strength=bodyStrike?Mathf.Lerp(.65f,1.3f,power):1;
@@ -304,6 +306,7 @@ namespace ProjectHotfix.PhysicsJump
             var shove=flat*DropkickKnockback*strength+Vector3.up*DropkickLift;
             var head=!targetRig.RagdollActive&&part==targetRig.Find("Head").Body;
             if(targetRig.RagdollActive)foreach(var body in _pair.KnockdownBodies(targetRig))body.AddForce(shove*.6f,ForceMode.VelocityChange);
+            else if(targetRig.DownProtected)targetRig.ApplyKnockback(shove);
             else{if(targetRig.BeginKnockdown(shove))_scores[target].ConsumeDown();}
             _feedback.Confirm(head,_pair.ReadKeyboard&&!_pair.ManualStep,_pair.View,_pair.Players[player].Rig,targetRig,point,flat,strength*1.3f);
             _hits.Add(new Hit{tick=_pair.Tick,attacker=player,target=target,side=-1,points=0,total=_scores[target].Points,region="Dropkick",part=part.name,position=point,strikeDirection=flat,closingSpeed=closing,bodyImpulse=shove.magnitude*targetRig.TotalMass});

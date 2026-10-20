@@ -1,0 +1,50 @@
+[
+  {
+    "asset": "BlenderSource/Characters/C1B-RW-025-local-rib-fill/LocalRibCharacter.bytes",
+    "pose": "IdleSkinMatrices",
+    "meanTorsoError": 10.14981046890479,
+    "p95TorsoError": 52.220452234993324
+  },
+  {
+    "asset": "BlenderSource/Characters/C1B-RW-025-local-rib-fill/LocalRibCharacter.bytes",
+    "pose": "Raised_45_Matrices",
+    "meanTorsoError": 10.057489370126461,
+    "p95TorsoError": 48.663481485750324
+  },
+  {
+    "asset": "BlenderSource/Characters/C1B-RW-025-local-rib-fill/LocalRibCharacter.bytes",
+    "pose": "Raised_90_Matrices",
+    "meanTorsoError": 9.45501949227759,
+    "p95TorsoError": 39.820232057239814
+  },
+  {
+    "asset": "BlenderSource/Characters/C1B-RW-025-local-rib-fill/LocalRibCharacter.bytes",
+    "pose": "Shoulder_Worst_Matrices",
+    "meanTorsoError": 11.232103702949287,
+    "p95TorsoError": 54.00567381678051
+  },
+  {
+    "asset": ".codex_tmp/smooth-body-20261008/Model-r03/SmoothCharacter.bytes",
+    "pose": "IdleSkinMatrices",
+    "meanTorsoError": 0.00010041947314799175,
+    "p95TorsoError": 0.0005789664714331866
+  },
+  {
+    "asset": ".codex_tmp/smooth-body-20261008/Model-r03/SmoothCharacter.bytes",
+    "pose": "Raised_45_Matrices",
+    "meanTorsoError": 2.049494254597741,
+    "p95TorsoError": 9.535359396325406
+  },
+  {
+    "asset": ".codex_tmp/smooth-body-20261008/Model-r03/SmoothCharacter.bytes",
+    "pose": "Raised_90_Matrices",
+    "meanTorsoError": 4.4773482502329065,
+    "p95TorsoError": 21.215098570304853
+  },
+  {
+    "asset": ".codex_tmp/smooth-body-20261008/Model-r03/SmoothCharacter.bytes",
+    "pose": "Shoulder_Worst_Matrices",
+    "meanTorsoError": 5.333561472109285,
+    "p95TorsoError": 24.33148233826097
+  }
+]

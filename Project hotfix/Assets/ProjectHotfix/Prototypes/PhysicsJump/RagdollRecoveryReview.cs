@@ -42,6 +42,9 @@ namespace ProjectHotfix.PhysicsJump
         // before Bind: the r20 limits (30, 60, 20, 10-12) laid every limp body out the same way, arms along
         // its sides (2026-10-17 review: falls looked static and alike).
         public bool LooseUpperBody;
+        // Elbow bend of a loose upper body (set before Bind). 120 folded the thick r43 arms until they read as broken
+        // (2026-10-20 review: "팔이 막 꺾이거나"); the r43 rig uses 90.
+        public float LooseElbowBend = 120f;
         // Parts collide with each other except jointed neighbours and pairs already touching in the bind
         // pose (set before Bind). Off = the r20 behaviour where every part ignores every other one, which
         // let loose arms pass through the trunk (2026-10-17).
@@ -114,6 +117,22 @@ namespace ProjectHotfix.PhysicsJump
         private int _solverIterations, _solverVelocityIterations;
         private float _angularDamping, _depenetrationVelocity, _maxAngularVelocity;
         public float TotalMass => Actor.Motor.Body.mass + _links.Where(l => !l.Body.isKinematic).Sum(l => l.Body.mass);
+        // Review diagnostics: elbow bend per side (deg), positive = flexed toward the arm's front (as at bind), negative =
+        // bent the other way.
+        public string ElbowDebug()
+        {
+            var text = "";
+            foreach (var side in new[] { "L", "R" })
+            {
+                var upper = _links.Single(l => l.Bone.name == "UpperArm_" + side); var fore = _links.Single(l => l.Bone.name == "Forearm_" + side);
+                var upperDir = upper.Body.rotation * ((CapsuleCollider)upper.Body.GetComponent<Collider>()).center.normalized;
+                var foreDir = fore.Body.rotation * ((CapsuleCollider)fore.Body.GetComponent<Collider>()).center.normalized;
+                var anterior = upper.Body.rotation * (Quaternion.Inverse(upper.BindActorRotation) * Vector3.forward);
+                var angle = Vector3.Angle(upperDir, foreDir);
+                text += $" elbow{side}={(Vector3.Dot(foreDir, anterior) >= 0 ? angle : -angle):F0}";
+            }
+            return text;
+        }
         public int CopyDynamicBodies(Rigidbody[] destination)
         {
             if (destination == null || destination.Length < _links.Count + 1) throw new ArgumentException("Body buffer is too small.", nameof(destination));
@@ -152,7 +171,38 @@ namespace ProjectHotfix.PhysicsJump
         private RecoverySupportProbe _probe;
         private Vector3 _floorPoint, _standingRoot;
         private Quaternion _standingRotation;
-        private float _uprightSeconds, _tumbleReadySeconds, _alignSeconds;
+        private float _uprightSeconds, _tumbleReadySeconds, _alignSeconds, _blockedSeconds;
+        // Shove (m/s) given to a standing character in the way; a downed one gets the smaller BodyPush. Only a static
+        // blocker (a wall) makes the downed body shift itself instead.
+        public float RoomPushSpeed = 2f, RoomBodyPush = .6f, RoomPushInterval = .4f, RoomRadius = .32f;
+        public int RoomPushes { get; private set; }
+        private readonly Collider[] _roomOverlaps = new Collider[16];
+        private readonly HashSet<ActiveUpperBodyReview> _roomPushed = new HashSet<ActiveUpperBodyReview>();
+        // Characters within RoomRadius of the standing spot are shoved off; a static blocker only counts (and shifts the
+        // downed body) while the get-up is still waiting for room.
+        private void ClearRoom(Vector3 standingRoot, bool waiting)
+        {
+            var own = Actor.GetComponentInParent<ActiveUpperBodyReview>();
+            var count = gameObject.scene.GetPhysicsScene().OverlapCapsule(standingRoot + Vector3.up * (RoomRadius + .01f), standingRoot + Vector3.up * .83f, RoomRadius, _roomOverlaps, ~0, QueryTriggerInteraction.Ignore);
+            var wall = Vector3.zero; _roomPushed.Clear();
+            for (var i = 0; i < count; i++)
+            {
+                var other = _roomOverlaps[i]; if (other == _locomotion || _colliders.Contains(other)) continue;
+                var away = standingRoot - other.ClosestPoint(standingRoot); away.y = 0;
+                if (away.sqrMagnitude < .0001f) away = Vector3.ProjectOnPlane(standingRoot - other.bounds.center, Vector3.up);
+                away = -away.normalized;
+                var hurtbox = other.GetComponentInParent<StrikeReviewHurtbox>();
+                var rig = other.GetComponentInParent<ActiveUpperBodyReview>() ?? (hurtbox != null && hurtbox.ActorRoot != null ? hurtbox.ActorRoot.GetComponentInParent<ActiveUpperBodyReview>() : null);
+                if (rig != null && rig == own) continue;
+                if (rig != null && !rig.RagdollActive) { if (_roomPushed.Add(rig)) { rig.ApplyKnockback(away * RoomPushSpeed); RoomPushes++; } }
+                else if (other.attachedRigidbody != null && !other.attachedRigidbody.isKinematic) { other.attachedRigidbody.AddForce(away * RoomBodyPush, ForceMode.VelocityChange); RoomPushes++; }
+                else if (other.attachedRigidbody == null && waiting && other.bounds.max.y > standingRoot.y + .05f) wall -= away;
+            }
+            if (_roomPushed.Count > 0 || wall.sqrMagnitude < .0001f) return;
+            var shift = wall.normalized * RoomBodyPush + Vector3.up * .4f;
+            foreach (var link in _links) if (!link.Body.isKinematic) link.Body.AddForce(shift, ForceMode.VelocityChange);
+            Actor.Motor.Body.AddForce(shift, ForceMode.VelocityChange);
+        }
         private uint _motorReset;
         private ulong _sequence;
         
@@ -303,7 +353,7 @@ namespace ProjectHotfix.PhysicsJump
                 if (name.StartsWith("UpperArm")) { joint.angularYMotion = ConfigurableJointMotion.Locked; }
                 else
                 {
-                    var bend = LooseUpperBody ? 120f : 60f;
+                    var bend = LooseUpperBody ? LooseElbowBend : 60f;
                     joint.lowAngularXLimit = new SoftJointLimit { limit = name.EndsWith("_L") ? -bend : -5f };
                     joint.highAngularXLimit = new SoftJointLimit { limit = name.EndsWith("_L") ? 5f : bend };
                 }
@@ -439,6 +489,15 @@ namespace ProjectHotfix.PhysicsJump
             var movingRecovery = state.Phase == RecoveryPresentationPhase.AligningToGetUp || state.Phase == RecoveryPresentationPhase.SharedGetUp || state.Phase == RecoveryPresentationPhase.UprightReturn;
             var sample = movingRecovery ? _probe.EvaluateDuringGetUp(seconds, _floorPoint) : _probe.Evaluate(seconds);
             LastSupportSample=sample;
+            // No room to stand because someone stands over the body: after a moment the get-up shoves them off,
+            // again every RoomPushInterval until there is room (2026-10-20 review: otherwise standing next to a
+            // downed body kept it down for good).
+            // While it gets up, anyone still close around the standing spot keeps being shoved off as well (the two
+            // otherwise stood up inside each other).
+            var waitingForRoom = state.Phase == RecoveryPresentationPhase.PhysicsTumble && sample.HasSupport && !sample.Clear;
+            var rising = state.Phase == RecoveryPresentationPhase.AligningToGetUp || state.Phase == RecoveryPresentationPhase.SharedGetUp || state.Phase == RecoveryPresentationPhase.UprightReturn;
+            _blockedSeconds = FeetPlantedGetUp && state.CanStartGetUp && !HoldTumble && (waitingForRoom || rising) ? _blockedSeconds + seconds : 0;
+            if (_blockedSeconds > .3f) { _blockedSeconds -= RoomPushInterval; ClearRoom(waitingForRoom ? sample.StandingRoot : _standingRoot, waitingForRoom); }
             if (movingRecovery && (!sample.HasSupport || !sample.Clear))
             { state.TryInterruptGetUp(state.RoundGeneration, state.EpisodeId); _animationStarted = false; GetUpAge = 0; GetUpPose?.Cancel(true); if(_standingColliderPrepared) PrepareStandingCollider(false); ConfigureMuscleDrive(true); _uprightSeconds = 0; Interruptions++; }
             if (state.Phase == RecoveryPresentationPhase.PhysicsTumble && state.CanStartGetUp && sample.Stable && sample.Clear && !HoldTumble)
@@ -514,11 +573,12 @@ namespace ProjectHotfix.PhysicsJump
             {
                 RotateToward(state.AlignmentTargetRotation.Value, true);
                 ReadyAngle = Quaternion.Angle(ObservedTorsoRotation, state.AlignmentTargetRotation.Value); ReadyAngular = body.angularVelocity.magnitude;
-                // A limp limb under the rolling body can hold it a few degrees short (2026-10-20: a dropkicker lay at
-                // 14 deg for good). The planted get-up accepts 20 deg once still, or 35 deg after a second of rolling.
+                // A limp limb under the rolling body can hold it short (2026-10-20: a dropkicker lay at 14 deg, a body
+                // that broke free of a hold at 38 deg, for good). The planted get-up accepts 20 deg once still, 35 deg
+                // after a second of rolling and 60 deg after two; the get-up itself turns the rest.
                 _alignSeconds += seconds;
                 var aligned = ReadyAngle < AlignmentToleranceDegrees && body.angularVelocity.magnitude < .7f
-                    || FeetPlantedGetUp && (ReadyAngle < 20f && body.angularVelocity.magnitude < .3f || _alignSeconds > 1f && ReadyAngle < 35f);
+                    || FeetPlantedGetUp && (ReadyAngle < 20f && body.angularVelocity.magnitude < .3f || _alignSeconds > 1f && ReadyAngle < 35f || _alignSeconds > 2f && ReadyAngle < 60f);
                 if (state.TryFinishAlignment(state.RoundGeneration, state.EpisodeId, sample.HasSupport, sample.Clear, aligned)) _alignSeconds = 0;
             }
             if (state.Phase == RecoveryPresentationPhase.SharedGetUp)
@@ -636,10 +696,12 @@ namespace ProjectHotfix.PhysicsJump
                 var center=body.worldCenterOfMass*body.mass;
                 foreach(var link in _links) center+=link.Body.worldCenterOfMass*link.Body.mass;
                 center/=TotalMass;
-                var angularAcceleration=Vector3.ClampMagnitude(desired,aligning ? 12f : 60f);
+                // The planted get-up rolls harder: limp limbs under the body stalled the 20 N·m roll.
+                var rollTorque = aligning ? FeetPlantedGetUp ? 35f : 20f : 40f;
+                var angularAcceleration=Vector3.ClampMagnitude(desired,aligning ? FeetPlantedGetUp ? 20f : 12f : 60f);
                 var torque=AngularTorque(body,center,angularAcceleration);
                 foreach(var link in _links) torque+=AngularTorque(link.Body,center,angularAcceleration);
-                angularAcceleration*=Mathf.Min(1f,(aligning ? 20f : 40f)/Mathf.Max(.0001f,torque.magnitude));
+                angularAcceleration*=Mathf.Min(1f,rollTorque/Mathf.Max(.0001f,torque.magnitude));
                 ApplyAngularAcceleration(body,center,angularAcceleration);
                 foreach(var link in _links) ApplyAngularAcceleration(link.Body,center,angularAcceleration);
             }

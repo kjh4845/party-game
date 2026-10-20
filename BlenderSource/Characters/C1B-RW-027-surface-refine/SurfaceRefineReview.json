@@ -1,0 +1,87 @@
+{
+  "source": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-026-smooth-body/CHR_MasterCharacter_C1B_SmoothBody_r26.blend",
+  "sourceSha256": "f063912260e6358692fa556b0a247baa40ddcb8d51311f78a3c4d77a555b864c",
+  "candidateSha256": "14ec83ba4e2fe644155ef436b34ab39191ff2cd18cd603992bb2c50be8f58fe0",
+  "transportSha256": "d4154963ad3751873cc28740e8f316f2bc3d261ff7e4e00bc2fcf52cb79b8854",
+  "bodyVertices": 227942,
+  "controlCageVertices": 9043,
+  "headSkeletonTopologyPreserved": true,
+  "lowerBodyCoordinatesAndWeightsPreserved": true,
+  "maximumNeutralDisplacementMeters": 0.009764306648739134,
+  "mirrorMaxMeters": 0.0,
+  "visualApproved": false,
+  "surfaceCorrectives": [
+    {
+      "pose": "Raise45",
+      "referenceSha256": "11139323b27c7ead8efa96428a54745eecd8d38db2ae254d9076574d0540de26",
+      "maximumPosedDisplacementMeters": 0.01483049321246615,
+      "shoulderMaximumAdjacentFaceAngle": 8.170288668082236
+    },
+    {
+      "pose": "Raise90",
+      "referenceSha256": "06423eb2fcf42a0b6b4d32aab5162eba38fb8a7fd7af27a713253aa3d3271271",
+      "maximumPosedDisplacementMeters": 0.022746564804985592,
+      "shoulderMaximumAdjacentFaceAngle": 8.497705044393205
+    },
+    {
+      "pose": "Prepare",
+      "referenceSha256": "d993ee86e029d71cc6ce640cfaebf8313190d6e3665ebf5afa355e1a8c35d8ff",
+      "maximumPosedDisplacementMeters": 0.013562370326866607,
+      "shoulderMaximumAdjacentFaceAngle": 11.104412511380378
+    },
+    {
+      "pose": "Accelerate",
+      "referenceSha256": "ff755523a2cc6dd6ba1a00fcf6e1516f0fb76b702e761fe24dd48858aa147bec",
+      "maximumPosedDisplacementMeters": 0.017352780112384867,
+      "shoulderMaximumAdjacentFaceAngle": 9.821247034670622
+    },
+    {
+      "pose": "Strike",
+      "referenceSha256": "8e556bc64bf5a838c3efea97aa5cf5eb681159a051f90964a3812262f5862c74",
+      "maximumPosedDisplacementMeters": 0.01892253964490539,
+      "shoulderMaximumAdjacentFaceAngle": 15.65008372300216
+    },
+    {
+      "pose": "FollowThrough",
+      "referenceSha256": "068ae1ce415dfbd21ef8b69c8557588affa252c39ade66e7cd425f58281acc27",
+      "maximumPosedDisplacementMeters": 0.018878895415176372,
+      "shoulderMaximumAdjacentFaceAngle": 21.674459235903424
+    },
+    {
+      "pose": "Recover",
+      "referenceSha256": "1844f403331cbd866aad4c48c18e05ba19437bef5832dc1f4dc762fbcd909828",
+      "maximumPosedDisplacementMeters": 0.015893903259917887,
+      "shoulderMaximumAdjacentFaceAngle": 8.869063280127952
+    },
+    {
+      "pose": "Impact",
+      "referenceSha256": "784b970ff9a0b12026a84009bfefb5ed15dbe4d1b4f7ffd9b16bd3e519b0ff95",
+      "maximumPosedDisplacementMeters": 0.015143897533198142,
+      "shoulderMaximumAdjacentFaceAngle": 15.007844715710783
+    },
+    {
+      "pose": "Grab",
+      "referenceSha256": "526bbc077853a31d3200f9ba2957b10d50096d3a7894bd877b5618ca2947df09",
+      "maximumPosedDisplacementMeters": 0.01639397464083415,
+      "shoulderMaximumAdjacentFaceAngle": 17.12604897878563
+    },
+    {
+      "pose": "Deflect",
+      "referenceSha256": "c49144cdc5a7d6326454df11747c7ea5e137c31eef92c47353d9f3b5f9e97311",
+      "maximumPosedDisplacementMeters": 0.016975935028381208,
+      "shoulderMaximumAdjacentFaceAngle": 11.411684930583185
+    },
+    {
+      "pose": "Reach",
+      "referenceSha256": "cb0cb473e9a3a7e884e50af8da8f8c5a16645c53713cc541cfdf9a3feaad6274",
+      "maximumPosedDisplacementMeters": 0.019203506883420218,
+      "shoulderMaximumAdjacentFaceAngle": 30.952048670899764
+    },
+    {
+      "pose": "Exchange",
+      "referenceSha256": "acf156798720bd770e3c86bf81bcc9d7d9f44786e6ed507759c8933f024683cd",
+      "maximumPosedDisplacementMeters": 0.013567888477777363,
+      "shoulderMaximumAdjacentFaceAngle": 8.46785170100111
+    }
+  ]
+}

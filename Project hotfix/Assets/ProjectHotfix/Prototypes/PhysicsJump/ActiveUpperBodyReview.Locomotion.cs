@@ -36,6 +36,9 @@ namespace ProjectHotfix.PhysicsJump
             pose.WalkCadence = 3f;
             pose.SprintCadence = 3.4f; pose.FootPlantSprintLift = .05f; pose.SprintShorteningLimit = .07f;
             pose.FootPlantSprintPelvisDrop = .016f; pose.FootPlantSprintPelvisBob = .02f;
+            // Jumps (2026-10-20: "점프할 때 무릎이 이상"): the knees fold in the air and absorb the landing as before,
+            // but ease open before touchdown instead of snapping straight; the stride lets go quickly after take-off.
+            pose.JumpTuckEase = .08f; pose.AirborneGaitFade = 25f;
             var tuning = Environment.GetEnvironmentVariable("PARTY_RUN_GAIT");
             if (string.IsNullOrEmpty(tuning)) return;
             var v = Array.ConvertAll(tuning.Split(','), s => float.Parse(s, CultureInfo.InvariantCulture));

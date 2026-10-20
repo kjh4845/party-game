@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "outsideUpperArmAndAttachmentCoordinatesPreserved": true,
+  "headSkeletonTopologyWeightsActionsPreserved": true,
+  "poseReferencesPreserved": true,
+  "nativeTransportBaseAndCorrectivesMatch": true,
+  "mirrorMaxMeters": 0.0,
+  "maximumNativeKeyRoundingErrorMeters": 2.9802322387695312e-08,
+  "candidateSha256": "214e736547b93c08168ca8c0455c263122108fe641a8a3b2befdb93fce5b131b",
+  "transportSha256": "a2ad7474a6d9678593d5b5bbab30c01c7a306ed139acbd8e33325128f5d9bbaf"
+}

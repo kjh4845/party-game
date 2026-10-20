@@ -1,0 +1,11 @@
+{
+  "sourceSha256": "214e736547b93c08168ca8c0455c263122108fe641a8a3b2befdb93fce5b131b",
+  "candidateSha256": "563be29d7a0abc422dbc703cba90e64c21347a8a9a6cd048c318997ba096ed45",
+  "transportSha256": "454d01d8c60af92451c0c5063947e68ec9ee1bf54497531477784688eaf3a17c",
+  "maximumNeutralFillMeters": 0.016516507207644218,
+  "changedVertices": 18280,
+  "shoulderOutlineProtected": true,
+  "rigWeightsTopologyHeadPreserved": true,
+  "mirrorError": 0.0,
+  "visualApproved": false
+}

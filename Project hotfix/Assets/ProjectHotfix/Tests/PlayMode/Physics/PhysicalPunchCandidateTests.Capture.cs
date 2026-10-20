@@ -21,7 +21,7 @@ namespace ProjectHotfix.Physics.Tests
         // Extra stand-off (m) for the close-range scenes: start apart and stop the approach that much
         // further out. PARTY_SPACING, default 0 (the original touching distances).
         private static float Spacing=>float.TryParse(Environment.GetEnvironmentVariable("PARTY_SPACING"),System.Globalization.NumberStyles.Float,System.Globalization.CultureInfo.InvariantCulture,out var value)?value:0;
-        private int _downTick=-1,_kickTick=-1;private float _koRestHeight=-1;private float _zoom=.8f;private Vector2 _carry;
+        private int _downTick=-1,_kickTick=-1;private float _koRestHeight=-1;private int _upTick=-1;private bool _protectHeld,_protectExpired;private float _zoom=.8f;private Vector2 _carry;
         private const int KOCycle=200;private const int GetUpCycle=420;
         private static readonly Vector3[] KOShoves={new Vector3(0,0,1.2f),new Vector3(0,0,-1.2f),new Vector3(1.2f,0,0),new Vector3(-1.2f,0,0),new Vector3(1.2f,0,1.2f),new Vector3(0,.4f,2.2f)};
         private static readonly Vector3[] KOSame=Enumerable.Repeat(new Vector3(0,0,1.2f),8).ToArray();private int _climbTick=-1,_topTick=-1;
@@ -77,7 +77,7 @@ namespace ProjectHotfix.Physics.Tests
                 if(tick==5)Buttons(0,1);if(tick==50)Buttons(0,3);if(tick==170)Buttons(0,0);
                 _pair.Players[0].Move=tick<50?forward*Mathf.Clamp((delta.magnitude-.36f)*4,0,.5f):tick>=90&&tick<165?-forward*.5f:Vector2.zero;return;
             }
-            if(mode=="GrabDown")
+            if(mode=="GrabDown"||mode=="GrabHoldLong")
             {
                 // Knock the target down with a head-height combo, then walk to the limp body, grab it with
                 // both hands (it is lifted overhead), carry it a few steps and release to throw it forward.
@@ -93,7 +93,8 @@ namespace ProjectHotfix.Physics.Tests
                 }
                 var since=tick-_downTick;
                 // Carry back toward the middle of the floor (the combo drove both near its edge).
-                if(since==30){Buttons(0,3);var home=-_pair.Players[0].Rig.Actor.Motor.Body.position;_carry=new Vector2(home.x,home.z).normalized;}if(since==210)Buttons(0,0);
+                // GrabHoldLong never lets go: what happens when the Down time runs out in the carrier's hands.
+                if(since==30){Buttons(0,3);var home=-_pair.Players[0].Rig.Actor.Motor.Body.position;_carry=new Vector2(home.x,home.z).normalized;}if(since==210&&mode=="GrabDown")Buttons(0,0);
                 // Walk up to the limp body's chest (where it lies differs per fall), until a hand holds it.
                 var bodies=new Rigidbody[16];var count=target.Knockdown.CopyDynamicBodies(bodies);
                 var chest=bodies.Take(count).FirstOrDefault(b=>b.name.StartsWith("Chest"));
@@ -108,6 +109,37 @@ namespace ProjectHotfix.Physics.Tests
                 // knockdown variation makes the falls differ.
                 var shoves=mode=="KORandom"?KOSame:KOShoves;var cycle=tick/KOCycle;var at=tick%KOCycle;
                 if(at==0&&cycle<shoves.Length){if(cycle>0)_pair.ResetReview();for(var i=0;i<20;i++)Tick();_pair.Players[1].Rig.BeginKnockdown(shoves[cycle]);}
+                _pair.Players[0].Move=Vector2.zero;return;
+            }
+            if(mode=="StandOver")
+            {
+                // Knock the target down toward the other player, who walks onto its feet and stays there: the
+                // get-up must shove the standing player off instead of waiting for room forever.
+                var target=_pair.Players[1].Rig;if(tick==5)target.BeginKnockdown(new Vector3(0,0,-.6f));
+                var bodies=new Rigidbody[16];var count=target.Knockdown.CopyDynamicBodies(bodies);
+                // Onto the spot it will stand up in: the feet (a face-down get-up rises over them).
+                var feet=target.RagdollActive?bodies.Take(count).Where(b=>b.name.StartsWith("Calf")).Aggregate(Vector3.zero,(sum,b)=>sum+b.position)/2:target.Actor.Motor.Body.position;
+                var to=feet-_pair.Players[0].Rig.Actor.Motor.Body.position;to.y=0;
+                // Walk up to the feet and stop there (pressing on would bulldoze the body along the floor).
+                if(_upTick<0&&to.magnitude<.3f)_upTick=tick;
+                _pair.Players[0].Move=tick>20&&_upTick<0&&target.RagdollActive?new Vector2(to.x,to.z).normalized*Mathf.Clamp(to.magnitude*4,0,.6f):Vector2.zero;return;
+            }
+            if(mode=="Jump")
+            {
+                // Plain jumps (Space): twice standing still, once walking, once running (Shift), then stop.
+                var jumper=_pair.Players[0];
+                jumper.Jump=tick==20||tick==80||tick==170||tick==260;
+                jumper.Sprint=tick>=220&&tick<300;
+                jumper.Move=tick>=140&&tick<300?new Vector2(0,1):Vector2.zero;return;
+            }
+            if(mode=="Protect")
+            {
+                // Knock the target down; a dropkick hit the moment it stands only pushes it (get-up protection), the
+                // same hit .75 s later downs it again.
+                var rig=_pair.Players[1].Rig;var chest=rig.Find("Chest").Body;
+                if(tick==5)rig.BeginKnockdown(new Vector3(0,0,1.2f));
+                if(tick>5&&_upTick<0&&!rig.RagdollActive){_upTick=tick;_pair.PhysicalPunches.ConfirmDropkick(0,chest,chest.position,Vector3.forward,3);_protectHeld=!rig.RagdollActive;}
+                if(_upTick>=0&&tick==_upTick+45){_pair.PhysicalPunches.ConfirmDropkick(0,chest,chest.position,Vector3.forward,3);_protectExpired=rig.RagdollActive;}
                 _pair.Players[0].Move=Vector2.zero;return;
             }
             if(mode=="GetUp")
@@ -218,18 +250,18 @@ namespace ProjectHotfix.Physics.Tests
             var modes=Environment.GetEnvironmentVariable("PARTY_CAPTURE_CASES")?.Split(',')??new[]{"LeftBody","RightBody","Head","Far","Wall","GrabPunch","Alternating","Moving"};
             foreach(var mode in modes)
             {
-                _downTick=-1;_kickTick=-1;_koRestHeight=-1;_zoom=.8f;_climbTick=-1;_topTick=-1;
-                Create(mode=="GrabStanding"?.5f:mode=="Solo"||mode=="WallClimb"||mode=="WallClimbHigh"?3f:mode=="Gait"||mode=="DropkickMiss"?9f:mode=="Dropkick"?3f:mode=="KOVariety"||mode=="KORandom"||mode=="GetUp"?3f:mode=="Far"?FarSeparation:mode=="GrabPunch"?.5f:(mode=="Head"?.42f:.38f)+Spacing,mode=="Head"?.22f:0,mode=="Wall");
+                _downTick=-1;_kickTick=-1;_koRestHeight=-1;_upTick=-1;_protectHeld=_protectExpired=false;_zoom=.8f;_climbTick=-1;_topTick=-1;
+                Create(mode=="GrabStanding"?.5f:mode=="Solo"||mode=="WallClimb"||mode=="WallClimbHigh"?3f:mode=="Gait"||mode=="DropkickMiss"||mode=="Jump"?9f:mode=="Dropkick"||mode=="Protect"?3f:mode=="StandOver"?1.6f:mode=="KOVariety"||mode=="KORandom"||mode=="GetUp"?3f:mode=="Far"?FarSeparation:mode=="GrabPunch"?.5f:(mode=="Head"?.42f:.38f)+Spacing,mode=="Head"?.22f:0,mode=="Wall");
                 // Ledge LedgeHeight high, its face .8 m ahead of the climber (roots at z -1.5 and 1.5).
                 if(mode=="WallClimbHigh"){Block("High wall",new Vector3(0,HighWall*.5f,.4f),new Vector3(3f,HighWall,2.2f));UnityEngine.Physics.SyncTransforms();}
                 if(mode=="WallClimb"){Block("Ledge",new Vector3(0,LedgeHeight*.5f,.4f),new Vector3(3f,LedgeHeight,2.2f));UnityEngine.Physics.SyncTransforms();}
                 var folder=Path.Combine(Output,"Frames",mode);Directory.CreateDirectory(folder);var rt=new RenderTexture(800,600,24);rt.Create();var image=new Texture2D(800,600,TextureFormat.RGB24,false);_pair.View.targetTexture=rt;_pair.View.aspect=4f/3;_pair.View.orthographicSize=.80f;
-                var renderers=_pair.Players.Select(p=>p.Rig.Actor.Pose.GetComponentsInChildren<SkinnedMeshRenderer>().Single(s=>s.name.EndsWith("SkinnedBody"))).ToArray();var mesh=new Mesh();var tri=renderers[0].sharedMesh.triangles;var pairs=CameraGaitReviewTests.Pairs(tri);var ticks=mode=="Knockout"||mode=="GrabDown"?720:mode=="GrabStanding"?420:mode=="WallClimb"?540:mode=="WallClimbHigh"?1200:mode=="Gait"?300:mode.StartsWith("Dropkick")?420:mode=="KOVariety"?KOCycle*6:mode=="KORandom"?KOCycle*8:mode=="GetUp"?GetUpCycle*4:180;var clip=new Clip{name=mode,frames=new Frame[ticks]};
+                var renderers=_pair.Players.Select(p=>p.Rig.Actor.Pose.GetComponentsInChildren<SkinnedMeshRenderer>().Single(s=>s.name.EndsWith("SkinnedBody"))).ToArray();var mesh=new Mesh();var tri=renderers[0].sharedMesh.triangles;var pairs=CameraGaitReviewTests.Pairs(tri);var ticks=mode=="Knockout"||mode=="GrabDown"||mode=="GrabHoldLong"?720:mode=="GrabStanding"?420:mode=="WallClimb"?540:mode=="WallClimbHigh"?1200:mode=="Gait"?300:mode=="Jump"?360:mode.StartsWith("Dropkick")?420:mode=="Protect"?360:mode=="StandOver"?480:mode=="KOVariety"?KOCycle*6:mode=="KORandom"?KOCycle*8:mode=="GetUp"?GetUpCycle*4:180;var clip=new Clip{name=mode,frames=new Frame[ticks]};
                 for(var tick=0;tick<ticks;tick++)
                 {
                     if(Environment.GetEnvironmentVariable("PARTY_PUNCH_DEBUG")=="1"&&_pair.PhysicalPunches!=null&&_pair.PhysicalPunches.ContactLog==null)_pair.PhysicalPunches.ContactLog=new List<string>{$"start tick {_pair.Tick} = capture tick {tick}"};CaptureInput(mode,tick);Tick();var angle=0f;for(var actor=0;actor<renderers.Length;actor++){var skin=renderers[actor];skin.BakeMesh(mesh);var measured=CameraGaitReviewTests.Surface(mesh.vertices,tri,pairs,out var point);angle=Mathf.Max(angle,measured);if(tick==0&&actor==0)ExportSurfacePose(skin,mode+"_Tick0");if(actor==0&&Environment.GetEnvironmentVariable("PARTY_EXPORT_ALL_TICKS")=="1")ExportSurfacePose(skin,$"{mode}_T{tick:D3}");if(measured>clip.maxSkin){clip.maxSkin=measured;clip.worstPoint=point;clip.worstActor=actor;clip.worstTick=tick;ExportSurfacePose(skin,mode+"_Worst");}}
                     var punch=_pair.PhysicalPunches;clip.maxSkin=Mathf.Max(clip.maxSkin,angle);clip.frames[tick]=new Frame{tick=tick,punches=punch.State(0).PunchCount,hits=punch.Hits.Count,points=punch.Score(1).Points,grips=_pair.LogicalGrips,throws=_pair.Throws,cues=punch.ConfirmedCues,sourceAge=(float)punch.State(0).SourcePunchAge(mode=="RightBody"||mode=="GrabPunch"?1:0),skin=angle,tip=_pair.Players[0].Rig.HandPosition(mode=="RightBody"||mode=="GrabPunch"?1:0),root=_pair.Players[0].Rig.Actor.Motor.Body.position,targetRoot=_pair.Players[1].Rig.Actor.Motor.Body.position,targetDown=_pair.Players[1].Rig.KnockedDown,knockdowns=_pair.Players[1].Rig.Knockdowns,climbs=_pair.Players[0].Climbs,boneHandL=Bone(0,"HandLogical_L"),boneHandR=Bone(0,"HandLogical_R"),boneForearmL=Bone(0,"Forearm_L"),boneForearmR=Bone(0,"Forearm_R")};
-                    _pair.Present(1);var center=(mode=="KOVariety"||mode=="KORandom"||mode=="GetUp"?_pair.Players[1].Rig.Actor.Motor.Body.position:mode=="Solo"||mode=="WallClimb"||mode=="WallClimbHigh"||mode=="Gait"||mode=="DropkickMiss"?_pair.Players[0].Rig.Actor.Motor.Body.position:(_pair.Players[0].Rig.Actor.Motor.Body.position+_pair.Players[1].Rig.Actor.Motor.Body.position)*.5f)+Vector3.up*.52f;var offset=mode=="WallClimbHigh"?new Vector3(-2.6f,.6f,-1.9f):mode=="Gait"||mode=="GetUp"||mode.StartsWith("Dropkick")?new Vector3(2.6f,.6f,0):mode=="WallClimb"?new Vector3(-2.2f,.8f,-1.7f):new Vector3(mode=="RightBody"||mode=="GrabPunch"?2.3f:-2.3f,1.05f,1.25f);if(mode=="WallClimb")_pair.View.orthographicSize=1.05f;if(mode.StartsWith("Dropkick")){_pair.View.orthographicSize=1.1f;center-=Vector3.up*.15f;}if(mode=="WallClimbHigh"){_pair.View.orthographicSize=1.35f;center+=Vector3.up*.3f;}if(mode=="KOVariety"||mode=="KORandom"){center-=Vector3.up*.35f;_pair.View.orthographicSize=.75f;}if(mode=="GetUp"){center=(Bone(1,"Head")+Bone(1,"Foot_L")+Bone(1,"Foot_R"))/3;center.y=.42f;_pair.View.orthographicSize=.62f;}if(mode.StartsWith("Grab")&&mode!="GrabPunch"){var span=Vector3.Distance(_pair.Players[0].Rig.Actor.Motor.Body.position,_pair.Players[1].Rig.Actor.Motor.Body.position);_zoom=Mathf.Max(_zoom,Mathf.Clamp(.45f+span*.45f,.8f,2.6f));_pair.View.orthographicSize=_zoom;}_pair.View.transform.SetPositionAndRotation(center+offset,Quaternion.LookRotation(-offset));
+                    _pair.Present(1);var center=(mode=="KOVariety"||mode=="KORandom"||mode=="GetUp"?_pair.Players[1].Rig.Actor.Motor.Body.position:mode=="Solo"||mode=="WallClimb"||mode=="WallClimbHigh"||mode=="Gait"||mode=="DropkickMiss"||mode=="Jump"?_pair.Players[0].Rig.Actor.Motor.Body.position:(_pair.Players[0].Rig.Actor.Motor.Body.position+_pair.Players[1].Rig.Actor.Motor.Body.position)*.5f)+Vector3.up*.52f;var offset=mode=="WallClimbHigh"?new Vector3(-2.6f,.6f,-1.9f):mode=="Gait"||mode=="GetUp"||mode=="Jump"||mode.StartsWith("Dropkick")?new Vector3(2.6f,.6f,0):mode=="WallClimb"?new Vector3(-2.2f,.8f,-1.7f):new Vector3(mode=="RightBody"||mode=="GrabPunch"?2.3f:-2.3f,1.05f,1.25f);if(mode=="WallClimb")_pair.View.orthographicSize=1.05f;if(mode.StartsWith("Dropkick")){_pair.View.orthographicSize=1.1f;center-=Vector3.up*.15f;}if(mode=="WallClimbHigh"){_pair.View.orthographicSize=1.35f;center+=Vector3.up*.3f;}if(mode=="KOVariety"||mode=="KORandom"){center-=Vector3.up*.35f;_pair.View.orthographicSize=.75f;}if(mode=="GetUp"){center=(Bone(1,"Head")+Bone(1,"Foot_L")+Bone(1,"Foot_R"))/3;center.y=.42f;_pair.View.orthographicSize=.62f;}if(mode.StartsWith("Grab")&&mode!="GrabPunch"){var span=Vector3.Distance(_pair.Players[0].Rig.Actor.Motor.Body.position,_pair.Players[1].Rig.Actor.Motor.Body.position);_zoom=Mathf.Max(_zoom,Mathf.Clamp(.45f+span*.45f,.8f,2.6f));_pair.View.orthographicSize=_zoom;}_pair.View.transform.SetPositionAndRotation(center+offset,Quaternion.LookRotation(-offset));
                     yield return null;_pair.View.Render();var old=RenderTexture.active;RenderTexture.active=rt;image.ReadPixels(new Rect(0,0,800,600),0,0);image.Apply();RenderTexture.active=old;File.WriteAllBytes(Path.Combine(folder,$"Frame_{tick:D4}.png"),image.EncodeToPNG());
                 }
                 clip.hits=_pair.PhysicalPunches.Hits.ToArray();results.Add(clip);if(_pair.PhysicalPunches.ContactLog!=null)File.WriteAllLines(Path.Combine(Output,mode+"_Contacts.tsv"),_pair.PhysicalPunches.ContactLog);File.WriteAllText(Path.Combine(Output,"Capture.json"),JsonUtility.ToJson(new Report{clips=results.ToArray()},true));
@@ -239,6 +271,14 @@ namespace ProjectHotfix.Physics.Tests
                 // A standing opponent is only held: releasing the grab never throws it (2026-10-17).
                 if(mode=="GrabPunch"&&(_pair.PhysicalPunches.State(0).PunchCount!=1||_pair.Throws!=0))failures.Add(mode+" action arbitration");
                 if(mode=="GrabStanding"&&(_pair.Throws!=0||clip.frames.Any(f=>f.targetDown)))failures.Add(mode+" standing target thrown");
+                // Held past the Down time: the body struggles free (no throw), is not grabbed again, and stands up.
+                if(mode=="GrabHoldLong")
+                {
+                    var freed=Array.FindIndex(clip.frames,f=>f.tick>0&&f.grips==0&&clip.frames[f.tick-1].grips>0);
+                    if(_pair.Escapes!=1||_pair.Throws!=0)failures.Add(mode+$" expected one escape and no throw (escapes {_pair.Escapes}, throws {_pair.Throws})");
+                    else if(freed<0||clip.frames.Skip(freed).Any(f=>f.grips>0))failures.Add(mode+" re-grabbed after the escape");
+                    if(clip.frames[ticks-1].targetDown)failures.Add(mode+" escaped body did not get up");
+                }
                 if(mode=="GrabDown"&&_pair.Throws!=1)failures.Add(mode+" downed target not thrown");
                 if(mode=="WallClimbHigh"&&(clip.frames[ticks-1].climbs<1||clip.frames[ticks-1].root.y<HighWall-.05f))failures.Add(mode+" did not climb the high wall");
                 if(mode=="WallClimb"&&(clip.frames[ticks-1].climbs<1||clip.frames[ticks-1].root.y<LedgeHeight-.05f))failures.Add(mode+" did not climb the ledge");
@@ -253,6 +293,9 @@ namespace ProjectHotfix.Physics.Tests
                     if(limp>0)failures.Add(mode+" knocked-out body still has joint drive "+limp);
                     if(_koRestHeight<0||_koRestHeight>.16f)failures.Add(mode+" knocked-out body not lying flat (pelvis "+_koRestHeight.ToString("F3")+" m)");
                 }
+                if(mode=="StandOver"&&(clip.frames[ticks-1].targetDown||_pair.Players[1].Rig.Knockdown.RoomPushes==0))failures.Add(mode+$" downed body under a standing player (pushes {_pair.Players[1].Rig.Knockdown.RoomPushes}, down at end {clip.frames[ticks-1].targetDown})");
+                if(mode=="Jump"&&_pair.Players[0].Jumps!=4)failures.Add(mode+" expected 4 jumps, got "+_pair.Players[0].Jumps);
+                if(mode=="Protect"&&(_upTick<0||!_protectHeld||!_protectExpired))failures.Add(mode+$" get-up protection (stood t{_upTick}, held {_protectHeld}, expired {_protectExpired})");
                 if(mode=="DropkickMiss"&&clip.hits.Length!=0)failures.Add(mode+" false hit");
                 if(mode.StartsWith("Dropkick")&&_pair.Players[0].Rig.RagdollActive)failures.Add(mode+" kicker still down at the end");
                 if(mode=="GrabPunch"&&!clip.frames.Any(f=>f.grips>0&&f.hits>0))failures.Add("GrabPunch missed while held");

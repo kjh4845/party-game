@@ -1,0 +1,22 @@
+{
+  "sourcePreservation": {
+    "baselineSourceFiles": 118,
+    "unchangedSourceFiles": 117,
+    "onlyChangedSource": "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+    "menuBeforeSha256": "50adb038dda6741170aedeca5045edd9bc7350429e7284cb0e11591b0bb4d83f",
+    "menuAfterSha256": "30aed65ce0839ca4990f11b4e2741d8f3e91225f38a5c0029ea50ea9004ce383"
+  },
+  "acceptedMotionHashes": {
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Shoulders.cs": "a340879eb67beb256eb2d1183991b766c7df3c61a05afd3e3d4357a2bf5502a7",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs": "515783237e7ce52b3020aaf97f0bb8f590bc627f65c00a0dcc5a1a18609cb823",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Impact.cs": "d92266e159ae019ef390de7971a31f92afa1f7c153b7c71b26c7dddc3e692952",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.NaturalShoulder.cs": "fd9fdb2c582eefcc409ce4ba02a78bbb6e15c0c237538797a044c19e236dd5b1",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Punch.cs": "8c439127ea2cd02d2087d8f3cb540b97b354568435489f14efc837871b9efa04",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.cs": "4578818863197339e7f077e0df3317dd7befb0e290ff3b2dfc3ee0ca7e9a4d3b",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs": "fd0c444da4bd05f262b7392a6111324ae144bd65e98d0511dfa526ec3684fb16",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchFeedbackReview.cs": "f0584878d0f8af1aba6292efa4bad9c239fcbc94248007986645b3341c5029e7",
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralJumpPose.cs": "ef81a733b37877b6dfeef3596e004f1ac0a094808d49bbac213014f87bcba688"
+  },
+  "menuCompilePassed": 1,
+  "menuCompileFailed": 0
+}

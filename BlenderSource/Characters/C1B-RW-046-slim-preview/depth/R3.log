@@ -1,0 +1,20 @@
+/Users/kjh/local_dev/partygame/tools/blender/preview_r43_gb_basic.py:42: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat.use_nodes = True
+/Users/kjh/local_dev/partygame/tools/blender/preview_r43_gb_basic.py:62: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  scene.world.use_nodes = True
+00:05.325  render           | Saved: 'BlenderSource/Characters/C1B-RW-046-slim-preview/depth/R3/Relaxed_PanelFront.png'
+00:05.517  render           | Saved: 'BlenderSource/Characters/C1B-RW-046-slim-preview/depth/R3/Relaxed_PanelBack.png'
+00:05.679  render           | Saved: 'BlenderSource/Characters/C1B-RW-046-slim-preview/depth/R3/Relaxed_PanelSide.png'
+00:06.644  render           | Saved: 'BlenderSource/Characters/C1B-RW-046-slim-preview/depth/R3/Relaxed_Front.png'
+00:07.506  render           | Saved: 'BlenderSource/Characters/C1B-RW-046-slim-preview/depth/R3/Relaxed_ThreeQuarter.png'
+00:08.321  render           | Saved: 'BlenderSource/Characters/C1B-RW-046-slim-preview/depth/R3/Relaxed_Side.png'
+00:09.286  render           | Saved: 'BlenderSource/Characters/C1B-RW-046-slim-preview/depth/R3/Relaxed_Back.png'
+done Relaxed
+00:12.820  render           | Saved: 'BlenderSource/Characters/C1B-RW-046-slim-preview/depth/R3/Punch_Front.png'
+00:13.762  render           | Saved: 'BlenderSource/Characters/C1B-RW-046-slim-preview/depth/R3/Punch_ThreeQuarter.png'
+00:14.563  render           | Saved: 'BlenderSource/Characters/C1B-RW-046-slim-preview/depth/R3/Punch_Side.png'
+00:15.463  render           | Saved: 'BlenderSource/Characters/C1B-RW-046-slim-preview/depth/R3/Punch_Back.png'
+done Punch
+Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:31:22)
+
+Blender quit

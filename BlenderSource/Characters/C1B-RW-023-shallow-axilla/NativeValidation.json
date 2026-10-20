@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "skeletonAndHeadPreserved": true,
+  "topologyPreserved": true,
+  "bodyMirrorMaxMeters": 0.0,
+  "vertexTransportMatchesSource": true,
+  "fourInfluenceSumMaxError": 1.7881393432617188e-07,
+  "maximumGeometryChangeMeters": 0.040560007095336914,
+  "candidateSha256": "213e374fc0703bb1181fc9f7032ca13f9917995ef71a86be7aaa38931b62e3fb"
+}

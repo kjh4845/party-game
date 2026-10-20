@@ -1,0 +1,1831 @@
+{
+  "measurement": "Actual baked-mesh cross-section contours, perpendicular to centerlines fitted at matched material positions",
+  "units": "Unity scene units; ratios are dimensionless",
+  "torsoWidthAtMidsection": 0.3543732762336731,
+  "neutralArmToTorsoRatios": {
+    "upper_middle": 0.2138058681342677,
+    "upper_distal": 0.21429213656687426,
+    "elbow": 0.21038124580260797,
+    "elbow_distal": 0.19981979060322771,
+    "forearm_proximal": 0.19070860111827503,
+    "forearm_middle": 0.19118395357015872,
+    "forearm_distal": 0.1893477821478463
+  },
+  "poses": [
+    {
+      "name": "Idle",
+      "actualElbowDegrees": [
+        0.00553362350910902,
+        0.005549103487282991
+      ],
+      "shoulderProtractionDegrees": [
+        0.0,
+        0.0
+      ],
+      "sections": {
+        "L_upper_middle": {
+          "minimumDiameter": 0.0753533324973014,
+          "maximumDiameter": 0.07618576541727617,
+          "equivalentDiameter": 0.07576708596872513,
+          "area": 0.004508697000442485,
+          "projectedMaterialEllipseArea": 0.004548600404557295,
+          "contourPoints": 326,
+          "fitRms": 0.0020648809335136677,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 1.1067409208574501,
+          "minimumDiameterRatioToStraightRaised": 1.0939141611720453
+        },
+        "L_upper_distal": {
+          "minimumDiameter": 0.07552091447929224,
+          "maximumDiameter": 0.07626007917730952,
+          "equivalentDiameter": 0.07593940650631693,
+          "area": 0.004529228992593974,
+          "projectedMaterialEllipseArea": 0.004522547054405086,
+          "contourPoints": 274,
+          "fitRms": 0.0008792188329519498,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 1.021295452503103,
+          "minimumDiameterRatioToStraightRaised": 1.0104976825838052
+        },
+        "L_elbow": {
+          "minimumDiameter": 0.0739289973161691,
+          "maximumDiameter": 0.07524340174228944,
+          "equivalentDiameter": 0.07455349133319188,
+          "area": 0.004365418190906443,
+          "projectedMaterialEllipseArea": 0.00436506832484171,
+          "contourPoints": 274,
+          "fitRms": 0.00029003602805513637,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 1.051454647609472,
+          "minimumDiameterRatioToStraightRaised": 1.0235085149646415
+        },
+        "L_elbow_distal": {
+          "minimumDiameter": 0.06900251361563833,
+          "maximumDiameter": 0.07262974579947526,
+          "equivalentDiameter": 0.07081079385239233,
+          "area": 0.003938118751290407,
+          "projectedMaterialEllipseArea": 0.00394341101611787,
+          "contourPoints": 266,
+          "fitRms": 0.0004903226656658643,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 1.0875651433526714,
+          "minimumDiameterRatioToStraightRaised": 1.0413813819325437
+        },
+        "L_forearm_proximal": {
+          "minimumDiameter": 0.0650650054745621,
+          "maximumDiameter": 0.07000967791441604,
+          "equivalentDiameter": 0.06758203178422385,
+          "area": 0.0035871733948020447,
+          "projectedMaterialEllipseArea": 0.0035881824922309297,
+          "contourPoints": 254,
+          "fitRms": 0.0006547495175611392,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 1.0341128724255677,
+          "minimumDiameterRatioToStraightRaised": 1.0166673414179561
+        },
+        "L_forearm_middle": {
+          "minimumDiameter": 0.06548805382461304,
+          "maximumDiameter": 0.07010559686459131,
+          "equivalentDiameter": 0.06775048398996358,
+          "area": 0.003605078164477738,
+          "projectedMaterialEllipseArea": 0.0036066502427880448,
+          "contourPoints": 240,
+          "fitRms": 0.0005866107182233253,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 1.0000202043842938,
+          "minimumDiameterRatioToStraightRaised": 1.0000362575539024
+        },
+        "L_forearm_distal": {
+          "minimumDiameter": 0.06521176933772921,
+          "maximumDiameter": 0.06905938631161693,
+          "equivalentDiameter": 0.06709979390731209,
+          "area": 0.0035361628226370113,
+          "projectedMaterialEllipseArea": 0.0035338155131330105,
+          "contourPoints": 240,
+          "fitRms": 0.00047564056209774237,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 1.0000221621726182,
+          "minimumDiameterRatioToStraightRaised": 1.000062832547473
+        },
+        "R_upper_middle": {
+          "minimumDiameter": 0.07535321336724399,
+          "maximumDiameter": 0.07618575842392614,
+          "equivalentDiameter": 0.07576700054151014,
+          "area": 0.004508686833357243,
+          "projectedMaterialEllipseArea": 0.004548588185176814,
+          "contourPoints": 326,
+          "fitRms": 0.0020648805445612926,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 1.1067519924657079,
+          "minimumDiameterRatioToStraightRaised": 1.0939196069365191
+        },
+        "R_upper_distal": {
+          "minimumDiameter": 0.0755209633503882,
+          "maximumDiameter": 0.07626007616339053,
+          "equivalentDiameter": 0.07593939852619351,
+          "area": 0.004529228040682282,
+          "projectedMaterialEllipseArea": 0.004522545460705789,
+          "contourPoints": 274,
+          "fitRms": 0.0008792185606936056,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 1.0212955857798804,
+          "minimumDiameterRatioToStraightRaised": 1.0104977044446024
+        },
+        "R_elbow": {
+          "minimumDiameter": 0.07392897298615242,
+          "maximumDiameter": 0.07524340311998345,
+          "equivalentDiameter": 0.07455350040679462,
+          "area": 0.004365419253501156,
+          "projectedMaterialEllipseArea": 0.004365068443080882,
+          "contourPoints": 274,
+          "fitRms": 0.0002900398918460092,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 1.05145441706434,
+          "minimumDiameterRatioToStraightRaised": 1.023509060123179
+        },
+        "R_elbow_distal": {
+          "minimumDiameter": 0.06900250564078414,
+          "maximumDiameter": 0.07262974910190625,
+          "equivalentDiameter": 0.07081079647905476,
+          "area": 0.003938119043452326,
+          "projectedMaterialEllipseArea": 0.003943411403804514,
+          "contourPoints": 266,
+          "fitRms": 0.0004903266359563603,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 1.0875650348728854,
+          "minimumDiameterRatioToStraightRaised": 1.0413824118819859
+        },
+        "R_forearm_proximal": {
+          "minimumDiameter": 0.06506498108499337,
+          "maximumDiameter": 0.07000968067717242,
+          "equivalentDiameter": 0.06758202950393612,
+          "area": 0.0035871731527321584,
+          "projectedMaterialEllipseArea": 0.0035881823294328075,
+          "contourPoints": 254,
+          "fitRms": 0.0006547515437648425,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 1.0341124306500358,
+          "minimumDiameterRatioToStraightRaised": 1.0166676159744146
+        },
+        "R_forearm_middle": {
+          "minimumDiameter": 0.06548812120505329,
+          "maximumDiameter": 0.07010559756176152,
+          "equivalentDiameter": 0.06775050474012582,
+          "area": 0.0036050803727562288,
+          "projectedMaterialEllipseArea": 0.003606650287280295,
+          "contourPoints": 240,
+          "fitRms": 0.0005866136780747928,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 1.0000206180023021,
+          "minimumDiameterRatioToStraightRaised": 1.0000392528552184
+        },
+        "R_forearm_distal": {
+          "minimumDiameter": 0.06521176403986914,
+          "maximumDiameter": 0.06905938610457527,
+          "equivalentDiameter": 0.06709976759517229,
+          "area": 0.0035361600493351323,
+          "projectedMaterialEllipseArea": 0.003533812905122433,
+          "contourPoints": 240,
+          "fitRms": 0.00047563509241364994,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 1.0000213179439517,
+          "minimumDiameterRatioToStraightRaised": 1.0000657092111285
+        }
+      }
+    },
+    {
+      "name": "Lift45_Flex0",
+      "actualElbowDegrees": [
+        0.40692138671875,
+        0.4053955078125
+      ],
+      "shoulderProtractionDegrees": [
+        7.804023742675781,
+        7.804190635681152
+      ],
+      "sections": {
+        "L_upper_middle": {
+          "minimumDiameter": 0.07472238174915083,
+          "maximumDiameter": 0.0758665554756291,
+          "equivalentDiameter": 0.07522522880646887,
+          "area": 0.004444438654442395,
+          "projectedMaterialEllipseArea": 0.0044877094201646525,
+          "contourPoints": 323,
+          "fitRms": 0.0020801391484654313,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 1.0909675519621933,
+          "minimumDiameterRatioToStraightRaised": 1.0847545668245926
+        },
+        "L_upper_distal": {
+          "minimumDiameter": 0.07476432330504545,
+          "maximumDiameter": 0.07541948227490977,
+          "equivalentDiameter": 0.07515656349940059,
+          "area": 0.004436328623624659,
+          "projectedMaterialEllipseArea": 0.004428621461657951,
+          "contourPoints": 274,
+          "fitRms": 0.0009239062867138503,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 1.0003473563659098,
+          "minimumDiameterRatioToStraightRaised": 1.0003742136942784
+        },
+        "L_elbow": {
+          "minimumDiameter": 0.07225683989722612,
+          "maximumDiameter": 0.07333010406312562,
+          "equivalentDiameter": 0.07277442438993406,
+          "area": 0.004159560443426092,
+          "projectedMaterialEllipseArea": 0.004158875297209962,
+          "contourPoints": 274,
+          "fitRms": 0.00028832653772736214,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 1.001871749506945,
+          "minimumDiameterRatioToStraightRaised": 1.0003583652428742
+        },
+        "L_elbow_distal": {
+          "minimumDiameter": 0.06627190093935907,
+          "maximumDiameter": 0.06963687062111018,
+          "equivalentDiameter": 0.06795002445907765,
+          "area": 0.0036263449741891587,
+          "projectedMaterialEllipseArea": 0.0036314643840816858,
+          "contourPoints": 268,
+          "fitRms": 0.0004799419504874226,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 1.0014645674176217,
+          "minimumDiameterRatioToStraightRaised": 1.0001711556183859
+        },
+        "L_forearm_proximal": {
+          "minimumDiameter": 0.0640017765541747,
+          "maximumDiameter": 0.06884033556481506,
+          "equivalentDiameter": 0.06646466463914315,
+          "area": 0.0034695369491627194,
+          "projectedMaterialEllipseArea": 0.0034702683760103993,
+          "contourPoints": 252,
+          "fitRms": 0.0006665507750049652,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 1.000200555034306,
+          "minimumDiameterRatioToStraightRaised": 1.0000539543610452
+        },
+        "L_forearm_middle": {
+          "minimumDiameter": 0.06548692554478419,
+          "maximumDiameter": 0.07010524234475121,
+          "equivalentDiameter": 0.06775034104919771,
+          "area": 0.003605062952421383,
+          "projectedMaterialEllipseArea": 0.003606623988511999,
+          "contourPoints": 240,
+          "fitRms": 0.0005866113540722275,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 1.000015984680029,
+          "minimumDiameterRatioToStraightRaised": 1.0000190281407253
+        },
+        "L_forearm_distal": {
+          "minimumDiameter": 0.0652096177926226,
+          "maximumDiameter": 0.06905903691278784,
+          "equivalentDiameter": 0.06709966370865655,
+          "area": 0.0035361490996977363,
+          "projectedMaterialEllipseArea": 0.003533803687063256,
+          "contourPoints": 240,
+          "fitRms": 0.00047563285899130753,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 1.000018281343569,
+          "minimumDiameterRatioToStraightRaised": 1.0000298372719956
+        },
+        "R_upper_middle": {
+          "minimumDiameter": 0.07472183117301166,
+          "maximumDiameter": 0.07586622780429937,
+          "equivalentDiameter": 0.07522501997511802,
+          "area": 0.0044444139782305854,
+          "projectedMaterialEllipseArea": 0.004487683058613962,
+          "contourPoints": 323,
+          "fitRms": 0.0020801366805788,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 1.0909748686374112,
+          "minimumDiameterRatioToStraightRaised": 1.0847536891092964
+        },
+        "R_upper_distal": {
+          "minimumDiameter": 0.07476425163183856,
+          "maximumDiameter": 0.0754194954746307,
+          "equivalentDiameter": 0.07515652864250122,
+          "area": 0.004436324508571567,
+          "projectedMaterialEllipseArea": 0.004428616609067145,
+          "contourPoints": 274,
+          "fitRms": 0.0009239095613423309,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 1.0003467692496049,
+          "minimumDiameterRatioToStraightRaised": 1.0003726289609511
+        },
+        "R_elbow": {
+          "minimumDiameter": 0.07225679252793157,
+          "maximumDiameter": 0.07333011349140867,
+          "equivalentDiameter": 0.0727744174049972,
+          "area": 0.004159559644951466,
+          "projectedMaterialEllipseArea": 0.004158874040774483,
+          "contourPoints": 274,
+          "fitRms": 0.0002883284929320171,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 1.001871093645608,
+          "minimumDiameterRatioToStraightRaised": 1.0003585714849759
+        },
+        "R_elbow_distal": {
+          "minimumDiameter": 0.06627186870452122,
+          "maximumDiameter": 0.06963687458162951,
+          "equivalentDiameter": 0.06795003283393,
+          "area": 0.003626345868084515,
+          "projectedMaterialEllipseArea": 0.0036314646060742113,
+          "contourPoints": 268,
+          "fitRms": 0.00047994231775867015,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 1.0014646400904876,
+          "minimumDiameterRatioToStraightRaised": 1.0001717739167062
+        },
+        "R_forearm_proximal": {
+          "minimumDiameter": 0.06400177981191427,
+          "maximumDiameter": 0.06884033956127428,
+          "equivalentDiameter": 0.06646465900632033,
+          "area": 0.0034695363610822354,
+          "projectedMaterialEllipseArea": 0.003470268328100502,
+          "contourPoints": 252,
+          "fitRms": 0.0006665506277057561,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 1.0002000257095829,
+          "minimumDiameterRatioToStraightRaised": 1.0000546502042362
+        },
+        "R_forearm_middle": {
+          "minimumDiameter": 0.06548697699749635,
+          "maximumDiameter": 0.07010523160925375,
+          "equivalentDiameter": 0.06775034896936707,
+          "area": 0.003605063795301594,
+          "projectedMaterialEllipseArea": 0.0036066243402323125,
+          "contourPoints": 240,
+          "fitRms": 0.000586608168903063,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 1.0000160195482555,
+          "minimumDiameterRatioToStraightRaised": 1.0000217801830864
+        },
+        "R_forearm_distal": {
+          "minimumDiameter": 0.06520964451684794,
+          "maximumDiameter": 0.06905904170887361,
+          "equivalentDiameter": 0.06709965775435195,
+          "area": 0.0035361484721146232,
+          "projectedMaterialEllipseArea": 0.0035338017553819307,
+          "contourPoints": 240,
+          "fitRms": 0.0004756352004799284,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 1.0000180439215232,
+          "minimumDiameterRatioToStraightRaised": 1.0000332049180058
+        }
+      }
+    },
+    {
+      "name": "Lift90_Flex0",
+      "actualElbowDegrees": [
+        0.732513427734375,
+        0.728607177734375
+      ],
+      "shoulderProtractionDegrees": [
+        10.0,
+        10.0
+      ],
+      "sections": {
+        "L_upper_middle": {
+          "minimumDiameter": 0.06888413659127154,
+          "maximumDiameter": 0.07487139423842054,
+          "equivalentDiameter": 0.0720207435017721,
+          "area": 0.004073850451783568,
+          "projectedMaterialEllipseArea": 0.0041304399681557045,
+          "contourPoints": 319,
+          "fitRms": 0.0016133552237904338,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 1.0,
+          "minimumDiameterRatioToStraightRaised": 1.0
+        },
+        "L_upper_distal": {
+          "minimumDiameter": 0.0747363559371933,
+          "maximumDiameter": 0.07542503409009924,
+          "equivalentDiameter": 0.07514351384357724,
+          "area": 0.00443478817172175,
+          "projectedMaterialEllipseArea": 0.0044281829610734345,
+          "contourPoints": 274,
+          "fitRms": 0.0009230639584886574,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 1.0,
+          "minimumDiameterRatioToStraightRaised": 1.0
+        },
+        "L_elbow": {
+          "minimumDiameter": 0.07223095483355416,
+          "maximumDiameter": 0.07321048178666788,
+          "equivalentDiameter": 0.07270641210504115,
+          "area": 0.004151789333787636,
+          "projectedMaterialEllipseArea": 0.004152068580830789,
+          "contourPoints": 274,
+          "fitRms": 0.00028782687665638977,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 1.0,
+          "minimumDiameterRatioToStraightRaised": 1.0
+        },
+        "L_elbow_distal": {
+          "minimumDiameter": 0.06626056007222532,
+          "maximumDiameter": 0.06954433603618886,
+          "equivalentDiameter": 0.06790032035275549,
+          "area": 0.0036210417144762874,
+          "projectedMaterialEllipseArea": 0.003625708298592281,
+          "contourPoints": 268,
+          "fitRms": 0.00047999912585212445,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 1.0,
+          "minimumDiameterRatioToStraightRaised": 1.0
+        },
+        "L_forearm_proximal": {
+          "minimumDiameter": 0.06399832356551877,
+          "maximumDiameter": 0.06883052999711185,
+          "equivalentDiameter": 0.06645800072993839,
+          "area": 0.0034688412555857035,
+          "projectedMaterialEllipseArea": 0.003469515540803337,
+          "contourPoints": 252,
+          "fitRms": 0.0006664778141857604,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 1.0,
+          "minimumDiameterRatioToStraightRaised": 1.0
+        },
+        "L_forearm_middle": {
+          "minimumDiameter": 0.06548567947405967,
+          "maximumDiameter": 0.0701040006934885,
+          "equivalentDiameter": 0.06774979957192744,
+          "area": 0.003605005327564719,
+          "projectedMaterialEllipseArea": 0.003606556351439399,
+          "contourPoints": 240,
+          "fitRms": 0.0005866074876881727,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 1.0,
+          "minimumDiameterRatioToStraightRaised": 1.0
+        },
+        "L_forearm_distal": {
+          "minimumDiameter": 0.06520767217357176,
+          "maximumDiameter": 0.06905762506273658,
+          "equivalentDiameter": 0.06709905038106308,
+          "area": 0.00353608445532292,
+          "projectedMaterialEllipseArea": 0.0035337399100861806,
+          "contourPoints": 240,
+          "fitRms": 0.0004756382006372165,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 1.0,
+          "minimumDiameterRatioToStraightRaised": 1.0
+        },
+        "R_upper_middle": {
+          "minimumDiameter": 0.06888368476936604,
+          "maximumDiameter": 0.07487076759894615,
+          "equivalentDiameter": 0.07202030206131532,
+          "area": 0.004073800511813348,
+          "projectedMaterialEllipseArea": 0.004130389044073025,
+          "contourPoints": 319,
+          "fitRms": 0.001613344190735249,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 1.0,
+          "minimumDiameterRatioToStraightRaised": 1.0
+        },
+        "R_upper_distal": {
+          "minimumDiameter": 0.07473640268376128,
+          "maximumDiameter": 0.07542500593393925,
+          "equivalentDiameter": 0.07514350104406109,
+          "area": 0.004434786660928999,
+          "projectedMaterialEllipseArea": 0.004428179916998898,
+          "contourPoints": 274,
+          "fitRms": 0.0009230698926037222,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 1.0,
+          "minimumDiameterRatioToStraightRaised": 1.0
+        },
+        "R_elbow": {
+          "minimumDiameter": 0.07223089258951462,
+          "maximumDiameter": 0.07321054744503862,
+          "equivalentDiameter": 0.07270642892475976,
+          "area": 0.0041517912547168745,
+          "projectedMaterialEllipseArea": 0.004152069884062066,
+          "contourPoints": 274,
+          "fitRms": 0.00028783145380283304,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 1.0,
+          "minimumDiameterRatioToStraightRaised": 1.0
+        },
+        "R_elbow_distal": {
+          "minimumDiameter": 0.06626048688116677,
+          "maximumDiameter": 0.06954429511438176,
+          "equivalentDiameter": 0.06790032625783439,
+          "area": 0.0036210423442977033,
+          "projectedMaterialEllipseArea": 0.003625709748913124,
+          "contourPoints": 268,
+          "fitRms": 0.00047999717512853387,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 1.0,
+          "minimumDiameterRatioToStraightRaised": 1.0
+        },
+        "R_forearm_proximal": {
+          "minimumDiameter": 0.0639982822927162,
+          "maximumDiameter": 0.06883062339949764,
+          "equivalentDiameter": 0.06645801268309039,
+          "area": 0.0034688425033990613,
+          "projectedMaterialEllipseArea": 0.0034695173208180957,
+          "contourPoints": 252,
+          "fitRms": 0.0006664755883412492,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 1.0,
+          "minimumDiameterRatioToStraightRaised": 1.0
+        },
+        "R_forearm_middle": {
+          "minimumDiameter": 0.06548555071021236,
+          "maximumDiameter": 0.07010401620927482,
+          "equivalentDiameter": 0.06774980631089461,
+          "area": 0.003605006044733299,
+          "projectedMaterialEllipseArea": 0.003606556954841447,
+          "contourPoints": 240,
+          "fitRms": 0.0005866076903498761,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 1.0,
+          "minimumDiameterRatioToStraightRaised": 1.0
+        },
+        "R_forearm_distal": {
+          "minimumDiameter": 0.06520747930784415,
+          "maximumDiameter": 0.06905762779785031,
+          "equivalentDiameter": 0.06709905239206489,
+          "area": 0.0035360846672803873,
+          "projectedMaterialEllipseArea": 0.003533740470344572,
+          "contourPoints": 240,
+          "fitRms": 0.0004756356464504068,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 1.0,
+          "minimumDiameterRatioToStraightRaised": 1.0
+        }
+      }
+    },
+    {
+      "name": "Lift120_Flex0",
+      "actualElbowDegrees": [
+        0.766021728515625,
+        0.757171630859375
+      ],
+      "shoulderProtractionDegrees": [
+        10.0,
+        10.0
+      ],
+      "sections": {
+        "L_upper_middle": {
+          "minimumDiameter": 0.06884932392837326,
+          "maximumDiameter": 0.07299972871177389,
+          "equivalentDiameter": 0.0707830397124146,
+          "area": 0.003935032281746641,
+          "projectedMaterialEllipseArea": 0.003982284604908662,
+          "contourPoints": 316,
+          "fitRms": 0.0015226399535774166,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 0.9659245788032913,
+          "minimumDiameterRatioToStraightRaised": 0.9994946200297922
+        },
+        "L_upper_distal": {
+          "minimumDiameter": 0.07428798145574173,
+          "maximumDiameter": 0.0753360745324024,
+          "equivalentDiameter": 0.07482693118272274,
+          "area": 0.0043974990043123,
+          "projectedMaterialEllipseArea": 0.004394004961291944,
+          "contourPoints": 274,
+          "fitRms": 0.0008391538894944396,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.9915916688767181,
+          "minimumDiameterRatioToStraightRaised": 0.9940005841089125
+        },
+        "L_elbow": {
+          "minimumDiameter": 0.07190448104631597,
+          "maximumDiameter": 0.07328787665327716,
+          "equivalentDiameter": 0.07257336981983777,
+          "area": 0.004136608879912277,
+          "projectedMaterialEllipseArea": 0.004136391067304381,
+          "contourPoints": 274,
+          "fitRms": 0.00026299339327600296,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.9963436358025637,
+          "minimumDiameterRatioToStraightRaised": 0.99548014022533
+        },
+        "L_elbow_distal": {
+          "minimumDiameter": 0.06615767482070155,
+          "maximumDiameter": 0.06959561512861667,
+          "equivalentDiameter": 0.06789263168865195,
+          "area": 0.0036202217066465033,
+          "projectedMaterialEllipseArea": 0.0036248867865359123,
+          "contourPoints": 268,
+          "fitRms": 0.0004961343985231472,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 0.9997735436665902,
+          "minimumDiameterRatioToStraightRaised": 0.9984472625735185
+        },
+        "L_forearm_proximal": {
+          "minimumDiameter": 0.06399831602794676,
+          "maximumDiameter": 0.06883730796323652,
+          "equivalentDiameter": 0.06646125524370233,
+          "area": 0.003469181009051458,
+          "projectedMaterialEllipseArea": 0.003469848755660848,
+          "contourPoints": 252,
+          "fitRms": 0.0006664893982812688,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 1.0000979443683702,
+          "minimumDiameterRatioToStraightRaised": 0.9999998822223523
+        },
+        "L_forearm_middle": {
+          "minimumDiameter": 0.06548520684008083,
+          "maximumDiameter": 0.07010372052191084,
+          "equivalentDiameter": 0.0677497099129696,
+          "area": 0.0036049957859628588,
+          "projectedMaterialEllipseArea": 0.003606545384714613,
+          "contourPoints": 240,
+          "fitRms": 0.0005866056383992525,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 0.9999973532350183,
+          "minimumDiameterRatioToStraightRaised": 0.9999927826361025
+        },
+        "L_forearm_distal": {
+          "minimumDiameter": 0.0652071286052316,
+          "maximumDiameter": 0.06905736939071404,
+          "equivalentDiameter": 0.06709894262436097,
+          "area": 0.0035360730978896597,
+          "projectedMaterialEllipseArea": 0.0035337304092953464,
+          "contourPoints": 240,
+          "fitRms": 0.00047563780674210617,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 0.9999967881329183,
+          "minimumDiameterRatioToStraightRaised": 0.999991664043171
+        },
+        "R_upper_middle": {
+          "minimumDiameter": 0.06884940567120715,
+          "maximumDiameter": 0.07299950690180265,
+          "equivalentDiameter": 0.07078179967457579,
+          "area": 0.00393489440843112,
+          "projectedMaterialEllipseArea": 0.003982227786454187,
+          "contourPoints": 316,
+          "fitRms": 0.0015225195770053699,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 0.9659025759903013,
+          "minimumDiameterRatioToStraightRaised": 0.9995023625946599
+        },
+        "R_upper_distal": {
+          "minimumDiameter": 0.07428788092621208,
+          "maximumDiameter": 0.07533613387262385,
+          "equivalentDiameter": 0.07482689327219508,
+          "area": 0.0043974945483908085,
+          "projectedMaterialEllipseArea": 0.0043940008158151805,
+          "contourPoints": 274,
+          "fitRms": 0.0008391366061440755,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.9915910019152132,
+          "minimumDiameterRatioToStraightRaised": 0.9939986172542039
+        },
+        "R_elbow": {
+          "minimumDiameter": 0.0719043373980573,
+          "maximumDiameter": 0.07328784616631362,
+          "equivalentDiameter": 0.07257336365998322,
+          "area": 0.0041366081777013146,
+          "projectedMaterialEllipseArea": 0.004136389653337616,
+          "contourPoints": 274,
+          "fitRms": 0.00026299060827120077,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.9963430056850016,
+          "minimumDiameterRatioToStraightRaised": 0.9954790093303549
+        },
+        "R_elbow_distal": {
+          "minimumDiameter": 0.06615774723888646,
+          "maximumDiameter": 0.06959570336627469,
+          "equivalentDiameter": 0.06789265154125496,
+          "area": 0.0036202238238375157,
+          "projectedMaterialEllipseArea": 0.0036248904411034836,
+          "contourPoints": 268,
+          "fitRms": 0.0004961355101933883,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 0.9997739544632841,
+          "minimumDiameterRatioToStraightRaised": 0.9984494583858918
+        },
+        "R_forearm_proximal": {
+          "minimumDiameter": 0.06399829528180812,
+          "maximumDiameter": 0.0688373859012267,
+          "equivalentDiameter": 0.06646129183680576,
+          "area": 0.003469184829266226,
+          "projectedMaterialEllipseArea": 0.0034698526704975926,
+          "contourPoints": 252,
+          "fitRms": 0.0006664893372966603,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 1.0000986859065608,
+          "minimumDiameterRatioToStraightRaised": 1.0000002029600084
+        },
+        "R_forearm_middle": {
+          "minimumDiameter": 0.06548519508385266,
+          "maximumDiameter": 0.07010381362420982,
+          "equivalentDiameter": 0.06774973478991786,
+          "area": 0.003604998433392944,
+          "projectedMaterialEllipseArea": 0.0036065482868027697,
+          "contourPoints": 240,
+          "fitRms": 0.0005866063655397487,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 0.9999978886747315,
+          "minimumDiameterRatioToStraightRaised": 0.9999945693919369
+        },
+        "R_forearm_distal": {
+          "minimumDiameter": 0.06520713661489798,
+          "maximumDiameter": 0.06905740729223228,
+          "equivalentDiameter": 0.06709896562688893,
+          "area": 0.003536075522328288,
+          "projectedMaterialEllipseArea": 0.003533732729034661,
+          "contourPoints": 240,
+          "fitRms": 0.00047563749686673515,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 0.9999974138198149,
+          "minimumDiameterRatioToStraightRaised": 0.9999947445760853
+        }
+      }
+    },
+    {
+      "name": "Lift90_Flex45",
+      "actualElbowDegrees": [
+        44.31660079956055,
+        44.32004165649414
+      ],
+      "shoulderProtractionDegrees": [
+        10.0,
+        10.0
+      ],
+      "sections": {
+        "L_upper_middle": {
+          "minimumDiameter": 0.06664874317295783,
+          "maximumDiameter": 0.07169419556569348,
+          "equivalentDiameter": 0.06895157368005607,
+          "area": 0.0037340338136804506,
+          "projectedMaterialEllipseArea": 0.0037201686105478447,
+          "contourPoints": 322,
+          "fitRms": 0.0014967020108139534,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 0.91658588303006,
+          "minimumDiameterRatioToStraightRaised": 0.9675485020364331
+        },
+        "L_upper_distal": {
+          "minimumDiameter": 0.06777296553924192,
+          "maximumDiameter": 0.07326063283273683,
+          "equivalentDiameter": 0.07015037512992461,
+          "area": 0.0038650033697254843,
+          "projectedMaterialEllipseArea": 0.0038608046802097937,
+          "contourPoints": 274,
+          "fitRms": 0.00110881504733312,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.871519274442582,
+          "minimumDiameterRatioToStraightRaised": 0.9068272688622488
+        },
+        "L_elbow": {
+          "minimumDiameter": 0.06694401345229548,
+          "maximumDiameter": 0.07084226644644624,
+          "equivalentDiameter": 0.06868354836444927,
+          "area": 0.003705060713389075,
+          "projectedMaterialEllipseArea": 0.003692265441370037,
+          "contourPoints": 278,
+          "fitRms": 0.0011113552008939814,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.8924009422243457,
+          "minimumDiameterRatioToStraightRaised": 0.9268050464867635
+        },
+        "L_elbow_distal": {
+          "minimumDiameter": 0.06455472400140584,
+          "maximumDiameter": 0.06607194308486172,
+          "equivalentDiameter": 0.06545622165782015,
+          "area": 0.0033650517464950992,
+          "projectedMaterialEllipseArea": 0.003370334737491341,
+          "contourPoints": 268,
+          "fitRms": 0.0007606487699228566,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 0.9293048829131724,
+          "minimumDiameterRatioToStraightRaised": 0.9742556345892627
+        },
+        "L_forearm_proximal": {
+          "minimumDiameter": 0.06356127196224048,
+          "maximumDiameter": 0.06413753158599816,
+          "equivalentDiameter": 0.0638813729281052,
+          "area": 0.0032050762356964613,
+          "projectedMaterialEllipseArea": 0.003200189120250812,
+          "contourPoints": 266,
+          "fitRms": 0.0006344411525600684,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 0.9239616343167868,
+          "minimumDiameterRatioToStraightRaised": 0.9931708898150926
+        },
+        "L_forearm_middle": {
+          "minimumDiameter": 0.06296191999499218,
+          "maximumDiameter": 0.06549737663332666,
+          "equivalentDiameter": 0.06420728889743348,
+          "area": 0.0032378635776789287,
+          "projectedMaterialEllipseArea": 0.0032364131151072693,
+          "contourPoints": 256,
+          "fitRms": 0.0005673707195492427,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 0.8981577788308556,
+          "minimumDiameterRatioToStraightRaised": 0.9614608949722021
+        },
+        "L_forearm_distal": {
+          "minimumDiameter": 0.06220563214231866,
+          "maximumDiameter": 0.06522027037064301,
+          "equivalentDiameter": 0.06368828142131674,
+          "area": 0.00318572982371871,
+          "projectedMaterialEllipseArea": 0.003185596238505748,
+          "contourPoints": 258,
+          "fitRms": 0.00046639247393621047,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 0.9009201742687972,
+          "minimumDiameterRatioToStraightRaised": 0.953961858609794
+        },
+        "R_upper_middle": {
+          "minimumDiameter": 0.0666546011498958,
+          "maximumDiameter": 0.07169171101331481,
+          "equivalentDiameter": 0.06894769162125117,
+          "area": 0.0037336133640806356,
+          "projectedMaterialEllipseArea": 0.0037198401756439623,
+          "contourPoints": 322,
+          "fitRms": 0.0014969427618925252,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 0.9164939110920562,
+          "minimumDiameterRatioToStraightRaised": 0.9676398899545867
+        },
+        "R_upper_distal": {
+          "minimumDiameter": 0.0677722692627511,
+          "maximumDiameter": 0.073260286895802,
+          "equivalentDiameter": 0.07014986229911133,
+          "area": 0.003864946860103895,
+          "projectedMaterialEllipseArea": 0.0038607463055433987,
+          "contourPoints": 274,
+          "fitRms": 0.0011089150536118307,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.8715068289878608,
+          "minimumDiameterRatioToStraightRaised": 0.9068173852241974
+        },
+        "R_elbow": {
+          "minimumDiameter": 0.06694337524912625,
+          "maximumDiameter": 0.07084202143027671,
+          "equivalentDiameter": 0.06868311275680689,
+          "area": 0.003705013716759382,
+          "projectedMaterialEllipseArea": 0.0036922169202172873,
+          "contourPoints": 278,
+          "fitRms": 0.0011114393601238956,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.8923892097296785,
+          "minimumDiameterRatioToStraightRaised": 0.92679700955051
+        },
+        "R_elbow_distal": {
+          "minimumDiameter": 0.06455449147918968,
+          "maximumDiameter": 0.06607168696979877,
+          "equivalentDiameter": 0.0654558632674363,
+          "area": 0.0033650148974728074,
+          "projectedMaterialEllipseArea": 0.0033702979939341203,
+          "contourPoints": 268,
+          "fitRms": 0.000760673087105085,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 0.9292945449179628,
+          "minimumDiameterRatioToStraightRaised": 0.9742532015341713
+        },
+        "R_forearm_proximal": {
+          "minimumDiameter": 0.06356039974952374,
+          "maximumDiameter": 0.06413715958426423,
+          "equivalentDiameter": 0.06388095273113804,
+          "area": 0.003205034071327643,
+          "projectedMaterialEllipseArea": 0.0032001458425957403,
+          "contourPoints": 266,
+          "fitRms": 0.0006344354924995212,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 0.9239491467793891,
+          "minimumDiameterRatioToStraightRaised": 0.9931579016263332
+        },
+        "R_forearm_middle": {
+          "minimumDiameter": 0.06296078190326618,
+          "maximumDiameter": 0.06549744905796637,
+          "equivalentDiameter": 0.06420674819503627,
+          "area": 0.0032378090445174517,
+          "projectedMaterialEllipseArea": 0.00323635942454671,
+          "contourPoints": 256,
+          "fitRms": 0.0005673673666433758,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 0.8981424730889701,
+          "minimumDiameterRatioToStraightRaised": 0.9614454062069535
+        },
+        "R_forearm_distal": {
+          "minimumDiameter": 0.06220474993276445,
+          "maximumDiameter": 0.0652202908623894,
+          "equivalentDiameter": 0.06368785718713713,
+          "area": 0.003185687382913372,
+          "projectedMaterialEllipseArea": 0.0031855563046506207,
+          "contourPoints": 258,
+          "fitRms": 0.0004663901468805354,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 0.9009081180636699,
+          "minimumDiameterRatioToStraightRaised": 0.9539511508962978
+        }
+      }
+    },
+    {
+      "name": "Lift90_Flex90",
+      "actualElbowDegrees": [
+        89.77078247070312,
+        89.77241516113281
+      ],
+      "shoulderProtractionDegrees": [
+        10.0,
+        10.0
+      ],
+      "sections": {
+        "L_upper_middle": {
+          "minimumDiameter": 0.06665698161276548,
+          "maximumDiameter": 0.06958040932627207,
+          "equivalentDiameter": 0.06800590946948816,
+          "area": 0.0036323123499389823,
+          "projectedMaterialEllipseArea": 0.0036618591734176443,
+          "contourPoints": 310,
+          "fitRms": 0.0010816425627068744,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 0.8916165168381974,
+          "minimumDiameterRatioToStraightRaised": 0.9676681005422042
+        },
+        "L_upper_distal": {
+          "minimumDiameter": 0.06722668344885636,
+          "maximumDiameter": 0.07194599742524913,
+          "equivalentDiameter": 0.06947392492242264,
+          "area": 0.0037908233875428125,
+          "projectedMaterialEllipseArea": 0.0037912032509480617,
+          "contourPoints": 274,
+          "fitRms": 0.0005909865514910292,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.8547924366973934,
+          "minimumDiameterRatioToStraightRaised": 0.8995178130621208
+        },
+        "L_elbow": {
+          "minimumDiameter": 0.06282987311020115,
+          "maximumDiameter": 0.07069066266465046,
+          "equivalentDiameter": 0.06668327910906126,
+          "area": 0.003492398371637038,
+          "projectedMaterialEllipseArea": 0.0034857484987787755,
+          "contourPoints": 276,
+          "fitRms": 0.00031666978604566123,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.8411790895110176,
+          "minimumDiameterRatioToStraightRaised": 0.8698469133487651
+        },
+        "L_elbow_distal": {
+          "minimumDiameter": 0.05526244667487809,
+          "maximumDiameter": 0.06585794781312221,
+          "equivalentDiameter": 0.06040998026770795,
+          "area": 0.00286620513086871,
+          "projectedMaterialEllipseArea": 0.002836612118119826,
+          "contourPoints": 272,
+          "fitRms": 0.0004730188506656576,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 0.7915415940694984,
+          "minimumDiameterRatioToStraightRaised": 0.8340171983852979
+        },
+        "L_forearm_proximal": {
+          "minimumDiameter": 0.049607793204315215,
+          "maximumDiameter": 0.06403810496338623,
+          "equivalentDiameter": 0.0561445654764556,
+          "area": 0.002475741698075894,
+          "projectedMaterialEllipseArea": 0.002383116971409992,
+          "contourPoints": 278,
+          "fitRms": 0.0005464166911907291,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 0.7137085601969619,
+          "minimumDiameterRatioToStraightRaised": 0.7751420731127255
+        },
+        "L_forearm_middle": {
+          "minimumDiameter": 0.04602308929542763,
+          "maximumDiameter": 0.06549475113540257,
+          "equivalentDiameter": 0.054945843373286195,
+          "area": 0.00237115295113589,
+          "projectedMaterialEllipseArea": 0.0023811558354787433,
+          "contourPoints": 262,
+          "fitRms": 0.0005161206920742663,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 0.6577390976389125,
+          "minimumDiameterRatioToStraightRaised": 0.7027962398047407
+        },
+        "L_forearm_distal": {
+          "minimumDiameter": 0.05271064957664205,
+          "maximumDiameter": 0.06521680903483631,
+          "equivalentDiameter": 0.05866048003690995,
+          "area": 0.0027025958566786884,
+          "projectedMaterialEllipseArea": 0.002713772212239716,
+          "contourPoints": 258,
+          "fitRms": 0.00044246266646614304,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 0.7642905283584025,
+          "minimumDiameterRatioToStraightRaised": 0.808350425948886
+        },
+        "R_upper_middle": {
+          "minimumDiameter": 0.0666473471491725,
+          "maximumDiameter": 0.0695812298165732,
+          "equivalentDiameter": 0.06800387916265192,
+          "area": 0.003632095468830634,
+          "projectedMaterialEllipseArea": 0.0036617502822147746,
+          "contourPoints": 310,
+          "fitRms": 0.0010816586345670314,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 0.8915742089722258,
+          "minimumDiameterRatioToStraightRaised": 0.967534581988737
+        },
+        "R_upper_distal": {
+          "minimumDiameter": 0.06722598161808696,
+          "maximumDiameter": 0.07194637132250137,
+          "equivalentDiameter": 0.06947379696662156,
+          "area": 0.0037908094238176555,
+          "projectedMaterialEllipseArea": 0.0037911885254656753,
+          "contourPoints": 274,
+          "fitRms": 0.0005909727769638605,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.8547895792181257,
+          "minimumDiameterRatioToStraightRaised": 0.8995078596777821
+        },
+        "R_elbow": {
+          "minimumDiameter": 0.06282918151314454,
+          "maximumDiameter": 0.07069095208720948,
+          "equivalentDiameter": 0.06668305170322958,
+          "area": 0.0034923745518605455,
+          "projectedMaterialEllipseArea": 0.0034857275482298757,
+          "contourPoints": 276,
+          "fitRms": 0.0003166675755237987,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.841172963089808,
+          "minimumDiameterRatioToStraightRaised": 0.8698380881183395
+        },
+        "R_elbow_distal": {
+          "minimumDiameter": 0.055261800820255114,
+          "maximumDiameter": 0.06585782726875242,
+          "equivalentDiameter": 0.06040965619861159,
+          "area": 0.0028661743794593823,
+          "projectedMaterialEllipseArea": 0.0028365855742344052,
+          "contourPoints": 272,
+          "fitRms": 0.00047301217506293456,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 0.7915329639745688,
+          "minimumDiameterRatioToStraightRaised": 0.8340083724311145
+        },
+        "R_forearm_proximal": {
+          "minimumDiameter": 0.04960746095614907,
+          "maximumDiameter": 0.06403814787794099,
+          "equivalentDiameter": 0.056144274803821836,
+          "area": 0.0024757160632351595,
+          "projectedMaterialEllipseArea": 0.0023830755619619628,
+          "contourPoints": 278,
+          "fitRms": 0.0005464134130997729,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 0.7137009134341632,
+          "minimumDiameterRatioToStraightRaised": 0.775137381488675
+        },
+        "R_forearm_middle": {
+          "minimumDiameter": 0.04602236959823295,
+          "maximumDiameter": 0.06549465712024222,
+          "equivalentDiameter": 0.054945438830231424,
+          "area": 0.0023711180356675646,
+          "projectedMaterialEllipseArea": 0.0023811204540865644,
+          "contourPoints": 262,
+          "fitRms": 0.0005161165576208709,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 0.6577292815171913,
+          "minimumDiameterRatioToStraightRaised": 0.7027866315409307
+        },
+        "R_forearm_distal": {
+          "minimumDiameter": 0.05271040728205566,
+          "maximumDiameter": 0.06521673841848122,
+          "equivalentDiameter": 0.05866031544084869,
+          "area": 0.0027025806902153788,
+          "projectedMaterialEllipseArea": 0.0027137588942789527,
+          "contourPoints": 258,
+          "fitRms": 0.00044246721056494367,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 0.7642861934903672,
+          "minimumDiameterRatioToStraightRaised": 0.8083491010779624
+        }
+      }
+    },
+    {
+      "name": "Lift90_Flex120",
+      "actualElbowDegrees": [
+        120.21611022949219,
+        120.21746063232422
+      ],
+      "shoulderProtractionDegrees": [
+        10.0,
+        10.0
+      ],
+      "sections": {
+        "L_upper_middle": {
+          "minimumDiameter": 0.06485376376775205,
+          "maximumDiameter": 0.07134830624843266,
+          "equivalentDiameter": 0.06768916796322277,
+          "area": 0.0035985557301445705,
+          "projectedMaterialEllipseArea": 0.0036543882123506407,
+          "contourPoints": 308,
+          "fitRms": 0.0010889391336129245,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 0.8833303462499686,
+          "minimumDiameterRatioToStraightRaised": 0.9414905517734226
+        },
+        "L_upper_distal": {
+          "minimumDiameter": 0.06009089580215962,
+          "maximumDiameter": 0.07290279059489005,
+          "equivalentDiameter": 0.06612697586293638,
+          "area": 0.0034343709750916667,
+          "projectedMaterialEllipseArea": 0.003431231161304874,
+          "contourPoints": 276,
+          "fitRms": 0.000568003432199288,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.7744160131459709,
+          "minimumDiameterRatioToStraightRaised": 0.8040383431680642
+        },
+        "L_elbow": {
+          "minimumDiameter": 0.051686427773932994,
+          "maximumDiameter": 0.07149962071533142,
+          "equivalentDiameter": 0.06082142330676573,
+          "area": 0.0029053806476221555,
+          "projectedMaterialEllipseArea": 0.00290293321585685,
+          "contourPoints": 276,
+          "fitRms": 0.00021579150798614458,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.6997899975265859,
+          "minimumDiameterRatioToStraightRaised": 0.7155717087367449
+        },
+        "L_elbow_distal": {
+          "minimumDiameter": 0.04685381708850003,
+          "maximumDiameter": 0.06627119376374438,
+          "equivalentDiameter": 0.055081147369129356,
+          "area": 0.002382845245456786,
+          "projectedMaterialEllipseArea": 0.002117843962184638,
+          "contourPoints": 290,
+          "fitRms": 0.00038302528768790556,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 0.6580551767549626,
+          "minimumDiameterRatioToStraightRaised": 0.7071147155627487
+        },
+        "L_forearm_proximal": {
+          "minimumDiameter": 0.06295791424713727,
+          "maximumDiameter": 0.0748893444826113,
+          "equivalentDiameter": 0.06662187146111086,
+          "area": 0.0034859691370204746,
+          "projectedMaterialEllipseArea": 0.001518824091241468,
+          "contourPoints": 382,
+          "fitRms": 0.0004721079872752767,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 1.0049376377218735,
+          "minimumDiameterRatioToStraightRaised": 0.983743178564414
+        },
+        "L_forearm_middle": {
+          "minimumDiameter": 0.03482973809398213,
+          "maximumDiameter": 0.06549285633359428,
+          "equivalentDiameter": 0.0478675641044865,
+          "area": 0.0017995857125013516,
+          "projectedMaterialEllipseArea": 0.0018228928717514263,
+          "contourPoints": 258,
+          "fitRms": 0.0004762245254172236,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 0.4991908607572077,
+          "minimumDiameterRatioToStraightRaised": 0.5318680110478041
+        },
+        "L_forearm_distal": {
+          "minimumDiameter": 0.049181225992722025,
+          "maximumDiameter": 0.06521538585705035,
+          "equivalentDiameter": 0.056658676059298314,
+          "area": 0.0025212895609994864,
+          "projectedMaterialEllipseArea": 0.0025303241969035213,
+          "contourPoints": 250,
+          "fitRms": 0.00042459671828839666,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 0.7130173481021224,
+          "minimumDiameterRatioToStraightRaised": 0.754224531460193
+        },
+        "R_upper_middle": {
+          "minimumDiameter": 0.06485291331609366,
+          "maximumDiameter": 0.07134904672757997,
+          "equivalentDiameter": 0.0676875829617793,
+          "area": 0.0035983872054183986,
+          "projectedMaterialEllipseArea": 0.0036543215729019493,
+          "contourPoints": 308,
+          "fitRms": 0.0010888690424854174,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 0.8832998068962069,
+          "minimumDiameterRatioToStraightRaised": 0.9414843810001153
+        },
+        "R_upper_distal": {
+          "minimumDiameter": 0.06009083190763131,
+          "maximumDiameter": 0.07290298413339147,
+          "equivalentDiameter": 0.06612698366813843,
+          "area": 0.003434371785833747,
+          "projectedMaterialEllipseArea": 0.0034312326974268513,
+          "contourPoints": 276,
+          "fitRms": 0.0005680109740762958,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.7744164597794463,
+          "minimumDiameterRatioToStraightRaised": 0.8040369853215833
+        },
+        "R_elbow": {
+          "minimumDiameter": 0.051686073315138734,
+          "maximumDiameter": 0.0714995704058905,
+          "equivalentDiameter": 0.0608212176766792,
+          "area": 0.0029053610021541098,
+          "projectedMaterialEllipseArea": 0.0029029231291348868,
+          "contourPoints": 276,
+          "fitRms": 0.0002157903622523223,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.6997849419460365,
+          "minimumDiameterRatioToStraightRaised": 0.7155674180695606
+        },
+        "R_elbow_distal": {
+          "minimumDiameter": 0.04685365267639795,
+          "maximumDiameter": 0.06627097711173012,
+          "equivalentDiameter": 0.055080935039132944,
+          "area": 0.0023828268744325283,
+          "projectedMaterialEllipseArea": 0.0021178214860766765,
+          "contourPoints": 290,
+          "fitRms": 0.0003830174738906666,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 0.6580499888892282,
+          "minimumDiameterRatioToStraightRaised": 0.7071130153393903
+        },
+        "R_forearm_proximal": {
+          "minimumDiameter": 0.06295971012451085,
+          "maximumDiameter": 0.07489449319266475,
+          "equivalentDiameter": 0.06662464999284193,
+          "area": 0.0034862599147373976,
+          "projectedMaterialEllipseArea": 0.0015187780150261653,
+          "contourPoints": 382,
+          "fitRms": 0.000472101168279589,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 1.0050211018001738,
+          "minimumDiameterRatioToStraightRaised": 0.9837718743222651
+        },
+        "R_forearm_middle": {
+          "minimumDiameter": 0.03482928618178155,
+          "maximumDiameter": 0.06549276351868616,
+          "equivalentDiameter": 0.04786726496493683,
+          "area": 0.0017995632202108993,
+          "projectedMaterialEllipseArea": 0.0018228694613571354,
+          "contourPoints": 258,
+          "fitRms": 0.0004762186752336597,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 0.4991845222672941,
+          "minimumDiameterRatioToStraightRaised": 0.531862155911441
+        },
+        "R_forearm_distal": {
+          "minimumDiameter": 0.04918120050374036,
+          "maximumDiameter": 0.06521527979965569,
+          "equivalentDiameter": 0.05665859394070759,
+          "area": 0.0025212822525125986,
+          "projectedMaterialEllipseArea": 0.0025303174864603362,
+          "contourPoints": 250,
+          "fitRms": 0.00042459610631411106,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 0.7130152385326576,
+          "minimumDiameterRatioToStraightRaised": 0.7542263713577424
+        }
+      }
+    },
+    {
+      "name": "Punch2",
+      "actualElbowDegrees": [
+        73.31149291992188,
+        30.603172302246094
+      ],
+      "shoulderProtractionDegrees": [
+        -3.9841766357421875,
+        0.1023939698934555
+      ],
+      "sections": {
+        "L_upper_middle": {
+          "minimumDiameter": 0.06823315898229701,
+          "maximumDiameter": 0.07611787801491116,
+          "equivalentDiameter": 0.07315431342786408,
+          "area": 0.0042031003476375,
+          "projectedMaterialEllipseArea": 0.004227032913864243,
+          "contourPoints": 325,
+          "fitRms": 0.0018089401756507626,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 1.0317267158879986,
+          "minimumDiameterRatioToStraightRaised": 0.9905496731005405
+        },
+        "L_upper_distal": {
+          "minimumDiameter": 0.07478666929496283,
+          "maximumDiameter": 0.07564209320762946,
+          "equivalentDiameter": 0.07528234835601195,
+          "area": 0.004451190663556382,
+          "projectedMaterialEllipseArea": 0.004441888197143723,
+          "contourPoints": 276,
+          "fitRms": 0.0009264593398231426,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 1.0036985964604177,
+          "minimumDiameterRatioToStraightRaised": 1.0006732112790169
+        },
+        "L_elbow": {
+          "minimumDiameter": 0.07168811385825494,
+          "maximumDiameter": 0.07230164404770414,
+          "equivalentDiameter": 0.07199492829373362,
+          "area": 0.00407093050278923,
+          "projectedMaterialEllipseArea": 0.004070389058597193,
+          "contourPoints": 274,
+          "fitRms": 0.00028108340505184504,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.9805243415554904,
+          "minimumDiameterRatioToStraightRaised": 0.9924846490462418
+        },
+        "L_elbow_distal": {
+          "minimumDiameter": 0.06310345281170904,
+          "maximumDiameter": 0.0663268089638398,
+          "equivalentDiameter": 0.06474038402745352,
+          "area": 0.003291852928502912,
+          "projectedMaterialEllipseArea": 0.003281425558230235,
+          "contourPoints": 268,
+          "fitRms": 0.00043061611437242926,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 0.909090032114975,
+          "minimumDiameterRatioToStraightRaised": 0.9523531455654016
+        },
+        "L_forearm_proximal": {
+          "minimumDiameter": 0.05591827258810073,
+          "maximumDiameter": 0.06406810154270487,
+          "equivalentDiameter": 0.05987319371287988,
+          "area": 0.002815494806301894,
+          "projectedMaterialEllipseArea": 0.0027719291853091094,
+          "contourPoints": 272,
+          "fitRms": 0.0005855441147993186,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 0.8116528254984982,
+          "minimumDiameterRatioToStraightRaised": 0.8737458963413937
+        },
+        "L_forearm_middle": {
+          "minimumDiameter": 0.05256515552310233,
+          "maximumDiameter": 0.06551326657821512,
+          "equivalentDiameter": 0.05869210829322197,
+          "area": 0.002705510985852874,
+          "projectedMaterialEllipseArea": 0.0027074271463714207,
+          "contourPoints": 262,
+          "fitRms": 0.000536902601620249,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 0.7504873751963418,
+          "minimumDiameterRatioToStraightRaised": 0.8026969552010917
+        },
+        "L_forearm_distal": {
+          "minimumDiameter": 0.05557543659805593,
+          "maximumDiameter": 0.06524622499526186,
+          "equivalentDiameter": 0.06023487221301606,
+          "area": 0.0028496128992546,
+          "projectedMaterialEllipseArea": 0.002856707355628175,
+          "contourPoints": 258,
+          "fitRms": 0.00045197863008363773,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 0.8058667532572746,
+          "minimumDiameterRatioToStraightRaised": 0.8522837075079684
+        },
+        "R_upper_middle": {
+          "minimumDiameter": 0.07355093009450868,
+          "maximumDiameter": 0.07570178893162752,
+          "equivalentDiameter": 0.07460977787567265,
+          "area": 0.004372012303321198,
+          "projectedMaterialEllipseArea": 0.00440942492807292,
+          "contourPoints": 319,
+          "fitRms": 0.0016712162717741606,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 1.0732023550596268,
+          "minimumDiameterRatioToStraightRaised": 1.0677554538606542
+        },
+        "R_upper_distal": {
+          "minimumDiameter": 0.07457157795734991,
+          "maximumDiameter": 0.07587702463888685,
+          "equivalentDiameter": 0.07526372575595244,
+          "area": 0.0044489887532086336,
+          "projectedMaterialEllipseArea": 0.004443427131580913,
+          "contourPoints": 276,
+          "fitRms": 0.0007762651676884927,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 1.0032024296466744,
+          "minimumDiameterRatioToStraightRaised": 0.9977945857641983
+        },
+        "R_elbow": {
+          "minimumDiameter": 0.07313727079727701,
+          "maximumDiameter": 0.07438783242019158,
+          "equivalentDiameter": 0.0737991561192536,
+          "area": 0.004277526146933186,
+          "projectedMaterialEllipseArea": 0.004275541457570413,
+          "contourPoints": 274,
+          "fitRms": 0.0002762750511343083,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 1.0302844927652526,
+          "minimumDiameterRatioToStraightRaised": 1.0125483456630295
+        },
+        "R_elbow_distal": {
+          "minimumDiameter": 0.06819938428748232,
+          "maximumDiameter": 0.0705976624987723,
+          "equivalentDiameter": 0.06942103887884782,
+          "area": 0.0037850541627820113,
+          "projectedMaterialEllipseArea": 0.003787963080155666,
+          "contourPoints": 266,
+          "fitRms": 0.0004813558762962241,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 1.04529409017892,
+          "minimumDiameterRatioToStraightRaised": 1.0292617440284255
+        },
+        "R_forearm_proximal": {
+          "minimumDiameter": 0.06475485966878194,
+          "maximumDiameter": 0.06725697913445439,
+          "equivalentDiameter": 0.06606122954797397,
+          "area": 0.003427545168099417,
+          "projectedMaterialEllipseArea": 0.0034241055688480973,
+          "contourPoints": 263,
+          "fitRms": 0.0006425309328934658,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 0.9880947793798139,
+          "minimumDiameterRatioToStraightRaised": 1.0118218387894429
+        },
+        "R_forearm_middle": {
+          "minimumDiameter": 0.06546925285003927,
+          "maximumDiameter": 0.06655186941773814,
+          "equivalentDiameter": 0.06600313394948942,
+          "area": 0.003421519312032041,
+          "projectedMaterialEllipseArea": 0.0034215828419745437,
+          "contourPoints": 252,
+          "fitRms": 0.000577169453110857,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 0.9491022399340158,
+          "minimumDiameterRatioToStraightRaised": 0.9997511228050106
+        },
+        "R_forearm_distal": {
+          "minimumDiameter": 0.0651883578301522,
+          "maximumDiameter": 0.06534082345803,
+          "equivalentDiameter": 0.06525963188387397,
+          "area": 0.003344869055653299,
+          "projectedMaterialEllipseArea": 0.0033433640879421797,
+          "contourPoints": 254,
+          "fitRms": 0.0004710873585490414,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 0.9459244815610841,
+          "minimumDiameterRatioToStraightRaised": 0.999706759440866
+        }
+      }
+    },
+    {
+      "name": "Punch8",
+      "actualElbowDegrees": [
+        24.85329818725586,
+        98.3688735961914
+      ],
+      "shoulderProtractionDegrees": [
+        6.2431464195251465,
+        4.499693870544434
+      ],
+      "sections": {
+        "L_upper_middle": {
+          "minimumDiameter": 0.06583463568986198,
+          "maximumDiameter": 0.07568463631156275,
+          "equivalentDiameter": 0.07113906465353108,
+          "area": 0.003974716730017939,
+          "projectedMaterialEllipseArea": 0.003987068582214176,
+          "contourPoints": 325,
+          "fitRms": 0.002022734251486802,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 0.9756658417045653,
+          "minimumDiameterRatioToStraightRaised": 0.9557299974665578
+        },
+        "L_upper_distal": {
+          "minimumDiameter": 0.07477044097669719,
+          "maximumDiameter": 0.07545637392360108,
+          "equivalentDiameter": 0.07516338783454506,
+          "area": 0.0044371343115496426,
+          "projectedMaterialEllipseArea": 0.004430734424368428,
+          "contourPoints": 274,
+          "fitRms": 0.000941180997410472,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 1.0005290308661985,
+          "minimumDiameterRatioToStraightRaised": 1.0004560703967496
+        },
+        "L_elbow": {
+          "minimumDiameter": 0.07219944570973197,
+          "maximumDiameter": 0.07293170851118846,
+          "equivalentDiameter": 0.07256506206767516,
+          "area": 0.004135661867131865,
+          "projectedMaterialEllipseArea": 0.004136174420969836,
+          "contourPoints": 274,
+          "fitRms": 0.00028611501927983536,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.9961155382994691,
+          "minimumDiameterRatioToStraightRaised": 0.9995637725696027
+        },
+        "L_elbow_distal": {
+          "minimumDiameter": 0.06623850748412516,
+          "maximumDiameter": 0.06861314169918818,
+          "equivalentDiameter": 0.06743721739791365,
+          "area": 0.00357181671679811,
+          "projectedMaterialEllipseArea": 0.003577479992249222,
+          "contourPoints": 268,
+          "fitRms": 0.0004726343208871367,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 0.9864058462841274,
+          "minimumDiameterRatioToStraightRaised": 0.9996671837956679
+        },
+        "L_forearm_proximal": {
+          "minimumDiameter": 0.06397051711149944,
+          "maximumDiameter": 0.06723312743422319,
+          "equivalentDiameter": 0.0656830754926265,
+          "area": 0.003388416911813285,
+          "projectedMaterialEllipseArea": 0.0033884128703503187,
+          "contourPoints": 256,
+          "fitRms": 0.000656523937740647,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 0.9768152135405692,
+          "minimumDiameterRatioToStraightRaised": 0.9995655127748642
+        },
+        "L_forearm_middle": {
+          "minimumDiameter": 0.06544477353060862,
+          "maximumDiameter": 0.06771970599690896,
+          "equivalentDiameter": 0.06657126680847338,
+          "area": 0.0034806754022133064,
+          "projectedMaterialEllipseArea": 0.0034812004905204184,
+          "contourPoints": 250,
+          "fitRms": 0.0005801656983501852,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 0.9655118608561389,
+          "minimumDiameterRatioToStraightRaised": 0.9993753452086078
+        },
+        "L_forearm_distal": {
+          "minimumDiameter": 0.0651849124366764,
+          "maximumDiameter": 0.06648917307076939,
+          "equivalentDiameter": 0.065828108787491,
+          "area": 0.003403397203971619,
+          "projectedMaterialEllipseArea": 0.0034013268011870157,
+          "contourPoints": 254,
+          "fitRms": 0.0004725071008659339,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 0.9624762210779313,
+          "minimumDiameterRatioToStraightRaised": 0.9996509653521325
+        },
+        "R_upper_middle": {
+          "minimumDiameter": 0.07144464495801342,
+          "maximumDiameter": 0.07461656717642287,
+          "equivalentDiameter": 0.07259595791132001,
+          "area": 0.004139184277502437,
+          "projectedMaterialEllipseArea": 0.004164181503044482,
+          "contourPoints": 319,
+          "fitRms": 0.001062920800302753,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 1.0160498201862087,
+          "minimumDiameterRatioToStraightRaised": 1.0371780371102663
+        },
+        "R_upper_distal": {
+          "minimumDiameter": 0.06792157588512876,
+          "maximumDiameter": 0.07270463019279588,
+          "equivalentDiameter": 0.07018280207537637,
+          "area": 0.0038685773839800103,
+          "projectedMaterialEllipseArea": 0.003868075580309916,
+          "contourPoints": 276,
+          "fitRms": 0.0006480556827514049,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.8723254757805241,
+          "minimumDiameterRatioToStraightRaised": 0.9088151616359073
+        },
+        "R_elbow": {
+          "minimumDiameter": 0.06187645814464893,
+          "maximumDiameter": 0.07181399376969258,
+          "equivalentDiameter": 0.06670451547639575,
+          "area": 0.0034946231471833736,
+          "projectedMaterialEllipseArea": 0.0034932462889447173,
+          "contourPoints": 278,
+          "fitRms": 0.0002420314321227124,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.8417145595200894,
+          "minimumDiameterRatioToStraightRaised": 0.8566481172576733
+        },
+        "R_elbow_distal": {
+          "minimumDiameter": 0.053741099620782634,
+          "maximumDiameter": 0.0662933054457081,
+          "equivalentDiameter": 0.05961242088751267,
+          "area": 0.002791022898058922,
+          "projectedMaterialEllipseArea": 0.0027293397074163767,
+          "contourPoints": 274,
+          "fitRms": 0.00039565269811144796,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 0.7707788621842911,
+          "minimumDiameterRatioToStraightRaised": 0.811058024930654
+        },
+        "R_forearm_proximal": {
+          "minimumDiameter": 0.05111952762918223,
+          "maximumDiameter": 0.06405520830657874,
+          "equivalentDiameter": 0.05563597111535393,
+          "area": 0.0024310910658939203,
+          "projectedMaterialEllipseArea": 0.002178480183047084,
+          "contourPoints": 292,
+          "fitRms": 0.0005262110808338836,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 0.7008363924022882,
+          "minimumDiameterRatioToStraightRaised": 0.7987640573753378
+        },
+        "R_forearm_middle": {
+          "minimumDiameter": 0.04261263228460483,
+          "maximumDiameter": 0.06549440847043325,
+          "equivalentDiameter": 0.052892912525579205,
+          "area": 0.002197277179307602,
+          "projectedMaterialEllipseArea": 0.002212477731621144,
+          "contourPoints": 262,
+          "fitRms": 0.0005046856011142116,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 0.6095072108180495,
+          "minimumDiameterRatioToStraightRaised": 0.6507180870047942
+        },
+        "R_forearm_distal": {
+          "minimumDiameter": 0.05147558853798484,
+          "maximumDiameter": 0.06521690211532014,
+          "equivalentDiameter": 0.05797263715945412,
+          "area": 0.002639587085649921,
+          "projectedMaterialEllipseArea": 0.002651270603549852,
+          "contourPoints": 254,
+          "fitRms": 0.0004372735798226699,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 0.7464716866296176,
+          "minimumDiameterRatioToStraightRaised": 0.7894123355845251
+        }
+      }
+    },
+    {
+      "name": "Punch18",
+      "actualElbowDegrees": [
+        70.68754577636719,
+        99.26289367675781
+      ],
+      "shoulderProtractionDegrees": [
+        10.282665252685547,
+        6.725456714630127
+      ],
+      "sections": {
+        "L_upper_middle": {
+          "minimumDiameter": 0.06391490012193132,
+          "maximumDiameter": 0.0754172548240366,
+          "equivalentDiameter": 0.06851042623871285,
+          "area": 0.0036864064761563883,
+          "projectedMaterialEllipseArea": 0.003652220849840364,
+          "contourPoints": 319,
+          "fitRms": 0.0023396451367996974,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 0.9048948948389715,
+          "minimumDiameterRatioToStraightRaised": 0.9278609457090896
+        },
+        "L_upper_distal": {
+          "minimumDiameter": 0.06886616647121495,
+          "maximumDiameter": 0.07534617723629203,
+          "equivalentDiameter": 0.07273522904558591,
+          "area": 0.004155081081317078,
+          "projectedMaterialEllipseArea": 0.004175041454873928,
+          "contourPoints": 280,
+          "fitRms": 0.0010869403799123208,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.9369288724570402,
+          "minimumDiameterRatioToStraightRaised": 0.9214547004283762
+        },
+        "L_elbow": {
+          "minimumDiameter": 0.07160256048452433,
+          "maximumDiameter": 0.07230826688142682,
+          "equivalentDiameter": 0.07197640911108588,
+          "area": 0.00406883644947109,
+          "projectedMaterialEllipseArea": 0.004065599786938427,
+          "contourPoints": 274,
+          "fitRms": 0.00029100666536154517,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.9800199678626591,
+          "minimumDiameterRatioToStraightRaised": 0.9913002070860358
+        },
+        "L_elbow_distal": {
+          "minimumDiameter": 0.06314135341120525,
+          "maximumDiameter": 0.06629397016442964,
+          "equivalentDiameter": 0.0647563869889356,
+          "area": 0.00329348053412292,
+          "projectedMaterialEllipseArea": 0.0032942758821180754,
+          "contourPoints": 266,
+          "fitRms": 0.00043246959579416465,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 0.9095395175803042,
+          "minimumDiameterRatioToStraightRaised": 0.9529251389118946
+        },
+        "L_forearm_proximal": {
+          "minimumDiameter": 0.05664306163078081,
+          "maximumDiameter": 0.06402250163580486,
+          "equivalentDiameter": 0.06030714511136361,
+          "area": 0.0028564552259799343,
+          "projectedMaterialEllipseArea": 0.0028264192598393056,
+          "contourPoints": 270,
+          "fitRms": 0.000590587866554104,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 0.8234609241285763,
+          "minimumDiameterRatioToStraightRaised": 0.8850710217868761
+        },
+        "L_forearm_middle": {
+          "minimumDiameter": 0.0536765018111858,
+          "maximumDiameter": 0.06549381247640258,
+          "equivalentDiameter": 0.059298097403715576,
+          "area": 0.002761667566987116,
+          "projectedMaterialEllipseArea": 0.0027624327615962505,
+          "contourPoints": 262,
+          "fitRms": 0.0005402586269383101,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 0.7660647671920915,
+          "minimumDiameterRatioToStraightRaised": 0.8196677845031486
+        },
+        "L_forearm_distal": {
+          "minimumDiameter": 0.056157493790603044,
+          "maximumDiameter": 0.06521643141969066,
+          "equivalentDiameter": 0.06053835910208826,
+          "area": 0.0028784001705945287,
+          "projectedMaterialEllipseArea": 0.0028854638314324407,
+          "contourPoints": 258,
+          "fitRms": 0.0004535969378887965,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 0.8140077554600345,
+          "minimumDiameterRatioToStraightRaised": 0.8612099147033085
+        },
+        "R_upper_middle": {
+          "minimumDiameter": 0.07340417960762102,
+          "maximumDiameter": 0.07544413120089877,
+          "equivalentDiameter": 0.07421385890675611,
+          "area": 0.00432573499354948,
+          "projectedMaterialEllipseArea": 0.004363974359133959,
+          "contourPoints": 317,
+          "fitRms": 0.0013332445278294513,
+          "vertices": 567,
+          "areaRatioToStraightRaised": 1.0618426162512289,
+          "minimumDiameterRatioToStraightRaised": 1.0656250439184596
+        },
+        "R_upper_distal": {
+          "minimumDiameter": 0.0689921713352047,
+          "maximumDiameter": 0.07355393471285766,
+          "equivalentDiameter": 0.07128323706060782,
+          "area": 0.0039908435980094675,
+          "projectedMaterialEllipseArea": 0.003985160435036322,
+          "contourPoints": 276,
+          "fitRms": 0.0006892591255765681,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.8998952831641885,
+          "minimumDiameterRatioToStraightRaised": 0.923140114558863
+        },
+        "R_elbow": {
+          "minimumDiameter": 0.06288644933816445,
+          "maximumDiameter": 0.07198228661299524,
+          "equivalentDiameter": 0.06731449808873477,
+          "area": 0.0035588288721277407,
+          "projectedMaterialEllipseArea": 0.003559385636598154,
+          "contourPoints": 276,
+          "fitRms": 0.00024036021577552213,
+          "vertices": 408,
+          "areaRatioToStraightRaised": 0.8571791436008577,
+          "minimumDiameterRatioToStraightRaised": 0.870630932052103
+        },
+        "R_elbow_distal": {
+          "minimumDiameter": 0.05466287510484448,
+          "maximumDiameter": 0.06628600831483107,
+          "equivalentDiameter": 0.06004874107858969,
+          "area": 0.002832028992528293,
+          "projectedMaterialEllipseArea": 0.002755726765478795,
+          "contourPoints": 276,
+          "fitRms": 0.0003950969187811081,
+          "vertices": 396,
+          "areaRatioToStraightRaised": 0.7821032518407518,
+          "minimumDiameterRatioToStraightRaised": 0.8249694150735454
+        },
+        "R_forearm_proximal": {
+          "minimumDiameter": 0.056078404018223685,
+          "maximumDiameter": 0.06405608250889035,
+          "equivalentDiameter": 0.05721610712719311,
+          "area": 0.0025711445488220156,
+          "projectedMaterialEllipseArea": 0.00216465818338685,
+          "contourPoints": 306,
+          "fitRms": 0.000524689200995784,
+          "vertices": 372,
+          "areaRatioToStraightRaised": 0.7412110945661539,
+          "minimumDiameterRatioToStraightRaised": 0.87624858057489
+        },
+        "R_forearm_middle": {
+          "minimumDiameter": 0.04226599910294464,
+          "maximumDiameter": 0.06549031325517331,
+          "equivalentDiameter": 0.05267856321209287,
+          "area": 0.0021795042681207943,
+          "projectedMaterialEllipseArea": 0.0021951969310272084,
+          "contourPoints": 262,
+          "fitRms": 0.0005034720123369945,
+          "vertices": 360,
+          "areaRatioToStraightRaised": 0.6045771466333382,
+          "minimumDiameterRatioToStraightRaised": 0.6454248096649713
+        },
+        "R_forearm_distal": {
+          "minimumDiameter": 0.051359203705141,
+          "maximumDiameter": 0.06521290235710696,
+          "equivalentDiameter": 0.05790623101352515,
+          "area": 0.0026335433925665595,
+          "projectedMaterialEllipseArea": 0.002645205472076711,
+          "contourPoints": 254,
+          "fitRms": 0.0004367213165004383,
+          "vertices": 285,
+          "areaRatioToStraightRaised": 0.7447625383336833,
+          "minimumDiameterRatioToStraightRaised": 0.7876274968807563
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Cross-sectional area is a local proxy, not whole-arm volume.",
+    "Requested joint targets are constrained by physics; actual elbow angles are recorded.",
+    "Shoulder creasing is assessed in the actual rendered views, not inferred from section area."
+  ]
+}

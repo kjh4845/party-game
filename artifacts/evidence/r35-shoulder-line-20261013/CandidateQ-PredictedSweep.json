@@ -1,0 +1,653 @@
+{
+  "candidate": ".codex_tmp/shoulder-line-20261013/ModelCandidateQ/ShoulderLineCharacter.bytes",
+  "scope": "15 recorded palette/key-weight samples including source worst; predicted geometry, not a new Unity simulation or continuous sweep.",
+  "maxBaselineReconstructionErrorMeters": 4.670477319558928e-07,
+  "maximumPredictedShoulderAngle": 111.26477454401213,
+  "poses": [
+    {
+      "pose": "SweepWorst",
+      "baselineReconstructionMaxErrorMeters": 4.091371865084496e-07,
+      "referenceKernelMaxWeightError": 3.7103891372680664e-06,
+      "r34": {
+        "maximumDegrees": 64.04358958173937,
+        "p95Degrees": 3.2711972391412054,
+        "p99Degrees": 7.041250373032308,
+        "edgesOver15Degrees": 446,
+        "edgesOver30Degrees": 84,
+        "edgesOver60Degrees": 8,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          210878,
+          39060,
+          57308
+        ],
+        "worstPosition": [
+          -0.1399295578400294,
+          0.5043844183286031,
+          0.10884459565083186
+        ]
+      },
+      "candidatePredicted": {
+        "maximumDegrees": 93.24333548364054,
+        "p95Degrees": 2.8019405433322815,
+        "p99Degrees": 5.020679228441752,
+        "edgesOver15Degrees": 148,
+        "edgesOver30Degrees": 60,
+        "edgesOver60Degrees": 14,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          125954,
+          168279,
+          10972
+        ],
+        "worstPosition": [
+          0.1530233684255116,
+          0.4980219063055749,
+          0.101034451775876
+        ]
+      }
+    },
+    {
+      "pose": "Sweep_0000",
+      "baselineReconstructionMaxErrorMeters": 2.8376499185872035e-07,
+      "referenceKernelMaxWeightError": 3.198463716103106e-10,
+      "r34": {
+        "maximumDegrees": 16.561317868213084,
+        "p95Degrees": 3.4986674954134402,
+        "p99Degrees": 6.954028343631639,
+        "edgesOver15Degrees": 38,
+        "edgesOver30Degrees": 0,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          206969,
+          71093,
+          34772
+        ],
+        "worstPosition": [
+          -0.15456725160280863,
+          0.5389142036437988,
+          0.0060755969025194645
+        ]
+      },
+      "candidatePredicted": {
+        "maximumDegrees": 19.710673378429885,
+        "p95Degrees": 3.0251444710811,
+        "p99Degrees": 5.547790796207783,
+        "edgesOver15Degrees": 2,
+        "edgesOver30Degrees": 0,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          206969,
+          71093,
+          34772
+        ],
+        "worstPosition": [
+          -0.1545674397093453,
+          0.5389237719237839,
+          0.010928387155703807
+        ]
+      }
+    },
+    {
+      "pose": "Sweep_0030",
+      "baselineReconstructionMaxErrorMeters": 4.433263258371869e-07,
+      "referenceKernelMaxWeightError": 4.00543212890625e-05,
+      "r34": {
+        "maximumDegrees": 21.880149769757118,
+        "p95Degrees": 3.2886733690453545,
+        "p99Degrees": 7.968206449277417,
+        "edgesOver15Degrees": 155,
+        "edgesOver30Degrees": 0,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          72128,
+          30984,
+          72127
+        ],
+        "worstPosition": [
+          -0.14993001520633698,
+          0.5178190668423971,
+          0.10629331817229588
+        ]
+      },
+      "candidatePredicted": {
+        "maximumDegrees": 21.880169717667336,
+        "p95Degrees": 2.7287844996745116,
+        "p99Degrees": 5.584387083515453,
+        "edgesOver15Degrees": 38,
+        "edgesOver30Degrees": 0,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          167960,
+          182474,
+          139662
+        ],
+        "worstPosition": [
+          0.14546370049568863,
+          0.46454026495090517,
+          0.0936123079648608
+        ]
+      }
+    },
+    {
+      "pose": "Sweep_0060",
+      "baselineReconstructionMaxErrorMeters": 4.5333370276388076e-07,
+      "referenceKernelMaxWeightError": 2.9206275939941406e-06,
+      "r34": {
+        "maximumDegrees": 36.2479761252243,
+        "p95Degrees": 3.117380924382662,
+        "p99Degrees": 8.002515397223304,
+        "edgesOver15Degrees": 482,
+        "edgesOver30Degrees": 82,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          30985,
+          72128,
+          202133
+        ],
+        "worstPosition": [
+          -0.14798700312773386,
+          0.514190673828125,
+          0.12270161509513855
+        ]
+      },
+      "candidatePredicted": {
+        "maximumDegrees": 25.9625260596384,
+        "p95Degrees": 3.1477861326245073,
+        "p99Degrees": 6.355537868311081,
+        "edgesOver15Degrees": 122,
+        "edgesOver30Degrees": 0,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          69520,
+          10956,
+          66400
+        ],
+        "worstPosition": [
+          0.1505813531289035,
+          0.48774238442463264,
+          0.09372144859095725
+        ]
+      }
+    },
+    {
+      "pose": "Sweep_0090",
+      "baselineReconstructionMaxErrorMeters": 4.250375375330032e-07,
+      "referenceKernelMaxWeightError": 2.7835369110107422e-05,
+      "r34": {
+        "maximumDegrees": 43.2012316741129,
+        "p95Degrees": 3.2169184427247672,
+        "p99Degrees": 7.713471969787987,
+        "edgesOver15Degrees": 553,
+        "edgesOver30Degrees": 78,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          109576,
+          10839,
+          124292
+        ],
+        "worstPosition": [
+          0.14071141183376312,
+          0.5016768177350363,
+          0.10963047792514165
+        ]
+      },
+      "candidatePredicted": {
+        "maximumDegrees": 36.25064131614243,
+        "p95Degrees": 2.7790220834057755,
+        "p99Degrees": 4.646372282994576,
+        "edgesOver15Degrees": 74,
+        "edgesOver30Degrees": 14,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          139982,
+          181129,
+          69520
+        ],
+        "worstPosition": [
+          0.15161627662183397,
+          0.4945681938763998,
+          0.09733100872186169
+        ]
+      }
+    },
+    {
+      "pose": "Sweep_0120",
+      "baselineReconstructionMaxErrorMeters": 4.328150430264266e-07,
+      "referenceKernelMaxWeightError": 3.2782554626464844e-06,
+      "r34": {
+        "maximumDegrees": 35.925427372755536,
+        "p95Degrees": 3.13126690106958,
+        "p99Degrees": 7.954583804455777,
+        "edgesOver15Degrees": 502,
+        "edgesOver30Degrees": 76,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          180555,
+          95470,
+          10839
+        ],
+        "worstPosition": [
+          0.14094936847686768,
+          0.5027827223141988,
+          0.10915212581555049
+        ]
+      },
+      "candidatePredicted": {
+        "maximumDegrees": 26.86415465972937,
+        "p95Degrees": 3.1434873707577853,
+        "p99Degrees": 6.313435782805299,
+        "edgesOver15Degrees": 132,
+        "edgesOver30Degrees": 0,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          39177,
+          99885,
+          210586
+        ],
+        "worstPosition": [
+          -0.1504278600795886,
+          0.4909046623274141,
+          0.09438980897415805
+        ]
+      }
+    },
+    {
+      "pose": "Sweep_0150",
+      "baselineReconstructionMaxErrorMeters": 4.3024764870240045e-07,
+      "referenceKernelMaxWeightError": 1.71661376953125e-05,
+      "r34": {
+        "maximumDegrees": 23.56410611028195,
+        "p95Degrees": 3.306811715382478,
+        "p99Degrees": 8.121871956467208,
+        "edgesOver15Degrees": 192,
+        "edgesOver30Degrees": 0,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          72128,
+          30984,
+          72127
+        ],
+        "worstPosition": [
+          -0.14979509512583414,
+          0.5104363163312277,
+          0.1167426457007726
+        ]
+      },
+      "candidatePredicted": {
+        "maximumDegrees": 22.87169535028973,
+        "p95Degrees": 2.82514624235322,
+        "p99Degrees": 5.795941983408996,
+        "edgesOver15Degrees": 50,
+        "edgesOver30Degrees": 0,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          128551,
+          128550,
+          209708
+        ],
+        "worstPosition": [
+          -0.14499632215722333,
+          0.45864362921998736,
+          0.10092215635457143
+        ]
+      }
+    },
+    {
+      "pose": "Sweep_0180",
+      "baselineReconstructionMaxErrorMeters": 2.8379294104283483e-07,
+      "referenceKernelMaxWeightError": 3.198383780045333e-10,
+      "r34": {
+        "maximumDegrees": 16.561328447322335,
+        "p95Degrees": 3.4986917949891763,
+        "p99Degrees": 6.954240404040155,
+        "edgesOver15Degrees": 38,
+        "edgesOver30Degrees": 0,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          206969,
+          71093,
+          34772
+        ],
+        "worstPosition": [
+          -0.15456725160280863,
+          0.5389142036437988,
+          0.006075597368180752
+        ]
+      },
+      "candidatePredicted": {
+        "maximumDegrees": 19.71067336587455,
+        "p95Degrees": 3.0251444988695386,
+        "p99Degrees": 5.5477907393960795,
+        "edgesOver15Degrees": 2,
+        "edgesOver30Degrees": 0,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          206969,
+          71093,
+          34772
+        ],
+        "worstPosition": [
+          -0.15456743959725555,
+          0.5389237719209775,
+          0.010928386620574998
+        ]
+      }
+    },
+    {
+      "pose": "Sweep_0210",
+      "baselineReconstructionMaxErrorMeters": 4.2186221767507985e-07,
+      "referenceKernelMaxWeightError": 4.082918167114258e-06,
+      "r34": {
+        "maximumDegrees": 23.170569368449346,
+        "p95Degrees": 3.1577660853633627,
+        "p99Degrees": 7.278371175093228,
+        "edgesOver15Degrees": 200,
+        "edgesOver30Degrees": 0,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          169535,
+          2698,
+          139664
+        ],
+        "worstPosition": [
+          0.14945088823636374,
+          0.5148909290631613,
+          0.112437571088473
+        ]
+      },
+      "candidatePredicted": {
+        "maximumDegrees": 26.441834038249105,
+        "p95Degrees": 2.7873468066429297,
+        "p99Degrees": 5.478051957622448,
+        "edgesOver15Degrees": 42,
+        "edgesOver30Degrees": 0,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          167960,
+          182474,
+          139662
+        ],
+        "worstPosition": [
+          0.14453174131159194,
+          0.4616214792762125,
+          0.097923185199026
+        ]
+      }
+    },
+    {
+      "pose": "Sweep_0240",
+      "baselineReconstructionMaxErrorMeters": 4.117583690880645e-07,
+      "referenceKernelMaxWeightError": 4.351139068603516e-06,
+      "r34": {
+        "maximumDegrees": 47.11336557428294,
+        "p95Degrees": 3.1201969036655983,
+        "p99Degrees": 7.066121582966708,
+        "edgesOver15Degrees": 420,
+        "edgesOver30Degrees": 54,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          57310,
+          156071,
+          39060
+        ],
+        "worstPosition": [
+          -0.14018298188845316,
+          0.4998803933461507,
+          0.10833265880743663
+        ]
+      },
+      "candidatePredicted": {
+        "maximumDegrees": 111.16410077850458,
+        "p95Degrees": 2.8597383807398997,
+        "p99Degrees": 5.603616527866029,
+        "edgesOver15Degrees": 142,
+        "edgesOver30Degrees": 48,
+        "edgesOver60Degrees": 14,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          168279,
+          80502,
+          181066
+        ],
+        "worstPosition": [
+          0.15209418020902965,
+          0.49174834432275855,
+          0.09627940487535232
+        ]
+      }
+    },
+    {
+      "pose": "Sweep_0270",
+      "baselineReconstructionMaxErrorMeters": 4.670477319558928e-07,
+      "referenceKernelMaxWeightError": 3.9637088775634766e-06,
+      "r34": {
+        "maximumDegrees": 64.02242906345727,
+        "p95Degrees": 3.2719176637537637,
+        "p99Degrees": 7.056182640444031,
+        "edgesOver15Degrees": 442,
+        "edgesOver30Degrees": 84,
+        "edgesOver60Degrees": 8,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          210878,
+          39060,
+          57308
+        ],
+        "worstPosition": [
+          -0.13992775479952493,
+          0.5068531235059103,
+          0.10492632289727528
+        ]
+      },
+      "candidatePredicted": {
+        "maximumDegrees": 93.27534405527007,
+        "p95Degrees": 2.8066842340572826,
+        "p99Degrees": 5.024623007697631,
+        "edgesOver15Degrees": 146,
+        "edgesOver30Degrees": 60,
+        "edgesOver60Degrees": 14,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          113997,
+          113970,
+          39193
+        ],
+        "worstPosition": [
+          -0.1531339921540479,
+          0.5008208278475178,
+          0.09691712564555537
+        ]
+      }
+    },
+    {
+      "pose": "Sweep_0300",
+      "baselineReconstructionMaxErrorMeters": 4.059985960328137e-07,
+      "referenceKernelMaxWeightError": 2.4437904357910156e-06,
+      "r34": {
+        "maximumDegrees": 49.687004220020086,
+        "p95Degrees": 3.139547264409333,
+        "p99Degrees": 7.003508310493305,
+        "edgesOver15Degrees": 433,
+        "edgesOver30Degrees": 64,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          109576,
+          10839,
+          124292
+        ],
+        "worstPosition": [
+          0.1401733805735906,
+          0.5016890366872152,
+          0.10697053372859955
+        ]
+      },
+      "candidatePredicted": {
+        "maximumDegrees": 111.26477454401213,
+        "p95Degrees": 2.8411729231891916,
+        "p99Degrees": 5.516494456336325,
+        "edgesOver15Degrees": 146,
+        "edgesOver30Degrees": 50,
+        "edgesOver60Degrees": 14,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          113969,
+          210563,
+          99887
+        ],
+        "worstPosition": [
+          -0.1521829905598336,
+          0.4938786427688864,
+          0.09608304729049438
+        ]
+      }
+    },
+    {
+      "pose": "Sweep_0330",
+      "baselineReconstructionMaxErrorMeters": 4.279593084924409e-07,
+      "referenceKernelMaxWeightError": 4.991888999938965e-06,
+      "r34": {
+        "maximumDegrees": 23.798933791534065,
+        "p95Degrees": 3.1529358226633644,
+        "p99Degrees": 7.31029301507172,
+        "edgesOver15Degrees": 213,
+        "edgesOver30Degrees": 0,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          169535,
+          2698,
+          139664
+        ],
+        "worstPosition": [
+          0.14933069547017416,
+          0.5111348032951355,
+          0.1176599661509196
+        ]
+      },
+      "candidatePredicted": {
+        "maximumDegrees": 26.703743715802595,
+        "p95Degrees": 2.782318810745226,
+        "p99Degrees": 5.511654573309491,
+        "edgesOver15Degrees": 44,
+        "edgesOver30Degrees": 0,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          128551,
+          128550,
+          209708
+        ],
+        "worstPosition": [
+          -0.14444002566886924,
+          0.4588055593582885,
+          0.10129628633776226
+        ]
+      }
+    },
+    {
+      "pose": "Sweep_0360",
+      "baselineReconstructionMaxErrorMeters": 4.29209424863254e-07,
+      "referenceKernelMaxWeightError": 1.5920959413051605e-06,
+      "r34": {
+        "maximumDegrees": 17.361115303247406,
+        "p95Degrees": 3.5050239910552987,
+        "p99Degrees": 6.961488817862407,
+        "edgesOver15Degrees": 41,
+        "edgesOver30Degrees": 0,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          206969,
+          71093,
+          34772
+        ],
+        "worstPosition": [
+          -0.15447282791137695,
+          0.5394882361094157,
+          0.0022541695119192204
+        ]
+      },
+      "candidatePredicted": {
+        "maximumDegrees": 20.410447517440453,
+        "p95Degrees": 3.018927191757081,
+        "p99Degrees": 5.5678246012748165,
+        "edgesOver15Degrees": 4,
+        "edgesOver30Degrees": 0,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          206969,
+          71093,
+          34772
+        ],
+        "worstPosition": [
+          -0.1546569802589434,
+          0.5394528080860054,
+          0.0070918384843218565
+        ]
+      }
+    },
+    {
+      "pose": "Sweep_0390",
+      "baselineReconstructionMaxErrorMeters": 4.442962739583749e-07,
+      "referenceKernelMaxWeightError": 2.8312206268310547e-06,
+      "r34": {
+        "maximumDegrees": 21.10524585389479,
+        "p95Degrees": 3.179295035574464,
+        "p99Degrees": 7.703098725418049,
+        "edgesOver15Degrees": 180,
+        "edgesOver30Degrees": 0,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          169535,
+          2698,
+          139664
+        ],
+        "worstPosition": [
+          0.15135190884272257,
+          0.49412646889686584,
+          0.12520057956377664
+        ]
+      },
+      "candidatePredicted": {
+        "maximumDegrees": 26.160929016822397,
+        "p95Degrees": 2.8550602386752137,
+        "p99Degrees": 5.684471860928526,
+        "edgesOver15Degrees": 46,
+        "edgesOver30Degrees": 0,
+        "edgesOver60Degrees": 0,
+        "degenerateTriangles": 0,
+        "worstTriangleVertices": [
+          167960,
+          182474,
+          139662
+        ],
+        "worstPosition": [
+          0.14510724166345854,
+          0.4476122245673077,
+          0.10450620643908726
+        ]
+      }
+    }
+  ]
+}

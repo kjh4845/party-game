@@ -1,0 +1,92 @@
+[
+ {
+  "name": "Elbow30_L",
+  "maxDelta": 0.00886495762170081,
+  "vertices": 3008
+ },
+ {
+  "name": "Elbow45_L",
+  "maxDelta": 0.013450239695688208,
+  "vertices": 3008
+ },
+ {
+  "name": "Elbow60_L",
+  "maxDelta": 0.018011299945058467,
+  "vertices": 3008
+ },
+ {
+  "name": "Elbow75_L",
+  "maxDelta": 0.0223368833798591,
+  "vertices": 3008
+ },
+ {
+  "name": "Elbow90_L",
+  "maxDelta": 0.026107737614566685,
+  "vertices": 3008
+ },
+ {
+  "name": "Elbow105_L",
+  "maxDelta": 0.030350107862433116,
+  "vertices": 3008
+ },
+ {
+  "name": "Elbow120_L",
+  "maxDelta": 0.038684232147136455,
+  "vertices": 3008
+ },
+ {
+  "name": "Elbow135_L",
+  "maxDelta": 0.05293551347292321,
+  "vertices": 3008
+ },
+ {
+  "name": "Elbow150_L",
+  "maxDelta": 0.08070394232371098,
+  "vertices": 3008
+ },
+ {
+  "name": "Elbow30_R",
+  "maxDelta": 0.008864957621700817,
+  "vertices": 3008
+ },
+ {
+  "name": "Elbow45_R",
+  "maxDelta": 0.013450239695688223,
+  "vertices": 3008
+ },
+ {
+  "name": "Elbow60_R",
+  "maxDelta": 0.018011299945058474,
+  "vertices": 3008
+ },
+ {
+  "name": "Elbow75_R",
+  "maxDelta": 0.022336883379859108,
+  "vertices": 3008
+ },
+ {
+  "name": "Elbow90_R",
+  "maxDelta": 0.026107737614566782,
+  "vertices": 3008
+ },
+ {
+  "name": "Elbow105_R",
+  "maxDelta": 0.030350107862433116,
+  "vertices": 3008
+ },
+ {
+  "name": "Elbow120_R",
+  "maxDelta": 0.03868423214713635,
+  "vertices": 3008
+ },
+ {
+  "name": "Elbow135_R",
+  "maxDelta": 0.05293551347292321,
+  "vertices": 3008
+ },
+ {
+  "name": "Elbow150_R",
+  "maxDelta": 0.08070394232371096,
+  "vertices": 3008
+ }
+]

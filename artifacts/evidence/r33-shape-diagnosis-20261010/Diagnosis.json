@@ -1,0 +1,114 @@
+{
+  "modelSha256": "454d01d8c60af92451c0c5063947e68ec9ee1bf54497531477784688eaf3a17c",
+  "exportedMeshes": [
+    "CHR_C1B_R20_SkinnedBody",
+    "CHR_C1B_R20_SkinnedHead"
+  ],
+  "regionChanges": {
+    "torso": {
+      "vertices": 31846,
+      "changedFromR28": 5082,
+      "maximumDeltaMeters": 0.012275099754333496
+    },
+    "groin": {
+      "vertices": 26101,
+      "changedFromR28": 0,
+      "maximumDeltaMeters": 0.0
+    },
+    "upperRibFill": {
+      "vertices": 18280,
+      "changedFromR28": 18280,
+      "maximumDeltaMeters": 0.016818417236208916
+    }
+  },
+  "bodyTopology": {
+    "vertices": 227942,
+    "polygons": 227940,
+    "connectedComponents": 1,
+    "componentVertexCounts": [
+      227942
+    ],
+    "modifiers": [
+      [
+        "C1BRW020_Armature",
+        "ARMATURE"
+      ]
+    ]
+  },
+  "surfaceCrossingChecks": [
+    {
+      "pose": "Idle",
+      "region": "shoulderAndUpperRib",
+      "trianglesChecked": 111840,
+      "properNonAdjacentCrossingPairs": 0,
+      "examplesMaterialCenters": []
+    },
+    {
+      "pose": "Idle",
+      "region": "groin",
+      "trianglesChecked": 53132,
+      "properNonAdjacentCrossingPairs": 0,
+      "examplesMaterialCenters": []
+    },
+    {
+      "pose": "Lift90_Flex0",
+      "region": "shoulderAndUpperRib",
+      "trianglesChecked": 111840,
+      "properNonAdjacentCrossingPairs": 0,
+      "examplesMaterialCenters": []
+    },
+    {
+      "pose": "Lift90_Flex0",
+      "region": "groin",
+      "trianglesChecked": 53132,
+      "properNonAdjacentCrossingPairs": 0,
+      "examplesMaterialCenters": []
+    },
+    {
+      "pose": "Lift90_Flex120",
+      "region": "shoulderAndUpperRib",
+      "trianglesChecked": 111840,
+      "properNonAdjacentCrossingPairs": 0,
+      "examplesMaterialCenters": []
+    },
+    {
+      "pose": "Lift90_Flex120",
+      "region": "groin",
+      "trianglesChecked": 53132,
+      "properNonAdjacentCrossingPairs": 0,
+      "examplesMaterialCenters": []
+    },
+    {
+      "pose": "Punch8",
+      "region": "shoulderAndUpperRib",
+      "trianglesChecked": 111840,
+      "properNonAdjacentCrossingPairs": 0,
+      "examplesMaterialCenters": []
+    },
+    {
+      "pose": "Punch8",
+      "region": "groin",
+      "trianglesChecked": 53132,
+      "properNonAdjacentCrossingPairs": 0,
+      "examplesMaterialCenters": []
+    }
+  ],
+  "neutralNormalsComparedToActualGeometry": {
+    "torso": {
+      "medianDegrees": 0.0,
+      "p95Degrees": 0.010059782709180736,
+      "maximumDegrees": 0.019072559718435897
+    },
+    "groin": {
+      "medianDegrees": 0.0,
+      "p95Degrees": 0.0146231963350681,
+      "maximumDegrees": 0.0223911548721303
+    },
+    "upperRibFill": {
+      "medianDegrees": 0.0,
+      "p95Degrees": 0.016005258293969513,
+      "maximumDegrees": 0.025309092735681393
+    }
+  },
+  "scope": "Current model and four previously captured actual Unity poses; proper non-adjacent triangle crossings only, not every animation pose or coplanar contact."
+}

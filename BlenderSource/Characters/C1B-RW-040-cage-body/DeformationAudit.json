@@ -1,0 +1,3181 @@
+{
+ "summary": {
+  "poses": 226,
+  "maxShoulderFold": 177.8289475714734,
+  "maxElbowFold": 164.43092588775357,
+  "maxOtherFold": 38.83418315939226,
+  "shoulderOver30": 56,
+  "shoulderOver45": 26,
+  "elbowOver30": 35,
+  "elbowOver45": 34,
+  "minCollapse": 0.003277769643861776,
+  "posesWithIntersections": 53,
+  "recordedWithIntersections": 7
+ },
+ "results": [
+  {
+   "shoulderFold": 0.0032187471409557133,
+   "elbowFold": 0.0003376926991729423,
+   "otherFold": 0.001441836261472429,
+   "fold": 0.0032187471409557133,
+   "collapse": 0.9999736195147809,
+   "intersections": 0,
+   "worst": [
+    -0.157,
+    0.566,
+    -0.007
+   ],
+   "pose": "syn R elev0 az0 flex0 twist0"
+  },
+  {
+   "shoulderFold": 1.6605684114804153,
+   "elbowFold": 4.015799172211442,
+   "otherFold": 0.4877620561610172,
+   "fold": 4.015799172211442,
+   "collapse": 0.5965823406729008,
+   "intersections": 0,
+   "worst": [
+    0.198,
+    0.465,
+    0.04
+   ],
+   "pose": "syn R elev0 az0 flex60 twist0"
+  },
+  {
+   "shoulderFold": 2.8325204313698706,
+   "elbowFold": 27.747848394175147,
+   "otherFold": 1.1296193834799482,
+   "fold": 27.747848394175147,
+   "collapse": 0.15678078790217267,
+   "intersections": 0,
+   "worst": [
+    0.199,
+    0.47,
+    0.027
+   ],
+   "pose": "syn R elev0 az0 flex100 twist0"
+  },
+  {
+   "shoulderFold": 3.5943302709911866,
+   "elbowFold": 164.38820655265184,
+   "otherFold": 0.9781189773090823,
+   "fold": 164.38820655265184,
+   "collapse": 0.003284217906944616,
+   "intersections": 166,
+   "worst": [
+    0.224,
+    0.47,
+    0.013
+   ],
+   "pose": "syn R elev0 az0 flex130 twist0"
+  },
+  {
+   "shoulderFold": 12.408380656591758,
+   "elbowFold": 0.31832374178955974,
+   "otherFold": 0.5699004944125652,
+   "fold": 12.408380656591758,
+   "collapse": 0.6337371211224085,
+   "intersections": 0,
+   "worst": [
+    0.162,
+    0.578,
+    -0.026
+   ],
+   "pose": "syn R elev0 az0 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 13.51211050156531,
+   "elbowFold": 0.3183525636052265,
+   "otherFold": 0.9929738045602012,
+   "fold": 13.51211050156531,
+   "collapse": 0.6946015673020814,
+   "intersections": 0,
+   "worst": [
+    0.137,
+    0.539,
+    0.066
+   ],
+   "pose": "syn R elev0 az0 flex0 twist30"
+  },
+  {
+   "shoulderFold": 13.182069117199946,
+   "elbowFold": 0.7201842723910117,
+   "otherFold": 0.28870917893119374,
+   "fold": 13.182069117199946,
+   "collapse": 0.7648505683162611,
+   "intersections": 0,
+   "worst": [
+    0.168,
+    0.592,
+    0.043
+   ],
+   "pose": "syn R elev35 az0 flex0 twist0"
+  },
+  {
+   "shoulderFold": 13.182069117199946,
+   "elbowFold": 4.015624017167076,
+   "otherFold": 0.48776244799560564,
+   "fold": 13.182069117199946,
+   "collapse": 0.596582101210423,
+   "intersections": 0,
+   "worst": [
+    0.168,
+    0.592,
+    0.043
+   ],
+   "pose": "syn R elev35 az0 flex60 twist0"
+  },
+  {
+   "shoulderFold": 13.182069117199946,
+   "elbowFold": 27.747586236037787,
+   "otherFold": 1.1296560910513573,
+   "fold": 27.747586236037787,
+   "collapse": 0.1567780097926362,
+   "intersections": 0,
+   "worst": [
+    0.195,
+    0.513,
+    0.11
+   ],
+   "pose": "syn R elev35 az0 flex100 twist0"
+  },
+  {
+   "shoulderFold": 13.182069117199946,
+   "elbowFold": 164.41397724807504,
+   "otherFold": 0.9781218343743509,
+   "fold": 164.41397724807504,
+   "collapse": 0.0032829132504784133,
+   "intersections": 164,
+   "worst": [
+    0.221,
+    0.505,
+    0.1
+   ],
+   "pose": "syn R elev35 az0 flex130 twist0"
+  },
+  {
+   "shoulderFold": 24.44299905808871,
+   "elbowFold": 0.7563536038014799,
+   "otherFold": 0.7808303308831612,
+   "fold": 24.44299905808871,
+   "collapse": 0.6421989511844761,
+   "intersections": 0,
+   "worst": [
+    0.16,
+    0.569,
+    -0.008
+   ],
+   "pose": "syn R elev35 az0 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 12.924538393718011,
+   "elbowFold": 0.7211990401471596,
+   "otherFold": 0.9062825992029508,
+   "fold": 12.924538393718011,
+   "collapse": 0.6524623321241804,
+   "intersections": 0,
+   "worst": [
+    0.162,
+    0.589,
+    0.038
+   ],
+   "pose": "syn R elev35 az0 flex0 twist30"
+  },
+  {
+   "shoulderFold": 27.078100826143185,
+   "elbowFold": 1.5222053054336562,
+   "otherFold": 0.6022820906662383,
+   "fold": 27.078100826143185,
+   "collapse": 0.5160870572303665,
+   "intersections": 0,
+   "worst": [
+    0.167,
+    0.606,
+    0.049
+   ],
+   "pose": "syn R elev70 az0 flex0 twist0"
+  },
+  {
+   "shoulderFold": 27.078100826143185,
+   "elbowFold": 4.015585148561541,
+   "otherFold": 0.6022820906662383,
+   "fold": 27.078100826143185,
+   "collapse": 0.5160870572303665,
+   "intersections": 0,
+   "worst": [
+    0.167,
+    0.606,
+    0.049
+   ],
+   "pose": "syn R elev70 az0 flex60 twist0"
+  },
+  {
+   "shoulderFold": 27.078100826143185,
+   "elbowFold": 27.747760295653126,
+   "otherFold": 1.1297229017116392,
+   "fold": 27.747760295653126,
+   "collapse": 0.1567758743233777,
+   "intersections": 0,
+   "worst": [
+    0.188,
+    0.595,
+    0.153
+   ],
+   "pose": "syn R elev70 az0 flex100 twist0"
+  },
+  {
+   "shoulderFold": 27.078100826143185,
+   "elbowFold": 164.43092588775357,
+   "otherFold": 0.9781251197801847,
+   "fold": 164.43092588775357,
+   "collapse": 0.0032810945743124787,
+   "intersections": 160,
+   "worst": [
+    0.214,
+    0.584,
+    0.151
+   ],
+   "pose": "syn R elev70 az0 flex130 twist0"
+  },
+  {
+   "shoulderFold": 29.029974057617427,
+   "elbowFold": 1.5627834866729118,
+   "otherFold": 1.0614100438155238,
+   "fold": 29.029974057617427,
+   "collapse": 0.502855963959936,
+   "intersections": 50,
+   "worst": [
+    0.155,
+    0.569,
+    0.016
+   ],
+   "pose": "syn R elev70 az0 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 25.033260971578102,
+   "elbowFold": 1.5093965979113855,
+   "otherFold": 0.9880454891596693,
+   "fold": 25.033260971578102,
+   "collapse": 0.4819609687554738,
+   "intersections": 0,
+   "worst": [
+    0.163,
+    0.601,
+    0.046
+   ],
+   "pose": "syn R elev70 az0 flex0 twist30"
+  },
+  {
+   "shoulderFold": 40.79343958373859,
+   "elbowFold": 2.1671739573876043,
+   "otherFold": 0.8819848058505912,
+   "fold": 40.79343958373859,
+   "collapse": 0.30188286270910225,
+   "intersections": 0,
+   "worst": [
+    0.164,
+    0.616,
+    0.051
+   ],
+   "pose": "syn R elev100 az0 flex0 twist0"
+  },
+  {
+   "shoulderFold": 40.79343958373859,
+   "elbowFold": 4.0156799587367855,
+   "otherFold": 0.8819848058505912,
+   "fold": 40.79343958373859,
+   "collapse": 0.30188286270910225,
+   "intersections": 0,
+   "worst": [
+    0.164,
+    0.616,
+    0.051
+   ],
+   "pose": "syn R elev100 az0 flex60 twist0"
+  },
+  {
+   "shoulderFold": 40.79343958373859,
+   "elbowFold": 27.74843219824292,
+   "otherFold": 1.1297862543326986,
+   "fold": 40.79343958373859,
+   "collapse": 0.15677386726150738,
+   "intersections": 0,
+   "worst": [
+    0.164,
+    0.616,
+    0.051
+   ],
+   "pose": "syn R elev100 az0 flex100 twist0"
+  },
+  {
+   "shoulderFold": 40.79343958373859,
+   "elbowFold": 164.42478886225243,
+   "otherFold": 0.9781273556699376,
+   "fold": 164.42478886225243,
+   "collapse": 0.00327985804286516,
+   "intersections": 156,
+   "worst": [
+    0.207,
+    0.665,
+    0.151
+   ],
+   "pose": "syn R elev100 az0 flex130 twist0"
+  },
+  {
+   "shoulderFold": 52.52308647052011,
+   "elbowFold": 2.2057768313819754,
+   "otherFold": 1.305714890602285,
+   "fold": 52.52308647052011,
+   "collapse": 0.2596400913322824,
+   "intersections": 128,
+   "worst": [
+    0.168,
+    0.619,
+    0.052
+   ],
+   "pose": "syn R elev100 az0 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 29.960671866745397,
+   "elbowFold": 2.177708114331883,
+   "otherFold": 1.3686256742056568,
+   "fold": 29.960671866745397,
+   "collapse": 0.35133407604883,
+   "intersections": 0,
+   "worst": [
+    0.162,
+    0.611,
+    0.05
+   ],
+   "pose": "syn R elev100 az0 flex0 twist30"
+  },
+  {
+   "shoulderFold": 54.65573946034367,
+   "elbowFold": 2.7368675961395175,
+   "otherFold": 1.2130211126327053,
+   "fold": 54.65573946034367,
+   "collapse": 0.10347726149235363,
+   "intersections": 0,
+   "worst": [
+    0.163,
+    0.629,
+    0.049
+   ],
+   "pose": "syn R elev130 az0 flex0 twist0"
+  },
+  {
+   "shoulderFold": 54.65573946034367,
+   "elbowFold": 4.015864274690433,
+   "otherFold": 1.2130211126327053,
+   "fold": 54.65573946034367,
+   "collapse": 0.10347726149235363,
+   "intersections": 0,
+   "worst": [
+    0.163,
+    0.629,
+    0.049
+   ],
+   "pose": "syn R elev130 az0 flex60 twist0"
+  },
+  {
+   "shoulderFold": 54.65573946034367,
+   "elbowFold": 27.74929909767707,
+   "otherFold": 1.2130211126327053,
+   "fold": 54.65573946034367,
+   "collapse": 0.10347726149235363,
+   "intersections": 0,
+   "worst": [
+    0.163,
+    0.629,
+    0.049
+   ],
+   "pose": "syn R elev130 az0 flex100 twist0"
+  },
+  {
+   "shoulderFold": 54.65573946034367,
+   "elbowFold": 164.41408065988338,
+   "otherFold": 1.2130211126327053,
+   "fold": 164.41408065988338,
+   "collapse": 0.00327888517207343,
+   "intersections": 154,
+   "worst": [
+    0.201,
+    0.735,
+    0.111
+   ],
+   "pose": "syn R elev130 az0 flex130 twist0"
+  },
+  {
+   "shoulderFold": 117.59503180441969,
+   "elbowFold": 2.757827760939309,
+   "otherFold": 1.5518997214077914,
+   "fold": 117.59503180441969,
+   "collapse": 0.019551994474702024,
+   "intersections": 188,
+   "worst": [
+    0.148,
+    0.607,
+    0.046
+   ],
+   "pose": "syn R elev130 az0 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 35.897585151874694,
+   "elbowFold": 2.7551853684107686,
+   "otherFold": 1.7712878148648477,
+   "fold": 35.897585151874694,
+   "collapse": 0.23405949538972856,
+   "intersections": 0,
+   "worst": [
+    0.14,
+    0.622,
+    0.073
+   ],
+   "pose": "syn R elev130 az0 flex0 twist30"
+  },
+  {
+   "shoulderFold": 177.8289475714734,
+   "elbowFold": 3.1959992787023843,
+   "otherFold": 1.6159115570442195,
+   "fold": 177.8289475714734,
+   "collapse": 0.009330273889042682,
+   "intersections": 1,
+   "worst": [
+    0.145,
+    0.65,
+    0.056
+   ],
+   "pose": "syn R elev160 az0 flex0 twist0"
+  },
+  {
+   "shoulderFold": 177.8289475714734,
+   "elbowFold": 4.016084521341543,
+   "otherFold": 1.6159115570442195,
+   "fold": 177.8289475714734,
+   "collapse": 0.009330273889042682,
+   "intersections": 1,
+   "worst": [
+    0.145,
+    0.65,
+    0.056
+   ],
+   "pose": "syn R elev160 az0 flex60 twist0"
+  },
+  {
+   "shoulderFold": 177.8289475714734,
+   "elbowFold": 27.750113307519616,
+   "otherFold": 1.6159115570442195,
+   "fold": 177.8289475714734,
+   "collapse": 0.009330273889042682,
+   "intersections": 1,
+   "worst": [
+    0.145,
+    0.65,
+    0.056
+   ],
+   "pose": "syn R elev160 az0 flex100 twist0"
+  },
+  {
+   "shoulderFold": 177.8289475714734,
+   "elbowFold": 164.40141921366921,
+   "otherFold": 1.6159115570442195,
+   "fold": 177.8289475714734,
+   "collapse": 0.003278301977550313,
+   "intersections": 153,
+   "worst": [
+    0.145,
+    0.65,
+    0.056
+   ],
+   "pose": "syn R elev160 az0 flex130 twist0"
+  },
+  {
+   "shoulderFold": 158.20676630951039,
+   "elbowFold": 3.193191781731501,
+   "otherFold": 1.7796549744296537,
+   "fold": 158.20676630951039,
+   "collapse": 0.057996820963081216,
+   "intersections": 259,
+   "worst": [
+    0.15,
+    0.628,
+    0.047
+   ],
+   "pose": "syn R elev160 az0 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 68.95462061863856,
+   "elbowFold": 3.214119638770833,
+   "otherFold": 2.1723717522572863,
+   "fold": 68.95462061863856,
+   "collapse": 0.15539703891950493,
+   "intersections": 0,
+   "worst": [
+    0.142,
+    0.641,
+    0.061
+   ],
+   "pose": "syn R elev160 az0 flex0 twist30"
+  },
+  {
+   "shoulderFold": 12.548377125096133,
+   "elbowFold": 0.66424753031887,
+   "otherFold": 0.7400578588371813,
+   "fold": 12.548377125096133,
+   "collapse": 0.8086870963507047,
+   "intersections": 0,
+   "worst": [
+    0.154,
+    0.541,
+    0.068
+   ],
+   "pose": "syn R elev35 az45 flex0 twist0"
+  },
+  {
+   "shoulderFold": 12.548377125096133,
+   "elbowFold": 4.015732957748327,
+   "otherFold": 0.7400578588371813,
+   "fold": 12.548377125096133,
+   "collapse": 0.5965824114237539,
+   "intersections": 0,
+   "worst": [
+    0.154,
+    0.541,
+    0.068
+   ],
+   "pose": "syn R elev35 az45 flex60 twist0"
+  },
+  {
+   "shoulderFold": 12.548377125096133,
+   "elbowFold": 27.747941954735538,
+   "otherFold": 1.1296668230382338,
+   "fold": 27.747941954735538,
+   "collapse": 0.15677806032078737,
+   "intersections": 0,
+   "worst": [
+    0.252,
+    0.513,
+    0.084
+   ],
+   "pose": "syn R elev35 az45 flex100 twist0"
+  },
+  {
+   "shoulderFold": 12.548377125096133,
+   "elbowFold": 164.4020767159298,
+   "otherFold": 0.9781212561426008,
+   "fold": 164.4020767159298,
+   "collapse": 0.0032838498594505434,
+   "intersections": 164,
+   "worst": [
+    0.278,
+    0.518,
+    0.071
+   ],
+   "pose": "syn R elev35 az45 flex130 twist0"
+  },
+  {
+   "shoulderFold": 18.912590298681984,
+   "elbowFold": 0.6322357109734953,
+   "otherFold": 0.8716140300234714,
+   "fold": 18.912590298681984,
+   "collapse": 0.6899147362641188,
+   "intersections": 0,
+   "worst": [
+    0.158,
+    0.538,
+    0.07
+   ],
+   "pose": "syn R elev35 az45 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 7.716570348358722,
+   "elbowFold": 0.6918253668208174,
+   "otherFold": 1.4084921712948855,
+   "fold": 7.716570348358722,
+   "collapse": 0.7500289578668443,
+   "intersections": 0,
+   "worst": [
+    0.156,
+    0.527,
+    0.046
+   ],
+   "pose": "syn R elev35 az45 flex0 twist30"
+  },
+  {
+   "shoulderFold": 20.39526548958182,
+   "elbowFold": 1.2567269835732777,
+   "otherFold": 1.5331628121586016,
+   "fold": 20.39526548958182,
+   "collapse": 0.6341997517604058,
+   "intersections": 0,
+   "worst": [
+    0.164,
+    0.536,
+    0.058
+   ],
+   "pose": "syn R elev70 az45 flex0 twist0"
+  },
+  {
+   "shoulderFold": 20.39526548958182,
+   "elbowFold": 4.015785492019648,
+   "otherFold": 1.5331628121586016,
+   "fold": 20.39526548958182,
+   "collapse": 0.5965824360071277,
+   "intersections": 0,
+   "worst": [
+    0.164,
+    0.536,
+    0.058
+   ],
+   "pose": "syn R elev70 az45 flex60 twist0"
+  },
+  {
+   "shoulderFold": 20.39526548958182,
+   "elbowFold": 27.748483306050606,
+   "otherFold": 1.5331628121586016,
+   "fold": 27.748483306050606,
+   "collapse": 0.15677620290970035,
+   "intersections": 0,
+   "worst": [
+    0.278,
+    0.591,
+    0.117
+   ],
+   "pose": "syn R elev70 az45 flex100 twist0"
+  },
+  {
+   "shoulderFold": 20.39526548958182,
+   "elbowFold": 164.40419763605877,
+   "otherFold": 1.5331628121586016,
+   "fold": 164.40419763605877,
+   "collapse": 0.0032817188634133403,
+   "intersections": 162,
+   "worst": [
+    0.301,
+    0.6,
+    0.101
+   ],
+   "pose": "syn R elev70 az45 flex130 twist0"
+  },
+  {
+   "shoulderFold": 22.254662097213142,
+   "elbowFold": 1.3520776642540944,
+   "otherFold": 1.2756351975750686,
+   "fold": 22.254662097213142,
+   "collapse": 0.5524295120020499,
+   "intersections": 0,
+   "worst": [
+    0.165,
+    0.541,
+    0.063
+   ],
+   "pose": "syn R elev70 az45 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 18.63023418775695,
+   "elbowFold": 1.2503087449293813,
+   "otherFold": 2.2149699282565387,
+   "fold": 18.63023418775695,
+   "collapse": 0.7019047185772215,
+   "intersections": 0,
+   "worst": [
+    0.164,
+    0.532,
+    0.052
+   ],
+   "pose": "syn R elev70 az45 flex0 twist30"
+  },
+  {
+   "shoulderFold": 24.210533372960537,
+   "elbowFold": 1.9550794951847232,
+   "otherFold": 2.27807107314407,
+   "fold": 24.210533372960537,
+   "collapse": 0.48834511272099784,
+   "intersections": 0,
+   "worst": [
+    0.169,
+    0.541,
+    0.064
+   ],
+   "pose": "syn R elev100 az45 flex0 twist0"
+  },
+  {
+   "shoulderFold": 24.210533372960537,
+   "elbowFold": 4.015912680511427,
+   "otherFold": 2.27807107314407,
+   "fold": 24.210533372960537,
+   "collapse": 0.48834511272099784,
+   "intersections": 0,
+   "worst": [
+    0.169,
+    0.541,
+    0.064
+   ],
+   "pose": "syn R elev100 az45 flex60 twist0"
+  },
+  {
+   "shoulderFold": 24.210533372960537,
+   "elbowFold": 27.749103124040897,
+   "otherFold": 2.27807107314407,
+   "fold": 27.749103124040897,
+   "collapse": 0.15677507832304385,
+   "intersections": 0,
+   "worst": [
+    0.271,
+    0.67,
+    0.116
+   ],
+   "pose": "syn R elev100 az45 flex100 twist0"
+  },
+  {
+   "shoulderFold": 24.210533372960537,
+   "elbowFold": 164.40741228498044,
+   "otherFold": 2.27807107314407,
+   "fold": 164.40741228498044,
+   "collapse": 0.00328046070352668,
+   "intersections": 158,
+   "worst": [
+    0.291,
+    0.681,
+    0.098
+   ],
+   "pose": "syn R elev100 az45 flex130 twist0"
+  },
+  {
+   "shoulderFold": 23.17003736975688,
+   "elbowFold": 2.037141176203581,
+   "otherFold": 1.6445074159405835,
+   "fold": 23.17003736975688,
+   "collapse": 0.42322270909720117,
+   "intersections": 0,
+   "worst": [
+    0.167,
+    0.547,
+    0.069
+   ],
+   "pose": "syn R elev100 az45 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 24.736261824527062,
+   "elbowFold": 1.9042383133417249,
+   "otherFold": 3.0516161200830307,
+   "fold": 24.736261824527062,
+   "collapse": 0.54671557540328,
+   "intersections": 0,
+   "worst": [
+    0.172,
+    0.536,
+    0.057
+   ],
+   "pose": "syn R elev100 az45 flex0 twist30"
+  },
+  {
+   "shoulderFold": 23.061846893392843,
+   "elbowFold": 2.603347576411656,
+   "otherFold": 3.074434516741814,
+   "fold": 23.061846893392843,
+   "collapse": 0.34259634888805746,
+   "intersections": 0,
+   "worst": [
+    0.174,
+    0.548,
+    0.069
+   ],
+   "pose": "syn R elev130 az45 flex0 twist0"
+  },
+  {
+   "shoulderFold": 23.061846893392843,
+   "elbowFold": 4.016094443457637,
+   "otherFold": 3.074434516741814,
+   "fold": 23.061846893392843,
+   "collapse": 0.34259634888805746,
+   "intersections": 0,
+   "worst": [
+    0.174,
+    0.548,
+    0.069
+   ],
+   "pose": "syn R elev130 az45 flex60 twist0"
+  },
+  {
+   "shoulderFold": 23.061846893392843,
+   "elbowFold": 27.74991140781717,
+   "otherFold": 3.074434516741814,
+   "fold": 27.74991140781717,
+   "collapse": 0.15677488254265037,
+   "intersections": 0,
+   "worst": [
+    0.235,
+    0.739,
+    0.086
+   ],
+   "pose": "syn R elev130 az45 flex100 twist0"
+  },
+  {
+   "shoulderFold": 23.061846893392843,
+   "elbowFold": 164.3971994245079,
+   "otherFold": 3.074434516741814,
+   "fold": 164.3971994245079,
+   "collapse": 0.003279672314782336,
+   "intersections": 156,
+   "worst": [
+    0.251,
+    0.749,
+    0.065
+   ],
+   "pose": "syn R elev130 az45 flex130 twist0"
+  },
+  {
+   "shoulderFold": 28.808727386703442,
+   "elbowFold": 2.6741677542054654,
+   "otherFold": 2.149147313384357,
+   "fold": 28.808727386703442,
+   "collapse": 0.30098397035681745,
+   "intersections": 0,
+   "worst": [
+    0.164,
+    0.603,
+    -0.038
+   ],
+   "pose": "syn R elev130 az45 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 24.43532645408209,
+   "elbowFold": 2.5655504358549055,
+   "otherFold": 3.862081316937795,
+   "fold": 24.43532645408209,
+   "collapse": 0.41441152332789755,
+   "intersections": 0,
+   "worst": [
+    0.179,
+    0.542,
+    0.062
+   ],
+   "pose": "syn R elev130 az45 flex0 twist30"
+  },
+  {
+   "shoulderFold": 27.360743960976546,
+   "elbowFold": 3.132797049595532,
+   "otherFold": 3.8602248840854,
+   "fold": 27.360743960976546,
+   "collapse": 0.22247043013480058,
+   "intersections": 0,
+   "worst": [
+    0.171,
+    0.6,
+    -0.037
+   ],
+   "pose": "syn R elev160 az45 flex0 twist0"
+  },
+  {
+   "shoulderFold": 27.360743960976546,
+   "elbowFold": 4.01628071239981,
+   "otherFold": 3.8602248840854,
+   "fold": 27.360743960976546,
+   "collapse": 0.22247043013480058,
+   "intersections": 0,
+   "worst": [
+    0.171,
+    0.6,
+    -0.037
+   ],
+   "pose": "syn R elev160 az45 flex60 twist0"
+  },
+  {
+   "shoulderFold": 27.360743960976546,
+   "elbowFold": 27.75065542629188,
+   "otherFold": 3.8602248840854,
+   "fold": 27.75065542629188,
+   "collapse": 0.15677504425882544,
+   "intersections": 0,
+   "worst": [
+    0.179,
+    0.774,
+    0.033
+   ],
+   "pose": "syn R elev160 az45 flex100 twist0"
+  },
+  {
+   "shoulderFold": 27.360743960976546,
+   "elbowFold": 164.39697136510827,
+   "otherFold": 3.8602248840854,
+   "fold": 164.39697136510827,
+   "collapse": 0.003277769643861776,
+   "intersections": 378,
+   "worst": [
+    0.193,
+    0.78,
+    0.009
+   ],
+   "pose": "syn R elev160 az45 flex130 twist0"
+  },
+  {
+   "shoulderFold": 37.538384304447845,
+   "elbowFold": 3.184164037308908,
+   "otherFold": 2.9473316327890826,
+   "fold": 37.538384304447845,
+   "collapse": 0.19935147191410443,
+   "intersections": 0,
+   "worst": [
+    0.17,
+    0.596,
+    -0.034
+   ],
+   "pose": "syn R elev160 az45 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 23.82059309811223,
+   "elbowFold": 3.1034694483456122,
+   "otherFold": 4.558920609188262,
+   "fold": 23.82059309811223,
+   "collapse": 0.2925196577945112,
+   "intersections": 0,
+   "worst": [
+    0.17,
+    0.605,
+    -0.042
+   ],
+   "pose": "syn R elev160 az45 flex0 twist30"
+  },
+  {
+   "shoulderFold": 14.559953320798598,
+   "elbowFold": 0.660477676100077,
+   "otherFold": 1.0638351441102607,
+   "fold": 14.559953320798598,
+   "collapse": 0.8083633966869729,
+   "intersections": 0,
+   "worst": [
+    0.162,
+    0.529,
+    0.046
+   ],
+   "pose": "syn R elev35 az90 flex0 twist0"
+  },
+  {
+   "shoulderFold": 14.559953320798598,
+   "elbowFold": 4.015880067744381,
+   "otherFold": 1.0638351441102607,
+   "fold": 14.559953320798598,
+   "collapse": 0.5965827837392469,
+   "intersections": 0,
+   "worst": [
+    0.162,
+    0.529,
+    0.046
+   ],
+   "pose": "syn R elev35 az90 flex60 twist0"
+  },
+  {
+   "shoulderFold": 14.559953320798598,
+   "elbowFold": 27.74835677077547,
+   "otherFold": 1.1296637043414175,
+   "fold": 27.74835677077547,
+   "collapse": 0.15677944884549708,
+   "intersections": 0,
+   "worst": [
+    0.279,
+    0.505,
+    0.027
+   ],
+   "pose": "syn R elev35 az90 flex100 twist0"
+  },
+  {
+   "shoulderFold": 14.559953320798598,
+   "elbowFold": 164.39159840973164,
+   "otherFold": 1.0638351441102607,
+   "fold": 164.39159840973164,
+   "collapse": 0.003283325756660834,
+   "intersections": 166,
+   "worst": [
+    0.301,
+    0.519,
+    0.013
+   ],
+   "pose": "syn R elev35 az90 flex130 twist0"
+  },
+  {
+   "shoulderFold": 20.623840155294353,
+   "elbowFold": 0.6596908840485592,
+   "otherFold": 0.9531306992413445,
+   "fold": 20.623840155294353,
+   "collapse": 0.7093762526390581,
+   "intersections": 0,
+   "worst": [
+    0.166,
+    0.53,
+    0.049
+   ],
+   "pose": "syn R elev35 az90 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 12.064605949877583,
+   "elbowFold": 0.6598248875825294,
+   "otherFold": 1.7070544537181989,
+   "fold": 12.064605949877583,
+   "collapse": 0.7462919835210823,
+   "intersections": 0,
+   "worst": [
+    0.158,
+    0.523,
+    0.035
+   ],
+   "pose": "syn R elev35 az90 flex0 twist30"
+  },
+  {
+   "shoulderFold": 23.630043599573924,
+   "elbowFold": 1.2005395261766938,
+   "otherFold": 2.1281139388303156,
+   "fold": 23.630043599573924,
+   "collapse": 0.7350579796493468,
+   "intersections": 0,
+   "worst": [
+    0.172,
+    0.527,
+    0.044
+   ],
+   "pose": "syn R elev70 az90 flex0 twist0"
+  },
+  {
+   "shoulderFold": 23.630043599573924,
+   "elbowFold": 4.0160032891001345,
+   "otherFold": 2.1281139388303156,
+   "fold": 23.630043599573924,
+   "collapse": 0.596582761597137,
+   "intersections": 0,
+   "worst": [
+    0.172,
+    0.527,
+    0.044
+   ],
+   "pose": "syn R elev70 az90 flex60 twist0"
+  },
+  {
+   "shoulderFold": 23.630043599573924,
+   "elbowFold": 27.749047916664374,
+   "otherFold": 2.1281139388303156,
+   "fold": 27.749047916664374,
+   "collapse": 0.15677793005293117,
+   "intersections": 0,
+   "worst": [
+    0.326,
+    0.576,
+    0.027
+   ],
+   "pose": "syn R elev70 az90 flex100 twist0"
+  },
+  {
+   "shoulderFold": 23.630043599573924,
+   "elbowFold": 164.39517999242167,
+   "otherFold": 2.1281139388303156,
+   "fold": 164.39517999242167,
+   "collapse": 0.003282146701795818,
+   "intersections": 164,
+   "worst": [
+    0.337,
+    0.6,
+    0.013
+   ],
+   "pose": "syn R elev70 az90 flex130 twist0"
+  },
+  {
+   "shoulderFold": 26.858252199757874,
+   "elbowFold": 1.200487121527701,
+   "otherFold": 1.7607161476556228,
+   "fold": 26.858252199757874,
+   "collapse": 0.6152801363766867,
+   "intersections": 0,
+   "worst": [
+    0.176,
+    0.532,
+    0.051
+   ],
+   "pose": "syn R elev70 az90 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 25.574021524164586,
+   "elbowFold": 1.2006924356638624,
+   "otherFold": 2.6021760203559605,
+   "fold": 25.574021524164586,
+   "collapse": 0.683914629685035,
+   "intersections": 0,
+   "worst": [
+    0.169,
+    0.524,
+    0.036
+   ],
+   "pose": "syn R elev70 az90 flex0 twist30"
+  },
+  {
+   "shoulderFold": 25.31062629574106,
+   "elbowFold": 1.7054728789499294,
+   "otherFold": 3.080996744854904,
+   "fold": 25.31062629574106,
+   "collapse": 0.6598231418647034,
+   "intersections": 0,
+   "worst": [
+    0.182,
+    0.529,
+    0.044
+   ],
+   "pose": "syn R elev100 az90 flex0 twist0"
+  },
+  {
+   "shoulderFold": 25.31062629574106,
+   "elbowFold": 4.016118879505428,
+   "otherFold": 3.080996744854904,
+   "fold": 25.31062629574106,
+   "collapse": 0.5965824395507031,
+   "intersections": 0,
+   "worst": [
+    0.182,
+    0.529,
+    0.044
+   ],
+   "pose": "syn R elev100 az90 flex60 twist0"
+  },
+  {
+   "shoulderFold": 25.31062629574106,
+   "elbowFold": 27.749804376457725,
+   "otherFold": 3.080996744854904,
+   "fold": 27.749804376457725,
+   "collapse": 0.15677608261283682,
+   "intersections": 0,
+   "worst": [
+    0.33,
+    0.654,
+    0.027
+   ],
+   "pose": "syn R elev100 az90 flex100 twist0"
+  },
+  {
+   "shoulderFold": 25.31062629574106,
+   "elbowFold": 164.39373510734242,
+   "otherFold": 3.080996744854904,
+   "fold": 164.39373510734242,
+   "collapse": 0.0032801279593710464,
+   "intersections": 166,
+   "worst": [
+    0.328,
+    0.68,
+    0.013
+   ],
+   "pose": "syn R elev100 az90 flex130 twist0"
+  },
+  {
+   "shoulderFold": 26.654766108622233,
+   "elbowFold": 1.8012075903808509,
+   "otherFold": 2.6784412383653193,
+   "fold": 26.654766108622233,
+   "collapse": 0.5374576555329782,
+   "intersections": 0,
+   "worst": [
+    0.184,
+    0.534,
+    0.053
+   ],
+   "pose": "syn R elev100 az90 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 25.999056732862485,
+   "elbowFold": 1.8034931892602415,
+   "otherFold": 3.3424216216400255,
+   "fold": 25.999056732862485,
+   "collapse": 0.6404270652786853,
+   "intersections": 0,
+   "worst": [
+    0.18,
+    0.525,
+    0.034
+   ],
+   "pose": "syn R elev100 az90 flex0 twist30"
+  },
+  {
+   "shoulderFold": 22.62775643986502,
+   "elbowFold": 2.409623790848542,
+   "otherFold": 4.047235287152749,
+   "fold": 22.62775643986502,
+   "collapse": 0.5678671158858541,
+   "intersections": 0,
+   "worst": [
+    0.192,
+    0.533,
+    0.044
+   ],
+   "pose": "syn R elev130 az90 flex0 twist0"
+  },
+  {
+   "shoulderFold": 22.62775643986502,
+   "elbowFold": 4.016212689571894,
+   "otherFold": 4.047235287152749,
+   "fold": 22.62775643986502,
+   "collapse": 0.5678671158858541,
+   "intersections": 0,
+   "worst": [
+    0.192,
+    0.533,
+    0.044
+   ],
+   "pose": "syn R elev130 az90 flex60 twist0"
+  },
+  {
+   "shoulderFold": 22.62775643986502,
+   "elbowFold": 27.75035032384934,
+   "otherFold": 4.047235287152749,
+   "fold": 27.75035032384934,
+   "collapse": 0.15677511076534456,
+   "intersections": 0,
+   "worst": [
+    0.29,
+    0.728,
+    0.027
+   ],
+   "pose": "syn R elev130 az90 flex100 twist0"
+  },
+  {
+   "shoulderFold": 22.62775643986502,
+   "elbowFold": 164.39517753899642,
+   "otherFold": 4.047235287152749,
+   "fold": 164.39517753899642,
+   "collapse": 0.0032787366466369558,
+   "intersections": 164,
+   "worst": [
+    0.275,
+    0.749,
+    0.013
+   ],
+   "pose": "syn R elev130 az90 flex130 twist0"
+  },
+  {
+   "shoulderFold": 23.236595739962056,
+   "elbowFold": 2.486864665883635,
+   "otherFold": 3.6838609458328344,
+   "fold": 23.236595739962056,
+   "collapse": 0.4617104070994481,
+   "intersections": 0,
+   "worst": [
+    0.191,
+    0.539,
+    0.054
+   ],
+   "pose": "syn R elev130 az90 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 27.6497568660907,
+   "elbowFold": 2.489131339397499,
+   "otherFold": 4.230299884031134,
+   "fold": 27.6497568660907,
+   "collapse": 0.6518417994291538,
+   "intersections": 0,
+   "worst": [
+    0.129,
+    0.606,
+    0.039
+   ],
+   "pose": "syn R elev130 az90 flex0 twist30"
+  },
+  {
+   "shoulderFold": 28.237274387479058,
+   "elbowFold": 2.9873939056364978,
+   "otherFold": 4.916882630498672,
+   "fold": 28.237274387479058,
+   "collapse": 0.49816106829545415,
+   "intersections": 0,
+   "worst": [
+    0.133,
+    0.604,
+    0.042
+   ],
+   "pose": "syn R elev160 az90 flex0 twist0"
+  },
+  {
+   "shoulderFold": 28.237274387479058,
+   "elbowFold": 4.016243880266055,
+   "otherFold": 4.916882630498672,
+   "fold": 28.237274387479058,
+   "collapse": 0.49816106829545415,
+   "intersections": 0,
+   "worst": [
+    0.133,
+    0.604,
+    0.042
+   ],
+   "pose": "syn R elev160 az90 flex60 twist0"
+  },
+  {
+   "shoulderFold": 28.237274387479058,
+   "elbowFold": 27.75055945225527,
+   "otherFold": 4.916882630498672,
+   "fold": 28.237274387479058,
+   "collapse": 0.15677472050706015,
+   "intersections": 0,
+   "worst": [
+    0.133,
+    0.604,
+    0.042
+   ],
+   "pose": "syn R elev160 az90 flex100 twist0"
+  },
+  {
+   "shoulderFold": 28.237274387479058,
+   "elbowFold": 164.38679657550182,
+   "otherFold": 4.916882630498672,
+   "fold": 164.38679657550182,
+   "collapse": 0.0032783343096290363,
+   "intersections": 160,
+   "worst": [
+    0.192,
+    0.78,
+    0.013
+   ],
+   "pose": "syn R elev160 az90 flex130 twist0"
+  },
+  {
+   "shoulderFold": 26.201036695673956,
+   "elbowFold": 3.039432009058971,
+   "otherFold": 4.6762187193635265,
+   "fold": 26.201036695673956,
+   "collapse": 0.3944449235182817,
+   "intersections": 0,
+   "worst": [
+    0.163,
+    0.61,
+    -0.041
+   ],
+   "pose": "syn R elev160 az90 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 32.85911037656001,
+   "elbowFold": 3.0416291584183766,
+   "otherFold": 4.974360688100548,
+   "fold": 32.85911037656001,
+   "collapse": 0.6061423915779274,
+   "intersections": 0,
+   "worst": [
+    0.139,
+    0.595,
+    0.041
+   ],
+   "pose": "syn R elev160 az90 flex0 twist30"
+  },
+  {
+   "shoulderFold": 0.0032187471409557133,
+   "elbowFold": 0.0003376926991729423,
+   "otherFold": 0.001441836261472429,
+   "fold": 0.0032187471409557133,
+   "collapse": 0.9999736195147809,
+   "intersections": 0,
+   "worst": [
+    0.156,
+    0.566,
+    -0.007
+   ],
+   "pose": "syn L elev0 az0 flex0 twist0"
+  },
+  {
+   "shoulderFold": 1.584627370002867,
+   "elbowFold": 4.015799172211442,
+   "otherFold": 0.4877620561610172,
+   "fold": 4.015799172211442,
+   "collapse": 0.5965823406729008,
+   "intersections": 0,
+   "worst": [
+    -0.199,
+    0.463,
+    0.04
+   ],
+   "pose": "syn L elev0 az0 flex60 twist0"
+  },
+  {
+   "shoulderFold": 2.60603324072856,
+   "elbowFold": 27.747848394175147,
+   "otherFold": 1.1296193834799482,
+   "fold": 27.747848394175147,
+   "collapse": 0.15678078790217267,
+   "intersections": 0,
+   "worst": [
+    -0.199,
+    0.47,
+    0.027
+   ],
+   "pose": "syn L elev0 az0 flex100 twist0"
+  },
+  {
+   "shoulderFold": 3.188161699937064,
+   "elbowFold": 164.38820655265184,
+   "otherFold": 0.9781189773090823,
+   "fold": 164.38820655265184,
+   "collapse": 0.003284217906944616,
+   "intersections": 166,
+   "worst": [
+    -0.224,
+    0.47,
+    0.013
+   ],
+   "pose": "syn L elev0 az0 flex130 twist0"
+  },
+  {
+   "shoulderFold": 13.51211050156531,
+   "elbowFold": 0.3183525636052265,
+   "otherFold": 0.9919247133247049,
+   "fold": 13.51211050156531,
+   "collapse": 0.6946015673020814,
+   "intersections": 0,
+   "worst": [
+    -0.137,
+    0.537,
+    0.065
+   ],
+   "pose": "syn L elev0 az0 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 12.408380656591758,
+   "elbowFold": 0.31832374178955974,
+   "otherFold": 0.5734600415486526,
+   "fold": 12.408380656591758,
+   "collapse": 0.6337371211224085,
+   "intersections": 0,
+   "worst": [
+    -0.162,
+    0.578,
+    -0.027
+   ],
+   "pose": "syn L elev0 az0 flex0 twist30"
+  },
+  {
+   "shoulderFold": 13.182069117199946,
+   "elbowFold": 0.7201842723910117,
+   "otherFold": 0.28870917893119374,
+   "fold": 13.182069117199946,
+   "collapse": 0.7648505683162611,
+   "intersections": 0,
+   "worst": [
+    -0.168,
+    0.59,
+    0.043
+   ],
+   "pose": "syn L elev35 az0 flex0 twist0"
+  },
+  {
+   "shoulderFold": 13.182069117199946,
+   "elbowFold": 4.015624017167076,
+   "otherFold": 0.48776244799560564,
+   "fold": 13.182069117199946,
+   "collapse": 0.596582101210423,
+   "intersections": 0,
+   "worst": [
+    -0.168,
+    0.59,
+    0.043
+   ],
+   "pose": "syn L elev35 az0 flex60 twist0"
+  },
+  {
+   "shoulderFold": 13.182069117199946,
+   "elbowFold": 27.747586236037787,
+   "otherFold": 1.1296560910513573,
+   "fold": 27.747586236037787,
+   "collapse": 0.1567780097926362,
+   "intersections": 0,
+   "worst": [
+    -0.195,
+    0.513,
+    0.11
+   ],
+   "pose": "syn L elev35 az0 flex100 twist0"
+  },
+  {
+   "shoulderFold": 13.182069117199946,
+   "elbowFold": 164.41397724807504,
+   "otherFold": 0.9781218343743509,
+   "fold": 164.41397724807504,
+   "collapse": 0.0032829132504784133,
+   "intersections": 164,
+   "worst": [
+    -0.221,
+    0.505,
+    0.1
+   ],
+   "pose": "syn L elev35 az0 flex130 twist0"
+  },
+  {
+   "shoulderFold": 12.924538393718011,
+   "elbowFold": 0.7211990401471596,
+   "otherFold": 0.9532871193391137,
+   "fold": 12.924538393718011,
+   "collapse": 0.6524623321241804,
+   "intersections": 0,
+   "worst": [
+    -0.162,
+    0.587,
+    0.038
+   ],
+   "pose": "syn L elev35 az0 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 24.44299905808871,
+   "elbowFold": 0.7563536038014799,
+   "otherFold": 0.7397924506865527,
+   "fold": 24.44299905808871,
+   "collapse": 0.6421989511844761,
+   "intersections": 0,
+   "worst": [
+    -0.159,
+    0.569,
+    -0.008
+   ],
+   "pose": "syn L elev35 az0 flex0 twist30"
+  },
+  {
+   "shoulderFold": 27.078100826143185,
+   "elbowFold": 1.5222053054336562,
+   "otherFold": 0.6022820906662383,
+   "fold": 27.078100826143185,
+   "collapse": 0.5160870572303665,
+   "intersections": 0,
+   "worst": [
+    -0.167,
+    0.605,
+    0.049
+   ],
+   "pose": "syn L elev70 az0 flex0 twist0"
+  },
+  {
+   "shoulderFold": 27.078100826143185,
+   "elbowFold": 4.015585148561541,
+   "otherFold": 0.6022820906662383,
+   "fold": 27.078100826143185,
+   "collapse": 0.5160870572303665,
+   "intersections": 0,
+   "worst": [
+    -0.167,
+    0.605,
+    0.049
+   ],
+   "pose": "syn L elev70 az0 flex60 twist0"
+  },
+  {
+   "shoulderFold": 27.078100826143185,
+   "elbowFold": 27.747760295653126,
+   "otherFold": 1.1297229017116392,
+   "fold": 27.747760295653126,
+   "collapse": 0.1567758743233777,
+   "intersections": 0,
+   "worst": [
+    -0.188,
+    0.596,
+    0.153
+   ],
+   "pose": "syn L elev70 az0 flex100 twist0"
+  },
+  {
+   "shoulderFold": 27.078100826143185,
+   "elbowFold": 164.43092588775357,
+   "otherFold": 0.9781251197801847,
+   "fold": 164.43092588775357,
+   "collapse": 0.0032810945743124787,
+   "intersections": 160,
+   "worst": [
+    -0.214,
+    0.584,
+    0.151
+   ],
+   "pose": "syn L elev70 az0 flex130 twist0"
+  },
+  {
+   "shoulderFold": 25.033260971578102,
+   "elbowFold": 1.5093965979113855,
+   "otherFold": 1.0435033697306364,
+   "fold": 25.033260971578102,
+   "collapse": 0.4819609687554738,
+   "intersections": 0,
+   "worst": [
+    -0.163,
+    0.6,
+    0.046
+   ],
+   "pose": "syn L elev70 az0 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 29.029974057617427,
+   "elbowFold": 1.5627834866729118,
+   "otherFold": 1.039483169187449,
+   "fold": 29.029974057617427,
+   "collapse": 0.502855963959936,
+   "intersections": 50,
+   "worst": [
+    -0.155,
+    0.569,
+    0.016
+   ],
+   "pose": "syn L elev70 az0 flex0 twist30"
+  },
+  {
+   "shoulderFold": 40.79343958373859,
+   "elbowFold": 2.1671739573876043,
+   "otherFold": 0.8819848058505912,
+   "fold": 40.79343958373859,
+   "collapse": 0.30188286270910225,
+   "intersections": 0,
+   "worst": [
+    -0.164,
+    0.616,
+    0.051
+   ],
+   "pose": "syn L elev100 az0 flex0 twist0"
+  },
+  {
+   "shoulderFold": 40.79343958373859,
+   "elbowFold": 4.0156799587367855,
+   "otherFold": 0.8819848058505912,
+   "fold": 40.79343958373859,
+   "collapse": 0.30188286270910225,
+   "intersections": 0,
+   "worst": [
+    -0.164,
+    0.616,
+    0.051
+   ],
+   "pose": "syn L elev100 az0 flex60 twist0"
+  },
+  {
+   "shoulderFold": 40.79343958373859,
+   "elbowFold": 27.74843219824292,
+   "otherFold": 1.1297862543326986,
+   "fold": 40.79343958373859,
+   "collapse": 0.15677386726150738,
+   "intersections": 0,
+   "worst": [
+    -0.164,
+    0.616,
+    0.051
+   ],
+   "pose": "syn L elev100 az0 flex100 twist0"
+  },
+  {
+   "shoulderFold": 40.79343958373859,
+   "elbowFold": 164.42478886225243,
+   "otherFold": 0.9781273556699376,
+   "fold": 164.42478886225243,
+   "collapse": 0.00327985804286516,
+   "intersections": 156,
+   "worst": [
+    -0.207,
+    0.665,
+    0.151
+   ],
+   "pose": "syn L elev100 az0 flex130 twist0"
+  },
+  {
+   "shoulderFold": 29.960671866745397,
+   "elbowFold": 2.177708114331883,
+   "otherFold": 1.4356672937632167,
+   "fold": 29.960671866745397,
+   "collapse": 0.35133407604883,
+   "intersections": 0,
+   "worst": [
+    -0.162,
+    0.611,
+    0.05
+   ],
+   "pose": "syn L elev100 az0 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 52.52308647052011,
+   "elbowFold": 2.2057768313819754,
+   "otherFold": 1.3029446914931082,
+   "fold": 52.52308647052011,
+   "collapse": 0.2596400913322824,
+   "intersections": 128,
+   "worst": [
+    -0.168,
+    0.619,
+    0.052
+   ],
+   "pose": "syn L elev100 az0 flex0 twist30"
+  },
+  {
+   "shoulderFold": 54.65573946034367,
+   "elbowFold": 2.7368675961395175,
+   "otherFold": 1.2330571834061343,
+   "fold": 54.65573946034367,
+   "collapse": 0.10347726149235363,
+   "intersections": 0,
+   "worst": [
+    -0.163,
+    0.629,
+    0.049
+   ],
+   "pose": "syn L elev130 az0 flex0 twist0"
+  },
+  {
+   "shoulderFold": 54.65573946034367,
+   "elbowFold": 4.015864274690433,
+   "otherFold": 1.2330571834061343,
+   "fold": 54.65573946034367,
+   "collapse": 0.10347726149235363,
+   "intersections": 0,
+   "worst": [
+    -0.163,
+    0.629,
+    0.049
+   ],
+   "pose": "syn L elev130 az0 flex60 twist0"
+  },
+  {
+   "shoulderFold": 54.65573946034367,
+   "elbowFold": 27.74929909767707,
+   "otherFold": 1.2330571834061343,
+   "fold": 54.65573946034367,
+   "collapse": 0.10347726149235363,
+   "intersections": 0,
+   "worst": [
+    -0.163,
+    0.629,
+    0.049
+   ],
+   "pose": "syn L elev130 az0 flex100 twist0"
+  },
+  {
+   "shoulderFold": 54.65573946034367,
+   "elbowFold": 164.41408065988338,
+   "otherFold": 1.2330571834061343,
+   "fold": 164.41408065988338,
+   "collapse": 0.00327888517207343,
+   "intersections": 154,
+   "worst": [
+    -0.201,
+    0.735,
+    0.111
+   ],
+   "pose": "syn L elev130 az0 flex130 twist0"
+  },
+  {
+   "shoulderFold": 35.897585151874694,
+   "elbowFold": 2.7551853684107686,
+   "otherFold": 1.8472111262838513,
+   "fold": 35.897585151874694,
+   "collapse": 0.23405949538972856,
+   "intersections": 0,
+   "worst": [
+    -0.14,
+    0.623,
+    0.073
+   ],
+   "pose": "syn L elev130 az0 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 117.59503180441969,
+   "elbowFold": 2.757827760939309,
+   "otherFold": 1.5518997214077914,
+   "fold": 117.59503180441969,
+   "collapse": 0.019551994474702024,
+   "intersections": 188,
+   "worst": [
+    -0.148,
+    0.606,
+    0.046
+   ],
+   "pose": "syn L elev130 az0 flex0 twist30"
+  },
+  {
+   "shoulderFold": 177.8289475714734,
+   "elbowFold": 3.1959992787023843,
+   "otherFold": 1.6469365078047395,
+   "fold": 177.8289475714734,
+   "collapse": 0.009330273889042682,
+   "intersections": 1,
+   "worst": [
+    -0.145,
+    0.649,
+    0.057
+   ],
+   "pose": "syn L elev160 az0 flex0 twist0"
+  },
+  {
+   "shoulderFold": 177.8289475714734,
+   "elbowFold": 4.016084521341543,
+   "otherFold": 1.6469365078047395,
+   "fold": 177.8289475714734,
+   "collapse": 0.009330273889042682,
+   "intersections": 1,
+   "worst": [
+    -0.145,
+    0.649,
+    0.057
+   ],
+   "pose": "syn L elev160 az0 flex60 twist0"
+  },
+  {
+   "shoulderFold": 177.8289475714734,
+   "elbowFold": 27.750113307519616,
+   "otherFold": 1.6469365078047395,
+   "fold": 177.8289475714734,
+   "collapse": 0.009330273889042682,
+   "intersections": 1,
+   "worst": [
+    -0.145,
+    0.649,
+    0.057
+   ],
+   "pose": "syn L elev160 az0 flex100 twist0"
+  },
+  {
+   "shoulderFold": 177.8289475714734,
+   "elbowFold": 164.40141921366921,
+   "otherFold": 1.6469365078047395,
+   "fold": 177.8289475714734,
+   "collapse": 0.003278301977550313,
+   "intersections": 153,
+   "worst": [
+    -0.145,
+    0.649,
+    0.057
+   ],
+   "pose": "syn L elev160 az0 flex130 twist0"
+  },
+  {
+   "shoulderFold": 68.95462061863856,
+   "elbowFold": 3.214119638770833,
+   "otherFold": 2.2541225458011818,
+   "fold": 68.95462061863856,
+   "collapse": 0.15539703891950493,
+   "intersections": 0,
+   "worst": [
+    -0.142,
+    0.641,
+    0.061
+   ],
+   "pose": "syn L elev160 az0 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 158.20676630951039,
+   "elbowFold": 3.193191781731501,
+   "otherFold": 1.7796549744296537,
+   "fold": 158.20676630951039,
+   "collapse": 0.057996820963081216,
+   "intersections": 259,
+   "worst": [
+    -0.15,
+    0.628,
+    0.047
+   ],
+   "pose": "syn L elev160 az0 flex0 twist30"
+  },
+  {
+   "shoulderFold": 12.548377125096133,
+   "elbowFold": 0.66424753031887,
+   "otherFold": 0.7503310137916583,
+   "fold": 12.548377125096133,
+   "collapse": 0.8086870963507047,
+   "intersections": 0,
+   "worst": [
+    -0.155,
+    0.543,
+    0.068
+   ],
+   "pose": "syn L elev35 az45 flex0 twist0"
+  },
+  {
+   "shoulderFold": 12.548377125096133,
+   "elbowFold": 4.015732957748327,
+   "otherFold": 0.7503310137916583,
+   "fold": 12.548377125096133,
+   "collapse": 0.5965824114237539,
+   "intersections": 0,
+   "worst": [
+    -0.155,
+    0.543,
+    0.068
+   ],
+   "pose": "syn L elev35 az45 flex60 twist0"
+  },
+  {
+   "shoulderFold": 12.548377125096133,
+   "elbowFold": 27.747941954735538,
+   "otherFold": 1.1296668230382338,
+   "fold": 27.747941954735538,
+   "collapse": 0.15677806032078737,
+   "intersections": 0,
+   "worst": [
+    -0.253,
+    0.513,
+    0.085
+   ],
+   "pose": "syn L elev35 az45 flex100 twist0"
+  },
+  {
+   "shoulderFold": 12.548377125096133,
+   "elbowFold": 164.4020767159298,
+   "otherFold": 0.9781212561426008,
+   "fold": 164.4020767159298,
+   "collapse": 0.0032838498594505434,
+   "intersections": 164,
+   "worst": [
+    -0.278,
+    0.518,
+    0.071
+   ],
+   "pose": "syn L elev35 az45 flex130 twist0"
+  },
+  {
+   "shoulderFold": 7.716570348358722,
+   "elbowFold": 0.6918253668208174,
+   "otherFold": 1.4445922669246847,
+   "fold": 7.716570348358722,
+   "collapse": 0.7500289578668443,
+   "intersections": 0,
+   "worst": [
+    -0.156,
+    0.527,
+    0.046
+   ],
+   "pose": "syn L elev35 az45 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 18.912590298681984,
+   "elbowFold": 0.6322357109734953,
+   "otherFold": 0.880575475989718,
+   "fold": 18.912590298681984,
+   "collapse": 0.6899147362641188,
+   "intersections": 0,
+   "worst": [
+    -0.158,
+    0.54,
+    0.072
+   ],
+   "pose": "syn L elev35 az45 flex0 twist30"
+  },
+  {
+   "shoulderFold": 20.39526548958182,
+   "elbowFold": 1.2567269835732777,
+   "otherFold": 1.5514045655294775,
+   "fold": 20.39526548958182,
+   "collapse": 0.6341997517604058,
+   "intersections": 0,
+   "worst": [
+    -0.164,
+    0.536,
+    0.058
+   ],
+   "pose": "syn L elev70 az45 flex0 twist0"
+  },
+  {
+   "shoulderFold": 20.39526548958182,
+   "elbowFold": 4.015785492019648,
+   "otherFold": 1.5514045655294775,
+   "fold": 20.39526548958182,
+   "collapse": 0.5965824360071277,
+   "intersections": 0,
+   "worst": [
+    -0.164,
+    0.536,
+    0.058
+   ],
+   "pose": "syn L elev70 az45 flex60 twist0"
+  },
+  {
+   "shoulderFold": 20.39526548958182,
+   "elbowFold": 27.748483306050606,
+   "otherFold": 1.5514045655294775,
+   "fold": 27.748483306050606,
+   "collapse": 0.15677620290970035,
+   "intersections": 0,
+   "worst": [
+    -0.278,
+    0.591,
+    0.117
+   ],
+   "pose": "syn L elev70 az45 flex100 twist0"
+  },
+  {
+   "shoulderFold": 20.39526548958182,
+   "elbowFold": 164.40419763605877,
+   "otherFold": 1.5514045655294775,
+   "fold": 164.40419763605877,
+   "collapse": 0.0032817188634133403,
+   "intersections": 162,
+   "worst": [
+    -0.301,
+    0.6,
+    0.101
+   ],
+   "pose": "syn L elev70 az45 flex130 twist0"
+  },
+  {
+   "shoulderFold": 18.63023418775695,
+   "elbowFold": 1.2503087449293813,
+   "otherFold": 2.2415924908915494,
+   "fold": 18.63023418775695,
+   "collapse": 0.7019047185772215,
+   "intersections": 0,
+   "worst": [
+    -0.164,
+    0.532,
+    0.052
+   ],
+   "pose": "syn L elev70 az45 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 22.254662097213142,
+   "elbowFold": 1.3520776642540944,
+   "otherFold": 1.3240908068825246,
+   "fold": 22.254662097213142,
+   "collapse": 0.5524295120020499,
+   "intersections": 0,
+   "worst": [
+    -0.165,
+    0.541,
+    0.063
+   ],
+   "pose": "syn L elev70 az45 flex0 twist30"
+  },
+  {
+   "shoulderFold": 24.210533372960537,
+   "elbowFold": 1.9550794951847232,
+   "otherFold": 2.301366990039365,
+   "fold": 24.210533372960537,
+   "collapse": 0.48834511272099784,
+   "intersections": 0,
+   "worst": [
+    -0.169,
+    0.541,
+    0.064
+   ],
+   "pose": "syn L elev100 az45 flex0 twist0"
+  },
+  {
+   "shoulderFold": 24.210533372960537,
+   "elbowFold": 4.015912680511427,
+   "otherFold": 2.301366990039365,
+   "fold": 24.210533372960537,
+   "collapse": 0.48834511272099784,
+   "intersections": 0,
+   "worst": [
+    -0.169,
+    0.541,
+    0.064
+   ],
+   "pose": "syn L elev100 az45 flex60 twist0"
+  },
+  {
+   "shoulderFold": 24.210533372960537,
+   "elbowFold": 27.749103124040897,
+   "otherFold": 2.301366990039365,
+   "fold": 27.749103124040897,
+   "collapse": 0.15677507832304385,
+   "intersections": 0,
+   "worst": [
+    -0.271,
+    0.67,
+    0.117
+   ],
+   "pose": "syn L elev100 az45 flex100 twist0"
+  },
+  {
+   "shoulderFold": 24.210533372960537,
+   "elbowFold": 164.40741228498044,
+   "otherFold": 2.301366990039365,
+   "fold": 164.40741228498044,
+   "collapse": 0.00328046070352668,
+   "intersections": 158,
+   "worst": [
+    -0.291,
+    0.681,
+    0.098
+   ],
+   "pose": "syn L elev100 az45 flex130 twist0"
+  },
+  {
+   "shoulderFold": 24.736261824527062,
+   "elbowFold": 1.9042383133417249,
+   "otherFold": 3.0757699087481534,
+   "fold": 24.736261824527062,
+   "collapse": 0.54671557540328,
+   "intersections": 0,
+   "worst": [
+    -0.172,
+    0.536,
+    0.057
+   ],
+   "pose": "syn L elev100 az45 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 23.17003736975688,
+   "elbowFold": 2.037141176203581,
+   "otherFold": 1.7376669320545297,
+   "fold": 23.17003736975688,
+   "collapse": 0.42322270909720117,
+   "intersections": 0,
+   "worst": [
+    -0.167,
+    0.547,
+    0.069
+   ],
+   "pose": "syn L elev100 az45 flex0 twist30"
+  },
+  {
+   "shoulderFold": 23.061846893392843,
+   "elbowFold": 2.603347576411656,
+   "otherFold": 3.100737850753637,
+   "fold": 23.061846893392843,
+   "collapse": 0.34259634888805746,
+   "intersections": 0,
+   "worst": [
+    -0.174,
+    0.548,
+    0.069
+   ],
+   "pose": "syn L elev130 az45 flex0 twist0"
+  },
+  {
+   "shoulderFold": 23.061846893392843,
+   "elbowFold": 4.016094443457637,
+   "otherFold": 3.100737850753637,
+   "fold": 23.061846893392843,
+   "collapse": 0.34259634888805746,
+   "intersections": 0,
+   "worst": [
+    -0.174,
+    0.548,
+    0.069
+   ],
+   "pose": "syn L elev130 az45 flex60 twist0"
+  },
+  {
+   "shoulderFold": 23.061846893392843,
+   "elbowFold": 27.74991140781717,
+   "otherFold": 3.100737850753637,
+   "fold": 27.74991140781717,
+   "collapse": 0.15677488254265037,
+   "intersections": 0,
+   "worst": [
+    -0.235,
+    0.739,
+    0.086
+   ],
+   "pose": "syn L elev130 az45 flex100 twist0"
+  },
+  {
+   "shoulderFold": 23.061846893392843,
+   "elbowFold": 164.3971994245079,
+   "otherFold": 3.100737850753637,
+   "fold": 164.3971994245079,
+   "collapse": 0.003279672314782336,
+   "intersections": 156,
+   "worst": [
+    -0.251,
+    0.749,
+    0.065
+   ],
+   "pose": "syn L elev130 az45 flex130 twist0"
+  },
+  {
+   "shoulderFold": 24.43532645408209,
+   "elbowFold": 2.5655504358549055,
+   "otherFold": 3.880130034124379,
+   "fold": 24.43532645408209,
+   "collapse": 0.41441152332789755,
+   "intersections": 0,
+   "worst": [
+    -0.179,
+    0.542,
+    0.062
+   ],
+   "pose": "syn L elev130 az45 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 28.808727386703442,
+   "elbowFold": 2.6741677542054654,
+   "otherFold": 2.1839707690866197,
+   "fold": 28.808727386703442,
+   "collapse": 0.30098397035681745,
+   "intersections": 0,
+   "worst": [
+    -0.165,
+    0.603,
+    -0.037
+   ],
+   "pose": "syn L elev130 az45 flex0 twist30"
+  },
+  {
+   "shoulderFold": 27.360743960976546,
+   "elbowFold": 3.132797049595532,
+   "otherFold": 3.8871009789950515,
+   "fold": 27.360743960976546,
+   "collapse": 0.22247043013480058,
+   "intersections": 0,
+   "worst": [
+    -0.172,
+    0.6,
+    -0.037
+   ],
+   "pose": "syn L elev160 az45 flex0 twist0"
+  },
+  {
+   "shoulderFold": 27.360743960976546,
+   "elbowFold": 4.01628071239981,
+   "otherFold": 3.8871009789950515,
+   "fold": 27.360743960976546,
+   "collapse": 0.22247043013480058,
+   "intersections": 0,
+   "worst": [
+    -0.172,
+    0.6,
+    -0.037
+   ],
+   "pose": "syn L elev160 az45 flex60 twist0"
+  },
+  {
+   "shoulderFold": 27.360743960976546,
+   "elbowFold": 27.75065542629188,
+   "otherFold": 3.8871009789950515,
+   "fold": 27.75065542629188,
+   "collapse": 0.15677504425882544,
+   "intersections": 0,
+   "worst": [
+    -0.179,
+    0.774,
+    0.033
+   ],
+   "pose": "syn L elev160 az45 flex100 twist0"
+  },
+  {
+   "shoulderFold": 27.360743960976546,
+   "elbowFold": 164.39697136510827,
+   "otherFold": 3.8871009789950515,
+   "fold": 164.39697136510827,
+   "collapse": 0.003277769643861776,
+   "intersections": 378,
+   "worst": [
+    -0.193,
+    0.78,
+    0.009
+   ],
+   "pose": "syn L elev160 az45 flex130 twist0"
+  },
+  {
+   "shoulderFold": 23.82059309811223,
+   "elbowFold": 3.1034694483456122,
+   "otherFold": 4.5673813160133045,
+   "fold": 23.82059309811223,
+   "collapse": 0.2925196577945112,
+   "intersections": 0,
+   "worst": [
+    -0.17,
+    0.605,
+    -0.042
+   ],
+   "pose": "syn L elev160 az45 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 37.538384304447845,
+   "elbowFold": 3.184164037308908,
+   "otherFold": 2.995602074709481,
+   "fold": 37.538384304447845,
+   "collapse": 0.19935147191410443,
+   "intersections": 0,
+   "worst": [
+    -0.17,
+    0.596,
+    -0.034
+   ],
+   "pose": "syn L elev160 az45 flex0 twist30"
+  },
+  {
+   "shoulderFold": 14.559953320798598,
+   "elbowFold": 0.660477676100077,
+   "otherFold": 1.0583590197018353,
+   "fold": 14.559953320798598,
+   "collapse": 0.8083633966869729,
+   "intersections": 0,
+   "worst": [
+    -0.162,
+    0.529,
+    0.046
+   ],
+   "pose": "syn L elev35 az90 flex0 twist0"
+  },
+  {
+   "shoulderFold": 14.559953320798598,
+   "elbowFold": 4.015880067744381,
+   "otherFold": 1.0583590197018353,
+   "fold": 14.559953320798598,
+   "collapse": 0.5965827837392469,
+   "intersections": 0,
+   "worst": [
+    -0.162,
+    0.529,
+    0.046
+   ],
+   "pose": "syn L elev35 az90 flex60 twist0"
+  },
+  {
+   "shoulderFold": 14.559953320798598,
+   "elbowFold": 27.74835677077547,
+   "otherFold": 1.1296637043414175,
+   "fold": 27.74835677077547,
+   "collapse": 0.15677944884549708,
+   "intersections": 0,
+   "worst": [
+    -0.279,
+    0.505,
+    0.027
+   ],
+   "pose": "syn L elev35 az90 flex100 twist0"
+  },
+  {
+   "shoulderFold": 14.559953320798598,
+   "elbowFold": 164.39159840973164,
+   "otherFold": 1.0583590197018353,
+   "fold": 164.39159840973164,
+   "collapse": 0.003283325756660834,
+   "intersections": 166,
+   "worst": [
+    -0.301,
+    0.519,
+    0.013
+   ],
+   "pose": "syn L elev35 az90 flex130 twist0"
+  },
+  {
+   "shoulderFold": 12.064605949877583,
+   "elbowFold": 0.6598248875825294,
+   "otherFold": 1.7099645395188499,
+   "fold": 12.064605949877583,
+   "collapse": 0.7462919835210823,
+   "intersections": 0,
+   "worst": [
+    -0.158,
+    0.523,
+    0.035
+   ],
+   "pose": "syn L elev35 az90 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 20.623840155294353,
+   "elbowFold": 0.6596908840485592,
+   "otherFold": 0.986486222874871,
+   "fold": 20.623840155294353,
+   "collapse": 0.7093762526390581,
+   "intersections": 0,
+   "worst": [
+    -0.166,
+    0.53,
+    0.049
+   ],
+   "pose": "syn L elev35 az90 flex0 twist30"
+  },
+  {
+   "shoulderFold": 23.630043599573924,
+   "elbowFold": 1.2005395261766938,
+   "otherFold": 2.1164240258154354,
+   "fold": 23.630043599573924,
+   "collapse": 0.7350579796493468,
+   "intersections": 0,
+   "worst": [
+    -0.172,
+    0.527,
+    0.044
+   ],
+   "pose": "syn L elev70 az90 flex0 twist0"
+  },
+  {
+   "shoulderFold": 23.630043599573924,
+   "elbowFold": 4.0160032891001345,
+   "otherFold": 2.1164240258154354,
+   "fold": 23.630043599573924,
+   "collapse": 0.596582761597137,
+   "intersections": 0,
+   "worst": [
+    -0.172,
+    0.527,
+    0.044
+   ],
+   "pose": "syn L elev70 az90 flex60 twist0"
+  },
+  {
+   "shoulderFold": 23.630043599573924,
+   "elbowFold": 27.749047916664374,
+   "otherFold": 2.1164240258154354,
+   "fold": 27.749047916664374,
+   "collapse": 0.15677793005293117,
+   "intersections": 0,
+   "worst": [
+    -0.326,
+    0.576,
+    0.027
+   ],
+   "pose": "syn L elev70 az90 flex100 twist0"
+  },
+  {
+   "shoulderFold": 23.630043599573924,
+   "elbowFold": 164.39517999242167,
+   "otherFold": 2.1164240258154354,
+   "fold": 164.39517999242167,
+   "collapse": 0.003282146701795818,
+   "intersections": 164,
+   "worst": [
+    -0.337,
+    0.6,
+    0.013
+   ],
+   "pose": "syn L elev70 az90 flex130 twist0"
+  },
+  {
+   "shoulderFold": 25.574021524164586,
+   "elbowFold": 1.2006924356638624,
+   "otherFold": 2.569907291333936,
+   "fold": 25.574021524164586,
+   "collapse": 0.683914629685035,
+   "intersections": 0,
+   "worst": [
+    -0.17,
+    0.526,
+    0.038
+   ],
+   "pose": "syn L elev70 az90 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 26.858252199757874,
+   "elbowFold": 1.200487121527701,
+   "otherFold": 1.743422525859449,
+   "fold": 26.858252199757874,
+   "collapse": 0.6152801363766867,
+   "intersections": 0,
+   "worst": [
+    -0.176,
+    0.532,
+    0.051
+   ],
+   "pose": "syn L elev70 az90 flex0 twist30"
+  },
+  {
+   "shoulderFold": 25.31062629574106,
+   "elbowFold": 1.7054728789499294,
+   "otherFold": 3.0632539711410782,
+   "fold": 25.31062629574106,
+   "collapse": 0.6598231418647034,
+   "intersections": 0,
+   "worst": [
+    -0.182,
+    0.529,
+    0.044
+   ],
+   "pose": "syn L elev100 az90 flex0 twist0"
+  },
+  {
+   "shoulderFold": 25.31062629574106,
+   "elbowFold": 4.016118879505428,
+   "otherFold": 3.0632539711410782,
+   "fold": 25.31062629574106,
+   "collapse": 0.5965824395507031,
+   "intersections": 0,
+   "worst": [
+    -0.182,
+    0.529,
+    0.044
+   ],
+   "pose": "syn L elev100 az90 flex60 twist0"
+  },
+  {
+   "shoulderFold": 25.31062629574106,
+   "elbowFold": 27.749804376457725,
+   "otherFold": 3.0632539711410782,
+   "fold": 27.749804376457725,
+   "collapse": 0.15677608261283682,
+   "intersections": 0,
+   "worst": [
+    -0.33,
+    0.654,
+    0.027
+   ],
+   "pose": "syn L elev100 az90 flex100 twist0"
+  },
+  {
+   "shoulderFold": 25.31062629574106,
+   "elbowFold": 164.39373510734242,
+   "otherFold": 3.0632539711410782,
+   "fold": 164.39373510734242,
+   "collapse": 0.0032801279593710464,
+   "intersections": 166,
+   "worst": [
+    -0.328,
+    0.68,
+    0.013
+   ],
+   "pose": "syn L elev100 az90 flex130 twist0"
+  },
+  {
+   "shoulderFold": 25.999056732862485,
+   "elbowFold": 1.8034931892602415,
+   "otherFold": 3.3268862001851227,
+   "fold": 25.999056732862485,
+   "collapse": 0.6404270652786853,
+   "intersections": 0,
+   "worst": [
+    -0.181,
+    0.526,
+    0.036
+   ],
+   "pose": "syn L elev100 az90 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 26.654766108622233,
+   "elbowFold": 1.8012075903808509,
+   "otherFold": 2.6617539220296447,
+   "fold": 26.654766108622233,
+   "collapse": 0.5374576555329782,
+   "intersections": 0,
+   "worst": [
+    -0.184,
+    0.534,
+    0.053
+   ],
+   "pose": "syn L elev100 az90 flex0 twist30"
+  },
+  {
+   "shoulderFold": 22.62775643986502,
+   "elbowFold": 2.409623790848542,
+   "otherFold": 4.022970435746615,
+   "fold": 22.62775643986502,
+   "collapse": 0.5678671158858541,
+   "intersections": 0,
+   "worst": [
+    -0.192,
+    0.533,
+    0.044
+   ],
+   "pose": "syn L elev130 az90 flex0 twist0"
+  },
+  {
+   "shoulderFold": 22.62775643986502,
+   "elbowFold": 4.016212689571894,
+   "otherFold": 4.022970435746615,
+   "fold": 22.62775643986502,
+   "collapse": 0.5678671158858541,
+   "intersections": 0,
+   "worst": [
+    -0.192,
+    0.533,
+    0.044
+   ],
+   "pose": "syn L elev130 az90 flex60 twist0"
+  },
+  {
+   "shoulderFold": 22.62775643986502,
+   "elbowFold": 27.75035032384934,
+   "otherFold": 4.022970435746615,
+   "fold": 27.75035032384934,
+   "collapse": 0.15677511076534456,
+   "intersections": 0,
+   "worst": [
+    -0.29,
+    0.729,
+    0.027
+   ],
+   "pose": "syn L elev130 az90 flex100 twist0"
+  },
+  {
+   "shoulderFold": 22.62775643986502,
+   "elbowFold": 164.39517753899642,
+   "otherFold": 4.022970435746615,
+   "fold": 164.39517753899642,
+   "collapse": 0.0032787366466369558,
+   "intersections": 164,
+   "worst": [
+    -0.275,
+    0.749,
+    0.013
+   ],
+   "pose": "syn L elev130 az90 flex130 twist0"
+  },
+  {
+   "shoulderFold": 27.6497568660907,
+   "elbowFold": 2.489131339397499,
+   "otherFold": 4.206094683232827,
+   "fold": 27.6497568660907,
+   "collapse": 0.6518417994291538,
+   "intersections": 0,
+   "worst": [
+    -0.129,
+    0.606,
+    0.039
+   ],
+   "pose": "syn L elev130 az90 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 23.236595739962056,
+   "elbowFold": 2.486864665883635,
+   "otherFold": 3.662040075194918,
+   "fold": 23.236595739962056,
+   "collapse": 0.4617104070994481,
+   "intersections": 0,
+   "worst": [
+    -0.191,
+    0.539,
+    0.054
+   ],
+   "pose": "syn L elev130 az90 flex0 twist30"
+  },
+  {
+   "shoulderFold": 28.237274387479058,
+   "elbowFold": 2.9873939056364978,
+   "otherFold": 4.886460949319455,
+   "fold": 28.237274387479058,
+   "collapse": 0.49816106829545415,
+   "intersections": 0,
+   "worst": [
+    -0.133,
+    0.604,
+    0.042
+   ],
+   "pose": "syn L elev160 az90 flex0 twist0"
+  },
+  {
+   "shoulderFold": 28.237274387479058,
+   "elbowFold": 4.016243880266055,
+   "otherFold": 4.886460949319455,
+   "fold": 28.237274387479058,
+   "collapse": 0.49816106829545415,
+   "intersections": 0,
+   "worst": [
+    -0.133,
+    0.604,
+    0.042
+   ],
+   "pose": "syn L elev160 az90 flex60 twist0"
+  },
+  {
+   "shoulderFold": 28.237274387479058,
+   "elbowFold": 27.75055945225527,
+   "otherFold": 4.886460949319455,
+   "fold": 28.237274387479058,
+   "collapse": 0.15677472050706015,
+   "intersections": 0,
+   "worst": [
+    -0.133,
+    0.604,
+    0.042
+   ],
+   "pose": "syn L elev160 az90 flex100 twist0"
+  },
+  {
+   "shoulderFold": 28.237274387479058,
+   "elbowFold": 164.38679657550182,
+   "otherFold": 4.886460949319455,
+   "fold": 164.38679657550182,
+   "collapse": 0.0032783343096290363,
+   "intersections": 160,
+   "worst": [
+    -0.192,
+    0.78,
+    0.013
+   ],
+   "pose": "syn L elev160 az90 flex130 twist0"
+  },
+  {
+   "shoulderFold": 32.85911037656001,
+   "elbowFold": 3.0416291584183766,
+   "otherFold": 4.937509357834374,
+   "fold": 32.85911037656001,
+   "collapse": 0.6061423915779274,
+   "intersections": 0,
+   "worst": [
+    -0.139,
+    0.595,
+    0.041
+   ],
+   "pose": "syn L elev160 az90 flex0 twist-30"
+  },
+  {
+   "shoulderFold": 26.201036695673956,
+   "elbowFold": 3.039432009058971,
+   "otherFold": 4.655313626470301,
+   "fold": 26.201036695673956,
+   "collapse": 0.3944449235182817,
+   "intersections": 0,
+   "worst": [
+    -0.163,
+    0.61,
+    -0.041
+   ],
+   "pose": "syn L elev160 az90 flex0 twist30"
+  },
+  {
+   "shoulderFold": 10.529156907503626,
+   "elbowFold": 3.250069489204062,
+   "otherFold": 34.14135894146766,
+   "fold": 34.14135894146766,
+   "collapse": 0.5692951693469296,
+   "intersections": 92,
+   "worst": [
+    0.006,
+    0.116,
+    0.03
+   ],
+   "pose": "recorded Alternating_Worst_Matrices"
+  },
+  {
+   "shoulderFold": 22.07781855606831,
+   "elbowFold": 31.492459377515647,
+   "otherFold": 32.79907486692733,
+   "fold": 32.79907486692733,
+   "collapse": 0.1431195858115188,
+   "intersections": 0,
+   "worst": [
+    -0.006,
+    0.115,
+    0.029
+   ],
+   "pose": "recorded Exchange_Worst_Matrices"
+  },
+  {
+   "shoulderFold": 31.059792215020103,
+   "elbowFold": 16.07062651639115,
+   "otherFold": 31.553936852127805,
+   "fold": 31.553936852127805,
+   "collapse": 0.2748263705084665,
+   "intersections": 98,
+   "worst": [
+    -0.006,
+    0.117,
+    0.029
+   ],
+   "pose": "recorded Far_Worst_Matrices"
+  },
+  {
+   "shoulderFold": 32.70090952980972,
+   "elbowFold": 26.416382965702407,
+   "otherFold": 10.14365171391184,
+   "fold": 32.70090952980972,
+   "collapse": 0.16422518309030146,
+   "intersections": 0,
+   "worst": [
+    -0.155,
+    0.49,
+    0.15
+   ],
+   "pose": "recorded GrabPunch_Worst_Matrices"
+  },
+  {
+   "shoulderFold": 14.98437750583134,
+   "elbowFold": 1.1404777216613713,
+   "otherFold": 18.480654092271962,
+   "fold": 18.480654092271962,
+   "collapse": 0.5241003554624848,
+   "intersections": 170,
+   "worst": [
+    0.021,
+    0.171,
+    -0.099
+   ],
+   "pose": "recorded Head_Worst_Matrices"
+  },
+  {
+   "shoulderFold": 0.28362400645933405,
+   "elbowFold": 0.010567541893684973,
+   "otherFold": 0.010934618171054789,
+   "fold": 0.28362400645933405,
+   "collapse": 0.9883135107645665,
+   "intersections": 0,
+   "worst": [
+    0.157,
+    0.565,
+    -0.002
+   ],
+   "pose": "recorded Idle_Matrices"
+  },
+  {
+   "shoulderFold": 28.834067593149058,
+   "elbowFold": 18.30882071113324,
+   "otherFold": 32.24427589654368,
+   "fold": 32.24427589654368,
+   "collapse": 0.2503338705739364,
+   "intersections": 76,
+   "worst": [
+    -0.006,
+    0.116,
+    0.029
+   ],
+   "pose": "recorded LeftBody_Worst_Matrices"
+  },
+  {
+   "shoulderFold": 39.735047023307324,
+   "elbowFold": 2.1531848279558155,
+   "otherFold": 2.1754399093584365,
+   "fold": 39.735047023307324,
+   "collapse": 0.24232959333827636,
+   "intersections": 0,
+   "worst": [
+    0.146,
+    0.597,
+    0.155
+   ],
+   "pose": "recorded Lift120_Flex0_Matrices"
+  },
+  {
+   "shoulderFold": 20.874533451364307,
+   "elbowFold": 0.920549324046363,
+   "otherFold": 1.8002408806975505,
+   "fold": 20.874533451364307,
+   "collapse": 0.562309320875381,
+   "intersections": 0,
+   "worst": [
+    -0.142,
+    0.526,
+    0.122
+   ],
+   "pose": "recorded Lift45_Flex0_Matrices"
+  },
+  {
+   "shoulderFold": 31.74798102669558,
+   "elbowFold": 1.9092491315504752,
+   "otherFold": 2.175325711873322,
+   "fold": 31.74798102669558,
+   "collapse": 0.2826206987147865,
+   "intersections": 0,
+   "worst": [
+    0.166,
+    0.592,
+    0.131
+   ],
+   "pose": "recorded Lift90_Flex0_Matrices"
+  },
+  {
+   "shoulderFold": 32.25045064385407,
+   "elbowFold": 147.72699109706,
+   "otherFold": 1.8834215182525744,
+   "fold": 147.72699109706,
+   "collapse": 0.0036429571104370025,
+   "intersections": 240,
+   "worst": [
+    0.223,
+    0.595,
+    0.229
+   ],
+   "pose": "recorded Lift90_Flex120_Matrices"
+  },
+  {
+   "shoulderFold": 31.928923625228737,
+   "elbowFold": 2.239474218597214,
+   "otherFold": 2.175353350772421,
+   "fold": 31.928923625228737,
+   "collapse": 0.27874344406994755,
+   "intersections": 0,
+   "worst": [
+    0.146,
+    0.593,
+    0.155
+   ],
+   "pose": "recorded Lift90_Flex45_Matrices"
+  },
+  {
+   "shoulderFold": 32.09281321284958,
+   "elbowFold": 14.071230604880492,
+   "otherFold": 2.1529757417079187,
+   "fold": 32.09281321284958,
+   "collapse": 0.2777759085261298,
+   "intersections": 0,
+   "worst": [
+    -0.146,
+    0.593,
+    0.154
+   ],
+   "pose": "recorded Lift90_Flex90_Matrices"
+  },
+  {
+   "shoulderFold": 40.053617049703256,
+   "elbowFold": 145.0739009831121,
+   "otherFold": 38.83418315939226,
+   "fold": 145.0739009831121,
+   "collapse": 0.006914840259013347,
+   "intersections": 141,
+   "worst": [
+    0.218,
+    0.47,
+    0.174
+   ],
+   "pose": "recorded Moving_Worst_Matrices"
+  },
+  {
+   "shoulderFold": 51.298440668288634,
+   "elbowFold": 25.684775109304724,
+   "otherFold": 16.140397188458866,
+   "fold": 51.298440668288634,
+   "collapse": 0.16771510375776127,
+   "intersections": 0,
+   "worst": [
+    -0.097,
+    0.505,
+    0.185
+   ],
+   "pose": "recorded Punch18_Matrices"
+  },
+  {
+   "shoulderFold": 10.625335196691472,
+   "elbowFold": 5.9867114358757965,
+   "otherFold": 31.546394745840274,
+   "fold": 31.546394745840274,
+   "collapse": 0.4964868287304559,
+   "intersections": 0,
+   "worst": [
+    -0.006,
+    0.117,
+    0.029
+   ],
+   "pose": "recorded Punch2_Matrices"
+  },
+  {
+   "shoulderFold": 43.64550919076828,
+   "elbowFold": 25.24498397805099,
+   "otherFold": 5.19675184930368,
+   "fold": 43.64550919076828,
+   "collapse": 0.1736932551381744,
+   "intersections": 0,
+   "worst": [
+    -0.17,
+    0.608,
+    0.075
+   ],
+   "pose": "recorded Punch8_Matrices"
+  },
+  {
+   "shoulderFold": 12.369089027235038,
+   "elbowFold": 0.7753486165155552,
+   "otherFold": 20.973353373507347,
+   "fold": 20.973353373507347,
+   "collapse": 0.4874377993746679,
+   "intersections": 382,
+   "worst": [
+    -0.006,
+    0.125,
+    0.026
+   ],
+   "pose": "recorded RightBody_Worst_Matrices"
+  },
+  {
+   "shoulderFold": 55.96509395787004,
+   "elbowFold": 25.52707389102617,
+   "otherFold": 16.19639750953693,
+   "fold": 55.96509395787004,
+   "collapse": 0.16884489553619206,
+   "intersections": 0,
+   "worst": [
+    -0.095,
+    0.511,
+    0.185
+   ],
+   "pose": "recorded SweepWorst_Matrices"
+  },
+  {
+   "shoulderFold": 0.006117506963133235,
+   "elbowFold": 0.0003599398314232949,
+   "otherFold": 0.004129228396894197,
+   "fold": 0.006117506963133235,
+   "collapse": 0.999484419809207,
+   "intersections": 0,
+   "worst": [
+    -0.143,
+    0.538,
+    0.069
+   ],
+   "pose": "recorded Sweep_0000_Matrices"
+  },
+  {
+   "shoulderFold": 10.267052814835724,
+   "elbowFold": 0.5494182433473825,
+   "otherFold": 1.3678644095735324,
+   "fold": 10.267052814835724,
+   "collapse": 0.7421692819828165,
+   "intersections": 0,
+   "worst": [
+    0.142,
+    0.53,
+    0.107
+   ],
+   "pose": "recorded Sweep_0030_Matrices"
+  },
+  {
+   "shoulderFold": 31.088359086107136,
+   "elbowFold": 1.8754523444953928,
+   "otherFold": 2.1743498503095093,
+   "fold": 31.088359086107136,
+   "collapse": 0.29004668328269456,
+   "intersections": 0,
+   "worst": [
+    0.166,
+    0.59,
+    0.132
+   ],
+   "pose": "recorded Sweep_0060_Matrices"
+  },
+  {
+   "shoulderFold": 39.72550670471813,
+   "elbowFold": 2.153140379190949,
+   "otherFold": 2.0945182725015266,
+   "fold": 39.72550670471813,
+   "collapse": 0.24239553559441843,
+   "intersections": 0,
+   "worst": [
+    -0.146,
+    0.598,
+    0.153
+   ],
+   "pose": "recorded Sweep_0090_Matrices"
+  },
+  {
+   "shoulderFold": 32.34227280031266,
+   "elbowFold": 1.9392652292014478,
+   "otherFold": 2.0502161730483732,
+   "fold": 32.34227280031266,
+   "collapse": 0.276381441057519,
+   "intersections": 0,
+   "worst": [
+    0.146,
+    0.596,
+    0.151
+   ],
+   "pose": "recorded Sweep_0120_Matrices"
+  },
+  {
+   "shoulderFold": 13.718892424150523,
+   "elbowFold": 0.6096168743619033,
+   "otherFold": 2.061539140114876,
+   "fold": 13.718892424150523,
+   "collapse": 0.6837595387806388,
+   "intersections": 0,
+   "worst": [
+    -0.142,
+    0.521,
+    0.12
+   ],
+   "pose": "recorded Sweep_0150_Matrices"
+  },
+  {
+   "shoulderFold": 0.0061177105575596635,
+   "elbowFold": 0.0003586383023889139,
+   "otherFold": 0.004129155148473146,
+   "fold": 0.0061177105575596635,
+   "collapse": 0.9994844198208777,
+   "intersections": 0,
+   "worst": [
+    -0.143,
+    0.538,
+    0.069
+   ],
+   "pose": "recorded Sweep_0180_Matrices"
+  },
+  {
+   "shoulderFold": 15.384726735189782,
+   "elbowFold": 13.119939021345864,
+   "otherFold": 1.7017277774852912,
+   "fold": 15.384726735189782,
+   "collapse": 0.3066217272603519,
+   "intersections": 0,
+   "worst": [
+    0.142,
+    0.528,
+    0.118
+   ],
+   "pose": "recorded Sweep_0210_Matrices"
+  },
+  {
+   "shoulderFold": 31.212701701432128,
+   "elbowFold": 13.851018177877737,
+   "otherFold": 2.1742609521485328,
+   "fold": 31.212701701432128,
+   "collapse": 0.2838289214937409,
+   "intersections": 0,
+   "worst": [
+    0.166,
+    0.593,
+    0.131
+   ],
+   "pose": "recorded Sweep_0240_Matrices"
+  },
+  {
+   "shoulderFold": 39.936546869068145,
+   "elbowFold": 14.44299576751464,
+   "otherFold": 1.8308628915244327,
+   "fold": 39.936546869068145,
+   "collapse": 0.24121281526632601,
+   "intersections": 0,
+   "worst": [
+    0.146,
+    0.603,
+    0.146
+   ],
+   "pose": "recorded Sweep_0270_Matrices"
+  },
+  {
+   "shoulderFold": 32.8421024813335,
+   "elbowFold": 14.269517555973344,
+   "otherFold": 2.0499368447122848,
+   "fold": 32.8421024813335,
+   "collapse": 0.273564574582444,
+   "intersections": 0,
+   "worst": [
+    -0.146,
+    0.595,
+    0.151
+   ],
+   "pose": "recorded Sweep_0300_Matrices"
+  },
+  {
+   "shoulderFold": 16.99720616114052,
+   "elbowFold": 13.038115152048283,
+   "otherFold": 2.047358526104342,
+   "fold": 16.99720616114052,
+   "collapse": 0.3077139251479617,
+   "intersections": 0,
+   "worst": [
+    -0.142,
+    0.523,
+    0.123
+   ],
+   "pose": "recorded Sweep_0330_Matrices"
+  },
+  {
+   "shoulderFold": 1.2606076217195863,
+   "elbowFold": 0.8319505762548877,
+   "otherFold": 21.263146015401738,
+   "fold": 21.263146015401738,
+   "collapse": 0.8480936468897392,
+   "intersections": 0,
+   "worst": [
+    0.008,
+    0.125,
+    0.028
+   ],
+   "pose": "recorded Sweep_0360_Matrices"
+  },
+  {
+   "shoulderFold": 17.763096997798424,
+   "elbowFold": 25.6534498809355,
+   "otherFold": 7.541892857476759,
+   "fold": 25.6534498809355,
+   "collapse": 0.16808558606714363,
+   "intersections": 0,
+   "worst": [
+    -0.188,
+    0.484,
+    0.138
+   ],
+   "pose": "recorded Sweep_0390_Matrices"
+  },
+  {
+   "shoulderFold": 32.933834102505315,
+   "elbowFold": 4.895035687097321,
+   "otherFold": 16.349251820061983,
+   "fold": 32.933834102505315,
+   "collapse": 0.336463586560832,
+   "intersections": 0,
+   "worst": [
+    -0.185,
+    0.568,
+    0.074
+   ],
+   "pose": "recorded Wall_Worst_Matrices"
+  }
+ ]
+}

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="7" result="Passed" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-13 07:55:25Z" end-time="2026-10-13 07:55:25Z" duration="0.0199987">
+  <test-suite type="TestSuite" id="1000" name="Project Hotfix" fullname="Project Hotfix" runstate="Runnable" testcasecount="146" result="Passed" start-time="2026-10-13 07:55:25Z" end-time="2026-10-13 07:55:25Z" duration="0.019999" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1179" name="ProjectHotfix.Architecture.Tests.Editor.dll" fullname="/Users/kjh/local_dev/party game/Project hotfix/Library/ScriptAssemblies/ProjectHotfix.Architecture.Tests.Editor.dll" runstate="Runnable" testcasecount="139" result="Passed" start-time="2026-10-13 07:55:25Z" end-time="2026-10-13 07:55:25Z" duration="0.016164" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="37844" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1180" name="ProjectHotfix" fullname="ProjectHotfix" runstate="Runnable" testcasecount="139" result="Passed" start-time="2026-10-13 07:55:25Z" end-time="2026-10-13 07:55:25Z" duration="0.015062" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1181" name="SimulationHarness" fullname="ProjectHotfix.SimulationHarness" runstate="Runnable" testcasecount="31" result="Passed" start-time="2026-10-13 07:55:25Z" end-time="2026-10-13 07:55:25Z" duration="0.014255" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1182" name="Tests" fullname="ProjectHotfix.SimulationHarness.Tests" runstate="Runnable" testcasecount="31" result="Passed" start-time="2026-10-13 07:55:25Z" end-time="2026-10-13 07:55:25Z" duration="0.013840" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1184" name="Unit" fullname="ProjectHotfix.SimulationHarness.Tests.Unit" runstate="Runnable" testcasecount="29" result="Passed" start-time="2026-10-13 07:55:25Z" end-time="2026-10-13 07:55:25Z" duration="0.013392" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1033" name="SimulationKernelUnitTests" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests" classname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-13 07:55:25Z" end-time="2026-10-13 07:55:25Z" duration="0.012712" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="Core" />
+                </properties>
+                <test-case id="1039" name="ActualDownDuringDropkickRecovery_ReplacesTheRecoveryAndCountsAsDown" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.ActualDownDuringDropkickRecovery_ReplacesTheRecoveryAndCountsAsDown" methodname="ActualDownDuringDropkickRecovery_ReplacesTheRecoveryAndCountsAsDown" classname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests" runstate="Runnable" seed="378521680" result="Passed" start-time="2026-10-13 07:55:25Z" end-time="2026-10-13 07:55:25Z" duration="0.005422" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1038" name="DownEpisode_UsesSharedGetUpAndIncrementsDownCountOncePerEpisode" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.DownEpisode_UsesSharedGetUpAndIncrementsDownCountOncePerEpisode" methodname="DownEpisode_UsesSharedGetUpAndIncrementsDownCountOncePerEpisode" classname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests" runstate="Runnable" seed="2101831760" result="Passed" start-time="2026-10-13 07:55:25Z" end-time="2026-10-13 07:55:25Z" duration="0.000302" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1037" name="DropkickRecovery_ReusesGetUpPresentationWithoutCreatingDownEpisode" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.DropkickRecovery_ReusesGetUpPresentationWithoutCreatingDownEpisode" methodname="DropkickRecovery_ReusesGetUpPresentationWithoutCreatingDownEpisode" classname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests" runstate="Runnable" seed="928519035" result="Passed" start-time="2026-10-13 07:55:25Z" end-time="2026-10-13 07:55:25Z" duration="0.000212" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1035" name="EquivalentCycleSequences_ProduceTheSameFingerprint" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.EquivalentCycleSequences_ProduceTheSameFingerprint" methodname="EquivalentCycleSequences_ProduceTheSameFingerprint" classname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests" runstate="Runnable" seed="1541196422" result="Passed" start-time="2026-10-13 07:55:25Z" end-time="2026-10-13 07:55:25Z" duration="0.000259" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1034" name="KernelStep_AdvancesTheReadOnlySnapshot" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.KernelStep_AdvancesTheReadOnlySnapshot" methodname="KernelStep_AdvancesTheReadOnlySnapshot" classname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests" runstate="Runnable" seed="692032391" result="Passed" start-time="2026-10-13 07:55:25Z" end-time="2026-10-13 07:55:25Z" duration="0.000090" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1036" name="NegativeCycleCount_IsRejectedWithoutMutation" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.NegativeCycleCount_IsRejectedWithoutMutation" methodname="NegativeCycleCount_IsRejectedWithoutMutation" classname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests" runstate="Runnable" seed="8281466" result="Passed" start-time="2026-10-13 07:55:25Z" end-time="2026-10-13 07:55:25Z" duration="0.000857" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1040" name="RoundReset_ClearsRecoveryAndDownCount" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.RoundReset_ClearsRecoveryAndDownCount" methodname="RoundReset_ClearsRecoveryAndDownCount" classname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests" runstate="Runnable" seed="1673659880" result="Passed" start-time="2026-10-13 07:55:25Z" end-time="2026-10-13 07:55:25Z" duration="0.000129" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <output><![CDATA[Saving results to: /Users/kjh/Library/Application Support/KJH4845/Project Hotfix/TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

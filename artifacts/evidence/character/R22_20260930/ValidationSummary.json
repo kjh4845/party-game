@@ -1,0 +1,101 @@
+{
+  "playMode": {
+    "ActualTipContactScoresBodyAndHeadOnceForEachHand": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    },
+    "CancellationStopsPunchAndRestoresGrabLimits": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    },
+    "CapturePolishMotionAndSurface": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    },
+    "CapturePunchFeelComparison": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    },
+    "ContactTransitionNeverWritesRigidbodyMotion": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    },
+    "ContactUsesSolvedPoseAndCancelClearsTrunkDrive": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    },
+    "ExportConfirmedHitAudio": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    },
+    "HoldAndThrowNeverBecomePunchAndFreeHandCanPunch": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    },
+    "MirroredPlayerCanHitWithEitherHand": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    },
+    "NativePunchLoopRunsOneAuthorityStep": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    },
+    "OutOfRangeWallAndNonTipContactsCannotScore": {
+      "result": "Passed",
+      "source": "final-nontip.xml"
+    },
+    "PhysicalPunchReplayMatches15_60_144Fps": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    },
+    "ProbeJointVelocityConvention": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    },
+    "PunchVelocityIsBoundedAndClearsOnCancelAndReset": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    },
+    "RealRepeatedContactsRequestOneThresholdWithoutTimeDecay": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    },
+    "RemovedOpponentDoesNotBreakPunchReference": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    },
+    "SameTickTimedTapsAndRearmDoNotLoseOrInventActions": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    },
+    "SnapTargetsStayInsideElbowLimitsAndSettle": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    },
+    "SolvedContactYieldsThenRetractsAndClears": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    },
+    "TracePhysicalStrikeTravel": {
+      "result": "Passed",
+      "source": "C-verified.xml"
+    }
+  },
+  "editMode": {
+    "id": "2",
+    "testcasecount": "146",
+    "result": "Passed",
+    "total": "146",
+    "passed": "146",
+    "failed": "0",
+    "inconclusive": "0",
+    "skipped": "0",
+    "asserts": "0",
+    "engine-version": "3.5.0.0",
+    "clr-version": "4.0.30319.42000",
+    "start-time": "2026-09-30 08:51:38Z",
+    "end-time": "2026-09-30 08:51:38Z",
+    "duration": "0.712526"
+  },
+  "note": "First C run: 19/20. NonTip fixture updated after measured terminal contact; re-run passed. No runtime behavior changes between runs."
+}

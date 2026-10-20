@@ -1,0 +1,37 @@
+--- before/ActiveUpperBodyReview.cs
++++ after/ActiveUpperBodyReview.cs
+@@ -178,6 +178,7 @@
+                 AddLink(bones, "UpperArm_" + side, "Forearm_" + side, "Chest", 1.25f, .041f, 0, 110, 15, 100, 4, 15);
+                 AddLink(bones, "Forearm_" + side, "HandLogical_" + side, "UpperArm_" + side, .75f, .037f, _terminalLength, 135, 4, 60, 2, 8);
+             }
++            InitializeShoulderMotion(bones);
+             // Only anatomically adjacent shapes overlap at their connection.
+             // Forearms still collide with the torso, opposite arm and environment.
+             foreach (var link in _links)
+@@ -351,6 +352,8 @@
+             foreach (var pair in _goals) pair.Value.localRotation = _rest[pair.Key];
+             ApplyLowReachReference(seconds);
+             ApplyPunchBodyReference();
++            ApplyNaturalReachTorso();
++            ApplyShoulderMotion(seconds);
+             for (var side = 0; side < 2; side++) SolveReferenceArm(side);
+             ApplyCombatGuard(seconds);
+             for(var side=0;side<2;side++)if(_punchReference[side])ApplyJointSpacePunch(side);
+@@ -459,6 +462,7 @@
+                 var velocity=Actor.Motor.Body.linearVelocity;
+                 Actor.Pose.Apply(new JumpPresentationState(velocity.y,Supported,1,0,velocity.x,velocity.z,Sprinting,Supported?0:1,_poseReset),_stepSeconds);
+             }
++            CaptureShoulderMotion();
+             foreach (var link in _links)
+             {
+                 var a = link.Body.position + link.Body.rotation * link.Joint.anchor;
+--- before/ActiveUpperBodyReview.Impact.cs
++++ after/ActiveUpperBodyReview.Impact.cs
+@@ -52,6 +52,7 @@
+         }
+         public void ClearImpactReaction()
+         {
++            ResetShoulderMotion();
+             _impactAge=-1;_impactStrength=0;_impactPart=null;_hitReaction.Clear();
+             foreach(var link in _links)
+             {link.Joint.slerpDrive=link.Drive;link.Joint.targetRotation=Quaternion.identity;link.Joint.targetAngularVelocity=Vector3.zero;}

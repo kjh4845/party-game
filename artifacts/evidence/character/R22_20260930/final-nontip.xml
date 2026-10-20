@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-09-30 08:50:36Z" end-time="2026-09-30 08:50:39Z" duration="2.4961539">
+  <test-suite type="TestSuite" id="1287" name="Project Hotfix" fullname="Project Hotfix" runstate="Runnable" testcasecount="221" result="Passed" start-time="2026-09-30 08:50:36Z" end-time="2026-09-30 08:50:39Z" duration="2.496154" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1273" name="ProjectHotfix.Physics.Tests.PlayMode.dll" fullname="/Users/kjh/local_dev/party game/Project hotfix/Library/ScriptAssemblies/ProjectHotfix.Physics.Tests.PlayMode.dll" runstate="Runnable" testcasecount="219" result="Passed" start-time="2026-09-30 08:50:36Z" end-time="2026-09-30 08:50:39Z" duration="2.491316" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="50530" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1274" name="ProjectHotfix" fullname="ProjectHotfix" runstate="Runnable" testcasecount="219" result="Passed" start-time="2026-09-30 08:50:36Z" end-time="2026-09-30 08:50:39Z" duration="2.489847" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1275" name="Physics" fullname="ProjectHotfix.Physics" runstate="Runnable" testcasecount="219" result="Passed" start-time="2026-09-30 08:50:36Z" end-time="2026-09-30 08:50:39Z" duration="2.488449" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1276" name="Tests" fullname="ProjectHotfix.Physics.Tests" runstate="Runnable" testcasecount="219" result="Passed" start-time="2026-09-30 08:50:36Z" end-time="2026-09-30 08:50:39Z" duration="2.487151" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1147" name="PhysicalPunchCandidateTests" fullname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests" classname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests" runstate="Runnable" testcasecount="30" result="Passed" start-time="2026-09-30 08:50:36Z" end-time="2026-09-30 08:50:39Z" duration="2.484705" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1158" name="OutOfRangeWallAndNonTipContactsCannotScore" fullname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests.OutOfRangeWallAndNonTipContactsCannotScore" methodname="OutOfRangeWallAndNonTipContactsCannotScore" classname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests" runstate="Runnable" seed="258384217" result="Passed" start-time="2026-09-30 08:50:36Z" end-time="2026-09-30 08:50:39Z" duration="2.478349" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: /Users/kjh/Library/Application Support/KJH4845/Project Hotfix/TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

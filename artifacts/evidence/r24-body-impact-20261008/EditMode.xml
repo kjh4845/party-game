@@ -1,0 +1,1060 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="146" result="Passed" total="146" passed="146" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:49Z" duration="0.6481781">
+  <test-suite type="TestSuite" id="1000" name="Project Hotfix" fullname="Project Hotfix" runstate="Runnable" testcasecount="146" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:49Z" duration="0.648178" total="146" passed="146" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1179" name="ProjectHotfix.Architecture.Tests.Editor.dll" fullname="/Users/kjh/local_dev/party game/Project hotfix/Library/ScriptAssemblies/ProjectHotfix.Architecture.Tests.Editor.dll" runstate="Runnable" testcasecount="139" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:49Z" duration="0.599844" total="139" passed="139" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="35607" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1180" name="ProjectHotfix" fullname="ProjectHotfix" runstate="Runnable" testcasecount="139" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:49Z" duration="0.598527" total="139" passed="139" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1185" name="Architecture" fullname="ProjectHotfix.Architecture" runstate="Runnable" testcasecount="108" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:49Z" duration="0.548787" total="108" passed="108" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1186" name="Tests" fullname="ProjectHotfix.Architecture.Tests" runstate="Runnable" testcasecount="108" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:49Z" duration="0.548084" total="108" passed="108" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1041" name="AtomicLocalFileStoreTests" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" testcasecount="19" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.283328" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties>
+                <property name="Category" value="Core" />
+              </properties>
+              <test-case id="1057" name="BothSlotsInvalid_ReturnsNoPayloadAndDoesNotRewriteEitherFile" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.BothSlotsInvalid_ReturnsNoPayloadAndDoesNotRewriteEitherFile" methodname="BothSlotsInvalid_ReturnsNoPayloadAndDoesNotRewriteEitherFile" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="1530904474" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.012802" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1060" name="CallerValidator_CanRejectCurrentAndSelectCompatibleLastGood" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.CallerValidator_CanRejectCurrentAndSelectCompatibleLastGood" methodname="CallerValidator_CanRejectCurrentAndSelectCompatibleLastGood" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="248931797" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.002554" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1059" name="ConcurrentRepositoryInstances_SerializeTheSameAddress" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.ConcurrentRepositoryInstances_SerializeTheSameAddress" methodname="ConcurrentRepositoryInstances_SerializeTheSameAddress" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="1698507405" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.211420" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1058" name="ConcurrentWrites_OnOneStoreNeverExposeATornEnvelope" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.ConcurrentWrites_OnOneStoreNeverExposeATornEnvelope" methodname="ConcurrentWrites_OnOneStoreNeverExposeATornEnvelope" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="1477917082" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.018849" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1050" name="CorruptCurrentThenSave_PreservesExistingValidLastGood" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.CorruptCurrentThenSave_PreservesExistingValidLastGood" methodname="CorruptCurrentThenSave_PreservesExistingValidLastGood" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="400484071" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.003091" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1042" name="FirstSave_NewRepositoryInstanceReadsExactCurrentWithoutBackup" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.FirstSave_NewRepositoryInstanceReadsExactCurrentWithoutBackup" methodname="FirstSave_NewRepositoryInstanceReadsExactCurrentWithoutBackup" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="1607093858" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.001342" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1053" name="InvalidAddressMatrix_IsRejectedWithoutWritingOutsideRoot" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.InvalidAddressMatrix_IsRejectedWithoutWritingOutsideRoot" methodname="InvalidAddressMatrix_IsRejectedWithoutWritingOutsideRoot" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="2070470315" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.001629" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1049" name="InvalidCurrent_SelectsLastGoodWithoutMutatingFiles" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.InvalidCurrent_SelectsLastGoodWithoutMutatingFiles" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.011097" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1045" name="InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(&quot;truncated&quot;,Corrupt)" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(&quot;truncated&quot;,Corrupt)" methodname="InvalidCurrent_SelectsLastGoodWithoutMutatingFiles" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="457770101" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.002669" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1046" name="InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(&quot;hash&quot;,Corrupt)" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(&quot;hash&quot;,Corrupt)" methodname="InvalidCurrent_SelectsLastGoodWithoutMutatingFiles" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="750595247" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.002297" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1047" name="InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(&quot;version&quot;,Corrupt)" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(&quot;version&quot;,Corrupt)" methodname="InvalidCurrent_SelectsLastGoodWithoutMutatingFiles" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="1221060940" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.002185" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1048" name="InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(&quot;length&quot;,TooLarge)" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(&quot;length&quot;,TooLarge)" methodname="InvalidCurrent_SelectsLastGoodWithoutMutatingFiles" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="1303825033" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.002108" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1061" name="NonRegularTarget_IsRejectedWithoutReplacement" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.NonRegularTarget_IsRejectedWithoutReplacement" methodname="NonRegularTarget_IsRejectedWithoutReplacement" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="274404331" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000741" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1055" name="OversizedDeclaredLength_IsRejectedBeforeAllocationAndFallsBack" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.OversizedDeclaredLength_IsRejectedBeforeAllocationAndFallsBack" methodname="OversizedDeclaredLength_IsRejectedBeforeAllocationAndFallsBack" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="137829355" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.001978" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1043" name="Overwrite_RotatesPriorCurrentIntoLastGood" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.Overwrite_RotatesPriorCurrentIntoLastGood" methodname="Overwrite_RotatesPriorCurrentIntoLastGood" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="184572930" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.001784" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1054" name="PayloadLimit_AcceptsExactLimitAndRejectsLargerWithoutChangingCurrent" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.PayloadLimit_AcceptsExactLimitAndRejectsLargerWithoutChangingCurrent" methodname="PayloadLimit_AcceptsExactLimitAndRejectsLargerWithoutChangingCurrent" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="1473055283" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.001187" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1056" name="PhysicalFileOverLimit_IsRejectedBeforePayloadReadAndFallsBack" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.PhysicalFileOverLimit_IsRejectedBeforePayloadReadAndFallsBack" methodname="PhysicalFileOverLimit_IsRejectedBeforePayloadReadAndFallsBack" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="1418332815" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.002081" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1052" name="ReplaceFailure_LeavesCurrentAndLastGoodUnchangedAndCleansPending" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.ReplaceFailure_LeavesCurrentAndLastGoodUnchangedAndCleansPending" methodname="ReplaceFailure_LeavesCurrentAndLastGoodUnchangedAndCleansPending" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="1919471912" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.002302" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1051" name="StalePending_IsIgnoredByReadAndRemovedByNextWrite" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.StalePending_IsIgnoredByReadAndRemovedByNextWrite" methodname="StalePending_IsIgnoredByReadAndRemovedByNextWrite" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="1598148837" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.001739" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1044" name="ThirdWrite_ReplacesExistingLastGoodWithPriorCurrent" fullname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.ThirdWrite_ReplacesExistingLastGoodWithPriorCurrent" methodname="ThirdWrite_ReplacesExistingLastGoodWithPriorCurrent" classname="ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests" runstate="Runnable" seed="1529542964" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.002371" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1062" name="BuildProfileBoundaryTests" fullname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests" classname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.011066" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="ParameterizedMethod" id="1073" name="BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides" fullname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides" classname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.002112" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1071" name="BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides(&quot;Assets/Settings/Build Profiles/Windows x64 Development.asset&quot;)" fullname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides(&quot;Assets/Settings/Build Profiles/Windows x64 Development.asset&quot;)" methodname="BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides" classname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests" runstate="Runnable" seed="2095650325" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.001412" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1072" name="BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides(&quot;Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset&quot;)" fullname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides(&quot;Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset&quot;)" methodname="BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides" classname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests" runstate="Runnable" seed="1686993557" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000332" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="ParameterizedMethod" id="1070" name="BuildProfile_InheritsTheSingleGlobalSampleScene" fullname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.BuildProfile_InheritsTheSingleGlobalSampleScene" classname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.001520" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1068" name="BuildProfile_InheritsTheSingleGlobalSampleScene(&quot;Assets/Settings/Build Profiles/Windows x64 Development.asset&quot;)" fullname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.BuildProfile_InheritsTheSingleGlobalSampleScene(&quot;Assets/Settings/Build Profiles/Windows x64 Development.asset&quot;)" methodname="BuildProfile_InheritsTheSingleGlobalSampleScene" classname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests" runstate="Runnable" seed="262770980" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.001101" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1069" name="BuildProfile_InheritsTheSingleGlobalSampleScene(&quot;Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset&quot;)" fullname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.BuildProfile_InheritsTheSingleGlobalSampleScene(&quot;Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset&quot;)" methodname="BuildProfile_InheritsTheSingleGlobalSampleScene" classname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests" runstate="Runnable" seed="398244737" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000043" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1067" name="BuildProfileDefines_AreExactMutuallyExclusiveAndDoNotLeakGlobally" fullname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.BuildProfileDefines_AreExactMutuallyExclusiveAndDoNotLeakGlobally" methodname="BuildProfileDefines_AreExactMutuallyExclusiveAndDoNotLeakGlobally" classname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests" runstate="Runnable" seed="567927524" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000436" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1074" name="GlobalStandalonePlayerSettings_UseTheApprovedTemporaryIdentityAndMono" fullname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.GlobalStandalonePlayerSettings_UseTheApprovedTemporaryIdentityAndMono" methodname="GlobalStandalonePlayerSettings_UseTheApprovedTemporaryIdentityAndMono" classname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests" runstate="Runnable" seed="1293025728" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000376" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1066" name="WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect" fullname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect" classname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.002191" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1064" name="WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect(&quot;Assets/Settings/Build Profiles/Windows x64 Development.asset&quot;,True)" fullname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect(&quot;Assets/Settings/Build Profiles/Windows x64 Development.asset&quot;,True)" methodname="WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect" classname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests" runstate="Runnable" seed="1827674831" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.001826" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1065" name="WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect(&quot;Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset&quot;,False)" fullname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect(&quot;Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset&quot;,False)" methodname="WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect" classname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests" runstate="Runnable" seed="590555328" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000079" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1063" name="WindowsBuildProfiles_AreExactlyTwoAssetsWithUniqueGuids" fullname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.WindowsBuildProfiles_AreExactlyTwoAssetsWithUniqueGuids" methodname="WindowsBuildProfiles_AreExactlyTwoAssetsWithUniqueGuids" classname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests" runstate="Runnable" seed="2085141130" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.003446" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1075" name="WindowsX64BuildSupport_IsInstalled" fullname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.WindowsX64BuildSupport_IsInstalled" methodname="WindowsX64BuildSupport_IsInstalled" classname="ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests" runstate="Runnable" seed="1757135761" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000090" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1076" name="ExternalLaunchTests" fullname="ProjectHotfix.Architecture.Tests.ExternalLaunchTests" classname="ProjectHotfix.Architecture.Tests.ExternalLaunchTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.004252" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1077" name="ExternalLaunchConsumesAirJumpAndStartsAFreshLandingImpactInterval" fullname="ProjectHotfix.Architecture.Tests.ExternalLaunchTests.ExternalLaunchConsumesAirJumpAndStartsAFreshLandingImpactInterval" methodname="ExternalLaunchConsumesAirJumpAndStartsAFreshLandingImpactInterval" classname="ProjectHotfix.Architecture.Tests.ExternalLaunchTests" runstate="Runnable" seed="1759518979" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000761" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1078" name="GetUpClipTests" fullname="ProjectHotfix.Architecture.Tests.GetUpClipTests" classname="ProjectHotfix.Architecture.Tests.GetUpClipTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.026030" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="ParameterizedMethod" id="1084" name="GetUpFinishesInNeutralBeforeLocomotionHandoff" fullname="ProjectHotfix.Architecture.Tests.GetUpClipTests.GetUpFinishesInNeutralBeforeLocomotionHandoff" classname="ProjectHotfix.Architecture.Tests.GetUpClipTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.015451" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1082" name="GetUpFinishesInNeutralBeforeLocomotionHandoff(&quot;FaceUp&quot;)" fullname="ProjectHotfix.Architecture.Tests.GetUpClipTests.GetUpFinishesInNeutralBeforeLocomotionHandoff(&quot;FaceUp&quot;)" methodname="GetUpFinishesInNeutralBeforeLocomotionHandoff" classname="ProjectHotfix.Architecture.Tests.GetUpClipTests" runstate="Runnable" seed="1288417107" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.010597" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1083" name="GetUpFinishesInNeutralBeforeLocomotionHandoff(&quot;FaceDown&quot;)" fullname="ProjectHotfix.Architecture.Tests.GetUpClipTests.GetUpFinishesInNeutralBeforeLocomotionHandoff(&quot;FaceDown&quot;)" methodname="GetUpFinishesInNeutralBeforeLocomotionHandoff" classname="ProjectHotfix.Architecture.Tests.GetUpClipTests" runstate="Runnable" seed="367385628" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.004509" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="ParameterizedMethod" id="1081" name="GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents" fullname="ProjectHotfix.Architecture.Tests.GetUpClipTests.GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents" classname="ProjectHotfix.Architecture.Tests.GetUpClipTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.010211" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1079" name="GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents(&quot;FaceUp&quot;)" fullname="ProjectHotfix.Architecture.Tests.GetUpClipTests.GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents(&quot;FaceUp&quot;)" methodname="GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents" classname="ProjectHotfix.Architecture.Tests.GetUpClipTests" runstate="Runnable" seed="403111252" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.006113" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1080" name="GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents(&quot;FaceDown&quot;)" fullname="ProjectHotfix.Architecture.Tests.GetUpClipTests.GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents(&quot;FaceDown&quot;)" methodname="GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents" classname="ProjectHotfix.Architecture.Tests.GetUpClipTests" runstate="Runnable" seed="1886630578" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.003697" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestFixture" id="1085" name="GripStressTests" fullname="ProjectHotfix.Architecture.Tests.GripStressTests" classname="ProjectHotfix.Architecture.Tests.GripStressTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.030759" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1088" name="GrabReleaseAndBreak_DoNotCreatePunchOrAutoRegrab" fullname="ProjectHotfix.Architecture.Tests.GripStressTests.GrabReleaseAndBreak_DoNotCreatePunchOrAutoRegrab" methodname="GrabReleaseAndBreak_DoNotCreatePunchOrAutoRegrab" classname="ProjectHotfix.Architecture.Tests.GripStressTests" runstate="Runnable" seed="827808969" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000692" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1086" name="IdleHolding_DoesNotAccumulateTimeFatigue" fullname="ProjectHotfix.Architecture.Tests.GripStressTests.IdleHolding_DoesNotAccumulateTimeFatigue" methodname="IdleHolding_DoesNotAccumulateTimeFatigue" classname="ProjectHotfix.Architecture.Tests.GripStressTests" runstate="Runnable" seed="1517225292" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.029383" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1087" name="SustainedLoad_Breaks_AndLowLoadRecovers" fullname="ProjectHotfix.Architecture.Tests.GripStressTests.SustainedLoad_Breaks_AndLowLoadRecovers" methodname="SustainedLoad_Breaks_AndLowLoadRecovers" classname="ProjectHotfix.Architecture.Tests.GripStressTests" runstate="Runnable" seed="299473653" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000152" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1089" name="GroundHandActionTests" fullname="ProjectHotfix.Architecture.Tests.GroundHandActionTests" classname="ProjectHotfix.Architecture.Tests.GroundHandActionTests" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.003461" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1101" name="DuplicateAndOldEdges_CannotRepeatOrRestartAttack" fullname="ProjectHotfix.Architecture.Tests.GroundHandActionTests.DuplicateAndOldEdges_CannotRepeatOrRestartAttack" methodname="DuplicateAndOldEdges_CannotRepeatOrRestartAttack" classname="ProjectHotfix.Architecture.Tests.GroundHandActionTests" runstate="Runnable" seed="1590454655" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000128" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1096" name="FasterPunchSharesHitClockAndRecoveryWithoutChangingHoldThreshold" fullname="ProjectHotfix.Architecture.Tests.GroundHandActionTests.FasterPunchSharesHitClockAndRecoveryWithoutChangingHoldThreshold" methodname="FasterPunchSharesHitClockAndRecoveryWithoutChangingHoldThreshold" classname="ProjectHotfix.Architecture.Tests.GroundHandActionTests" runstate="Runnable" seed="1627751398" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000236" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1103" name="GroundContextStaysGround_AirContextDoesNotCreatePunch" fullname="ProjectHotfix.Architecture.Tests.GroundHandActionTests.GroundContextStaysGround_AirContextDoesNotCreatePunch" methodname="GroundContextStaysGround_AirContextDoesNotCreatePunch" classname="ProjectHotfix.Architecture.Tests.GroundHandActionTests" runstate="Runnable" seed="282137347" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000081" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1102" name="HandsHaveIndependentActions_AndPerActionTargetDeduplication" fullname="ProjectHotfix.Architecture.Tests.GroundHandActionTests.HandsHaveIndependentActions_AndPerActionTargetDeduplication" methodname="HandsHaveIndependentActions_AndPerActionTargetDeduplication" classname="ProjectHotfix.Architecture.Tests.GroundHandActionTests" runstate="Runnable" seed="993843031" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000369" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1093" name="HardwareDurationWinsOverFixedTickRounding" fullname="ProjectHotfix.Architecture.Tests.GroundHandActionTests.HardwareDurationWinsOverFixedTickRounding" classname="ProjectHotfix.Architecture.Tests.GroundHandActionTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000510" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1090" name="HardwareDurationWinsOverFixedTickRounding(0.147d,True)" fullname="ProjectHotfix.Architecture.Tests.GroundHandActionTests.HardwareDurationWinsOverFixedTickRounding(0.147d,True)" methodname="HardwareDurationWinsOverFixedTickRounding" classname="ProjectHotfix.Architecture.Tests.GroundHandActionTests" runstate="Runnable" seed="352774634" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000173" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1091" name="HardwareDurationWinsOverFixedTickRounding(0.15d,False)" fullname="ProjectHotfix.Architecture.Tests.GroundHandActionTests.HardwareDurationWinsOverFixedTickRounding(0.15d,False)" methodname="HardwareDurationWinsOverFixedTickRounding" classname="ProjectHotfix.Architecture.Tests.GroundHandActionTests" runstate="Runnable" seed="1700521156" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000019" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1092" name="HardwareDurationWinsOverFixedTickRounding(0.153d,False)" fullname="ProjectHotfix.Architecture.Tests.GroundHandActionTests.HardwareDurationWinsOverFixedTickRounding(0.153d,False)" methodname="HardwareDurationWinsOverFixedTickRounding" classname="ProjectHotfix.Architecture.Tests.GroundHandActionTests" runstate="Runnable" seed="1844782200" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000019" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1095" name="InvalidTimestampCannotCorruptPendingHardwareDuration" fullname="ProjectHotfix.Architecture.Tests.GroundHandActionTests.InvalidTimestampCannotCorruptPendingHardwareDuration" methodname="InvalidTimestampCannotCorruptPendingHardwareDuration" classname="ProjectHotfix.Architecture.Tests.GroundHandActionTests" runstate="Runnable" seed="1887600915" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000336" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1105" name="OccupiedHand_CannotStart_AndCancellationRemovesHitEligibility" fullname="ProjectHotfix.Architecture.Tests.GroundHandActionTests.OccupiedHand_CannotStart_AndCancellationRemovesHitEligibility" methodname="OccupiedHand_CannotStart_AndCancellationRemovesHitEligibility" classname="ProjectHotfix.Architecture.Tests.GroundHandActionTests" runstate="Runnable" seed="694380774" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000067" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1094" name="SimultaneousTimedTapsAreIndependentOfHandProcessingOrder" fullname="ProjectHotfix.Architecture.Tests.GroundHandActionTests.SimultaneousTimedTapsAreIndependentOfHandProcessingOrder" methodname="SimultaneousTimedTapsAreIndependentOfHandProcessingOrder" classname="ProjectHotfix.Architecture.Tests.GroundHandActionTests" runstate="Runnable" seed="540974149" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000135" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1104" name="Suppress_ResetAndAllUp_DoNotEmitActions" fullname="ProjectHotfix.Architecture.Tests.GroundHandActionTests.Suppress_ResetAndAllUp_DoNotEmitActions" methodname="Suppress_ResetAndAllUp_DoNotEmitActions" classname="ProjectHotfix.Architecture.Tests.GroundHandActionTests" runstate="Runnable" seed="1791643361" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000176" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1100" name="Threshold_TapAndHoldAreExclusive" fullname="ProjectHotfix.Architecture.Tests.GroundHandActionTests.Threshold_TapAndHoldAreExclusive" classname="ProjectHotfix.Architecture.Tests.GroundHandActionTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000505" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1097" name="Threshold_TapAndHoldAreExclusive(0.12d)" fullname="ProjectHotfix.Architecture.Tests.GroundHandActionTests.Threshold_TapAndHoldAreExclusive(0.12d)" methodname="Threshold_TapAndHoldAreExclusive" classname="ProjectHotfix.Architecture.Tests.GroundHandActionTests" runstate="Runnable" seed="1839401796" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000177" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1098" name="Threshold_TapAndHoldAreExclusive(0.15d)" fullname="ProjectHotfix.Architecture.Tests.GroundHandActionTests.Threshold_TapAndHoldAreExclusive(0.15d)" methodname="Threshold_TapAndHoldAreExclusive" classname="ProjectHotfix.Architecture.Tests.GroundHandActionTests" runstate="Runnable" seed="2103258950" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000026" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1099" name="Threshold_TapAndHoldAreExclusive(0.18d)" fullname="ProjectHotfix.Architecture.Tests.GroundHandActionTests.Threshold_TapAndHoldAreExclusive(0.18d)" methodname="Threshold_TapAndHoldAreExclusive" classname="ProjectHotfix.Architecture.Tests.GroundHandActionTests" runstate="Runnable" seed="792449477" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000026" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestFixture" id="1106" name="GroundPunchWindowTests" fullname="ProjectHotfix.Architecture.Tests.GroundPunchWindowTests" classname="ProjectHotfix.Architecture.Tests.GroundPunchWindowTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.001164" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1107" name="CandidateWindowFollowsFixedTimeAndRejectsRecoveryHits" fullname="ProjectHotfix.Architecture.Tests.GroundPunchWindowTests.CandidateWindowFollowsFixedTimeAndRejectsRecoveryHits" methodname="CandidateWindowFollowsFixedTimeAndRejectsRecoveryHits" classname="ProjectHotfix.Architecture.Tests.GroundPunchWindowTests" runstate="Runnable" seed="446425144" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000096" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1108" name="ExistingCallersKeepTheirOriginalWindow" fullname="ProjectHotfix.Architecture.Tests.GroundPunchWindowTests.ExistingCallersKeepTheirOriginalWindow" methodname="ExistingCallersKeepTheirOriginalWindow" classname="ProjectHotfix.Architecture.Tests.GroundPunchWindowTests" runstate="Runnable" seed="1777723601" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000188" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1113" name="InvalidWindowCannotCreateAnAttack" fullname="ProjectHotfix.Architecture.Tests.GroundPunchWindowTests.InvalidWindowCannotCreateAnAttack" classname="ProjectHotfix.Architecture.Tests.GroundPunchWindowTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000460" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1109" name="InvalidWindowCannotCreateAnAttack(-0.1d,0.2d)" fullname="ProjectHotfix.Architecture.Tests.GroundPunchWindowTests.InvalidWindowCannotCreateAnAttack(-0.1d,0.2d)" methodname="InvalidWindowCannotCreateAnAttack" classname="ProjectHotfix.Architecture.Tests.GroundPunchWindowTests" runstate="Runnable" seed="95522322" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000085" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1110" name="InvalidWindowCannotCreateAnAttack(0.3d,0.2d)" fullname="ProjectHotfix.Architecture.Tests.GroundPunchWindowTests.InvalidWindowCannotCreateAnAttack(0.3d,0.2d)" methodname="InvalidWindowCannotCreateAnAttack" classname="ProjectHotfix.Architecture.Tests.GroundPunchWindowTests" runstate="Runnable" seed="896520588" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000022" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1111" name="InvalidWindowCannotCreateAnAttack(0.1d,0.7d)" fullname="ProjectHotfix.Architecture.Tests.GroundPunchWindowTests.InvalidWindowCannotCreateAnAttack(0.1d,0.7d)" methodname="InvalidWindowCannotCreateAnAttack" classname="ProjectHotfix.Architecture.Tests.GroundPunchWindowTests" runstate="Runnable" seed="146206274" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000019" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1112" name="InvalidWindowCannotCreateAnAttack(double.NaN,0.2d)" fullname="ProjectHotfix.Architecture.Tests.GroundPunchWindowTests.InvalidWindowCannotCreateAnAttack(double.NaN,0.2d)" methodname="InvalidWindowCannotCreateAnAttack" classname="ProjectHotfix.Architecture.Tests.GroundPunchWindowTests" runstate="Runnable" seed="284145565" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000021" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestFixture" id="1114" name="InputPackageBoundaryTests" fullname="ProjectHotfix.Architecture.Tests.InputPackageBoundaryTests" classname="ProjectHotfix.Architecture.Tests.InputPackageBoundaryTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.026480" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1117" name="InputPackage_IsLockedAsDirectRegistryDependency" fullname="ProjectHotfix.Architecture.Tests.InputPackageBoundaryTests.InputPackage_IsLockedAsDirectRegistryDependency" methodname="InputPackage_IsLockedAsDirectRegistryDependency" classname="ProjectHotfix.Architecture.Tests.InputPackageBoundaryTests" runstate="Runnable" seed="1827515072" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000170" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1116" name="OnlyInputModule_ReferencesTheSelectedPackageAssembly" fullname="ProjectHotfix.Architecture.Tests.InputPackageBoundaryTests.OnlyInputModule_ReferencesTheSelectedPackageAssembly" methodname="OnlyInputModule_ReferencesTheSelectedPackageAssembly" classname="ProjectHotfix.Architecture.Tests.InputPackageBoundaryTests" runstate="Runnable" seed="817664079" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.018316" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1115" name="PlayerSettings_EnableOnlyTheNewInputSystemBackend" fullname="ProjectHotfix.Architecture.Tests.InputPackageBoundaryTests.PlayerSettings_EnableOnlyTheNewInputSystemBackend" methodname="PlayerSettings_EnableOnlyTheNewInputSystemBackend" classname="ProjectHotfix.Architecture.Tests.InputPackageBoundaryTests" runstate="Runnable" seed="1743527613" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000072" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1118" name="ProductRuntimeSources_DoNotUseLegacyInputApis" fullname="ProjectHotfix.Architecture.Tests.InputPackageBoundaryTests.ProductRuntimeSources_DoNotUseLegacyInputApis" methodname="ProductRuntimeSources_DoNotUseLegacyInputApis" classname="ProjectHotfix.Architecture.Tests.InputPackageBoundaryTests" runstate="Runnable" seed="1144582945" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.007282" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1119" name="LiftThrowAdmissionTests" fullname="ProjectHotfix.Architecture.Tests.LiftThrowAdmissionTests" classname="ProjectHotfix.Architecture.Tests.LiftThrowAdmissionTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000943" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1121" name="MenuAndReset_RearmCannotAuthorizeAThrow" fullname="ProjectHotfix.Architecture.Tests.LiftThrowAdmissionTests.MenuAndReset_RearmCannotAuthorizeAThrow" methodname="MenuAndReset_RearmCannotAuthorizeAThrow" classname="ProjectHotfix.Architecture.Tests.LiftThrowAdmissionTests" runstate="Runnable" seed="1099279754" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000136" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1120" name="ReleaseAdmission_RejectsOldEdgesAgainstANewGrab" fullname="ProjectHotfix.Architecture.Tests.LiftThrowAdmissionTests.ReleaseAdmission_RejectsOldEdgesAgainstANewGrab" methodname="ReleaseAdmission_RejectsOldEdgesAgainstANewGrab" classname="ProjectHotfix.Architecture.Tests.LiftThrowAdmissionTests" runstate="Runnable" seed="1158865562" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000123" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1122" name="LocalStorageBoundaryTests" fullname="ProjectHotfix.Architecture.Tests.LocalStorageBoundaryTests" classname="ProjectHotfix.Architecture.Tests.LocalStorageBoundaryTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.015675" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1123" name="LocalStorageAssembly_IsANoEngineLeaf" fullname="ProjectHotfix.Architecture.Tests.LocalStorageBoundaryTests.LocalStorageAssembly_IsANoEngineLeaf" methodname="LocalStorageAssembly_IsANoEngineLeaf" classname="ProjectHotfix.Architecture.Tests.LocalStorageBoundaryTests" runstate="Runnable" seed="411913356" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.014597" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1124" name="LocalStorageRuntimeSources_HaveNoUnityOrNetworkNamespaceDependency" fullname="ProjectHotfix.Architecture.Tests.LocalStorageBoundaryTests.LocalStorageRuntimeSources_HaveNoUnityOrNetworkNamespaceDependency" methodname="LocalStorageRuntimeSources_HaveNoUnityOrNetworkNamespaceDependency" classname="ProjectHotfix.Architecture.Tests.LocalStorageBoundaryTests" runstate="Runnable" seed="1093484100" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000602" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1125" name="ModuleBoundaryTests" fullname="ProjectHotfix.Architecture.Tests.ModuleBoundaryTests" classname="ProjectHotfix.Architecture.Tests.ModuleBoundaryTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.061684" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1128" name="Presentation_HasNoDirectOrTransitivePathToSimulation" fullname="ProjectHotfix.Architecture.Tests.ModuleBoundaryTests.Presentation_HasNoDirectOrTransitivePathToSimulation" methodname="Presentation_HasNoDirectOrTransitivePathToSimulation" classname="ProjectHotfix.Architecture.Tests.ModuleBoundaryTests" runstate="Runnable" seed="1073464298" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.015100" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1129" name="ProjectRuntimeSources_AreOwnedByTheirFolderAssembly" fullname="ProjectHotfix.Architecture.Tests.ModuleBoundaryTests.ProjectRuntimeSources_AreOwnedByTheirFolderAssembly" methodname="ProjectRuntimeSources_AreOwnedByTheirFolderAssembly" classname="ProjectHotfix.Architecture.Tests.ModuleBoundaryTests" runstate="Runnable" seed="1161424477" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.015442" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1126" name="RuntimeAssemblies_HaveOnlyApprovedProjectReferences" fullname="ProjectHotfix.Architecture.Tests.ModuleBoundaryTests.RuntimeAssemblies_HaveOnlyApprovedProjectReferences" methodname="RuntimeAssemblies_HaveOnlyApprovedProjectReferences" classname="ProjectHotfix.Architecture.Tests.ModuleBoundaryTests" runstate="Runnable" seed="1054021469" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.015081" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1127" name="RuntimeAssemblyGraph_HasNoCycles" fullname="ProjectHotfix.Architecture.Tests.ModuleBoundaryTests.RuntimeAssemblyGraph_HasNoCycles" methodname="RuntimeAssemblyGraph_HasNoCycles" classname="ProjectHotfix.Architecture.Tests.ModuleBoundaryTests" runstate="Runnable" seed="524160614" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.015204" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1130" name="PhysicsPackageBoundaryTests" fullname="ProjectHotfix.Architecture.Tests.PhysicsPackageBoundaryTests" classname="ProjectHotfix.Architecture.Tests.PhysicsPackageBoundaryTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:49Z" duration="0.041136" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1132" name="PhysicsPackage_IsBuiltInDirectAndHasNoSecondStack" fullname="ProjectHotfix.Architecture.Tests.PhysicsPackageBoundaryTests.PhysicsPackage_IsBuiltInDirectAndHasNoSecondStack" methodname="PhysicsPackage_IsBuiltInDirectAndHasNoSecondStack" classname="ProjectHotfix.Architecture.Tests.PhysicsPackageBoundaryTests" runstate="Runnable" seed="945010510" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:48Z" duration="0.000207" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1133" name="ProductRuntimeSources_DoNotMutateGlobalPhysicsCadence" fullname="ProjectHotfix.Architecture.Tests.PhysicsPackageBoundaryTests.ProductRuntimeSources_DoNotMutateGlobalPhysicsCadence" methodname="ProductRuntimeSources_DoNotMutateGlobalPhysicsCadence" classname="ProjectHotfix.Architecture.Tests.PhysicsPackageBoundaryTests" runstate="Runnable" seed="1408667198" result="Passed" start-time="2026-10-07 16:53:48Z" end-time="2026-10-07 16:53:49Z" duration="0.039523" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1131" name="ProjectPhysicsSettings_UseSixtyHertzAutomaticSimulation" fullname="ProjectHotfix.Architecture.Tests.PhysicsPackageBoundaryTests.ProjectPhysicsSettings_UseSixtyHertzAutomaticSimulation" methodname="ProjectPhysicsSettings_UseSixtyHertzAutomaticSimulation" classname="ProjectHotfix.Architecture.Tests.PhysicsPackageBoundaryTests" runstate="Runnable" seed="1704749399" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000437" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1134" name="RuntimePhysicsMutationGuard_CatchesRepresentativeForbiddenCode" fullname="ProjectHotfix.Architecture.Tests.PhysicsPackageBoundaryTests.RuntimePhysicsMutationGuard_CatchesRepresentativeForbiddenCode" methodname="RuntimePhysicsMutationGuard_CatchesRepresentativeForbiddenCode" classname="ProjectHotfix.Architecture.Tests.PhysicsPackageBoundaryTests" runstate="Runnable" seed="895231819" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000098" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1135" name="PunchDownAccumulationTests" fullname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests" classname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.003316" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1145" name="DownHitsDoNotAccumulateAndCannotReplayAfterRecovery" fullname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.DownHitsDoNotAccumulateAndCannotReplayAfterRecovery" methodname="DownHitsDoNotAccumulateAndCannotReplayAfterRecovery" classname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests" runstate="Runnable" seed="880726102" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000802" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1144" name="EachDownKeepsRequiredHitsFixedAndConsumesOnlyCurrentHits" fullname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.EachDownKeepsRequiredHitsFixedAndConsumesOnlyCurrentHits" methodname="EachDownKeepsRequiredHitsFixedAndConsumesOnlyCurrentHits" classname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests" runstate="Runnable" seed="2136453719" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000179" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1143" name="ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold" fullname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold" classname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000739" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1139" name="ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(0,10)" fullname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(0,10)" methodname="ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold" classname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests" runstate="Runnable" seed="1272479478" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000248" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1140" name="ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(1,9)" fullname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(1,9)" methodname="ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold" classname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests" runstate="Runnable" seed="1680819153" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000036" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1141" name="ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(4,6)" fullname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(4,6)" methodname="ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold" classname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests" runstate="Runnable" seed="114002231" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000030" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1142" name="ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(100,6)" fullname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(100,6)" methodname="ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold" classname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests" runstate="Runnable" seed="666269734" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000031" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="ParameterizedMethod" id="1138" name="FirstTenPointEpisodeCountsBodyAndHeadSeparately" fullname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.FirstTenPointEpisodeCountsBodyAndHeadSeparately" classname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000427" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1136" name="FirstTenPointEpisodeCountsBodyAndHeadSeparately(Body,10)" fullname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.FirstTenPointEpisodeCountsBodyAndHeadSeparately(Body,10)" methodname="FirstTenPointEpisodeCountsBodyAndHeadSeparately" classname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests" runstate="Runnable" seed="555767036" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000092" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1137" name="FirstTenPointEpisodeCountsBodyAndHeadSeparately(Head,5)" fullname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.FirstTenPointEpisodeCountsBodyAndHeadSeparately(Head,5)" methodname="FirstTenPointEpisodeCountsBodyAndHeadSeparately" classname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests" runstate="Runnable" seed="2106932463" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000028" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1146" name="IndependentAttackersAndOverlappingHandsDedupeWithoutDiscardingReverseOrder" fullname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.IndependentAttackersAndOverlappingHandsDedupeWithoutDiscardingReverseOrder" methodname="IndependentAttackersAndOverlappingHandsDedupeWithoutDiscardingReverseOrder" classname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests" runstate="Runnable" seed="1735444956" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000075" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1148" name="InvalidProfilesAndIdsAreRejected" fullname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.InvalidProfilesAndIdsAreRejected" methodname="InvalidProfilesAndIdsAreRejected" classname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests" runstate="Runnable" seed="1546322252" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000202" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1147" name="ResetRejectsOldGenerationAndRestartsAtFirstThreshold" fullname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.ResetRejectsOldGenerationAndRestartsAtFirstThreshold" methodname="ResetRejectsOldGenerationAndRestartsAtFirstThreshold" classname="ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests" runstate="Runnable" seed="366117153" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000094" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1149" name="SharedCameraFramingTests" fullname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests" classname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.002877" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1160" name="InvalidProjectionDoesNotEmitNonfiniteCameraTargets" fullname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.InvalidProjectionDoesNotEmitNonfiniteCameraTargets" methodname="InvalidProjectionDoesNotEmitNonfiniteCameraTargets" classname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests" runstate="Runnable" seed="1708258607" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000618" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1159" name="PerspectiveDistanceIncludesEveryCornerAndDepth" fullname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.PerspectiveDistanceIncludesEveryCornerAndDepth" classname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000903" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1156" name="PerspectiveDistanceIncludesEveryCornerAndDepth(1.777778f)" fullname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.PerspectiveDistanceIncludesEveryCornerAndDepth(1.777778f)" methodname="PerspectiveDistanceIncludesEveryCornerAndDepth" classname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests" runstate="Runnable" seed="1590128545" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000517" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1157" name="PerspectiveDistanceIncludesEveryCornerAndDepth(1.6f)" fullname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.PerspectiveDistanceIncludesEveryCornerAndDepth(1.6f)" methodname="PerspectiveDistanceIncludesEveryCornerAndDepth" classname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests" runstate="Runnable" seed="614087560" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000047" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1158" name="PerspectiveDistanceIncludesEveryCornerAndDepth(2.333333f)" fullname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.PerspectiveDistanceIncludesEveryCornerAndDepth(2.333333f)" methodname="PerspectiveDistanceIncludesEveryCornerAndDepth" classname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests" runstate="Runnable" seed="607551883" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000042" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="ParameterizedMethod" id="1155" name="ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed" fullname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed" classname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000775" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1150" name="ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(0)" fullname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(0)" methodname="ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed" classname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests" runstate="Runnable" seed="1194723659" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000269" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1151" name="ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(45)" fullname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(45)" methodname="ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed" classname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests" runstate="Runnable" seed="839750127" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000028" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1152" name="ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(90)" fullname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(90)" methodname="ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed" classname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests" runstate="Runnable" seed="676944730" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000029" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1153" name="ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(180)" fullname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(180)" methodname="ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed" classname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests" runstate="Runnable" seed="318035084" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000031" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1154" name="ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(270)" fullname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(270)" methodname="ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed" classname="ProjectHotfix.Architecture.Tests.SharedCameraFramingTests" runstate="Runnable" seed="1013701736" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000029" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestFixture" id="1161" name="TimedDownTests" fullname="ProjectHotfix.Architecture.Tests.TimedDownTests" classname="ProjectHotfix.Architecture.Tests.TimedDownTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.003429" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="ParameterizedMethod" id="1169" name="AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode" fullname="ProjectHotfix.Architecture.Tests.TimedDownTests.AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode" classname="ProjectHotfix.Architecture.Tests.TimedDownTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.001601" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1165" name="AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(-90,0)" fullname="ProjectHotfix.Architecture.Tests.TimedDownTests.AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(-90,0)" methodname="AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode" classname="ProjectHotfix.Architecture.Tests.TimedDownTests" runstate="Runnable" seed="982847804" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.001038" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1166" name="AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(90,0)" fullname="ProjectHotfix.Architecture.Tests.TimedDownTests.AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(90,0)" methodname="AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode" classname="ProjectHotfix.Architecture.Tests.TimedDownTests" runstate="Runnable" seed="53500451" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000022" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1167" name="AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(0,90)" fullname="ProjectHotfix.Architecture.Tests.TimedDownTests.AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(0,90)" methodname="AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode" classname="ProjectHotfix.Architecture.Tests.TimedDownTests" runstate="Runnable" seed="895318565" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000217" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1168" name="AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(0,-90)" fullname="ProjectHotfix.Architecture.Tests.TimedDownTests.AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(0,-90)" methodname="AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode" classname="ProjectHotfix.Architecture.Tests.TimedDownTests" runstate="Runnable" seed="2109833325" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000022" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1170" name="DropkickHasNoDownTimerOrCountAndRealDownSupersedesItOnce" fullname="ProjectHotfix.Architecture.Tests.TimedDownTests.DropkickHasNoDownTimerOrCountAndRealDownSupersedesItOnce" methodname="DropkickHasNoDownTimerOrCountAndRealDownSupersedesItOnce" classname="ProjectHotfix.Architecture.Tests.TimedDownTests" runstate="Runnable" seed="1729111197" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000198" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1164" name="ExpiryOnlyPermitsSupportedRecoveryAndNeverUnlocksItself" fullname="ProjectHotfix.Architecture.Tests.TimedDownTests.ExpiryOnlyPermitsSupportedRecoveryAndNeverUnlocksItself" methodname="ExpiryOnlyPermitsSupportedRecoveryAndNeverUnlocksItself" classname="ProjectHotfix.Architecture.Tests.TimedDownTests" runstate="Runnable" seed="1980308250" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000149" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1173" name="InvalidTuningAndClockCannotMutateState" fullname="ProjectHotfix.Architecture.Tests.TimedDownTests.InvalidTuningAndClockCannotMutateState" methodname="InvalidTuningAndClockCannotMutateState" classname="ProjectHotfix.Architecture.Tests.TimedDownTests" runstate="Runnable" seed="815188232" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000226" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1163" name="LobbyAlwaysUsesBaseAndDoesNotCount" fullname="ProjectHotfix.Architecture.Tests.TimedDownTests.LobbyAlwaysUsesBaseAndDoesNotCount" methodname="LobbyAlwaysUsesBaseAndDoesNotCount" classname="ProjectHotfix.Architecture.Tests.TimedDownTests" runstate="Runnable" seed="187389135" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000145" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1162" name="MatchAccumulatesOncePerEpisodeAndCapsDuration" fullname="ProjectHotfix.Architecture.Tests.TimedDownTests.MatchAccumulatesOncePerEpisodeAndCapsDuration" methodname="MatchAccumulatesOncePerEpisodeAndCapsDuration" classname="ProjectHotfix.Architecture.Tests.TimedDownTests" runstate="Runnable" seed="2013571194" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000167" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1171" name="ResetAndNewEpisodeRejectStaleEventsAndGetUpCompletions" fullname="ProjectHotfix.Architecture.Tests.TimedDownTests.ResetAndNewEpisodeRejectStaleEventsAndGetUpCompletions" methodname="ResetAndNewEpisodeRejectStaleEventsAndGetUpCompletions" classname="ProjectHotfix.Architecture.Tests.TimedDownTests" runstate="Runnable" seed="708815491" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000117" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1172" name="UprightReturnRequiresExpiredTimerRealSupportAndSettledCompletion" fullname="ProjectHotfix.Architecture.Tests.TimedDownTests.UprightReturnRequiresExpiredTimerRealSupportAndSettledCompletion" methodname="UprightReturnRequiresExpiredTimerRealSupportAndSettledCompletion" classname="ProjectHotfix.Architecture.Tests.TimedDownTests" runstate="Runnable" seed="491589895" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000216" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1174" name="TransportPackageBoundaryTests" fullname="ProjectHotfix.Architecture.Tests.TransportPackageBoundaryTests" classname="ProjectHotfix.Architecture.Tests.TransportPackageBoundaryTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.030911" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1177" name="HighLevelNetcodeAndUnityOnlineServices_AreAbsent" fullname="ProjectHotfix.Architecture.Tests.TransportPackageBoundaryTests.HighLevelNetcodeAndUnityOnlineServices_AreAbsent" methodname="HighLevelNetcodeAndUnityOnlineServices_AreAbsent" classname="ProjectHotfix.Architecture.Tests.TransportPackageBoundaryTests" runstate="Runnable" seed="1918265354" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000072" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1175" name="OnlyTransportModule_ReferencesTheSelectedPackageAssembly" fullname="ProjectHotfix.Architecture.Tests.TransportPackageBoundaryTests.OnlyTransportModule_ReferencesTheSelectedPackageAssembly" methodname="OnlyTransportModule_ReferencesTheSelectedPackageAssembly" classname="ProjectHotfix.Architecture.Tests.TransportPackageBoundaryTests" runstate="Runnable" seed="683419529" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.015171" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1178" name="TransportModule_HasNoAdapterImplementationBeforeNet001" fullname="ProjectHotfix.Architecture.Tests.TransportPackageBoundaryTests.TransportModule_HasNoAdapterImplementationBeforeNet001" methodname="TransportModule_HasNoAdapterImplementationBeforeNet001" classname="ProjectHotfix.Architecture.Tests.TransportPackageBoundaryTests" runstate="Runnable" seed="1902099395" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.014908" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1176" name="TransportPackage_IsLockedAsDirectRegistryDependency" fullname="ProjectHotfix.Architecture.Tests.TransportPackageBoundaryTests.TransportPackage_IsLockedAsDirectRegistryDependency" methodname="TransportPackage_IsLockedAsDirectRegistryDependency" classname="ProjectHotfix.Architecture.Tests.TransportPackageBoundaryTests" runstate="Runnable" seed="320194196" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000164" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+        <test-suite type="TestSuite" id="1181" name="SimulationHarness" fullname="ProjectHotfix.SimulationHarness" runstate="Runnable" testcasecount="31" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.048758" total="31" passed="31" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1182" name="Tests" fullname="ProjectHotfix.SimulationHarness.Tests" runstate="Runnable" testcasecount="31" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.048173" total="31" passed="31" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1183" name="EditMode" fullname="ProjectHotfix.SimulationHarness.Tests.EditMode" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.029472" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1001" name="SimulationHarnessEditModeTests" fullname="ProjectHotfix.SimulationHarness.Tests.EditMode.SimulationHarnessEditModeTests" classname="ProjectHotfix.SimulationHarness.Tests.EditMode.SimulationHarnessEditModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.029203" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="Core" />
+                </properties>
+                <test-case id="1002" name="Harness_ExecutesTheRuntimeOwnedSimulationKernel" fullname="ProjectHotfix.SimulationHarness.Tests.EditMode.SimulationHarnessEditModeTests.Harness_ExecutesTheRuntimeOwnedSimulationKernel" methodname="Harness_ExecutesTheRuntimeOwnedSimulationKernel" classname="ProjectHotfix.SimulationHarness.Tests.EditMode.SimulationHarnessEditModeTests" runstate="Runnable" seed="1051242011" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000169" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1003" name="SimulationAndHarness_HaveNoPresentationRenderingOrUiDependency" fullname="ProjectHotfix.SimulationHarness.Tests.EditMode.SimulationHarnessEditModeTests.SimulationAndHarness_HaveNoPresentationRenderingOrUiDependency" methodname="SimulationAndHarness_HaveNoPresentationRenderingOrUiDependency" classname="ProjectHotfix.SimulationHarness.Tests.EditMode.SimulationHarnessEditModeTests" runstate="Runnable" seed="1231433201" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.028574" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1184" name="Unit" fullname="ProjectHotfix.SimulationHarness.Tests.Unit" runstate="Runnable" testcasecount="29" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.017967" total="29" passed="29" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1004" name="RecoveryOrientationTests" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" testcasecount="22" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.014883" total="22" passed="22" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="Core" />
+                </properties>
+                <test-case id="1032" name="ActualDownDuringDropkickAlignment_ClosesTheOldPresentation" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.ActualDownDuringDropkickAlignment_ClosesTheOldPresentation" methodname="ActualDownDuringDropkickAlignment_ClosesTheOldPresentation" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="1220585121" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000398" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-suite type="ParameterizedMethod" id="1016" name="AirborneUnsettledOrBlockedRecovery_DoesNotStart" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.AirborneUnsettledOrBlockedRecovery_DoesNotStart" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000660" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1013" name="AirborneUnsettledOrBlockedRecovery_DoesNotStart(False,True)" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.AirborneUnsettledOrBlockedRecovery_DoesNotStart(False,True)" methodname="AirborneUnsettledOrBlockedRecovery_DoesNotStart" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="20706154" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000151" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1014" name="AirborneUnsettledOrBlockedRecovery_DoesNotStart(True,False)" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.AirborneUnsettledOrBlockedRecovery_DoesNotStart(True,False)" methodname="AirborneUnsettledOrBlockedRecovery_DoesNotStart" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="1162340863" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000018" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1015" name="AirborneUnsettledOrBlockedRecovery_DoesNotStart(False,False)" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.AirborneUnsettledOrBlockedRecovery_DoesNotStart(False,False)" methodname="AirborneUnsettledOrBlockedRecovery_DoesNotStart" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="1864884838" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000030" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                </test-suite>
+                <test-case id="1022" name="AlignmentNormalNormalization_MatchesEntryClassification" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.AlignmentNormalNormalization_MatchesEntryClassification" methodname="AlignmentNormalNormalization_MatchesEntryClassification" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="1158119514" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000144" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-suite type="ParameterizedMethod" id="1019" name="AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000755" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1017" name="AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation(False)" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation(False)" methodname="AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="2074974584" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000289" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1018" name="AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation(True)" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation(True)" methodname="AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="277685780" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000085" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                </test-suite>
+                <test-suite type="ParameterizedMethod" id="1012" name="DiagonalFall_UsesTheDominantSupportedSide" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.DiagonalFall_UsesTheDominantSupportedSide" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000603" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1010" name="DiagonalFall_UsesTheDominantSupportedSide(35,FaceUp)" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.DiagonalFall_UsesTheDominantSupportedSide(35,FaceUp)" methodname="DiagonalFall_UsesTheDominantSupportedSide" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="1358546906" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000161" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1011" name="DiagonalFall_UsesTheDominantSupportedSide(55,RightSide)" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.DiagonalFall_UsesTheDominantSupportedSide(55,RightSide)" methodname="DiagonalFall_UsesTheDominantSupportedSide" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="930471563" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000019" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                </test-suite>
+                <test-case id="1021" name="GroundQueryMayReturnANonUnitNormal" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.GroundQueryMayReturnANonUnitNormal" methodname="GroundQueryMayReturnANonUnitNormal" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="862392683" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000071" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1031" name="InterruptedAlignment_CanReassessWithoutAddingADownEpisode" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.InterruptedAlignment_CanReassessWithoutAddingADownEpisode" methodname="InterruptedAlignment_CanReassessWithoutAddingADownEpisode" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="1814139124" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000237" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1020" name="InvalidUnsupportedOrUprightOrientation_IsRejectedWithoutMutation" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.InvalidUnsupportedOrUprightOrientation_IsRejectedWithoutMutation" methodname="InvalidUnsupportedOrUprightOrientation_IsRejectedWithoutMutation" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="1116217137" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000251" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-suite type="ParameterizedMethod" id="1027" name="SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.006146" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1023" name="SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(-90,70,FaceUp)" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(-90,70,FaceUp)" methodname="SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="1171898582" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.001723" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1024" name="SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(-90,-70,FaceUp)" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(-90,-70,FaceUp)" methodname="SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="1193845715" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.001213" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1025" name="SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(90,70,FaceDown)" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(90,70,FaceDown)" methodname="SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="197372335" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.001122" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1026" name="SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(90,-70,FaceDown)" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(90,-70,FaceDown)" methodname="SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="796440575" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.001456" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                </test-suite>
+                <test-suite type="ParameterizedMethod" id="1030" name="SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000840" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1028" name="SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp(False)" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp(False)" methodname="SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="1603709447" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000272" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1029" name="SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp(True)" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp(True)" methodname="SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="1005501649" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000059" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                </test-suite>
+                <test-suite type="ParameterizedMethod" id="1009" name="SupportedFall_IsClassifiedAcrossYawAndSlopedGround" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SupportedFall_IsClassifiedAcrossYawAndSlopedGround" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.002865" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-case id="1005" name="SupportedFall_IsClassifiedAcrossYawAndSlopedGround(-90,0,FaceUp)" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SupportedFall_IsClassifiedAcrossYawAndSlopedGround(-90,0,FaceUp)" methodname="SupportedFall_IsClassifiedAcrossYawAndSlopedGround" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="1362294447" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000692" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1006" name="SupportedFall_IsClassifiedAcrossYawAndSlopedGround(90,0,FaceDown)" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SupportedFall_IsClassifiedAcrossYawAndSlopedGround(90,0,FaceDown)" methodname="SupportedFall_IsClassifiedAcrossYawAndSlopedGround" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="1858036096" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000500" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1007" name="SupportedFall_IsClassifiedAcrossYawAndSlopedGround(0,90,LeftSide)" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SupportedFall_IsClassifiedAcrossYawAndSlopedGround(0,90,LeftSide)" methodname="SupportedFall_IsClassifiedAcrossYawAndSlopedGround" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="1027889752" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000462" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                  <test-case id="1008" name="SupportedFall_IsClassifiedAcrossYawAndSlopedGround(0,-90,RightSide)" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SupportedFall_IsClassifiedAcrossYawAndSlopedGround(0,-90,RightSide)" methodname="SupportedFall_IsClassifiedAcrossYawAndSlopedGround" classname="ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests" runstate="Runnable" seed="1226105793" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000496" asserts="0">
+                    <properties>
+                      <property name="retryIteration" value="0" />
+                      <property name="repeatIteration" value="0" />
+                    </properties>
+                  </test-case>
+                </test-suite>
+              </test-suite>
+              <test-suite type="TestFixture" id="1033" name="SimulationKernelUnitTests" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests" classname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.002004" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties>
+                  <property name="Category" value="Core" />
+                </properties>
+                <test-case id="1039" name="ActualDownDuringDropkickRecovery_ReplacesTheRecoveryAndCountsAsDown" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.ActualDownDuringDropkickRecovery_ReplacesTheRecoveryAndCountsAsDown" methodname="ActualDownDuringDropkickRecovery_ReplacesTheRecoveryAndCountsAsDown" classname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests" runstate="Runnable" seed="1382929365" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000185" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1038" name="DownEpisode_UsesSharedGetUpAndIncrementsDownCountOncePerEpisode" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.DownEpisode_UsesSharedGetUpAndIncrementsDownCountOncePerEpisode" methodname="DownEpisode_UsesSharedGetUpAndIncrementsDownCountOncePerEpisode" classname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests" runstate="Runnable" seed="485529190" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000124" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1037" name="DropkickRecovery_ReusesGetUpPresentationWithoutCreatingDownEpisode" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.DropkickRecovery_ReusesGetUpPresentationWithoutCreatingDownEpisode" methodname="DropkickRecovery_ReusesGetUpPresentationWithoutCreatingDownEpisode" classname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests" runstate="Runnable" seed="1684805138" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000174" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1035" name="EquivalentCycleSequences_ProduceTheSameFingerprint" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.EquivalentCycleSequences_ProduceTheSameFingerprint" methodname="EquivalentCycleSequences_ProduceTheSameFingerprint" classname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests" runstate="Runnable" seed="185668130" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000123" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1034" name="KernelStep_AdvancesTheReadOnlySnapshot" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.KernelStep_AdvancesTheReadOnlySnapshot" methodname="KernelStep_AdvancesTheReadOnlySnapshot" classname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests" runstate="Runnable" seed="215877263" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000081" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1036" name="NegativeCycleCount_IsRejectedWithoutMutation" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.NegativeCycleCount_IsRejectedWithoutMutation" methodname="NegativeCycleCount_IsRejectedWithoutMutation" classname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests" runstate="Runnable" seed="1134975181" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000102" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1040" name="RoundReset_ClearsRecoveryAndDownCount" fullname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.RoundReset_ClearsRecoveryAndDownCount" methodname="RoundReset_ClearsRecoveryAndDownCount" classname="ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests" runstate="Runnable" seed="481584834" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000094" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+    <test-suite type="Assembly" id="1195" name="ProjectHotfix.C1B005.Tests.Editor.dll" fullname="/Users/kjh/local_dev/party game/Project hotfix/Library/ScriptAssemblies/ProjectHotfix.C1B005.Tests.Editor.dll" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.044307" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="35607" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1196" name="ProjectHotfix" fullname="ProjectHotfix" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.043958" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1197" name="C1B005" fullname="ProjectHotfix.C1B005" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.043583" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1198" name="Tests" fullname="ProjectHotfix.C1B005.Tests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.043150" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1187" name="C1B005ImportParityTests" fullname="ProjectHotfix.C1B005.Tests.C1B005ImportParityTests" classname="ProjectHotfix.C1B005.Tests.C1B005ImportParityTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.042681" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1193" name="ActionPoseReview_IsReadOnlyAndMakesNoAnimationClaim" fullname="ProjectHotfix.C1B005.Tests.C1B005ImportParityTests.ActionPoseReview_IsReadOnlyAndMakesNoAnimationClaim" methodname="ActionPoseReview_IsReadOnlyAndMakesNoAnimationClaim" classname="ProjectHotfix.C1B005.Tests.C1B005ImportParityTests" runstate="Runnable" seed="468392971" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.001711" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1194" name="C1B005UnityAssetFolder_HasOnlyFbxAndIdentityPrefabSources" fullname="ProjectHotfix.C1B005.Tests.C1B005ImportParityTests.C1B005UnityAssetFolder_HasOnlyFbxAndIdentityPrefabSources" methodname="C1B005UnityAssetFolder_HasOnlyFbxAndIdentityPrefabSources" classname="ProjectHotfix.C1B005.Tests.C1B005ImportParityTests" runstate="Runnable" seed="1318211455" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000642" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1192" name="FourViewSilhouetteParity_UsesObservedIouAndBoundedBboxGate" fullname="ProjectHotfix.C1B005.Tests.C1B005ImportParityTests.FourViewSilhouetteParity_UsesObservedIouAndBoundedBboxGate" methodname="FourViewSilhouetteParity_UsesObservedIouAndBoundedBboxGate" classname="ProjectHotfix.C1B005.Tests.C1B005ImportParityTests" runstate="Runnable" seed="2043362708" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.001179" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1190" name="IdentityPrefab_IsTransformNeutralAndContainsNoGameplayComponents" fullname="ProjectHotfix.C1B005.Tests.C1B005ImportParityTests.IdentityPrefab_IsTransformNeutralAndContainsNoGameplayComponents" methodname="IdentityPrefab_IsTransformNeutralAndContainsNoGameplayComponents" classname="ProjectHotfix.C1B005.Tests.C1B005ImportParityTests" runstate="Runnable" seed="476301682" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.002062" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1189" name="ImportedNeutral_HasExactStaticHierarchyBoundsLandmarksAndScope" fullname="ProjectHotfix.C1B005.Tests.C1B005ImportParityTests.ImportedNeutral_HasExactStaticHierarchyBoundsLandmarksAndScope" methodname="ImportedNeutral_HasExactStaticHierarchyBoundsLandmarksAndScope" classname="ProjectHotfix.C1B005.Tests.C1B005ImportParityTests" runstate="Runnable" seed="1929481484" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.014819" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1191" name="InspectionAndEightUnityCaptures_ArePresentAndHashBound" fullname="ProjectHotfix.C1B005.Tests.C1B005ImportParityTests.InspectionAndEightUnityCaptures_ArePresentAndHashBound" methodname="InspectionAndEightUnityCaptures_ArePresentAndHashBound" classname="ProjectHotfix.C1B005.Tests.C1B005ImportParityTests" runstate="Runnable" seed="1266713010" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.020759" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1188" name="ModelImporter_UsesTheExactApprovedStaticPreset" fullname="ProjectHotfix.C1B005.Tests.C1B005ImportParityTests.ModelImporter_UsesTheExactApprovedStaticPreset" methodname="ModelImporter_UsesTheExactApprovedStaticPreset" classname="ProjectHotfix.C1B005.Tests.C1B005ImportParityTests" runstate="Runnable" seed="57314104" result="Passed" start-time="2026-10-07 16:53:49Z" end-time="2026-10-07 16:53:49Z" duration="0.000333" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: /Users/kjh/Library/Application Support/KJH4845/Project Hotfix/TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

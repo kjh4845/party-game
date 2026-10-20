@@ -1,0 +1,17 @@
+{
+  "sameCameraFrontScreenshot": true,
+  "shoulderSilhouetteUnchangedAboveRow400": true,
+  "gapRegions": [
+    {
+      "side": "left",
+      "originalBackgroundPixels": 46,
+      "candidateBackgroundPixels": 46
+    },
+    {
+      "side": "right",
+      "originalBackgroundPixels": 47,
+      "candidateBackgroundPixels": 47
+    }
+  ],
+  "meaning": "Raster evidence in these front-view regions, not global 3D minimum distance or visual approval."
+}

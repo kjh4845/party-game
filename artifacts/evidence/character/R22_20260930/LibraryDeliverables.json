@@ -1,0 +1,29 @@
+[
+  {
+    "local_path": "/Users/kjh/Documents/Codex/2026-09-30/task-2/punch-r22/deliverables/R22_Punch_ABC_1x_Silent.mp4",
+    "file_name": "R22_Punch_ABC_1x_Silent.mp4",
+    "path": "/R22_Punch_ABC_1x_Silent.mp4",
+    "library_file_id": "libfile_3a2d04930aac8191bd99adbcc9e4f26c",
+    "file_id": "file_00000000038881f58c717e1fef8eea11",
+    "version": 0,
+    "status": "succeeded"
+  },
+  {
+    "local_path": "/Users/kjh/Documents/Codex/2026-09-30/task-2/punch-r22/deliverables/R22_Punch_ABC_Near.png",
+    "file_name": "R22_Punch_ABC_Near.png",
+    "path": "/R22_Punch_ABC_Near.png",
+    "library_file_id": "libfile_38f4f8caf6d481918331e6fe97ac65a5",
+    "file_id": "file_0000000022448206ad8e4f281f7d58f3",
+    "version": 0,
+    "status": "succeeded"
+  },
+  {
+    "local_path": "/Users/kjh/Documents/Codex/2026-09-30/task-2/punch-r22/deliverables/R22_Punch_12_Result.ko.txt",
+    "file_name": "R22_Punch_12_Result.ko.txt",
+    "path": "/R22_Punch_12_Result.ko.txt",
+    "library_file_id": "libfile_bc82ded5a4008191bc79dbe4a7342e69",
+    "file_id": "file_000000000cd081f586304cc03be4fa60",
+    "version": 0,
+    "status": "succeeded"
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-07",
+  "status": "FIRST_PARTY_LOCAL_REVIEW",
+  "shippingAllowed": false,
+  "authorization": "User approved shoulder/axilla/symmetry repair and side-swing/diagonal-slam comparison",
+  "source": "BlenderSource/Characters/C1B-RW-022-shoulder-contour/CHR_MasterCharacter_C1B_ShoulderContour_r22.blend",
+  "generator": "tools/blender/create_r23_shallow_axilla.py",
+  "generatorSha256": "9a236f9fc81e4bfeaf60f3feeda4b307ae94016df6ff35ebe8a024e510b7e31b",
+  "files": [
+    {
+      "path": "BlenderSource/Characters/C1B-RW-023-shallow-axilla/CHR_MasterCharacter_C1B_ShallowAxilla_r23.blend",
+      "bytes": 11974198,
+      "sha256": "213e374fc0703bb1181fc9f7032ca13f9917995ef71a86be7aaa38931b62e3fb"
+    },
+    {
+      "path": "BlenderSource/Characters/C1B-RW-023-shallow-axilla/ShallowCharacter.bytes",
+      "bytes": 18724297,
+      "sha256": "31b2daf97f99e84644c23d63e6afc2fc6acc98e6d23f6281d757ac76780c5a8e"
+    }
+  ],
+  "visualApproved": false
+}

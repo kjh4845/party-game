@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "boneCount": 24,
+  "actionCount": 2,
+  "topologyIdentical": true,
+  "bodyWeightsIdentical": true,
+  "headGeometryWeightsNormalsIdentical": true,
+  "noFlippedFaces": true,
+  "mirrorErrorMeters": 1.9021850050648936e-07,
+  "maxDisplacementMeters": 0.002500037895515561,
+  "transportWeightsTrianglesIdentical": true,
+  "sourceSha256": "40730ebda748729eb4df512b9827e2569dd15ff094dd9df9270122b7451cc1e5"
+}

@@ -1,0 +1,38 @@
+{
+  "source": "RetopoMapped.npz",
+  "torsoGuide": "elliptical wall rx(y)=.143\u2192.170,rz(y)=.125\u2192.140 across y.500\u2192.575",
+  "armGuide": "elliptical capsule centrex .187, radiusx .045,radiusz .040,topcentre .582",
+  "smoothUnionMeters": 0.022,
+  "maximumGuideMoveCapMeters": 0.012,
+  "maxActualMoveMeters": 0.012000000000000028,
+  "facesRotatedBeyond90Degrees": 98,
+  "widthBefore": 0.4557246942573171,
+  "widthAfter": 0.4557246942573171,
+  "sourceBoundaryAndOutsidePreserved": true,
+  "visualApproved": false,
+  "verdict": "rejected after four-view visual review; no parameter refinement or further candidates",
+  "expandedDomain": {
+    "materialAbsXInnerBoundary": 0.045,
+    "materialAbsXArmSectionBoundary": 0.3,
+    "neutralYRange": [
+      0.445,
+      0.695
+    ],
+    "bodyBoundaryVertexCount": 601,
+    "armBoundaryVertexCount": 161
+  },
+  "visualFindings": [
+    "Clear ridges and crumpling across the front shoulder and axilla",
+    "Strong creasing visible in side and back views",
+    "Static pinhole/vertical crease was not replaced by a clean shallow transition"
+  ],
+  "scopeOfConclusion": "This widened domain with this explicit union guide and its vertex correspondence failed. It does not show that widening the chest/back transition is intrinsically impossible. The guide-to-mesh correspondence and local transitions still produce non-smooth displacement even when the outer envelope and maximum displacement are controlled.",
+  "productionChanges": false,
+  "riggingOrPoseWorkStarted": false,
+  "images": {
+    "Idle_Front": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Alternative/WideExplicit/Clay/Idle_Front.png",
+    "Idle_ThreeQuarter": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Alternative/WideExplicit/Clay/Idle_ThreeQuarter.png",
+    "Idle_Side": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Alternative/WideExplicit/Clay/Idle_Side.png",
+    "Idle_Back": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-line-20261013/Alternative/WideExplicit/Clay/Idle_Back.png"
+  }
+}

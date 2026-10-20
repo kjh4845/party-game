@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="10" result="Failed(Child)" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-09 13:52:00Z" end-time="2026-10-09 13:57:35Z" duration="335.7636715">
+  <test-suite type="TestSuite" id="1303" name="Project Hotfix" fullname="Project Hotfix" runstate="Runnable" testcasecount="237" result="Failed" site="Child" start-time="2026-10-09 13:52:00Z" end-time="2026-10-09 13:57:35Z" duration="335.763672" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1289" name="ProjectHotfix.Physics.Tests.PlayMode.dll" fullname="/Users/kjh/local_dev/party game/Project hotfix/Library/ScriptAssemblies/ProjectHotfix.Physics.Tests.PlayMode.dll" runstate="Runnable" testcasecount="235" result="Failed" site="Child" start-time="2026-10-09 13:52:00Z" end-time="2026-10-09 13:57:35Z" duration="335.757285" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="78994" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1290" name="ProjectHotfix" fullname="ProjectHotfix" runstate="Runnable" testcasecount="235" result="Failed" site="Child" start-time="2026-10-09 13:52:00Z" end-time="2026-10-09 13:57:35Z" duration="335.754334" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1291" name="Physics" fullname="ProjectHotfix.Physics" runstate="Runnable" testcasecount="235" result="Failed" site="Child" start-time="2026-10-09 13:52:00Z" end-time="2026-10-09 13:57:35Z" duration="335.751528" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1292" name="Tests" fullname="ProjectHotfix.Physics.Tests" runstate="Runnable" testcasecount="235" result="Failed" site="Child" start-time="2026-10-09 13:52:00Z" end-time="2026-10-09 13:57:35Z" duration="335.748715" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1147" name="PhysicalPunchCandidateTests" fullname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests" classname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests" runstate="Runnable" testcasecount="46" result="Failed" site="Child" start-time="2026-10-09 13:52:00Z" end-time="2026-10-09 13:57:35Z" duration="335.741594" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1170" name="BodyStrikeReactionsFollowContactAndRecover" fullname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests.BodyStrikeReactionsFollowContactAndRecover" methodname="BodyStrikeReactionsFollowContactAndRecover" classname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests" runstate="Runnable" seed="1731749166" result="Passed" start-time="2026-10-09 13:52:00Z" end-time="2026-10-09 13:52:34Z" duration="33.883725" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="300000" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1171" name="BodyStrikeSuppressionClearsReactionAndPelvisOffset" fullname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests.BodyStrikeSuppressionClearsReactionAndPelvisOffset" methodname="BodyStrikeSuppressionClearsReactionAndPelvisOffset" classname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests" runstate="Runnable" seed="1738817937" result="Passed" start-time="2026-10-09 13:52:34Z" end-time="2026-10-09 13:52:39Z" duration="5.370891" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1165" name="CancellationStopsPunchAndRestoresGrabLimits" fullname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests.CancellationStopsPunchAndRestoresGrabLimits" methodname="CancellationStopsPunchAndRestoresGrabLimits" classname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests" runstate="Runnable" seed="1128036583" result="Passed" start-time="2026-10-09 13:52:39Z" end-time="2026-10-09 13:53:01Z" duration="22.484035" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1150" name="CaptureArmVolumeAudit" fullname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests.CaptureArmVolumeAudit" methodname="CaptureArmVolumeAudit" classname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests" runstate="Runnable" seed="1825268349" result="Passed" start-time="2026-10-09 13:53:01Z" end-time="2026-10-09 13:53:20Z" duration="18.332428" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="300000" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1151" name="CapturePhysicalPunchScenarios" fullname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests.CapturePhysicalPunchScenarios" methodname="CapturePhysicalPunchScenarios" classname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests" runstate="Runnable" seed="143061150" result="Failed" start-time="2026-10-09 13:53:20Z" end-time="2026-10-09 13:56:44Z" duration="204.570323" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="Timeout" value="600000" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[  LeftBody skin 180
+RightBody skin 180
+Head skin 179.9802
+Far skin 180
+Wall skin 180
+GrabPunch skin 180
+Alternating skin 180
+Moving skin 180
+Exchange skin 180
+  Expected: <empty>
+  But was:  < "LeftBody skin 180", "RightBody skin 180", "Head skin 179.9802", "Far skin 180", "Wall skin 180", "GrabPunch skin 180", "Alternating skin 180", "Moving skin 180", "Exchange skin 180" >
+]]></message>
+                  <stack-trace><![CDATA[at ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests+<CapturePhysicalPunchScenarios>d__13.MoveNext () [0x00a85] in /Users/kjh/local_dev/party game/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Capture.cs:95
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in ./Library/PackageCache/com.unity.test-framework@0b7a23ab2e1d/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs:44
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1163" name="HoldAndThrowNeverBecomePunchAndFreeHandCanPunch" fullname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests.HoldAndThrowNeverBecomePunchAndFreeHandCanPunch" methodname="HoldAndThrowNeverBecomePunchAndFreeHandCanPunch" classname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests" runstate="Runnable" seed="591025171" result="Passed" start-time="2026-10-09 13:56:44Z" end-time="2026-10-09 13:56:51Z" duration="6.274522" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1176" name="NeutralBindingPreservesThePhysicalArmLayout" fullname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests.NeutralBindingPreservesThePhysicalArmLayout" methodname="NeutralBindingPreservesThePhysicalArmLayout" classname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests" runstate="Runnable" seed="504314313" result="Passed" start-time="2026-10-09 13:56:51Z" end-time="2026-10-09 13:56:56Z" duration="5.501179" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1175" name="NeutralVolumeSkinContactsFollowFixedPoseAcrossRenderInterpolation" fullname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests.NeutralVolumeSkinContactsFollowFixedPoseAcrossRenderInterpolation" methodname="NeutralVolumeSkinContactsFollowFixedPoseAcrossRenderInterpolation" classname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests" runstate="Runnable" seed="927530227" result="Passed" start-time="2026-10-09 13:56:56Z" end-time="2026-10-09 13:57:03Z" duration="6.600409" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1166" name="PhysicalPunchReplayMatches15_60_144Fps" fullname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests.PhysicalPunchReplayMatches15_60_144Fps" methodname="PhysicalPunchReplayMatches15_60_144Fps" classname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests" runstate="Runnable" seed="1609784030" result="Passed" start-time="2026-10-09 13:57:03Z" end-time="2026-10-09 13:57:29Z" duration="26.263112" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1173" name="ShoulderSocketsFollowReachAndResetTogetherWithSkin" fullname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests.ShoulderSocketsFollowReachAndResetTogetherWithSkin" methodname="ShoulderSocketsFollowReachAndResetTogetherWithSkin" classname="ProjectHotfix.Physics.Tests.PhysicalPunchCandidateTests" runstate="Runnable" seed="2002061328" result="Passed" start-time="2026-10-09 13:57:29Z" end-time="2026-10-09 13:57:35Z" duration="6.450296" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: /Users/kjh/Library/Application Support/KJH4845/Project Hotfix/TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

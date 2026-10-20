@@ -1,0 +1,1 @@
+maximumAdjacentFaceAngle=37.01484

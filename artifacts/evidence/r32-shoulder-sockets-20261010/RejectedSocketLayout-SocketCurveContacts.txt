@@ -1,0 +1,3 @@
+socketX=-0.229999349
+samples=1792
+maximumContactError=0.0009298305

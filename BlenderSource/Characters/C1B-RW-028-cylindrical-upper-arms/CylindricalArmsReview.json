@@ -1,0 +1,109 @@
+{
+  "source": "/Users/kjh/local_dev/party game/BlenderSource/Characters/C1B-RW-027-surface-refine",
+  "candidateSha256": "214e736547b93c08168ca8c0455c263122108fe641a8a3b2befdb93fce5b131b",
+  "transportSha256": "a2ad7474a6d9678593d5b5bbab30c01c7a306ed139acbd8e33325128f5d9bbaf",
+  "editedVertices": 33206,
+  "maximumNeutralFillMeters": 0.010711283172627003,
+  "bodyOutsideUpperArmsPreserved": true,
+  "weightsSkeletonTopologyPreserved": true,
+  "mirrorMaxMeters": 0.0,
+  "poseFills": [
+    {
+      "pose": "Raise45_L",
+      "maximumFillMeters": 0.023422112530134008
+    },
+    {
+      "pose": "Raise45_R",
+      "maximumFillMeters": 0.023422112530135472
+    },
+    {
+      "pose": "Raise90_L",
+      "maximumFillMeters": 0.03639336966657834
+    },
+    {
+      "pose": "Raise90_R",
+      "maximumFillMeters": 0.036393369666670033
+    },
+    {
+      "pose": "Prepare_L",
+      "maximumFillMeters": 0.015880555093450332
+    },
+    {
+      "pose": "Prepare_R",
+      "maximumFillMeters": 0.015880555093449933
+    },
+    {
+      "pose": "Accelerate_L",
+      "maximumFillMeters": 0.026034710749558085
+    },
+    {
+      "pose": "Accelerate_R",
+      "maximumFillMeters": 0.02603471062880095
+    },
+    {
+      "pose": "Strike_L",
+      "maximumFillMeters": 0.03597649843154308
+    },
+    {
+      "pose": "Strike_R",
+      "maximumFillMeters": 0.03597649792695052
+    },
+    {
+      "pose": "FollowThrough_L",
+      "maximumFillMeters": 0.035089511675716056
+    },
+    {
+      "pose": "FollowThrough_R",
+      "maximumFillMeters": 0.0350894949138487
+    },
+    {
+      "pose": "Recover_L",
+      "maximumFillMeters": 0.027054703367239682
+    },
+    {
+      "pose": "Recover_R",
+      "maximumFillMeters": 0.027054703365176107
+    },
+    {
+      "pose": "Impact_L",
+      "maximumFillMeters": 0.01724330807855432
+    },
+    {
+      "pose": "Impact_R",
+      "maximumFillMeters": 0.017243308078554228
+    },
+    {
+      "pose": "Grab_L",
+      "maximumFillMeters": 0.024889586160374334
+    },
+    {
+      "pose": "Grab_R",
+      "maximumFillMeters": 0.024889599217448103
+    },
+    {
+      "pose": "Deflect_L",
+      "maximumFillMeters": 0.024106016178772758
+    },
+    {
+      "pose": "Deflect_R",
+      "maximumFillMeters": 0.02410591471906472
+    },
+    {
+      "pose": "Reach_L",
+      "maximumFillMeters": 0.03506552767800002
+    },
+    {
+      "pose": "Reach_R",
+      "maximumFillMeters": 0.03506542204075954
+    },
+    {
+      "pose": "Exchange_L",
+      "maximumFillMeters": 0.016345667392240387
+    },
+    {
+      "pose": "Exchange_R",
+      "maximumFillMeters": 0.01634566739224027
+    }
+  ],
+  "visualApproved": false
+}

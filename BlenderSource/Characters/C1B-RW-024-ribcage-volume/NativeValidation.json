@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "skeletonAndHeadPreserved": true,
+  "bodyVertices": 203434,
+  "bodyTriangles": 406864,
+  "connectedComponents": 1,
+  "nonManifoldEdges": 0,
+  "bodyMirrorMaxMeters": 0.0,
+  "weightMirrorMaxError": 0.0,
+  "vertexAndWeightTransportMatchesSource": true,
+  "fourInfluenceSumMaxError": 1.1920928955078125e-07,
+  "candidateSha256": "8e42c9f0ac742673b93960f98915afd68bb911af0ab61197c0a177827c71a7d7",
+  "transportSha256": "38e17e68c079aa8e24cd7642313e1bd9341e8750ec4d4ff513b8e4a1c3d82acb"
+}

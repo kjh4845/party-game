@@ -279,7 +279,7 @@ namespace ProjectHotfix.PhysicsJump
             for(var p=0;p<2;p++)
             {
                 var player=Players[p];if(!Active(player))continue;
-                if(player.Rig.RagdollActive){StepClimbRagdoll(p,seconds);StepDropkick(p,seconds);player.Rig.StepKnockdown(seconds);continue;}
+                if(player.Rig.RagdollActive){StepClimbRagdoll(p,seconds);StepDropkick(p,seconds);StepHeldWake(p,seconds);player.Rig.StepKnockdown(seconds);continue;}
                 var body=player.Rig.Actor.Motor.Body;
                 for(var side=0;side<2;side++)
                 {
@@ -382,6 +382,7 @@ namespace ProjectHotfix.PhysicsJump
             var owner=Players[player];var hand=owner.Hands[side];var touch=_touches[player,side];
             if(Suppressed||!Active(owner)||hand.Phase!=HandPhase.Seeking||touch.Tick!=Tick-1||touch.Body==null&&!touch.World||(touch.Rig==null&&touch.LowTarget==null&&!touch.World)||(touch.LowTarget!=null&&!touch.LowTarget.Available)||touch.Collider==null||!touch.Collider.enabled||touch.Collider.isTrigger||!touch.Collider.gameObject.activeInHierarchy)return;
             if(touch.World){AcquireWorld(player,side,touch);return;}
+            if(touch.Rig!=null&&touch.Rig.RagdollActive&&touch.Rig.WokeInHands)return;
             var point=touch.Surface!=null?touch.Surface.Position:touch.Body.position+touch.Body.rotation*touch.LocalPoint;
             if(Vector3.Distance(owner.Rig.HandPosition(side),point)>PalmContactRadius+.005f)return;
             var body=owner.Rig.Find("Forearm_"+(side==0?"L":"R")).Body;
