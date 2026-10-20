@@ -7,7 +7,6 @@
 *.yaml text eol=lf
 *.yml text eol=lf
 *.xml text eol=lf
-
 # Unity/C# text sources
 *.cs text eol=lf diff=csharp
 *.asmdef text eol=lf
@@ -30,7 +29,6 @@
 *.compute text eol=lf
 *.cginc text eol=lf
 *.hlsl text eol=lf
-
 # Binary assets kept in ordinary Git.
 *.png binary
 *.jpg binary
@@ -46,7 +44,6 @@
 *.bundle binary
 *.zip binary
 *.7z binary
-
 # User-approved production source binaries use Git LFS. Existing review PNGs
 # stay in ordinary Git and history is not rewritten.
 *.blend filter=lfs diff=lfs merge=lfs -text
@@ -59,3 +56,9 @@
 *.hdr filter=lfs diff=lfs merge=lfs -text
 *.tif filter=lfs diff=lfs merge=lfs -text
 *.tiff filter=lfs diff=lfs merge=lfs -text
+# Current game character transport (r46 slim body, read by the Unity prototypes).
+BlenderSource/Characters/C1B-RW-046-slim-body/*.bytes filter=lfs diff=lfs merge=lfs -text
+BlenderSource/Characters/C1B-RW-034-fair-body/FairBodyCharacter.bytes filter=lfs diff=lfs merge=lfs -text
+BlenderSource/Characters/C1B-RW-033-close-arm-gap/CloseGapCharacter.bytes filter=lfs diff=lfs merge=lfs -text
+BlenderSource/Characters/C1B-RW-028-cylindrical-upper-arms/CylindricalCharacter.bytes filter=lfs diff=lfs merge=lfs -text
+BlenderSource/Characters/C1B-RW-027-surface-refine/RefinedCharacter.bytes filter=lfs diff=lfs merge=lfs -text

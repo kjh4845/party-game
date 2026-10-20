@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-09",
+  "status": "INCOMPLETE_CANDIDATES_REJECTED_NOT_APPLIED",
+  "visualApproved": false,
+  "request": "어깨 연결부 접힘, 팔꿈치 굽힘 시 축소, 몸통 대비 가는 팔을 함께 수정",
+  "result": "요청한 품질에 도달하지 못했다. 일부 후보의 팔꿈치 단면은 개선됐지만 어깨 접힘·형태 왜곡이 남아 최종 반영하지 않았다.",
+  "appliedModelChanges": false,
+  "defaultModel": "r28 cylindrical arms",
+  "defaultMotion": "r29 natural shoulder motion with the existing BodyStrike punch",
+  "modelHashesVerifiedUnchanged": {
+    "BlenderSource/Characters/C1B-RW-028-cylindrical-upper-arms/CHR_MasterCharacter_C1B_CylindricalArms_r28.blend": "214e736547b93c08168ca8c0455c263122108fe641a8a3b2befdb93fce5b131b",
+    "BlenderSource/Characters/C1B-RW-028-cylindrical-upper-arms/CylindricalCharacter.bytes": "a2ad7474a6d9678593d5b5bbab30c01c7a306ed139acbd8e33325128f5d9bbaf"
+  },
+  "recordedR29SourceHashesVerifiedUnchanged": {
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Shoulders.cs": "a340879eb67beb256eb2d1183991b766c7df3c61a05afd3e3d4357a2bf5502a7",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs": "515783237e7ce52b3020aaf97f0bb8f590bc627f65c00a0dcc5a1a18609cb823",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Impact.cs": "d92266e159ae019ef390de7971a31f92afa1f7c153b7c71b26c7dddc3e692952",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.NaturalShoulder.cs": "fd9fdb2c582eefcc409ce4ba02a78bbb6e15c0c237538797a044c19e236dd5b1",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Punch.cs": "8c439127ea2cd02d2087d8f3cb540b97b354568435489f14efc837871b9efa04",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.cs": "4578818863197339e7f077e0df3317dd7befb0e290ff3b2dfc3ee0ca7e9a4d3b",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs": "fd0c444da4bd05f262b7392a6111324ae144bd65e98d0511dfa526ec3684fb16",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchFeedbackReview.cs": "f0584878d0f8af1aba6292efa4bad9c239fcbc94248007986645b3341c5029e7",
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralJumpPose.cs": "ef81a733b37877b6dfeef3596e004f1ac0a094808d49bbac213014f87bcba688"
+  },
+  "experimentalRuntimeChangesRemoved": [
+    "PhysicsJumpReview.cs",
+    "FixedReviewPose.cs",
+    "SkinSurfaceReview.cs",
+    "ActiveUpperBodyReview.cs",
+    "LimbVolumeRig.cs",
+    "PhysicalPunchCandidateTests.SurfaceRefine.cs"
+  ],
+  "partialMeasurement": {
+    "candidate": "CandidateO",
+    "meaning": "Projected material-ring cross-sectional area relative to the straight raised pose; not whole-arm volume or visual acceptance",
+    "pose": "Lift90_Flex120",
+    "values": {
+      "L_elbow": {
+        "previousAreaRatioToStraight": 0.699430430401834,
+        "candidateAreaRatioToStraight": 0.9751145830270279
+      },
+      "L_forearm_middle": {
+        "previousAreaRatioToStraight": 0.5054443079060146,
+        "candidateAreaRatioToStraight": 0.9807087719426774
+      }
+    }
+  },
+  "rejectedCandidateEvidence": {
+    "CandidateO": "8/9 PlayMode tests passed; continuous combat capture failed due to severe surface folds in 7 scenarios. Not accepted.",
+    "CandidateAC": "Extended influence loading and fixed-contact matching passed 2 tests; this did not resolve final shoulder appearance.",
+    "CandidateAJ": "Local multiresolution shoulder smoothing still left visible folding in the inspected raised/bent pose.",
+    "CandidateDQ": "Offline dual-quaternion experiment still showed undesirable shoulder/arm deformation. No runtime integration was applied."
+  },
+  "archive": ".codex_tmp/arm-volume-rebuild-20261008/RejectedImplementation",
+  "candidateFiles": ".codex_tmp/arm-volume-rebuild-20261008",
+  "restorationValidation": {
+    "passed": 4,
+    "failed": 0,
+    "tests": [
+      "BodyStrikeReactionsFollowContactAndRecover",
+      "CorrectedContactSurfaceMatchesSkinAndIgnoresRenderInterpolation",
+      "PhysicalPunchReplayMatches15_60_144Fps",
+      "ShoulderSocketsFollowReachAndResetTogetherWithSkin"
+    ],
+    "xml": ".codex_tmp/arm-volume-rebuild-20261008/RestoredValidation/PlayMode.xml",
+    "note": "Checks preservation of the existing implementation, not completion of the requested modeling fix."
+  },
+  "remaining": [
+    "어깨에서 팔로 이어지는 면의 접힘 제거",
+    "팔을 들거나 굽혔을 때 위팔 형태와 두께 유지",
+    "최종 모델의 전 자세·실제 전투 검증 및 적용"
+  ],
+  "commits": false,
+  "pushes": false
+}

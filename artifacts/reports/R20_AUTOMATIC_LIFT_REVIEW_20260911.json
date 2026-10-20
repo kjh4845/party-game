@@ -1,0 +1,277 @@
+{
+  "status": "LOCAL_IMPLEMENTED_VERIFIED",
+  "date": "2026-09-11",
+  "authorization": "User approved raising held actors while holding the button, with no automatic lifting when the actors hold each other. Release still throws immediately.",
+  "profile": {
+    "automaticLiftSeconds": 0.65,
+    "maximumLiftCU": 0.3,
+    "pullbackCU": 0.1,
+    "mutualRule": "Direct A-to-B and B-to-A contact, either hand; both blocked after all hands are processed. Existing offset freezes on late mutual contact; resumes on unlink.",
+    "worldReachHeightCU": 0.82,
+    "worldClimbHandoffHeightCU": 0.74,
+    "climbAssists": 2,
+    "climbCooldownSeconds": 0.35,
+    "throwImpulseNs": 30,
+    "maximumThrowDeltaSpeed": 3,
+    "fixedHz": 60
+  },
+  "runtimeChanges": [
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/GrabPhysicsReview.cs",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/LedgeGrabReview.cs",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/LedgeRecoveryReview.cs",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/StrikeReviewTarget.cs"
+  ],
+  "testChanges": [
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/AutomaticLiftReviewTests.cs",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.cs",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.Hanging.cs"
+  ],
+  "validation": {
+    "Play-final": {
+      "path": ".codex_tmp/auto-lift-20260911/Play-final.xml",
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0
+    },
+    "Edit-final": {
+      "path": ".codex_tmp/auto-lift-20260911/Edit-final.xml",
+      "passed": 140,
+      "failed": 0,
+      "skipped": 0
+    },
+    "documentBaseline": "PASS",
+    "documentWorkflowTests": 7
+  },
+  "liftSamples": {
+    "status": "PASS",
+    "frames": [
+      {
+        "tick": 1,
+        "held": 1,
+        "throws": 0,
+        "mutual": false,
+        "lift": 1.0,
+        "height": 0.3039999008178711,
+        "force": 271.4075012207031,
+        "handError": 8.97168703772877e-08,
+        "owner": {
+          "x": -0.00014549629122484475,
+          "y": 0.0040863752365112305,
+          "z": -0.21871024370193481
+        },
+        "target": {
+          "x": 0.0033698021434247494,
+          "y": 0.3039999008178711,
+          "z": 0.17752598226070404
+        }
+      },
+      {
+        "tick": 1,
+        "held": 1,
+        "throws": 0,
+        "mutual": false,
+        "lift": 0.05128205567598343,
+        "height": 0.006174594163894653,
+        "force": 125.6791000366211,
+        "handError": 8.97168703772877e-08,
+        "owner": {
+          "x": -2.0770839910255745e-06,
+          "y": 0.00408625602722168,
+          "z": -0.21999064087867737
+        },
+        "target": {
+          "x": 3.7224152038106695e-05,
+          "y": 0.006174594163894653,
+          "z": 0.21979674696922302
+        }
+      },
+      {
+        "tick": 2,
+        "held": 1,
+        "throws": 0,
+        "mutual": false,
+        "lift": 1.0,
+        "height": 0.3039998710155487,
+        "force": 271.4075012207031,
+        "handError": 6.664001972467304e-08,
+        "owner": {
+          "x": 0.00014549685874953866,
+          "y": 0.004086285829544067,
+          "z": -0.218710258603096
+        },
+        "target": {
+          "x": -0.00336979771964252,
+          "y": 0.3039998710155487,
+          "z": 0.17752592265605927
+        }
+      },
+      {
+        "tick": 2,
+        "held": 1,
+        "throws": 0,
+        "mutual": false,
+        "lift": 0.05128205567598343,
+        "height": 0.006174594163894653,
+        "force": 125.6791000366211,
+        "handError": 8.97168703772877e-08,
+        "owner": {
+          "x": 2.077079670925741e-06,
+          "y": 0.00408625602722168,
+          "z": -0.21999064087867737
+        },
+        "target": {
+          "x": -3.722413021023385e-05,
+          "y": 0.006174594163894653,
+          "z": 0.21979674696922302
+        }
+      },
+      {
+        "tick": 3,
+        "held": 2,
+        "throws": 0,
+        "mutual": false,
+        "lift": 1.0,
+        "height": 0.30399906635284424,
+        "force": 271.55548095703125,
+        "handError": 9.002570777738583e-08,
+        "owner": {
+          "x": 1.0616781764838379e-06,
+          "y": 0.004086315631866455,
+          "z": -0.21577706933021545
+        },
+        "target": {
+          "x": 3.099993409705348e-05,
+          "y": 0.30399906635284424,
+          "z": 0.12422386556863785
+        }
+      },
+      {
+        "tick": 3,
+        "held": 2,
+        "throws": 0,
+        "mutual": false,
+        "lift": 0.05128205567598343,
+        "height": 0.006174564361572266,
+        "force": 125.92738342285156,
+        "handError": 7.778634625310588e-08,
+        "owner": {
+          "x": -8.76248940073765e-09,
+          "y": 0.004086315631866455,
+          "z": -0.21995408833026886
+        },
+        "target": {
+          "x": 1.0117558701949747e-07,
+          "y": 0.006174564361572266,
+          "z": 0.21938440203666687
+        }
+      }
+    ]
+  },
+  "raisedWallCases": [
+    "side=0, y=-0.6, returned=True, high=True, assists=1, hand error=3.13367565E-07, release=ClimbHandoff",
+    "side=1, y=-0.6, returned=True, high=True, assists=1, hand error=4.80778965E-07, release=ClimbHandoff",
+    "side=2, y=-0.6, returned=True, high=True, assists=1, hand error=2.76776774E-07, release=ClimbHandoff",
+    "side=3, y=-0.6, returned=True, high=True, assists=1, hand error=5.119259E-07, release=ClimbHandoff",
+    "side=0, y=-1.75, returned=True, high=True, assists=2, hand error=3.20980831E-07, release=ClimbHandoff",
+    "side=1, y=-1.75, returned=True, high=True, assists=2, hand error=5.623091E-07, release=ClimbHandoff",
+    "side=2, y=-1.75, returned=True, high=True, assists=2, hand error=2.67495551E-07, release=ClimbHandoff",
+    "side=3, y=-1.75, returned=True, high=True, assists=2, hand error=5.40565168E-07, release=ClimbHandoff",
+    "side=0, y=-2.18, returned=True, high=True, assists=2, hand error=2.64154352E-07, release=ClimbHandoff",
+    "side=1, y=-2.18, returned=True, high=True, assists=2, hand error=4.917383E-07, release=ClimbHandoff",
+    "side=2, y=-2.18, returned=True, high=True, assists=2, hand error=2.71614283E-07, release=ClimbHandoff",
+    "side=3, y=-2.18, returned=True, high=True, assists=2, hand error=5.285713E-07, release=ClimbHandoff"
+  ],
+  "frameRateResults": [
+    "60 FPS: 0",
+    "15 FPS: 0",
+    "144 FPS: 0"
+  ],
+  "maximumSurfaceAngleDegrees": {
+    "RaiseThrow": 43.384903,
+    "Mutual": 43.46588,
+    "Wall": 44.6478767
+  },
+  "sourceSnapshots": {
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/GrabPhysicsReview.cs": {
+      "snapshot": ".codex_tmp/auto-lift-20260911/SourceSnapshot/Prototypes/PhysicsJump/GrabPhysicsReview.cs",
+      "sha256": "553b80e9696e94d82761519e53fcde9f3d16be73f31c1b0d939c6175543b1f69"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/LedgeGrabReview.cs": {
+      "snapshot": ".codex_tmp/auto-lift-20260911/SourceSnapshot/Prototypes/PhysicsJump/LedgeGrabReview.cs",
+      "sha256": "6228e5e6ba5781bb2bd5a2057ccc3cf4da37e14b3f6596a6299109916ffe7d2b"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/LedgeRecoveryReview.cs": {
+      "snapshot": ".codex_tmp/auto-lift-20260911/SourceSnapshot/Prototypes/PhysicsJump/LedgeRecoveryReview.cs",
+      "sha256": "9be75f14e2ef7acb355ad3b8db954d04e3e06312ab014387e2e5eca971bcc24c"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/StrikeReviewTarget.cs": {
+      "snapshot": ".codex_tmp/auto-lift-20260911/SourceSnapshot/Prototypes/PhysicsJump/StrikeReviewTarget.cs",
+      "sha256": "0a46321f62dff548f522dc57ff9a8bcddda1bb98dbe07ee581f6c4dc5e0d6b54"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/AutomaticLiftReviewTests.cs": {
+      "snapshot": ".codex_tmp/auto-lift-20260911/SourceSnapshot/Tests/PlayMode/Physics/AutomaticLiftReviewTests.cs",
+      "sha256": "2d1ee8efb377a2001a03bc511f1dd20737efb3620b7ddccafc3ae4b1c13f7c65"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.cs": {
+      "snapshot": ".codex_tmp/auto-lift-20260911/SourceSnapshot/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.cs",
+      "sha256": "e62809cd455c262e87dadeeecbbcfaa0d7ecf5f016016f7d1668846a0e1c93cd"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.Hanging.cs": {
+      "snapshot": ".codex_tmp/auto-lift-20260911/SourceSnapshot/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.Hanging.cs",
+      "sha256": "d6ed60ae688f077e487643a6a8438a0223cca16eb6e6c926b88eb95abb41b4cd"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/HangingBodyPose.cs": {
+      "snapshot": ".codex_tmp/auto-lift-20260911/SourceSnapshot/Prototypes/PhysicsJump/HangingBodyPose.cs",
+      "sha256": "e1d9da4ebcc94ab5bc31cb4841fb83d0247dc2493ff8a0ee5db0b94c6a12b609"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/GrabArmPose.cs": {
+      "snapshot": ".codex_tmp/auto-lift-20260911/SourceSnapshot/Runtime/Presentation/GrabArmPose.cs",
+      "sha256": "92592d6250107e9600c4190de1206f3c1a0eac256dc1f342185f3f8e3370bcb1"
+    }
+  },
+  "unchangedAssetHashes": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31",
+    "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60",
+    ".codex_tmp/punch-unity-20260906/ApprovedPunch.json": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac",
+    "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a"
+  },
+  "media": {
+    "path": ".codex_tmp/auto-lift-20260911/Media/AutomaticLift60.mp4",
+    "sha256": "ad1120d67ba18597ca035d1824fc2c855de316aa6a796a4adb71d8385650e032",
+    "metadata": {
+      "distinctDecodedFrames": 450,
+      "fps": 60,
+      "frames": 450,
+      "height": 620,
+      "maximumTimestampGapError": 8.291978215169138e-16,
+      "seconds": 7.5,
+      "status": "PASS",
+      "width": 960
+    },
+    "sequence": [
+      "one-way lift and release throw",
+      "mutual block and unlink",
+      "raised wall grip and climb"
+    ]
+  },
+  "defaultMenus": [
+    "Open Shared Arena 2 Players",
+    "Open Shared Arena 3 Players",
+    "Open Shared Arena 4 Players",
+    "Open Ledge Recovery Review"
+  ],
+  "legacyPolicy": "Historical isolated tests explicitly retain the old profile. Latest ledge arena factory enables raised grabbing by default.",
+  "notCompleted": [
+    "Formal prefab/input/match/peer integration",
+    "Moving surfaces and beams",
+    "Human multiplayer balance validation"
+  ],
+  "playerBuilds": 0,
+  "commits": 0,
+  "pushes": 0
+}

@@ -1,0 +1,34 @@
+{
+  "complete": true,
+  "candidatePath": ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend",
+  "candidateSha256": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+  "sourceCandidateSha256": "201351af7d52fa36ae2cf419473e3fadb3b3857838b25f70f14738c6166e39e6",
+  "generatorSha256": "8c2e9fd3df7a741cba0e1076f4f990e88b2b1ac193fbf663ad5f988470d1d8e8",
+  "preparationBeforeSeconds": 0.2,
+  "preparationAfterSeconds": 0.1,
+  "durationBeforeSeconds": 0.8,
+  "durationAfterSeconds": 0.7,
+  "framesPerSecond": 30,
+  "laterTimingChange": "all keys after chamber shifted by -3 frames; durations and values unchanged",
+  "extensionSeconds": 0.13333333333333333,
+  "poseValuesUnchanged": true,
+  "meshUnchanged": true,
+  "curveEquivalenceSamples": 98,
+  "maxCurveValueDelta": 0,
+  "maxReplayedQuaternionDelta": 0,
+  "sourcePreservation": {
+    "previousCandidateUnchanged": true,
+    "r16Unchanged": true,
+    "r20Unchanged": true
+  },
+  "result": "PASS",
+  "userVisualApproval": false,
+  "limitations": [
+    "Only animation preparation timing changed; gameplay attack cadence/Hit not changed.",
+    "Pose comparison reuses the validated source curve at exactly mapped times. Fresh surface QA covers preparation and join/representative later samples.",
+    "Blender candidate only; no FBX/Unity import."
+  ],
+  "geometryCheckCount": 16,
+  "rawReportPath": ".codex_tmp/punch-preparation-20260905/review-r02/PreparationRetimeReview.json",
+  "rawReportSha256": "1ca08b4c07d420e4f25279b15d51ae02e744a600ab78f682cc5eb1d2f8f6550d"
+}

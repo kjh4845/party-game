@@ -1,0 +1,203 @@
+{
+  "status": "READABLE_GAIT_PROTOTYPE_VERIFIED",
+  "date": "2026-09-06",
+  "userRequest": "다시 가보자",
+  "scope": "Rebuild readable support/swing and small pelvis weight transfer at unchanged movement speeds, cadence and model proportions.",
+  "defaultReadableGait": true,
+  "speedMatchedCandidatesAdopted": false,
+  "rawEvidence": {
+    "path": ".codex_tmp/gait-rework-20260906/Review-20260905-171630/ReadableGaitReview.json",
+    "sha256": "64ec2ff6b2c8ef317eb3dc0e84f38596af15219794fc4a9a877426f10faa1df6"
+  },
+  "cases": [
+    {
+      "mode": "Walk",
+      "version": "Before",
+      "lift": 0.004671946167945862,
+      "strideRange": 0.029906483367085457,
+      "pelvisLateralRange": 1.427632189169529e-14,
+      "pelvisVerticalRange": 2.8312206268310547e-07,
+      "minimumKnee": 29.295948028564453,
+      "maximumKnee": 42.59493637084961,
+      "maximumTargetError": 4.845312560064485e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumPenetration": 1.7043203115463257e-07,
+      "maximumSurfaceAngle": 14.996994018554688,
+      "surfaceSamples": 39,
+      "hardEdges": 0,
+      "foldEdges": 0,
+      "worstSurfaceLocation": {
+        "x": 0.07616707682609558,
+        "y": 0.014005164615809917,
+        "z": 0.04638843610882759
+      }
+    },
+    {
+      "mode": "Walk",
+      "version": "Reworked",
+      "lift": 0.01868337392807007,
+      "strideRange": 0.08138508349657059,
+      "pelvisLateralRange": 0.007475011516362429,
+      "pelvisVerticalRange": 0.0028023719787597656,
+      "minimumKnee": 34.231300354003906,
+      "maximumKnee": 67.57697296142578,
+      "maximumTargetError": 4.806057631867588e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumPenetration": 3.227032721042633e-07,
+      "maximumSurfaceAngle": 35.26729202270508,
+      "surfaceSamples": 39,
+      "hardEdges": 0,
+      "foldEdges": 0,
+      "worstSurfaceLocation": {
+        "x": -0.08967810124158859,
+        "y": 0.025843694806098938,
+        "z": 0.02291063778102398
+      }
+    },
+    {
+      "mode": "Sprint",
+      "version": "Before",
+      "lift": 0.0076514482498168945,
+      "strideRange": 0.04590729996562004,
+      "pelvisLateralRange": 1.427632189169529e-14,
+      "pelvisVerticalRange": 2.0563602447509766e-06,
+      "minimumKnee": 32.18754196166992,
+      "maximumKnee": 52.07848358154297,
+      "maximumTargetError": 4.996335292162257e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumPenetration": 2.1746382117271423e-07,
+      "maximumSurfaceAngle": 19.86091423034668,
+      "surfaceSamples": 25,
+      "hardEdges": 0,
+      "foldEdges": 0,
+      "worstSurfaceLocation": {
+        "x": -0.08733075857162476,
+        "y": 0.01730778068304062,
+        "z": 0.029790326952934265
+      }
+    },
+    {
+      "mode": "Sprint",
+      "version": "Reworked",
+      "lift": 0.0210404172539711,
+      "strideRange": 0.1041136085987091,
+      "pelvisLateralRange": 0.013376351445913315,
+      "pelvisVerticalRange": 0.003825545310974121,
+      "minimumKnee": 32.224510192871094,
+      "maximumKnee": 71.00878143310547,
+      "maximumTargetError": 5.286894406708598e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumPenetration": 0.0006605833768844604,
+      "maximumSurfaceAngle": 42.48469161987305,
+      "surfaceSamples": 25,
+      "hardEdges": 0,
+      "foldEdges": 0,
+      "worstSurfaceLocation": {
+        "x": -0.08466599136590958,
+        "y": 0.027513468638062477,
+        "z": 0.015300445258617401
+      }
+    }
+  ],
+  "transitionEvidence": {
+    "path": ".codex_tmp/gait-rework-20260906/Transitions/Review-20260905-171600/TransitionReview.json",
+    "sha256": "16d27789a7224839128a4d33bef3fb08a1f668696b5064a02367937edb33e01a"
+  },
+  "transitionCases": 18,
+  "playMode": {
+    "passed": 18,
+    "failed": 0,
+    "evidence": {
+      "path": ".codex_tmp/gait-rework-20260906/AllPlayMode-r07.xml",
+      "sha256": "ba4b2d79a62ab153e9d517464df1a1967952aa1477019704fbce650dfcfc8765"
+    }
+  },
+  "editMode": {
+    "passed": 85,
+    "failed": 0,
+    "evidence": {
+      "path": ".codex_tmp/gait-rework-20260906/AllEditMode-r01.xml",
+      "sha256": "881bf3f64c30476049c574ffc86a9f84f89412e54901ad63f9a456c579e01426"
+    }
+  },
+  "sources": [
+    {
+      "current": {
+        "path": "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralFreeArmSwing.cs",
+        "sha256": "6633bde810b7926d406c46dccbe21b7beea29d171a825a72db3a5903a9b96c13"
+      },
+      "snapshot": {
+        "path": ".codex_tmp/gait-rework-20260906/Review-20260905-171630/SourceSnapshot/Runtime/Presentation/ProceduralFreeArmSwing.cs",
+        "sha256": "6633bde810b7926d406c46dccbe21b7beea29d171a825a72db3a5903a9b96c13"
+      }
+    },
+    {
+      "current": {
+        "path": "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralJumpPose.cs",
+        "sha256": "29741c931d35b50a59b0ece46b3beee09e249a2346f714ddf2613a923815273b"
+      },
+      "snapshot": {
+        "path": ".codex_tmp/gait-rework-20260906/Review-20260905-171630/SourceSnapshot/Runtime/Presentation/ProceduralJumpPose.cs",
+        "sha256": "29741c931d35b50a59b0ece46b3beee09e249a2346f714ddf2613a923815273b"
+      }
+    },
+    {
+      "current": {
+        "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/FootContactComparisonTests.cs",
+        "sha256": "122b6b693026b547687086deb204b585f8a7b07376c5cf09f4e339f189bc0f54"
+      },
+      "snapshot": {
+        "path": ".codex_tmp/gait-rework-20260906/Review-20260905-171630/SourceSnapshot/Tests/PlayMode/Physics/FootContactComparisonTests.cs",
+        "sha256": "122b6b693026b547687086deb204b585f8a7b07376c5cf09f4e339f189bc0f54"
+      }
+    },
+    {
+      "current": {
+        "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/ReadableGaitReviewTests.cs",
+        "sha256": "a99568fbc0a8261f644f5fb9f71c1c87c5336ef2b618d8edb1a3e0e46d3d0cba"
+      },
+      "snapshot": {
+        "path": ".codex_tmp/gait-rework-20260906/Review-20260905-171630/SourceSnapshot/Tests/PlayMode/Physics/ReadableGaitReviewTests.cs",
+        "sha256": "a99568fbc0a8261f644f5fb9f71c1c87c5336ef2b618d8edb1a3e0e46d3d0cba"
+      }
+    }
+  ],
+  "comparisonGif": {
+    "path": ".codex_tmp/gait-rework-20260906/Review-20260905-171630/Media/Comparison.gif",
+    "sha256": "c36643be72f8530002a57ae922a3a6a44325d66f4669b21bee0ac252c3fcc1a2"
+  },
+  "comparisonVideo": {
+    "path": ".codex_tmp/gait-rework-20260906/Review-20260905-171630/Media/Comparison.mp4",
+    "sha256": "aae51c6ff070892dbc119c899a84f99c8c5e8fa881ba73fce32ba7477f86ff25"
+  },
+  "comparisonVideoMetadata": {
+    "path": ".codex_tmp/gait-rework-20260906/Review-20260905-171630/Media/Comparison.metadata.json",
+    "sha256": "58edf7c6e1428492c5f5e5f3d6565cc8ad29743e023a4b43aaf767ed9c8d2122"
+  },
+  "fixedGif": {
+    "path": ".codex_tmp/gait-rework-20260906/Review-20260905-171630/Media/Fixed.gif",
+    "sha256": "71a619e91e1395c871a7d46d93b57d26f471e891a0a986bb7800b8f74c296d22"
+  },
+  "fixedVideo": {
+    "path": ".codex_tmp/gait-rework-20260906/Review-20260905-171630/Media/Fixed.mp4",
+    "sha256": "cd9d6605bcf0e5175fc7bd07ed0527c97ed74773297202f3896f23d5b904887f"
+  },
+  "fixedVideoMetadata": {
+    "path": ".codex_tmp/gait-rework-20260906/Review-20260905-171630/Media/Fixed.metadata.json",
+    "sha256": "8134b0a6b6c15f16453f65fe9232c98d8b18f00165eaf03f6e088cbda98eca7d"
+  },
+  "footPhases": {
+    "path": ".codex_tmp/gait-rework-20260906/Review-20260905-171630/Media/FootPhaseComparison.png",
+    "sha256": "842febf41d7b62222b191931a7ff465eee7ba4aeac99518d3446283e4d534b25"
+  },
+  "packager": {
+    "path": ".codex_tmp/gait-rework-20260906/package_media.py",
+    "sha256": "f6cc26efd2c4a2b33c2ce2fdde11c0611ca7152517f29c4ea835f2e78a682d7f"
+  },
+  "limitations": [
+    "This improves gait readability; it does not establish complete world-space foot locking or zero sliding.",
+    "Full-cycle adjacent-surface-angle checks are not an exhaustive non-adjacent self-intersection test.",
+    "Standalone prototype; terrain foot IK, final collider/joint profile, hand action integration and multiplayer remain pending.",
+    "Original models/weights/punch files preserved; no player build, commit or push."
+  ]
+}

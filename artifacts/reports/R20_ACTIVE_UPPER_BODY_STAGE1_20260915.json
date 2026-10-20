@@ -1,0 +1,368 @@
+{
+  "status": "STAGE_1_VERIFIED_APPROVED_FOR_STAGE_2",
+  "date": "2026-09-15",
+  "authorization": "User approved sequential implementation of the recommended approach and requires approval before proceeding to the next stage.",
+  "stages": [
+    {
+      "stage": 1,
+      "name": "Current-model physical joint preflight",
+      "implementation": "complete",
+      "userApproval": "approved_by_follow_up_proceed"
+    },
+    {
+      "stage": 2,
+      "name": "Two-character grab interactions",
+      "implementation": "core_implemented_visual_qa_failed",
+      "requires": "Local shoulder model scope decision, then Stage 2 result approval"
+    },
+    {
+      "stage": 3,
+      "name": "Punch and throw integration",
+      "implementation": "not_started",
+      "requires": "User approval of stage 2"
+    },
+    {
+      "stage": 4,
+      "name": "Wall, down/get-up and multiplayer review",
+      "implementation": "not_started",
+      "requires": "User approval of stage 3"
+    }
+  ],
+  "menu": "Project Hotfix/Prototypes/Open Active Upper Body Stage 1",
+  "controls": {
+    "C": "Cycle Rest/Reach/Curl reference targets",
+    "O": "Toggle a static physical obstacle",
+    "F": "Apply a test impulse to the left hand",
+    "G": "Toggle left-arm muscle drives",
+    "R": "Reset the lab"
+  },
+  "profile": {
+    "totalMassKg": 20,
+    "dynamicBodies": 8,
+    "joints": 7,
+    "lowerBodyMassKg": 8,
+    "spineMassKg": 2.5,
+    "chestMassKg": 2.5,
+    "headMassKg": 3,
+    "eachUpperArmMassKg": 1.25,
+    "eachForearmMassKg": 0.75,
+    "solverIterations": 24,
+    "solverVelocityIterations": 8,
+    "shoulderJointXBendDegrees": [
+      -25,
+      110
+    ],
+    "shoulderJointYZDegrees": 15,
+    "elbowJointXBendDegrees": [
+      -5,
+      135
+    ],
+    "elbowJointYZDegrees": 4,
+    "jointProjection": "None",
+    "adjacentPairsIgnoreCollision": true,
+    "otherSelfPairsCollide": true,
+    "renderSource": "post-physics body snapshots; reference skeleton has no collisions or visible skin"
+  },
+  "validation": [
+    {
+      "file": ".codex_tmp/active-upper-stage1-20260915/FinalPlay.xml",
+      "passed": 11,
+      "failed": 0,
+      "tests": [
+        "CaptureActualSkinAndContactAtSixtyFps",
+        "ContactDeflectsThePhysicalArmWithoutChangingTheReference",
+        "EnabledSelfCollisionPairsStartClearAndRemainBounded",
+        "FrameSchedulesCannotChangeThePhysicsOrFeedRenderedBonesBack",
+        "InspectJointTargetsAndSkin",
+        "MassCollisionPairsAndResetKeepTheLabIsolated",
+        "NativePhysicsLoopCapturesEveryStep",
+        "RemovingArmDriveLetsGravityActAndRestoringItRecovers",
+        "MutualGripBlocksBothActorsInEitherProcessingOrder",
+        "NativeFixedLoopRunsLiftOnceAfterBothHands",
+        "CosmeticClimbExitDoesNotKeepGripOrSurviveMenuCleanup"
+      ]
+    },
+    {
+      "file": ".codex_tmp/active-upper-stage1-20260915/RenderedContact.xml",
+      "passed": 1,
+      "failed": 0,
+      "tests": [
+        "CaptureActualSkinAndContactAtSixtyFps"
+      ]
+    },
+    {
+      "file": ".codex_tmp/active-upper-stage1-20260915/EditMode.xml",
+      "passed": 140,
+      "failed": 0,
+      "tests": [
+        "BothSlotsInvalid_ReturnsNoPayloadAndDoesNotRewriteEitherFile",
+        "CallerValidator_CanRejectCurrentAndSelectCompatibleLastGood",
+        "ConcurrentRepositoryInstances_SerializeTheSameAddress",
+        "ConcurrentWrites_OnOneStoreNeverExposeATornEnvelope",
+        "CorruptCurrentThenSave_PreservesExistingValidLastGood",
+        "FirstSave_NewRepositoryInstanceReadsExactCurrentWithoutBackup",
+        "InvalidAddressMatrix_IsRejectedWithoutWritingOutsideRoot",
+        "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"truncated\",Corrupt)",
+        "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"hash\",Corrupt)",
+        "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"version\",Corrupt)",
+        "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"length\",TooLarge)",
+        "NonRegularTarget_IsRejectedWithoutReplacement",
+        "OversizedDeclaredLength_IsRejectedBeforeAllocationAndFallsBack",
+        "Overwrite_RotatesPriorCurrentIntoLastGood",
+        "PayloadLimit_AcceptsExactLimitAndRejectsLargerWithoutChangingCurrent",
+        "PhysicalFileOverLimit_IsRejectedBeforePayloadReadAndFallsBack",
+        "ReplaceFailure_LeavesCurrentAndLastGoodUnchangedAndCleansPending",
+        "StalePending_IsIgnoredByReadAndRemovedByNextWrite",
+        "ThirdWrite_ReplacesExistingLastGoodWithPriorCurrent",
+        "BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides(\"Assets/Settings/Build Profiles/Windows x64 Development.asset\")",
+        "BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides(\"Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset\")",
+        "BuildProfile_InheritsTheSingleGlobalSampleScene(\"Assets/Settings/Build Profiles/Windows x64 Development.asset\")",
+        "BuildProfile_InheritsTheSingleGlobalSampleScene(\"Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset\")",
+        "BuildProfileDefines_AreExactMutuallyExclusiveAndDoNotLeakGlobally",
+        "GlobalStandalonePlayerSettings_UseTheApprovedTemporaryIdentityAndMono",
+        "WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect(\"Assets/Settings/Build Profiles/Windows x64 Development.asset\",True)",
+        "WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect(\"Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset\",False)",
+        "WindowsBuildProfiles_AreExactlyTwoAssetsWithUniqueGuids",
+        "WindowsX64BuildSupport_IsInstalled",
+        "ExternalLaunchConsumesAirJumpAndStartsAFreshLandingImpactInterval",
+        "GetUpFinishesInNeutralBeforeLocomotionHandoff(\"FaceUp\")",
+        "GetUpFinishesInNeutralBeforeLocomotionHandoff(\"FaceDown\")",
+        "GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents(\"FaceUp\")",
+        "GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents(\"FaceDown\")",
+        "GrabReleaseAndBreak_DoNotCreatePunchOrAutoRegrab",
+        "IdleHolding_DoesNotAccumulateTimeFatigue",
+        "SustainedLoad_Breaks_AndLowLoadRecovers",
+        "DuplicateAndOldEdges_CannotRepeatOrRestartAttack",
+        "FasterPunchSharesHitClockAndRecoveryWithoutChangingHoldThreshold",
+        "GroundContextStaysGround_AirContextDoesNotCreatePunch",
+        "HandsHaveIndependentActions_AndPerActionTargetDeduplication",
+        "HardwareDurationWinsOverFixedTickRounding(0.147d,True)",
+        "HardwareDurationWinsOverFixedTickRounding(0.15d,False)",
+        "HardwareDurationWinsOverFixedTickRounding(0.153d,False)",
+        "InvalidTimestampCannotCorruptPendingHardwareDuration",
+        "OccupiedHand_CannotStart_AndCancellationRemovesHitEligibility",
+        "SimultaneousTimedTapsAreIndependentOfHandProcessingOrder",
+        "Suppress_ResetAndAllUp_DoNotEmitActions",
+        "Threshold_TapAndHoldAreExclusive(0.12d)",
+        "Threshold_TapAndHoldAreExclusive(0.15d)",
+        "Threshold_TapAndHoldAreExclusive(0.18d)",
+        "InputPackage_IsLockedAsDirectRegistryDependency",
+        "OnlyInputModule_ReferencesTheSelectedPackageAssembly",
+        "PlayerSettings_EnableOnlyTheNewInputSystemBackend",
+        "ProductRuntimeSources_DoNotUseLegacyInputApis",
+        "MenuAndReset_RearmCannotAuthorizeAThrow",
+        "ReleaseAdmission_RejectsOldEdgesAgainstANewGrab",
+        "LocalStorageAssembly_IsANoEngineLeaf",
+        "LocalStorageRuntimeSources_HaveNoUnityOrNetworkNamespaceDependency",
+        "Presentation_HasNoDirectOrTransitivePathToSimulation",
+        "ProjectRuntimeSources_AreOwnedByTheirFolderAssembly",
+        "RuntimeAssemblies_HaveOnlyApprovedProjectReferences",
+        "RuntimeAssemblyGraph_HasNoCycles",
+        "PhysicsPackage_IsBuiltInDirectAndHasNoSecondStack",
+        "ProductRuntimeSources_DoNotMutateGlobalPhysicsCadence",
+        "ProjectPhysicsSettings_UseSixtyHertzAutomaticSimulation",
+        "RuntimePhysicsMutationGuard_CatchesRepresentativeForbiddenCode",
+        "DownHitsDoNotAccumulateAndCannotReplayAfterRecovery",
+        "EachDownKeepsRequiredHitsFixedAndConsumesOnlyCurrentHits",
+        "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(0,10)",
+        "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(1,9)",
+        "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(4,6)",
+        "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(100,6)",
+        "FirstTenPointEpisodeCountsBodyAndHeadSeparately(Body,10)",
+        "FirstTenPointEpisodeCountsBodyAndHeadSeparately(Head,5)",
+        "IndependentAttackersAndOverlappingHandsDedupeWithoutDiscardingReverseOrder",
+        "InvalidProfilesAndIdsAreRejected",
+        "ResetRejectsOldGenerationAndRestartsAtFirstThreshold",
+        "InvalidProjectionDoesNotEmitNonfiniteCameraTargets",
+        "PerspectiveDistanceIncludesEveryCornerAndDepth(1.777778f)",
+        "PerspectiveDistanceIncludesEveryCornerAndDepth(1.6f)",
+        "PerspectiveDistanceIncludesEveryCornerAndDepth(2.333333f)",
+        "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(0)",
+        "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(45)",
+        "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(90)",
+        "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(180)",
+        "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(270)",
+        "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(-90,0)",
+        "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(90,0)",
+        "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(0,90)",
+        "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(0,-90)",
+        "DropkickHasNoDownTimerOrCountAndRealDownSupersedesItOnce",
+        "ExpiryOnlyPermitsSupportedRecoveryAndNeverUnlocksItself",
+        "InvalidTuningAndClockCannotMutateState",
+        "LobbyAlwaysUsesBaseAndDoesNotCount",
+        "MatchAccumulatesOncePerEpisodeAndCapsDuration",
+        "ResetAndNewEpisodeRejectStaleEventsAndGetUpCompletions",
+        "UprightReturnRequiresExpiredTimerRealSupportAndSettledCompletion",
+        "HighLevelNetcodeAndUnityOnlineServices_AreAbsent",
+        "OnlyTransportModule_ReferencesTheSelectedPackageAssembly",
+        "TransportModule_HasNoAdapterImplementationBeforeNet001",
+        "TransportPackage_IsLockedAsDirectRegistryDependency",
+        "Harness_ExecutesTheRuntimeOwnedSimulationKernel",
+        "SimulationAndHarness_HaveNoPresentationRenderingOrUiDependency",
+        "ActualDownDuringDropkickAlignment_ClosesTheOldPresentation",
+        "AirborneUnsettledOrBlockedRecovery_DoesNotStart(False,True)",
+        "AirborneUnsettledOrBlockedRecovery_DoesNotStart(True,False)",
+        "AirborneUnsettledOrBlockedRecovery_DoesNotStart(False,False)",
+        "AlignmentNormalNormalization_MatchesEntryClassification",
+        "AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation(False)",
+        "AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation(True)",
+        "DiagonalFall_UsesTheDominantSupportedSide(35,FaceUp)",
+        "DiagonalFall_UsesTheDominantSupportedSide(55,RightSide)",
+        "GroundQueryMayReturnANonUnitNormal",
+        "InterruptedAlignment_CanReassessWithoutAddingADownEpisode",
+        "InvalidUnsupportedOrUprightOrientation_IsRejectedWithoutMutation",
+        "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(-90,70,FaceUp)",
+        "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(-90,-70,FaceUp)",
+        "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(90,70,FaceDown)",
+        "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(90,-70,FaceDown)",
+        "SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp(False)",
+        "SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp(True)",
+        "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(-90,0,FaceUp)",
+        "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(90,0,FaceDown)",
+        "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(0,90,LeftSide)",
+        "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(0,-90,RightSide)",
+        "ActualDownDuringDropkickRecovery_ReplacesTheRecoveryAndCountsAsDown",
+        "DownEpisode_UsesSharedGetUpAndIncrementsDownCountOncePerEpisode",
+        "DropkickRecovery_ReusesGetUpPresentationWithoutCreatingDownEpisode",
+        "EquivalentCycleSequences_ProduceTheSameFingerprint",
+        "KernelStep_AdvancesTheReadOnlySnapshot",
+        "NegativeCycleCount_IsRejectedWithoutMutation",
+        "RoundReset_ClearsRecoveryAndDownCount",
+        "ActionPoseReview_IsReadOnlyAndMakesNoAnimationClaim",
+        "C1B005UnityAssetFolder_HasOnlyFbxAndIdentityPrefabSources",
+        "FourViewSilhouetteParity_UsesObservedIouAndBoundedBboxGate",
+        "IdentityPrefab_IsTransformNeutralAndContainsNoGameplayComponents",
+        "ImportedNeutral_HasExactStaticHierarchyBoundsLandmarksAndScope",
+        "InspectionAndEightUnityCaptures_ArePresentAndHashBound",
+        "ModelImporter_UsesTheExactApprovedStaticPreset"
+      ]
+    }
+  ],
+  "metrics": {
+    "Contact.txt": "contacts=115, maximumImpulse=1.390854, colliderPenetration=0.0009763539, blockedTargetError=0.205996424, freeTargetError=0.05444095, gap=0.00380549044",
+    "DriveOff.txt": "leftDrop=0.245281339, rightDrop=-0.020595789, restoredTargetError=0.0554027446",
+    "FrameRates.txt": "fps=60, maximumBodyPositionDifference=0, steps=630, captures=631\nfps=15, maximumBodyPositionDifference=0, steps=630, captures=631\nfps=144, maximumBodyPositionDifference=0, steps=630, captures=631\n",
+    "Skin.txt": "maximumSurfaceAngle=31.557909, worstTick=583, maximumJointGap=0.00377149554",
+    "SelfCollision.txt": "maximumNonAdjacentColliderPenetration=0",
+    "RenderedContact.txt": "maximumSkinVertexPenetration=0, worstTick=-1, interpolationSamples=0/0.5/1"
+  },
+  "media": {
+    "video": "/Users/kjh/local_dev/party game/.codex_tmp/active-upper-stage1-20260915/Media/ActiveUpperBodyStage1_60.mp4",
+    "fps": 60,
+    "framesWritten": 630,
+    "framesDecoded": 630,
+    "seconds": 10.5,
+    "decodeExit": 0,
+    "phases": [
+      {
+        "tick": 0,
+        "title": "1단계 · 상체 물리 관절 검토"
+      },
+      {
+        "tick": 60,
+        "title": "팔 앞으로 뻗기"
+      },
+      {
+        "tick": 150,
+        "title": "팔꿈치 굽히기"
+      },
+      {
+        "tick": 240,
+        "title": "기본 자세로 돌아오기"
+      },
+      {
+        "tick": 300,
+        "title": "장애물에 닿는 팔"
+      },
+      {
+        "tick": 390,
+        "title": "장애물 제거"
+      },
+      {
+        "tick": 435,
+        "title": "손에 외부 힘 가하기"
+      },
+      {
+        "tick": 480,
+        "title": "왼팔의 힘 풀기 · 화면 오른쪽"
+      },
+      {
+        "tick": 570,
+        "title": "왼팔의 힘 다시 켜기"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs",
+      "sha256": "9c031bc9ec1f5353891e3d221c19edc26a61389caa6ed68bc0ddbdfeaac370f8",
+      "snapshot": ".codex_tmp/active-upper-stage1-20260915/SourceSnapshot/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ReviewFixedLoop.cs",
+      "sha256": "095ecb320b6377e0ca33efddb97ebf67a056b2bdbc5780f8b588801e8cb1daf3",
+      "snapshot": ".codex_tmp/active-upper-stage1-20260915/SourceSnapshot/Prototypes/PhysicsJump/ReviewFixedLoop.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+      "sha256": "06109735678d097abc61385fc55b7027d90a4874b1693195daed65c6fd84a05f",
+      "snapshot": ".codex_tmp/active-upper-stage1-20260915/SourceSnapshot/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/ActiveUpperBodyStageOneTests.cs",
+      "sha256": "ffc4d95357fa34dfb774a3d23a4bc0582c8578cf8a4997479ef315e8538cd732",
+      "snapshot": ".codex_tmp/active-upper-stage1-20260915/SourceSnapshot/Tests/PlayMode/Physics/ActiveUpperBodyStageOneTests.cs"
+    }
+  ],
+  "originalAssetHashes": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31",
+    "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60",
+    ".codex_tmp/punch-unity-20260906/ApprovedPunch.json": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac",
+    "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a"
+  },
+  "existingPrototypeRuntimeChanges": [
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ReviewFixedLoop.cs"
+  ],
+  "notImplemented": [
+    "Two-character grab contacts",
+    "Punch/hit/throw integration",
+    "Movement/jump integration with the new mass distribution",
+    "Down/GetUp integration",
+    "Four-player/peer performance and gameplay feel"
+  ],
+  "defaultArenaChanged": false,
+  "playerBuilds": 0,
+  "commits": 0,
+  "pushes": 0,
+  "technicalReferences": [
+    "https://docs.unity3d.com/6000.0/Documentation/Manual/class-ConfigurableJoint.html",
+    "https://gist.github.com/mstevenson/4958837"
+  ],
+  "authorizationFollowUp": {
+    "interpretation": "Follow-up after Stage 1 review authorizes Stage 2; approval still required before Stage 3",
+    "stage2Report": "artifacts/reports/R20_ACTIVE_GRAB_STAGE2_20260915.json"
+  },
+  "notImplementedScope": "Historical Stage 1 capture scope; see Stage 2 report for current progress",
+  "followUp20260916": {
+    "authorization": "User approved comparison of ForwardReach and AdaptiveReach on existing model before any local model edits",
+    "report": "artifacts/reports/R20_GRAB_MOTION_CANDIDATES_20260916.json",
+    "modelChangesApproved": false,
+    "stage3Started": false,
+    "selectedMotion": "AdaptiveReach",
+    "adoptionRecord": "artifacts/reports/R20_ADAPTIVE_GRAB_ADOPTION_20260916.json"
+  },
+  "shoulderRepairFollowUp": {
+    "report": "artifacts/reports/R20_SHOULDER_REPAIR_LOW_GRAB_20260916.json",
+    "isolatedRepairAuthorizedByFollowUpProceed": true,
+    "skinDeformationPassed": true,
+    "lowRagdollGrabImplemented": true,
+    "contactGapUnresolved": true,
+    "stage2Complete": false,
+    "stage3Started": false
+  }
+}

@@ -1,0 +1,405 @@
+{
+  "status": "ADOPTED_FOR_LOCAL_PROTOTYPE",
+  "completedAtLocal": "2026-09-10T12:34:55.505279+09:00",
+  "userApprovalPending": false,
+  "defaultSharedMenusChanged": true,
+  "basis": [
+    "docs/MAP_P00_CONSTRUCTION_DROP.md sections2,3,4,10",
+    "docs/03_IMPLEMENTATION_PLAN.md CAM-001..004 and P00-001..003 local preflight"
+  ],
+  "profile": {
+    "characterUnitMeters": 1,
+    "unitBasis": "Current prototype authority capsule height; not production C1B LOCKED height.",
+    "roofCU": [
+      8.8,
+      6.2
+    ],
+    "slabThicknessCU": 0.28,
+    "spawnRadiusCU": 1.85,
+    "bottomOobYCU": -2.8,
+    "sideBufferCU": 1.75,
+    "sideOobXCU": 6.15,
+    "sideOobZCU": 4.85,
+    "cameraYaw": 0,
+    "cameraPitch": 34,
+    "verticalFov": 42,
+    "minimumDolly": 8,
+    "previousMaximumDolly": 15,
+    "candidateMaximumDolly": 22,
+    "safeMargin": 0.15,
+    "movementScale": 2
+  },
+  "coreOobRule": "After each physics step, only enabled non-trigger colliders directly owned by the authority root body are tested against five axis-aligned OOB half-spaces. AABB support extrema exactly represent crossing these planes. Limbs, visual bones and trigger hit volumes are excluded.",
+  "implemented": [
+    "Same finite roof and deterministic cardinal spawn layouts for2/3/4 actors",
+    "Root-body OOB membership, same-tick camera removal, affected incoming/outgoing grip cleanup without throw",
+    "Disable detached ragdoll physics and query proxies on review exclusion; reset reactivation and fresh visual snapshots",
+    "Camera22 candidate includes live recovery envelope with original yaw/pitch/FOV/damping",
+    "Actual first-contact timing and render-schedule replay"
+  ],
+  "notImplemented": [
+    "Ledge/static-wall grab, ClimbAssist and recovery geometry",
+    "Crane, Hook, Lever, edge tilt, DropZones and weapon supply",
+    "Match/Round/score/countdown/normal timer/SuddenDeath",
+    "Production Alive/Forfeit and peer events",
+    "Final P00/character/camera Gate and human multiplayer comfort approval"
+  ],
+  "opening": [
+    {
+      "players": 2,
+      "layout": 0,
+      "sprint": false,
+      "seconds": 1.350000023841858
+    },
+    {
+      "players": 2,
+      "layout": 1,
+      "sprint": false,
+      "seconds": 1.350000023841858
+    },
+    {
+      "players": 2,
+      "layout": 0,
+      "sprint": true,
+      "seconds": 0.9166666865348816
+    },
+    {
+      "players": 2,
+      "layout": 1,
+      "sprint": true,
+      "seconds": 0.9166666865348816
+    },
+    {
+      "players": 3,
+      "layout": 0,
+      "sprint": false,
+      "seconds": 1.283333420753479
+    },
+    {
+      "players": 3,
+      "layout": 1,
+      "sprint": false,
+      "seconds": 1.283333420753479
+    },
+    {
+      "players": 3,
+      "layout": 2,
+      "sprint": false,
+      "seconds": 1.283333420753479
+    },
+    {
+      "players": 3,
+      "layout": 3,
+      "sprint": false,
+      "seconds": 1.283333420753479
+    },
+    {
+      "players": 3,
+      "layout": 0,
+      "sprint": true,
+      "seconds": 0.8833333849906921
+    },
+    {
+      "players": 3,
+      "layout": 1,
+      "sprint": true,
+      "seconds": 0.8833333849906921
+    },
+    {
+      "players": 3,
+      "layout": 2,
+      "sprint": true,
+      "seconds": 0.8833333849906921
+    },
+    {
+      "players": 3,
+      "layout": 3,
+      "sprint": true,
+      "seconds": 0.8833333849906921
+    },
+    {
+      "players": 4,
+      "layout": 0,
+      "sprint": false,
+      "seconds": 1.283333420753479
+    },
+    {
+      "players": 4,
+      "layout": 1,
+      "sprint": false,
+      "seconds": 1.283333420753479
+    },
+    {
+      "players": 4,
+      "layout": 2,
+      "sprint": false,
+      "seconds": 1.283333420753479
+    },
+    {
+      "players": 4,
+      "layout": 3,
+      "sprint": false,
+      "seconds": 1.283333420753479
+    },
+    {
+      "players": 4,
+      "layout": 0,
+      "sprint": true,
+      "seconds": 0.8833333849906921
+    },
+    {
+      "players": 4,
+      "layout": 1,
+      "sprint": true,
+      "seconds": 0.8833333849906921
+    },
+    {
+      "players": 4,
+      "layout": 2,
+      "sprint": true,
+      "seconds": 0.8833333849906921
+    },
+    {
+      "players": 4,
+      "layout": 3,
+      "sprint": true,
+      "seconds": 0.8833333849906921
+    }
+  ],
+  "framing": [
+    {
+      "players": 2,
+      "aspect": 1.7777777910232544,
+      "previousDolly": 15.0,
+      "candidateDolly": 17.786540985107422,
+      "previousOverflow": true
+    },
+    {
+      "players": 2,
+      "aspect": 1.600000023841858,
+      "previousDolly": 15.0,
+      "candidateDolly": 17.786540985107422,
+      "previousOverflow": true
+    },
+    {
+      "players": 2,
+      "aspect": 2.3333332538604736,
+      "previousDolly": 15.0,
+      "candidateDolly": 17.786540985107422,
+      "previousOverflow": true
+    },
+    {
+      "players": 3,
+      "aspect": 1.7777777910232544,
+      "previousDolly": 15.0,
+      "candidateDolly": 17.67140769958496,
+      "previousOverflow": true
+    },
+    {
+      "players": 3,
+      "aspect": 1.600000023841858,
+      "previousDolly": 15.0,
+      "candidateDolly": 17.67140769958496,
+      "previousOverflow": true
+    },
+    {
+      "players": 3,
+      "aspect": 2.3333332538604736,
+      "previousDolly": 15.0,
+      "candidateDolly": 17.67140769958496,
+      "previousOverflow": true
+    },
+    {
+      "players": 4,
+      "aspect": 1.7777777910232544,
+      "previousDolly": 15.0,
+      "candidateDolly": 20.525001525878906,
+      "previousOverflow": true
+    },
+    {
+      "players": 4,
+      "aspect": 1.600000023841858,
+      "previousDolly": 15.0,
+      "candidateDolly": 20.62204360961914,
+      "previousOverflow": true
+    },
+    {
+      "players": 4,
+      "aspect": 2.3333332538604736,
+      "previousDolly": 15.0,
+      "candidateDolly": 20.525001525878906,
+      "previousOverflow": true
+    }
+  ],
+  "motion": [
+    {
+      "profile": "15",
+      "frames": 420,
+      "outs": 3,
+      "unsafeFrames": 25,
+      "maximumDolly": 15.0,
+      "minimumMargin": -0.03474360704421997,
+      "maximumRootError": 0.0,
+      "maximumCameraError": 0.0,
+      "outTicks": [
+        285,
+        0,
+        285,
+        324
+      ]
+    },
+    {
+      "profile": "22",
+      "frames": 420,
+      "outs": 3,
+      "unsafeFrames": 0,
+      "maximumDolly": 21.453445434570312,
+      "minimumMargin": 0.14999988675117493,
+      "maximumRootError": 0.0,
+      "maximumCameraError": 0.0,
+      "outTicks": [
+        285,
+        0,
+        285,
+        324
+      ]
+    }
+  ],
+  "renderSchedules": [
+    {
+      "profile": "60",
+      "frames": 0,
+      "outs": 0,
+      "unsafeFrames": 0,
+      "maximumDolly": 0.0,
+      "minimumMargin": 0.0,
+      "maximumRootError": 0.0,
+      "maximumCameraError": 0.0,
+      "outTicks": []
+    },
+    {
+      "profile": "15",
+      "frames": 0,
+      "outs": 0,
+      "unsafeFrames": 0,
+      "maximumDolly": 0.0,
+      "minimumMargin": 0.0,
+      "maximumRootError": 0.0,
+      "maximumCameraError": 0.0,
+      "outTicks": []
+    },
+    {
+      "profile": "144",
+      "frames": 0,
+      "outs": 0,
+      "unsafeFrames": 0,
+      "maximumDolly": 0.0,
+      "minimumMargin": 0.0,
+      "maximumRootError": 0.0,
+      "maximumCameraError": 0.0,
+      "outTicks": []
+    },
+    {
+      "profile": "Hitch200ms",
+      "frames": 0,
+      "outs": 0,
+      "unsafeFrames": 0,
+      "maximumDolly": 0.0,
+      "minimumMargin": 0.0,
+      "maximumRootError": 0.0,
+      "maximumCameraError": 0.0,
+      "outTicks": []
+    }
+  ],
+  "validation": {
+    "Play-final": {
+      "path": ".codex_tmp/arena-boundary-20260910/Play-final.xml",
+      "passed": 21,
+      "total": 21
+    },
+    "Cleanup-Fps": {
+      "path": ".codex_tmp/arena-boundary-20260910/Cleanup-Fps.xml",
+      "passed": 7,
+      "total": 7
+    },
+    "Edit": {
+      "path": ".codex_tmp/arena-boundary-20260910/Edit.xml",
+      "passed": 139,
+      "total": 139
+    }
+  },
+  "uniquePlayModeTests": 21,
+  "media": {
+    "video": ".codex_tmp/arena-boundary-20260910/Media/Comparison60.mp4",
+    "validation": {
+      "distinctDecodedFrames": 840,
+      "fps": 60,
+      "frames": 840,
+      "height": 622,
+      "maximumTimestampGapError": 9.471590178833367e-16,
+      "seconds": 14,
+      "status": "PASS",
+      "width": 960
+    },
+    "staticComparison": ".codex_tmp/arena-boundary-20260910/Media/RecoveryFramingComparison.png",
+    "disclosure": "Scripted native Unity physics motion; one explicit Down injection and review reset. Static recovery shots use positioned camera-boundary samples, not live fights."
+  },
+  "sourceSnapshots": {
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ArenaBoundaryReview.cs": {
+      "snapshot": ".codex_tmp/arena-boundary-20260910/SourceSnapshot/Prototypes/PhysicsJump/ArenaBoundaryReview.cs",
+      "sha256": "46b6bfe8a41057d131d3e2f0dda73ca123dbf72a6b83f3d137636187479d0f2d"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/SharedArenaReview.cs": {
+      "snapshot": ".codex_tmp/arena-boundary-20260910/SourceSnapshot/Prototypes/PhysicsJump/SharedArenaReview.cs",
+      "sha256": "1f611bba6080e157d7724fc296491e8bbd79260eb6549e56b3bf3e46896a2194"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ReviewFixedLoop.cs": {
+      "snapshot": ".codex_tmp/arena-boundary-20260910/SourceSnapshot/Prototypes/PhysicsJump/ReviewFixedLoop.cs",
+      "sha256": "f0c0d4a8416b0fb2ec7f21aef35d2c58ec3c809322ed6f69138682046ed47456"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/GrabPhysicsReview.cs": {
+      "snapshot": ".codex_tmp/arena-boundary-20260910/SourceSnapshot/Prototypes/PhysicsJump/GrabPhysicsReview.cs",
+      "sha256": "da6e9986139642a4a2009a2531892765f4332d1ca349b2f8e07875c8e657f64a"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/RagdollRecoveryReview.cs": {
+      "snapshot": ".codex_tmp/arena-boundary-20260910/SourceSnapshot/Prototypes/PhysicsJump/RagdollRecoveryReview.cs",
+      "sha256": "cc5d17fd163aae91e5d5731f9d966da9f2c0b158ed1ef3432236968f5b8ec4cd"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PunchHitRig.cs": {
+      "snapshot": ".codex_tmp/arena-boundary-20260910/SourceSnapshot/Prototypes/PhysicsJump/PunchHitRig.cs",
+      "sha256": "cf18bc12e159b8d3a84cdabb9cc65180449045df61d8639ec8020adc4be854d3"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/FixedReviewPose.cs": {
+      "snapshot": ".codex_tmp/arena-boundary-20260910/SourceSnapshot/Prototypes/PhysicsJump/FixedReviewPose.cs",
+      "sha256": "804ccf71a320eac682aae14d3bac8196d385fe5bea58f9c1e86139bd50848abd"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": {
+      "snapshot": ".codex_tmp/arena-boundary-20260910/SourceSnapshot/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+      "sha256": "302b6e56bc24343fbe9929f91121ae8f46c0451e2f27f30c0cc5edb1059b5f4e"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/ArenaBoundaryReviewTests.cs": {
+      "snapshot": ".codex_tmp/arena-boundary-20260910/SourceSnapshot/Tests/PlayMode/Physics/ArenaBoundaryReviewTests.cs",
+      "sha256": "ba48cff78fc4e2107cafa0195b0e9007262723211d8043d4c2162afac17a6b71"
+    }
+  },
+  "unchangedAssets": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31",
+    "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60",
+    ".codex_tmp/punch-unity-20260906/ApprovedPunch.json": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac",
+    "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a"
+  },
+  "playerBuilds": 0,
+  "commits": 0,
+  "pushes": 0,
+  "adoption": {
+    "atLocal": "2026-09-10T12:45:15.531603+09:00",
+    "userDecision": "이 검토안 채택 후 가장자리 복귀 진행 (권장)",
+    "nextWork": "Actual hand contact ledge grab and bounded ClimbAssist."
+  },
+  "currentRecoveryReport": "artifacts/reports/R20_LEDGE_RECOVERY_REVIEW_20260910.json"
+}

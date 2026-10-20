@@ -5,9 +5,9 @@
 | 항목 | 내용 |
 |---|---|
 | 문서명 | Main Menu, Interactive Lobby, Customizer & Match UI Baseline |
-| 문서 버전 | 1.8.0 Alpha Minimal Match UI·Leave·Quality Baseline |
-| 기준일 | 2026-08-26 |
-| 기준 문서 | `docs/01_PRD.md` 1.8.0, `docs/02_SRS.md` 1.8.0 |
+| 문서 버전 | 1.8.0 Alpha Minimal Match UI·Leave·Quality Baseline + 2026-09-04 Action Presentation Addendum |
+| 기준일 | 2026-09-04 |
+| 기준 문서 | `docs/01_PRD.md` 1.8.0 + 2026-09-04 Addendum, `docs/02_SRS.md` 1.8.0 + 동일 Addendum |
 | 패치 기준 | `docs/PATCH_DESIGN.md` 0.5.0 Approved Firearm Runtime Baseline |
 | 입력 기준 | 키보드·마우스, 16:9 우선 |
 | 현재 목표 | Alpha LAN/direct endpoint 2·3·4인 Vertical Slice |
@@ -193,6 +193,9 @@ resolver를 검증하기 위한 text이며 post-Alpha onboarding의 입력 sourc
 
 Grounded 기본 문구는 `[LMB/RMB] 짧게: 해당 손 펀치 · 길게: 해당 손 잡기`다. Button down 즉시 Punch가
 아니라 Pending 뒤 release 또는 hold로 갈린다는 사실을 Lobby context에서 보여줄 수 있다.
+동적 대상을 실제로 잡으면 `버튼 놓기: 던지기`를 안내한다(2026-09-06 사용자 결정). 별도 들기 키는 없다.
+동일 대상을 양손으로 잡은 경우 마지막 손 버튼을 놓아야 던진다. 빈 GrabSeek 취소·메뉴·강제 해제는 던지기가 아니다.
+현재 local Grab 검토 장면에 연결했으며 WeaponUse·고정 ledge 조작과 정식 InputAction map은 별도 후속이다.
 
 Airborne non-Down 기본 hint는 다음 의미를 짧게 제공한다.
 
@@ -490,9 +493,10 @@ success를 확정하지 않는다. Pistol은 press마다 한 번, LongGun은 val
 기록하고 Playing+SuddenDeath에서는 동작하며 RoundResult부터 새 Fire·active Projectile은 0이다. Ammo0의
 last Shot→forced release→Spent deadline remove와 next-pulse replacement를 즉시 respawn 하나로 합치지 않는다.
 
-Hybrid animation 검증 capture는 locomotion·Jump phase, L/R Punch·Air Kick, Dropkick/Recovery,
-Grab/Lift/Throw, Weapon Fire/Swing과 Ragdoll/GetUp을 Host action/state와 함께 표시한다. Animation의
-gameplay root motion·hit·impulse·Down mutation은 0이어야 한다.
+Hybrid presentation 검증 capture는 Idle arms-to-torso, Walk small arm swing+leg motion, Sprint large arm
+swing+fast leg cadence, Jump phase, L/R Punch·Air Kick, Dropkick/별도 Recovery, Grab/Lift/Throw, Firearm
+forward-arm Grip+physics recoil, Melee Swing과 Ragdoll/shared GetUp을 Host action/state와 함께 표시한다.
+authored Firearm fire/recoil clip, Animation gameplay root motion·hit·impulse·Down mutation은 각각 0이어야 한다.
 
 Weapon functional ID와 W1 action 문구는 Lobby/developer context에서만 사용한다. M1911·AK-47을 reference로
 한 asset이라도 실제 모델명, 제조사명, logo·marking·serial을 Player UI에 표시하지 않는다.
@@ -702,7 +706,8 @@ action을 정확히 반영한다.
 - [ ] Air single quick release는 chord window close 뒤 해당 발 Kick이고 hold threshold는 미commit Kick만 Grab으로 취소한다.
 - [ ] valid dual down-edge chord는 즉시 Dropkick 하나를 commit하고 두 pending을 소비하며 release 요구·단일 Kick 추가 0이다.
 - [ ] AirAttackToken은 episode당 공격 1회이고 stable Grounded·GetUp·reset 뒤 복원된다.
-- [ ] DropkickRecovery/tumble은 DownCount·groggy·TRG-DOWN 0이며 Kick/Dropkick은 Patch003/004만 발동한다.
+- [ ] DropkickRecovery/tumble은 DownEpisode와 별도 state이고 DownCount·groggy·TRG-DOWN 0이다. Prone
+      settle 뒤 방향별 Ragdoll GetUp 시각 모션만 공유하며 Kick/Dropkick은 Patch003/004만 발동한다.
 - [ ] Token이 먼저 복원돼도 DropkickRecovery 종료 전 새 Punch·Kick·Dropkick·Weapon attack은 0이다.
 - [ ] Cursor 진입·Mouse rearm·reconnect가 pending chord나 Air attack을 중복 commit하지 않는다.
 - [ ] Hybrid animation matrix는 Host state와 일치하고 gameplay root motion·authority mutation 0이다.
@@ -715,7 +720,8 @@ action을 정확히 반영한다.
 - [ ] AmmoRemaining·FireMode·Projectile·Spent는 developer debug에만 있고 Player HUD·Tab에는 0이다.
 - [ ] Ammo0은 last Shot→forced release→Spent 2~4초 deadline remove이며 replacement next pulse와 구분된다.
 - [ ] Projectile/Hit UI는 Host accepted Shot·first hit만 표시하고 Client prediction false hit marker가 0이다.
-- [ ] Pistol single recoil과 LongGun RecoilAccumulator·SpreadBloom cue가 Host ShotSequence와 일치한다.
+- [ ] Pistol Main arm·LongGun Main+Support arms forward Grip과 Host Rigidbody/Joint recoil 상승·복귀가
+      ShotSequence·RecoilAccumulator·SpreadBloom과 일치하고 authored fire/recoil clip은 0이다.
 - [ ] Playing+SuddenDeath Fire cue가 유지되고 RoundResult부터 새 Fire·Projectile cue가 0이다.
 - [ ] 2·3·4인 최대 Projectile/Spent developer debug가 gameplay authority나 Player UI를 바꾸지 않는다.
 

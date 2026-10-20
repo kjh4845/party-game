@@ -1,0 +1,230 @@
+{
+  "date": "2026-10-08",
+  "status": "MODEL_REJECTED_COMBAT_ACCEPTED",
+  "visualApproved": false,
+  "userRequest": "갈비뼈를 전체적으로 두껍게 하여 자연스러운 몸통으로 수정하고, 몸을 실은 공격과 방향/부위별 피격을 함께 구현한다.",
+  "model": "BlenderSource/Characters/C1B-RW-024-ribcage-volume/CHR_MasterCharacter_C1B_RibcageVolume_r24.blend",
+  "transport": "BlenderSource/Characters/C1B-RW-024-ribcage-volume/RibcageCharacter.bytes",
+  "modelValidation": {
+    "passed": true,
+    "skeletonAndHeadPreserved": true,
+    "bodyVertices": 203434,
+    "bodyTriangles": 406864,
+    "connectedComponents": 1,
+    "nonManifoldEdges": 0,
+    "bodyMirrorMaxMeters": 0.0,
+    "weightMirrorMaxError": 0.0,
+    "vertexAndWeightTransportMatchesSource": true,
+    "fourInfluenceSumMaxError": 1.1920928955078125e-07,
+    "candidateSha256": "8e42c9f0ac742673b93960f98915afd68bb911af0ab61197c0a177827c71a7d7",
+    "transportSha256": "38e17e68c079aa8e24cd7642313e1bd9341e8750ec4d4ff513b8e4a1c3d82acb"
+  },
+  "modelChanges": [
+    "가슴/갈비뼈/상복부를 연속된 넓은 단면으로 재구성",
+    "상체 연결부와 팔을 다시 메쉬화하고 어깨/팔꿈치/발목의 영향도를 연속적으로 연결",
+    "몸체 좌표와 뼈 영향도 좌우 대칭, 중심선의 4개 영향 제한도 대칭 처리",
+    "머리와 24개 뼈 보존; 몸체 topology 변경, 하체는 기존 실루엣을 remesh 입력으로 사용"
+  ],
+  "combatChanges": [
+    "BodyStrike: 골반과 몸통 준비, 짧은 전진 힘, 거리별 팔 궤적, 실제 접촉 위치에서 반동/회수",
+    "실제 명중의 부위/방향/세기를 저장하는 0.46초 피격 상태",
+    "충돌 시 제한된 힘/회전 충격, 머리/가슴/허리로 전달되는 관절 목표 및 회복",
+    "피격 초기 이동/자동 회전 보정의 영향을 줄여 충격 보존",
+    "잡기 중 몸통 동작과 충격을 축소; 실제 손 접촉 및 기존 점수/Down 요청 경계 유지",
+    "취소/메뉴/초기화에서 피격 상태, 관절 목표/한계와 골반 오프셋 복원"
+  ],
+  "validation": {
+    "playMode": {
+      "total": 10,
+      "passed": 10,
+      "failed": 0,
+      "tests": [
+        "BodyStrikeReactionsFollowContactAndRecover",
+        "BodyStrikeSuppressionClearsReactionAndPelvisOffset",
+        "CancellationStopsPunchAndRestoresGrabLimits",
+        "CapturePhysicalPunchScenarios",
+        "CaptureRibcageRaisedArmEnvelope",
+        "CaptureShoulderFrontAndPunchPoses",
+        "CombatGuardEndsWithMenuAndIdleTimeout",
+        "ExportConfirmedHitAudio",
+        "PhysicalPunchReplayMatches15_60_144Fps",
+        "PunchVelocityIsBoundedAndClearsOnCancelAndReset"
+      ]
+    },
+    "editMode": {
+      "total": 146,
+      "passed": 146,
+      "failed": 0
+    },
+    "raisedArms": [
+      "armRaise=45, maximumAdjacentFaceAngle=13.4788036",
+      "armRaise=90, maximumAdjacentFaceAngle=17.15949"
+    ],
+    "frameRates": [
+      "fps=60, maxPhysicalDifference=0, hits=2",
+      "fps=15, maxPhysicalDifference=0, hits=2",
+      "fps=144, maxPhysicalDifference=0, hits=2"
+    ]
+  },
+  "caseMatrix": [
+    {
+      "case": "LeftBody",
+      "hits": 2,
+      "attemptsP1": 3,
+      "throws": 0,
+      "maximumAdjacentFaceAngle": 37.709163665771484,
+      "falseFeedback": 0
+    },
+    {
+      "case": "RightBody",
+      "hits": 2,
+      "attemptsP1": 3,
+      "throws": 0,
+      "maximumAdjacentFaceAngle": 37.687076568603516,
+      "falseFeedback": 0
+    },
+    {
+      "case": "Head",
+      "hits": 3,
+      "attemptsP1": 3,
+      "throws": 0,
+      "maximumAdjacentFaceAngle": 37.73794937133789,
+      "falseFeedback": 0
+    },
+    {
+      "case": "Far",
+      "hits": 0,
+      "attemptsP1": 3,
+      "throws": 0,
+      "maximumAdjacentFaceAngle": 37.01495361328125,
+      "falseFeedback": 0
+    },
+    {
+      "case": "Wall",
+      "hits": 0,
+      "attemptsP1": 3,
+      "throws": 0,
+      "maximumAdjacentFaceAngle": 43.447265625,
+      "falseFeedback": 0
+    },
+    {
+      "case": "GrabPunch",
+      "hits": 1,
+      "attemptsP1": 1,
+      "throws": 1,
+      "maximumAdjacentFaceAngle": 37.239219665527344,
+      "falseFeedback": 0
+    },
+    {
+      "case": "Alternating",
+      "hits": 10,
+      "attemptsP1": 11,
+      "throws": 0,
+      "maximumAdjacentFaceAngle": 44.0684814453125,
+      "falseFeedback": 0
+    },
+    {
+      "case": "Moving",
+      "hits": 9,
+      "attemptsP1": 11,
+      "throws": 0,
+      "maximumAdjacentFaceAngle": 48.542266845703125,
+      "falseFeedback": 0
+    },
+    {
+      "case": "Exchange",
+      "hits": 3,
+      "attemptsP1": 2,
+      "throws": 0,
+      "maximumAdjacentFaceAngle": 37.83258056640625,
+      "falseFeedback": 0
+    }
+  ],
+  "reactionChecks": [
+    {
+      "case": "Left",
+      "hits": 1,
+      "maximumChestAngle": 51.79291915893555,
+      "recoveredChestAngle": 1.2220357656478882,
+      "maximumJointGapMeters": 0.006019985768944025
+    },
+    {
+      "case": "Right",
+      "hits": 1,
+      "maximumChestAngle": 51.7437629699707,
+      "recoveredChestAngle": 1.1197618246078491,
+      "maximumJointGapMeters": 0.00703557301312685
+    },
+    {
+      "case": "Head",
+      "hits": 1,
+      "maximumChestAngle": 42.12240982055664,
+      "recoveredChestAngle": 1.239839792251587,
+      "maximumJointGapMeters": 0.0074459705501794815
+    },
+    {
+      "case": "Miss",
+      "hits": 0,
+      "maximumChestAngle": 0.0,
+      "recoveredChestAngle": 0.0,
+      "maximumJointGapMeters": 1.7481366739957593e-05
+    },
+    {
+      "case": "Wall",
+      "hits": 0,
+      "maximumChestAngle": 0.5664806365966797,
+      "recoveredChestAngle": 0.0,
+      "maximumJointGapMeters": 1.7428887076675892e-05
+    }
+  ],
+  "media": {
+    "media": [
+      {
+        "path": "artifacts/previews/r24-body-impact-20261008/Impact_Review_Silent_60.mp4",
+        "frames": 720,
+        "fps": 60,
+        "sha256": "9e82c76380e03c3e30631247a3d1db424af00d2e6c9f2b9a763d4fcb477daad2"
+      },
+      {
+        "path": "artifacts/previews/r24-body-impact-20261008/Impact_Review_60.mp4",
+        "frames": 720,
+        "fps": 60,
+        "sha256": "076918e2a7ad793bf1996564affaec15f51910bd0c799a4c2f4348b815cf5276"
+      },
+      {
+        "path": "artifacts/previews/r24-body-impact-20261008/Impact_BeforeAfter_Silent_60.mp4",
+        "frames": 240,
+        "fps": 60,
+        "sha256": "e7414d43213ff2016ef8c1449c890b932a706c82beec8f26eab3e2ed4cc64288"
+      }
+    ],
+    "audio": "PCM emitted only at captured confirmed Hit events; silent version supplied"
+  },
+  "menus": [
+    "Project Hotfix/Prototypes/Open Body Impact Candidate",
+    "Project Hotfix/Prototypes/Open Physical Punch Candidate"
+  ],
+  "evidence": "artifacts/evidence/r24-body-impact-20261008",
+  "iterationNote": "초기 표면/대칭/연타 검사 실패는 .codex_tmp/body-impact-20261008 아래 보존했다. 이 보고서는 최종 Acceptance 실행과 현재 원본의 검증 결과만 사용한다.",
+  "limits": [
+    "로컬 물리 프로토타입; 사용자 체감 승인과 전체 게임 통합 완료를 뜻하지 않음",
+    "실제 Down/GetUp 전환은 기존 후속 범위이며 이번 수정에서 새로 구현하지 않음"
+  ],
+  "playerBuilds": false,
+  "commits": false,
+  "pushes": false,
+  "sources": {
+    "tools/blender/create_r24_ribcage_volume.py": "fc60c59aab73c20b684b73de8c80732cfc67450b83de916fac8552492208edf6",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs": "9472c49a0e120e2dbf14bcf2d77806c8d7597680703d94c3121cc146a8d2fbb8",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Punch.cs": "8c439127ea2cd02d2087d8f3cb540b97b354568435489f14efc837871b9efa04",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Impact.cs": "e1c5dfe2b17606a27f29b9d3b2fee811c1913850d35e70abd539650df7191ddf",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.cs": "4578818863197339e7f077e0df3317dd7befb0e290ff3b2dfc3ee0ca7e9a4d3b",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs": "fd0c444da4bd05f262b7392a6111324ae144bd65e98d0511dfa526ec3684fb16",
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralJumpPose.cs": "ef81a733b37877b6dfeef3596e004f1ac0a094808d49bbac213014f87bcba688",
+    "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": "63ee2d913500e622c2d69c4848af269ead3f18c18b9790d7b08b6a59ee6f2709"
+  },
+  "userFeedback": "사용자가 펀치는 괜찮다고 평가했다. 모델 전체 재구성을 거절하고 r23 원래 모델에서 갈비뼈 옆면만 채워 팔과 몸통 사이의 빈 공간을 줄이라고 지시했다.",
+  "combatAccepted": true,
+  "modelAccepted": false,
+  "supersededModel": "BlenderSource/Characters/C1B-RW-025-local-rib-fill/CHR_MasterCharacter_C1B_LocalRibFill_r25.blend"
+}

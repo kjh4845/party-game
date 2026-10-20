@@ -1,0 +1,39 @@
+references 34
+SR_e0_a0 moved 3400 max delta mm 13.4
+SR_e-10_a90 moved 3400 max delta mm 17.6
+SR_e30_a0 moved 3400 max delta mm 16.3
+SR_e60_a0 moved 3400 max delta mm 20.9
+SR_e90_a0 moved 3400 max delta mm 21.0
+SR_e120_a0 moved 3400 max delta mm 21.9
+SR_e150_a0 moved 3400 max delta mm 22.0
+SR_e45_a45 moved 3400 max delta mm 14.2
+SR_e90_a45 moved 3400 max delta mm 20.3
+SR_e135_a45 moved 3400 max delta mm 21.7
+SR_e45_a90 moved 3400 max delta mm 0.6
+SR_e90_a90 moved 3400 max delta mm 9.8
+SR_e135_a90 moved 3400 max delta mm 21.8
+SR_e45_a-45 moved 3400 max delta mm 21.6
+SR_e90_a-45 moved 3400 max delta mm 26.1
+SR_e30_a180 moved 3400 max delta mm 18.0
+SR_e60_a180 moved 3400 max delta mm 21.4
+SL_e0_a0 moved 3408 max delta mm 13.4
+SL_e-10_a90 moved 3408 max delta mm 17.6
+SL_e30_a0 moved 3408 max delta mm 18.0
+SL_e60_a0 moved 3408 max delta mm 21.4
+SL_e90_a0 moved 3408 max delta mm 22.1
+SL_e120_a0 moved 3408 max delta mm 21.6
+SL_e150_a0 moved 3408 max delta mm 22.1
+SL_e45_a45 moved 3408 max delta mm 12.8
+SL_e90_a45 moved 3408 max delta mm 20.3
+SL_e135_a45 moved 3408 max delta mm 21.5
+SL_e45_a90 moved 3408 max delta mm 0.6
+SL_e90_a90 moved 3408 max delta mm 9.8
+SL_e135_a90 moved 3408 max delta mm 21.9
+SL_e45_a-45 moved 3408 max delta mm 21.0
+SL_e90_a-45 moved 3408 max delta mm 24.7
+SL_e30_a180 moved 3408 max delta mm 16.3
+SL_e60_a180 moved 3408 max delta mm 20.9
+wrote BlenderSource/Characters/C1B-RW-046-slim-body/R43Character.bytes 36 MB
+Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:31:22)
+
+Blender quit

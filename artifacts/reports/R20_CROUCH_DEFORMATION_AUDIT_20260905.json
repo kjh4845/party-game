@@ -1,0 +1,137 @@
+{
+  "recordedDateLocal": "2026-09-05",
+  "sourceSha256": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+  "generatorSha256": "7a4645fb940739130e932b33a5898a6c50983fa95ea502f3345a4c15bf0f8250",
+  "result": "REVIEW_REQUIRED",
+  "sourceSaved": false,
+  "geometryOrWeightsChanged": false,
+  "actionsCreated": 0,
+  "rawReportPath": ".codex_tmp/jump-review-20260905/audit-r01/CrouchAudit.json",
+  "rawReportSha256": "82e2d21c03f10349e16a5eef07b2a4ab4c1dd2c29350742c91fa70bd78f72efe",
+  "samples": [
+    {
+      "id": "FK_40",
+      "inputValue": 40,
+      "inputUnit": "Calf local X degrees",
+      "anchorChecks": {},
+      "groundDeltaMeters": -5.587935447692871e-09,
+      "result": "PASS",
+      "maxSurfaceAdjacentAngleDegrees": 10.984082265650956,
+      "hardEdges45": 0,
+      "foldovers90": 0,
+      "nonAdjacentOverlapPairs": 0
+    },
+    {
+      "id": "FK_50",
+      "inputValue": 50,
+      "inputUnit": "Calf local X degrees",
+      "anchorChecks": {},
+      "groundDeltaMeters": 6.984919309616089e-09,
+      "result": "PASS",
+      "maxSurfaceAdjacentAngleDegrees": 10.9841181241441,
+      "hardEdges45": 0,
+      "foldovers90": 0,
+      "nonAdjacentOverlapPairs": 0
+    },
+    {
+      "id": "FK_60",
+      "inputValue": 60,
+      "inputUnit": "Calf local X degrees",
+      "anchorChecks": {},
+      "groundDeltaMeters": 2.3283064365386963e-09,
+      "result": "PASS",
+      "maxSurfaceAdjacentAngleDegrees": 15.612483970855582,
+      "hardEdges45": 0,
+      "foldovers90": 0,
+      "nonAdjacentOverlapPairs": 0
+    },
+    {
+      "id": "FK_70",
+      "inputValue": 70,
+      "inputUnit": "Calf local X degrees",
+      "anchorChecks": {},
+      "groundDeltaMeters": 2.3283064365386963e-09,
+      "result": "FAIL",
+      "maxSurfaceAdjacentAngleDegrees": 104.68594740875942,
+      "hardEdges45": 48,
+      "foldovers90": 16,
+      "nonAdjacentOverlapPairs": 0
+    },
+    {
+      "id": "FK_80",
+      "inputValue": 80,
+      "inputUnit": "Calf local X degrees",
+      "anchorChecks": {},
+      "groundDeltaMeters": 6.984919309616089e-09,
+      "result": "FAIL",
+      "maxSurfaceAdjacentAngleDegrees": 178.46825312531092,
+      "hardEdges45": 78,
+      "foldovers90": 12,
+      "nonAdjacentOverlapPairs": 468
+    },
+    {
+      "id": "PlantedIK_0.015",
+      "inputValue": 0.015,
+      "inputUnit": "pelvis drop meters",
+      "anchorChecks": {
+        "L": {
+          "targetErrorMeters": 1.3170890159654385e-07,
+          "boneScaleMaxDelta": 2.384185791015625e-07
+        },
+        "R": {
+          "targetErrorMeters": 1.3170890159654385e-07,
+          "boneScaleMaxDelta": 2.384185791015625e-07
+        }
+      },
+      "groundDeltaMeters": -5.820766091346741e-08,
+      "result": "PASS",
+      "maxSurfaceAdjacentAngleDegrees": 14.218087191419139,
+      "hardEdges45": 0,
+      "foldovers90": 0,
+      "nonAdjacentOverlapPairs": 0
+    },
+    {
+      "id": "PlantedIK_0.025",
+      "inputValue": 0.025,
+      "inputUnit": "pelvis drop meters",
+      "anchorChecks": {
+        "L": {
+          "targetErrorMeters": 1.471843292201937e-07,
+          "boneScaleMaxDelta": 3.5762786865234375e-07
+        },
+        "R": {
+          "targetErrorMeters": 1.471843292201937e-07,
+          "boneScaleMaxDelta": 3.5762786865234375e-07
+        }
+      },
+      "groundDeltaMeters": -5.9138983488082886e-08,
+      "result": "FAIL",
+      "maxSurfaceAdjacentAngleDegrees": 58.41858748055155,
+      "hardEdges45": 28,
+      "foldovers90": 0,
+      "nonAdjacentOverlapPairs": 0
+    },
+    {
+      "id": "PlantedIK_0.035",
+      "inputValue": 0.035,
+      "inputUnit": "pelvis drop meters",
+      "anchorChecks": {
+        "L": {
+          "targetErrorMeters": 1.426353284647811e-07,
+          "boneScaleMaxDelta": 2.384185791015625e-07
+        },
+        "R": {
+          "targetErrorMeters": 1.426353284647811e-07,
+          "boneScaleMaxDelta": 2.384185791015625e-07
+        }
+      },
+      "groundDeltaMeters": -0.005081258248537779,
+      "result": "FAIL",
+      "maxSurfaceAdjacentAngleDegrees": 170.5441271974506,
+      "hardEdges45": 52,
+      "foldovers90": 14,
+      "nonAdjacentOverlapPairs": 490
+    }
+  ],
+  "decision": "PENDING_USER_DECISION: lower-body weight-only candidate evaluation vs shallow-motion constraint"
+}

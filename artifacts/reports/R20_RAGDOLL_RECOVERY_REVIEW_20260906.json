@@ -1,0 +1,329 @@
+{
+  "status": "LOCAL_RAGDOLL_RECOVERY_CANDIDATE_VERIFIED_VISUAL_REVIEW_PENDING",
+  "date": "2026-09-06",
+  "reviewDirectory": "/Users/kjh/local_dev/party game/.codex_tmp/ragdoll-recovery-20260906/Review-20260906-144311",
+  "checks": {
+    "AllPlayMode": {
+      "total": "33",
+      "passed": "33",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "AllEditMode": {
+      "total": "108",
+      "passed": "108",
+      "failed": "0",
+      "skipped": "0"
+    }
+  },
+  "cases": [
+    {
+      "name": "FaceUp",
+      "finalPhase": "None",
+      "worstJoint": "Head",
+      "recoveries": 1,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.003733866848051548,
+      "speed": 3.1004176139831543,
+      "surfaceAngle": 12.232707977294922,
+      "finalHeight": 0.00431409478187561,
+      "downCount": 1,
+      "handoff": 0.0010406163055449724,
+      "readyAngle": 3.092726230621338,
+      "readyDistance": 0.02257668413221836,
+      "readySpeed": 0.0001246986212208867,
+      "readyAngular": 0.011513947509229183,
+      "worstStep": 200,
+      "surfaceSamples": 156,
+      "worstLocation": {
+        "x": -0.15386468172073364,
+        "y": 0.6011310815811157,
+        "z": 0.03097640909254551
+      }
+    },
+    {
+      "name": "FaceDown",
+      "finalPhase": "None",
+      "worstJoint": "Foot_L",
+      "recoveries": 1,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.0037249624729156494,
+      "speed": 3.106989622116089,
+      "surfaceAngle": 12.234109878540039,
+      "finalHeight": 0.0041814446449279785,
+      "downCount": 1,
+      "handoff": 0.001038626884110272,
+      "readyAngle": 1.9547752141952515,
+      "readyDistance": 0.0141896428540349,
+      "readySpeed": 0.0003200085193384439,
+      "readyAngular": 0.13162684440612793,
+      "worstStep": 220,
+      "surfaceSamples": 169,
+      "worstLocation": {
+        "x": -0.153864786028862,
+        "y": 0.6011297106742859,
+        "z": 0.030976491048932076
+      }
+    },
+    {
+      "name": "LeftSide",
+      "finalPhase": "None",
+      "worstJoint": "UpperArm_L",
+      "recoveries": 1,
+      "aligns": 1,
+      "interruptions": 0,
+      "gap": 0.014354723505675793,
+      "speed": 2.788426160812378,
+      "surfaceAngle": 15.76650333404541,
+      "finalHeight": 0.004184037446975708,
+      "downCount": 1,
+      "handoff": 0.0011109657352790236,
+      "readyAngle": 1.9845792055130005,
+      "readyDistance": 0.014360507018864155,
+      "readySpeed": 0.00032398238545283675,
+      "readyAngular": 0.13520394265651703,
+      "worstStep": 108,
+      "surfaceSamples": 210,
+      "worstLocation": {
+        "x": -0.15040569007396698,
+        "y": 0.6006513833999634,
+        "z": -0.0007169228047132492
+      }
+    },
+    {
+      "name": "RightSide",
+      "finalPhase": "None",
+      "worstJoint": "UpperArm_R",
+      "recoveries": 1,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.014598116278648376,
+      "speed": 2.788483142852783,
+      "surfaceAngle": 16.08497428894043,
+      "finalHeight": 0.004265010356903076,
+      "downCount": 1,
+      "handoff": 0.0010754228569567204,
+      "readyAngle": 2.7698779106140137,
+      "readyDistance": 0.019988134503364563,
+      "readySpeed": 0.0001570099702803418,
+      "readyAngular": 0.05802292749285698,
+      "worstStep": 100,
+      "surfaceSamples": 165,
+      "worstLocation": {
+        "x": -0.14960168302059174,
+        "y": 0.600174069404602,
+        "z": 8.55475664138794e-05
+      }
+    },
+    {
+      "name": "Ceiling",
+      "finalPhase": "PhysicsTumble",
+      "worstJoint": "Head",
+      "recoveries": 0,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.003733866848051548,
+      "speed": 3.1004176139831543,
+      "surfaceAngle": 12.217918395996094,
+      "finalHeight": 0.11996186524629593,
+      "downCount": 1,
+      "handoff": 0.0,
+      "readyAngle": 0.0,
+      "readyDistance": 0.0,
+      "readySpeed": 0.0,
+      "readyAngular": 0.0,
+      "worstStep": 26,
+      "surfaceSamples": 480,
+      "worstLocation": {
+        "x": 0.1535423994064331,
+        "y": 0.6010460257530212,
+        "z": 0.03181465342640877
+      }
+    },
+    {
+      "name": "CeilingRemoved",
+      "finalPhase": "None",
+      "worstJoint": "Head",
+      "recoveries": 1,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.003733866848051548,
+      "speed": 3.1004176139831543,
+      "surfaceAngle": 12.233206748962402,
+      "finalHeight": 0.00431409478187561,
+      "downCount": 1,
+      "handoff": 0.0010406163055449724,
+      "readyAngle": 3.092726230621338,
+      "readyDistance": 0.02257668413221836,
+      "readySpeed": 0.0001246986212208867,
+      "readyAngular": 0.011513947509229183,
+      "worstStep": 412,
+      "surfaceSamples": 255,
+      "worstLocation": {
+        "x": -0.1538647562265396,
+        "y": 0.6011308431625366,
+        "z": 0.030976468697190285
+      }
+    },
+    {
+      "name": "Reset",
+      "finalPhase": "None",
+      "worstJoint": "Head",
+      "recoveries": 0,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.003733866848051548,
+      "speed": 3.1004176139831543,
+      "surfaceAngle": 12.217918395996094,
+      "finalHeight": 0.004086285829544067,
+      "downCount": 0,
+      "handoff": 0.0,
+      "readyAngle": 27.903194427490234,
+      "readyDistance": 0.19568809866905212,
+      "readySpeed": 0.2493913471698761,
+      "readyAngular": 3.1133949756622314,
+      "worstStep": 26,
+      "surfaceSamples": 116,
+      "worstLocation": {
+        "x": 0.1535423994064331,
+        "y": 0.6010460257530212,
+        "z": 0.03181465342640877
+      }
+    },
+    {
+      "name": "SideGateLeft",
+      "finalPhase": "None",
+      "worstJoint": "Forearm_L",
+      "recoveries": 1,
+      "aligns": 1,
+      "interruptions": 0,
+      "gap": 0.005657185800373554,
+      "speed": 1.7673181295394897,
+      "surfaceAngle": 15.687430381774902,
+      "finalHeight": 0.004322350025177002,
+      "downCount": 1,
+      "handoff": 0.001149654621258378,
+      "readyAngle": 3.1464240550994873,
+      "readyDistance": 0.0229523703455925,
+      "readySpeed": 0.0001468311675125733,
+      "readyAngular": 0.0167878195643425,
+      "worstStep": 52,
+      "surfaceSamples": 183,
+      "worstLocation": {
+        "x": -0.1505356878042221,
+        "y": 0.6005558371543884,
+        "z": 0.00021031033247709274
+      }
+    },
+    {
+      "name": "SideGateRight",
+      "finalPhase": "None",
+      "worstJoint": "Forearm_R",
+      "recoveries": 1,
+      "aligns": 1,
+      "interruptions": 0,
+      "gap": 0.006124097853899002,
+      "speed": 1.7679744958877563,
+      "surfaceAngle": 15.684499740600586,
+      "finalHeight": 0.004319936037063599,
+      "downCount": 1,
+      "handoff": 0.0011494216741994023,
+      "readyAngle": 3.131211519241333,
+      "readyDistance": 0.022836856544017792,
+      "readySpeed": 0.00014825197285972536,
+      "readyAngular": 0.01627708598971367,
+      "worstStep": 50,
+      "surfaceSamples": 183,
+      "worstLocation": {
+        "x": 0.15068648755550385,
+        "y": 0.6004626154899597,
+        "z": -0.00020424525428097695
+      }
+    }
+  ],
+  "surfaceSamples": 1917,
+  "maxSurfaceAngle": 16.08497428894043,
+  "maxJointGapMeters": 0.014598116278648376,
+  "maxHandoffBoneHeadShiftMeters": 0.001149654621258378,
+  "media": {
+    "RagdollRecovery": {
+      "gif": "/Users/kjh/local_dev/party game/.codex_tmp/ragdoll-recovery-20260906/Review-20260906-144311/Media/RagdollRecovery.gif",
+      "mp4": "/Users/kjh/local_dev/party game/.codex_tmp/ragdoll-recovery-20260906/Review-20260906-144311/Media/RagdollRecovery.mp4",
+      "metadata": {
+        "durationSeconds": 8,
+        "fps": 20,
+        "frames": 160,
+        "height": 1130,
+        "width": 1024
+      }
+    },
+    "SideAlignment": {
+      "gif": "/Users/kjh/local_dev/party game/.codex_tmp/ragdoll-recovery-20260906/Review-20260906-144311/Media/SideAlignment.gif",
+      "mp4": "/Users/kjh/local_dev/party game/.codex_tmp/ragdoll-recovery-20260906/Review-20260906-144311/Media/SideAlignment.mp4",
+      "metadata": {
+        "durationSeconds": 8,
+        "fps": 20,
+        "frames": 160,
+        "height": 588,
+        "width": 1024
+      }
+    }
+  },
+  "sourceSnapshot": "/Users/kjh/local_dev/party game/.codex_tmp/ragdoll-recovery-20260906/Review-20260906-144311/SourceSnapshot",
+  "sourceHashes": {
+    "Prototypes/PhysicsJump/RagdollRecoveryReview.cs": "b7e6df363360442bbbbd28a8638e2c470fb5b75b2b3311daace7d3cf5dceac55",
+    "Prototypes/PhysicsJump/PhysicsJumpReview.cs": "487f16ea41e1e4221b8c06700ee99b4f4afd5594826ea6928655cb4b35cf20a5",
+    "Prototypes/PhysicsJump/RecoverySupportProbe.cs": "535844beb605aec08f177e22e418d746188f516761c8da0abe71a768e2120a5d",
+    "Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": "466ef346d43e2cb1b153528932ed3ca8ffccd8ae86273bc83443384a915a1b11",
+    "Tests/PlayMode/Physics/RagdollRecoveryReviewTests.cs": "3f2f0a875d0c5801b658bf6728c6d4bc8abb799881d55841f0a83e6e9f19a2c0"
+  },
+  "originalAndApprovedHashes": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091"
+  },
+  "physicsCandidate": {
+    "totalMass": 20,
+    "bodies": 12,
+    "torsoMass": 8,
+    "headMass": 3,
+    "upperArmAndThighEach": 1.25,
+    "forearmAndCalfEach": 0.75,
+    "footEach": 0.5,
+    "projection": "None",
+    "collisionDetection": "ContinuousSpeculative",
+    "angularYZLimbs": "Locked",
+    "upperArmXLimit": 5,
+    "forearmXLimit": 25,
+    "thighXLimit": 8,
+    "calfXLimit": 12,
+    "footXLimit": 6,
+    "headAngularLimit": 5,
+    "ragdollFriction": 0.2,
+    "contactOffset": 0.002,
+    "solverIterations": 96,
+    "solverVelocityIterations": 16,
+    "maximumAngularSpeed": 4,
+    "alignmentMaximumAngularSpeed": 2,
+    "alignmentToleranceDegrees": 10,
+    "timingStatus": "Review START, not final game profile"
+  },
+  "standingRepeatCheck": "Runtime Start initializes without explicit Bind; standing fall/recovery, movement, second fall/recovery and Reset passed; mass and locomotion settings restored, throw0.",
+  "limitations": [
+    "Visual feel approval pending; physics-assisted stand-up candidate, not authored hand-braced GetUp clips.",
+    "SideGate fixtures disable gravity only during stationary entry setup and pre-expire the timer, then restore gravity at alignment start; four separate fall cases use gravity from the start.",
+    "No full self-intersection, collider/skin floor penetration, or get-up intermediate trajectory proof.",
+    "No final multi-player performance/peer/combat integration or automatic attack-to-Down policy.",
+    "Post-throw ordinary collision damage and accumulation remain excluded."
+  ],
+  "documentChecks": {
+    "baseline": "PASS",
+    "workflowTests": 7,
+    "diffCheck": "PASS"
+  },
+  "playerBuild": false,
+  "commitOrPush": false
+}

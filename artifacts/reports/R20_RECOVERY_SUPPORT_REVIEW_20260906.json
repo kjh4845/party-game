@@ -1,0 +1,173 @@
+{
+  "status": "LOCAL_RECOVERY_SUPPORT_QUERY_VERIFIED",
+  "date": "2026-09-06",
+  "scope": "Read-only support, relative stability and upright capsule clearance queries, opt-in Down recovery start/interruption.",
+  "checks": {
+    "AllEditMode": {
+      "total": "108",
+      "passed": "108",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "AllPlayMode": {
+      "total": "31",
+      "passed": "31",
+      "failed": "0",
+      "skipped": "0"
+    }
+  },
+  "queryCases": [
+    {
+      "name": "Flat",
+      "support": true,
+      "stable": true,
+      "clear": true,
+      "normalY": 1.0000001192092896
+    },
+    {
+      "name": "Slope",
+      "support": true,
+      "stable": true,
+      "clear": true,
+      "normalY": 0.9063078165054321
+    },
+    {
+      "name": "Steep",
+      "support": false,
+      "stable": false,
+      "clear": false,
+      "normalY": 0.0
+    },
+    {
+      "name": "Air",
+      "support": false,
+      "stable": false,
+      "clear": false,
+      "normalY": 0.0
+    },
+    {
+      "name": "Hover",
+      "support": false,
+      "stable": false,
+      "clear": false,
+      "normalY": 0.0
+    },
+    {
+      "name": "Ceiling",
+      "support": true,
+      "stable": true,
+      "clear": false,
+      "normalY": 1.0000001192092896
+    },
+    {
+      "name": "OtherActor",
+      "support": true,
+      "stable": true,
+      "clear": false,
+      "normalY": 1.0000001192092896
+    },
+    {
+      "name": "TriggerCeiling",
+      "support": true,
+      "stable": true,
+      "clear": true,
+      "normalY": 1.0000001192092896
+    },
+    {
+      "name": "TriggerFloor",
+      "support": false,
+      "stable": false,
+      "clear": false,
+      "normalY": 0.0
+    },
+    {
+      "name": "MovingTorso",
+      "support": true,
+      "stable": false,
+      "clear": true,
+      "normalY": 1.0000001192092896
+    },
+    {
+      "name": "RotatingTorso",
+      "support": true,
+      "stable": false,
+      "clear": true,
+      "normalY": 1.0000001192092896
+    },
+    {
+      "name": "MovingPlatform",
+      "support": true,
+      "stable": false,
+      "clear": true,
+      "normalY": 1.0000001192092896
+    },
+    {
+      "name": "MatchingPlatform",
+      "support": true,
+      "stable": true,
+      "clear": true,
+      "normalY": 1.0000001192092896
+    },
+    {
+      "name": "SupportLost",
+      "support": false,
+      "stable": false,
+      "clear": false,
+      "normalY": 0.0
+    },
+    {
+      "name": "SupportChanged",
+      "support": true,
+      "stable": false,
+      "clear": true,
+      "normalY": 1.0000001192092896
+    }
+  ],
+  "integrationEntries": [
+    "FaceUp",
+    "FaceDown",
+    "LeftSide",
+    "RightSide"
+  ],
+  "integrationAssertions": [
+    "Timer expires under obstruction without starting get-up.",
+    "Removing obstruction permits shared get-up or side alignment.",
+    "Query never automatically completes alignment/get-up or unlocks actions.",
+    "New obstruction interrupts the same episode without increasing count.",
+    "Reset clears state and lock."
+  ],
+  "queryStartValues": {
+    "probeRadius": 0.06,
+    "probeDistance": 0.35,
+    "maximumSupportGap": 0.03,
+    "maximumSlopeDegrees": 50,
+    "stableSeconds": 0.2,
+    "maximumRelativeSpeed": 0.15,
+    "maximumRelativeAngularSpeed": 0.5,
+    "clearanceSkin": 0.005,
+    "fixtureStandingRadius": 0.17,
+    "fixtureStandingHeight": 1
+  },
+  "raw": "/Users/kjh/local_dev/party game/.codex_tmp/recovery-support-20260906/RecoverySupportReview.json",
+  "sourceSnapshot": "/Users/kjh/local_dev/party game/.codex_tmp/recovery-support-20260906/SourceSnapshot",
+  "sourceHashes": {
+    "Prototypes/PhysicsJump/RecoverySupportProbe.cs": "3443d8abf5f16b71df94239790e29c18e13ce442452a34dae3f5aa673a2286e8",
+    "Prototypes/PhysicsJump/DownStateReview.cs": "5014fab7871aaabcbbe8d0f9d3678d9c38d356f89edb6159f632a84ea12f1391",
+    "Tests/PlayMode/Physics/RecoverySupportProbeTests.cs": "c7c8a6cbd6967fae725edc8a90a1ef5ea34a41869817755216d478c75b95e726"
+  },
+  "documentChecks": {
+    "baseline": "PASS",
+    "workflowTests": 7,
+    "diffCheck": "PASS"
+  },
+  "limitations": [
+    "Actual multibody ragdoll and physical side alignment/GetUp motion and completion remain pending.",
+    "Clearance checks the final upright capsule, not the whole intermediate get-up trajectory.",
+    "Relative velocities are supplied fixture Rigidbody values, not a long moving-platform ragdoll simulation.",
+    "Opt-in probe; existing playable Grab review gains no automatic Down or pretend falling animation.",
+    "Attack-specific Down rules remain undecided; post-throw ordinary collision damage and damage accumulation remain excluded."
+  ],
+  "originalAndApprovedModelHashesUnchanged": true,
+  "playerBuild": false,
+  "commitOrPush": false
+}

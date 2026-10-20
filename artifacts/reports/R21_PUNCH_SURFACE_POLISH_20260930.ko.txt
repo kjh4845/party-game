@@ -1,0 +1,79 @@
+Party Game 펀치·기본 모델 개선 결과 — 2026-09-30
+
+작업 프로젝트
+/Users/kjh/local_dev/party game
+Unity 루트: Project hotfix/ (6000.3.9f1)
+Blender: 5.2.0 LTS
+Necrocis와 별개로 작업했으며 푸시·커밋·배포는 하지 않았다.
+루트와 상위 경로 및 프로젝트 내부에서 적용할 AGENTS.md/.agents 지침은 발견되지 않았다. 기존 README, 최근 펀치 재설계/원형/어깨 보완 보고서와 실제 코드를 기준으로 진행했다. 로컬 memories 폴더는 비어 있어 메모리 의존 없이 현재 상태를 확인했다.
+
+무엇을 바꿨는가
+1. 실제 물리 펀치
+- 관절 목표 자세의 프레임 간 회전 차이를 관절 좌표계의 목표 각속도로 전달한다. 상완 30, 전완 50rad/s로 목표 속도를 제한하고 실제 관절의 기존 각도·토크 제한과 충돌은 유지한다.
+- 준비 0.085초, 거리별 가격 완료 약 0.125~0.150초, 짧은 신전 후 회수로 타이밍을 정리했다. 전체 손 동작 점유는 기존 0.4초다.
+- 명중하면 마지막 관절 목표에서 연속적으로 반동·회수로 연결한다. 약 한 물리 프레임의 접촉 구간 뒤 회수하며 공격 시간을 점프시키거나 물리 손 위치를 순간 이동하지 않는다.
+- 일반 피격의 구동력 저하는 30%/0.12초에서 72%/0.09초로 완화했다. 기존 부위 질량별 넉백 상한과 Down 누적 규칙은 유지한다.
+- 작은 실제 손끝 접촉 범위 및 공격당 한 번의 명중을 유지하고, 접근 속도 0.35m/s 미만 또는 전진 방향과 접촉면의 내적 0.25 미만인 느린 스침/옆·뒷면 접촉은 제외한다.
+- 취소·메뉴·리셋에서 목표 각속도와 이전 목표 기록을 정리한다. 탭/홀드 입력 방식과 양손 독립 제어는 유지했다.
+- Unity 목표 각속도 제어의 부호는 독립 관절 실험으로 확인했다. 참고 API: https://docs.unity3d.com/6000.3/Documentation/ScriptReference/ConfigurableJoint-targetAngularVelocity.html
+
+2. 모델 표면
+- 기존 실제 펀치에 사용하던 shoulder-reach-20260916/candidate-r02의 r20 어깨 보완본에서 별도 r21을 생성했다.
+- 몸통 메시 227,942개 정점에 240회 이웃 평균 평활화를 적용한 뒤 원래 전체 크기를 복원하고 정점 이동을 최대 2.5mm로 제한했다. 바닥과 손 끝쪽은 완만한 보호 영역으로 유지했다. 표면 노멀도 새 좌표에 맞게 다시 계산했다.
+- 평균 정점 이동 1.537mm, 최대 2.50004mm(부동소수점 오차 포함). 전체 경계 상자의 크기 변화는 1µm 미만이다. 로컬 라플라시안 RMS는 약 13.69% 감소했다. 이 수치는 표면의 시각적 완성도를 자동 승인하는 지표가 아니다.
+- 24개 뼈, 2개 애니메이션, 메시 면/엣지 순서, 모든 피부 가중치, 머리 메시·노멀을 보존했다. 좌우 대칭 오차 0.000000191m, 뒤집힌 면 0개.
+- 원본 r20 .blend, 기존 ShoulderCharacter.bytes, 승인 펀치 JSON, 마스터 r20 .blend의 SHA-256이 수정 전과 같음을 확인했다.
+
+실제 적용 범위 — 별도 후보 생성만 한 것이 아님
+Unity의 기존 메뉴 Project Hotfix > Prototypes > Open Physical Punch Candidate는 새 r21 SurfaceCharacter.bytes를 로드하도록 변경했다. 이 메뉴에서 Play하면 새 표면과 새 물리 펀치를 함께 사용한다. 테스트도 동일한 r21 경로를 지정해 실행했다.
+Project Hotfix > Prototypes > Open Punch With Previous Surface 메뉴에서는 이전 r20 피부로 같은 새 펀치를 비교할 수 있다.
+다른 점프·잡기·원형 검토 장면의 모델 참조와 정식 마스터 프리팹은 일괄 교체하지 않았다. 이 저장소는 아직 완성된 대전 게임이 아닌 검토 프로토타입 단계이므로, 적용 완료 범위는 현재 실제 물리 펀치 플레이 경로다.
+
+실제 검증
+- 수정 전 기준 캡처/추종 기록 2/2 통과.
+- 최종 관련 PlayMode 18/18 통과 (47.19초). 좌우/양 플레이어, 머리·몸통, 한 번만 명중, 벽/거리/비손끝·스침, 잡고 빈손 펀치, 던지기, 취소/리셋/손 상실/비활성, 연속 누적, 저FPS 입력, 속도 부호·상한·정리를 포함한다.
+- 전체 EditMode 146/146 통과. 실패/스킵 없음.
+- 측면 카메라 캡처 후속 1/1 통과. 게임 코드는 이 재촬영 사이에 변경하지 않았다.
+- 15/60/144FPS 재생에서 물리 위치 차이 최대 0, 각 재생의 명중 2회 동일.
+- 허공 가격 0.09~0.16초의 전완 추종 오차 평균 8.6488° → 4.3893°(49.25% 감소). 근접 명중 0.1500 → 0.1333초. 보통 거리 명중은 0.1833초로 동일.
+- 근접 접촉 중의 같은 시간 구간 오차는 16.57° → 17.28°로 약간 증가했다. 충돌에 의해 팔이 막히는 구간이므로 모든 접촉 상황의 추종이 개선됐다고 주장하지 않는다.
+- 허공 가격 전진 속도 4.64m/s, 준비 전완 굽힘 약110°, 종료 후 프레임당 손 이동 0.31mm 미만. 측면 포즈를 검사한 최대 인접면 각도는 허공 23.43°, 접촉 16.74°로 기존 60° 검사 기준 이내.
+- 영상 2개는 실제 Unity의 연속 90프레임을 60FPS/1.5초/960x640으로 인코딩하고 각각 90프레임을 다시 디코딩했다. 소리는 넣지 않았다.
+
+검토 자료 (저장소 기준)
+artifacts/evidence/character/R21_20260930/Model_BeforeAfter.png
+artifacts/evidence/character/R21_20260930/Model_SurfaceDetail.png
+artifacts/evidence/character/R21_20260930/Punch_BeforeAfter.png
+artifacts/evidence/character/R21_20260930/Punch_Contact_Side_60fps.mp4
+artifacts/evidence/character/R21_20260930/Punch_Air_Side_60fps.mp4
+같은 폴더에 NUnit XML, 원본 보존 해시, 변경 패치, 전후 추종 JSON, FPS/안정성 결과를 보관했다. 모델 비교는 동일 Blender 카메라·조명·포즈이며 생성형 이미지나 리터치는 사용하지 않았다. 펀치 전후 이미지는 동일한 시점의 실제 Unity 캡처다.
+
+주요 변경 파일
+Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs
+Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Punch.cs
+Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs
+Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs
+Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.cs
+Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Polish.cs (+ Unity .meta)
+BlenderSource/Characters/C1B-RW-021-surface-polish-r02/CHR_MasterCharacter_C1B_SurfacePolish_r21.blend
+BlenderSource/Characters/C1B-RW-021-surface-polish-r02/SurfaceCharacter.bytes
+BlenderSource/Characters/C1B-RW-021-surface-polish-r02/SurfaceReview.json
+BlenderSource/Characters/C1B-RW-021-surface-polish-r02/SurfaceValidation.json
+tools/blender/create_r21_surface_polish.py
+tools/blender/verify_r21_surface_polish.py
+
+재실행
+Unity 메뉴에서 기존 Physical Punch Candidate를 열고 Play한다. 이전 피부와 비교하려면 Open Punch With Previous Surface를 사용한다.
+테스트는 PARTY_POLISH_MODEL에 r21 SurfaceCharacter.bytes의 절대 경로, PARTY_POLISH_OUTPUT에 새 결과 폴더를 지정한 후 Unity CLI의 PlayMode PhysicalPunchCandidateTests 계열 및 PhysicalPunchClockTests를 실행할 수 있다. 이 작업에서 실행한 18개 정확한 테스트 이름은 verified-playmode.xml에 있다. 테스트 결과 폴더를 지정하면 과거 검토 증거를 덮어쓰지 않는다.
+Blender 모델을 다시 만들 때는 create_r21_surface_polish.py에 -- 뒤 새 출력 폴더와 렌더 폴더를 전달한다. 기존 후보 .blend를 덮어쓰지 않도록 방어한다. 재현에는 보존된 .codex_tmp의 r20 어깨 원본이 필요하다.
+
+남은 한계
+수치·자동 검사와 캡처는 완료했지만 사용자의 실제 조작 감각과 최종 모양 승인은 아직 받지 않았다. 전신 자기교차 전체 탐색, 모든 잡기/낙하 조합, 멀티플레이, Windows 플레이어 빌드는 이번 범위에서 검증하지 않았다. 현재의 높은 정점 수와 .codex_tmp에 의존하는 기존 원본 로딩 구조도 유지했다. 마지막 상용 프리팹·애셋 파이프라인 정리는 별도 단계다.
+
+Library 전달 완료
+Model_BeforeAfter.png: libfile_06d5ac69e8d881918bbed8cc58a33cc2
+Model_SurfaceDetail.png: libfile_bd2f2bf124308191b6b5b17654229cd9
+Punch_BeforeAfter.png: libfile_4473c6bcf84881918e0080ee0d736c2d
+Punch_Contact_Side_60fps.mp4: libfile_720daa50903081918ac8b2bcfdce7d8c
+Punch_Air_Side_60fps.mp4: libfile_5838c3a86d488191af28ee8c8a3d2d27
+모든 파일의 Library 생성 성공을 확인했고 원본 로컬 파일에 Library 식별 정보도 기록했다.

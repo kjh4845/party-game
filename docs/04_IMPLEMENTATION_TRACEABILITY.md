@@ -4,16 +4,32 @@
 
 | 항목 | 내용 |
 |---|---|
-| 문서 버전 | 1.5 Approved Baseline |
-| 기준일 | 2026-08-26 |
-| 상위 문서 | PRD 1.8.0, SRS 1.8.0 |
+| 문서 버전 | 1.5 Approved Baseline + 2026-09-04 Action Presentation Addendum |
+| 기준일 | 2026-09-05 |
+| 상위 문서 | PRD 1.8.0 + 2026-09-04 Addendum, SRS 1.8.0 + 동일 Addendum |
 | 상세 패치 기준 | PATCH_DESIGN 0.5.0 · 승인 Patch12·Air Action·Firearm source |
 | 실행 계획 | Implementation Plan 2.5 + C1B Rework Addendum · 178 Task · 258.0일 |
-| 범위 | SRS 요구사항 186개, 인수 시나리오 44개 |
+| 범위 | SRS 요구사항 187개, 인수 시나리오 45개 |
 
 이 문서는 요구사항의 구현·검증 소유권을 확인하는 표다. 제품 규칙을 새로 만들지 않으며,
 상위 문서와 충돌하면 PRD와 SRS를 먼저 고친다. 이전처럼 모든 요구를 한 행씩 반복하지 않고
 같은 시스템 책임을 가진 연속 범위를 묶어 추적한다.
+
+### 2026-09-05 공통 Grip·전 주기 변형·다방향 회복 결정
+
+- 총기 Grip은 무기 종류와 좌우에 공통인 팔 뻗기 template 하나다. 동일 template를 실제 잡은 팔에
+  적용하며 왼손·오른손 어느 쪽도 가능하다. 손 점유와 Main/Support 역할은 gameplay 정보이며
+  Pistol/LongGun별 pose나 좌우별 별도 authored clip을 만드는 근거가 아니다. fire/recoil·reload clip0 유지.
+- 리깅 QA는 걷기·뛰기 한 주기의 전 sample frame과 loop 경계에서 어깨·팔꿈치·골반·무릎의 꺾임,
+  자기교차·면 뒤집힘·국소 압축/늘어남과 육안 자연스러움을 함께 확인한다. 한 정지 자세의 PASS로 대체하지 않는다.
+- 회복 진입은 공격 방향이 아니라 Host가 확인한 실제 torso 자세와 지지면 normal을 사용한다.
+  앞·뒤·좌·우 및 대각선·임의 yaw·경사면을 지원하고, 안정 지지나 clearance가 없으면 기다린다.
+- 사용자가 권장안을 선택했다. 옆으로 누우면 현재 몸의 수평 방향을 보존하면서 가까운 앞/뒤 자세로
+  정렬한 뒤 공통 face-up/face-down GetUp을 사용한다. 좌우 전용 GetUp clip은 추가하지 않는다.
+  정렬과 GetUp은 순간이동·즉시 방향 반전 없이 연결하고 Host만 단계·완료를 판정한다.
+- DropkickRecovery와 DownEpisode는 위 시각 경로를 공유하되 gameplay state·DownCount·groggy·Down Trigger는 분리한다.
+  Upright Dropkick settle은 일어나기 없이 locomotion 복귀가 가능하며 떠 있거나 head-down이면 먼저 물리 안정화를 기다린다.
+
 
 ---
 
@@ -28,7 +44,10 @@
 - 기본 timed sky weapon supply는 AuthorityHost가 판정하며 2인 10s/22s/cap2, 3인 8s/16s/cap2,
   4인 6s/12s/cap3의 승인 계약을 사용한다.
 - Ground L/R tap/hold는 Punch/Grab, Airborne single tap은 L/R Kick, valid dual down-edge chord는 Dropkick이며
-  episode당 AirAttackToken은 하나다. DropkickRecovery는 DownEpisode가 아니다.
+  episode당 AirAttackToken은 하나다. DropkickRecovery는 DownEpisode와 별도 state이며 physics tumble 뒤
+  prone이면 방향별 Ragdoll GetUp 시각 모션만 공유한다.
+- Locomotion presentation은 in-place Idle arms-to-torso, Walk small arm swing+leg motion, Sprint large arm
+  swing+fast leg cadence를 사용한다.
 - Authority Rigidbody·Hit와 read-only Animator/procedural pose를 분리하고 gameplay Root Motion은 0이다.
 - 네 Weapon은 M1911-inspired Pistol, AK-47-inspired LongGun, baseball Bat와 sledgehammer의 generic
   low-poly reference를 사용하고 일반 UI 이름·logo·marking·exact replica는 0이다.
@@ -36,6 +55,8 @@
   forced release→SpentPendingCleanup 2~4초→deadline remove이고 replacement는 다음 정규 pulse다.
 - Firearm Projectile·Ammo·recoil/spread는 Host 권한이다. Projectile은 swept SphereCast first-hit,
   no-pierce/ricochet·gravity0 START이며 Fire는 Playing+SuddenDeath, RoundResult부터 0이다.
+- Firearm은 Pistol Main arm과 LongGun Main+Support arms를 앞으로 뻗는 단순 Grip pose를 사용한다. 별도
+  authored fire/recoil clip은 0이고 Host Rigidbody/Joint recoil이 팔·Weapon 상승과 복귀를 소유한다.
 - Persistent Match HUD는 0이며 transient countdown/Patch/status, on-demand Tab score+active Patch와
   developer-only Ammo debug만 허용한다. Match Esc는 local-only non-pausing menu다.
 - Explicit Guest Leave는 즉시 Forfeit, unexpected disconnect는 30초 physical·vulnerable grace 뒤
@@ -50,7 +71,9 @@
 - Player Build와 실제 Steam 계정 시험은 USER-MANUAL evidence가 없으면 완료가 아니다.
 - C1B-002..005의 PASS Evidence는 당시 기술 결과로 보존하지만 current visual acceptance에서는
   `REWORK_REQUIRED`다. C1BRW r01 source/profile/Evidence도 역사로 보존하되 current visual result는 r02에
-  superseded됐다. Current r11 globally-faired T-pose `UG-C1B-NEUTRAL` 전에는 Rig·Pose clip·Animation·FBX·Unity import·Build를 만들지 않는다.
+  superseded됐다. 현재 Neutral은 r16이며 UG-C1B-NEUTRAL은 2026-09-02 승인 완료다. r20 Blender 리그는 검토 후보로 보존한다.
+  C1BRW-004/005는 공식 static Pose·lineup/parity, CHR-001은 game Prefab, ANP는 동작 표현을 소유한다.
+  내부 Neck 허용과 가시 목0을 구분하고, 실제 peer presentation 검증은 NET-004/007/011..014에서 수행한다.
 
 ---
 
@@ -58,7 +81,7 @@
 
 | PRD 범위 | 제품 의미 | SRS 범위 |
 |---|---|---|
-| PRD-F-001..005 | 2~4인·Ground/Air 입력·Down·Camera | SRS-SYS-001..004, SRS-GAME-001, SRS-INPUT-001..009, SRS-PHYS-001..014, SRS-CAM-001..006 |
+| PRD-F-001..005 | 2~4인·Ground/Air 입력·Down·Camera | SRS-SYS-001..004, SRS-GAME-001, SRS-INPUT-001..009, SRS-PHYS-001..015, SRS-CAM-001..006 |
 | PRD-F-006..010 | 탈락·Round·Patch·Reset | SRS-GAME-002..007, SRS-ROUND-001..006, SRS-PATCH-001..009, SRS-MAP-005..008 |
 | PRD-F-011..016 | Lobby·Sprint·Guest Ready·Host Start·Lobby/Match Esc | SRS-LOBBY-001..010, SRS-UI-001..003, SRS-UI-006, SRS-INPUT-002..006 |
 | PRD-F-017..019 | Customizer·local Preset·placeholder Cosmetic | SRS-APPEAR-001..013, SRS-APPEAR-023 |
@@ -85,7 +108,7 @@
 | SRS-SYS-027 | Alpha Greybox InteractiveLobby 품질 경계 | LBY-001, UI-003, DEF-001 | QA-003..008, ALP-001 | UG-ALPHA |
 | SRS-GAME-001..007 | 인원·라운드·점수·탈락 | RND-001..004, P00-003..005 | QA-002, QA-004..006, QA-009 | UG-ALPHA |
 | SRS-INPUT-001..009 | 기본 입력·Sprint·Esc·Tab·Ground/Air tap-hold-chord | INP-001..005, CHR-004, AIR-001 | AIR-002, QA-001..002, UI-005 | UG-HAND, UG-C2 |
-| SRS-PHYS-001..014 | 이동·손·Air Kick/Dropkick·DownCount·Ragdoll·복구 | CHR-002..011, AIR-002, ANP-001..002 | AIR-002, PAT-004..005, QA-001..002, NET-007, QA-009 | UG-C2 |
+| SRS-PHYS-001..015 | 이동·손·Air Kick/Dropkick·DownCount·Ragdoll·복구 | CHR-002..011, AIR-002, ANP-001..002 | AIR-002, PAT-004..005, QA-001..002, NET-007, QA-009 | UG-C2 |
 | SRS-CAM-001..006 | SharedGameplayCamera | CAM-001..005 | QA-002, NET-011..014, QA-009 | UG-CAM |
 | SRS-ROUND-001..006 | countdown·reset·세대 격리 | RND-001..004, CHR-010, NET-007 | QA-001..006 | UG-ALPHA |
 | SRS-PATCH-001..009 | PATCH_DESIGN 0.5.0 승인 Patch12·Punch/Kick/Dropkick/Projectile source·projected set·평문 2×2·supply/drop·FIFO·presentation seam | PAT-001..005, AIR-002, FIR-001..003, WPN-008, PAT-020..023, NET-005, NET-008 | PAT-005, WPN-008, PAT-023, QA-009 | UG-PATCH12-DESIGN, UG-PATCH12, UG-PATCH20 |
@@ -135,7 +158,7 @@
 | AT-025 | APT-001..006 | local appearance relay |
 | AT-026 | APT-001, APT-005..006 | appearance attack |
 | AT-027 | APT-004..006, C4-003 | cosmetic invariance |
-| AT-028 | C1B-005, C1BRW-001..005, C1B-006, C4-004 | old C1B-005와 C1BRW r01/r02 기술 결과는 역사 보존. current r11 globally-faired T-pose는 C1BRW-003 `UG-C1B-NEUTRAL` 승인 뒤에만 Pose·Animation·FBX/Unity import를 진행하고 C1B-006에서 최종 승인; production retopo·UV/tangent·Rig/Collider/deformation은 C4-004 |
+| AT-028 | C1B-005, C1BRW-001..005, C1B-006, C4-004 | old C1B-005와 r01/r02 기술 결과는 역사 보존. r16 Neutral 방향 승인 완료, r20 리그 후보 보존. C1BRW-004 static Pose8/lineup·C1BRW-005 static parity 뒤 C1B-006 최종 승인; CHR-001/002 game Rig/Collider·ANP 동작 prototype, C4-004 production Lock |
 | AT-029 | NET-014, APT-003, APT-006, DIA-002, QA-010 | performance |
 | AT-030 | UI-003, UI-005, AV-001..003, QA-008 | Alpha non-color cue·Tab mode 최소 접근성; audio를 포함한 확장 설정은 DEF-001 |
 | AT-031 | UI-006, LBY-007, DIA-001..002, SEC-001..002, STM-008 | error·diagnostics |
@@ -152,6 +175,8 @@
 | AT-042 | INP-006, UI-007, QA-003..006 | Match Esc non-pausing local neutral·Mouse all-up rearm |
 | AT-043 | NET-008..010, NET-015, UI-006..007, QA-004..006 | 2/3/4 Lobby/Match Leave·30초 vulnerable grace·reconnect/Forfeit·1명 Lobby·Host loss matrix |
 | AT-044 | LBY-001, APT-007, UI-005, AV-001..003, ALP-001 | Greybox Lobby·대표 placeholder·Korean-only·BGM0/basic SFX Alpha 범위 |
+
+| AT-045 | CHR-009, ANP-002..003, ANM-003, NET-007, QA-002 | 다방향 진입·side 정렬→shared GetUp, 전 주기 변형·공통 Grip 검증 |
 
 ---
 
@@ -171,14 +196,15 @@
 
 ## 6. 자동 정합성 조건
 
-- PRD ID 31개, SRS ID 186개와 AT 44개는 각각 unique하고 연속 범위를 가진다.
+- PRD ID 31개, SRS ID 187개와 AT 45개는 각각 unique하고 연속 범위를 가진다.
 - 모든 PRD ID는 2장의 SRS 범위에 정확히 포함된다.
 - 모든 SRS prefix와 AT ID가 이 문서에 적어도 한 번 등장한다.
 - 모든 주 구현·검증 Task가 Plan 2.5에 실제 존재한다.
 - Plan은 정확히 178 Task·258.0일이며 C1BRW-001..005, AIR-001..002, ANP-001..003, WPA-001..003,
   FIR-001..003, FDN-010..011, ART-001, LIC-001, BLD-001, INP-006, NET-015, UI-007,
   APT-007과 모든 선행관계가 존재해야 한다.
-- Plan Task의 선행관계는 누락과 순환이 없어야 한다.
+- Plan Task의 선행관계는 누락과 순환이 없어야 한다. 현행 ANP-001은 역사 C1B-004 대신 C1BRW-004를 참조한다.
+- G1 ANP-003은 offline 표현 검증이며 NET-001을 완료 조건으로 요구하지 않는다. peer 동기화는 G2 NET 소유다.
 - 모든 Task 크기는 0.5~2일이어야 한다.
 - 현행 문서에는 삭제된 문서 link가 없어야 한다.
 - 현행 문서는 Index를 포함해 12개이며 PATCH_DESIGN 0.5.0의 Patch ID 12개가 active source여야 한다.

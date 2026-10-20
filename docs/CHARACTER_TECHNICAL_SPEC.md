@@ -4,32 +4,49 @@
 
 | 항목 | 내용 |
 |---|---|
-| 문서 버전 | 0.12.0 C1B Static Interop Baseline + 2026-09-01 r11 Global Fair T-Pose Addendum |
-| 최종 수정일 | 2026-09-01 |
-| 상위 기준 | `01_PRD.md` 1.8.0, `02_SRS.md` 1.8.0 |
+| 문서 버전 | 0.12.0 C1B Static Interop Baseline + 2026-09-04 Action Presentation Addendum |
+| 최종 수정일 | 2026-09-10 |
+| 상위 기준 | `01_PRD.md` 1.8.0 + 2026-09-04 Addendum, `02_SRS.md` 1.8.0 + 동일 Addendum |
 | 목적 | `MasterCharacter`의 승인 방향, 제작 Gate, 물리·입력·Paint·Cosmetic·무기 통합 기준 정의 |
 | 우선순위 | 게임 규칙은 PRD/SRS, 패치 콘텐츠는 `PATCH_DESIGN.md` 0.5.0, 시각 언어는 `ART_DIRECTION.md` 1.9.0, 구체 캐릭터 제작은 본 문서 |
 
 이 문서는 결과와 승인 기준을 정의한다. 구현체의 바이너리 배치, 내부 직렬화 수식과 반복 fixture
 개수는 구현·테스트 문서에서 관리하며 캐릭터의 제품 방향으로 취급하지 않는다.
 
-### 0.0 2026-09-01 r11 Global Fair T-Pose 결정
+### 2026-09-05 공통 Grip·전 주기 변형·다방향 회복 결정
 
-- C1B-002..005는 당시 수치·Blender·Pose·FBX/Unity 기술 Evidence로는 PASS였지만, v0.13의 부드러운 한 몸
-  방향과 다른 faceted head, egg/peg body, exposed proximal cap과 detached-looking limb 때문에 current visual
-  acceptance에서는 `REWORK_REQUIRED`다. 역사 Evidence와 Commit은 수정하지 않는다.
-- r01/r02 technical source·Evidence와 r03..r10 시도는 역사로 보존하지만 current visual result는
-  `REWORK_REQUIRED / SUPERSEDED`다. r11은 r10의 round head, visible neck0와 T-pose를 유지하면서 몸통 폭·깊이
-  저주파 profile 자체를 재형성하고 shoulder/axilla broad blend와 전신 fairing을 적용한다.
-  Pixel distance나 특정 production topology를 reference에서 역산하지 않는다.
-- C1B rework chain의 r11 Neutral/Silhouette/Rake 12-view를 사용자가 `UG-C1B-NEUTRAL`에서 먼저 승인해야 한다.
-  이 Gate 전에는 Rig, Pose clip, Animation, FBX, Unity import, Collider, Build, Commit/push/LFS 승격을 만들지 않는다.
-- 현재 USER_REVIEW candidate `CHR_MasterCharacter_C1B_NeutralRework_r11`은 Body component1/Euler2,
-  `227942V/455880E/227940F`, triangle/quad `0/227940`, runtime modifier0, topology error0,
-  adjacent angle max `6.843839°`, exact mirror max `1.884956e-7H`, visible T-arm center max deviation
-  `6.694555e-5H`, r10 signed volume 오차 `4.489624e-11`, camera/render `4/12`,
-  scene `LOCAL_USER_REVIEW`다. Head는 별도 closed round direct-contact Mesh이고 visible neck·authored Neck node·eyes·hands는0다.
-  이 수치는 visual approval이나 production topology lock이 아니다.
+- 총기 Grip은 무기 종류와 좌우에 공통인 팔 뻗기 template 하나다. 동일 template를 실제 잡은 팔에
+  적용하며 왼손·오른손 어느 쪽도 가능하다. 손 점유와 Main/Support 역할은 gameplay 정보이며
+  Pistol/LongGun별 pose나 좌우별 별도 authored clip을 만드는 근거가 아니다. fire/recoil·reload clip0 유지.
+- 리깅 QA는 걷기·뛰기 한 주기의 전 sample frame과 loop 경계에서 어깨·팔꿈치·골반·무릎의 꺾임,
+  자기교차·면 뒤집힘·국소 압축/늘어남과 육안 자연스러움을 함께 확인한다. 한 정지 자세의 PASS로 대체하지 않는다.
+- 회복 진입은 공격 방향이 아니라 Host가 확인한 실제 torso 자세와 지지면 normal을 사용한다.
+  앞·뒤·좌·우 및 대각선·임의 yaw·경사면을 지원하고, 안정 지지나 clearance가 없으면 기다린다.
+- 사용자가 권장안을 선택했다. 옆으로 누우면 현재 몸의 수평 방향을 보존하면서 가까운 앞/뒤 자세로
+  정렬한 뒤 공통 face-up/face-down GetUp을 사용한다. 좌우 전용 GetUp clip은 추가하지 않는다.
+  정렬과 GetUp은 순간이동·즉시 방향 반전 없이 연결하고 Host만 단계·완료를 판정한다.
+- DropkickRecovery와 DownEpisode는 위 시각 경로를 공유하되 gameplay state·DownCount·groggy·Down Trigger는 분리한다.
+  Upright Dropkick settle은 일어나기 없이 locomotion 복귀가 가능하며 떠 있거나 head-down이면 먼저 물리 안정화를 기다린다.
+
+
+### 0.0.1 2026-09-04 Action Presentation 결정
+
+- Idle은 팔을 몸통에 붙이는 pose, Walk는 작은 앞뒤 팔 swing+보행 leg motion, Sprint는 큰 앞뒤 팔
+  swing+빠른 leg cadence를 사용하며 모두 in-place다.
+- Firearm은 기존 손 소유 관계를 유지한다. Pistol은 Main hand, LongGun은 Main+Support hand를 사용하되
+  해당 팔을 앞으로 뻗는 단순 공통 Grip pose로 표현한다.
+- 별도 authored Pistol·LongGun fire/recoil animation clip은 만들지 않는다. Host Unity Rigidbody/Joint
+  recoil이 팔과 Weapon을 위로 움직이고 승인 spring/damping으로 복귀시킨다.
+- `DropkickRecovery`와 `DownEpisode`는 별도 gameplay state다. physics tumble 뒤 실제로 누운 경우에는
+  방향별 Ragdoll GetUp presentation을 공유할 수 있지만 DownCount·groggy·Down Trigger는 만들지 않는다.
+
+### 0.0 2026-09-05 캐릭터 제작 현황
+
+r16 Neutral 외형 방향은 2026-09-02 `UG-C1B-NEUTRAL` 승인 완료. r20은 기존 r16 geometry를 유지한 Blender Generic22(논리20+hip helper2) 리그 검토 후보다. 내부 Neck은 허용하며 가시 목0을 유지한다. 원본 r20의 Action0은 보존하고 별도 후보에서 공식 정적 Pose·보행/Grip·Grab/Wall IK와 팔꿈치 중심 Punch Action2를 검토했다. Unity 게임용 Prefab/Collider/animation 통합은 미완료다. 캐릭터 최종 Gate에는 `C1BRW-004` 공식 정적 Pose8·lineup 검토가 남아 있으며 `C1BRW-005` static parity와 `C1B-006 / UG-C1B`는 미완료다.
+
+현재 상태의 공통 기록은 [캐릭터 검토 기록](../artifacts/reports/CHARACTER_REWORK_NEUTRAL_REVIEW.md)이다.
+r01..r15와 old C1B 기술 결과는 역사로 보존한다. r16 approval JSON의 시각 방향 승인과
+production topology·리그·애니메이션·Collider의 결과 승인을 구분한다.
 
 ### 0.1 0.12.0 변경 요약
 
@@ -132,8 +149,10 @@ Material, Animation 또는 수치를 복제하지 않는다. UI 기준 이미지
 Gate를 건너뛰지 않는다. C2·C3에서 비율이나 reach 문제가 발견되면 Physics 값을 억지로 보정하지
 않고 C1b minor revision으로 돌아가 다시 승인한다.
 
-`C1b Neutral Review`는 `C1b Exact Proportion`을 대신하지 않는다. r11 globally-faired T-pose 조형을 먼저 승인한 뒤에만
-Pose8·lineup/Animation과 FBX/Unity parity를 만들고, 마지막 `UG-C1B`에서 수치·Pose·Unity 결과를 함께 승인한다.
+`C1b Neutral Review`는 `C1b Exact Proportion`을 대신하지 않는다. r16 Neutral 방향 승인은 완료됐으며
+C1BRW-004는 정적 Pose8·lineup, C1BRW-005는 정적 FBX/Unity parity를 소유한다. 이 단계의 animation claim은0이다.
+임시 pose 평가에 기존 r20 리그를 사용할 수 있지만 r16/r20 원본 저장·수정은0이며 결과를 production rig로 승격하지 않는다.
+마지막 `UG-C1B`에서 수치·Pose·Unity 결과를 함께 승인한 뒤 CHR-001 게임용 Prefab과 ANP 동작 구현으로 진행한다.
 
 ### 2.1 C1b 필수 자료
 
@@ -153,7 +172,8 @@ Pose8·lineup/Animation과 FBX/Unity parity를 만들고, 마지막 `UG-C1B`에�
 ### 2.2 Neutral rework 조형 계약
 
 - Head는 faceted 또는 square mass가 아니라 둥근 mass로 읽혀야 한다.
-- Visible neck과 authored Neck semantic node는 `0`이며, Head는 torso 상단에 직접 overlap/attachment되어야 한다.
+- Visible neck과 별도 목 외형은 `0`이며, Head는 torso 상단에 직접 overlap/attachment되어야 한다.
+  이 제한은 외형에 적용한다. 내부 `Chest → Neck → Head` Bone과 그 skin weight는 허용한다(2026-09-05 사용자 설명).
 - Torso→shoulder→arm의 visible seam·groove·step·cap·detached boundary는 모든 필수 view에서 `0`이어야 한다.
 - Torso는 과도한 egg/pear mass가 아니라 v0.13의 비교적 곧고 부드러운 몸통이어야 한다.
 - Crotch는 torso와 양 leg를 잇는 연속 U 형태이며 hip cap이나 분리 leg block이 보이지 않아야 한다.
@@ -255,7 +275,8 @@ Hybrid다.
   Grab constraint, Throw·Jump·Dropkick·Firearm recoil impulse/torque, authority Muzzle과 Ragdoll을 판정한다.
 - `VisualRoot`의 Animator·procedural pose·IK는 Host semantic action phase와 보간된 physics anchor를
   따라가며 gameplay Rigidbody·Collider·Anchor를 역으로 구동하지 않는다.
-- locomotion, Jump, Punch, Kick, Dropkick, Grab, Throw, Weapon과 GetUp clip은 in-place가 원칙이다.
+- locomotion, Punch, Kick, Dropkick, Grab, Throw, Weapon과 GetUp clip은 in-place가 원칙이다.
+  전용 Jump/착지 clip은 제작하지 않는다. Unity 물리·실제 접촉과 procedural 하체 pose로 표현한다.
   `Animator.applyRootMotion` 또는 동등한 root transform 적용이 Authority PhysicsRoot를 이동시키는 경로는 0개다.
 - Animation Event는 Audio/VFX cue를 요청할 수 있지만 Attack active window, sweep, Hit, Grab, Release,
   Shot, Projectile, recoil/spread, impulse, Down과 GetUp 완료를 확정하지 않는다.
@@ -340,7 +361,9 @@ Airborne이며 DownEpisode가 아닐 때는 같은 입력을 다음 순서로 �
 ### 5.3 Ragdoll·GetUp·반복 Down
 
 `CharacterMotionState`는 Locomotion, Stunned, Ragdoll, Recovering을 구분한다. Ragdoll은 최소
-face-up, face-down, left, right에서 시험한다. clearance가 없으면 순간이동해 일어나지 않고 기다린다.
+face-up, face-down, left, right·대각선·임의 yaw·경사면에서 시험한다. stable support 또는 clearance가
+없으면 기다린다. Left/Right는 가까운 FaceUp/FaceDown으로 연속 정렬한 뒤 같은 GetUp을 쓰며
+좌우 전용 GetUp clip은0이다. 정렬 시작 시 방향을 고정해 중간 sample의 작은 흔들림으로 경로를 바꾸지 않는다.
 
 같은 Round에서 반복 down을 다음처럼 누적한다.
 
@@ -361,6 +384,40 @@ Round 시작: DownCount = 0
 - Round reset에서 반드시 0으로 돌아가며 Match score와 혼동하지 않는다.
 - down 증가가 영구 행동 불능이나 무한 stunlock을 만들면 cap·impact threshold·recovery를 조정한다.
 - Lobby Ragdoll은 항상 BaseDuration을 사용하고 Match Round의 DownCount를 만들거나 증가시키지 않는다.
+
+[넉다운 상태 local 검토](../artifacts/reports/R20_DOWN_STATE_REVIEW_20260906.md)는 위 시간/누적 규칙과 행동 잠금·all-up 재무장·generation/episode 검사를 연결한다.
+대기 시간 만료는 GetUp 시작 허용이며 실제 지지/공간·정렬·완료 전 잠금은 유지한다. 실제 Ragdoll body/pose와 피격→Down 판정은 후속이다.
+검사용 timing profile은 기본 게임 설정이 아니다. 사용자 후속 결정으로 **던진 뒤 일반 충돌의 추가 Damage·피해 누적은0**이다.
+예: 공격 적중→잡기/던지기→벽→바닥→재충돌에서 후속 일반 접촉마다 피해를 더하지 않는다. 기존 속도·중력·충돌 물리 반응은 유지한다.
+충돌 세기를 자동 피해/피해 기반 Down 누적의 대체 입력으로 쓰지 않는다. 공격별 정확한 수치와 피해 없이 발생하는 일반 충돌의 순수 물리 Down은 미확정이다.
+
+2026-09-09 확정 정책: [빠른 펀치·부위별 누적 후보](../artifacts/reports/R20_FAST_PUNCH_PRECISION_20260909.md)는 몸통·팔다리1점, 머리2점으로 누적한다. 넉다운 기준은10→9→8→7→6점에서 멈추며 기존 groggy 대기 시간 증가도 유지한다. 누적은 시간이 지나도 감소하지 않고 새 Down에서 소비하며, Round reset은 누적과 DownCount를 초기화한다. Down 중 추가 타격은 물리 반응만 적용하고 점수·Count·timer를 늘리지 않는다. 머리 보너스는 실제 머리 접촉에만 적용한다. 기존 항상5회 고정은 이전 비교 정책이다.
+
+2026-09-09 [광배·옆구리 가중치 후보](../artifacts/reports/R20_LAT_WEIGHT_ADJUSTMENT_20260909.md)는 몸통의 어깨/상완 영향 일부를 기존 Spine/Chest 슬롯으로 옮긴다. 사용자 후속 진행 지시로 다음 로컬 시제품과 현재 검토 메뉴의 기준으로 채택했으며 원본 source·이전 transport·하체 가중치·리깅·동작 곡선을 보존한다. 펀치 속도와 피격/회복 정책 변경은 없다.
+
+2026-09-09 [공용 카메라·화면축 이동 시제품](../artifacts/reports/R20_SHARED_ARENA_REVIEW_20260909.md)은2·3·4명과16:9/16:10/21:9에서 authority Root의 고정 범위를 사용한다. fixed yaw, pitch34도/FOV42도/Dolly8~15CU/여백15%를 START로 검토하며 local 화면축 WASD·개발용F1~F4 조작 전환·Esc 비정지 입력 중단·전체 review reset을 연결한다. 실제 PC별 동시 조작, peer 목표 전송, 최종 P00/occlusion·hazard framing·UG-CAM과 정식 InputAction/Match UI는 후속이다.
+
+2026-09-10 사용자가 비교 영상의 [공용 카메라 보행 후보](../artifacts/reports/R20_CAMERA_GAIT_CANDIDATE_20260910.md)를 더 자연스럽다고 승인했다. 해당 설정을2·3·4인 Shared Arena의 기본 보행으로 채택한다. 당시의 속도0.70/1.05m/s와 주기2.4/3.6Hz는 이후 아래의2배 이동 속도 승인으로 갱신됐다. `Open Shared Arena 2/3/4 Players`가 채택 보행을 사용하며, `Open Previous Shared Gait 2/3/4 Players`는 이전 보행 비교를 제공한다. 고정60Hz 연산과 snapshot 보간을 유지하며, 원본 mesh/rig/weight와 최종 캐릭터 Gate 상태는 유지한다.
+
+2026-09-10 프레임 독립성 요구를 반영해 [고정 시점 연산·렌더 보간 검증](../artifacts/reports/R20_FRAME_INDEPENDENCE_REVIEW_20260910.md)을 추가한다. 로컬 prototype 입력·이동·손 동작·Down/GetUp·보행 및 카메라 상태는 Physics60Hz에서 갱신하고, 렌더는 이전/현재 snapshot만 보간한다. 마우스 tap/hold는 원본 event timestamp를 사용한다. 렌더된 bone/root를 다음 물리 진입값으로 읽지 않는다. 서로 다른 렌더 일정에 같은 고정 입력을 재생해 gameplay 결과와 trajectory를 비교하고, 실기기 성능·peer 전송 검증은 해당 후속 Gate에서 수행한다.
+
+2026-09-10 사용자가 [2배 이동 속도](../artifacts/reports/R20_MOVEMENT_SPEED_REVIEW_20260910.md)를 기본으로 선택했다.2·3·4인 Shared Arena는 걷기1.40m/s·달리기2.10m/s·가속도20m/s²와 검증한 보행 주기4.8/7.2Hz, 발 들림16mm·골반 bob12mm를 사용한다. 기본 factory의 고정60Hz·FPS 독립성과 잡고 이동/점프/Throw를 재검증했다. 사방 분산 시 기존 카메라 한계에 더 빨리 닿는 점은 맵/카메라 통합에서 계속 확인한다.
+
+2026-09-10 사용자가 [8.8×6.2CU 경기장·최대22CU 카메라](../artifacts/reports/R20_ARENA_BOUNDARY_REVIEW_20260910.md)를 기본 시제품으로 채택하고 가장자리 복귀 진행을 승인했다. 동일 geometry의2/3/4 Spawn, 실제 core Collider OOB·같은 tick의 camera 제외·강제 grip 해제/초기화를 검토했다. 손 접촉 Ledge Grab·ClimbAssist, Hazard와 Round/peer 통합은 후속이며 최종 P00/Camera Gate 완료는 아니다.
+
+2026-09-10 후속 [가장자리 복귀 시제품](../artifacts/reports/R20_LEDGE_RECOVERY_REVIEW_20260910.md)을 기본2/3/4인 장면에 연결했다. 정적 Lip/Facade의 실제 손 접촉과 클릭 유지, Space 보조(공중당2회·350ms), 하중 피로·놓기·재잡기·OOB/Reset을 검토한다. 상승은 옥상 위0.15CU를 목표로 필요한 만큼만,1회 최대1.25CU인 START다. 공중 벽 마찰에 의한 무입력 매달림을 제거하고 지상 마찰은 유지한다. 움직이는 표면·Beam·Hazard·Round/peer와 최종 체감 Gate는 후속이다.
+
+2026-09-10 후속 [하중에 반응하는 매달림 자세](../artifacts/reports/R20_HANGING_LOAD_REVIEW_20260910.md)를 정적 가장자리 장면에 추가했다. 실제 손별 지지력을 읽어 한 손은 잡은 어깨 아래로 골반을 기울이고, 양손은 가운데로 처지며 힘을 나눈다. 손 전환·놓기·상승 시 고정60Hz에서 감쇠해 이어지며, 표면 접촉은 IK로 유지한다. 이 자세는 절차적 표현이고 기존 지지력·피로·도달 판정·복귀 예산은 그대로다. 원본 모델·리그·weight를 수정하지 않았으며 사용자 체감 확인은 남아 있다.
+
+
+2026-09-08 이전 선택: [고정 타격·무력 Down 후보](../artifacts/reports/R20_FIXED_HIT_LIMP_DOWN_REVIEW_20260908.md)는 필요한 타격 수를 고정한다. 이전 임계값 감소 방식은 비교 이력으로 남기고 현재 profile/API에서 제거한다. START는 매번 펀치5회이며, DownCount는 기존 대기 시간 증가에만 사용한다. 피격 누적은 시간으로 줄지 않고 새 Down에서 소비한다. Down 재피격은 impulse만 적용하고 timer/Count를 늘리지 않는다. 넉다운 중에는 관절의 자세 drive와 authored animation/blend를 적용하지 않고 실제 물리 뼈를 그대로 표시한다. 팔/다리의 기존 관절 연결과 검증된 회전 한도는 유지한다. 회복 중 지지/공간을 잃어 다시 Down 대기로 돌아갈 때도 clip fade 없이 즉시 물리 pose를 따른다. 기존 GetUp clip·회복 gate·기립 후 handoff 보정은 유지한다.
+
+후속 사용자 요청으로 [12 body 몸통 분할 후보](../artifacts/reports/R20_ARTICULATED_TORSO_REVIEW_20260908.md)를 추가한다. 골반 역할 root3kg + Spine2.5kg + Chest2.5kg으로 기존 몸통8kg을 분할하고 전체20kg을 유지한다. Head/Arm은 Chest에 연결하며 actual chest rotation으로 회복 방향을 판정한다. 이는 원본 mesh/weight/rig 변경이 없는 별도 physics 후보이며 기존10 body 기본 구성과 구분한다.
+
+2026-09-08 사용자 결정: [분할 래그돌 잡기/회복 연결](../artifacts/reports/R20_RAGDOLL_GRAB_INTEGRATION_20260908.md)은 잡힌 상태에서도 실제 지지/공간이 유효하면 회복하고 잡기를 유지한다. 부위별 접점과 전체20kg 하중을 구분하며, 점프/Throw 보정은 같은 캐릭터의 모든 동적 body에 중복 없이 분배한다. 충돌체 교체 시 현재 world 접점을 이어 붙이며 Reset/진짜 접촉 상실은 기존 강제 해제를 따른다. 이미 서 있는 자세는 timer 만료 뒤 물리 자세 안정화로 복귀한다. 외부 잡기 중 회복 표현은 물리 접점을 우선하고, 해제 시 현재 GetUp 시각으로 보간한다.
+명시적 Hazard/OOB 판정은 기존 계약을 따른다. 이 결정은 던져진 캐릭터에게 별도 공격이 적중하는 것까지 무효로 만들지 않는다.
+[실제 지지면·공간 query](../artifacts/reports/R20_RECOVERY_SUPPORT_REVIEW_20260906.md)는 몸-바닥 간격, 상대 선속도/각속도와 지지 유지 시간을 확인하고, 기립 capsule의 전체 공간을 검사한다.
+타이머 만료와 실제 query를 모두 만족해야 회복을 시작하며, 정렬/GetUp 중 지지·공간 상실은 같은 episode의 재평가로 돌아간다. query 자체의 위치/회전 변경·GetUp 자동 완료는0이다.
 
 ### 5.4 Base profile과 Round-scoped PatchModifier
 
@@ -419,7 +476,9 @@ Press → HandIntentPending
 threshold 전 Release → HandStrike 1회 → Recovering → Idle
 threshold 통과 → Strike 없이 GrabSeek
 GrabSeek + valid contact → Grabbing
-Release → constraint 해제 또는 non-strike recovery → Idle
+동적 대상의 마지막 본인 손 Release → constraint 해제 + bounded Throw 1회 → Idle
+같은 대상의 다른 본인 손이 유지됨 → 해당 손 constraint만 해제 → Idle
+미획득/강제 취소 → 추가 impulse 없이 해제 → Idle
 ```
 
 `GrabHoldThresholdMs`는 120/150/180ms를 비교하고 150ms를 `START`로 사용한다. Pending에서 hit를
@@ -443,21 +502,129 @@ Kick L/R, DropkickReference와 Nameplate를 가진다. 가시 손 대신 Forearm
 
 | Gameplay context | Host semantic action·physics | Presentation |
 |---|---|---|
-| Locomotion·Jump | 권한 movement motor, `JumpAccepted`와 Root impulse·Ground/Air state | in-place Idle/Walk/Sprint·takeoff/air/landing pose |
+| Locomotion·Jump | 권한 movement motor, `JumpAccepted`와 Root impulse·Ground/Air state | in-place Idle·Walk·Sprint, 전용 Jump clip0; 수직 속도·실제 착지 충격을 따르는 procedural 하체 pose |
 | Ground L/R tap | `HandStrike_L/R`, StrikeAnchor active sweep·contact, Action·Target dedupe | 해당 손 in-place Punch pose |
 | Ground/Air L/R hold | `GrabSeek_L/R` → 권한 Hand contact·constraint | Hand reach·brace IK, constraint를 따라가는 pose |
 | Air L/R quick tap | `AirKick_L/R`, 해당 KickAnchor sweep, AirAttackToken 소비 | 좌/우 foot Kick pose |
 | Air L+R chord | 단일 `Dropkick`, 양발 shared Action, forward impulse·reduced steering | 양발 Dropkick pose와 non-Down recovery tumble |
-| Held Lift·Throw | 권한 constraint, release와 bounded Throw impulse | Lift·Throw pose, Hand/Target anchor follow |
-| Pistol semi-auto | 권한 single Shot, Ammo-1, Projectile·strong bounded recoil impulse/torque | 짧고 강한 single recoil·muzzle pose |
-| LongGun full-auto | 권한 hold cadence, ShotSequence, Ammo-1, RecoilAccumulator·SpreadBloom | 지속 fire, 누적 muzzle rise·body brace와 release/gap recovery pose |
+| Held Grab·release Throw | 권한 constraint, 마지막 손 release와 bounded Throw impulse | Grab·Throw pose, Hand/Target anchor follow; 별도 Lift 조작0 |
+| Pistol semi-auto | 권한 single Shot, Ammo-1, Projectile·strong bounded Rigidbody/Joint recoil | Main arm을 앞으로 뻗은 단순 Grip pose; authored fire/recoil clip 0, physics로 팔·Weapon 상승/복귀 |
+| LongGun full-auto | 권한 hold cadence, ShotSequence, Ammo-1, RecoilAccumulator·SpreadBloom | Main+Support arm을 앞으로 뻗은 단순 Grip pose; authored fire/recoil clip 0, physics로 누적 상승/복귀 |
 | Bat·Hammer Melee | 권한 WeaponAction·Weapon sweep·Hit | in-place swing·impact pose |
 | Ammo 0 | 권한 forced release→SpentPendingCleanup→remove | spent release cue; pickup/reload pose 0 |
 | DownEpisode | 권한 Down transition·Ragdoll bodies·DownCount | Animator에서 physics Ragdoll pose로 blend |
-| GetUp | Host clearance·orientation·완료 state | face-up/down in-place GetUp, AuthorityRoot follow |
+| GetUp | Host clearance·orientation·완료 state | front/back/left/right 진입, side 정렬→공통 face-up/down in-place GetUp, AuthorityRoot follow; Down/Dropkick state 분리 |
 
 Animation clip과 procedural pose는 semantic phase의 결과다. Clip frame, foot/hand visual overlap 또는
 Animation Event가 active sweep과 constraint를 열지 않는다.
+
+### 2026-09-05 펀치 시각 피드백
+
+후속 r02(준비0.10초)의 동작 모양·준비 속도는 사용자 시각 승인 완료다.
+[승인 기록](../artifacts/reports/R20_PUNCH_VISUAL_APPROVAL_20260905.json)을 기준으로 유지하며 gameplay timing/통합 Gate와 구분한다.
+
+후속 요청은 팔꿈치를 접는 준비만 빠르게 하는 것이다. 현재 r02 검토는 준비0.20→0.10초이며
+확장·회수의 pose/속도를 유지한다. 수치는 animation review START이고 gameplay cadence를 바꾸지 않는다.
+
+기존 검토용 펀치는 때리는 느낌이 부족하다는 사용자 피드백으로 시각 재작업한다.
+팔꿈치를 충분히 접어 준비하고 어깨의 작은 선행 동작 뒤 전완을 빠르게 펴며, 뻗은 상태의 정지를 줄이고
+다시 팔꿈치를 접어 회수한다. 좌우는 같은 원리로 만든다. 총기 Grip과 별도 동작이며 Grab/Wall은 유지한다.
+변경은 animation presentation에 한정하고 Hit·피해·공격 cadence·입력 threshold·gameplay Root Motion을 바꾸지 않는다.
+실제 구간 시간과 관절 각도는 검토 START이며 게임용 Joint limit이나 최종 combat timing 승인이 아니다.
+
+### 6.1.1 행동별 시뮬레이션·애니메이션 제작 체크리스트
+
+2026-09-05 후속 검토에 따라 같은 r20 검토 리그와 공통 검증 환경에서 행동별 시나리오를 분리한다.
+아래의 `정의`는 제작·시험 범위이며 이미 실행했거나 완료했다는 뜻이 아니다. Blender pose/cycle 검토와
+Unity 물리 접촉·게임 상태 검증을 별도 결과로 기록한다. 물리 결과·입력 판정은 공통 Authority 구현을 사용한다.
+
+| 시나리오 | 확인할 전 과정·조합 | 현재 확인 수준 | 구현 소유 |
+|---|---|---|---|
+| Idle·Walk·Sprint | 시작·한 주기·정지·걷기↔뛰기, 손/발 반대 위상, 발 접지·미끄러짐 | 속도·주기를 유지한 ReadableGait로 발 들림·보폭·골반 체중 이동 재작업. Walk39/Sprint25frame 전 주기 표면 검사와 점프 복귀 검토; 월드 발 고정·최종 tuning/게임 통합은 후속 | CHR-003..004, ANP-002 |
+| Jump·Landing | 도약·상승·정점·낙하·착지, 이동 중 점프, 낙하 높이에 따른 접지 | 전용 clip0 물리 시제품에 8방향·공중 반전/90°/정지·착지 후 이동/Sprint 전환 추가. 최종 지형 접지·다관절/게임 상태 통합은 후속 | CHR-005, ANP-002 |
+| Punch L/R | 준비→팔 뻗기→권한 active 구간→복귀, 적중/빗나감, 이동 중·반대 손 Grab 중 공격 | 승인 Action·local 권한 tap/hold·sweep/impulse와 Grab 반대 손 조합 검토 완료. 피해/Down·최종 게임/peer 통합 후속 | CHR-006, ANP-002 |
+| Grab L/R/Both | 손 뻗기·획득·유지·버티기·끌기·놓기·강제 해제, 물체/다른 Player 및 서로 다른 대상 | local 실제 contact/joint·하중 피로·팔 IK·좌우/양손·서로 다른 대상·동적 prop·해제/상실 검토 완료. 최종 physics profile·게임/peer 통합 후속 | CHR-006..007, ANP-002 |
+| Grab release·Throw | 한손/양손 잡기 유지, 마지막 손 해제·던지기·복귀, 대상 상실/중단 | local 클릭 유지 Grab→자동 상향 들기(상호 잡기 차단)→마지막 손 release Throw 연결. 별도 Lift 입력/선행 조건0; 명시적 Lift API는 독립 검토용으로 보존. 전용 Throw 연출·통합은 후속 | CHR-007, ANP-002 |
+| Wall·Ledge·Beam | 실제 surface를 한손/양손으로 붙잡기·매달리기·흔들림·손 하나 놓기·완전 해제·추락, Jump ClimbAssist 복귀 | 정적 Lip/Facade 한손/양손 실제 접촉·하중 피로·하중 반응 자세·물리 보조2회/350ms와 복귀/해제 검토; 움직이는 표면·Beam·정식 통합 후속 | CHR-011, ANP-002 |
+| AirKick L/R·Dropkick | 준비·공격·복귀, 착지/빗나감/가장자리·벽 충돌, non-Down recovery | 정적 공격 자세만 존재 | AIR-001..002, ANP-002 |
+| Down·Recovery | 앞/뒤/옆·대각선·임의 yaw·경사면, side 정렬→앞/뒤 공통 GetUp, 공간 부족/재피격/중단 | 방향 판별·정렬 target·state 시험만 실행; 실제 GetUp clip·ragdoll 접촉 미구현 | CHR-008..009, ANP-002..003 |
+| 공통 Firearm Grip | template1을 L/R/LR에 적용, 이동 중 잡은 팔 유지·빈 팔 보행, physics recoil·forced release | 공통 팔 뻗기 변형 검토만 실행; Weapon physics 미구현 | FIR-003, ANP-003 |
+| Bat·Hammer | 준비·swing·권한 impact 구간·복귀, 적중/빗나감/벽 충돌·release | 정의; W1 입력/timing 및 Weapon 결과 대기 | WPN-004..006, ANP-003 |
+
+모든 시나리오에서 들어가기·유지하기·나오기뿐 아니라 Down, 잡기 해제, 대상 제거와 Round reset의
+중단 전환을 확인한다. 한 손 Grab 중 다른 손 Punch처럼 좌우 독립 행동도 조합으로 시험한다.
+
+Jump는 Unity Rigidbody·중력·접촉 판정으로 처리하고 수직 속도와 실제 착지 충격에 따라 하체 pose를 계산한다.
+애니메이션의 준비 구간 종료를 기다려 `JumpAccepted`의 권한 impulse를 늦추지 않는다.
+기존 Blender 1.47초 연결 영상과0.22m 이동 궤적은 비교 자료이며 gameplay 수치가 아니다.
+공중·착지 하체 제어는 팔의 Punch/Grab/Grip pose를 덮어쓰지 않는다. Clip frame이 접촉을 판정하지 않는다.
+점프 방향과 Ground/Air 전환 때문에 보행 주기를 처음부터 다시 시작하지 않는다. 착지 압축 중에도
+이동을 막지 않고 현재 속도에 맞춰 Idle/Walk/Sprint로 연결한다. 공중 다리 접기는 착지 전 바닥 거리와
+수직 속도에 따라 미리 풀고, 방향 반전은 실제 수평 속도와 제한된 yaw torque를 따라 연속적으로 처리한다.
+보행 팔 swing은 별도 layer이며 사용 가능한 손에만 적용한다. 점유/공격 중인 팔은 쓰지 않는다.
+현행 시제품의 Shift 배율1.5, 지상/공중 회전 속도360°/240°/s와 보폭·cadence는 START다.
+2026-09-06 초기 재작업에서 보행을 ReadableGait로 만들었다. 발 기준점 들림 약19/21mm,
+앞뒤 이동 폭 약81/104mm와 골반 체중 이동을 사용한다. [재작업 기록](../artifacts/reports/R20_READABLE_GAIT_REWORK_20260906.md)을 따른다.
+이는 기존 속도/주기를 유지한 표현 수정이며 앞선 빠른 발·느린 이동 후보의 채택이 아니다.
+발의 완전한 월드 고정을 위한 [스타일 비교](../artifacts/reports/R20_FOOT_CONTACT_STYLE_REVIEW_20260905.md)는
+검토 후보이며 기본 속도/리듬 변경 승인이 아니다. 정속 직진의 낮은 발 기준점 이동 오차만으로
+8방향·가감속·점프 전환·접촉면 전체 고정 완료를 선언하지 않는다.
+후속 [월드 발 고정 도달 검사](../artifacts/reports/R20_WORLD_FOOT_PLANT_FEASIBILITY_20260906.md)에서 현재 지지 시작점 고정은
+Walk약0.083초·Sprint약0.067초 뒤 도달 범위를 벗어났다. 실제 지지 구간은 약0.308/0.193초다.
+사용자가2026-09-06 비교 후 속도·발놀림 절충안을 당시 프로토타입 기준으로 채택했다. 아래는 그 시점의 설정이며, 현재 Shared Arena는2026-09-10 승인한2배 속도를 사용한다.
+[접지 절충 후보](../artifacts/reports/R20_FOOT_PLANT_CANDIDATE_20260906.md)의 설정은 Walk0.70/Sprint1.05m/s,
+한 발 주기3.0/4.5Hz다. 안정된 평지 지지는 월드 발 기준점을 고정하고 전환·공중·Reset에서 해제한다.
+정속 고정16조건과 기존 점프 전환18조건을 통과했으나, 발바닥 표면 침범 최대6.8mm와 지형별 보정은 후속이다.
+첫 통합 프로토타입의 추격·회피·점프·기본 전투 체감을 사용자와 확인한 뒤 속도/보폭 또는 모델링/리깅 재작업 필요성을 판단한다. 현재 모델·리그를 유지한다.
+[승인 펀치 Unity 조합](../artifacts/reports/R20_UNITY_PUNCH_INTEGRATION_20260906.md)은 한 손의 Clavicle/UpperArm/Forearm/HandLogical만 소유한다.
+보행 팔 swing은 공격 중인 같은 팔을 쓰지 않으며, 다른 동작으로 소유권이 넘어가면 펀치를 중단한다. 준비0.10초·전체0.70초 유지.
+J/K는 독립 표현 검토 명령이고 LMB/RMB tap/hold 계약이나 Authority Hit 판정을 대신하지 않는다.
+후속 [손 타격 검토 장면](../artifacts/reports/R20_HAND_STRIKE_REVIEW_20260906.md)은 LMB/RMB150ms tap/hold를 권한 상태에 연결한다.
+Pending/GrabSeek는 적중0, Punch active 구간만 별도 root 기준 sweep·Target dedupe·bounded impulse를 수행하며 표현은 권한 age를 읽는다.
+Esc 취소·all-up 재무장·Reset과 벽 뒤 차단을 포함한다. GrabSeek는 intent이며 실제 joint·피해/Down·Air attack·최종 입력 map과 network는 후속이다.
+그다음 [Grab 물리 시제품](../artifacts/reports/R20_GRAB_PHYSICS_REVIEW_20260906.md)에서 GrabSeek→contact→Grabbing과 실제 joint·Release/Break를 연결했다.
+사용자 선택은 **하중이 걸릴 때만 피로 누적**이다. 시간만으로 해제하지 않으며 낮은 부하에서 회복한다. 피로·힘 수치는 START다.
+팔은 물리 접촉점을 읽기 전용으로 따라가고, 그립 상실 뒤 held button으로 자동 재획득하지 않는다. 이전 검토에서는 Release impulse가0이었으며, 현재 사용자 결정은 아래 마지막 손 release Throw 규칙으로 대체한다.
+동적 하중의 이동 구동력 보완은 최대2배이며 최고속도·base mass·Sprint의 grip strength는 바꾸지 않는다. 놓으면 보완값을 초기화한다.
+[들기·던지기 공통 물리 검토](../artifacts/reports/R20_LIFT_THROW_PHYSICS_REVIEW_20260906.md)는 명시적인 권한 요청으로 joint 목표를 천천히 이동하고, 던지기 때 본인 손을 먼저 해제한 뒤 질량별 bounded impulse를1회 적용한다.
+후속 사용자 결정은 **클릭 유지로 잡고 버튼을 놓으면 던지기**다. Ctrl와 Lift 완료 조건은 기본 입력에 사용하지 않는다. 초기 자동 들기 제외 결정은 아래 2026-09-11 결정으로 변경했다.
+[Release Throw 입력 검토](../artifacts/reports/R20_RELEASE_THROW_REVIEW_20260906.md)에서 유효한 up edge만 던지기를 승인한다.
+같은 대상은 마지막 본인 손 해제에만1회, 다른 대상은 각 손별1회이며 다른 플레이어의 joint는 제거하지 않는다.
+미획득·오래된/중복 edge·메뉴·Reset·grip/대상/손 제어권 상실·거리 이탈에는 추가 Throw/Strike impulse0이다.
+기존 명시적 Lift API는 이전 물리 비교용이며 기본 조작의 필수 단계가 아니다.
+
+2026-09-17 사용자가 서 있는 상대·상호 잡기 후보를 시각 승인해 로컬2인 잡기 검토2단계를 마치고 다음 진행을 요청했다. [물리 팔 펀치·정밀 접촉 후보](../artifacts/reports/R20_PHYSICAL_PUNCH_CANDIDATE_20260917.md)는 승인된 빠른 펀치를 관절 힘으로 따라가며 실제 손끝 접촉으로만 명중을 기록한다. 짧은 클릭/유지 잡기/해제 던지기를 연결하고 머리2점·몸통/팔다리1점을 누적한다. 이 단계는 첫10점의 Down 요청까지이며 실제8→12몸체 Down·회복 전환과 잡기 유지 인계는 아직 연결하지 않았다. 기존 기본 장면과 정식 캐릭터/네트워크 Gate는 변경하지 않는다.
+
+사용자는 이전 빠른 펀치를 ‘툭 건드리는’ 느낌으로 평가해 체감 승인을 하지 않았다. [준비·가격·힘 전달 재수정 후보](../artifacts/reports/R20_PUNCH_FOLLOW_THROUGH_20260917.md)는 팔꿈치를 먼저 깊게 접고 어깨를 준비한 뒤 빠르게 뻗으며, 명중 직후 시간을 건너뛰어 회수하던 동작과 손의 역방향 보조 impulse를 제거한다. 몸통의 작은 물리 목표·실제 손끝의 fixed-step 경로 판정·시작 거리로 고정하는 초근접 직선 궤적을 함께 검토한다. 제자리/이동 연타는 각각 첫10명중을 확인했다. 전체0.4초·머리2/몸통·팔다리1점·잡기 유지/해제 던지기는 유지한다. PlayMode19/19·EditMode146/146 및15/60/144FPS 결과 일치를 확인했다. 접촉 후 표시 피부 간격 최대6.97mm는 보완 대상으로 남기며, 사용자 체감 승인 전 다음 Down·회복 단계로 진행하지 않는다.
+
+2026-09-18 최신 진행: 사용자가 흐물거리는 펀치의 재설계 진행을 요청했다. [1단계 참고 원형](../artifacts/reports/R20_PUNCH_REFERENCE_20260918.md)을 전용 무물리 장면으로 제작하고 정면/측면·좌우 단발을 검토한다. Rigidbody/Collider0, 대칭·접지·원위치 복귀와 공유 로더 경로3/3 검사를 통과했다. 기존 물리 펀치·판정·모델은 유지한다. 원형 사용자 승인 뒤 자세·속도 기반 물리 추종과 실제 피격 반응을 검토하며, 이번 결과로 전투 타격감 또는 통합 승인을 가정하지 않는다.
+
+2026-09-17 사용자가 누운 상대 접촉 후보를 승인하고 다음 진행을 요청했다. [서 있는 상대·상호 잡기 접촉 후보](../artifacts/reports/R20_STANDING_SKIN_CONTACT_20260917.md)에서 양쪽 피부를 고정 물리 상태로 계산하고, 팔끼리의 같은 접촉이 중복 처리되지 않도록 연결한다. 손별 소유권을 유지해 한쪽 release가 상대 잡기를 없애지 않으며, 상호 자동 들기 차단과 유효 마지막 손 release Throw를 함께 확인한다. 별도 메뉴에서 검토하며 원본 모델·기본 Shared Arena·정식 캐릭터 Gate는 변경하지 않는다.
+
+2026-09-17 사용자가 들기 후보를 시각/체감 승인하고 다음 진행을 요청했다. 승인한80% 보조·들기 목표·즉시 놓기 던지기를 기준으로 [손/피부 접촉 보완 후보](../artifacts/reports/R20_SKIN_CONTACT_CANDIDATE_20260917.md)를 별도 래그돌 검토 장면에 추가한다. 렌더 보간과 분리된 고정 자세에서 실제 피부 삼각형과 접점을 계산하고, 손·전완 주변 접촉면이 상대 물리 몸체에 힘을 전달한다. 원본 모델·팔 길이·래그돌 자세 drive는 바꾸지 않는다. 이 범위는 서 있는 상대/상호 잡기·새 물리 펀치·상태 전환·게임 전체 통합 완료를 뜻하지 않는다.
+
+2026-09-17 사용자가 **잡아 들고 있는 동안만 부분 중력 보조**하는 방식을 승인했다. [래그돌 들기·놓기 던지기 후보](../artifacts/reports/R20_LIMP_LIFT_ASSIST_20260917.md)를 B 기반 별도 장면에 연결했다. 대상의20kg·관성·중력 설정과 자세 drive0을 유지하며, 유효 잡기/보유자 지지 조건에서만 대상당 한 번 보조하고 해제·상실·공중 전환에 중단한다. 상호 잡기는 추가 자동 상승을 차단한다. 현재80% 보조·팔 구동력·목표 높이는 체감 검토용 수치다. 이번 승인은 들기/해제 후보 범위이며 손/피부 접촉면 보완 승인이나 전체2단계 완료,3단계 전체 완료를 뜻하지 않는다. 기본 Shared Arena·승인 자산은 자동 교체하지 않는다.
+
+2026-09-16 B 거리·높이 반응형 선택 후 [어깨 보완·낮은 래그돌 잡기 후보](../artifacts/reports/R20_SHOULDER_REPAIR_LOW_GRAB_20260916.md)를 구현했다. 별도 모델은 원래 메쉬와22개 뼈를 보존하고 `ShoulderBlend_L/R`를 더한24개 피부 뼈를 사용한다. 추가 물리 몸체는 없으며 서 있는 캐릭터8개·래그돌 검토 대상12개 몸체/20kg을 유지한다. 어깨 검사와 네 방향의 낮은 잡기·끌기는 통과했지만 손과 피부 간격이 최대 약3.6cm 남았다. 실제 피부를 따르는 국소 접촉면 보완을 제안했고 진행 여부를 확인 중이다. 전체2단계는 미완료이며 피해 기반 Down·잡기 유지 전환·던지기·회복·기믹 통합 완료가 아니다. 기존 승인 자산과 기본 Shared Arena는 유지한다.
+
+2026-09-13 사용자 진행 승인으로 [잡기 접촉·벽 복귀 후보](../artifacts/reports/R20_GRAB_CONTACT_CANDIDATE_20260913.md)를 별도 검토 장면에 구현했다. 작은 손·팔 보정과 벽 매달림 간격/등반 종료 표현을 시험하며 기본 Shared Arena는 기존 승인본을 유지한다. 안정된 매달림은 개선했으나 잡기 직전·등반 전환·상호 잡기의 관통은 미해결이다. 상호 접촉을 손목·전완으로 바꾸는 선택과 벽 접근·복귀 때 빈팔을 위로 접어 피하는 전환 동작은 사용자 답변 대기이며 아직 규칙으로 채택하지 않는다.
+
+2026-09-11 [접촉 공간 보정안](../artifacts/reports/R20_GRAB_CONTACT_CLEARANCE_20260911.md)은 모션을 과도하게 바꾼다는 사용자 지적으로 철회했다. 상호 접촉 높이14cm 분리, 추가 팔 경로/후퇴/빈 팔 자세와 관련 보정은 현재 규칙이 아니다. 직전 승인된 자동 들기·상호 들기 차단·상향 벽 잡기 버전으로 복원했고 관통 문제는 미해결이다. 충돌 수정은 승인된 모션의 형태와 동작 의도를 유지해야 하며, 이를 바꾸려면 적용 전에 사용자 확인이 필요하다.
+2026-09-11 사용자가 [자동 상향 들기·상호 잡기 차단](../artifacts/reports/R20_AUTOMATIC_LIFT_REVIEW_20260911.md)을 승인했다. 기본 가장자리 시제품에서 접촉 뒤 클릭을 유지하면 0.65초에 걸쳐 최대 0.30CU 위/0.10CU 안쪽으로 joint 목표를 옮긴다. 양손 동일 대상은 한 번만 이동하고 마지막 손 release는 들기 완료를 기다리지 않는다. A→B와 B→A가 동시에 존재하면 해당 쌍 양쪽의 자동 상승을 멈춘다. 이미 진행된 offset은 그 값에서 멈춰 역방향 joint와 충돌하는 위치 보정을 만들지 않고, 상호 관계가 풀리면 이어서 올린다. 천장·장애물, 실제 하중 피로와 Down/Reset 경로를 함께 사용한다. 정적 벽은 위쪽 0.82CU의 실제 접촉을 찾아 잡고, 상승 중 손이 어깨 가까이 내려오면 접촉을 해제해 복귀로 넘긴다.
+사용자 요청으로 [잡기 점프의 무게감 유지 보정](../artifacts/reports/R20_HELD_JUMP_WEIGHT_20260906.md)을 적용했다.
+권한 jump 승인 시 유효한 held Rigidbody에75% 이내의 부분 지원을 제공한다. 대상별 지원 비율과 총 추가 운동량 예산을 함께 제한하고 양손 동일 대상은1회만 적용한다.
+같은20kg 수동 상대 한 명은 약17.54cm, 둘은 약15.85cm로 solo23.19cm보다 낮다. 중력·질량·기본 JumpHeight0.25m와 모델·리그는 유지한다.
+해제/무효 대상·공중 중복 요청에는 추가 보정0이다. 둘 다 직접 점프하는 경우의 협력 상승은 수동 하중 조건과 구분한다.75%는 최종 밸런스 확정이 아닌 현재 START다.
+고정된 Grab/Wall 동작 clip만으로 손을 붙여 두지 않고, Host contact anchor·constraint를 표현하는
+reach/brace/IK와 물리 추종을 함께 검증한다. 팔 길이를 늘리거나 순간이동해 접촉 오차를 숨기지 않는다.
+
+제작은 prototype pose/clip → 전 주기 변형 검토 → Unity 접촉·상태 전환 통합 → 사용자 시각/체감 확인 순서다.
+Unity 동작 영상은 뼈 계산 뒤 실제 player-loop frame을 넘겨 skinned mesh 갱신 후 촬영한다.
+배경을 제외한 캐릭터 mask와 현재 CPU pose를 비교한다. 프레임 개수나 바닥 이동만으로
+팔다리 애니메이션이 화면에 표시됐다고 판단하지 않는다. [캡처 정정 기록](../artifacts/reports/R20_SKINNING_CAPTURE_FIX_20260906.md)을 따른다.
+현행 C1BRW-004/005의 static 범위와 UG-C1B 선행조건은 유지한다. Animation용 Generic import와
+r20 hip helper curve bake는 기존 static FBX preset의 `bake_anim=false`로 대체할 수 없다.
+총기별 Grip·authored fire/recoil·reload·좌우 전용 GetUp clip은 추가하지 않는다.
 
 ### 6.2 Animator↔Ragdoll 전환
 
@@ -468,7 +635,20 @@ Animation Event가 active sweep과 constraint를 열지 않는다.
 - GetUp은 Host clearance와 face-up/down orientation이 유효할 때만 시작한다. VisualRoot를 AuthorityRoot에
   맞추고 in-place GetUp을 재생하며 완료 state도 Host가 확정한다. Clip root delta로 순간이동하지 않는다.
 - DropkickRecovery는 DownEpisode 전환을 사용하지 않는다. 별도 action/recovery phase와 bounded physics
-  pose를 사용하고 끝나면 Airborne 또는 Grounded locomotion으로 돌아간다.
+  tumble을 사용한다. 실제 prone settle이면 같은 orientation-matched face-up/down GetUp presentation을
+  재사용할 수 있지만 DownCount·groggy·Down Trigger는 0이고, upright settle이면 GetUp 없이 Airborne 또는
+  Grounded locomotion으로 돌아간다.
+
+[래그돌·물리 회복 local 후보](../artifacts/reports/R20_RAGDOLL_RECOVERY_REVIEW_20260906.md)는 총20kg의12 body와 실제 query, side 정렬 torque, 기립 보조 force/torque와 locomotion 복귀를 연결한다.
+별도 검토 장면이며 사용자 시각 승인과 정식 Collider/Joint profile, GetUp 연출/게임 통합은 후속이다. source mesh/weight/rig와 충돌 Damage 제외 정책을 유지한다.
+
+2026-09-07 후속 [회복 애니메이션 후보](../artifacts/reports/R20_GETUP_ANIMATION_REVIEW_20260907.md)는 FaceUp/FaceDown clip2를 제작하고 물리 회복 단계와 시각 손 접지에 연결한다.
+준비→기립→마무리 동안 팔·몸통·다리를 표현하고, clip 종료와 실제 물리 안정 전 입력 잠금을 유지한다. Source rig/mesh 변경과 animation의 authority mutation은0이다.
+
+후속 [자연스러운 회복 수정 후보](../artifacts/reports/R20_NATURAL_GETUP_REVIEW_20260907.md)는 무력 구간의 자세 drive0,10 body 구성,골반 중심의 상체/체중 이동/기립 분리와 발 도달 범위 보정을 적용한다.
+회복 clip은2.35초·87채널이며 시각 Pelvis 위치 키를 포함하지만 gameplay Root motion은0이다. 몸통/발목 구성과 복잡한 접촉의 최종 검증은 후속이다.
+
+2026-09-08 사용자 후속 요청으로 [골반·하체 회복 후보](../artifacts/reports/R20_PELVIS_GETUP_REVIEW_20260908.md)의 무릎 접기, 골반 체중 이동, 다리 폄을 보강한다. 두 clip의 길이와 물리 회복/완료 규칙, 기립 후 handoff 보정은 유지하며 시각 승인은 별도다.
 
 ### 6.3 Network·Prediction 경계
 
@@ -490,9 +670,10 @@ Implementation ownership은 다음과 같다.
 
 - `AIR-001`: Ground/Air tap-hold와 `60/80/100ms` chord resolver
 - `AIR-002`: 좌우 Kick·Dropkick 권한 physics·sweep·Hit·recovery와 2·3·4인 기능
-- `ANP-001`: Action Animation Matrix·semantic phase·root-motion authority 0
+- `ANP-001`: 현행 C1BRW-004 기반 Action Animation Matrix·semantic phase·root-motion authority 0
 - `ANP-002`: body locomotion·hand·air Alpha presentation prototype
-- `ANP-003`: Weapon action·Animator↔Ragdoll·network presentation과 2·3·4인 통합
+- `ANP-003`: Weapon action·Animator↔Ragdoll·local authority phase와 offline 2·3·4인 통합
+- `NET-004`, `NET-007`, `NET-011..014`: 실제 peer action·recovery presentation 동기화와 인원별 검증
 - `FIR-001`: Pistol/LongGun ammo·fire mode·SpentPendingCleanup
 - `FIR-002`: visible authority Projectile·fixed-step swept SphereCast
 - `FIR-003`: Host recoil impulse/torque·Muzzle·spread/bloom·ShotSequence recovery
@@ -601,10 +782,12 @@ W1 입력 사용자 승인 뒤에는 실제 전투가 Alpha 범위다.
   TTL·OOB·Round reset·stale generation에서 제거한다.
 - Static/Map hit는 Projectile을 막지만 Lever·Hazard·map control을 작동시키지 않는다. Guest의 Projectile
   path·Hit·Damage·Knockback 주장은 0이다.
-- Pistol은 narrow base spread와 strong single-shot recoil을 사용한다. Host가 bounded Character/Weapon
-  Rigidbody impulse·torque와 Muzzle 방향을 확정하고 Visual은 single recoil pose로만 따른다.
-- LongGun은 accepted Shot마다 deterministic ShotSequence로 bounded `RecoilAccumulator`와 `SpreadBloom`을
-  누적하고 button release 또는 승인 gap 뒤 회복한다. frame rate·Animation·packet order는 값을 바꾸지 않는다.
+- Pistol은 narrow base spread와 strong single-shot recoil을 사용한다. Main arm은 앞으로 뻗은 단순 Grip
+  pose를 유지하고 Host가 bounded Character/Weapon Rigidbody·Joint impulse/torque와 Muzzle 방향을 확정한다.
+- LongGun은 Main+Support arm을 앞으로 뻗은 같은 단순 Grip pose를 사용한다. accepted Shot마다 deterministic
+  ShotSequence로 bounded `RecoilAccumulator`와 `SpreadBloom`을 누적하고 button release 또는 승인 gap 뒤
+  회복한다. 두 Firearm 모두 별도 authored fire/recoil animation clip은 0이며 Host physics가 팔과 Weapon을
+  위로 움직이고 spring/damping으로 복귀시킨다. frame rate·Animation·packet order는 값을 바꾸지 않는다.
 
 ### 9.2 Weapon Supply
 
@@ -671,8 +854,8 @@ damage, knockback, recoil·spread·bloom/recovery, melee swing timing과 balance
 - 2·3·4인 모두 검증
 - 16:9, 16:10, 21:9의 Min/Max Dolly 검증
 - Disconnect grace의 Alive Character는 Camera subject에 남고 실제 elimination 뒤에만 spectator 처리되는지 검증
-- Neutral, Sprint, Strike, 좌우 Kick, Dropkick·DropkickRecovery, Air Grab, down/Ragdoll, GetUp,
-  Pistol single recoil·LongGun sustained/bloom·Spent release와 Weapon 상태 검증
+- Neutral, Sprint, Strike, 좌우 Kick, Dropkick·별도 DropkickRecovery, Air Grab, down/Ragdoll, shared GetUp,
+  Pistol/LongGun forward-arm Grip·physics recoil·Spent release와 Weapon 상태 검증
 - full-body silhouette, 양팔·양다리, terminal, Player marker와 무기 방향 판독
 
 LOD0는 6k/10k/14k 후보, LOD1은 선택 LOD0의 약 50~60%, LOD2는 약 20~30%를 `START`
@@ -696,7 +879,7 @@ material-slot mapping, Skeleton과 mount pivot을 비교한다.
 
 ## 12. 미승인·Alpha tuning 항목
 
-- `C1BRW-002` current r11 globally-faired T-pose의 `UG-C1B-NEUTRAL` 시각 승인, 이후 C1b exact 비율과 전체 gameplay scale
+- r16 Neutral 방향 승인 이후의 C1b exact 비율·공식 Pose·Unity parity와 전체 gameplay scale; Neutral 재승인 요구0
 - Collider·mass·Joint·reach와 `GrabHoldThresholdMs`
 - `DualClickChordWindow 60/80/100ms`, Kick·Dropkick impulse/knockback·steering과 DropkickRecovery tuning
 - Sprint multiplier
@@ -708,8 +891,8 @@ material-slot mapping, Skeleton과 mount pivot을 비교한다.
 - SpentPendingCleanup `START 2~4초`의 최종 cleanup timing; Pistol7·LongGun30·reload0은 확정
 - `PATCH-PROT-001..008` Character modifier의 tuning과 승인 Patch12의 2·3·4인 기능 결과
 - 반복 Supply 시간·cap과 Patch10 second-wave는 승인 `START`; 최종 weapon density·balance는 Alpha Evidence 대기
-- Alpha procedural action pose와 production Punch·Kick·Dropkick·Grab·Throw·Pistol single recoil·LongGun
-  sustained/bloom·Spent release·Ragdoll/GetUp clip polish
+- Alpha procedural action pose와 production Punch·Kick·Dropkick·Grab·Throw·Spent release·Ragdoll/shared
+  GetUp clip polish. Firearm authored fire/recoil clip은 0이고 forward-arm Grip+physics recoil을 검증한다.
 - 후속 패치 icon·Animation·VFX·SFX 표현 방향
 - 최종 Camera profile과 최소 GPU 기준
 

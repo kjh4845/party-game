@@ -1,0 +1,64 @@
+{
+  "date": "2026-09-16",
+  "status": "MOTION_DIRECTION_SELECTED",
+  "selectedMotion": "AdaptiveReach",
+  "stage2MenuUsesSelectedMotion": true,
+  "previousComparisonMenu": "Project Hotfix/Prototypes/Open Previous Active Grab Comparison",
+  "rationale": "Grab a ragdolled opponent and throw outside the arena or toward a gimmick",
+  "remainingIntegrationChecks": [
+    "Acquire reachable low physical body contacts from floor-facing-up/down/side targets; adapt reach and body lowering",
+    "Preserve limp down behavior and hand ownership through upright-to-down transition",
+    "Retain one/two-hand grip during drag/move/turn, then apply one throw on final own-hand release",
+    "Test out-of-bounds and gimmick outcomes while preserving no extra accumulation from ordinary thrown-body collisions"
+  ],
+  "knownLimitation": "Current pre-contact target height is clamped to 0.40..0.85m in the standing-pair lab; ground-ragdoll pickup is not implemented or verified there.",
+  "modelChangesApproved": false,
+  "modelChangesApplied": false,
+  "stage2Complete": false,
+  "stage3Started": false,
+  "defaultArenaChanged": false,
+  "originalAssetHashes": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31",
+    "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60",
+    ".codex_tmp/punch-unity-20260906/ApprovedPunch.json": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac",
+    "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a"
+  },
+  "menuSource": {
+    "path": "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+    "sha256": "77cc10a607cf0097485de27fd1a9411eed196c5e9570e9b9d2e2a7e37c0f78a5",
+    "snapshot": ".codex_tmp/adaptive-grab-adoption-20260916/PhysicsJumpReviewMenu.cs"
+  },
+  "comparisonReport": "artifacts/reports/R20_GRAB_MOTION_CANDIDATES_20260916.json",
+  "playerBuilds": 0,
+  "commits": 0,
+  "pushes": 0,
+  "verification": {
+    "playMode": {
+      "path": ".codex_tmp/adaptive-grab-adoption-20260916/PlayMode.xml",
+      "sha256": "a9b79c0be0027add5bbcdcfb8fa32621a968dd552ae83f865aab966355bcd930",
+      "passed": 2,
+      "failed": 0,
+      "tests": [
+        "CandidateHoldOwnershipAndCancellationRemainImmediate",
+        "CandidatePhysicalReplayIsIndependentOfRenderRate"
+      ]
+    },
+    "documentBaseline": "PASS",
+    "documentWorkflowTestsPassed": 7,
+    "originalAssetsUnchanged": 9
+  },
+  "shoulderRepairFollowUp": {
+    "report": "artifacts/reports/R20_SHOULDER_REPAIR_LOW_GRAB_20260916.json",
+    "isolatedRepairAuthorizedByFollowUpProceed": true,
+    "skinDeformationPassed": true,
+    "lowRagdollGrabImplemented": true,
+    "contactGapUnresolved": true,
+    "stage2Complete": false,
+    "stage3Started": false
+  }
+}

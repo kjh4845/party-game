@@ -1,0 +1,82 @@
+{
+  "status": "FIXED_REVIEW_INPUT_REPEAT",
+  "date": "2026-09-13",
+  "cause": "RecoveryStep synthesized a fresh click after every contact loss, even when the current launch already cleared the roof.",
+  "change": "Keep the original held button through a sufficient launch; rearm only if predicted ballistic apex is below roof plus 0.05CU and another assist remains.",
+  "runtimeChanged": false,
+  "runtimeSourceHashesVerified": 43,
+  "validation": {
+    "playModePassed": 5,
+    "playModeFailed": 0,
+    "file": ".codex_tmp/climb-no-repeat-20260913/PlayMode.xml"
+  },
+  "continuousPlayerHold": [
+    "candidate=False, hands=1, handoff=True, repeatedReachTicks=0, acquisitions=1, initialAcquisitions=1, assists=1, recovered=True",
+    "candidate=False, hands=2, handoff=True, repeatedReachTicks=0, acquisitions=1, initialAcquisitions=1, assists=1, recovered=True",
+    "candidate=False, hands=3, handoff=True, repeatedReachTicks=0, acquisitions=2, initialAcquisitions=2, assists=1, recovered=True",
+    "candidate=True, hands=1, handoff=True, repeatedReachTicks=0, acquisitions=1, initialAcquisitions=1, assists=1, recovered=True",
+    "candidate=True, hands=2, handoff=True, repeatedReachTicks=0, acquisitions=1, initialAcquisitions=1, assists=1, recovered=True",
+    "candidate=True, hands=3, handoff=True, repeatedReachTicks=0, acquisitions=2, initialAcquisitions=2, assists=1, recovered=True"
+  ],
+  "reviewDriver": [
+    "candidate=False, depth=-0.65, regripPresses=0, extraSeekTicks=0, assists=1, recovered=True",
+    "candidate=False, depth=-2.18, regripPresses=1, extraSeekTicks=0, assists=2, recovered=True",
+    "candidate=True, depth=-0.65, regripPresses=0, extraSeekTicks=0, assists=1, recovered=True",
+    "candidate=True, depth=-2.18, regripPresses=1, extraSeekTicks=0, assists=2, recovered=True"
+  ],
+  "wallCases": [
+    "side=0, y=-0.6, returned=True, high=True, assists=1, hand error=2.54631146E-07, release=ClimbHandoff",
+    "side=1, y=-0.6, returned=True, high=True, assists=1, hand error=4.78290133E-07, release=ClimbHandoff",
+    "side=2, y=-0.6, returned=True, high=True, assists=1, hand error=2.67495551E-07, release=ClimbHandoff",
+    "side=3, y=-0.6, returned=True, high=True, assists=1, hand error=5.383012E-07, release=ClimbHandoff",
+    "side=0, y=-1.75, returned=True, high=True, assists=2, hand error=3.58867482E-07, release=ClimbHandoff",
+    "side=1, y=-1.75, returned=True, high=True, assists=2, hand error=4.95113341E-07, release=ClimbHandoff",
+    "side=2, y=-1.75, returned=True, high=True, assists=2, hand error=3.86282238E-07, release=ClimbHandoff",
+    "side=3, y=-1.75, returned=True, high=True, assists=2, hand error=5.448611E-07, release=ClimbHandoff",
+    "side=0, y=-2.18, returned=True, high=True, assists=2, hand error=3.071953E-07, release=ClimbHandoff",
+    "side=1, y=-2.18, returned=True, high=True, assists=2, hand error=5.333284E-07, release=ClimbHandoff",
+    "side=2, y=-2.18, returned=True, high=True, assists=2, hand error=3.42402615E-07, release=ClimbHandoff",
+    "side=3, y=-2.18, returned=True, high=True, assists=2, hand error=5.333284E-07, release=ClimbHandoff"
+  ],
+  "frameRates": [
+    "fps=60, maximumBonePositionDifference=0, recovered=True, assists=1",
+    "fps=15, maximumBonePositionDifference=0, recovered=True, assists=1",
+    "fps=144, maximumBonePositionDifference=0, recovered=True, assists=1"
+  ],
+  "media": {
+    "fps": 60,
+    "framesWritten": 300,
+    "framesDecoded": 300,
+    "seconds": 5,
+    "decodeExit": 0,
+    "video": "/Users/kjh/local_dev/party game/.codex_tmp/climb-no-repeat-20260913/Media/ClimbWithoutRepeatedGrab60.mp4",
+    "rootComparisons": [
+      {
+        "hands": 2,
+        "maximumRootDifference": 0.0
+      },
+      {
+        "hands": 3,
+        "maximumRootDifference": 0.0
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.cs",
+      "snapshot": ".codex_tmp/climb-no-repeat-20260913/SourceSnapshot/LedgeRecoveryReviewTests.cs",
+      "sha256": "12ec9be4494d53a19fe3ae5f390dffc4f1cd0850c5c073dc85a603fab81639ca"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.Regrab.cs",
+      "snapshot": ".codex_tmp/climb-no-repeat-20260913/SourceSnapshot/LedgeRecoveryReviewTests.Regrab.cs",
+      "sha256": "631551f585f9ae8860c53c1ac922931165ceeb058d4aa8074cdc220670bcddb7"
+    }
+  ],
+  "unchangedPendingDecisions": [
+    "Reciprocal wrist/forearm contact",
+    "New arm transition during wall approach and recovery"
+  ],
+  "collisionFixComplete": false,
+  "candidateDefaultAdoption": false
+}

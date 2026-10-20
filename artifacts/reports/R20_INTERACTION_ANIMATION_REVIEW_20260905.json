@@ -1,0 +1,93 @@
+{
+  "recordedDateLocal": "2026-09-05",
+  "scope": "Local interaction animation/IK prototype; not gameplay physics",
+  "candidatePath": ".codex_tmp/interaction-review-20260905/full-r01/R20_InteractionAnimationCandidate_r02.blend",
+  "candidateSha256": "320353151098dc118b8462b30d7fa11eafb0078da24e12c53333ec34db345cde",
+  "authoredActionCount": 2,
+  "preservation": {
+    "r20Unchanged": true,
+    "r16Unchanged": true,
+    "driverCount": 8,
+    "boneCount": 22,
+    "sourceSaved": false
+  },
+  "scenarioSampleCount": 200,
+  "renderCount": 400,
+  "savedActionSampleCount": 98,
+  "savedActionResult": "PASS",
+  "storedQuaternionModeVerified": true,
+  "storedIdleBasePoseVerified": true,
+  "rawReports": {
+    ".codex_tmp/interaction-review-20260905/full-r01/FinalInteractionReview.json": "0b8370c2443bfd55e4d49c4edf54b7530191dde0b8a4f776aa38b2a283f7ed11",
+    ".codex_tmp/interaction-review-20260905/full-r01/SavedActionVerification-r02.json": "70ab4b41e3a6aeadef37c84cfa14f8a7bdac05c172a9dc01b1c387148195dd48"
+  },
+  "scenarios": [
+    {
+      "id": "Punch_L",
+      "samples": 25,
+      "result": "PASS",
+      "maxAnchorErrorMeters": null,
+      "maxSurfaceAdjacentAngleDegrees": 29.800897405425598
+    },
+    {
+      "id": "Punch_R",
+      "samples": 25,
+      "result": "PASS",
+      "maxAnchorErrorMeters": null,
+      "maxSurfaceAdjacentAngleDegrees": 29.800897405425598
+    },
+    {
+      "id": "Grab_L",
+      "samples": 25,
+      "result": "PASS",
+      "maxAnchorErrorMeters": 9.996002811937585e-08,
+      "maxSurfaceAdjacentAngleDegrees": 23.149469653917713
+    },
+    {
+      "id": "Grab_R",
+      "samples": 25,
+      "result": "PASS",
+      "maxAnchorErrorMeters": 9.996002811937585e-08,
+      "maxSurfaceAdjacentAngleDegrees": 23.150442955874443
+    },
+    {
+      "id": "Grab_LR",
+      "samples": 25,
+      "result": "PASS",
+      "maxAnchorErrorMeters": 9.996002811937585e-08,
+      "maxSurfaceAdjacentAngleDegrees": 23.150442955874443
+    },
+    {
+      "id": "Wall_L",
+      "samples": 25,
+      "result": "PASS",
+      "maxAnchorErrorMeters": 1.0848209096909341e-07,
+      "maxSurfaceAdjacentAngleDegrees": 28.699123005505427
+    },
+    {
+      "id": "Wall_R",
+      "samples": 25,
+      "result": "PASS",
+      "maxAnchorErrorMeters": 1.0848209096909341e-07,
+      "maxSurfaceAdjacentAngleDegrees": 28.693611042845227
+    },
+    {
+      "id": "Wall_LR",
+      "samples": 25,
+      "result": "PASS",
+      "maxAnchorErrorMeters": 1.0848209096909341e-07,
+      "maxSurfaceAdjacentAngleDegrees": 28.699123005505427
+    }
+  ],
+  "userVisualApproval": false,
+  "limitations": [
+    "Kinematic fixtures do not test contact, mass, gravity, hit or network authority.",
+    "Root offsets during hold are fixture inputs, not authored root-motion curves.",
+    "Frame samples are checked; subframe/Unity import and user visual approval remain pending.",
+    "Blender Action replay only; no FBX/Unity clip import, contact/hit authority or visual approval."
+  ],
+  "sourceScripts": {
+    "tools/blender/review_c1b_rw020_interactions.py": "4279fbcc60946f3aede9b422b47e8e3960c779e5ffc27bb28d27ed94506949e3",
+    "tools/blender/verify_c1b_rw020_interaction_actions.py": "940ae0e813f403f3161850353cef19bde0da1d043cad788333ae035f68ae2162"
+  }
+}

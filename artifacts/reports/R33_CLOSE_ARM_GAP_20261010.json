@@ -1,0 +1,175 @@
+{
+  "date": "2026-10-10",
+  "status": "APPLIED_TO_LOCAL_BODYSTRIKE_PROTOTYPE",
+  "visualApproved": false,
+  "request": "어깨를 원래 폭과 형태로 되돌리고, 팔과 몸통 사이 틈을 거의 없게 줄인다.",
+  "implementation": "원래 r28 어깨 좌표·24개 뼈·가중치·동작을 유지하고 겨드랑이 아래 몸통 옆면만 좌우 대칭으로 보충한다. 팔 추종이 적은 몸통 영역을 선택하고 완만한 경계로 연결한다.",
+  "adoptedCandidate": "CandidateC",
+  "localFill": {
+    "sourceSha256": "214e736547b93c08168ca8c0455c263122108fe641a8a3b2befdb93fce5b131b",
+    "candidateSha256": "563be29d7a0abc422dbc703cba90e64c21347a8a9a6cd048c318997ba096ed45",
+    "transportSha256": "454d01d8c60af92451c0c5063947e68ec9ee1bf54497531477784688eaf3a17c",
+    "maximumNeutralFillMeters": 0.016516507207644218,
+    "changedVertices": 18280,
+    "shoulderOutlineProtected": true,
+    "rigWeightsTopologyHeadPreserved": true,
+    "mirrorError": 0.0,
+    "visualApproved": false
+  },
+  "nativeValidation": {
+    "passed": true,
+    "originalShoulderAndLowerBodyCoordinatesProtected": true,
+    "headRigWeightsTopologyActionsPreserved": true,
+    "originalPosePositionDeltasPreserved": true,
+    "nativeTransportBaseAndPosePositionsMatch": true,
+    "maximumNativeKeyRoundingError": 2.9802322387695312e-08,
+    "mirrorError": 0.0,
+    "candidateSha256": "563be29d7a0abc422dbc703cba90e64c21347a8a9a6cd048c318997ba096ed45",
+    "transportSha256": "454d01d8c60af92451c0c5063947e68ec9ee1bf54497531477784688eaf3a17c"
+  },
+  "model": {
+    "blend": "BlenderSource/Characters/C1B-RW-033-close-arm-gap/CHR_MasterCharacter_C1B_CloseArmGap_r33.blend",
+    "transport": "BlenderSource/Characters/C1B-RW-033-close-arm-gap/CloseGapCharacter.bytes"
+  },
+  "defaultMenus": [
+    "Project Hotfix/Prototypes/Open Physical Punch Candidate",
+    "Project Hotfix/Prototypes/Open Body Impact Candidate"
+  ],
+  "menuSource": "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+  "sourcePreservation": {
+    "baselineFiles": 118,
+    "unchangedFiles": 117,
+    "onlyChangedFile": "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+    "change": "BodyStrike 모델 경로 한 줄 변경"
+  },
+  "recordedAcceptedMotionHashes": {
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Shoulders.cs": "a340879eb67beb256eb2d1183991b766c7df3c61a05afd3e3d4357a2bf5502a7",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs": "515783237e7ce52b3020aaf97f0bb8f590bc627f65c00a0dcc5a1a18609cb823",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Impact.cs": "d92266e159ae019ef390de7971a31f92afa1f7c153b7c71b26c7dddc3e692952",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.NaturalShoulder.cs": "fd9fdb2c582eefcc409ce4ba02a78bbb6e15c0c237538797a044c19e236dd5b1",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Punch.cs": "8c439127ea2cd02d2087d8f3cb540b97b354568435489f14efc837871b9efa04",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.cs": "4578818863197339e7f077e0df3317dd7befb0e290ff3b2dfc3ee0ca7e9a4d3b",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs": "fd0c444da4bd05f262b7392a6111324ae144bd65e98d0511dfa526ec3684fb16",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchFeedbackReview.cs": "f0584878d0f8af1aba6292efa4bad9c239fcbc94248007986645b3341c5029e7",
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralJumpPose.cs": "ef81a733b37877b6dfeef3596e004f1ac0a094808d49bbac213014f87bcba688"
+  },
+  "originalR28Hashes": {
+    "BlenderSource/Characters/C1B-RW-028-cylindrical-upper-arms/CHR_MasterCharacter_C1B_CylindricalArms_r28.blend": "214e736547b93c08168ca8c0455c263122108fe641a8a3b2befdb93fce5b131b",
+    "BlenderSource/Characters/C1B-RW-028-cylindrical-upper-arms/CylindricalCharacter.bytes": "a2ad7474a6d9678593d5b5bbab30c01c7a306ed139acbd8e33325128f5d9bbaf"
+  },
+  "frontScreenshotCheck": {
+    "backgroundRGB": [
+      31,
+      43,
+      59
+    ],
+    "shoulderSilhouettePixelsUnchangedAboveRow400": true,
+    "gaps": [
+      {
+        "side": "left",
+        "regionPixels": [
+          385,
+          450,
+          410,
+          550
+        ],
+        "originalBackgroundPixels": 208,
+        "candidateBackgroundPixels": 46
+      },
+      {
+        "side": "right",
+        "regionPixels": [
+          690,
+          450,
+          715,
+          550
+        ],
+        "originalBackgroundPixels": 208,
+        "candidateBackgroundPixels": 47
+      }
+    ],
+    "interpretation": "같은 정면 카메라의 두 지정 영역에서 배경 픽셀416개가93개로 감소했다. 해당 구도의 틈 크기이며 실제 3D 최소 거리나 시각 승인이 아니다. 어깨 윤곽은 같은 픽셀 위치를 유지한다."
+  },
+  "playMode": {
+    "passed": 9,
+    "failed": 0,
+    "xml": "artifacts/evidence/r33-close-arm-gap-20261010/PlayMode.xml",
+    "tests": [
+      "BodyStrikeReactionsFollowContactAndRecover",
+      "BodyStrikeSuppressionClearsReactionAndPelvisOffset",
+      "CancellationStopsPunchAndRestoresGrabLimits",
+      "CaptureArmVolumeAudit",
+      "CapturePhysicalPunchScenarios",
+      "CorrectedContactSurfaceMatchesSkinAndIgnoresRenderInterpolation",
+      "HoldAndThrowNeverBecomePunchAndFreeHandCanPunch",
+      "PhysicalPunchReplayMatches15_60_144Fps",
+      "ShoulderSocketsFollowReachAndResetTogetherWithSkin"
+    ]
+  },
+  "menuCompileValidation": {
+    "passed": 1,
+    "failed": 0,
+    "xml": "artifacts/evidence/r33-close-arm-gap-20261010/MenuCompile.xml",
+    "meaning": "기본 메뉴 경로 수정 후 Unity 재컴파일 및 기존 EditMode 검사 확인. 메뉴의 파일 존재와 한 줄 변경은 별도 확인했다."
+  },
+  "combatScenarios": [
+    {
+      "name": "LeftBody",
+      "maximumAdjacentFaceAngle": 30.210596084594727,
+      "hits": 3
+    },
+    {
+      "name": "RightBody",
+      "maximumAdjacentFaceAngle": 29.677642822265625,
+      "hits": 3
+    },
+    {
+      "name": "Head",
+      "maximumAdjacentFaceAngle": 30.31752586364746,
+      "hits": 3
+    },
+    {
+      "name": "Far",
+      "maximumAdjacentFaceAngle": 30.102201461791992,
+      "hits": 0
+    },
+    {
+      "name": "Wall",
+      "maximumAdjacentFaceAngle": 37.8681755065918,
+      "hits": 0
+    },
+    {
+      "name": "GrabPunch",
+      "maximumAdjacentFaceAngle": 44.642662048339844,
+      "hits": 1
+    },
+    {
+      "name": "Alternating",
+      "maximumAdjacentFaceAngle": 39.10490798950195,
+      "hits": 10
+    },
+    {
+      "name": "Moving",
+      "maximumAdjacentFaceAngle": 40.91441345214844,
+      "hits": 10
+    },
+    {
+      "name": "Exchange",
+      "maximumAdjacentFaceAngle": 30.28957748413086,
+      "hits": 3
+    }
+  ],
+  "armPoseSurfaceAudit": "artifacts/evidence/r33-close-arm-gap-20261010/ArmPoseSurfaceAudit.json",
+  "previews": "artifacts/previews/r33-close-arm-gap-20261010",
+  "rejectedCandidateB": {
+    "reason": "GrabPunch에서 표면각85.87도로 기준60도 실패. 채움 영역을 몸통 쪽으로 좁히고 더 완만하게 연결한 CandidateC로 교체했다.",
+    "evidence": ".codex_tmp/close-arm-gap-20261010/CandidateB/PlayMode.xml"
+  },
+  "limits": [
+    "원래 어깨를 복구하고 틈을 줄이는 국소 수정이다. r28의 깊은 어깨·팔꿈치 굽힘에서 나타나는 기존 접힘·단면 축소를 해결한 전체 리깅 교체로 취급하지 않는다.",
+    "실제 Unity 이미지로 외형을 확인했으나 사용자 시각 승인은 아직 없다.",
+    "정식 Player 빌드와 네트워크 통합 검증은 이번 변경 범위에 포함하지 않았다."
+  ],
+  "commits": false,
+  "pushes": false
+}

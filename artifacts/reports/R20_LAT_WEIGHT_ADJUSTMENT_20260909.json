@@ -1,0 +1,219 @@
+{
+  "status": "PASS_WEIGHT_ONLY_VISUAL_CANDIDATE",
+  "date": "2026-09-09",
+  "userRequest": "펀치 중 광배 부근 몸통이 팔을 따라 움직이는 현상 조정",
+  "candidate": {
+    "status": "TECHNICAL_PASS_VISUAL_CANDIDATE",
+    "sourceCandidate": "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/candidate-r07",
+    "blenderFile": "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/candidate-r07/R20_LatWeightCandidate.blend",
+    "transport": "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes",
+    "transportSha256": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a",
+    "userVisualApproval": false
+  },
+  "source": {
+    "path": "/Users/kjh/local_dev/party game/.codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend",
+    "sha256": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47"
+  },
+  "changes": {
+    "vertexCount": 66336,
+    "groups": [
+      "Spine",
+      "Chest",
+      "Clavicle_L",
+      "Clavicle_R",
+      "UpperArm_L",
+      "UpperArm_R"
+    ],
+    "maximumInfluences": 4,
+    "maximumMirrorError": 1.7881393432617188e-07,
+    "transfer": "Existing shoulder/upper-arm weights redistributed proportionally to existing Spine/Chest slots",
+    "strength": 0.92,
+    "heightGateMeters": [
+      0.28,
+      0.38,
+      0.48,
+      0.64
+    ],
+    "sideGateAbsXMeters": [
+      0.04,
+      0.08,
+      0.12,
+      0.19
+    ],
+    "positionsTrianglesBonesAndHeadUnchanged": true,
+    "lowerWeightsUnchanged": true,
+    "sourcePunchCurvesUnchanged": true,
+    "punchSeconds": 0.5
+  },
+  "measurements": {
+    "side_back": {
+      "vertices": 8447,
+      "beforeMean": 0.02658869804051292,
+      "afterMean": 0.010877981405707884,
+      "beforeMax": 0.07726101946528854,
+      "afterMax": 0.04944436840463031
+    },
+    "upper_armpit_back": {
+      "vertices": 6303,
+      "beforeMean": 0.02549766166690969,
+      "afterMean": 0.01693500807637603,
+      "beforeMax": 0.07782801373615196,
+      "afterMax": 0.05064241973438741
+    }
+  },
+  "sideMeanReductionPercent": 59.08795011649981,
+  "blenderQA": {
+    "review": ".codex_tmp/lat-weight-20260909/candidate-r07/LatWeightReview.json",
+    "poseSamples": 28,
+    "selfIntersectionSamples": 6,
+    "result": "PASS"
+  },
+  "unityComparison": {
+    "status": "PASS",
+    "changedVertices": 66336,
+    "maximumSurfaceAngle": 23.3832989,
+    "maximumBoneAngleError": 0,
+    "punchSeconds": 0.5
+  },
+  "unityRegression": {
+    "status": "PASS",
+    "cases": [
+      {
+        "mode": "Walk",
+        "surfaceAngle": 42.65916,
+        "baselineAngle": 42.6598358
+      },
+      {
+        "mode": "Run",
+        "surfaceAngle": 41.78793,
+        "baselineAngle": 41.788372
+      },
+      {
+        "mode": "Grab",
+        "surfaceAngle": 40.4223824,
+        "baselineAngle": 34.4910774
+      },
+      {
+        "mode": "FaceUp",
+        "surfaceAngle": 30.869709,
+        "baselineAngle": 30.8694782
+      },
+      {
+        "mode": "FaceDown",
+        "surfaceAngle": 30.8595676,
+        "baselineAngle": 30.8593311
+      },
+      {
+        "mode": "LeftSide",
+        "surfaceAngle": 30.3635788,
+        "baselineAngle": 30.3639317
+      },
+      {
+        "mode": "RightSide",
+        "surfaceAngle": 30.6730614,
+        "baselineAngle": 30.67282
+      }
+    ]
+  },
+  "tests": {
+    "Unity-four-directions": {
+      "xml": ".codex_tmp/lat-weight-20260909/Unity-four-directions.xml",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 39.5262476
+    },
+    "FastPunch-regression": {
+      "xml": ".codex_tmp/lat-weight-20260909/FastPunch-regression.xml",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 8.1607471
+    },
+    "EditMode-final": {
+      "xml": ".codex_tmp/lat-weight-20260909/EditMode-final.xml",
+      "passed": 125,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 0.6837553
+    }
+  },
+  "transportParity": {
+    "status": "PASS",
+    "bindBonesAndHierarchyIdentical": true,
+    "bodyPositionsNormalsTrianglesByteIdentical": true,
+    "headAllBytesIdentical": true,
+    "originalSourcesUnchanged": true
+  },
+  "media": [
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Media/FrontComparison.gif",
+      "frames": 82,
+      "fps": 30,
+      "speed": 1,
+      "durationMs": 3730,
+      "finalHoldMs": 1000
+    },
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Media/BackComparison.gif",
+      "frames": 82,
+      "fps": 30,
+      "speed": 1,
+      "durationMs": 3730,
+      "finalHoldMs": 1000
+    }
+  ],
+  "sourceSnapshots": {
+    "tools/blender/create_c1b_rw020_lat_weight_candidate.py": {
+      "path": ".codex_tmp/lat-weight-20260909/SourceSnapshot/tools/blender/create_c1b_rw020_lat_weight_candidate.py",
+      "sha256": "96570120c89d88d57765c8094e20d2d596147d107adfd91387a0a78c0acf908a"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpReview.cs": {
+      "path": ".codex_tmp/lat-weight-20260909/SourceSnapshot/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpReview.cs",
+      "sha256": "902569b48f8db4554e486527a5396b5d230d9aafe857088b4a173a1b8dd79a0d"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": {
+      "path": ".codex_tmp/lat-weight-20260909/SourceSnapshot/Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+      "sha256": "aa9495cfc580fd82c8c7265c8a9fcf4c66335ef98647382b908e17da22869b23"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LatWeightCandidateTests.cs": {
+      "path": ".codex_tmp/lat-weight-20260909/SourceSnapshot/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LatWeightCandidateTests.cs",
+      "sha256": "e2775e968b611d5c48a8720b10e61ed0070d97bb554f831926cb023ce3b9e4df"
+    }
+  },
+  "unchangedOriginalSources": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31"
+  },
+  "unchangedApprovedTransport": {
+    "path": "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes",
+    "sha256": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60"
+  },
+  "unchangedPunchLibrary": {
+    "path": ".codex_tmp/punch-unity-20260906/ApprovedPunch.json",
+    "sha256": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac"
+  },
+  "documentation": {
+    "baseline": "PASS",
+    "workflowTests": 7,
+    "diffCheck": "PASS",
+    "generatorSyntax": "PASS"
+  },
+  "discardedCandidates": {
+    "r01/r02": "Broad transfer caused armpit folds/intersections.",
+    "r03": "Safe Blender fallback with smaller improvement.",
+    "r04/r05": "Blender passed; Unity two-hand hold peaked at60.998 degrees, rejected. r05 additionally preserved untouched raw slots.",
+    "r06": "Reduced strength still reached47.699 degrees in actual Unity hold, rejected.",
+    "r07": "Retains lower-lat correction, fades shoulder transfer over0.48–0.64m; actual hold40.422 degrees, all tested modes below45."
+  },
+  "limitations": [
+    "Regional displacement metrics are sampled poses, not a bound for every possible pose.",
+    "Technical approval only; original approved sources and default candidate menu still use prior weights until a visual choice.",
+    "Sampling and six Blender self-intersection checks do not establish absence of every possible mesh intersection.",
+    "No physical tuning, damage policy, animation curve, rig topology, Player Build, commit or push change."
+  ]
+}

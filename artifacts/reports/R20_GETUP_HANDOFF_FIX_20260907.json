@@ -1,0 +1,121 @@
+{
+  "status": "PASS",
+  "scope": "Only post-standing handoff for the current animation recovery path. Legacy physics-only behavior retained.",
+  "before": {
+    "cases": [
+      {
+        "name": "FaceUp",
+        "postYawRange": 0.0010986328125,
+        "postAngularSpeed": 0.0006160157499834895,
+        "postHeightRange": 0.006384134292602539,
+        "moveDistance": 0.27184808254241943,
+        "completionStep": 241
+      },
+      {
+        "name": "FaceDown",
+        "postYawRange": 1.9181785583496094,
+        "postAngularSpeed": 0.44687315821647644,
+        "postHeightRange": 0.006356418132781982,
+        "moveDistance": 0.27187052369117737,
+        "completionStep": 241
+      },
+      {
+        "name": "LeftSide",
+        "postYawRange": 312.26837158203125,
+        "postAngularSpeed": 49.97887420654297,
+        "postHeightRange": 0.006383538246154785,
+        "moveDistance": 0.24495063722133636,
+        "completionStep": 281
+      },
+      {
+        "name": "RightSide",
+        "postYawRange": 1.5606842041015625,
+        "postAngularSpeed": 0.733471691608429,
+        "postHeightRange": 0.006351053714752197,
+        "moveDistance": 0.27187076210975647,
+        "completionStep": 267
+      }
+    ]
+  },
+  "after": {
+    "cases": [
+      {
+        "name": "FaceUp",
+        "postYawRange": 0.0,
+        "postAngularSpeed": 2.540981292042943e-08,
+        "postHeightRange": 0.00018736720085144043,
+        "moveDistance": 0.2727510631084442,
+        "completionStep": 241
+      },
+      {
+        "name": "FaceDown",
+        "postYawRange": 0.6707305908203125,
+        "postAngularSpeed": 0.17933973670005798,
+        "postHeightRange": 0.000179976224899292,
+        "moveDistance": 0.2718679904937744,
+        "completionStep": 241
+      },
+      {
+        "name": "LeftSide",
+        "postYawRange": 0.0,
+        "postAngularSpeed": 1.895071477520105e-08,
+        "postHeightRange": 0.00018727779388427734,
+        "moveDistance": 0.27190592885017395,
+        "completionStep": 281
+      },
+      {
+        "name": "RightSide",
+        "postYawRange": 0.0,
+        "postAngularSpeed": 2.020958476123269e-07,
+        "postHeightRange": 0.00017902255058288574,
+        "moveDistance": 0.27187010645866394,
+        "completionStep": 267
+      }
+    ]
+  },
+  "tests": {
+    "PlayMode": {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/getup-handoff-20260907/AllPlayMode-final.xml",
+      "passed": 37,
+      "failed": 0,
+      "skipped": 0
+    },
+    "EditMode": {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/getup-handoff-20260907/AllEditMode-final.xml",
+      "passed": 110,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "unchangedAssetHashes": {
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "eab9a3c0fc249e90f5e0d0b04b2609640840a7ca103ccdcbb50e8cfbfa8ce735",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f0ae70cdd275c1ae11f7c87344e8d09db00f562cef4d74960ec06fb4093a5ae3",
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091"
+  },
+  "sourceSnapshots": {
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/RagdollRecoveryReview.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/getup-handoff-20260907/SourceSnapshot/RagdollRecoveryReview.cs",
+      "sha256": "66653f367d7ee9a45599154e8caa2e177ce67cd3e1f376fe1c449fc1b5a3f706"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/GetUpHandoffTests.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/getup-handoff-20260907/SourceSnapshot/GetUpHandoffTests.cs",
+      "sha256": "8d825803b0f0be8f284e8effb18a236e31eb6f944973e80e0dca2e9888fa4981"
+    }
+  },
+  "media": {
+    "before": "/Users/kjh/local_dev/party game/.codex_tmp/natural-getup-20260907/Review-20260906-190341",
+    "after": "/Users/kjh/local_dev/party game/.codex_tmp/natural-getup-20260907/Review-20260907-051332",
+    "frames": [
+      80,
+      139
+    ],
+    "fps": 20,
+    "sourceSeconds": 3,
+    "holdAndRepeatSeconds": 1
+  },
+  "comparisonGif": "/Users/kjh/local_dev/party game/.codex_tmp/getup-handoff-20260907/Media/GetUpHandoffComparison.gif",
+  "limitations": "Local Unity prototype verification; production integration and subjective gameplay acceptance are outside this scoped fix."
+}

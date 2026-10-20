@@ -1,0 +1,11 @@
+{
+  "status": "APPROVED_POLICY_START_TUNING",
+  "date": "2026-09-06",
+  "userDecision": "힘을 버틸 때만 누적 (권장)",
+  "policy": [
+    "Load accumulates grip fatigue; elapsed holding time alone does not.",
+    "Low load recovers accumulated fatigue.",
+    "Release, target loss, overload, out-of-reach and reset release the constraint without synthesized throw/strike impulse."
+  ],
+  "tuningStatus": "Threshold, accumulation/recovery rates and force values are prototype START, not final balance approval."
+}

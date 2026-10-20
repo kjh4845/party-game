@@ -1,0 +1,167 @@
+{
+  "status": "USER_STYLE_DECISION_REQUIRED",
+  "date": "2026-09-05",
+  "appliedToDefault": false,
+  "defaultSpeedMatchedGait": false,
+  "rawEvidence": {
+    "path": ".codex_tmp/foot-contact-20260905/Compare-20260905-132009/FootContactComparison.json",
+    "sha256": "8e3c340b613b9726739347ff97080c75b39ca96d777df76b4555f9816523844c"
+  },
+  "kinematicAudit": {
+    "path": ".codex_tmp/foot-contact-20260905/KinematicAudit.json",
+    "sha256": "b0b69a08f4c0087ecb50446fe3c7987642ce2ea44989f05627bccbe4409ca826"
+  },
+  "cases": [
+    {
+      "style": "Current",
+      "mode": "Walk",
+      "configuredSpeed": 1.5,
+      "configuredCadence": 1.649999976158142,
+      "meanRootSpeed": 1.4019008874893188,
+      "meanStanceSlipSpeed": 1.3054267168045044,
+      "maximumJointStep": 4.264430522918701,
+      "maximumReachCorrection": 0.0,
+      "maximumFootError": 4.845312560064485e-07,
+      "maximumPenetration": 8.987262845039368e-08,
+      "measuredStanceIntervals": 114
+    },
+    {
+      "style": "FastFeet",
+      "mode": "Walk",
+      "configuredSpeed": 1.5,
+      "configuredCadence": 6.0,
+      "meanRootSpeed": 1.4019008874893188,
+      "meanStanceSlipSpeed": 6.3030233832250815e-06,
+      "maximumJointStep": 28.77480125427246,
+      "maximumReachCorrection": 0.0,
+      "maximumFootError": 5.466442871693289e-07,
+      "maximumPenetration": 0.0037797195836901665,
+      "measuredStanceIntervals": 97
+    },
+    {
+      "style": "SlowerTravel",
+      "mode": "Walk",
+      "configuredSpeed": 0.4000000059604645,
+      "configuredCadence": 1.649999976158142,
+      "meanRootSpeed": 0.3019002377986908,
+      "meanStanceSlipSpeed": 2.544424887673813e-06,
+      "maximumJointStep": 7.839031219482422,
+      "maximumReachCorrection": 0.0,
+      "maximumFootError": 1.3328003944934608e-07,
+      "maximumPenetration": 0.00020736129954457283,
+      "measuredStanceIntervals": 115
+    },
+    {
+      "style": "Current",
+      "mode": "Sprint",
+      "configuredSpeed": 2.25,
+      "configuredCadence": 2.5,
+      "meanRootSpeed": 2.1519007682800293,
+      "meanStanceSlipSpeed": 1.918866515159607,
+      "maximumJointStep": 11.63998031616211,
+      "maximumReachCorrection": 0.0,
+      "maximumFootError": 4.996335292162257e-07,
+      "maximumPenetration": 2.1746382117271423e-07,
+      "measuredStanceIntervals": 110
+    },
+    {
+      "style": "FastFeet",
+      "mode": "Sprint",
+      "configuredSpeed": 2.25,
+      "configuredCadence": 9.0,
+      "meanRootSpeed": 2.1519007682800293,
+      "meanStanceSlipSpeed": 1.1066058505093679e-05,
+      "maximumJointStep": 42.257869720458984,
+      "maximumReachCorrection": 0.0,
+      "maximumFootError": 5.53465838493139e-07,
+      "maximumPenetration": 0.004229960963129997,
+      "measuredStanceIntervals": 86
+    },
+    {
+      "style": "SlowerTravel",
+      "mode": "Sprint",
+      "configuredSpeed": 0.6000000238418579,
+      "configuredCadence": 2.5,
+      "meanRootSpeed": 0.501899778842926,
+      "meanStanceSlipSpeed": 3.340350076541654e-06,
+      "maximumJointStep": 11.319546699523926,
+      "maximumReachCorrection": 0.0,
+      "maximumFootError": 1.5717016310645704e-07,
+      "maximumPenetration": 0.0018345285207033157,
+      "measuredStanceIntervals": 111
+    }
+  ],
+  "video": {
+    "path": ".codex_tmp/foot-contact-20260905/Compare-20260905-132009/FootContactComparison.mp4",
+    "sha256": "d23acd038e34b33ecc9ce9aeecca6da6a993c67add4c6d8b776e70ba245fd54b"
+  },
+  "videoMetadata": {
+    "path": ".codex_tmp/foot-contact-20260905/Compare-20260905-132009/FootContactComparison.metadata.json",
+    "sha256": "1cc137018cb10b10ad4a12d3f6ab893389883c056b648b39d09d0d57e509e782"
+  },
+  "gif": {
+    "path": ".codex_tmp/foot-contact-20260905/Compare-20260905-132009/FootContactComparison.gif",
+    "sha256": "e9da23e5190b8e87f6444a95c2dcedc3d87bc06ceef1ea011f8eb79571d2484d"
+  },
+  "poster": {
+    "path": ".codex_tmp/foot-contact-20260905/Compare-20260905-132009/FootContactComparison.png",
+    "sha256": "dac90b922a3ab36249863732d4789070306f381cb185fd79098bbaaae54eb899"
+  },
+  "packaging": {
+    "path": ".codex_tmp/foot-contact-20260905/package_comparison.py",
+    "sha256": "53257d430ca92b42ba0e56b9af0ff1514099e3941393662e7065e64bfb31b8f2"
+  },
+  "videoWriter": {
+    "path": ".codex_tmp/foot-contact-20260905/write_video.swift",
+    "sha256": "8fba9d4153146e3728c24d5b670c6a2ead2027cda0e4f2b10536dd96b90c5ae9"
+  },
+  "videoVerifier": {
+    "path": ".codex_tmp/foot-contact-20260905/verify_video.swift",
+    "sha256": "213314336286a99b52dcdc91b57d3be34f58326b872f4ad42373d39ccc7d2a09"
+  },
+  "sources": [
+    {
+      "current": {
+        "path": "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralJumpPose.cs",
+        "sha256": "47072f92e3e7730e83038f806950c0668e55f02b47ab46b7d31a00ed9b24eda3"
+      },
+      "snapshot": {
+        "path": ".codex_tmp/foot-contact-20260905/Compare-20260905-132009/SourceSnapshot/Runtime/Presentation/ProceduralJumpPose.cs",
+        "sha256": "47072f92e3e7730e83038f806950c0668e55f02b47ab46b7d31a00ed9b24eda3"
+      }
+    },
+    {
+      "current": {
+        "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/FootContactComparisonTests.cs",
+        "sha256": "1f4a584dbca486ee1eeabac8bf0d7bb143a4bea9cabb2a9449a6b7d118e934af"
+      },
+      "snapshot": {
+        "path": ".codex_tmp/foot-contact-20260905/Compare-20260905-132009/SourceSnapshot/Tests/PlayMode/Physics/FootContactComparisonTests.cs",
+        "sha256": "1f4a584dbca486ee1eeabac8bf0d7bb143a4bea9cabb2a9449a6b7d118e934af"
+      }
+    }
+  ],
+  "playMode": {
+    "passed": 16,
+    "failed": 0,
+    "skipped": 0,
+    "evidence": {
+      "path": ".codex_tmp/foot-contact-20260905/AllPlayMode-r02.xml",
+      "sha256": "921d4e3ce75aeb57bb0e7c39a1d5228c4bcec1c6fb7cbfd70972d38066cbc3ae"
+    }
+  },
+  "editMode": {
+    "passed": 85,
+    "failed": 0,
+    "evidence": {
+      "path": ".codex_tmp/foot-contact-20260905/AllEditMode-r01.xml",
+      "sha256": "193daf0a11264655875a85d3b565f9a4cb0187540e3576f0f31a61c3886bb83f"
+    }
+  },
+  "limitations": [
+    "Measured foot-bone reference-point slip during steady straight stance; not complete contact-surface or all-direction locking.",
+    "FastFeet exceeds the preceding 60fps pose-change budget; smoother transitions remain necessary.",
+    "SlowerTravel changes gameplay pace substantially.",
+    "No candidate applied to defaults; user choice required before movement/stride style adoption."
+  ]
+}

@@ -1,0 +1,1037 @@
+{
+  "date": "2026-09-17",
+  "status": "PHYSICAL_PUNCH_AND_CONTACT_SCORING_CANDIDATE_VISUAL_REVIEW_PENDING",
+  "authorization": "User accepted standing/reciprocal grabbing and requested the next step: physical-arm punch and precise strike connection.",
+  "standingContactVisualApproved": true,
+  "stage3Complete": false,
+  "defaultArenaChanged": false,
+  "actualDownHandoverImplemented": false,
+  "profile": {
+    "sourceClipDurationSeconds": 0.7,
+    "playbackRate": 1.4,
+    "actionSeconds": 0.5,
+    "holdThresholdSeconds": 0.15,
+    "sourceHitWindow": [
+      0.1,
+      0.23333333333333334
+    ],
+    "handTerminalRadiusM": 0.03,
+    "contactToleranceM": 0.002,
+    "minimumRelativeForwardSpeedMps": 0.15,
+    "upperShoulderPunchYLimit": 85,
+    "upperShoulderPunchZLimit": 35,
+    "restoreYAndZLimit": 15,
+    "punchSpringScale": 8,
+    "punchDamperScale": 1.5,
+    "punchTorqueScale": 3,
+    "upperTorqueCapNm": 45,
+    "forearmTorqueCapNm": 24,
+    "extraImpactImpulseCapNs": 20,
+    "maximumPartDeltaSpeedMps": 1,
+    "bodyAndLimbPoints": 1,
+    "headPoints": 2,
+    "firstThreshold": 10,
+    "laterThresholdProfile": [
+      10,
+      9,
+      8,
+      7,
+      6
+    ],
+    "liveDownCountsConnected": false
+  },
+  "validation": [
+    {
+      "path": ".codex_tmp/physical-punch-20260917/FinalPlayMode.xml",
+      "sha256": "cf449468bac81e374f0095466ad0461e2b971f72a501d581fe93afe22c192fa3",
+      "total": 17,
+      "passed": 17,
+      "cases": [
+        {
+          "name": "HardwareMouseDurationsSurviveLowFpsAndFixedCatchUp",
+          "result": "Passed"
+        },
+        {
+          "name": "HeldJump_RetainsWeightPenaltyWithoutStackingOrStaleTargets",
+          "result": "Passed"
+        },
+        {
+          "name": "ActualTipContactScoresBodyAndHeadOnceForEachHand",
+          "result": "Passed"
+        },
+        {
+          "name": "CancellationStopsPunchAndRestoresGrabLimits",
+          "result": "Passed"
+        },
+        {
+          "name": "CapturePhysicalPunchScenarios",
+          "result": "Passed"
+        },
+        {
+          "name": "HoldAndThrowNeverBecomePunchAndFreeHandCanPunch",
+          "result": "Passed"
+        },
+        {
+          "name": "MirroredPlayerCanHitWithEitherHand",
+          "result": "Passed"
+        },
+        {
+          "name": "NativePunchLoopRunsOneAuthorityStep",
+          "result": "Passed"
+        },
+        {
+          "name": "OutOfRangeWallAndNonTipContactsCannotScore",
+          "result": "Passed"
+        },
+        {
+          "name": "PhysicalPunchReplayMatches15_60_144Fps",
+          "result": "Passed"
+        },
+        {
+          "name": "RealRepeatedContactsRequestOneThresholdWithoutTimeDecay",
+          "result": "Passed"
+        },
+        {
+          "name": "SameTickTimedTapsAndRearmDoNotLoseOrInventActions",
+          "result": "Passed"
+        },
+        {
+          "name": "KeyboardTapDurationsSurviveLowFpsAndCatchUp",
+          "result": "Passed"
+        },
+        {
+          "name": "LastHandThrowsOnceAndSupportDoesNotStack",
+          "result": "Passed"
+        },
+        {
+          "name": "ContactModesPreserveMassMaterialAndRestoreSymmetricCollisionPairs",
+          "result": "Passed"
+        },
+        {
+          "name": "MutualLiftBlockedAndReleaseThrowKeepsOtherOwner",
+          "result": "Passed"
+        },
+        {
+          "name": "SharedOwnershipSurvivesEitherInputOrderAndPartialRelease",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "path": ".codex_tmp/physical-punch-20260917/ImpactGeometry.xml",
+      "sha256": "4004cddc958288ffa9a3d5d6230a28bcb8fcae352bbfd89e4a6316a270aea5fc",
+      "total": 4,
+      "passed": 4,
+      "cases": [
+        {
+          "name": "ActualTipContactScoresBodyAndHeadOnceForEachHand",
+          "result": "Passed"
+        },
+        {
+          "name": "CancellationStopsPunchAndRestoresGrabLimits",
+          "result": "Passed"
+        },
+        {
+          "name": "ExportPhysicalImpactSkin",
+          "result": "Passed"
+        },
+        {
+          "name": "HoldAndThrowNeverBecomePunchAndFreeHandCanPunch",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "path": ".codex_tmp/physical-punch-20260917/EditMode.xml",
+      "sha256": "778728e3a9675f2e2796c528ff0e053e658fb0836405206962118031cac5f143",
+      "total": 140,
+      "passed": 140,
+      "cases": [
+        {
+          "name": "BothSlotsInvalid_ReturnsNoPayloadAndDoesNotRewriteEitherFile",
+          "result": "Passed"
+        },
+        {
+          "name": "CallerValidator_CanRejectCurrentAndSelectCompatibleLastGood",
+          "result": "Passed"
+        },
+        {
+          "name": "ConcurrentRepositoryInstances_SerializeTheSameAddress",
+          "result": "Passed"
+        },
+        {
+          "name": "ConcurrentWrites_OnOneStoreNeverExposeATornEnvelope",
+          "result": "Passed"
+        },
+        {
+          "name": "CorruptCurrentThenSave_PreservesExistingValidLastGood",
+          "result": "Passed"
+        },
+        {
+          "name": "FirstSave_NewRepositoryInstanceReadsExactCurrentWithoutBackup",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidAddressMatrix_IsRejectedWithoutWritingOutsideRoot",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"truncated\",Corrupt)",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"hash\",Corrupt)",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"version\",Corrupt)",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"length\",TooLarge)",
+          "result": "Passed"
+        },
+        {
+          "name": "NonRegularTarget_IsRejectedWithoutReplacement",
+          "result": "Passed"
+        },
+        {
+          "name": "OversizedDeclaredLength_IsRejectedBeforeAllocationAndFallsBack",
+          "result": "Passed"
+        },
+        {
+          "name": "Overwrite_RotatesPriorCurrentIntoLastGood",
+          "result": "Passed"
+        },
+        {
+          "name": "PayloadLimit_AcceptsExactLimitAndRejectsLargerWithoutChangingCurrent",
+          "result": "Passed"
+        },
+        {
+          "name": "PhysicalFileOverLimit_IsRejectedBeforePayloadReadAndFallsBack",
+          "result": "Passed"
+        },
+        {
+          "name": "ReplaceFailure_LeavesCurrentAndLastGoodUnchangedAndCleansPending",
+          "result": "Passed"
+        },
+        {
+          "name": "StalePending_IsIgnoredByReadAndRemovedByNextWrite",
+          "result": "Passed"
+        },
+        {
+          "name": "ThirdWrite_ReplacesExistingLastGoodWithPriorCurrent",
+          "result": "Passed"
+        },
+        {
+          "name": "BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides(\"Assets/Settings/Build Profiles/Windows x64 Development.asset\")",
+          "result": "Passed"
+        },
+        {
+          "name": "BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides(\"Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset\")",
+          "result": "Passed"
+        },
+        {
+          "name": "BuildProfile_InheritsTheSingleGlobalSampleScene(\"Assets/Settings/Build Profiles/Windows x64 Development.asset\")",
+          "result": "Passed"
+        },
+        {
+          "name": "BuildProfile_InheritsTheSingleGlobalSampleScene(\"Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset\")",
+          "result": "Passed"
+        },
+        {
+          "name": "BuildProfileDefines_AreExactMutuallyExclusiveAndDoNotLeakGlobally",
+          "result": "Passed"
+        },
+        {
+          "name": "GlobalStandalonePlayerSettings_UseTheApprovedTemporaryIdentityAndMono",
+          "result": "Passed"
+        },
+        {
+          "name": "WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect(\"Assets/Settings/Build Profiles/Windows x64 Development.asset\",True)",
+          "result": "Passed"
+        },
+        {
+          "name": "WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect(\"Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset\",False)",
+          "result": "Passed"
+        },
+        {
+          "name": "WindowsBuildProfiles_AreExactlyTwoAssetsWithUniqueGuids",
+          "result": "Passed"
+        },
+        {
+          "name": "WindowsX64BuildSupport_IsInstalled",
+          "result": "Passed"
+        },
+        {
+          "name": "ExternalLaunchConsumesAirJumpAndStartsAFreshLandingImpactInterval",
+          "result": "Passed"
+        },
+        {
+          "name": "GetUpFinishesInNeutralBeforeLocomotionHandoff(\"FaceUp\")",
+          "result": "Passed"
+        },
+        {
+          "name": "GetUpFinishesInNeutralBeforeLocomotionHandoff(\"FaceDown\")",
+          "result": "Passed"
+        },
+        {
+          "name": "GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents(\"FaceUp\")",
+          "result": "Passed"
+        },
+        {
+          "name": "GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents(\"FaceDown\")",
+          "result": "Passed"
+        },
+        {
+          "name": "GrabReleaseAndBreak_DoNotCreatePunchOrAutoRegrab",
+          "result": "Passed"
+        },
+        {
+          "name": "IdleHolding_DoesNotAccumulateTimeFatigue",
+          "result": "Passed"
+        },
+        {
+          "name": "SustainedLoad_Breaks_AndLowLoadRecovers",
+          "result": "Passed"
+        },
+        {
+          "name": "DuplicateAndOldEdges_CannotRepeatOrRestartAttack",
+          "result": "Passed"
+        },
+        {
+          "name": "FasterPunchSharesHitClockAndRecoveryWithoutChangingHoldThreshold",
+          "result": "Passed"
+        },
+        {
+          "name": "GroundContextStaysGround_AirContextDoesNotCreatePunch",
+          "result": "Passed"
+        },
+        {
+          "name": "HandsHaveIndependentActions_AndPerActionTargetDeduplication",
+          "result": "Passed"
+        },
+        {
+          "name": "HardwareDurationWinsOverFixedTickRounding(0.147d,True)",
+          "result": "Passed"
+        },
+        {
+          "name": "HardwareDurationWinsOverFixedTickRounding(0.15d,False)",
+          "result": "Passed"
+        },
+        {
+          "name": "HardwareDurationWinsOverFixedTickRounding(0.153d,False)",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidTimestampCannotCorruptPendingHardwareDuration",
+          "result": "Passed"
+        },
+        {
+          "name": "OccupiedHand_CannotStart_AndCancellationRemovesHitEligibility",
+          "result": "Passed"
+        },
+        {
+          "name": "SimultaneousTimedTapsAreIndependentOfHandProcessingOrder",
+          "result": "Passed"
+        },
+        {
+          "name": "Suppress_ResetAndAllUp_DoNotEmitActions",
+          "result": "Passed"
+        },
+        {
+          "name": "Threshold_TapAndHoldAreExclusive(0.12d)",
+          "result": "Passed"
+        },
+        {
+          "name": "Threshold_TapAndHoldAreExclusive(0.15d)",
+          "result": "Passed"
+        },
+        {
+          "name": "Threshold_TapAndHoldAreExclusive(0.18d)",
+          "result": "Passed"
+        },
+        {
+          "name": "InputPackage_IsLockedAsDirectRegistryDependency",
+          "result": "Passed"
+        },
+        {
+          "name": "OnlyInputModule_ReferencesTheSelectedPackageAssembly",
+          "result": "Passed"
+        },
+        {
+          "name": "PlayerSettings_EnableOnlyTheNewInputSystemBackend",
+          "result": "Passed"
+        },
+        {
+          "name": "ProductRuntimeSources_DoNotUseLegacyInputApis",
+          "result": "Passed"
+        },
+        {
+          "name": "MenuAndReset_RearmCannotAuthorizeAThrow",
+          "result": "Passed"
+        },
+        {
+          "name": "ReleaseAdmission_RejectsOldEdgesAgainstANewGrab",
+          "result": "Passed"
+        },
+        {
+          "name": "LocalStorageAssembly_IsANoEngineLeaf",
+          "result": "Passed"
+        },
+        {
+          "name": "LocalStorageRuntimeSources_HaveNoUnityOrNetworkNamespaceDependency",
+          "result": "Passed"
+        },
+        {
+          "name": "Presentation_HasNoDirectOrTransitivePathToSimulation",
+          "result": "Passed"
+        },
+        {
+          "name": "ProjectRuntimeSources_AreOwnedByTheirFolderAssembly",
+          "result": "Passed"
+        },
+        {
+          "name": "RuntimeAssemblies_HaveOnlyApprovedProjectReferences",
+          "result": "Passed"
+        },
+        {
+          "name": "RuntimeAssemblyGraph_HasNoCycles",
+          "result": "Passed"
+        },
+        {
+          "name": "PhysicsPackage_IsBuiltInDirectAndHasNoSecondStack",
+          "result": "Passed"
+        },
+        {
+          "name": "ProductRuntimeSources_DoNotMutateGlobalPhysicsCadence",
+          "result": "Passed"
+        },
+        {
+          "name": "ProjectPhysicsSettings_UseSixtyHertzAutomaticSimulation",
+          "result": "Passed"
+        },
+        {
+          "name": "RuntimePhysicsMutationGuard_CatchesRepresentativeForbiddenCode",
+          "result": "Passed"
+        },
+        {
+          "name": "DownHitsDoNotAccumulateAndCannotReplayAfterRecovery",
+          "result": "Passed"
+        },
+        {
+          "name": "EachDownKeepsRequiredHitsFixedAndConsumesOnlyCurrentHits",
+          "result": "Passed"
+        },
+        {
+          "name": "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(0,10)",
+          "result": "Passed"
+        },
+        {
+          "name": "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(1,9)",
+          "result": "Passed"
+        },
+        {
+          "name": "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(4,6)",
+          "result": "Passed"
+        },
+        {
+          "name": "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(100,6)",
+          "result": "Passed"
+        },
+        {
+          "name": "FirstTenPointEpisodeCountsBodyAndHeadSeparately(Body,10)",
+          "result": "Passed"
+        },
+        {
+          "name": "FirstTenPointEpisodeCountsBodyAndHeadSeparately(Head,5)",
+          "result": "Passed"
+        },
+        {
+          "name": "IndependentAttackersAndOverlappingHandsDedupeWithoutDiscardingReverseOrder",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidProfilesAndIdsAreRejected",
+          "result": "Passed"
+        },
+        {
+          "name": "ResetRejectsOldGenerationAndRestartsAtFirstThreshold",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidProjectionDoesNotEmitNonfiniteCameraTargets",
+          "result": "Passed"
+        },
+        {
+          "name": "PerspectiveDistanceIncludesEveryCornerAndDepth(1.777778f)",
+          "result": "Passed"
+        },
+        {
+          "name": "PerspectiveDistanceIncludesEveryCornerAndDepth(1.6f)",
+          "result": "Passed"
+        },
+        {
+          "name": "PerspectiveDistanceIncludesEveryCornerAndDepth(2.333333f)",
+          "result": "Passed"
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(0)",
+          "result": "Passed"
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(45)",
+          "result": "Passed"
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(90)",
+          "result": "Passed"
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(180)",
+          "result": "Passed"
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(270)",
+          "result": "Passed"
+        },
+        {
+          "name": "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(-90,0)",
+          "result": "Passed"
+        },
+        {
+          "name": "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(90,0)",
+          "result": "Passed"
+        },
+        {
+          "name": "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(0,90)",
+          "result": "Passed"
+        },
+        {
+          "name": "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(0,-90)",
+          "result": "Passed"
+        },
+        {
+          "name": "DropkickHasNoDownTimerOrCountAndRealDownSupersedesItOnce",
+          "result": "Passed"
+        },
+        {
+          "name": "ExpiryOnlyPermitsSupportedRecoveryAndNeverUnlocksItself",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidTuningAndClockCannotMutateState",
+          "result": "Passed"
+        },
+        {
+          "name": "LobbyAlwaysUsesBaseAndDoesNotCount",
+          "result": "Passed"
+        },
+        {
+          "name": "MatchAccumulatesOncePerEpisodeAndCapsDuration",
+          "result": "Passed"
+        },
+        {
+          "name": "ResetAndNewEpisodeRejectStaleEventsAndGetUpCompletions",
+          "result": "Passed"
+        },
+        {
+          "name": "UprightReturnRequiresExpiredTimerRealSupportAndSettledCompletion",
+          "result": "Passed"
+        },
+        {
+          "name": "HighLevelNetcodeAndUnityOnlineServices_AreAbsent",
+          "result": "Passed"
+        },
+        {
+          "name": "OnlyTransportModule_ReferencesTheSelectedPackageAssembly",
+          "result": "Passed"
+        },
+        {
+          "name": "TransportModule_HasNoAdapterImplementationBeforeNet001",
+          "result": "Passed"
+        },
+        {
+          "name": "TransportPackage_IsLockedAsDirectRegistryDependency",
+          "result": "Passed"
+        },
+        {
+          "name": "Harness_ExecutesTheRuntimeOwnedSimulationKernel",
+          "result": "Passed"
+        },
+        {
+          "name": "SimulationAndHarness_HaveNoPresentationRenderingOrUiDependency",
+          "result": "Passed"
+        },
+        {
+          "name": "ActualDownDuringDropkickAlignment_ClosesTheOldPresentation",
+          "result": "Passed"
+        },
+        {
+          "name": "AirborneUnsettledOrBlockedRecovery_DoesNotStart(False,True)",
+          "result": "Passed"
+        },
+        {
+          "name": "AirborneUnsettledOrBlockedRecovery_DoesNotStart(True,False)",
+          "result": "Passed"
+        },
+        {
+          "name": "AirborneUnsettledOrBlockedRecovery_DoesNotStart(False,False)",
+          "result": "Passed"
+        },
+        {
+          "name": "AlignmentNormalNormalization_MatchesEntryClassification",
+          "result": "Passed"
+        },
+        {
+          "name": "AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation(False)",
+          "result": "Passed"
+        },
+        {
+          "name": "AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation(True)",
+          "result": "Passed"
+        },
+        {
+          "name": "DiagonalFall_UsesTheDominantSupportedSide(35,FaceUp)",
+          "result": "Passed"
+        },
+        {
+          "name": "DiagonalFall_UsesTheDominantSupportedSide(55,RightSide)",
+          "result": "Passed"
+        },
+        {
+          "name": "GroundQueryMayReturnANonUnitNormal",
+          "result": "Passed"
+        },
+        {
+          "name": "InterruptedAlignment_CanReassessWithoutAddingADownEpisode",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidUnsupportedOrUprightOrientation_IsRejectedWithoutMutation",
+          "result": "Passed"
+        },
+        {
+          "name": "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(-90,70,FaceUp)",
+          "result": "Passed"
+        },
+        {
+          "name": "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(-90,-70,FaceUp)",
+          "result": "Passed"
+        },
+        {
+          "name": "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(90,70,FaceDown)",
+          "result": "Passed"
+        },
+        {
+          "name": "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(90,-70,FaceDown)",
+          "result": "Passed"
+        },
+        {
+          "name": "SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp(False)",
+          "result": "Passed"
+        },
+        {
+          "name": "SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp(True)",
+          "result": "Passed"
+        },
+        {
+          "name": "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(-90,0,FaceUp)",
+          "result": "Passed"
+        },
+        {
+          "name": "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(90,0,FaceDown)",
+          "result": "Passed"
+        },
+        {
+          "name": "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(0,90,LeftSide)",
+          "result": "Passed"
+        },
+        {
+          "name": "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(0,-90,RightSide)",
+          "result": "Passed"
+        },
+        {
+          "name": "ActualDownDuringDropkickRecovery_ReplacesTheRecoveryAndCountsAsDown",
+          "result": "Passed"
+        },
+        {
+          "name": "DownEpisode_UsesSharedGetUpAndIncrementsDownCountOncePerEpisode",
+          "result": "Passed"
+        },
+        {
+          "name": "DropkickRecovery_ReusesGetUpPresentationWithoutCreatingDownEpisode",
+          "result": "Passed"
+        },
+        {
+          "name": "EquivalentCycleSequences_ProduceTheSameFingerprint",
+          "result": "Passed"
+        },
+        {
+          "name": "KernelStep_AdvancesTheReadOnlySnapshot",
+          "result": "Passed"
+        },
+        {
+          "name": "NegativeCycleCount_IsRejectedWithoutMutation",
+          "result": "Passed"
+        },
+        {
+          "name": "RoundReset_ClearsRecoveryAndDownCount",
+          "result": "Passed"
+        },
+        {
+          "name": "ActionPoseReview_IsReadOnlyAndMakesNoAnimationClaim",
+          "result": "Passed"
+        },
+        {
+          "name": "C1B005UnityAssetFolder_HasOnlyFbxAndIdentityPrefabSources",
+          "result": "Passed"
+        },
+        {
+          "name": "FourViewSilhouetteParity_UsesObservedIouAndBoundedBboxGate",
+          "result": "Passed"
+        },
+        {
+          "name": "IdentityPrefab_IsTransformNeutralAndContainsNoGameplayComponents",
+          "result": "Passed"
+        },
+        {
+          "name": "ImportedNeutral_HasExactStaticHierarchyBoundsLandmarksAndScope",
+          "result": "Passed"
+        },
+        {
+          "name": "InspectionAndEightUnityCaptures_ArePresentAndHashBound",
+          "result": "Passed"
+        },
+        {
+          "name": "ModelImporter_UsesTheExactApprovedStaticPreset",
+          "result": "Passed"
+        }
+      ]
+    }
+  ],
+  "frameRates": "fps=60, maxPhysicalDifference=0, hits=2\nfps=15, maxPhysicalDifference=0, hits=2\nfps=144, maxPhysicalDifference=0, hits=2\n",
+  "skinGeometrySamples": {
+    "samples": 90,
+    "impactPalmSamples": 3,
+    "maximumImpactSkinGapM": 0.00863791536539793,
+    "maximumSamplePenetrationM": 0
+  },
+  "skinGeometryPath": ".codex_tmp/physical-punch-20260917/ContactClearance.json",
+  "captureCases": [
+    {
+      "name": "LeftBody",
+      "maxSkin": 14.56982135772705,
+      "hits": [
+        {
+          "tick": 112,
+          "action": 1,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 1,
+          "total": 1,
+          "region": "Body",
+          "part": "Chest_ActivePhysics",
+          "position": {
+            "x": -0.10696858912706375,
+            "y": 0.6539143919944763,
+            "z": 0.0948818176984787
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.028011823073029518,
+          "closingSpeed": 0.44376567006111145,
+          "impulse": 2.5
+        },
+        {
+          "tick": 172,
+          "action": 2,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 1,
+          "total": 2,
+          "region": "Body",
+          "part": "Chest_ActivePhysics",
+          "position": {
+            "x": -0.10328367352485657,
+            "y": 0.6571169495582581,
+            "z": 0.10054133087396622
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.030402470380067825,
+          "closingSpeed": 0.5270470380783081,
+          "impulse": 2.5
+        },
+        {
+          "tick": 232,
+          "action": 3,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 1,
+          "total": 3,
+          "region": "Body",
+          "part": "Chest_ActivePhysics",
+          "position": {
+            "x": -0.10647483915090561,
+            "y": 0.6590322256088257,
+            "z": 0.10618051886558533
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.031157100573182106,
+          "closingSpeed": 0.590187132358551,
+          "impulse": 2.5
+        }
+      ]
+    },
+    {
+      "name": "RightBody",
+      "maxSkin": 14.379385948181152,
+      "hits": [
+        {
+          "tick": 112,
+          "action": 1,
+          "attacker": 0,
+          "target": 1,
+          "side": 1,
+          "points": 1,
+          "total": 1,
+          "region": "Body",
+          "part": "Chest_ActivePhysics",
+          "position": {
+            "x": 0.106763556599617,
+            "y": 0.6536994576454163,
+            "z": 0.09460542351007462
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.027853669598698616,
+          "closingSpeed": 0.4060943126678467,
+          "impulse": 2.5
+        },
+        {
+          "tick": 172,
+          "action": 2,
+          "attacker": 0,
+          "target": 1,
+          "side": 1,
+          "points": 1,
+          "total": 2,
+          "region": "Body",
+          "part": "Chest_ActivePhysics",
+          "position": {
+            "x": 0.10310813784599304,
+            "y": 0.6584000587463379,
+            "z": 0.10166018456220627
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.030650971457362175,
+          "closingSpeed": 0.5202147960662842,
+          "impulse": 2.5
+        },
+        {
+          "tick": 232,
+          "action": 3,
+          "attacker": 0,
+          "target": 1,
+          "side": 1,
+          "points": 1,
+          "total": 3,
+          "region": "Body",
+          "part": "Chest_ActivePhysics",
+          "position": {
+            "x": 0.10516173392534256,
+            "y": 0.659147322177887,
+            "z": 0.1067006066441536
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.031092703342437744,
+          "closingSpeed": 0.5850425958633423,
+          "impulse": 2.5
+        }
+      ]
+    },
+    {
+      "name": "Head",
+      "maxSkin": 14.667247772216797,
+      "hits": [
+        {
+          "tick": 112,
+          "action": 1,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 2,
+          "total": 2,
+          "region": "Head",
+          "part": "Head_ActivePhysics",
+          "position": {
+            "x": -0.0944104790687561,
+            "y": 0.6707177758216858,
+            "z": 0.10476353764533997
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.02282889559864998,
+          "closingSpeed": 0.763176441192627,
+          "impulse": 3.0
+        }
+      ]
+    },
+    {
+      "name": "Far",
+      "maxSkin": 14.670525550842285,
+      "hits": []
+    },
+    {
+      "name": "Wall",
+      "maxSkin": 14.521754264831543,
+      "hits": []
+    },
+    {
+      "name": "GrabPunch",
+      "maxSkin": 24.947355270385742,
+      "hits": [
+        {
+          "tick": 168,
+          "action": 1,
+          "attacker": 0,
+          "target": 1,
+          "side": 1,
+          "points": 1,
+          "total": 1,
+          "region": "Body",
+          "part": "UpperArm_L_ActivePhysics",
+          "position": {
+            "x": 0.1563311666250229,
+            "y": 0.43484899401664734,
+            "z": 0.23561830818653107
+          },
+          "sourceAge": 0.14000000059604645,
+          "tipDistance": 0.025380969047546387,
+          "closingSpeed": 0.6755586862564087,
+          "impulse": 1.25
+        }
+      ]
+    }
+  ],
+  "media": [
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/physical-punch-20260917/Media/PhysicalPunch_HitCases_60.mp4",
+      "fps": 60,
+      "decodedFrames": 180,
+      "seconds": 3.0,
+      "decodeExit": 0,
+      "sha256": "321a4da0ab95c8aa992a52d7b770d738fb2b22a3d74174f9b0ae0a8999fe48bd"
+    },
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/physical-punch-20260917/Media/PhysicalPunch_GrabAndWall_60.mp4",
+      "fps": 60,
+      "decodedFrames": 180,
+      "seconds": 3.0,
+      "decodeExit": 0,
+      "sha256": "698fd7611f9e395507582e48e5975df1d743b48d802ecc127039068427779401"
+    }
+  ],
+  "sources": [
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.cs",
+      "sha256": "3537c8c21d84253ff6abecb9b612014a10d1fdafb560a60e2d36174cfca3265e",
+      "snapshot": ".codex_tmp/physical-punch-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.Lift.cs",
+      "sha256": "f7e2c14260f5849f33993791696f449e38ae1e89746ac2efce002d6c19bc5484",
+      "snapshot": ".codex_tmp/physical-punch-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.Lift.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs",
+      "sha256": "559b1119f1cd312b88380ad300a5bd023d6caaaed0c16c9b36ef64a2949a8b87",
+      "snapshot": ".codex_tmp/physical-punch-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs",
+      "sha256": "06981de18f850e0827761454b2ff4c9ea255004a2a3570302e8720096e6754cc",
+      "snapshot": ".codex_tmp/physical-punch-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/StandingSkinContactReview.cs",
+      "sha256": "63365fdfd8aba89612ea98fce54cbdfbafad862a3dc3b5f060378021a93773ff",
+      "snapshot": ".codex_tmp/physical-punch-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/StandingSkinContactReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/SkinSurfaceReview.cs",
+      "sha256": "7af7149b9e1d21d840a59477b6d643b7fc3550971e312aa36eda4c541bdc23e1",
+      "snapshot": ".codex_tmp/physical-punch-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/SkinSurfaceReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ReviewInputClock.cs",
+      "sha256": "421a56e88ad9f2be220989f0b71fc0db919bb2694c644c41aa17fc6aa1b8cbad",
+      "snapshot": ".codex_tmp/physical-punch-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ReviewInputClock.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+      "sha256": "809ca7f32eb72cdaeab602874a3a04b1618bae4fb29b7712c6047a9deefa16a7",
+      "snapshot": ".codex_tmp/physical-punch-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Capture.cs",
+      "sha256": "bf8234c75826fcff81548dbc6bff78899bbb5d06f68595889a82201ebf1862a7",
+      "snapshot": ".codex_tmp/physical-punch-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Capture.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Geometry.cs",
+      "sha256": "9ad3c9ec41f1cbc0bfe9199e99645dc7ee8969bdfb27a864042e04fbd6e8832d",
+      "snapshot": ".codex_tmp/physical-punch-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Geometry.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Flow.cs",
+      "sha256": "29a8ab9568068eca3553095e664558b8467ac02ed1bf4d08a0f6961565ae113c",
+      "snapshot": ".codex_tmp/physical-punch-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Flow.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchClockTests.cs",
+      "sha256": "612d75f7707d7d6acbb953441094f48921e42d80506328eabba46e3bdea006aa",
+      "snapshot": ".codex_tmp/physical-punch-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchClockTests.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.cs",
+      "sha256": "986307da54f464587b4d11f987cd9ef1f97917e9a97861068672d523926d7785",
+      "snapshot": ".codex_tmp/physical-punch-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Regions.cs",
+      "sha256": "83feca2f7338e759ddeab212b2a3602b374499989fc0ecfbad61dd44b4d34020",
+      "snapshot": ".codex_tmp/physical-punch-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Regions.cs"
+    }
+  ],
+  "originalAssetHashes": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31",
+    "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60",
+    ".codex_tmp/punch-unity-20260906/ApprovedPunch.json": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac",
+    "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a",
+    "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/candidate-r07/R20_LatWeightCandidate.blend": "8b6a2e5b41f0a6bfc10957d2d3d12a604f16562bd14512b440831723b63abad7"
+  },
+  "reviewModelHashes": {
+    "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-reach-20260916/candidate-r02/R20_ShoulderBlendCandidate.blend": "40730ebda748729eb4df512b9827e2569dd15ff094dd9df9270122b7451cc1e5",
+    "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-reach-20260916/candidate-r02/ShoulderCharacter.bytes": "21c9c8079eb2be506e2daf822c19f1af3db99a638a4d6470d45e11fb5b4b79a5"
+  },
+  "punchLibrary": {
+    "path": ".codex_tmp/punch-unity-20260906/ApprovedPunch.json",
+    "sha256": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac"
+  },
+  "knownLimits": [
+    "Only the first 10-point threshold request is connected; the target does not become Down. Subsequent live Down counts/durations and held recovery are next-stage work.",
+    "Current reference actors use eight physical bodies; no active-to-limp 12-body transfer in this candidate.",
+    "Default arena, full movement/jump input, hazards, weapons and multiplayer remain separate integration gates.",
+    "Static review geometry is registered before contact-controller initialization; dynamic collider registration and four-player performance remain pending.",
+    "Render contact audit is a small set of preparation/impact/recovery samples, not all-frame whole-body certification."
+  ],
+  "builds": 0,
+  "commits": 0,
+  "pushes": 0
+}

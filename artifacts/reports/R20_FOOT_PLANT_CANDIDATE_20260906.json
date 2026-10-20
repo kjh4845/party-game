@@ -1,0 +1,138 @@
+{
+  "status": "ADOPTED_FOR_PROTOTYPE_REASSESS_AT_PLAYABLE_INTEGRATION",
+  "date": "2026-09-06",
+  "userAuthorization": "그래도 돼 — speed/cadence compromise candidate creation and comparison approved",
+  "preset": {
+    "walkSpeed": 0.7,
+    "sprintSpeed": 1.05,
+    "walkCadence": 3,
+    "sprintCadence": 4.5,
+    "WorldFootPlant": true
+  },
+  "results": {
+    "AllPlayMode-r05": {
+      "total": "21",
+      "passed": "21",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "AllEditMode-r01": {
+      "total": "85",
+      "passed": "85",
+      "failed": "0",
+      "skipped": "0"
+    }
+  },
+  "reviewDirectory": "/Users/kjh/local_dev/party game/.codex_tmp/foot-plant-candidate-20260906/Review-20260905-191856",
+  "transitionDirectory": "/Users/kjh/local_dev/party game/.codex_tmp/foot-plant-candidate-20260906/Transitions-final/Review-20260905-192043",
+  "anchorAuditDirectory": "/Users/kjh/local_dev/party game/.codex_tmp/foot-plant-candidate-20260906/AnchorAudit-20260905-192204",
+  "candidateCases": [
+    {
+      "mode": "Walk",
+      "version": "Reworked",
+      "lift": 0.008598417043685913,
+      "strideRange": 0.12700918316841125,
+      "pelvisLateralRange": 0.006877684500068426,
+      "pelvisVerticalRange": 0.001854225993156433,
+      "minimumKnee": 32.690208435058594,
+      "maximumKnee": 66.65088653564453,
+      "maximumTargetError": 2.2773075158966094e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumPenetration": 0.005881910212337971,
+      "maximumSurfaceAngle": 42.513065338134766,
+      "maximumJointStep": 11.992134094238281,
+      "maximumPlantedSpeed": 1.6218495147768408e-05,
+      "plantedCoverage": 1.0,
+      "plantedPairs": 137,
+      "surfaceSamples": 23,
+      "hardEdges": 0,
+      "foldEdges": 0,
+      "worstSurfaceLocation": {
+        "x": -0.0941130742430687,
+        "y": 0.01576782390475273,
+        "z": -0.0013031935086473823
+      }
+    },
+    {
+      "mode": "Sprint",
+      "version": "Reworked",
+      "lift": 0.00906476378440857,
+      "strideRange": 0.1269998550415039,
+      "pelvisLateralRange": 0.012690836563706398,
+      "pelvisVerticalRange": 0.0019040852785110474,
+      "minimumKnee": 32.91596603393555,
+      "maximumKnee": 65.38639831542969,
+      "maximumTargetError": 3.175905476382468e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumPenetration": 0.0067798541858792305,
+      "maximumSurfaceAngle": 41.76716232299805,
+      "maximumJointStep": 18.617597579956055,
+      "maximumPlantedSpeed": 1.7970925910049118e-05,
+      "plantedCoverage": 1.0,
+      "plantedPairs": 130,
+      "surfaceSamples": 15,
+      "hardEdges": 0,
+      "foldEdges": 0,
+      "worstSurfaceLocation": {
+        "x": -0.08465570211410522,
+        "y": 0.016293726861476898,
+        "z": -0.002049775095656514
+      }
+    }
+  ],
+  "anchorSummary": {
+    "caseCount": 16,
+    "maximumMeanStanceWorldFootSpeed": 7.017735242698109e-06,
+    "maximumRequiredExtension": 0.0
+  },
+  "limitations": [
+    "Stable static flat-ground foot reference locking only; release during turns/acceleration/air/stop.",
+    "Maximum mesh penetration 6.8 mm remains; complete sole contact and terrain support are not complete.",
+    "21-test PlayMode run selects candidate settings for the 18-case transition test.",
+    "Prototype adoption approved; gameplay feel reassessment and game prefab, combat, ragdoll and network integration pending."
+  ],
+  "originalsAndApprovedSources": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091"
+  },
+  "sha256": {
+    ".codex_tmp/foot-plant-candidate-20260906/AllPlayMode-r05.xml": "3146ec5d6325b98fcefff36f819eb6b4351f502356c6f2d9019e5d6efa068c53",
+    ".codex_tmp/foot-plant-candidate-20260906/AllEditMode-r01.xml": "3c268a76ca3f98d5d1d480813a38cb46ce505a29906943dc234e4d4e560c2fb4",
+    ".codex_tmp/foot-plant-candidate-20260906/Review-20260905-191856/ReadableGaitReview.json": "af139abba788b5f6a1c7667de27034636af860093780c128f111b75e031184e1",
+    ".codex_tmp/foot-plant-candidate-20260906/Transitions-final/Review-20260905-192043/TransitionReview.json": "77477e5b97a0c8c099e401d77e354d012f328ef774789859938e0cba925880d6",
+    ".codex_tmp/foot-plant-candidate-20260906/AnchorAudit-20260905-192204/WorldFootPlantFeasibility.json": "732206fc1fe1b5e517b5616d5022cb9dcce4e15cf7f52c2214ddab15aec32462",
+    ".codex_tmp/foot-plant-candidate-20260906/Review-20260905-191856/Media/Fixed.gif": "f9dd13be92cca0448f0c5e41a55e155f8616f4e5c0116738cb732618799378bb",
+    ".codex_tmp/foot-plant-candidate-20260906/Review-20260905-191856/Media/JumpTransitions.gif": "e197a24f3ffd98a46a86bd485b4f5db3cbb2ecc9083a7ddb1257904cc6df3fe1",
+    ".codex_tmp/foot-plant-candidate-20260906/Review-20260905-191856/Media/Comparison.gif": "f8650bc70b537eeca030e109d7d0fcc4d5446b681e71791e270c0f4a650c38d6",
+    ".codex_tmp/foot-plant-candidate-20260906/Review-20260905-191856/Media/Fixed.mp4": "c691c4efcd86a0b3e26e4c2897f013d3cf57a4f1f24566f31c378251996c7793",
+    ".codex_tmp/foot-plant-candidate-20260906/Review-20260905-191856/Media/Comparison.mp4": "3a91b04d84bcdcdf281bebad72b6f96649168c6671a8222ad18f5390b348f2bb",
+    ".codex_tmp/foot-plant-candidate-20260906/Review-20260905-191856/Media/Fixed.metadata.json": "8134b0a6b6c15f16453f65fe9232c98d8b18f00165eaf03f6e088cbda98eca7d",
+    ".codex_tmp/foot-plant-candidate-20260906/Review-20260905-191856/Media/Comparison.metadata.json": "58edf7c6e1428492c5f5e5f3d6565cc8ad29743e023a4b43aaf767ed9c8d2122",
+    ".codex_tmp/foot-plant-candidate-20260906/Review-20260905-191856/SourceSnapshot/Runtime/Presentation/ProceduralFreeArmSwing.cs": "6633bde810b7926d406c46dccbe21b7beea29d171a825a72db3a5903a9b96c13",
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralFreeArmSwing.cs": "6633bde810b7926d406c46dccbe21b7beea29d171a825a72db3a5903a9b96c13",
+    ".codex_tmp/foot-plant-candidate-20260906/Review-20260905-191856/SourceSnapshot/Runtime/Presentation/ProceduralJumpPose.cs": "e2a370e4e04d9e8ca23aae94feaf7de8dca7244fb4b3891e7eff1b485886fbdb",
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralJumpPose.cs": "e2a370e4e04d9e8ca23aae94feaf7de8dca7244fb4b3891e7eff1b485886fbdb",
+    ".codex_tmp/foot-plant-candidate-20260906/Review-20260905-191856/SourceSnapshot/Tests/PlayMode/Physics/WorldFootPlantFeasibilityTests.cs": "58e85f0304474991a63a19fa4e37b6a21c7576c3d116e9e2d31502e10a9772a9",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/WorldFootPlantFeasibilityTests.cs": "58e85f0304474991a63a19fa4e37b6a21c7576c3d116e9e2d31502e10a9772a9",
+    ".codex_tmp/foot-plant-candidate-20260906/Review-20260905-191856/SourceSnapshot/Tests/PlayMode/Physics/ReadableGaitReviewTests.cs": "70b259aa1a07c74760339b3e2b1fa6cca8af7a95c92c672e58901130e0bf545f",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/ReadableGaitReviewTests.cs": "70b259aa1a07c74760339b3e2b1fa6cca8af7a95c92c672e58901130e0bf545f",
+    ".codex_tmp/foot-plant-candidate-20260906/Review-20260905-191856/SourceSnapshot/Tests/PlayMode/Physics/JumpTransitionTests.cs": "93d97eb0916a56396260b19416fda5160c0f74fd1d4d48fafa9021361426a38f",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/JumpTransitionTests.cs": "93d97eb0916a56396260b19416fda5160c0f74fd1d4d48fafa9021361426a38f",
+    ".codex_tmp/foot-plant-candidate-20260906/Review-20260905-191856/SourceSnapshot/Prototypes/PhysicsJump/PhysicsJumpReview.cs": "9becdd6e6f375041f85f86f30d39d99355dacce19dab3d81bf95a113d2f09e37",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpReview.cs": "9becdd6e6f375041f85f86f30d39d99355dacce19dab3d81bf95a113d2f09e37",
+    ".codex_tmp/foot-plant-candidate-20260906/Review-20260905-191856/SourceSnapshot/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": "6f8bcf87f10a993aa4de153c99fc18643d7c431a22e311cb5972f7d18f802772",
+    "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": "6f8bcf87f10a993aa4de153c99fc18643d7c431a22e311cb5972f7d18f802772"
+  },
+  "documentationChecks": {
+    "baseline": "PASS",
+    "workflowTests": "7/7",
+    "artProfiles": "PASS",
+    "artProfileTests": "25/25, 221 assertions",
+    "gitDiffCheck": "PASS"
+  },
+  "prototypeAdoption": "일단 너가 만든 접지 절충 후보로 진행하고 어느정도 프로토타입이 나왔을때 다시 얘기하자. 그때 좀 애매하면 모델링부터 리깅까지 다시하지 뭐",
+  "adoptionRecord": "artifacts/reports/R20_FOOT_PLANT_PROTOTYPE_ADOPTION_20260906.json",
+  "sha256Scope": "Candidate review files at original review time; current adoption snapshots and validation are in adoptionRecord."
+}

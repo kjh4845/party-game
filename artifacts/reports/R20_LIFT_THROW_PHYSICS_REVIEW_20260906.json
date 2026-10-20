@@ -1,0 +1,426 @@
+{
+  "status": "PHYSICS_API_VERIFIED_INPUT_DECISION_PENDING",
+  "date": "2026-09-06",
+  "inputDecision": {
+    "status": "PENDING_USER_REPLY",
+    "recommended": "Hold Ctrl to lift; release a held hand while Ctrl remains down to throw; release without Ctrl to drop.",
+    "alternative": "Auto-lift while both hands hold the same target.",
+    "implementation": "No new keyboard binding or auto-lift input policy has been applied."
+  },
+  "tuning": {
+    "status": "START",
+    "liftHeight": 0.1,
+    "liftPullback": 0.06,
+    "liftSeconds": 0.5,
+    "minimumLiftForThrow": 0.25,
+    "throwImpulseNewtonSeconds": 30,
+    "maximumAdditionalThrowSpeed": 3,
+    "throwUpDirectionWeight": 0.35,
+    "liftClavicleDegrees": 32,
+    "liftOutwardElbowPoleWeight": 0.2
+  },
+  "checks": {
+    "AllPlayMode-r08": {
+      "total": "27",
+      "passed": "27",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "AllEditMode": {
+      "total": "98",
+      "passed": "98",
+      "failed": "0",
+      "skipped": "0"
+    }
+  },
+  "reviewDirectory": "/Users/kjh/local_dev/party game/.codex_tmp/lift-throw-20260906/Review-20260906-100024",
+  "finalRegressionDirectory": "/Users/kjh/local_dev/party game/.codex_tmp/lift-throw-20260906/Review-20260906-100458",
+  "cases": [
+    {
+      "name": "LiftLower",
+      "worstSurfaceStep": 124,
+      "worstSurfaceLocation": {
+        "x": -0.14732271432876587,
+        "y": 0.615354061126709,
+        "z": 0.030036767944693565
+      },
+      "throws": 0,
+      "blocks": 0,
+      "surfaceSamples": 46,
+      "hardEdges": 0,
+      "foldedEdges": 0,
+      "maximumLift": 1.0,
+      "maximumHeight": 0.09993910789489746,
+      "maximumSpeed": 0.37145447731018066,
+      "maximumHandError": 2.1503672087419545e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumSurfaceAngle": 39.992149353027344,
+      "lastImpulse": 0.0,
+      "finalDistance": 0.00014284253120422363
+    },
+    {
+      "name": "ThrowLeft",
+      "worstSurfaceStep": 50,
+      "worstSurfaceLocation": {
+        "x": -0.1471841186285019,
+        "y": 0.6142638325691223,
+        "z": 0.03016158938407898
+      },
+      "throws": 1,
+      "blocks": 0,
+      "surfaceSamples": 46,
+      "hardEdges": 0,
+      "foldedEdges": 0,
+      "maximumLift": 1.0,
+      "maximumHeight": 0.10833945870399475,
+      "maximumSpeed": 1.9245860576629639,
+      "maximumHandError": 2.1503672087419545e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumSurfaceAngle": 39.24134063720703,
+      "lastImpulse": 30.0,
+      "finalDistance": 0.26668432354927063
+    },
+    {
+      "name": "ThrowRight",
+      "worstSurfaceStep": 0,
+      "worstSurfaceLocation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "throws": 1,
+      "blocks": 0,
+      "surfaceSamples": 0,
+      "hardEdges": 0,
+      "foldedEdges": 0,
+      "maximumLift": 1.0,
+      "maximumHeight": 0.10833945870399475,
+      "maximumSpeed": 1.9245860576629639,
+      "maximumHandError": 2.300046304526404e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumSurfaceAngle": 0.0,
+      "lastImpulse": 30.0,
+      "finalDistance": 0.26668426394462585
+    },
+    {
+      "name": "BothThrow",
+      "worstSurfaceStep": 50,
+      "worstSurfaceLocation": {
+        "x": -0.14718204736709595,
+        "y": 0.6142354607582092,
+        "z": 0.030124017968773842
+      },
+      "throws": 1,
+      "blocks": 0,
+      "surfaceSamples": 46,
+      "hardEdges": 0,
+      "foldedEdges": 0,
+      "maximumLift": 1.0,
+      "maximumHeight": 0.10833927989006042,
+      "maximumSpeed": 1.9241180419921875,
+      "maximumHandError": 1.8189184913808276e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumSurfaceAngle": 39.28217315673828,
+      "lastImpulse": 30.0,
+      "finalDistance": 0.23651745915412903
+    },
+    {
+      "name": "AddSecondHand",
+      "worstSurfaceStep": 0,
+      "worstSurfaceLocation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "throws": 0,
+      "blocks": 0,
+      "surfaceSamples": 0,
+      "hardEdges": 0,
+      "foldedEdges": 0,
+      "maximumLift": 1.0,
+      "maximumHeight": 0.09993910789489746,
+      "maximumSpeed": 1.3080124855041504,
+      "maximumHandError": 2.1503672087419545e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumSurfaceAngle": 0.0,
+      "lastImpulse": 0.0,
+      "finalDistance": -0.026910632848739624
+    },
+    {
+      "name": "NormalDrop",
+      "worstSurfaceStep": 0,
+      "worstSurfaceLocation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "throws": 0,
+      "blocks": 0,
+      "surfaceSamples": 0,
+      "hardEdges": 0,
+      "foldedEdges": 0,
+      "maximumLift": 1.0,
+      "maximumHeight": 0.09993910789489746,
+      "maximumSpeed": 0.37145447731018066,
+      "maximumHandError": 2.1503672087419545e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumSurfaceAngle": 0.0,
+      "lastImpulse": 0.0,
+      "finalDistance": 0.00014284253120422363
+    },
+    {
+      "name": "TooEarly",
+      "worstSurfaceStep": 0,
+      "worstSurfaceLocation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "throws": 0,
+      "blocks": 0,
+      "surfaceSamples": 0,
+      "hardEdges": 0,
+      "foldedEdges": 0,
+      "maximumLift": 1.0,
+      "maximumHeight": 0.09993910789489746,
+      "maximumSpeed": 1.3080124855041504,
+      "maximumHandError": 2.1503672087419545e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumSurfaceAngle": 0.0,
+      "lastImpulse": 0.0,
+      "finalDistance": -0.026910632848739624
+    },
+    {
+      "name": "Menu",
+      "worstSurfaceStep": 0,
+      "worstSurfaceLocation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "throws": 0,
+      "blocks": 0,
+      "surfaceSamples": 0,
+      "hardEdges": 0,
+      "foldedEdges": 0,
+      "maximumLift": 1.0,
+      "maximumHeight": 0.09993910789489746,
+      "maximumSpeed": 1.308032751083374,
+      "maximumHandError": 2.1503672087419545e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumSurfaceAngle": 0.0,
+      "lastImpulse": 0.0,
+      "finalDistance": -0.027943342924118042
+    },
+    {
+      "name": "Reset",
+      "worstSurfaceStep": 0,
+      "worstSurfaceLocation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "throws": 0,
+      "blocks": 0,
+      "surfaceSamples": 0,
+      "hardEdges": 0,
+      "foldedEdges": 0,
+      "maximumLift": 1.0,
+      "maximumHeight": 0.09993910789489746,
+      "maximumSpeed": 0.3714587688446045,
+      "maximumHandError": 2.1503672087419545e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumSurfaceAngle": 0.0,
+      "lastImpulse": 0.0,
+      "finalDistance": 0.0
+    },
+    {
+      "name": "TargetLost",
+      "worstSurfaceStep": 0,
+      "worstSurfaceLocation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "throws": 0,
+      "blocks": 0,
+      "surfaceSamples": 0,
+      "hardEdges": 0,
+      "foldedEdges": 0,
+      "maximumLift": 1.0,
+      "maximumHeight": 0.09993910789489746,
+      "maximumSpeed": 1.308032751083374,
+      "maximumHandError": 2.1503672087419545e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumSurfaceAngle": 0.0,
+      "lastImpulse": 0.0,
+      "finalDistance": -0.027943342924118042
+    },
+    {
+      "name": "OwnerLost",
+      "worstSurfaceStep": 0,
+      "worstSurfaceLocation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "throws": 0,
+      "blocks": 0,
+      "surfaceSamples": 0,
+      "hardEdges": 0,
+      "foldedEdges": 0,
+      "maximumLift": 1.0,
+      "maximumHeight": 0.09993910789489746,
+      "maximumSpeed": 1.308032751083374,
+      "maximumHandError": 2.1503672087419545e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumSurfaceAngle": 0.0,
+      "lastImpulse": 0.0,
+      "finalDistance": -0.027943342924118042
+    },
+    {
+      "name": "Ceiling",
+      "worstSurfaceStep": 0,
+      "worstSurfaceLocation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "throws": 0,
+      "blocks": 56,
+      "surfaceSamples": 0,
+      "hardEdges": 0,
+      "foldedEdges": 0,
+      "maximumLift": 0.8000002503395081,
+      "maximumHeight": 0.07991829514503479,
+      "maximumSpeed": 1.1445029973983765,
+      "maximumHandError": 2.0553342494622484e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumSurfaceAngle": 0.0,
+      "lastImpulse": 0.0,
+      "finalDistance": -0.02072322368621826
+    },
+    {
+      "name": "LightProp",
+      "worstSurfaceStep": 0,
+      "worstSurfaceLocation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "throws": 1,
+      "blocks": 0,
+      "surfaceSamples": 0,
+      "hardEdges": 0,
+      "foldedEdges": 0,
+      "maximumLift": 1.0,
+      "maximumHeight": 0.1418803632259369,
+      "maximumSpeed": 3.265017032623291,
+      "maximumHandError": 1.9097336689810618e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumSurfaceAngle": 0.0,
+      "lastImpulse": 6.0,
+      "finalDistance": 0.992859959602356
+    },
+    {
+      "name": "Heavy",
+      "worstSurfaceStep": 0,
+      "worstSurfaceLocation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "throws": 0,
+      "blocks": 0,
+      "surfaceSamples": 0,
+      "hardEdges": 0,
+      "foldedEdges": 0,
+      "maximumLift": 0.6666668057441711,
+      "maximumHeight": 0.0647931694984436,
+      "maximumSpeed": 0.9783844947814941,
+      "maximumHandError": 1.578749788677669e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumSurfaceAngle": 0.0,
+      "lastImpulse": 0.0,
+      "finalDistance": -0.018006324768066406
+    },
+    {
+      "name": "NoPresentation",
+      "worstSurfaceStep": 0,
+      "worstSurfaceLocation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "throws": 1,
+      "blocks": 0,
+      "surfaceSamples": 0,
+      "hardEdges": 0,
+      "foldedEdges": 0,
+      "maximumLift": 1.0,
+      "maximumHeight": 0.10833945870399475,
+      "maximumSpeed": 1.9245860576629639,
+      "maximumHandError": 0.0,
+      "maximumReachCorrection": 0.0,
+      "maximumSurfaceAngle": 0.0,
+      "lastImpulse": 30.0,
+      "finalDistance": 0.26668432354927063
+    },
+    {
+      "name": "MovingThrow",
+      "worstSurfaceStep": 50,
+      "worstSurfaceLocation": {
+        "x": -0.1471841186285019,
+        "y": 0.6142638325691223,
+        "z": 0.03016158938407898
+      },
+      "throws": 1,
+      "blocks": 0,
+      "surfaceSamples": 46,
+      "hardEdges": 0,
+      "foldedEdges": 0,
+      "maximumLift": 1.0,
+      "maximumHeight": 0.10839137434959412,
+      "maximumSpeed": 2.30519962310791,
+      "maximumHandError": 1.955688730959082e-07,
+      "maximumReachCorrection": 0.0,
+      "maximumSurfaceAngle": 39.24134063720703,
+      "lastImpulse": 30.0,
+      "finalDistance": 0.5969065427780151
+    }
+  ],
+  "surfaceSamples": 184,
+  "limits": [
+    "Only explicit physics API commands are implemented; input binding awaits user selection.",
+    "Throw has a physical impulse and lift/return pose; dedicated throw swing/polish is not authored.",
+    "Controlled local cases, not final peer gameplay, damage/down, production physics profile or continuous self-intersection QA.",
+    "LightProp is a 2kg proxy body for force-cap testing."
+  ],
+  "sha256": {
+    ".codex_tmp/lift-throw-20260906/Review-20260906-100024/SourceSnapshot/Runtime/Contracts/GrabPresentationState.cs": "ced5306c748ac49f40f96dd8064750eea5f4ba466e550e400577ed3925a60ce8",
+    ".codex_tmp/lift-throw-20260906/Review-20260906-100024/SourceSnapshot/Runtime/Simulation/GroundHandActionStateMachine.cs": "075b5d09a3da3f3727b4bde3580e99754576be0aae56a35f865c1de94626e48a",
+    ".codex_tmp/lift-throw-20260906/Review-20260906-100024/SourceSnapshot/Runtime/Presentation/GrabArmPose.cs": "191fc10f7bf913a9eff904be2a7941bcd8b476891b01971e267473bde23aaa6a",
+    ".codex_tmp/lift-throw-20260906/Review-20260906-100024/SourceSnapshot/Tests/PlayMode/Physics/LiftThrowReviewTests.cs": "114086e6084873eb8866fce916c6f4a69b53d3e6e67deb96a56b2c7de28f3504",
+    ".codex_tmp/lift-throw-20260906/Review-20260906-100024/SourceSnapshot/Tests/EditMode/Architecture/LiftThrowAdmissionTests.cs": "8febb1a4b269be23d2b37c5b49e7417e3da2f0eb6d701e618a3fa048730516d3",
+    ".codex_tmp/lift-throw-20260906/Review-20260906-100024/SourceSnapshot/Prototypes/PhysicsJump/GrabPhysicsReview.cs": "fbb59d396531cacf1b99cbfc705f5cda3980430dc6a44d9709e4e59b4a7d34ef",
+    ".codex_tmp/lift-throw-20260906/Review-20260906-100024/Media/LiftThrow.gif": "dce1bdcd7ed196aeb16fadc74eb18c1d3e3e38e2e0b2aa62631d2623dfa506a1",
+    ".codex_tmp/lift-throw-20260906/Review-20260906-100024/Media/LiftThrow.mp4": "b6f7a2a8edfa4bc6170db4b74321547e518248806d2b80051832c5aa5b3ad8c5",
+    ".codex_tmp/lift-throw-20260906/Review-20260906-100024/Media/LiftThrow.metadata.json": "54b5d68ee08f104daafd82af379b546720b90f07dfbff0e427e6987d7c84b518",
+    ".codex_tmp/lift-throw-20260906/Review-20260906-100024/LiftThrowReview.json": "5e502b694d6dd77251bd5d844591eedcb684a7dc46f3f47e21e63fc32079972a",
+    ".codex_tmp/lift-throw-20260906/Review-20260906-100458/LiftThrowReview.json": "5e502b694d6dd77251bd5d844591eedcb684a7dc46f3f47e21e63fc32079972a",
+    ".codex_tmp/lift-throw-20260906/AllPlayMode-r08.xml": "f2e2fdfcebd83cf9eab9a437cd7babebe4d143bb36304aca245fffe1dc009b37",
+    ".codex_tmp/lift-throw-20260906/AllEditMode.xml": "d5da562e8ae09df6777ac9f59a80619fe03470cff7105b7e78c1da01c7b0ac37"
+  },
+  "documentationChecks": {
+    "baseline": "PASS",
+    "workflow": "7/7",
+    "gitDiffCheck": "PASS"
+  },
+  "historicalRecord": true,
+  "supersededInputDecision": {
+    "date": "2026-09-06",
+    "status": "USER_SELECTED_HOLD_GRAB_RELEASE_THROW",
+    "reference": "artifacts/reports/R20_RELEASE_THROW_REVIEW_20260906.md",
+    "note": "Pending status above describes the earlier API review, not the current input decision."
+  }
+}

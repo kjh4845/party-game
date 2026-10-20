@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-08",
+  "status": "VISUAL_AND_VOLUME_DEFECTS_CONFIRMED",
+  "implementationChanged": false,
+  "currentGeometry": "r28",
+  "currentMotion": "r29",
+  "request": "어깨 접힘, 팔꿈치 굽힘 시 굵기 감소, 몸통 대비 팔 굵기 재검토",
+  "findings": [
+    {
+      "area": "shoulder",
+      "finding": "팔을 들면 어깨와 상완 사이에 띠 모양의 접힘이 재현됨. 기존 국소 보정 경계가 남아 있고 r29의 쇄골 이동은 기존 자세 보정 기준에 포함되지 않음.",
+      "evidence": "Lift90_Flex0_ThreeQuarter.png"
+    },
+    {
+      "area": "elbow_and_forearm",
+      "finding": "팔꿈치를 굽히면 팔꿈치와 아래팔 단면이 납작해짐. 기존 선형 스키닝과 넓은 가중치 혼합 구간을 유지한 채 상완 보충만 했으므로 관절의 부피 보존을 해결하지 못함.",
+      "areaLossAt90Degrees": {
+        "elbow": 0.1588209104889824,
+        "forearm_middle": 0.3422609023610875
+      },
+      "areaLossAt120Degrees": {
+        "elbow": 0.3002100024734141,
+        "forearm_middle": 0.5008091392427922
+      }
+    },
+    {
+      "area": "proportions",
+      "finding": "현재 둥근 몸통에 비해 상완과 전완 모두 가늘게 보임. 중립 자세의 대표 단면 지름은 몸통 중간 너비의 약 21%,19%.",
+      "neutralArmToTorsoRatios": {
+        "upper_middle": 0.2138058681342677,
+        "upper_distal": 0.21429213656687426,
+        "elbow": 0.21038124580260797,
+        "elbow_distal": 0.19981979060322771,
+        "forearm_proximal": 0.19070860111827503,
+        "forearm_middle": 0.19118395357015872,
+        "forearm_distal": 0.1893477821478463
+      }
+    }
+  ],
+  "previousVerificationGap": "기존 최대 인접면 각도/물리 회귀 검사는 관절 단면 유지와 시각적인 접합부 주름을 수용 기준으로 삼지 않았다. 통과를 시각적 해결로 판단한 것은 부적절했다.",
+  "recommendedCorrection": {
+    "armDiameter": "상완과 전완 전체 지름을 우선 약25% 증대하는 안으로 비교. 길이/몸통/머리 비율은 유지.",
+    "shoulder": "어깨-상완 연결부의 면 흐름과 가중치를 함께 다시 구성하고 실제 쇄골 이동까지 포함해 검증.",
+    "elbow": "팔꿈치의 중간 회전을 담당하는 변형 보조와 부피 보존 구조를 적용하고, 상완에서 전완까지 이어지는 굽힘 구간을 다시 바인딩.",
+    "verification": [
+      "0/45/90/120도 굽힘에서 같은 위치의 실제 단면을 비교",
+      "최소 굵기 감소10% 이내를 우선 수용 목표로 설정하고 실루엣으로 함께 확인",
+      "팔 들기와 팔꿈치 굽힘을 결합한 자세 및 실제 펀치/잡기에서 어깨 주름 확인",
+      "팔 굵기 변경 뒤 물리 접촉면과 실제 타격/잡기 위치 재검증"
+    ]
+  },
+  "captures": 10,
+  "captureRun": "Passed",
+  "captureIsNotAcceptanceTest": true,
+  "measurementMethod": "Actual baked-mesh cross-section contours, perpendicular to centerlines fitted at matched material positions",
+  "measurementLimitations": [
+    "Cross-sectional area is a local proxy, not whole-arm volume.",
+    "Requested joint targets are constrained by physics; actual elbow angles are recorded.",
+    "Shoulder creasing is assessed in the actual rendered views, not inferred from section area."
+  ],
+  "modelFilesUnchanged": true,
+  "modelSha256": "214e736547b93c08168ca8c0455c263122108fe641a8a3b2befdb93fce5b131b",
+  "transportSha256": "a2ad7474a6d9678593d5b5bbab30c01c7a306ed139acbd8e33325128f5d9bbaf",
+  "preview": "artifacts/previews/arm-volume-audit-20261008/Arm_Defect_Review.png",
+  "evidence": "artifacts/evidence/arm-volume-audit-20261008",
+  "inspectionCode": [
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.ArmVolumeAudit.cs",
+    "tools/blender/measure_arm_volume_audit.py"
+  ],
+  "commits": false,
+  "pushes": false,
+  "runtimeFilesUnchanged": true,
+  "runtimeSourceHashes": {
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Shoulders.cs": "a340879eb67beb256eb2d1183991b766c7df3c61a05afd3e3d4357a2bf5502a7",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs": "515783237e7ce52b3020aaf97f0bb8f590bc627f65c00a0dcc5a1a18609cb823",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Impact.cs": "d92266e159ae019ef390de7971a31f92afa1f7c153b7c71b26c7dddc3e692952",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.NaturalShoulder.cs": "fd9fdb2c582eefcc409ce4ba02a78bbb6e15c0c237538797a044c19e236dd5b1"
+  }
+}

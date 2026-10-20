@@ -1,0 +1,97 @@
+{
+  "status": "AUDIT_PASS_COMPROMISE_CANDIDATE_AUTHORIZED",
+  "date": "2026-09-06",
+  "currentImplementation": "ReadableGait, unchanged speed and cadence; no world foot locking applied",
+  "cases": 16,
+  "physicsSteps": 7680,
+  "testResult": "PlayMode selected test 1/1 passed, skipped 0",
+  "outputDirectory": "/Users/kjh/local_dev/party game/.codex_tmp/world-foot-lock-20260906/Review-20260905-175959",
+  "summary": {
+    "Walk": {
+      "actualSpeed": {
+        "min": 1.4018951654434204,
+        "max": 1.4018951654434204
+      },
+      "cycleHz": {
+        "min": 1.5420910120010376,
+        "max": 1.5420912504196167
+      },
+      "meanStanceDuration": {
+        "min": 0.3077778220176697,
+        "max": 0.3077778220176697
+      },
+      "meanWorldFootSpeed": {
+        "min": 1.1712936162948608,
+        "max": 1.171303153038025
+      },
+      "meanReachableFraction": {
+        "min": 0.2568493187427521,
+        "max": 0.2568493187427521
+      },
+      "maximumRequiredExtension": {
+        "min": 0.2771279811859131,
+        "max": 0.2771329879760742
+      },
+      "firstUnreachableAgeSeconds": [
+        0.0833333358168602
+      ],
+      "completeContacts": 120
+    },
+    "Sprint": {
+      "actualSpeed": {
+        "min": 2.151898145675659,
+        "max": 2.1519033908843994
+      },
+      "cycleHz": {
+        "min": 2.3910062313079834,
+        "max": 2.3910090923309326
+      },
+      "meanStanceDuration": {
+        "min": 0.1927536278963089,
+        "max": 0.1927536278963089
+      },
+      "meanWorldFootSpeed": {
+        "min": 1.6945369243621826,
+        "max": 1.6945488452911377
+      },
+      "meanReachableFraction": {
+        "min": 0.31833910942077637,
+        "max": 0.31833910942077637
+      },
+      "maximumRequiredExtension": {
+        "min": 0.2558315694332123,
+        "max": 0.25583741068840027
+      },
+      "firstUnreachableAgeSeconds": [
+        0.06666667014360428
+      ],
+      "completeContacts": 184
+    }
+  },
+  "constraints": {
+    "legLengthMeters": 0.1553855836391449,
+    "optimisticHalfReachAt25mmPelvisDropMeters": 0.08511574638659468,
+    "note": "Geometric bound from prior KinematicAudit; not a tested deformation-safe joint range."
+  },
+  "limitations": [
+    "Static flat floor, steady motion at 60 Hz.",
+    "World anchors measured at first sampled stance frame. Actual mesh was not retargeted to unreachable anchors.",
+    "Reachability is not surface deformation, sole orientation, terrain or transition validation.",
+    "This run adds a diagnostic only. Earlier full-suite results are historical, not rerun here."
+  ],
+  "pendingDecision": null,
+  "sha256": {
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/WorldFootPlantFeasibilityTests.cs": "5ac0297a3393a2bc57c4f935bb4e528ecf5fda796c184c625b42d34e578200fa",
+    "/Users/kjh/local_dev/party game/.codex_tmp/world-foot-lock-20260906/Review-20260905-175959/WorldFootPlantFeasibility.json": "bd9c4964b7e7421ba5ce37a46b57d40d538f0d34a231387d20755720a1e8420c",
+    ".codex_tmp/world-foot-lock-20260906/Feasibility-r01.xml": "63a4edcba0d36d39134255b380a6d3cd82ab0f74f6eb9b4445fbe2039aecc6db",
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralJumpPose.cs": "29741c931d35b50a59b0ece46b3beee09e249a2346f714ddf2613a923815273b",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpMotor.cs": "8a171a1a9024250dc6b1583a5e7bfb14ae9b4867704459662f280effd1580a94"
+  },
+  "documentationChecks": {
+    "baseline": "PASS",
+    "workflowTests": "7/7 PASS",
+    "gitDiffCheck": "PASS",
+    "reviewedPoseAndArmSources": "Identical to previous reviewed snapshot"
+  },
+  "followUpAuthorization": "User: 그래도 돼 — authorizes producing and comparing a lower-speed, faster-cadence candidate, not automatic adoption as the default."
+}

@@ -1,0 +1,306 @@
+{
+  "status": "LOCAL_RELEASE_THROW_INPUT_VERIFIED",
+  "date": "2026-09-06",
+  "userDecision": "클릭 유지로 잡고, 놓으면 던지기. 별도 들기 키/자동 들기/들기 준비 조건 없음.",
+  "sameTargetTwoHandsRule": "Release one own hand without an impulse; release the last own hand to throw once. Separate targets resolve independently.",
+  "scope": "Local dynamic grab targets; static ledge, weapon input, formal InputAction map, peer, dedicated throw animation and game integration remain pending.",
+  "tuning": {
+    "status": "START",
+    "throwImpulseNewtonSeconds": 30,
+    "maximumAdditionalThrowSpeed": 3,
+    "throwUpDirectionWeight": 0.35,
+    "heldJumpAssistance": 0.75
+  },
+  "checks": {
+    "AllEditMode": {
+      "total": "98",
+      "passed": "98",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "AllPlayMode": {
+      "total": "28",
+      "passed": "28",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "PlayMode-r02": {
+      "total": "1",
+      "passed": "1",
+      "failed": "0",
+      "skipped": "0"
+    }
+  },
+  "cases": [
+    {
+      "name": "Left",
+      "throws": 1,
+      "acquisitions": 1,
+      "punches": 0,
+      "impulse": 30.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 1.454199194908142,
+      "maximumHandError": 1.4600097131278744e-07,
+      "distance": 0.23523017764091492
+    },
+    {
+      "name": "Right",
+      "throws": 1,
+      "acquisitions": 1,
+      "punches": 0,
+      "impulse": 30.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 1.454199194908142,
+      "maximumHandError": 1.4600097131278744e-07,
+      "distance": 0.23523017764091492
+    },
+    {
+      "name": "BothSimultaneous",
+      "throws": 1,
+      "acquisitions": 2,
+      "punches": 0,
+      "impulse": 30.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 1.454199194908142,
+      "maximumHandError": 1.4600097131278744e-07,
+      "distance": 0.23523017764091492
+    },
+    {
+      "name": "BothStaggered",
+      "throws": 1,
+      "acquisitions": 2,
+      "punches": 0,
+      "impulse": 30.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 1.454199194908142,
+      "maximumHandError": 1.4600097131278744e-07,
+      "distance": 0.23523017764091492
+    },
+    {
+      "name": "SplitTargets",
+      "throws": 2,
+      "acquisitions": 2,
+      "punches": 0,
+      "impulse": 30.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 1.454199194908142,
+      "maximumHandError": 1.3978528556890524e-07,
+      "distance": 0.1952301561832428
+    },
+    {
+      "name": "Light",
+      "throws": 1,
+      "acquisitions": 1,
+      "punches": 0,
+      "impulse": 6.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 2.950026750564575,
+      "maximumHandError": 1.4600097131278744e-07,
+      "distance": 0.9687037467956543
+    },
+    {
+      "name": "Air",
+      "throws": 1,
+      "acquisitions": 1,
+      "punches": 0,
+      "impulse": 30.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 2.3039305210113525,
+      "maximumHandError": 1.4600097131278744e-07,
+      "distance": 0.3931761682033539
+    },
+    {
+      "name": "Moving",
+      "throws": 1,
+      "acquisitions": 1,
+      "punches": 0,
+      "impulse": 30.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 1.9433616399765015,
+      "maximumHandError": 2.528810796320613e-07,
+      "distance": 0.5212184190750122
+    },
+    {
+      "name": "Menu",
+      "throws": 0,
+      "acquisitions": 1,
+      "punches": 0,
+      "impulse": 0.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 0.37145447731018066,
+      "maximumHandError": 1.4600097131278744e-07,
+      "distance": 0.0
+    },
+    {
+      "name": "QueuedMenu",
+      "throws": 0,
+      "acquisitions": 1,
+      "punches": 0,
+      "impulse": 0.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 0.37145447731018066,
+      "maximumHandError": 1.4600097131278744e-07,
+      "distance": 0.0
+    },
+    {
+      "name": "Reset",
+      "throws": 0,
+      "acquisitions": 1,
+      "punches": 0,
+      "impulse": 0.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 0.37145447731018066,
+      "maximumHandError": 1.4600097131278744e-07,
+      "distance": 0.0
+    },
+    {
+      "name": "TargetReset",
+      "throws": 0,
+      "acquisitions": 1,
+      "punches": 0,
+      "impulse": 0.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 0.37145447731018066,
+      "maximumHandError": 1.4600097131278744e-07,
+      "distance": 0.0
+    },
+    {
+      "name": "TargetDisabled",
+      "throws": 0,
+      "acquisitions": 1,
+      "punches": 0,
+      "impulse": 0.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 0.37145447731018066,
+      "maximumHandError": 1.4600097131278744e-07,
+      "distance": 0.0
+    },
+    {
+      "name": "HandLost",
+      "throws": 0,
+      "acquisitions": 1,
+      "punches": 0,
+      "impulse": 0.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 0.37145447731018066,
+      "maximumHandError": 1.4600097131278744e-07,
+      "distance": 0.0
+    },
+    {
+      "name": "AuthorityLost",
+      "throws": 0,
+      "acquisitions": 1,
+      "punches": 0,
+      "impulse": 0.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 0.37145447731018066,
+      "maximumHandError": 1.4600097131278744e-07,
+      "distance": 0.0
+    },
+    {
+      "name": "ReachBreak",
+      "throws": 0,
+      "acquisitions": 1,
+      "punches": 0,
+      "impulse": 0.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 0.37145447731018066,
+      "maximumHandError": 1.4600097131278744e-07,
+      "distance": 0.09000000357627869
+    },
+    {
+      "name": "JointBreak",
+      "throws": 0,
+      "acquisitions": 1,
+      "punches": 0,
+      "impulse": 0.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 0.37145447731018066,
+      "maximumHandError": 1.4600097131278744e-07,
+      "distance": 0.0
+    },
+    {
+      "name": "ForcedGripCleanup",
+      "throws": 0,
+      "acquisitions": 1,
+      "punches": 0,
+      "impulse": 0.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 0.37145447731018066,
+      "maximumHandError": 1.4600097131278744e-07,
+      "distance": 0.0
+    },
+    {
+      "name": "HoldMiss",
+      "throws": 0,
+      "acquisitions": 0,
+      "punches": 0,
+      "impulse": 0.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 0.37145447731018066,
+      "maximumHandError": 0.0,
+      "distance": 0.0
+    },
+    {
+      "name": "Tap",
+      "throws": 0,
+      "acquisitions": 0,
+      "punches": 1,
+      "impulse": 0.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 0.9018999934196472,
+      "maximumHandError": 0.0,
+      "distance": 0.07674410939216614
+    },
+    {
+      "name": "NoPresentation",
+      "throws": 1,
+      "acquisitions": 1,
+      "punches": 0,
+      "impulse": 30.0,
+      "maximumLift": 0.0,
+      "maximumSpeed": 1.454199194908142,
+      "maximumHandError": 0.0,
+      "distance": 0.23523017764091492
+    }
+  ],
+  "rawReview": "/Users/kjh/local_dev/party game/.codex_tmp/release-throw-20260906/Review-20260906-121031/ReleaseThrowReview.json",
+  "sourceSnapshot": "/Users/kjh/local_dev/party game/.codex_tmp/release-throw-20260906/Review-20260906-121031/SourceSnapshot",
+  "sourceHashes": {
+    "Prototypes/PhysicsJump/HandStrikeReview.cs": "e054188fb62a8acdc7f01982cc7a01cc7cb14420353ad86eb8af7ab70c090827",
+    "Prototypes/PhysicsJump/GrabPhysicsReview.cs": "5ad2a8a806e469169416256dd755c49d5516afbf6af4ab91c7ce0cde67b773db",
+    "Prototypes/PhysicsJump/PhysicsJumpReview.cs": "421e24176ee4feb0fa5e8d48992fb8e1d9efa338a3f0353617e67e0003f212d3",
+    "Tests/PlayMode/Physics/ReleaseThrowReviewTests.cs": "2739093f9d0976394aefe6e3bafdf04a1b549e30b095fea9d9f8ce6794a0ac87",
+    "Tests/PlayMode/Physics/GrabPhysicsReviewTests.cs": "5012d635c9cd854fdf87704c3f860f113b1228c16bae43cc9fc1f30cb3a4cf50",
+    "Tests/PlayMode/Physics/GrabJumpAssistanceTests.cs": "0fcf083e365ff26d88f9e40acc43002bb33b3eac24e0b10651cfb5b297a697ce",
+    "Tests/PlayMode/Physics/LiftThrowReviewTests.cs": "8f0dc2c07c7fbe14add88dd6ee419745fef79b5cfc27e716fe4c0c0c26fdd40d",
+    "Tests/EditMode/Architecture/LiftThrowAdmissionTests.cs": "8febb1a4b269be23d2b37c5b49e7417e3da2f0eb6d701e618a3fa048730516d3"
+  },
+  "media": {
+    "gif": "/Users/kjh/local_dev/party game/.codex_tmp/release-throw-20260906/Review-20260906-120451/Media/ReleaseThrow.gif",
+    "mp4": "/Users/kjh/local_dev/party game/.codex_tmp/release-throw-20260906/Review-20260906-120451/Media/ReleaseThrow.mp4",
+    "metadata": {
+      "durationSeconds": 2,
+      "fps": 60,
+      "frames": 120,
+      "height": 1100,
+      "width": 1280
+    },
+    "captureSource": "/Users/kjh/local_dev/party game/.codex_tmp/release-throw-20260906/Review-20260906-120451/ReleaseThrowReview.json"
+  },
+  "preservedSourceHashes": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091"
+  },
+  "documentChecks": {
+    "baseline": "PASS",
+    "workflowUnitTests": 7,
+    "artProfileViolations": 0,
+    "artProfileTests": 25,
+    "artProfileAssertions": 221,
+    "diffCheck": "PASS"
+  },
+  "testScopeNote": "Full suites passed on unchanged runtime. The final targeted rerun additionally asserts actual target travel after release. Historical grab/jump/lift fixtures disable only the new automatic release gesture to preserve their baseline."
+}

@@ -1,0 +1,1784 @@
+{
+  "date": "2026-09-17",
+  "status": "VISUAL_FEEL_REJECTED_SOFT_TOUCH_LIKE_PUNCH",
+  "authorization": "User rejected the previous candidate as a light touch and requested a convincing punch.",
+  "previousVisualApproval": false,
+  "visualApproved": false,
+  "defaultArenaChanged": false,
+  "actualDownHandoverImplemented": false,
+  "profile": {
+    "actionSeconds": 0.4,
+    "preparationSeconds": 0.09,
+    "extensionPeakSeconds": 0.16,
+    "compactDistanceRangeM": [
+      0.46,
+      0.34
+    ],
+    "compactnessLatchedAtAttackStart": true,
+    "compactShoulderPreparationDegrees": 25,
+    "compactShoulderExtensionDegrees": 55,
+    "compactElbowExtensionDegrees": 30,
+    "compactExtensionPeakSeconds": 0.125,
+    "followThroughEndSeconds": [
+      0.2,
+      0.23
+    ],
+    "hitWindowSeconds": [
+      0.09,
+      0.2
+    ],
+    "elbowFlexionTargetDegrees": 125,
+    "elbowExtensionTargetDegrees": 8,
+    "elbowSwingTargetDegrees": 0,
+    "elbowSwingLimitDegrees": 4,
+    "shoulderLiftTargetDegrees": 88,
+    "shoulderSideTargetDegrees": 15,
+    "shoulderPunchLimitsYZ": [
+      35,
+      35
+    ],
+    "shoulderRestLimitsYZ": [
+      15,
+      15
+    ],
+    "spineLeanDegrees": 3.5,
+    "chestTwistDegrees": 2.5,
+    "springScales": [
+      8,
+      8
+    ],
+    "damperScales": [
+      2,
+      1.25
+    ],
+    "torqueCapsNm": [
+      45,
+      24
+    ],
+    "punchAngularSpeedCapsRadS": [
+      40,
+      60
+    ],
+    "restAngularSpeedCapRadS": 18,
+    "strikeTipRadiusM": 0.03,
+    "contactToleranceM": 0.002,
+    "minimumClosingSpeedMps": 0.15,
+    "contactGeometry": "Actual collision callback plus terminal swept through measured before/after physical poses with rotational subdivision",
+    "forcedBackwardsHandImpulse": 0,
+    "skipToRecoveryOnHit": false,
+    "bodyAndLimbPoints": 1,
+    "headPoints": 2,
+    "downThresholdProfile": [
+      10,
+      9,
+      8,
+      7,
+      6
+    ],
+    "timeScaleChanged": false
+  },
+  "validation": [
+    {
+      "path": ".codex_tmp/punch-drive-compact-20260917/FinalPlayMode.xml",
+      "sha256": "ea4b103da00a80f58875d5121b00667b40209e722c868a639c3e2e22d02481c8",
+      "total": 19,
+      "passed": 19,
+      "cases": [
+        {
+          "name": "SharedGripOwnershipAndImmediateReleaseAreIndependent",
+          "result": "Passed"
+        },
+        {
+          "name": "RemovingArmDriveLetsGravityActAndRestoringItRecovers",
+          "result": "Passed"
+        },
+        {
+          "name": "ActualTipContactScoresBodyAndHeadOnceForEachHand",
+          "result": "Passed"
+        },
+        {
+          "name": "CancellationStopsPunchAndRestoresGrabLimits",
+          "result": "Passed"
+        },
+        {
+          "name": "CapturePhysicalPunchScenarios",
+          "result": "Passed"
+        },
+        {
+          "name": "ContactKeepsExtensionAndCancelClearsTrunkDrive",
+          "result": "Passed"
+        },
+        {
+          "name": "ExportConfirmedHitAudio",
+          "result": "Passed"
+        },
+        {
+          "name": "ExportPhysicalImpactSkin",
+          "result": "Passed"
+        },
+        {
+          "name": "HoldAndThrowNeverBecomePunchAndFreeHandCanPunch",
+          "result": "Passed"
+        },
+        {
+          "name": "MirroredPlayerCanHitWithEitherHand",
+          "result": "Passed"
+        },
+        {
+          "name": "NativePunchLoopRunsOneAuthorityStep",
+          "result": "Passed"
+        },
+        {
+          "name": "OutOfRangeWallAndNonTipContactsCannotScore",
+          "result": "Passed"
+        },
+        {
+          "name": "PhysicalPunchReplayMatches15_60_144Fps",
+          "result": "Passed"
+        },
+        {
+          "name": "RealRepeatedContactsRequestOneThresholdWithoutTimeDecay",
+          "result": "Passed"
+        },
+        {
+          "name": "RemovedOpponentDoesNotBreakPunchReference",
+          "result": "Passed"
+        },
+        {
+          "name": "SameTickTimedTapsAndRearmDoNotLoseOrInventActions",
+          "result": "Passed"
+        },
+        {
+          "name": "SnapTargetsStayInsideElbowLimitsAndSettle",
+          "result": "Passed"
+        },
+        {
+          "name": "TracePhysicalStrikeTravel",
+          "result": "Passed"
+        },
+        {
+          "name": "KeyboardTapDurationsSurviveLowFpsAndCatchUp",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "path": ".codex_tmp/punch-drive-compact-20260917/EditMode.xml",
+      "sha256": "a6a7507bb0ac36957e747e5b58d079358e3e1aef11a4bfb22f0eec37b449b942",
+      "total": 146,
+      "passed": 146,
+      "cases": [
+        {
+          "name": "BothSlotsInvalid_ReturnsNoPayloadAndDoesNotRewriteEitherFile",
+          "result": "Passed"
+        },
+        {
+          "name": "CallerValidator_CanRejectCurrentAndSelectCompatibleLastGood",
+          "result": "Passed"
+        },
+        {
+          "name": "ConcurrentRepositoryInstances_SerializeTheSameAddress",
+          "result": "Passed"
+        },
+        {
+          "name": "ConcurrentWrites_OnOneStoreNeverExposeATornEnvelope",
+          "result": "Passed"
+        },
+        {
+          "name": "CorruptCurrentThenSave_PreservesExistingValidLastGood",
+          "result": "Passed"
+        },
+        {
+          "name": "FirstSave_NewRepositoryInstanceReadsExactCurrentWithoutBackup",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidAddressMatrix_IsRejectedWithoutWritingOutsideRoot",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"truncated\",Corrupt)",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"hash\",Corrupt)",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"version\",Corrupt)",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"length\",TooLarge)",
+          "result": "Passed"
+        },
+        {
+          "name": "NonRegularTarget_IsRejectedWithoutReplacement",
+          "result": "Passed"
+        },
+        {
+          "name": "OversizedDeclaredLength_IsRejectedBeforeAllocationAndFallsBack",
+          "result": "Passed"
+        },
+        {
+          "name": "Overwrite_RotatesPriorCurrentIntoLastGood",
+          "result": "Passed"
+        },
+        {
+          "name": "PayloadLimit_AcceptsExactLimitAndRejectsLargerWithoutChangingCurrent",
+          "result": "Passed"
+        },
+        {
+          "name": "PhysicalFileOverLimit_IsRejectedBeforePayloadReadAndFallsBack",
+          "result": "Passed"
+        },
+        {
+          "name": "ReplaceFailure_LeavesCurrentAndLastGoodUnchangedAndCleansPending",
+          "result": "Passed"
+        },
+        {
+          "name": "StalePending_IsIgnoredByReadAndRemovedByNextWrite",
+          "result": "Passed"
+        },
+        {
+          "name": "ThirdWrite_ReplacesExistingLastGoodWithPriorCurrent",
+          "result": "Passed"
+        },
+        {
+          "name": "BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides(\"Assets/Settings/Build Profiles/Windows x64 Development.asset\")",
+          "result": "Passed"
+        },
+        {
+          "name": "BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides(\"Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset\")",
+          "result": "Passed"
+        },
+        {
+          "name": "BuildProfile_InheritsTheSingleGlobalSampleScene(\"Assets/Settings/Build Profiles/Windows x64 Development.asset\")",
+          "result": "Passed"
+        },
+        {
+          "name": "BuildProfile_InheritsTheSingleGlobalSampleScene(\"Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset\")",
+          "result": "Passed"
+        },
+        {
+          "name": "BuildProfileDefines_AreExactMutuallyExclusiveAndDoNotLeakGlobally",
+          "result": "Passed"
+        },
+        {
+          "name": "GlobalStandalonePlayerSettings_UseTheApprovedTemporaryIdentityAndMono",
+          "result": "Passed"
+        },
+        {
+          "name": "WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect(\"Assets/Settings/Build Profiles/Windows x64 Development.asset\",True)",
+          "result": "Passed"
+        },
+        {
+          "name": "WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect(\"Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset\",False)",
+          "result": "Passed"
+        },
+        {
+          "name": "WindowsBuildProfiles_AreExactlyTwoAssetsWithUniqueGuids",
+          "result": "Passed"
+        },
+        {
+          "name": "WindowsX64BuildSupport_IsInstalled",
+          "result": "Passed"
+        },
+        {
+          "name": "ExternalLaunchConsumesAirJumpAndStartsAFreshLandingImpactInterval",
+          "result": "Passed"
+        },
+        {
+          "name": "GetUpFinishesInNeutralBeforeLocomotionHandoff(\"FaceUp\")",
+          "result": "Passed"
+        },
+        {
+          "name": "GetUpFinishesInNeutralBeforeLocomotionHandoff(\"FaceDown\")",
+          "result": "Passed"
+        },
+        {
+          "name": "GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents(\"FaceUp\")",
+          "result": "Passed"
+        },
+        {
+          "name": "GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents(\"FaceDown\")",
+          "result": "Passed"
+        },
+        {
+          "name": "GrabReleaseAndBreak_DoNotCreatePunchOrAutoRegrab",
+          "result": "Passed"
+        },
+        {
+          "name": "IdleHolding_DoesNotAccumulateTimeFatigue",
+          "result": "Passed"
+        },
+        {
+          "name": "SustainedLoad_Breaks_AndLowLoadRecovers",
+          "result": "Passed"
+        },
+        {
+          "name": "DuplicateAndOldEdges_CannotRepeatOrRestartAttack",
+          "result": "Passed"
+        },
+        {
+          "name": "FasterPunchSharesHitClockAndRecoveryWithoutChangingHoldThreshold",
+          "result": "Passed"
+        },
+        {
+          "name": "GroundContextStaysGround_AirContextDoesNotCreatePunch",
+          "result": "Passed"
+        },
+        {
+          "name": "HandsHaveIndependentActions_AndPerActionTargetDeduplication",
+          "result": "Passed"
+        },
+        {
+          "name": "HardwareDurationWinsOverFixedTickRounding(0.147d,True)",
+          "result": "Passed"
+        },
+        {
+          "name": "HardwareDurationWinsOverFixedTickRounding(0.15d,False)",
+          "result": "Passed"
+        },
+        {
+          "name": "HardwareDurationWinsOverFixedTickRounding(0.153d,False)",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidTimestampCannotCorruptPendingHardwareDuration",
+          "result": "Passed"
+        },
+        {
+          "name": "OccupiedHand_CannotStart_AndCancellationRemovesHitEligibility",
+          "result": "Passed"
+        },
+        {
+          "name": "SimultaneousTimedTapsAreIndependentOfHandProcessingOrder",
+          "result": "Passed"
+        },
+        {
+          "name": "Suppress_ResetAndAllUp_DoNotEmitActions",
+          "result": "Passed"
+        },
+        {
+          "name": "Threshold_TapAndHoldAreExclusive(0.12d)",
+          "result": "Passed"
+        },
+        {
+          "name": "Threshold_TapAndHoldAreExclusive(0.15d)",
+          "result": "Passed"
+        },
+        {
+          "name": "Threshold_TapAndHoldAreExclusive(0.18d)",
+          "result": "Passed"
+        },
+        {
+          "name": "CandidateWindowFollowsFixedTimeAndRejectsRecoveryHits",
+          "result": "Passed"
+        },
+        {
+          "name": "ExistingCallersKeepTheirOriginalWindow",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidWindowCannotCreateAnAttack(-0.1d,0.2d)",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidWindowCannotCreateAnAttack(0.3d,0.2d)",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidWindowCannotCreateAnAttack(0.1d,0.7d)",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidWindowCannotCreateAnAttack(double.NaN,0.2d)",
+          "result": "Passed"
+        },
+        {
+          "name": "InputPackage_IsLockedAsDirectRegistryDependency",
+          "result": "Passed"
+        },
+        {
+          "name": "OnlyInputModule_ReferencesTheSelectedPackageAssembly",
+          "result": "Passed"
+        },
+        {
+          "name": "PlayerSettings_EnableOnlyTheNewInputSystemBackend",
+          "result": "Passed"
+        },
+        {
+          "name": "ProductRuntimeSources_DoNotUseLegacyInputApis",
+          "result": "Passed"
+        },
+        {
+          "name": "MenuAndReset_RearmCannotAuthorizeAThrow",
+          "result": "Passed"
+        },
+        {
+          "name": "ReleaseAdmission_RejectsOldEdgesAgainstANewGrab",
+          "result": "Passed"
+        },
+        {
+          "name": "LocalStorageAssembly_IsANoEngineLeaf",
+          "result": "Passed"
+        },
+        {
+          "name": "LocalStorageRuntimeSources_HaveNoUnityOrNetworkNamespaceDependency",
+          "result": "Passed"
+        },
+        {
+          "name": "Presentation_HasNoDirectOrTransitivePathToSimulation",
+          "result": "Passed"
+        },
+        {
+          "name": "ProjectRuntimeSources_AreOwnedByTheirFolderAssembly",
+          "result": "Passed"
+        },
+        {
+          "name": "RuntimeAssemblies_HaveOnlyApprovedProjectReferences",
+          "result": "Passed"
+        },
+        {
+          "name": "RuntimeAssemblyGraph_HasNoCycles",
+          "result": "Passed"
+        },
+        {
+          "name": "PhysicsPackage_IsBuiltInDirectAndHasNoSecondStack",
+          "result": "Passed"
+        },
+        {
+          "name": "ProductRuntimeSources_DoNotMutateGlobalPhysicsCadence",
+          "result": "Passed"
+        },
+        {
+          "name": "ProjectPhysicsSettings_UseSixtyHertzAutomaticSimulation",
+          "result": "Passed"
+        },
+        {
+          "name": "RuntimePhysicsMutationGuard_CatchesRepresentativeForbiddenCode",
+          "result": "Passed"
+        },
+        {
+          "name": "DownHitsDoNotAccumulateAndCannotReplayAfterRecovery",
+          "result": "Passed"
+        },
+        {
+          "name": "EachDownKeepsRequiredHitsFixedAndConsumesOnlyCurrentHits",
+          "result": "Passed"
+        },
+        {
+          "name": "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(0,10)",
+          "result": "Passed"
+        },
+        {
+          "name": "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(1,9)",
+          "result": "Passed"
+        },
+        {
+          "name": "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(4,6)",
+          "result": "Passed"
+        },
+        {
+          "name": "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(100,6)",
+          "result": "Passed"
+        },
+        {
+          "name": "FirstTenPointEpisodeCountsBodyAndHeadSeparately(Body,10)",
+          "result": "Passed"
+        },
+        {
+          "name": "FirstTenPointEpisodeCountsBodyAndHeadSeparately(Head,5)",
+          "result": "Passed"
+        },
+        {
+          "name": "IndependentAttackersAndOverlappingHandsDedupeWithoutDiscardingReverseOrder",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidProfilesAndIdsAreRejected",
+          "result": "Passed"
+        },
+        {
+          "name": "ResetRejectsOldGenerationAndRestartsAtFirstThreshold",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidProjectionDoesNotEmitNonfiniteCameraTargets",
+          "result": "Passed"
+        },
+        {
+          "name": "PerspectiveDistanceIncludesEveryCornerAndDepth(1.777778f)",
+          "result": "Passed"
+        },
+        {
+          "name": "PerspectiveDistanceIncludesEveryCornerAndDepth(1.6f)",
+          "result": "Passed"
+        },
+        {
+          "name": "PerspectiveDistanceIncludesEveryCornerAndDepth(2.333333f)",
+          "result": "Passed"
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(0)",
+          "result": "Passed"
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(45)",
+          "result": "Passed"
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(90)",
+          "result": "Passed"
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(180)",
+          "result": "Passed"
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(270)",
+          "result": "Passed"
+        },
+        {
+          "name": "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(-90,0)",
+          "result": "Passed"
+        },
+        {
+          "name": "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(90,0)",
+          "result": "Passed"
+        },
+        {
+          "name": "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(0,90)",
+          "result": "Passed"
+        },
+        {
+          "name": "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(0,-90)",
+          "result": "Passed"
+        },
+        {
+          "name": "DropkickHasNoDownTimerOrCountAndRealDownSupersedesItOnce",
+          "result": "Passed"
+        },
+        {
+          "name": "ExpiryOnlyPermitsSupportedRecoveryAndNeverUnlocksItself",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidTuningAndClockCannotMutateState",
+          "result": "Passed"
+        },
+        {
+          "name": "LobbyAlwaysUsesBaseAndDoesNotCount",
+          "result": "Passed"
+        },
+        {
+          "name": "MatchAccumulatesOncePerEpisodeAndCapsDuration",
+          "result": "Passed"
+        },
+        {
+          "name": "ResetAndNewEpisodeRejectStaleEventsAndGetUpCompletions",
+          "result": "Passed"
+        },
+        {
+          "name": "UprightReturnRequiresExpiredTimerRealSupportAndSettledCompletion",
+          "result": "Passed"
+        },
+        {
+          "name": "HighLevelNetcodeAndUnityOnlineServices_AreAbsent",
+          "result": "Passed"
+        },
+        {
+          "name": "OnlyTransportModule_ReferencesTheSelectedPackageAssembly",
+          "result": "Passed"
+        },
+        {
+          "name": "TransportModule_HasNoAdapterImplementationBeforeNet001",
+          "result": "Passed"
+        },
+        {
+          "name": "TransportPackage_IsLockedAsDirectRegistryDependency",
+          "result": "Passed"
+        },
+        {
+          "name": "Harness_ExecutesTheRuntimeOwnedSimulationKernel",
+          "result": "Passed"
+        },
+        {
+          "name": "SimulationAndHarness_HaveNoPresentationRenderingOrUiDependency",
+          "result": "Passed"
+        },
+        {
+          "name": "ActualDownDuringDropkickAlignment_ClosesTheOldPresentation",
+          "result": "Passed"
+        },
+        {
+          "name": "AirborneUnsettledOrBlockedRecovery_DoesNotStart(False,True)",
+          "result": "Passed"
+        },
+        {
+          "name": "AirborneUnsettledOrBlockedRecovery_DoesNotStart(True,False)",
+          "result": "Passed"
+        },
+        {
+          "name": "AirborneUnsettledOrBlockedRecovery_DoesNotStart(False,False)",
+          "result": "Passed"
+        },
+        {
+          "name": "AlignmentNormalNormalization_MatchesEntryClassification",
+          "result": "Passed"
+        },
+        {
+          "name": "AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation(False)",
+          "result": "Passed"
+        },
+        {
+          "name": "AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation(True)",
+          "result": "Passed"
+        },
+        {
+          "name": "DiagonalFall_UsesTheDominantSupportedSide(35,FaceUp)",
+          "result": "Passed"
+        },
+        {
+          "name": "DiagonalFall_UsesTheDominantSupportedSide(55,RightSide)",
+          "result": "Passed"
+        },
+        {
+          "name": "GroundQueryMayReturnANonUnitNormal",
+          "result": "Passed"
+        },
+        {
+          "name": "InterruptedAlignment_CanReassessWithoutAddingADownEpisode",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidUnsupportedOrUprightOrientation_IsRejectedWithoutMutation",
+          "result": "Passed"
+        },
+        {
+          "name": "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(-90,70,FaceUp)",
+          "result": "Passed"
+        },
+        {
+          "name": "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(-90,-70,FaceUp)",
+          "result": "Passed"
+        },
+        {
+          "name": "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(90,70,FaceDown)",
+          "result": "Passed"
+        },
+        {
+          "name": "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(90,-70,FaceDown)",
+          "result": "Passed"
+        },
+        {
+          "name": "SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp(False)",
+          "result": "Passed"
+        },
+        {
+          "name": "SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp(True)",
+          "result": "Passed"
+        },
+        {
+          "name": "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(-90,0,FaceUp)",
+          "result": "Passed"
+        },
+        {
+          "name": "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(90,0,FaceDown)",
+          "result": "Passed"
+        },
+        {
+          "name": "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(0,90,LeftSide)",
+          "result": "Passed"
+        },
+        {
+          "name": "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(0,-90,RightSide)",
+          "result": "Passed"
+        },
+        {
+          "name": "ActualDownDuringDropkickRecovery_ReplacesTheRecoveryAndCountsAsDown",
+          "result": "Passed"
+        },
+        {
+          "name": "DownEpisode_UsesSharedGetUpAndIncrementsDownCountOncePerEpisode",
+          "result": "Passed"
+        },
+        {
+          "name": "DropkickRecovery_ReusesGetUpPresentationWithoutCreatingDownEpisode",
+          "result": "Passed"
+        },
+        {
+          "name": "EquivalentCycleSequences_ProduceTheSameFingerprint",
+          "result": "Passed"
+        },
+        {
+          "name": "KernelStep_AdvancesTheReadOnlySnapshot",
+          "result": "Passed"
+        },
+        {
+          "name": "NegativeCycleCount_IsRejectedWithoutMutation",
+          "result": "Passed"
+        },
+        {
+          "name": "RoundReset_ClearsRecoveryAndDownCount",
+          "result": "Passed"
+        },
+        {
+          "name": "ActionPoseReview_IsReadOnlyAndMakesNoAnimationClaim",
+          "result": "Passed"
+        },
+        {
+          "name": "C1B005UnityAssetFolder_HasOnlyFbxAndIdentityPrefabSources",
+          "result": "Passed"
+        },
+        {
+          "name": "FourViewSilhouetteParity_UsesObservedIouAndBoundedBboxGate",
+          "result": "Passed"
+        },
+        {
+          "name": "IdentityPrefab_IsTransformNeutralAndContainsNoGameplayComponents",
+          "result": "Passed"
+        },
+        {
+          "name": "ImportedNeutral_HasExactStaticHierarchyBoundsLandmarksAndScope",
+          "result": "Passed"
+        },
+        {
+          "name": "InspectionAndEightUnityCaptures_ArePresentAndHashBound",
+          "result": "Passed"
+        },
+        {
+          "name": "ModelImporter_UsesTheExactApprovedStaticPreset",
+          "result": "Passed"
+        }
+      ]
+    }
+  ],
+  "travelComparison": {
+    "Before": {
+      "path": ".codex_tmp/punch-drive-compact-20260917/Travel_Before.json",
+      "sha256": "293d28d328327cc7fc91943e4bcdaff1d12d5b8d2b4ff6f4657a107f662e1ccd",
+      "actualPreparationFlexDegrees": 73.17089080810547,
+      "actualStrikeForwardSpeedMps": 2.9349567890167236,
+      "nearContact": [
+        {
+          "tick": 99,
+          "action": 1,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 1,
+          "total": 1,
+          "region": "Body",
+          "part": "Spine_ActivePhysics",
+          "position": {
+            "x": -0.1202271431684494,
+            "y": 0.5338096618652344,
+            "z": 0.09977366030216217
+          },
+          "sourceAge": 0.20416668057441711,
+          "tipDistance": 0.028118137270212173,
+          "closingSpeed": 2.272047281265259,
+          "impulse": 2.5,
+          "sweptClosingSpeed": 0.020911309868097305,
+          "incomingClosingSpeed": 2.272047281265259
+        }
+      ]
+    },
+    "Final": {
+      "path": ".codex_tmp/punch-drive-compact-20260917/Travel_Final.json",
+      "sha256": "ba7ae93e957115a36037de715d786ff1ce36a588c5754d4153250eeae3832c68",
+      "actualPreparationFlexDegrees": 119.60386657714844,
+      "actualStrikeForwardSpeedMps": 5.153872013092041,
+      "nearContact": [
+        {
+          "tick": 101,
+          "action": 1,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 1,
+          "total": 1,
+          "region": "Body",
+          "part": "UpperArm_R_ActivePhysics",
+          "position": {
+            "x": -0.19314457476139069,
+            "y": 0.5720095038414001,
+            "z": 0.14268051087856293
+          },
+          "sourceAge": 0.26250001788139343,
+          "tipDistance": 0.01386793702840805,
+          "endTipDistance": 0.014488164335489273,
+          "closingSpeed": 4.483090400695801,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -1.3418606519699097,
+          "incomingClosingSpeed": 4.483090400695801
+        }
+      ]
+    }
+  },
+  "frameRates": "fps=60, maxPhysicalDifference=0, hits=2\nfps=15, maxPhysicalDifference=0, hits=2\nfps=144, maxPhysicalDifference=0, hits=2\n",
+  "stability": "side=0 maxElbowSwing=0 peakTipAcceleration=265.275543 lastStepMotion=0.00037301975 preparedFlex=119.603867 strikeSpeed=5.153872\nside=1 maxElbowSwing=0 peakTipAcceleration=263.740845 lastStepMotion=0.000379287143 preparedFlex=119.844521 strikeSpeed=5.15318966\n",
+  "skinGeometry": {
+    "samples": 90,
+    "impactPalmSamples": 3,
+    "maximumPostStepImpactSkinGapM": 0.006971205119043589,
+    "maximumSamplePenetrationM": 0,
+    "allContactClearanceApproved": false
+  },
+  "captureCases": [
+    {
+      "name": "LeftBody",
+      "maxSkin": 27.95670509338379,
+      "hits": [
+        {
+          "tick": 111,
+          "action": 1,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 1,
+          "total": 1,
+          "region": "Body",
+          "part": "UpperArm_R_ActivePhysics",
+          "position": {
+            "x": -0.19314584136009216,
+            "y": 0.5720422863960266,
+            "z": 0.1426941603422165
+          },
+          "sourceAge": 0.26250001788139343,
+          "tipDistance": 0.01386161521077156,
+          "endTipDistance": 0.014489629305899143,
+          "closingSpeed": 4.48369026184082,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -1.3402408361434937,
+          "incomingClosingSpeed": 4.48369026184082
+        },
+        {
+          "tick": 171,
+          "action": 2,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 1,
+          "total": 2,
+          "region": "Body",
+          "part": "UpperArm_R_ActivePhysics",
+          "position": {
+            "x": -0.19169358909130096,
+            "y": 0.5694076418876648,
+            "z": 0.14499583840370178
+          },
+          "sourceAge": 0.26250001788139343,
+          "tipDistance": 0.013858099468052387,
+          "endTipDistance": 0.014522768557071686,
+          "closingSpeed": 4.397311210632324,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -1.3255115747451782,
+          "incomingClosingSpeed": 4.397311210632324
+        },
+        {
+          "tick": 231,
+          "action": 3,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 1,
+          "total": 3,
+          "region": "Body",
+          "part": "UpperArm_R_ActivePhysics",
+          "position": {
+            "x": -0.19088947772979736,
+            "y": 0.56319260597229,
+            "z": 0.14656034111976624
+          },
+          "sourceAge": 0.26250001788139343,
+          "tipDistance": 0.01239486038684845,
+          "endTipDistance": 0.012448875233530998,
+          "closingSpeed": 4.287936210632324,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -1.4620606899261475,
+          "incomingClosingSpeed": 4.287936210632324
+        }
+      ]
+    },
+    {
+      "name": "RightBody",
+      "maxSkin": 27.471086502075195,
+      "hits": [
+        {
+          "tick": 111,
+          "action": 1,
+          "attacker": 0,
+          "target": 1,
+          "side": 1,
+          "points": 1,
+          "total": 1,
+          "region": "Body",
+          "part": "UpperArm_L_ActivePhysics",
+          "position": {
+            "x": 0.1939653605222702,
+            "y": 0.5730669498443604,
+            "z": 0.14263445138931274
+          },
+          "sourceAge": 0.26250001788139343,
+          "tipDistance": 0.004941815044730902,
+          "endTipDistance": 0.004941797349601984,
+          "closingSpeed": 4.488713264465332,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -1.2352681159973145,
+          "incomingClosingSpeed": 4.488713264465332
+        },
+        {
+          "tick": 171,
+          "action": 2,
+          "attacker": 0,
+          "target": 1,
+          "side": 1,
+          "points": 1,
+          "total": 2,
+          "region": "Body",
+          "part": "UpperArm_L_ActivePhysics",
+          "position": {
+            "x": 0.19265276193618774,
+            "y": 0.5710591077804565,
+            "z": 0.14514608681201935
+          },
+          "sourceAge": 0.26250001788139343,
+          "tipDistance": 0.013808728195726871,
+          "endTipDistance": 0.014570577070116997,
+          "closingSpeed": 4.413626194000244,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -1.306857943534851,
+          "incomingClosingSpeed": 4.413626194000244
+        },
+        {
+          "tick": 231,
+          "action": 3,
+          "attacker": 0,
+          "target": 1,
+          "side": 1,
+          "points": 1,
+          "total": 3,
+          "region": "Body",
+          "part": "UpperArm_L_ActivePhysics",
+          "position": {
+            "x": 0.1916801780462265,
+            "y": 0.5643647909164429,
+            "z": 0.14692015945911407
+          },
+          "sourceAge": 0.26250001788139343,
+          "tipDistance": 0.01342990342527628,
+          "endTipDistance": 0.013577915728092194,
+          "closingSpeed": 4.297353267669678,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -1.4643183946609497,
+          "incomingClosingSpeed": 4.297353267669678
+        }
+      ]
+    },
+    {
+      "name": "Head",
+      "maxSkin": 28.31410789489746,
+      "hits": [
+        {
+          "tick": 113,
+          "action": 1,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 2,
+          "total": 2,
+          "region": "Head",
+          "part": "Head_ActivePhysics",
+          "position": {
+            "x": -0.13016152381896973,
+            "y": 0.5956112742424011,
+            "z": 0.15398727357387543
+          },
+          "sourceAge": 0.32083335518836975,
+          "tipDistance": 0.024632805958390236,
+          "endTipDistance": 0.027434147894382477,
+          "closingSpeed": 0.5728642344474792,
+          "impulse": 3.0,
+          "sweptClosingSpeed": -0.09193012118339539,
+          "incomingClosingSpeed": 0.5728642344474792
+        }
+      ]
+    },
+    {
+      "name": "Far",
+      "maxSkin": 23.58353614807129,
+      "hits": []
+    },
+    {
+      "name": "Wall",
+      "maxSkin": 22.794748306274414,
+      "hits": []
+    },
+    {
+      "name": "GrabPunch",
+      "maxSkin": 25.241531372070312,
+      "hits": [
+        {
+          "tick": 171,
+          "action": 1,
+          "attacker": 0,
+          "target": 1,
+          "side": 1,
+          "points": 1,
+          "total": 1,
+          "region": "Body",
+          "part": "Spine_ActivePhysics",
+          "position": {
+            "x": 0.10124452412128448,
+            "y": 0.5499231219291687,
+            "z": 0.26349467039108276
+          },
+          "sourceAge": 0.26250001788139343,
+          "tipDistance": 0.029149070382118225,
+          "endTipDistance": 0.03425521403551102,
+          "closingSpeed": 4.10471773147583,
+          "impulse": 2.5,
+          "sweptClosingSpeed": -0.6434393525123596,
+          "incomingClosingSpeed": 4.10471773147583
+        }
+      ]
+    },
+    {
+      "name": "Alternating",
+      "maxSkin": 28.29013442993164,
+      "hits": [
+        {
+          "tick": 111,
+          "action": 1,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 1,
+          "total": 1,
+          "region": "Body",
+          "part": "UpperArm_R_ActivePhysics",
+          "position": {
+            "x": -0.1879352629184723,
+            "y": 0.5485500693321228,
+            "z": 0.14509105682373047
+          },
+          "sourceAge": 0.26250001788139343,
+          "tipDistance": 0.010650352574884892,
+          "endTipDistance": 0.010650324635207653,
+          "closingSpeed": 4.052116394042969,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -1.4105068445205688,
+          "incomingClosingSpeed": 4.052116394042969
+        },
+        {
+          "tick": 127,
+          "action": 2,
+          "attacker": 0,
+          "target": 1,
+          "side": 1,
+          "points": 1,
+          "total": 2,
+          "region": "Body",
+          "part": "UpperArm_L_ActivePhysics",
+          "position": {
+            "x": 0.19766393303871155,
+            "y": 0.5345857739448547,
+            "z": 0.134403795003891
+          },
+          "sourceAge": 0.26250001788139343,
+          "tipDistance": 0.014709078706800938,
+          "endTipDistance": 0.01470908336341381,
+          "closingSpeed": 3.579709529876709,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -1.9807757139205933,
+          "incomingClosingSpeed": 3.579709529876709
+        },
+        {
+          "tick": 142,
+          "action": 3,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 1,
+          "total": 3,
+          "region": "Body",
+          "part": "UpperArm_R_ActivePhysics",
+          "position": {
+            "x": -0.19601471722126007,
+            "y": 0.5792126655578613,
+            "z": 0.12553822994232178
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.015491762198507786,
+          "endTipDistance": 0.015491741709411144,
+          "closingSpeed": 3.8298137187957764,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -0.07296282798051834,
+          "incomingClosingSpeed": 3.8298137187957764
+        },
+        {
+          "tick": 158,
+          "action": 4,
+          "attacker": 0,
+          "target": 1,
+          "side": 1,
+          "points": 1,
+          "total": 4,
+          "region": "Body",
+          "part": "UpperArm_L_ActivePhysics",
+          "position": {
+            "x": 0.19611793756484985,
+            "y": 0.5997480154037476,
+            "z": 0.128851056098938
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.020483549684286118,
+          "endTipDistance": 0.02048356458544731,
+          "closingSpeed": 3.858736991882324,
+          "impulse": 1.25,
+          "sweptClosingSpeed": 0.3624648451805115,
+          "incomingClosingSpeed": 3.858736991882324
+        },
+        {
+          "tick": 174,
+          "action": 5,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 1,
+          "total": 5,
+          "region": "Body",
+          "part": "UpperArm_R_ActivePhysics",
+          "position": {
+            "x": -0.19536282122135162,
+            "y": 0.6060693860054016,
+            "z": 0.12807777523994446
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.01909395307302475,
+          "endTipDistance": 0.01909397728741169,
+          "closingSpeed": 4.038477420806885,
+          "impulse": 1.25,
+          "sweptClosingSpeed": 0.550702691078186,
+          "incomingClosingSpeed": 4.038477420806885
+        },
+        {
+          "tick": 191,
+          "action": 6,
+          "attacker": 0,
+          "target": 1,
+          "side": 1,
+          "points": 1,
+          "total": 6,
+          "region": "Body",
+          "part": "UpperArm_L_ActivePhysics",
+          "position": {
+            "x": 0.17738814651966095,
+            "y": 0.5514606833457947,
+            "z": 0.13607850670814514
+          },
+          "sourceAge": 0.26250001788139343,
+          "tipDistance": 0.02577684447169304,
+          "endTipDistance": 0.025776779279112816,
+          "closingSpeed": 3.7742419242858887,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -1.677150011062622,
+          "incomingClosingSpeed": 3.7742419242858887
+        },
+        {
+          "tick": 206,
+          "action": 7,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 1,
+          "total": 7,
+          "region": "Body",
+          "part": "UpperArm_R_ActivePhysics",
+          "position": {
+            "x": -0.19555732607841492,
+            "y": 0.5969972610473633,
+            "z": 0.13106697797775269
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.017171427607536316,
+          "endTipDistance": 0.01717143878340721,
+          "closingSpeed": 3.907750368118286,
+          "impulse": 1.25,
+          "sweptClosingSpeed": 0.407161682844162,
+          "incomingClosingSpeed": 3.907750368118286
+        },
+        {
+          "tick": 222,
+          "action": 8,
+          "attacker": 0,
+          "target": 1,
+          "side": 1,
+          "points": 1,
+          "total": 8,
+          "region": "Body",
+          "part": "UpperArm_L_ActivePhysics",
+          "position": {
+            "x": 0.19494019448757172,
+            "y": 0.596792459487915,
+            "z": 0.13049116730690002
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.019251031801104546,
+          "endTipDistance": 0.019251041114330292,
+          "closingSpeed": 3.8703064918518066,
+          "impulse": 1.25,
+          "sweptClosingSpeed": 0.3326027989387512,
+          "incomingClosingSpeed": 3.8703064918518066
+        },
+        {
+          "tick": 239,
+          "action": 9,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 1,
+          "total": 9,
+          "region": "Body",
+          "part": "UpperArm_R_ActivePhysics",
+          "position": {
+            "x": -0.17866498231887817,
+            "y": 0.5533711910247803,
+            "z": 0.14085058867931366
+          },
+          "sourceAge": 0.26250001788139343,
+          "tipDistance": 0.02422250807285309,
+          "endTipDistance": 0.024222450330853462,
+          "closingSpeed": 3.763979434967041,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -1.6053887605667114,
+          "incomingClosingSpeed": 3.763979434967041
+        },
+        {
+          "tick": 254,
+          "action": 10,
+          "attacker": 0,
+          "target": 1,
+          "side": 1,
+          "points": 1,
+          "total": 10,
+          "region": "Body",
+          "part": "UpperArm_L_ActivePhysics",
+          "position": {
+            "x": 0.1941240280866623,
+            "y": 0.5996890664100647,
+            "z": 0.13344475626945496
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.01711900345981121,
+          "endTipDistance": 0.017119018360972404,
+          "closingSpeed": 3.967588424682617,
+          "impulse": 1.25,
+          "sweptClosingSpeed": 0.48005759716033936,
+          "incomingClosingSpeed": 3.967588424682617
+        }
+      ]
+    },
+    {
+      "name": "Moving",
+      "maxSkin": 29.270891189575195,
+      "hits": [
+        {
+          "tick": 111,
+          "action": 1,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 1,
+          "total": 1,
+          "region": "Body",
+          "part": "UpperArm_R_ActivePhysics",
+          "position": {
+            "x": -0.1691591888666153,
+            "y": 0.5401225090026855,
+            "z": 0.14840558171272278
+          },
+          "sourceAge": 0.26250001788139343,
+          "tipDistance": 0.0009416434331797063,
+          "endTipDistance": 0.000943120801821351,
+          "closingSpeed": 3.9598922729492188,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -0.7654929161071777,
+          "incomingClosingSpeed": 3.9598922729492188
+        },
+        {
+          "tick": 126,
+          "action": 2,
+          "attacker": 0,
+          "target": 1,
+          "side": 1,
+          "points": 1,
+          "total": 2,
+          "region": "Body",
+          "part": "UpperArm_L_ActivePhysics",
+          "position": {
+            "x": 0.21474696695804596,
+            "y": 0.5983074903488159,
+            "z": 0.16711878776550293
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.024254506453871727,
+          "endTipDistance": 0.02425451949238777,
+          "closingSpeed": 3.521127939224243,
+          "impulse": 1.25,
+          "sweptClosingSpeed": 0.5792216658592224,
+          "incomingClosingSpeed": 3.521127939224243
+        },
+        {
+          "tick": 143,
+          "action": 3,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 1,
+          "total": 3,
+          "region": "Body",
+          "part": "UpperArm_R_ActivePhysics",
+          "position": {
+            "x": -0.14962142705917358,
+            "y": 0.5296834707260132,
+            "z": 0.07880764454603195
+          },
+          "sourceAge": 0.26250001788139343,
+          "tipDistance": 0.01030169427394867,
+          "endTipDistance": 0.010301641188561916,
+          "closingSpeed": 3.2539358139038086,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -1.3123161792755127,
+          "incomingClosingSpeed": 3.2539358139038086
+        },
+        {
+          "tick": 158,
+          "action": 4,
+          "attacker": 0,
+          "target": 1,
+          "side": 1,
+          "points": 1,
+          "total": 4,
+          "region": "Body",
+          "part": "UpperArm_L_ActivePhysics",
+          "position": {
+            "x": 0.2067517638206482,
+            "y": 0.5767092108726501,
+            "z": 0.2115783840417862
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.0175744891166687,
+          "endTipDistance": 0.0175744891166687,
+          "closingSpeed": 3.872962236404419,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -0.36000657081604004,
+          "incomingClosingSpeed": 3.872962236404419
+        },
+        {
+          "tick": 174,
+          "action": 5,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 1,
+          "total": 5,
+          "region": "Body",
+          "part": "UpperArm_R_ActivePhysics",
+          "position": {
+            "x": -0.15846064686775208,
+            "y": 0.5964650511741638,
+            "z": 0.047828540205955505
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.02305450662970543,
+          "endTipDistance": 0.02306152507662773,
+          "closingSpeed": 3.8936960697174072,
+          "impulse": 1.25,
+          "sweptClosingSpeed": 0.25626370310783386,
+          "incomingClosingSpeed": 3.8936960697174072
+        },
+        {
+          "tick": 191,
+          "action": 6,
+          "attacker": 0,
+          "target": 1,
+          "side": 1,
+          "points": 1,
+          "total": 6,
+          "region": "Body",
+          "part": "UpperArm_L_ActivePhysics",
+          "position": {
+            "x": 0.18422940373420715,
+            "y": 0.5258334279060364,
+            "z": 0.18978211283683777
+          },
+          "sourceAge": 0.26250001788139343,
+          "tipDistance": 0.003594560781493783,
+          "endTipDistance": 0.003600515890866518,
+          "closingSpeed": 3.2097904682159424,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -0.7790799736976624,
+          "incomingClosingSpeed": 3.2097904682159424
+        },
+        {
+          "tick": 206,
+          "action": 7,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 1,
+          "total": 7,
+          "region": "Body",
+          "part": "UpperArm_R_ActivePhysics",
+          "position": {
+            "x": -0.1964920312166214,
+            "y": 0.5784911513328552,
+            "z": 0.10175177454948425
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.026379095390439034,
+          "endTipDistance": 0.026379093527793884,
+          "closingSpeed": 3.8745133876800537,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -0.7828320264816284,
+          "incomingClosingSpeed": 3.8745133876800537
+        },
+        {
+          "tick": 223,
+          "action": 8,
+          "attacker": 0,
+          "target": 1,
+          "side": 1,
+          "points": 1,
+          "total": 8,
+          "region": "Body",
+          "part": "UpperArm_L_ActivePhysics",
+          "position": {
+            "x": 0.18677663803100586,
+            "y": 0.5429356098175049,
+            "z": 0.13713975250720978
+          },
+          "sourceAge": 0.26250001788139343,
+          "tipDistance": 0.01495725754648447,
+          "endTipDistance": 0.014957171864807606,
+          "closingSpeed": 3.208437442779541,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -2.0387845039367676,
+          "incomingClosingSpeed": 3.208437442779541
+        },
+        {
+          "tick": 238,
+          "action": 9,
+          "attacker": 0,
+          "target": 1,
+          "side": 0,
+          "points": 1,
+          "total": 9,
+          "region": "Body",
+          "part": "UpperArm_R_ActivePhysics",
+          "position": {
+            "x": -0.18673311173915863,
+            "y": 0.5722320079803467,
+            "z": 0.12129317969083786
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.014030319638550282,
+          "endTipDistance": 0.014030341990292072,
+          "closingSpeed": 3.864961862564087,
+          "impulse": 1.25,
+          "sweptClosingSpeed": 0.37285295128822327,
+          "incomingClosingSpeed": 3.864961862564087
+        },
+        {
+          "tick": 254,
+          "action": 10,
+          "attacker": 0,
+          "target": 1,
+          "side": 1,
+          "points": 1,
+          "total": 10,
+          "region": "Body",
+          "part": "UpperArm_L_ActivePhysics",
+          "position": {
+            "x": 0.21629007160663605,
+            "y": 0.5944133400917053,
+            "z": 0.1670556664466858
+          },
+          "sourceAge": 0.23333334922790527,
+          "tipDistance": 0.027394218370318413,
+          "endTipDistance": 0.02741425856947899,
+          "closingSpeed": 3.875810384750366,
+          "impulse": 1.25,
+          "sweptClosingSpeed": -0.3818545937538147,
+          "incomingClosingSpeed": 3.875810384750366
+        }
+      ]
+    }
+  ],
+  "media": [
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/punch-drive-compact-20260917/Media/PunchDrive_Flow_60.mp4",
+      "fps": 60,
+      "frames": 420,
+      "seconds": 7,
+      "sha256": "4fa6f45f5d552fab86bc71ad60c706a22dff1be9188c0fb8f0e316a51406f731",
+      "audio": {
+        "peak": 0.42330932617187506,
+        "events": [
+          {
+            "segment": "Alternating",
+            "videoFrame": 20,
+            "action": 1,
+            "region": "Body"
+          },
+          {
+            "segment": "Alternating",
+            "videoFrame": 36,
+            "action": 2,
+            "region": "Body"
+          },
+          {
+            "segment": "Alternating",
+            "videoFrame": 51,
+            "action": 3,
+            "region": "Body"
+          },
+          {
+            "segment": "Alternating",
+            "videoFrame": 67,
+            "action": 4,
+            "region": "Body"
+          },
+          {
+            "segment": "Alternating",
+            "videoFrame": 83,
+            "action": 5,
+            "region": "Body"
+          },
+          {
+            "segment": "Alternating",
+            "videoFrame": 100,
+            "action": 6,
+            "region": "Body"
+          },
+          {
+            "segment": "Alternating",
+            "videoFrame": 115,
+            "action": 7,
+            "region": "Body"
+          },
+          {
+            "segment": "Moving",
+            "videoFrame": 140,
+            "action": 1,
+            "region": "Body"
+          },
+          {
+            "segment": "Moving",
+            "videoFrame": 155,
+            "action": 2,
+            "region": "Body"
+          },
+          {
+            "segment": "Moving",
+            "videoFrame": 172,
+            "action": 3,
+            "region": "Body"
+          },
+          {
+            "segment": "Moving",
+            "videoFrame": 187,
+            "action": 4,
+            "region": "Body"
+          },
+          {
+            "segment": "Moving",
+            "videoFrame": 203,
+            "action": 5,
+            "region": "Body"
+          },
+          {
+            "segment": "Moving",
+            "videoFrame": 220,
+            "action": 6,
+            "region": "Body"
+          },
+          {
+            "segment": "Moving",
+            "videoFrame": 235,
+            "action": 7,
+            "region": "Body"
+          },
+          {
+            "segment": "GrabPunch",
+            "videoFrame": 320,
+            "action": 1,
+            "region": "Body"
+          }
+        ],
+        "source": "Unity exported PhysicalPunchFeedbackReview.Samples PCM; confirmed Hit events only"
+      }
+    },
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/punch-drive-compact-20260917/Media/PunchDrive_BeforeAfter_60.mp4",
+      "fps": 60,
+      "frames": 360,
+      "seconds": 6.0,
+      "sha256": "4ca8eb97febffb0d549ea9c23b7d15794b5ec309ef784d4110c02770cad56d6d"
+    },
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/punch-drive-compact-20260917/Media/PunchDrive_ContactCases_60.mp4",
+      "fps": 60,
+      "frames": 180,
+      "seconds": 3.0,
+      "sha256": "6f07977af4bdb3fb24a2d87275bf5b0a404ecdf1e8caad4f8cd5c31161c07aef"
+    }
+  ],
+  "sources": [
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs",
+      "sha256": "5da43710d4f37dadc0220e63bd90ad3d15c73fee6b28de683b0e9ee46a051251",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Punch.cs",
+      "sha256": "b3196e11c4a2caa7b8fdcbac182fe06f9c0a867f8228d18ac9bfaff311b31019",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Punch.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs",
+      "sha256": "a2e6aec993aa503152e2720fb0d5775d39bb2e4b1fd5169028fe4120d2e556fc",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchFeedbackReview.cs",
+      "sha256": "f0584878d0f8af1aba6292efa4bad9c239fcbc94248007986645b3341c5029e7",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchFeedbackReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.cs",
+      "sha256": "3537c8c21d84253ff6abecb9b612014a10d1fdafb560a60e2d36174cfca3265e",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.Lift.cs",
+      "sha256": "f7e2c14260f5849f33993791696f449e38ae1e89746ac2efce002d6c19bc5484",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.Lift.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/StandingSkinContactReview.cs",
+      "sha256": "63365fdfd8aba89612ea98fce54cbdfbafad862a3dc3b5f060378021a93773ff",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/StandingSkinContactReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/SkinSurfaceReview.cs",
+      "sha256": "7af7149b9e1d21d840a59477b6d643b7fc3550971e312aa36eda4c541bdc23e1",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/SkinSurfaceReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ReviewInputClock.cs",
+      "sha256": "421a56e88ad9f2be220989f0b71fc0db919bb2694c644c41aa17fc6aa1b8cbad",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ReviewInputClock.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Runtime/Simulation/GroundHandActionStateMachine.cs",
+      "sha256": "f20b3aaf3a704796a25f0f77f2bf6402a37b375db4ed926f13b65473b820471c",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Runtime/Simulation/GroundHandActionStateMachine.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/GroundPunchWindowTests.cs",
+      "sha256": "076331fbd48ffe51d44c813bef7922319b9a5c64db5e4bf8e8e574659e480326",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/GroundPunchWindowTests.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+      "sha256": "809ca7f32eb72cdaeab602874a3a04b1618bae4fb29b7712c6047a9deefa16a7",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Capture.cs",
+      "sha256": "caf1879e753455109dd8b4b5522a4b9b76b08af82572355747b1afe9d2efc38a",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Capture.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Drive.cs",
+      "sha256": "d181110df31121d91faab563f8bc8b43f10b2e4db77f5fc9839c6efad163a988",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Drive.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Geometry.cs",
+      "sha256": "edcb64c0ad95dcd2c100f7f6de442195b2a306dcc2856d35dab206317bf6c292",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Geometry.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Snap.cs",
+      "sha256": "1e47b439ba562f2ab3faae23f14b0c9b4f0051ebef654470deeabd0db465c9ab",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Snap.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Flow.cs",
+      "sha256": "b93f4b34a42224f4e9549123ae5e85b08745f7d7ec8d8a9ab15c63a2be10e776",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Flow.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Stability.cs",
+      "sha256": "27a619d12b148310a9fc7b2bcf0ced7e7407c3897680b78741ce9a5e5e438294",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Stability.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchClockTests.cs",
+      "sha256": "a0b49310e2fc8dc16f28c359694c239f3305fcb067b1e416da4b533fef8d6499",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchClockTests.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.cs",
+      "sha256": "9fb333b1c700f32bb5a3a5b3aab2f342b082b5278d0f61b92f10dc0e13c8f758",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Regions.cs",
+      "sha256": "83feca2f7338e759ddeab212b2a3602b374499989fc0ecfbad61dd44b4d34020",
+      "snapshot": ".codex_tmp/punch-drive-compact-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Regions.cs"
+    }
+  ],
+  "originalAssetHashes": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31",
+    "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60",
+    ".codex_tmp/punch-unity-20260906/ApprovedPunch.json": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac",
+    "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a",
+    "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/candidate-r07/R20_LatWeightCandidate.blend": "8b6a2e5b41f0a6bfc10957d2d3d12a604f16562bd14512b440831723b63abad7"
+  },
+  "reviewModelHashes": {
+    "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-reach-20260916/candidate-r02/R20_ShoulderBlendCandidate.blend": "40730ebda748729eb4df512b9827e2569dd15ff094dd9df9270122b7451cc1e5",
+    "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-reach-20260916/candidate-r02/ShoulderCharacter.bytes": "21c9c8079eb2be506e2daf822c19f1af3db99a638a4d6470d45e11fb5b4b79a5"
+  },
+  "punchLibrary": {
+    "path": ".codex_tmp/punch-unity-20260906/ApprovedPunch.json",
+    "sha256": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac"
+  },
+  "knownLimits": [
+    "Maximum post-step skin gap 6.97 mm in impact samples; complete visual contact fidelity is not claimed.",
+    "Only the first 10-point threshold request is connected. Live Down, increasing DownCount and recovery handoff remain subsequent work.",
+    "Separate close-range hook, dynamic collider registration, weapons, hazards, full arena, networking and four-player performance remain subsequent work.",
+    "The new punch feel awaits user review; the previous candidate was rejected."
+  ],
+  "builds": 0,
+  "commits": 0,
+  "pushes": 0,
+  "documents": {
+    "baseline": "PASS",
+    "workflow": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.026s\n\nOK\n"
+  },
+  "userFeedbackDate": "2026-09-18",
+  "nextProposal": "artifacts/reports/R20_PUNCH_CONTROL_REDESIGN_20260918.md",
+  "nextProposalImplemented": false
+}

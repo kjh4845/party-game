@@ -5,11 +5,11 @@
 | 항목 | 값 |
 |---|---|
 | 문서 | 소프트웨어 요구사항 명세서 |
-| 버전 | 1.8.0 Lean System Requirements |
-| 기준일 | 2026-08-26 |
+| 버전 | 1.8.0 Lean System Requirements + 2026-09-04 Action Presentation Addendum |
+| 기준일 | 2026-09-05 |
 | 제품 목표 | Alpha = Vertical Slice, 이후 G4 Steam 제품 통합과 G5 1.0 |
 | 제품 연결 구조 | Host Client Authority P2P |
-| 현재 캐릭터 결정 | Hybrid Core v0.13 방향 승인, C1b 정확 모델·물리 미승인 |
+| 현재 캐릭터 결정 | r16 Neutral 방향 승인, r20 내부 리그 후보 보존. C1b exact·game Prefab·물리 결과 미승인 |
 | 상세 패치 기준 | `docs/PATCH_DESIGN.md` 0.5.0 Approved Firearm Runtime Baseline |
 | 문서 권한 | 이 문서는 제품·시스템 결과를 정의한다. Protocol byte layout과 test fixture 내부 구현은 별도 구현 명세에서 다룬다. |
 
@@ -17,6 +17,40 @@
 부동소수점 연산 순서, 암호 transcript 구성과 반복 fixture 횟수는 의도적으로 제거했다.
 후속 Protocol·Asset Pipeline·Test 명세가 이를 구체화할 수 있지만, 아래 결과와 신뢰 경계를
 약화해서는 안 된다.
+
+### 2026-09-05 공통 Grip·전 주기 변형·다방향 회복 결정
+
+- 총기 Grip은 무기 종류와 좌우에 공통인 팔 뻗기 template 하나다. 동일 template를 실제 잡은 팔에
+  적용하며 왼손·오른손 어느 쪽도 가능하다. 손 점유와 Main/Support 역할은 gameplay 정보이며
+  Pistol/LongGun별 pose나 좌우별 별도 authored clip을 만드는 근거가 아니다. fire/recoil·reload clip0 유지.
+- 리깅 QA는 걷기·뛰기 한 주기의 전 sample frame과 loop 경계에서 어깨·팔꿈치·골반·무릎의 꺾임,
+  자기교차·면 뒤집힘·국소 압축/늘어남과 육안 자연스러움을 함께 확인한다. 한 정지 자세의 PASS로 대체하지 않는다.
+- 회복 진입은 공격 방향이 아니라 Host가 확인한 실제 torso 자세와 지지면 normal을 사용한다.
+  앞·뒤·좌·우 및 대각선·임의 yaw·경사면을 지원하고, 안정 지지나 clearance가 없으면 기다린다.
+- 사용자가 권장안을 선택했다. 옆으로 누우면 현재 몸의 수평 방향을 보존하면서 가까운 앞/뒤 자세로
+  정렬한 뒤 공통 face-up/face-down GetUp을 사용한다. 좌우 전용 GetUp clip은 추가하지 않는다.
+  정렬과 GetUp은 순간이동·즉시 방향 반전 없이 연결하고 Host만 단계·완료를 판정한다.
+- DropkickRecovery와 DownEpisode는 위 시각 경로를 공유하되 gameplay state·DownCount·groggy·Down Trigger는 분리한다.
+  Upright Dropkick settle은 일어나기 없이 locomotion 복귀가 가능하며 떠 있거나 head-down이면 먼저 물리 안정화를 기다린다.
+
+
+### 2026-09-05 외형·내부 리그 적용 범위
+
+사용자가 기존 Neck 제한은 외형에 관한 것임을 명확히 했다. 보이는 목과 별도 목 외형은 0이며,
+머리를 지지하는 내부 `Chest → Neck → Head` Bone은 허용한다. r20의 내부 Neck은 이 외형 계약의 위반이 아니다.
+9월 4일 Idle/Walk/Sprint·Firearm clip0·Dropkick/shared GetUp 결정은 유지한다.
+이번 문서 동기화·후속 작업 지시는 리그/포즈 결과의 시각 승인이나 UG-C1B·Player Build 승인을 대신하지 않는다.
+
+### 0.1 2026-09-04 Action Presentation 결정
+
+- Idle은 양팔을 몸통에 붙이는 pose, Walk는 작은 앞뒤 팔 swing+보행 leg motion, Sprint는 큰 앞뒤 팔
+  swing+빠른 leg cadence를 사용하며 모두 in-place여야 한다.
+- Firearm은 기존 Pistol Main hand와 LongGun Main+Support hand 관계를 유지하되 해당 팔을 앞으로 뻗는
+  단순 공통 Grip pose를 사용하고, 별도 authored fire/recoil animation clip은 만들지 않는다.
+- Host의 bounded Rigidbody/Joint recoil이 Grip pose의 팔과 Weapon을 위로 움직이고 승인된 spring/damping으로
+  복귀시킨다. Animation frame은 Shot·Projectile·Hit·recoil authority를 갖지 않는다.
+- `DropkickRecovery`와 `DownEpisode`는 별도 gameplay state다. 두 경로는 physics settle 뒤 방향별
+  face-up/face-down GetUp presentation을 공유할 수 있지만 Dropkick 경로의 DownCount·groggy·Down Trigger는 0이다.
 
 ## 1. 제품 개요
 
@@ -132,7 +166,7 @@ InteractiveLobby 또는 Closed다.
 | SRS-PHYS-002 | Sprint 속도 또는 가속도는 Versioned Profile Multiplier를 사용하고 Authority, Collider 크기와 Gameplay Reach를 바꾸지 않아야 한다. | P1 | T/I/A | 사용자 결정 2026-08-24 |
 | SRS-PHYS-003 | Grounded 새 Hand Press는 피해가 없는 Intent 상태로 시작하고 한 Press에서 짧은 Release의 해당 손 Punch 또는 Hold의 GrabSeek 중 하나만 만들어야 한다. | P0 | T/M | PRD 1.8.0 |
 | SRS-PHYS-004 | 왼손과 오른손은 독립적으로 행동하고 서로 다른 유효 Target을 잡을 수 있어야 한다. | P0 | T | PRD 1.8.0 |
-| SRS-PHYS-005 | Grab 생성·Release·Break는 Host Contact, Target 규칙과 제한된 Grip Profile로 판정해야 한다. | P0 | T/M | PRD 1.8.0 |
+| SRS-PHYS-005 | Grab 생성·Release·Break는 Host Contact, Target 규칙과 제한된 Grip Profile로 판정해야 한다. 동적 대상의 클릭 유지 Grab 뒤 마지막 본인 손 release는 별도 Lift 조건 없이 bounded Throw를1회 적용하고, 다른 본인 손 유지·미획득·강제 취소에는 추가 Throw가 없어야 한다. | P0 | T/M | PRD 1.8.0 |
 | SRS-PHYS-006 | Jump는 제한된 Input Buffer와 Coyote Time을 지원하고 Ledge Assist는 무제한 비행이나 매달리기가 되지 않아야 한다. | P0 | T/M | PRD 1.8.0 |
 | SRS-INPUT-004 | Esc는 Lobby Cursor Mode를 열고 닫아야 한다. 열린 동안 Local 이동·Jump·Hand Command는 Neutral이지만 Host Simulation과 외부 충격은 계속되어야 한다. | P1 | T/M | 사용자 결정 2026-08-24 |
 | SRS-INPUT-005 | Cursor Mode 진입은 Punch·Kick·Dropkick·Throw·추가 Impulse 없이 pending single/chord 또는 Active Local Hand Intent를 취소해야 한다. | P1 | T | 사용자 결정 2026-08-25 |
@@ -149,8 +183,19 @@ InteractiveLobby 또는 Closed다.
 | SRS-INPUT-008 | Grounded에서 LMB/RMB를 GrabHoldThreshold 전에 quick release하면 각각 왼손/오른손 Punch 한 번을 만들고, threshold를 넘겨 hold하면 Strike 없이 해당 손 GrabSeek로 전환해야 한다. | P0 | T/M | 사용자 결정 2026-08-25, PRD 1.8.0 |
 | SRS-INPUT-009 | Airborne non-Down에서 single quick release는 반대 down edge 없이 DualClickChordWindow가 닫힌 뒤 해당 좌/우 발 Kick으로 확정해야 한다. 반대 두 button down edge가 같은 window 안이면 두 pending을 즉시 소비해 Dropkick 한 번을 commit하고 quick release를 추가 요구해서는 안 된다. Hold threshold는 아직 commit되지 않은 single Kick pending만 취소해 해당 손/ledge GrabSeek로 전환하며 이미 commit된 Dropkick rollback은 0이어야 한다. | P0 | T/M | 사용자 결정 2026-08-25, PRD 1.8.0 |
 | SRS-PHYS-012 | Player는 Airborne Episode당 Authority `AirAttackToken` 하나만 가져야 하며 Kick 또는 Dropkick commit이 이를 한 번 소비해야 한다. Token은 stable Grounded, GetUp 완료 또는 Round Reset에서 1로 복원되고 소비 뒤 quick tap/chord는 추가 Air attack을 만들지 않지만 hold Grab은 계속 허용해야 한다. | P0 | T | 사용자 결정 2026-08-25, PRD 1.8.0 |
-| SRS-PHYS-013 | Dropkick은 bounded forward impulse, 감소된 air steering, Kick보다 강한 bounded knockback과 짧은 DropkickRecovery/physics tumble을 사용해야 한다. Landing·종료·빗나감의 recovery/tumble은 DownEpisode·DownCount·Groggy와 TRG-DOWN-EPISODE-START를 만들지 않아야 한다. AirAttackToken이 먼저 복원돼도 Recovery 종료 전 새 Punch·Kick·Dropkick·Weapon Attack은 0이어야 한다. | P1 | T/A/M | 사용자 결정 2026-08-25, PRD 1.8.0 |
+| SRS-PHYS-013 | Dropkick은 bounded forward impulse, 감소된 air steering, Kick보다 강한 bounded knockback과 짧은 DropkickRecovery/physics tumble을 사용해야 한다. DropkickRecovery는 DownEpisode와 별도 state이고 Landing·종료·빗나감의 recovery/tumble은 DownCount·Groggy와 TRG-DOWN-EPISODE-START를 만들지 않아야 한다. 실제 prone settle 뒤에는 Down/Ragdoll 경로의 face-up/face-down GetUp presentation을 공유할 수 있지만 gameplay state는 합치지 않아야 한다. AirAttackToken이 먼저 복원돼도 Recovery 종료 전 새 Punch·Kick·Dropkick·Weapon Attack은 0이어야 한다. | P1 | T/A/M | 사용자 결정 2026-08-25·2026-09-04, PRD 1.8.0 Addendum |
 | SRS-PHYS-014 | AuthorityHost만 Kick·Dropkick action, hit, impulse와 recovery를 확정해야 한다. 유효 Air hit는 좌우를 Action/Anchor context로 보존한 `TRG-ATTACK-HIT-CONFIRMED` SourceKind `Kick` 또는 `Dropkick`이어야 하고 Patch003/004를 적용할 수 있지만 TRG-WEAPON-HIT-CONFIRMED와 Patch011/012는 0이어야 한다. Animation·Presentation은 read-only이고 gameplay root motion은 0이어야 한다. | P0 | T/I/M | 사용자 결정 2026-08-25, PRD 1.8.0 |
+
+| SRS-PHYS-015 | Host는 실제 torso rotation과 지지면 normal에서 front/back/left/right 회복 진입을 판별해야 한다. 임의 yaw·대각선·경사면을 지원하고 stable support·clearance 전에는 회복을 시작하지 않아야 한다. Side는 수평 방향을 보존한 연속 정렬 뒤 공통 face-up/down GetUp을 사용하며 좌우 전용 clip과 순간이동은 0이다. 정렬 중 지지/공간 상실은 재평가하고 Down/Dropkick의 episode 의미와 Count를 유지해야 한다. | P1 | T/A/M | 사용자 결정 2026-09-05 |
+
+후속 사용자 결정 — 던진 뒤 일반 충돌: 추가 Damage와 피해 누적은0이다. 벽/바닥/일반 물체·캐릭터에 대한 반복 접촉에서도 동일하다.
+물리 반응과 기존 명시적 Hazard/OOB 계약은 유지한다. 예: 벽 충돌 뒤 바닥에서 두 번 튕겨도 후속 접촉 Damage는 모두0이다.
+2026-09-09 확정 정책: [빠른 펀치·부위별 누적 후보](../artifacts/reports/R20_FAST_PUNCH_PRECISION_20260909.md)는 몸통·팔다리1점, 머리2점으로 누적한다. 넉다운 기준은10→9→8→7→6점에서 멈추며 기존 groggy 대기 시간 증가도 유지한다. 누적은 시간이 지나도 감소하지 않고 새 Down에서 소비하며, Round reset은 누적과 DownCount를 초기화한다. Down 중 추가 타격은 물리 반응만 적용하고 점수·Count·timer를 늘리지 않는다. 머리 보너스는 실제 머리 접촉에만 적용한다. 기존 항상5회 고정은 이전 비교 정책이다.
+
+2026-09-08 이전 사용자 결정: Down용 피격 누적은 시간 감소가 없고 새 Down에서 소비한다. 필요한 총 타격 수는 고정이며, DownCount는 groggy 대기 시간 증가에만 사용한다. Down 중 재피격은 물리 impulse만 허용하고 누적·새 episode·Count 증가·timer 연장은 0이다. 넉다운 대기 구간은 자세 drive/animation blend 0의 수동 ragdoll이며 유효 지지/공간과 timer 종료 뒤에만 GetUp을 시작한다. Round reset은 누적과 Count를 초기화한다. 구체적인 타격 수/시간과 공격별 피해표는 tuning이며 일반 충돌 자동 Down은 별도 미확정이다.
+잡힌 대상의 timer 종료·지지/clearance가 유효하면 회복을 허용하고, 상태 표현/충돌체 전환만으로 Grab을 해제하지 않는다. 접점은 연결된 물리 부위를 따르며 하중·점프 보정·Throw impulse 한도는 대상 전체 질량으로 계산한다. 같은 대상의 여러 부위를 잡아도 대상 단위 보정/Throw 중복은0이고, Reset/실제 break는 기존 강제 해제 정책을 따른다.
+
+2026-09-17 사용자 결정 — Down 들기 보조(SRS-PHYS-005의 후속): 실제 유효 Grab과 지지된 보유자의 들기/유지 조건에서만 Down 대상에 부분 중력 보상 힘을 적용한다. 질량·관성·중력 사용 설정과 Down 자세 drive0은 보존하고, 동일 대상의 양손/복수 접점 보조는 중복하지 않는다. 마지막 손 release·강제 취소·대상/접점 상실·공중 전환은 다음 물리 계산 전에 보조0이어야 한다. 유효 마지막 release만 기존 bounded Throw1회를 만들며, 상호 잡기 자동 상승 차단과 held jump의 무게 패널티를 유지한다. 예: 양손으로 들다가 한 손만 놓으면 들기는 유지하고, 마지막 손을 놓는 tick에는 보조0·Throw1회다. 로컬 후보 검증과 정식 Host/Guest 통합 완료는 구분한다.
 
 ## 7. Weapon Combat 요구사항
 
@@ -172,7 +217,7 @@ InteractiveLobby 또는 Closed다.
 | SRS-WEAPON-014 | Pistol은 Host가 수락한 WeaponUse press edge당 semi-auto 한 발과 Spawn total Ammo 7을, LongGun은 valid WeaponUse hold·cadence의 full-auto와 total Ammo 30을 사용해야 한다. 모든 Spawn은 full Ammo로 시작하며 ReserveAmmo, ReloadCommand, Reloading, magazine 교체와 ammo pickup은 각각 0이어야 한다. | P0 | T/I/M | 사용자 결정 2026-08-26, PRD 1.8.0 |
 | SRS-WEAPON-015 | 마지막 유효 Shot 뒤 Ammo가 0이면 Host는 해당 Weapon의 Fire를 원자 중지하고 Grip/owner를 한 번 forced release해 `SpentPendingCleanup`으로 전환해야 한다. Spent는 `START 2~4초` cap에 포함되지만 Collider·pickup·Grab·fire·hit·map/Hazard interaction은 0이고 deadline/reset에서 제거해야 하며 replacement는 즉시가 아니라 다음 정규 Pulse만 사용해야 한다. | P0 | T/I | 사용자 결정 2026-08-26, PRD 1.8.0 |
 | SRS-WEAPON-016 | Host는 owner·held·phase·cadence·Ammo를 검증해 Ammo-1과 visible Projectile Spawn을 원자 처리해야 한다. Projectile은 immutable attacker·SourceWeapon·ShotSequence·AttackAction을 보존하고 fixed-step swept SphereCast의 첫 Map blocker 또는 Character hit 하나에서 끝나며 gravity `START 0`, pierce·ricochet·다중 hit 0이고 TTL·OOB·RoundResult·reset에서 제거해야 한다. Character hit의 Patch03은 Action·Target당, Patch04는 Projectile Action당 최대 한 번이어야 한다. 지연 last-shot Hit 때 source가 Spent/owner-loss면 Patch12는 `NoEligibleTarget`이며 다른 Weapon을 대신 해제해서는 안 된다. Guest Ammo·Projectile·Hit 결과 주장은 0이어야 한다. | P0 | T/I/A | 사용자 결정 2026-08-26, PRD 1.8.0 |
-| SRS-WEAPON-017 | Host는 Shot마다 bounded recoil impulse·torque와 Projectile direction을 확정해야 한다. Pistol은 narrow spread·strong single recoil, LongGun은 deterministic ShotSequence 기반 capped RecoilAccumulator·SpreadBloom과 release/gap recovery를 사용해야 한다. Visual recoil은 read-only이며 projectile·recoil의 Lever·Crane·Hook·Panel·Hazard phase·prop remote activation/impulse는 0이어야 한다. Fire·Projectile은 Playing과 SuddenDeath에서 유효하고 RoundResult부터 새 Fire·active Projectile은 0이어야 한다. | P1 | T/I/A/M | 사용자 결정 2026-08-26, PRD 1.8.0 |
+| SRS-WEAPON-017 | Host는 Shot마다 bounded recoil impulse·torque와 Projectile direction을 확정해야 한다. Pistol은 narrow spread·strong single recoil, LongGun은 deterministic ShotSequence 기반 capped RecoilAccumulator·SpreadBloom과 release/gap recovery를 사용해야 한다. 총기 종류·좌우에 공통인 팔 뻗기 template 하나를 실제 Held arm에 적용하고 별도 authored fire/recoil animation clip은 0이어야 한다. Host Rigidbody/Joint recoil이 해당 팔과 Weapon을 위로 움직이고 bounded spring/damping으로 복귀시켜야 하며 projectile·recoil의 Lever·Crane·Hook·Panel·Hazard phase·prop remote activation/impulse는 0이어야 한다. Fire·Projectile은 Playing과 SuddenDeath에서 유효하고 RoundResult부터 새 Fire·active Projectile은 0이어야 한다. | P1 | T/I/A/M | 사용자 결정 2026-08-26·2026-09-04, PRD 1.8.0 Addendum |
 
 ## 8. Patch 요구사항
 
@@ -267,7 +312,7 @@ InteractiveLobby 또는 Closed다.
 | SRS-APPEAR-019 | UV, Paint Mask, Material Slot, Attachment Anchor와 필수 LOD는 Neutral, Grab, Punch, Air Kick, Dropkick/Recovery, Weapon, Down, Ragdoll, GetUp Review Pose에서 일관되어야 한다. | P1 | T/A/M | Character 기술 기준 |
 | SRS-APPEAR-020 | 2·3·4인 Shared Camera Capture에서 Character, Limb Terminal, 좌우 Punch·Air Kick, Dropkick 방향, Hand State, Weapon 종류·방향과 Player Identity를 판독할 수 있어야 한다. | P1 | A/M | 사용자 품질 요구 |
 | SRS-APPEAR-021 | 기능 ID `Pistol/LongGun/Bat/Hammer`는 각각 M1911-inspired brand-free low-poly Pistol, AK-47-inspired brand-free low-poly LongGun, logo 없는 baseball Bat와 construction sledgehammer reference role을 사용해야 한다. 실제 모델명·제조사명은 사용자-facing Text로 노출하지 않고 logo·marking·serial과 정확 복제는 0이어야 한다. | P1 | I/A/M | 사용자 결정 2026-08-25, PRD 1.8.0 |
-| SRS-APPEAR-022 | Alpha Hybrid Animation Matrix는 locomotion·Jump phase, L/R Punch, L/R Air Kick, Dropkick·DropkickRecovery, Grab·Lift·Throw, Weapon Fire·Swing, Ragdoll·GetUp을 포함해야 한다. 모든 clip·blend·pose는 Authority state를 read-only로 표시하고 gameplay root motion·Collider·hit·impulse·Down mutation은 0이어야 하며 2·3·4인 Camera에서 원인과 방향을 구분할 수 있어야 한다. | P1 | I/A/M | 사용자 결정 2026-08-25, PRD 1.8.0 |
+| SRS-APPEAR-022 | Alpha Hybrid Presentation Matrix는 in-place Idle(팔을 몸통에 붙임)·Walk(작은 앞뒤 팔 swing+보행 leg)·Sprint(큰 앞뒤 팔 swing+빠른 leg cadence), Jump physics+procedural pose(전용 clip0, 8방향·공중 방향 변경·착지 후 Idle/Walk/Sprint 연속 전환), L/R Punch, L/R Air Kick, Dropkick·별도 non-Down DropkickRecovery, Grab·release Throw(별도 Lift 조작0), Firearm forward-arm Grip+physics recoil, Melee Swing과 Ragdoll/shared GetUp을 포함해야 한다. 별도 authored Firearm fire/recoil 및 전용 Jump/착지 clip은 0이어야 한다. 모든 clip·blend·pose·physics presentation은 Authority state를 표시하고 gameplay root motion·Collider·hit·impulse·Down mutation을 새로 만들지 않아야 하며 2·3·4인 Camera에서 원인과 방향을 구분할 수 있어야 한다. | P1 | I/A/M | 사용자 결정 2026-08-25·2026-09-04, PRD 1.8.0 Addendum |
 | SRS-APPEAR-023 | Alpha Cosmetic catalog는 `EyeSet`·`Mustache`·`Headwear` placeholder 대표 1개씩 또는 fixed size·color, 전신 배치·3축 회전, local save와 Host P2P 검증의 같은 기능 범위를 가진 동등 최소 game-authored 집합이어야 한다. 최종 조형 수량과 production-quality catalog는 Alpha Gate가 아니어야 한다. | P1 | I/T/M | 사용자 결정 2026-08-26, PRD 1.8.0 |
 
 ## 12. Local 저장, 진단과 Error 요구사항
@@ -351,16 +396,18 @@ InteractiveLobby 또는 Closed다.
 | AT-032 | 영구 비범위 검사 | Source, 설정과 Release Artifact의 Backend Service, Database, Dedicated Server, Container, Public Matchmaking, Rank와 MMR 경로가 각각 0이다. | P2 |
 | AT-033 | G5 Data-only UGC | Script, DLL, 외부 Bundle, Traversal과 Invalid Content는 Activation 전에 실패하고 유효 Content는 공식 Map Runtime을 사용한다. | P3 |
 | AT-034 | Ground/Air Tap·Hold·Chord·Token | Ground L/R quick tap은 해당 손 Punch, Airborne non-Down single quick release는 chord close 뒤 해당 발 Kick, 60/80/100ms 비교의 valid dual down-edge는 즉시 Dropkick 한 번이다. Hold threshold는 미commit single Kick만 Grab으로 취소하고 AirAttackToken은 episode당 공격 1회이며 stable Grounded·GetUp·reset에서 복원된다. | P1 |
-| AT-035 | Dropkick Authority·Patch·No-Down | Host만 Kick·Dropkick action/hit/physics를 확정하고 Dropkick impulse·air steer·knockback·recovery를 bounded하게 적용한다. Recovery/tumble의 DownEpisode·DownCount·TRG-DOWN은 0이며 SourceKind Kick/Dropkick은 Patch003/004만 발동하고 Weapon Patch011/012는 0이다. | P1 |
-| AT-036 | Hybrid Animation Matrix | Locomotion·Jump phase, L/R Punch·Air Kick, Dropkick/Recovery, Grab/Lift/Throw, Weapon Fire/Swing, Ragdoll/GetUp이 2·3·4인 Camera에서 읽히고 Animation gameplay root motion과 authority mutation은 0이다. | P1 |
+| AT-035 | Dropkick Authority·Patch·No-Down | Host만 Kick·Dropkick action/hit/physics를 확정하고 Dropkick impulse·air steer·knockback·recovery를 bounded하게 적용한다. DropkickRecovery는 DownEpisode와 별도이고 DownCount·TRG-DOWN은 0이다. Prone settle 뒤 방향별 GetUp 시각 모션 공유는 허용하지만 상태 합성은 0이며 SourceKind Kick/Dropkick은 Patch003/004만 발동하고 Weapon Patch011/012는 0이다. | P1 |
+| AT-036 | Hybrid Presentation Matrix | Idle arms-to-torso, Walk small arm swing+leg motion, Sprint large arm swing+fast leg cadence, Jump physics+procedural pose(전용 clip0, 8방향·공중 방향 변경·착지 후 Idle/Walk/Sprint 연속 전환), L/R Punch·Air Kick, Dropkick/별도 Recovery, Grab/release Throw(별도 Lift 조작0), Firearm forward-arm Grip+physics recoil, Melee Swing, Ragdoll/shared GetUp이 2·3·4인 Camera에서 읽힌다. authored Firearm fire/recoil·전용 Jump/착지 clip·Animation gameplay root motion·authority mutation은 각각 0이다. | P1 |
 | AT-037 | Weapon Archetype·W1 Air Mapping | 네 기능 ID가 brand-free M1911-inspired Pistol, AK-47-inspired LongGun, baseball Bat, construction sledgehammer로 판독되고 사용자-facing 실제 모델명·logo·marking은 0이다. W1은 승인 Air Kick/Dropkick/airborne Grab mapping을 유지하며 Airborne WeaponUse는 별도 승인 action/mode 없이는 0이다. | P1 |
 | AT-038 | FireMode·Ammo·Spent·Supply | Pistol press당 semi-auto 1발·total7, LongGun valid hold full-auto·total30, reserve/reload0이 동작한다. 마지막 Shot 뒤 Host forced release→SpentPendingCleanup 2~4초 deadline remove가 cap을 유지하고 replacement는 다음 정규 Pulse만 사용한다. | P1 |
 | AT-039 | Projectile Authority·Collision·Lifecycle | Host만 Ammo-1과 visible Projectile을 원자 생성하고 swept first hit, no pierce/ricochet, TTL·OOB·Result·reset을 통과한다. Projectile별 Patch03 Action/Target·Patch04 Action dedupe가 1회이고 delayed last-shot source Spent/owner-loss의 Patch12는 NoEligibleTarget이다. Guest Ammo/Projectile/Hit 주장과 remote impulse는 0이다. | P1 |
-| AT-040 | Recoil·Spread·Phase·Debug | Pistol narrow spread·strong single recoil과 LongGun deterministic cumulative RecoilAccumulator/SpreadBloom이 2·3·4인에서 구분된다. Fire/Projectile은 Playing+SuddenDeath에서 유효하고 RoundResult부터 0이며 Ammo·FireMode·Projectile state는 developer debug에서 검증되고 Player HUD에는 0이다. | P1 |
+| AT-040 | Recoil·Spread·Phase·Debug | 좌우 어느 손이든 같은 팔 뻗기 Grip template을 적용하고, Host Rigidbody/Joint recoil만 해당 팔·Weapon을 위로 움직여 복귀시킨다. authored fire/recoil clip은 0이며 Pistol narrow spread·strong single recoil과 LongGun deterministic cumulative RecoilAccumulator/SpreadBloom이 2·3·4인에서 구분된다. Fire/Projectile은 Playing+SuddenDeath에서 유효하고 RoundResult부터 0이며 Ammo·FireMode·Projectile state는 developer debug에서 검증되고 Player HUD에는 0이다. | P1 |
 | AT-041 | Alpha Match UI 허용 목록 | AT-042의 local Esc menu를 제외한 gameplay UI에는 persistent timer·alive·ammo·killfeed·result panel이 각각 0이고 transient 3·2·1·between-round Patch·OpponentLeft/HostLoss/error와 on-demand Tab만 나타난다. Tab은 Score·Active Patch 외 정보를 0개 표시하고 Ammo는 developer debug에만 있다. | P1 |
 | AT-042 | Match Esc Non-pausing Menu | Host와 Guest 각각 Match menu를 열어도 Authority simulation·Round timer·Hazard·외부 physics가 계속되고 local gameplay Input만 Neutral이다. 닫은 뒤 Mouse all-up 전 Hand·Weapon 오발은 0이다. | P1 |
 | AT-043 | Guest Leave·Disconnect·Forfeit Matrix | Lobby와 Match의 2·3·4인에서 explicit Leave는 grace 없이, unexpected disconnect는 30초 physical/vulnerable grace 뒤 timeout Forfeit로 처리된다. Reconnect는 Alive/Spectator state로 수렴하고 Forfeit는 PatchAuthor 0이며 permanent participant 2명 이상은 계속, 1명은 Score·Patch 0과 OpponentLeft 뒤 Lobby로 복귀한다. | P1 |
 | AT-044 | Alpha 품질 범위 | Greybox InteractiveLobby, 최소 placeholder Cosmetic catalog, Korean-only, BGM 0과 고정 개발 mix의 기본 combat·weapon·environment SFX만으로 Alpha 기능 Gate를 통과하며 StringTable·fallback font·MainMenu key help, audio channel control과 production Lobby/Cosmetic/Audio polish는 요구하지 않는다. | P1 |
+
+| AT-045 | 다방향 회복·전 주기 변형 | Front/back/left/right·대각선·360° yaw·경사면에서 Host 진입 판별, support/clearance 대기, side 정렬→shared GetUp·방향 보존·중복 진입 방지·중단/reset·Down/Dropkick Count 분리를 검증한다. Walk/Sprint 전 sample frame·loop와 양손 공통 Grip에서 관절 과굴곡·자기교차·뒤집힘을 검사하고 실제 동작을 육안 확인한다. | P1 |
 
 ## 16. 실제 미결정 사항
 
@@ -395,9 +442,9 @@ Alpha 품질 범위도 고정 결정이다.
 
 ## 17. 완전성 선언
 
-- 요구사항 ID: 보존 Category Prefix 전체에서 총 186개이며 Prefix별 001부터 연속·Unique다.
-  SYS 27, GAME 7, INPUT 9, PHYS 14, CAM 6, ROUND 6, PATCH 9, MAP 10, NET 15,
+- 요구사항 ID: 보존 Category Prefix 전체에서 총 187개이며 Prefix별 001부터 연속·Unique다.
+  SYS 27, GAME 7, INPUT 9, PHYS 15, CAM 6, ROUND 6, PATCH 9, MAP 10, NET 15,
   LOBBY 10, APPEAR 23, WEAPON 17, UI 6, STEAM 8, SEC 5, NFR 11, ERR 3이다.
-- Acceptance ID: AT-001..044, 연속·Unique 44개다.
+- Acceptance ID: AT-001..045, 연속·Unique 45개다.
 - 모든 요구사항 행은 우선순위, 검증과 Source를 선언한다.
 - 정확한 Protocol 직렬화, Crypto Transcript, Hash 수식과 반복 Fixture 횟수는 이 Lean SRS에서 의도적으로 제외한다.

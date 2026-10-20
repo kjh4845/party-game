@@ -1,0 +1,148 @@
+{
+  "date": "2026-10-09",
+  "status": "INCOMPLETE_RETRY_REJECTED_NOT_APPLIED",
+  "visualApproved": false,
+  "appliedModelChanges": false,
+  "request": "어깨 접힘과 팔꿈치 굽힘 시 크기 변화를 실제로 확인하면서 재수정",
+  "result": "팔꿈치 단면 유지 후보는 만들었으나 어깨 접힘·이음선·부피 손실 또는 동작 중 면 뒤집힘을 함께 해결하지 못했다. 기본 모델에 반영하지 않았다.",
+  "defaultModel": "r28 cylindrical upper arms",
+  "defaultMotion": "r29 natural shoulder motion and existing BodyStrike",
+  "modelHashesVerifiedUnchanged": {
+    "BlenderSource/Characters/C1B-RW-028-cylindrical-upper-arms/CHR_MasterCharacter_C1B_CylindricalArms_r28.blend": "214e736547b93c08168ca8c0455c263122108fe641a8a3b2befdb93fce5b131b",
+    "BlenderSource/Characters/C1B-RW-028-cylindrical-upper-arms/CylindricalCharacter.bytes": "a2ad7474a6d9678593d5b5bbab30c01c7a306ed139acbd8e33325128f5d9bbaf"
+  },
+  "sourceRestoration": {
+    "matchedSourceHashes": 118,
+    "backup": ".codex_tmp/arm-rebind-20261009/BeforeSource/Hashes.json",
+    "archivedImplementation": ".codex_tmp/arm-rebind-20261009/RejectedImplementation",
+    "manifest": ".codex_tmp/arm-rebind-20261009/RejectedImplementation/Manifest.json"
+  },
+  "partialMeasurement": {
+    "candidate": "JointShell — rejected because rounded shoulder attachments show a seam and change the silhouette",
+    "actualElbowAngles": [
+      120.20228576660156,
+      120.20370483398438
+    ],
+    "measurement": "Projected areas of matched material rings, relative to the straight raised pose. Same measurement tool and ring band used for baseline and candidate. This is not total arm volume or visual acceptance.",
+    "areaRetention": {
+      "upper_middle": {
+        "r28": 0.8803916881626423,
+        "rejectedCandidate": 0.9921855275497752
+      },
+      "elbow": {
+        "r28": 0.6994638598979896,
+        "rejectedCandidate": 0.9909928824303378
+      },
+      "forearm_middle": {
+        "r28": 0.5067090944665377,
+        "rejectedCandidate": 0.9927637619672778
+      }
+    },
+    "baselineReport": "artifacts/reports/R31_R28_COMPARABLE_SECTIONS_20261009.json",
+    "candidateReport": "artifacts/evidence/r31-arm-rebind-20261009/RejectedJointShell-Sections.json"
+  },
+  "candidateValidation": [
+    {
+      "candidate": "CandidateC",
+      "passed": 8,
+      "failed": 2,
+      "failures": [
+        {
+          "test": "CapturePhysicalPunchScenarios",
+          "message": "  LeftBody skin 179.926\nRightBody skin 179.9515\nHead skin 179.9374\nFar skin 180\nWall skin 179.8991\nGrabPunch skin 180\nAlternating skin 179.7869\nMoving skin 180\nExchange skin 179.9031\n  Expected: <empty>\n  But was:  < \"LeftBody skin 179.926\", \"RightBody skin 179.9515\", \"Head skin 179.9374\", \"Far skin 180\", \"Wall skin 179.8991\", \"GrabPunch skin 180\", \"Alternating skin 179.7869\", \"Moving skin 180\", \"Exchange skin 179.9031\" >\n"
+        },
+        {
+          "test": "NeutralVolumeSkinContactsFollowFixedPoseAcrossRenderInterpolation",
+          "message": "  Expected: less than 9.99999975E-05f\n  But was:  0.0171014126f\n"
+        }
+      ],
+      "evidence": "artifacts/evidence/r31-arm-rebind-20261009/CandidateC-PlayMode.xml"
+    },
+    {
+      "candidate": "FairMirror",
+      "passed": 9,
+      "failed": 1,
+      "failures": [
+        {
+          "test": "CapturePhysicalPunchScenarios",
+          "message": "  LeftBody skin 180\nRightBody skin 180\nHead skin 179.9802\nFar skin 180\nWall skin 180\nGrabPunch skin 180\nAlternating skin 180\nMoving skin 180\nExchange skin 180\n  Expected: <empty>\n  But was:  < \"LeftBody skin 180\", \"RightBody skin 180\", \"Head skin 179.9802\", \"Far skin 180\", \"Wall skin 180\", \"GrabPunch skin 180\", \"Alternating skin 180\", \"Moving skin 180\", \"Exchange skin 180\" >\n"
+        }
+      ],
+      "evidence": "artifacts/evidence/r31-arm-rebind-20261009/FairMirror-PlayMode.xml"
+    },
+    {
+      "candidate": "RuntimeFinal",
+      "passed": 9,
+      "failed": 1,
+      "failures": [
+        {
+          "test": "CapturePhysicalPunchScenarios",
+          "message": "  LeftBody skin 179.6678\nRightBody skin 179.8113\nHead skin 179.9558\nFar skin 179.9184\nWall skin 179.9604\nGrabPunch skin 177.8153\nAlternating skin 180\nMoving skin 180\nExchange skin 179.9184\n  Expected: <empty>\n  But was:  < \"LeftBody skin 179.6678\", \"RightBody skin 179.8113\", \"Head skin 179.9558\", \"Far skin 179.9184\", \"Wall skin 179.9604\", \"GrabPunch skin 177.8153\", \"Alternating skin 180\", \"Moving skin 180\", \"Exchange skin 179.9184\" >\n"
+        }
+      ],
+      "evidence": "artifacts/evidence/r31-arm-rebind-20261009/RuntimeFinal-PlayMode.xml"
+    },
+    {
+      "candidate": "ContinuousUniform",
+      "passed": 3,
+      "failed": 1,
+      "failures": [
+        {
+          "test": "CapturePhysicalPunchScenarios",
+          "message": "  LeftBody skin 104.8659\n  Expected: <empty>\n  But was:  < \"LeftBody skin 104.8659\" >\n"
+        }
+      ],
+      "evidence": "artifacts/evidence/r31-arm-rebind-20261009/ContinuousUniform-PlayMode.xml"
+    },
+    {
+      "candidate": "RotatedVolume",
+      "passed": 3,
+      "failed": 1,
+      "failures": [
+        {
+          "test": "CapturePhysicalPunchScenarios",
+          "message": "  LeftBody skin 179.9515\n  Expected: <empty>\n  But was:  < \"LeftBody skin 179.9515\" >\n"
+        }
+      ],
+      "evidence": "artifacts/evidence/r31-arm-rebind-20261009/RotatedVolume-PlayMode.xml"
+    }
+  ],
+  "rejectedOfflineExperiments": [
+    "Connected neutral/A-pose surfaces, harmonic and automatic weights, mirrored topology, corrective shapes, and current-pose fairing were examined. None passed the combined appearance, continuous-motion surface, thickness, and runtime requirements.",
+    "PolarProbe and GentlePolar were offline-only numerical probes; their extra preview deformation is not implemented by the saved Unity transport. They must not be presented as validated game models."
+  ],
+  "runtimeCost": {
+    "candidate": "RotatedVolume",
+    "editorMeanMillisecondsPerActorFairingEvaluation": 35.01849588138382,
+    "editorMaximumMilliseconds": 37.3315,
+    "accepted": false,
+    "evidence": "artifacts/evidence/r31-arm-rebind-20261009/RejectedRotatedVolume-ContactAndPerformance.txt"
+  },
+  "restoredValidation": {
+    "passed": 4,
+    "failed": 0,
+    "tests": [
+      "BodyStrikeReactionsFollowContactAndRecover",
+      "CaptureArmVolumeAudit",
+      "PhysicalPunchReplayMatches15_60_144Fps",
+      "ShoulderSocketsFollowReachAndResetTogetherWithSkin"
+    ],
+    "evidence": "artifacts/evidence/r31-arm-rebind-20261009/Restored-PlayMode.xml",
+    "meaning": "Verifies restoration of the existing version, not resolution of the requested model defects."
+  },
+  "retainedTools": [
+    "tools/blender/audit_skin_surface.py",
+    "tools/blender/measure_neutral_arm_sections.py"
+  ],
+  "previewEvidence": [
+    "artifacts/evidence/r31-arm-rebind-20261009/R28-Idle_Front.png",
+    "artifacts/evidence/r31-arm-rebind-20261009/R28-Lift90_Flex120_Side.png",
+    "artifacts/evidence/r31-arm-rebind-20261009/RejectedJointShell-Idle_Front.png",
+    "artifacts/evidence/r31-arm-rebind-20261009/RejectedJointShell-Lift90_Flex120_Side.png"
+  ],
+  "remaining": [
+    "A continuous rounded shoulder attachment that does not fold during raised-arm and combat poses.",
+    "A model that simultaneously retains arm thickness, symmetry, and the approved torso proportions.",
+    "Native/Unity parity and performance validation of an acceptable final asset."
+  ]
+}

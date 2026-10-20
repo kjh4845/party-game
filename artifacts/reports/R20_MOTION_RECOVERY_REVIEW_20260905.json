@@ -1,0 +1,150 @@
+{
+  "sourceSha256": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+  "generatorSha256": "b3a7e56a478d9e5694e3195222b338169b99e232e9468523bc9dabf6cc7814b0",
+  "cycles": {
+    "Walk": {
+      "frames": 36,
+      "fps": 30,
+      "armSwing": 10,
+      "thighSwing": 18,
+      "kneeSwing": 15,
+      "durationSeconds": 1.2,
+      "loopClosureMaximumVertexDelta": 0.0,
+      "loopClosed": true,
+      "trajectories": {
+        "L": {
+          "handForwardTravel": 0.1318889558315277,
+          "footForwardTravel": 0.12597525864839554,
+          "contralateral": true,
+          "visibleArmSwing": true
+        },
+        "R": {
+          "handForwardTravel": 0.1318889558315277,
+          "footForwardTravel": 0.12597525864839554,
+          "contralateral": true,
+          "visibleArmSwing": true
+        }
+      },
+      "frameCountIncludesClosingDuplicate": false
+    },
+    "Sprint": {
+      "frames": 24,
+      "fps": 30,
+      "armSwing": 25,
+      "thighSwing": 35,
+      "kneeSwing": 30,
+      "durationSeconds": 0.8,
+      "loopClosureMaximumVertexDelta": 0.0,
+      "loopClosed": true,
+      "trajectories": {
+        "L": {
+          "handForwardTravel": 0.32098624110221863,
+          "footForwardTravel": 0.23630859702825546,
+          "contralateral": true,
+          "visibleArmSwing": true
+        },
+        "R": {
+          "handForwardTravel": 0.32098624110221863,
+          "footForwardTravel": 0.23630859702825546,
+          "contralateral": true,
+          "visibleArmSwing": true
+        }
+      },
+      "frameCountIncludesClosingDuplicate": false
+    }
+  },
+  "sharedGrip": {
+    "templateCount": 1,
+    "evaluatedHandMasks": [
+      "L",
+      "R",
+      "LR"
+    ],
+    "mirrorMaximumVertexDelta": 1.999200562387517e-07,
+    "weaponSpecificPoseCount": 0
+  },
+  "preservation": {
+    "r20Unchanged": true,
+    "r16Unchanged": true,
+    "actionCount": 0,
+    "driverCount": 8,
+    "restPoseRestored": true,
+    "sourceSaved": false
+  },
+  "failedGeometrySamples": [],
+  "motionTrajectoryResult": "PASS",
+  "technicalResult": "PASS",
+  "visualApproval": false,
+  "limitations": [
+    "Sampled frames only; no claim of continuous collision freedom between frames.",
+    "Cycle timing and amplitudes are review START values, not gameplay tuning approval.",
+    "No ground contact, root translation, physics motor or Unity runtime was tested.",
+    "Ragdoll/GetUp recovery is a separate review. No fire/recoil or reload clip authored."
+  ],
+  "rawReportPath": ".codex_tmp/motion-review-20260905/cycles-r03/MotionReview.json",
+  "rawReportSha256": "fd4f654c0d0dfbec13adea798269ae11b8f7bf066b6f9605ccea3a8d891fd757",
+  "sampleCount": 63,
+  "renderCount": 126,
+  "groupMetrics": {
+    "Walk": {
+      "samples": 36,
+      "maxAdjacentAngleDegrees": 11.804284678358291,
+      "minEdgeRatio": 0.2719908608609045,
+      "minP01EdgeRatio": 0.721745848128772,
+      "maxP99EdgeRatio": 1.4365465638384032,
+      "maxEdgeRatio": 1.6805670076243575
+    },
+    "Sprint": {
+      "samples": 24,
+      "maxAdjacentAngleDegrees": 13.918853188786294,
+      "minEdgeRatio": 0.24741598079529348,
+      "minP01EdgeRatio": 0.6417005568620318,
+      "maxP99EdgeRatio": 1.4881691766234193,
+      "maxEdgeRatio": 1.7342024986821951
+    },
+    "SharedGrip": {
+      "samples": 3,
+      "maxAdjacentAngleDegrees": 29.79911131095764,
+      "minEdgeRatio": 0.1252486127735312,
+      "minP01EdgeRatio": 0.700526487002377,
+      "maxP99EdgeRatio": 1.4005798248216952,
+      "maxEdgeRatio": 1.6802450812604939
+    }
+  },
+  "unityEditMode": {
+    "id": "2",
+    "testcasecount": "85",
+    "result": "Passed",
+    "total": "85",
+    "passed": "85",
+    "failed": "0",
+    "inconclusive": "0",
+    "skipped": "0",
+    "asserts": "0",
+    "engine-version": "3.5.0.0",
+    "clr-version": "4.0.30319.42000",
+    "start-time": "2026-09-05 06:35:05Z",
+    "end-time": "2026-09-05 06:35:05Z",
+    "duration": "0.5216243"
+  },
+  "unityPlayMode": {
+    "id": "2",
+    "testcasecount": "4",
+    "result": "Passed",
+    "total": "4",
+    "passed": "4",
+    "failed": "0",
+    "inconclusive": "0",
+    "skipped": "0",
+    "asserts": "0",
+    "engine-version": "3.5.0.0",
+    "clr-version": "4.0.30319.42000",
+    "start-time": "2026-09-05 06:29:16Z",
+    "end-time": "2026-09-05 06:29:16Z",
+    "duration": "0.0435097"
+  },
+  "recoverySourceHashes": {
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Simulation/CharacterRecoveryStateMachine.cs": "5d9d8481b527eda59edce3065ae7c653c191ac0a3f13ec268313fa4d42a23312",
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Simulation/RecoveryOrientationResolver.cs": "3fff2a0754995c83949441e188111e363b6d55af2156d29ed16a205db873393c"
+  }
+}

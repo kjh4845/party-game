@@ -1,0 +1,67 @@
+Party Game R22 — 승인된 ①·② 구현 결과 (2026-09-30)
+
+결과
+C(속도 곡선 + 실제 접촉 기반 회수)를 기존 Unity 메뉴
+Project Hotfix > Prototypes > Open Physical Punch Candidate 에 적용했다.
+별도 후보 파일만 생성한 상태가 아니라 현재 게임 프로토타입의 실행 코드다.
+프로젝트: /Users/kjh/local_dev/party game/Project hotfix (Unity 6000.3.9f1)
+모델은 기존 r21 SurfaceCharacter.bytes 연결 그대로다. Necrocis는 변경하지 않았다.
+
+실제로 바뀐 동작
+① 준비에서 팔꿈치를 접으며 주먹이 앞으로 크게 퍼지는 폭을 줄였다. 어깨 목표가 팔꿈치 신전보다 25ms 먼저 진행한다. 팔꿈치 신전은 80ms에서 시작해 거리에 따라 140–150ms에 끝나며, 후반에 속도가 커지는 4t³−3t⁴ 곡선을 쓴다. 안쪽 조준각은 15°→18°로 소폭 조정했다.
+물리 어깨가 짧은 가속을 따라가지 못하는 초기 시안은 폐기했다. 선택안은 가격 구간의 팔 관절 maximumForce를 기본값의 3배에서 최대 7배까지 잠시 올린다(상완105/전완56). 관절 제한과 각속도 상한은 유지한다. 헛스윙 회수는 270ms까지, 마지막 팔 내림은 395ms까지 분리했다.
+② 명중 시 도달하지 못한 목표각 대신 물리 계산이 끝난 실제 상완·전완 상대 회전을 저장한다. 25ms 동안 그 자세를 기준으로 스프링25%, 힘 상한40%, 감쇠2배로 구동을 낮추고, 약95ms 회수 후 가볍게 팔을 내린다. 구동은75ms에 걸쳐 복구한다. Rigidbody 위치·회전·선속도·각속도는 직접 잠그거나 덮어쓰지 않는다.
+벽은 실제 전완 접촉이 전진을 막으면 같은 회수로 전환한다. 이는 득점 명중과 분리되어 점수·넉백·타격 사운드를 만들지 않는다. 허공은 접촉 회수 없이 원래 회수 곡선을 끝낸다.
+
+시각 검토
+동일 r21 모델·측면 카메라·거리·60Hz 물리·입력으로 A/B/C를 캡처했다.
+A=변경 전, B=①만, C=①+②. 무음, 원속도60fps이며 각 조건을3회 반복한다.
+영상 순서: 근접0.38m(0–4.5초), 보통0.48m(4.5–9초), 헛스윙0.70m(9–13.5초), 벽(13.5–18초). 각 반복에서 왼손 다음 오른손.
+C는 접촉 후 팔을 뻗어 둔 자세와 두 번째 전방 움직임이 줄고 몸 쪽으로 회수되는 차이가 확인된다. A의 마지막 팔 내림이 가격보다 빠른 리듬도 줄었다. 측면 연속 프레임과 실제 인코딩 영상의 원속도 재생을 확인했다.
+단, 0.48m는 이 팔 길이에서 사거리 끝에 가까워 아직 늦고 약한 접촉이다(대표 왼손183ms, 접근속도0.64m/s). 상대의 몸통·발·균형 반응과 추가 넉백은 승인 범위 밖이라 그대로다. 이 때문에 강한 충격감까지 완성됐다고 주장하지 않는다. 채택 판단은 사용자의 원속도 비교 및 직접 플레이가 필요하다.
+
+보조 측정 (손맛의 완료 기준이 아님)
+A/B/C 헛스윙 준비 최대 전방 속도: 4.43 / 3.82 / 3.82m/s
+가격 최대 전방 속도: 4.64 / 5.65 / 5.65m/s
+270ms 이후 최대 후방 속도: 6.24 / 2.36 / 2.36m/s
+준비 중 루트 대비 주먹 전방 위치 최대: 24.5 / 16.0 / 16.0cm
+근접 명중 다음 프레임의 전방 이동: A +17.1mm, B −1.3mm, C −1.6mm
+근접 명중150ms 뒤 주먹 후퇴: A43mm / B72mm / C231mm
+이 값은 루트 대비 주먹 이동이며 메시 관통 깊이 측정값이 아니다.
+
+검증
+관련 PlayMode20항목: 최초19개 통과, NonTip 배치 교정 후 남은1개 재검증 통과.
+전체 EditMode146/146 통과.
+좌우 몸통/머리 명중, 반대 플레이어 좌우, 사거리 밖/벽/전완 접촉 무득점, 잡기/던지기와 빈손 펀치, 입력 재무장, 메뉴·손 상실·disable 취소, 리셋, 누적 점수, 네이티브 물리 루프, 제거된 상대, 구동 상한/복원 통과.
+추가로 실제 접촉 목표각 일치, 접촉 구동 억제,150ms 내 물리 회수, 좌우 벽 회수, Rigidbody 상태를 강제로 바꾸지 않는 전환을 검증했다.
+15/60/144fps 리플레이: 상태 일치, 최대 물리 위치 차이0, 명중2회씩.
+스킨 인접 면 각도 검사: 헛스윙47.32°, 접촉51.90°로 기존60° 검사를 통과. 이는 새 동작에서의 변형 검사이며 모델 메시를 바꾼 것이 아니다.
+영상:1920×704,1080프레임,60fps,18초, 오디오 트랙 없음. 전체 디코딩 성공.
+
+테스트 변경을 숨기지 않음
+기존 ContactKeepsExtension 검사는 더 뻗은 목표를 유지하는 옛 동작의 계약이라, 실제 물리 접촉 자세를 목표로 사용하는 검사로 교체했다.
+새 회수의 더 큰 어깨 이동 때문에 200ms 시점의 목표 추종 오차는5.81°였다. 그 시점 안정성 허용치는5°→10°로 갱신하고, 기존 관절 한계·실제 속도·한 프레임 이동·마지막 안정화 검사 및 별도 실제 회수 검사를 유지했다.
+기존 NonTip의 높이 차0.25m에서는 새 궤적의 손끝이 머리에 실제로 닿았다(최소거리31.49mm, 접근속도0.365m/s). 판정 반경32mm와 최소속도0.35m/s는 바꾸지 않았다. 높이 차0.22m에서는15개 물리 접촉 모두 손끝 밖으로 배제돼, 전완만 닿는 음성 배치를 그 조건으로 교정했다. 원래 실패 결과와 진단 로그도 보존했다.
+
+보존/범위
+r21 .blend/바이너리/검증자료, 기본 모델, 몸통/골반/발 목표, 피격 반응, 추가 넉백 수치, 타격 사운드, 카메라와 기존 메뉴 파일은 기준본과 동일하다.
+런타임 변경은 팔 동작·관절 구동·접촉 회수에 한정한다. 모델, 카메라 효과, 새 VFX 또는 사운드로 차이를 덮지 않았다.
+실제 키보드/게임패드로 사람이 조작한 체감 평가, 멀티플레이/배포 빌드, 모든 이동·잡기 조합은 미검증이다. 로컬 변경만 했으며 커밋·푸시·배포하지 않았다.
+
+변경 파일
+Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs
+Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Punch.cs
+Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs
+Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Drive.cs
+Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Snap.cs
+Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Flow.cs
+Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Feel.cs
+Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Feel.cs.meta
+
+근거 파일
+SourceChanges.patch: 이번 작업 시작 상태 A와 최종 C 사이만의 차이.
+Preservation.json: 기준47파일 중41파일 동일 및 변경 목록.
+ValidationSummary.json, C-verified.xml, final-nontip.xml, editmode.xml
+A/Travel_A.json, B/Travel_B.json, C-verified/Travel_C.json
+non-tip-probe/NonTipGeometry.txt, video-verification.log
+Library 파일 식별자는 함께 제공하는 LibraryDeliverables.json 및 최종 응답 참조.

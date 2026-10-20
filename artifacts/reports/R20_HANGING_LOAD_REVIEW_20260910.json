@@ -1,0 +1,211 @@
+{
+  "status": "LOCAL_IMPLEMENTED_VISUAL_FEEDBACK_PENDING",
+  "date": "2026-09-10",
+  "request": "Different gravity/load response when hanging with one hand or both hands.",
+  "implementation": "Fixed-step procedural presentation driven by measured static-surface support forces; existing root support solver retained.",
+  "parameters": {
+    "oneHandRollDegrees": 8,
+    "oneHandVerticalOffsetCU": 0.025,
+    "twoHandVerticalOffsetCU": 0.035,
+    "twoHandUnequalLoadRollDegrees": 4,
+    "responseFrequency": 14,
+    "responseDamping": 0.85,
+    "heldContactRetryThresholdMeters": 0.002,
+    "fixedHz": 60
+  },
+  "behavior": [
+    "Left/right mirrored load posture",
+    "Two-hand central sag with load imbalance",
+    "Damped hand-count/release/climb transitions",
+    "Free limbs lag toward gravity",
+    "Torso-relative elbow pole for hanging",
+    "Baseline fixed bone reach retained for contact rules",
+    "Post-physics hit queries consume authoritative fixed pose",
+    "No hanging overlay at zero load",
+    "Clear on ragdoll/reset"
+  ],
+  "validation": {
+    "Play-final": {
+      "path": ".codex_tmp/hanging-load-20260910/Play-final.xml",
+      "passed": 27,
+      "failed": 0
+    },
+    "HitFrame-final": {
+      "path": ".codex_tmp/hanging-load-20260910/HitFrame-final.xml",
+      "passed": 8,
+      "failed": 0
+    },
+    "Edit-final": {
+      "path": ".codex_tmp/hanging-load-20260910/Edit-final.xml",
+      "passed": 140,
+      "failed": 0
+    },
+    "Capture-final": {
+      "path": ".codex_tmp/hanging-load-20260910/Capture-final.xml",
+      "passed": 1,
+      "failed": 0,
+      "note": "Same capture test as Play-final, with final framing assertions; not counted as an additional unique test."
+    },
+    "documentBaseline": "PASS",
+    "documentWorkflowTests": 7,
+    "unchangedAssetHashesVerified": 9
+  },
+  "measurements": {
+    "settledLoads": {
+      "status": "PASS",
+      "frames": [
+        {
+          "tick": 1,
+          "left": true,
+          "right": false,
+          "root": {
+            "x": 0.0037638458888977766,
+            "y": -0.6663498878479004,
+            "z": -3.3278841972351074
+          },
+          "pelvis": {
+            "x": -0.059416718780994415,
+            "y": -0.531895637512207,
+            "z": -3.3297455310821533
+          },
+          "roll": -7.994884967803955,
+          "drop": 0.024997852742671967,
+          "scale": 1.0,
+          "load": 0.9999140501022339,
+          "handError": 3.0547380447387695e-07
+        },
+        {
+          "tick": 2,
+          "left": false,
+          "right": true,
+          "root": {
+            "x": -0.0037644305266439915,
+            "y": -0.6663498878479004,
+            "z": -3.3278841972351074
+          },
+          "pelvis": {
+            "x": 0.05941611900925636,
+            "y": -0.531895637512207,
+            "z": -3.3297455310821533
+          },
+          "roll": 7.994884967803955,
+          "drop": 0.024997852742671967,
+          "scale": 1.0,
+          "load": 0.9999140501022339,
+          "handError": 2.980232238769531e-07
+        },
+        {
+          "tick": 3,
+          "left": true,
+          "right": true,
+          "root": {
+            "x": 0.05029845982789993,
+            "y": -0.658174991607666,
+            "z": -3.321474552154541
+          },
+          "pelvis": {
+            "x": 0.04858837649226189,
+            "y": -0.5131553411483765,
+            "z": -3.322310209274292
+          },
+          "roll": -0.24134953320026398,
+          "drop": 0.035000018775463104,
+          "scale": 1.0,
+          "load": 1.0000004768371582,
+          "handError": 2.9811633339704713e-07
+        }
+      ]
+    },
+    "frameRates": "60 fps: bone error 0 m, max roll step 0.8254061 degrees\n15 fps: bone error 0 m, max roll step 0.8254061 degrees\n144 fps: bone error 0 m, max roll step 0.8254061 degrees\n",
+    "skinHitDown": "hands=1: query error=4.173167E-07 m; skin dihedral=50.1622 degrees; hand error=3.52940532E-07 m\nhands=2: query error=4.768699E-07 m; skin dihedral=50.16616 degrees; hand error=3.86282238E-07 m\nhands=3: query error=4.17269945E-07 m; skin dihedral=49.5652046 degrees; hand error=3.823099E-07 m\n",
+    "hangingSurfaceRegressionLimitDegrees": 60,
+    "existingGaitSurfaceReviewLimitDegrees": 45
+  },
+  "sourceSnapshots": {
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/HangingBodyPose.cs": {
+      "snapshot": ".codex_tmp/hanging-load-20260910/SourceSnapshot/Prototypes/PhysicsJump/HangingBodyPose.cs",
+      "sha256": "e1d9da4ebcc94ab5bc31cb4841fb83d0247dc2493ff8a0ee5db0b94c6a12b609"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/LedgeGrabReview.cs": {
+      "snapshot": ".codex_tmp/hanging-load-20260910/SourceSnapshot/Prototypes/PhysicsJump/LedgeGrabReview.cs",
+      "sha256": "6e81c33fdf20fb6183e61c5fc21a48298a491f53bd1482d6ee9a261c147baaf2"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpMotor.cs": {
+      "snapshot": ".codex_tmp/hanging-load-20260910/SourceSnapshot/Prototypes/PhysicsJump/PhysicsJumpMotor.cs",
+      "sha256": "0f977b432aa87bb83e60b4bf83d4e00b1e452d4b49626ed5049a731a6835ebf9"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpReview.cs": {
+      "snapshot": ".codex_tmp/hanging-load-20260910/SourceSnapshot/Prototypes/PhysicsJump/PhysicsJumpReview.cs",
+      "sha256": "85b60bdf7cdfaebe2d529b4c2cd62dcadcc565af379efed8a7e35aca86cdc741"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/LedgeRecoveryReview.cs": {
+      "snapshot": ".codex_tmp/hanging-load-20260910/SourceSnapshot/Prototypes/PhysicsJump/LedgeRecoveryReview.cs",
+      "sha256": "d03e079776601ae7c5ff93125583e301164fdba96f35f9ef1c290bf4add87517"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/FixedReviewPose.cs": {
+      "snapshot": ".codex_tmp/hanging-load-20260910/SourceSnapshot/Prototypes/PhysicsJump/FixedReviewPose.cs",
+      "sha256": "687aaf2c7480d1f30c8dc29953fa660e259cdcd1c20bae01054c8be77488790d"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PunchHitRig.cs": {
+      "snapshot": ".codex_tmp/hanging-load-20260910/SourceSnapshot/Prototypes/PhysicsJump/PunchHitRig.cs",
+      "sha256": "a81d3ed60716b1b8f8f76b0beaf0dd548761ec6c952092234332913a9aa7d67b"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/GrabArmPose.cs": {
+      "snapshot": ".codex_tmp/hanging-load-20260910/SourceSnapshot/Runtime/Presentation/GrabArmPose.cs",
+      "sha256": "92592d6250107e9600c4190de1206f3c1a0eac256dc1f342185f3f8e3370bcb1"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.cs": {
+      "snapshot": ".codex_tmp/hanging-load-20260910/SourceSnapshot/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.cs",
+      "sha256": "ac50e43c3153ed95b59718163b40ecce73f36830dd348f119bd37f5417f07780"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.Hanging.cs": {
+      "snapshot": ".codex_tmp/hanging-load-20260910/SourceSnapshot/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.Hanging.cs",
+      "sha256": "12b1dfea20be3987a85e01da2abe702dbb5a82ff1a5ee37412256cf84f1a2128"
+    }
+  },
+  "unchangedAssets": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31",
+    "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60",
+    ".codex_tmp/punch-unity-20260906/ApprovedPunch.json": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac",
+    "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a"
+  },
+  "media": {
+    "path": ".codex_tmp/hanging-load-20260910/Media/HangingLoad60-final.mp4",
+    "sequence": [
+      "left hand",
+      "right hand",
+      "both hands"
+    ],
+    "left": "before",
+    "right": "after",
+    "capture": "same real surface contact physics; seeded fall and scripted input; native60fps",
+    "sha256": "d6fe8429531149b9a02da55fb8eca5a4de60f876d9df707408bd9cfc33b1dcf4",
+    "verification": {
+      "distinctDecodedFrames": 540,
+      "fps": 60,
+      "frames": 540,
+      "height": 630,
+      "maximumTimestampGapError": 9.471590178833367e-16,
+      "seconds": 9,
+      "status": "PASS",
+      "width": 1920
+    },
+    "decodedPreview": ".codex_tmp/hanging-load-20260910/Media/DecodedPreview.png"
+  },
+  "limitations": [
+    "Static Lip/Facade only",
+    "Procedural presentation, not a fully articulated hanging physics solver",
+    "No full mesh self-intersection proof",
+    "User feel approval pending",
+    "Formal prefab/Match/peer integration remains pending"
+  ],
+  "playerBuilds": 0,
+  "commits": 0,
+  "pushes": 0,
+  "uniquePlayModeTests": 27
+}

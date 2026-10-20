@@ -2,7 +2,13 @@
   "name": "ProjectHotfix.Physics.Tests.PlayMode",
   "rootNamespace": "ProjectHotfix.Physics.Tests",
   "references": [
-    "UnityEngine.TestRunner"
+    "UnityEngine.TestRunner",
+    "ProjectHotfix.Simulation",
+    "ProjectHotfix.Contracts",
+    "ProjectHotfix.Presentation",
+    "ProjectHotfix.PhysicsJump.Prototype",
+    "Unity.InputSystem",
+    "Unity.InputSystem.TestFramework"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],

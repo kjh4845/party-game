@@ -1,0 +1,375 @@
+{
+  "status": "REVIEW_CANDIDATE_NOT_ADOPTED",
+  "date": "2026-09-13",
+  "userApproved": "Implementation of gameplay-first contact/animation review; no approval yet for reciprocal wrist/forearm contact.",
+  "defaultMenus": "Approved automatic-lift/raised-wall baseline retained.",
+  "candidateMenu": "Project Hotfix/Prototypes/Open Grab Contact Candidate 2 Players",
+  "candidate": {
+    "maximumHandOffsetM": 0.035,
+    "upperRotationLimitDegrees": 12,
+    "forearmRotationLimitDegrees": 18,
+    "elbowPoleLimitDegrees": 15,
+    "wallAdditionalStandOffCU": 0.14,
+    "wallSpacingRateCUPerSecond": 0.6,
+    "maximumVerticalSpeedBeforeSpacing": 0.5,
+    "cosmeticClimbExitMaximumSeconds": 0.2
+  },
+  "validation": [
+    {
+      "file": ".codex_tmp/grab-contact-bounded-20260913/FinalPlay.xml",
+      "passed": 12,
+      "failed": 0,
+      "tests": [
+        "ProjectHotfix.Physics.Tests.AutomaticLiftReviewTests.BoundedContactPreservesInputPhysicsAndMeasuresResidualOverlap",
+        "ProjectHotfix.Physics.Tests.AutomaticLiftReviewTests.CaptureRaiseReleaseAndMutualBlock",
+        "ProjectHotfix.Physics.Tests.AutomaticLiftReviewTests.CeilingDownAndMenuCannotKeepDrivingTheLift",
+        "ProjectHotfix.Physics.Tests.AutomaticLiftReviewTests.HoldRaisesRealMassAndReleaseNeverWaitsForLift",
+        "ProjectHotfix.Physics.Tests.AutomaticLiftReviewTests.LiftAndMutualBlockingDoNotDependOnRenderRate",
+        "ProjectHotfix.Physics.Tests.AutomaticLiftReviewTests.MutualGripBlocksBothActorsInEitherProcessingOrder",
+        "ProjectHotfix.Physics.Tests.AutomaticLiftReviewTests.NativeFixedLoopRunsLiftOnceAfterBothHands",
+        "ProjectHotfix.Physics.Tests.AutomaticLiftReviewTests.ReciprocalContactFreezesExistingLiftAndResumeIsContinuous",
+        "ProjectHotfix.Physics.Tests.LedgeRecoveryReviewTests.RaisedWallContactsSupportAllFourEdgesAndRecoveryDepths",
+        "ProjectHotfix.Physics.Tests.LedgeRecoveryReviewTests.ReleaseOneHandMenuAndResetNeverThrowTheMap",
+        "ProjectHotfix.Physics.Tests.LedgeRecoveryReviewTests.WallContactCandidateIsIndependentOfRenderRate",
+        "ProjectHotfix.Physics.Tests.LedgeRecoveryReviewTests.WallSpacingAndExitCandidateMeasuresEachInteractionPhase"
+      ]
+    },
+    {
+      "file": ".codex_tmp/grab-contact-bounded-20260913/AcceptedCandidateChecks.xml",
+      "passed": 5,
+      "failed": 0,
+      "tests": [
+        "ProjectHotfix.Physics.Tests.LedgeRecoveryReviewTests.CaptureWallSpacingAndExitCandidate",
+        "ProjectHotfix.Physics.Tests.LedgeRecoveryReviewTests.ContactSpacingCandidateSupportsAllFourEdgesAndRecoveryDepths",
+        "ProjectHotfix.Physics.Tests.LedgeRecoveryReviewTests.CosmeticClimbExitDoesNotKeepGripOrSurviveMenuCleanup",
+        "ProjectHotfix.Physics.Tests.LedgeRecoveryReviewTests.WallContactCandidateIsIndependentOfRenderRate",
+        "ProjectHotfix.Physics.Tests.LedgeRecoveryReviewTests.WallSpacingAndExitCandidateMeasuresEachInteractionPhase"
+      ]
+    },
+    {
+      "file": ".codex_tmp/grab-contact-bounded-20260913/EditMode.xml",
+      "passed": 140,
+      "failed": 0,
+      "tests": [
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.BothSlotsInvalid_ReturnsNoPayloadAndDoesNotRewriteEitherFile",
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.CallerValidator_CanRejectCurrentAndSelectCompatibleLastGood",
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.ConcurrentRepositoryInstances_SerializeTheSameAddress",
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.ConcurrentWrites_OnOneStoreNeverExposeATornEnvelope",
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.CorruptCurrentThenSave_PreservesExistingValidLastGood",
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.FirstSave_NewRepositoryInstanceReadsExactCurrentWithoutBackup",
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.InvalidAddressMatrix_IsRejectedWithoutWritingOutsideRoot",
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"truncated\",Corrupt)",
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"hash\",Corrupt)",
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"version\",Corrupt)",
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"length\",TooLarge)",
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.NonRegularTarget_IsRejectedWithoutReplacement",
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.OversizedDeclaredLength_IsRejectedBeforeAllocationAndFallsBack",
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.Overwrite_RotatesPriorCurrentIntoLastGood",
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.PayloadLimit_AcceptsExactLimitAndRejectsLargerWithoutChangingCurrent",
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.PhysicalFileOverLimit_IsRejectedBeforePayloadReadAndFallsBack",
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.ReplaceFailure_LeavesCurrentAndLastGoodUnchangedAndCleansPending",
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.StalePending_IsIgnoredByReadAndRemovedByNextWrite",
+        "ProjectHotfix.Architecture.Tests.AtomicLocalFileStoreTests.ThirdWrite_ReplacesExistingLastGoodWithPriorCurrent",
+        "ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides(\"Assets/Settings/Build Profiles/Windows x64 Development.asset\")",
+        "ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides(\"Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset\")",
+        "ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.BuildProfile_InheritsTheSingleGlobalSampleScene(\"Assets/Settings/Build Profiles/Windows x64 Development.asset\")",
+        "ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.BuildProfile_InheritsTheSingleGlobalSampleScene(\"Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset\")",
+        "ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.BuildProfileDefines_AreExactMutuallyExclusiveAndDoNotLeakGlobally",
+        "ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.GlobalStandalonePlayerSettings_UseTheApprovedTemporaryIdentityAndMono",
+        "ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect(\"Assets/Settings/Build Profiles/Windows x64 Development.asset\",True)",
+        "ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect(\"Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset\",False)",
+        "ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.WindowsBuildProfiles_AreExactlyTwoAssetsWithUniqueGuids",
+        "ProjectHotfix.Architecture.Tests.BuildProfileBoundaryTests.WindowsX64BuildSupport_IsInstalled",
+        "ProjectHotfix.Architecture.Tests.ExternalLaunchTests.ExternalLaunchConsumesAirJumpAndStartsAFreshLandingImpactInterval",
+        "ProjectHotfix.Architecture.Tests.GetUpClipTests.GetUpFinishesInNeutralBeforeLocomotionHandoff(\"FaceUp\")",
+        "ProjectHotfix.Architecture.Tests.GetUpClipTests.GetUpFinishesInNeutralBeforeLocomotionHandoff(\"FaceDown\")",
+        "ProjectHotfix.Architecture.Tests.GetUpClipTests.GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents(\"FaceUp\")",
+        "ProjectHotfix.Architecture.Tests.GetUpClipTests.GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents(\"FaceDown\")",
+        "ProjectHotfix.Architecture.Tests.GripStressTests.GrabReleaseAndBreak_DoNotCreatePunchOrAutoRegrab",
+        "ProjectHotfix.Architecture.Tests.GripStressTests.IdleHolding_DoesNotAccumulateTimeFatigue",
+        "ProjectHotfix.Architecture.Tests.GripStressTests.SustainedLoad_Breaks_AndLowLoadRecovers",
+        "ProjectHotfix.Architecture.Tests.GroundHandActionTests.DuplicateAndOldEdges_CannotRepeatOrRestartAttack",
+        "ProjectHotfix.Architecture.Tests.GroundHandActionTests.FasterPunchSharesHitClockAndRecoveryWithoutChangingHoldThreshold",
+        "ProjectHotfix.Architecture.Tests.GroundHandActionTests.GroundContextStaysGround_AirContextDoesNotCreatePunch",
+        "ProjectHotfix.Architecture.Tests.GroundHandActionTests.HandsHaveIndependentActions_AndPerActionTargetDeduplication",
+        "ProjectHotfix.Architecture.Tests.GroundHandActionTests.HardwareDurationWinsOverFixedTickRounding(0.147d,True)",
+        "ProjectHotfix.Architecture.Tests.GroundHandActionTests.HardwareDurationWinsOverFixedTickRounding(0.15d,False)",
+        "ProjectHotfix.Architecture.Tests.GroundHandActionTests.HardwareDurationWinsOverFixedTickRounding(0.153d,False)",
+        "ProjectHotfix.Architecture.Tests.GroundHandActionTests.InvalidTimestampCannotCorruptPendingHardwareDuration",
+        "ProjectHotfix.Architecture.Tests.GroundHandActionTests.OccupiedHand_CannotStart_AndCancellationRemovesHitEligibility",
+        "ProjectHotfix.Architecture.Tests.GroundHandActionTests.SimultaneousTimedTapsAreIndependentOfHandProcessingOrder",
+        "ProjectHotfix.Architecture.Tests.GroundHandActionTests.Suppress_ResetAndAllUp_DoNotEmitActions",
+        "ProjectHotfix.Architecture.Tests.GroundHandActionTests.Threshold_TapAndHoldAreExclusive(0.12d)",
+        "ProjectHotfix.Architecture.Tests.GroundHandActionTests.Threshold_TapAndHoldAreExclusive(0.15d)",
+        "ProjectHotfix.Architecture.Tests.GroundHandActionTests.Threshold_TapAndHoldAreExclusive(0.18d)",
+        "ProjectHotfix.Architecture.Tests.InputPackageBoundaryTests.InputPackage_IsLockedAsDirectRegistryDependency",
+        "ProjectHotfix.Architecture.Tests.InputPackageBoundaryTests.OnlyInputModule_ReferencesTheSelectedPackageAssembly",
+        "ProjectHotfix.Architecture.Tests.InputPackageBoundaryTests.PlayerSettings_EnableOnlyTheNewInputSystemBackend",
+        "ProjectHotfix.Architecture.Tests.InputPackageBoundaryTests.ProductRuntimeSources_DoNotUseLegacyInputApis",
+        "ProjectHotfix.Architecture.Tests.LiftThrowAdmissionTests.MenuAndReset_RearmCannotAuthorizeAThrow",
+        "ProjectHotfix.Architecture.Tests.LiftThrowAdmissionTests.ReleaseAdmission_RejectsOldEdgesAgainstANewGrab",
+        "ProjectHotfix.Architecture.Tests.LocalStorageBoundaryTests.LocalStorageAssembly_IsANoEngineLeaf",
+        "ProjectHotfix.Architecture.Tests.LocalStorageBoundaryTests.LocalStorageRuntimeSources_HaveNoUnityOrNetworkNamespaceDependency",
+        "ProjectHotfix.Architecture.Tests.ModuleBoundaryTests.Presentation_HasNoDirectOrTransitivePathToSimulation",
+        "ProjectHotfix.Architecture.Tests.ModuleBoundaryTests.ProjectRuntimeSources_AreOwnedByTheirFolderAssembly",
+        "ProjectHotfix.Architecture.Tests.ModuleBoundaryTests.RuntimeAssemblies_HaveOnlyApprovedProjectReferences",
+        "ProjectHotfix.Architecture.Tests.ModuleBoundaryTests.RuntimeAssemblyGraph_HasNoCycles",
+        "ProjectHotfix.Architecture.Tests.PhysicsPackageBoundaryTests.PhysicsPackage_IsBuiltInDirectAndHasNoSecondStack",
+        "ProjectHotfix.Architecture.Tests.PhysicsPackageBoundaryTests.ProductRuntimeSources_DoNotMutateGlobalPhysicsCadence",
+        "ProjectHotfix.Architecture.Tests.PhysicsPackageBoundaryTests.ProjectPhysicsSettings_UseSixtyHertzAutomaticSimulation",
+        "ProjectHotfix.Architecture.Tests.PhysicsPackageBoundaryTests.RuntimePhysicsMutationGuard_CatchesRepresentativeForbiddenCode",
+        "ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.DownHitsDoNotAccumulateAndCannotReplayAfterRecovery",
+        "ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.EachDownKeepsRequiredHitsFixedAndConsumesOnlyCurrentHits",
+        "ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(0,10)",
+        "ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(1,9)",
+        "ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(4,6)",
+        "ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(100,6)",
+        "ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.FirstTenPointEpisodeCountsBodyAndHeadSeparately(Body,10)",
+        "ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.FirstTenPointEpisodeCountsBodyAndHeadSeparately(Head,5)",
+        "ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.IndependentAttackersAndOverlappingHandsDedupeWithoutDiscardingReverseOrder",
+        "ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.InvalidProfilesAndIdsAreRejected",
+        "ProjectHotfix.Architecture.Tests.PunchDownAccumulationTests.ResetRejectsOldGenerationAndRestartsAtFirstThreshold",
+        "ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.InvalidProjectionDoesNotEmitNonfiniteCameraTargets",
+        "ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.PerspectiveDistanceIncludesEveryCornerAndDepth(1.777778f)",
+        "ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.PerspectiveDistanceIncludesEveryCornerAndDepth(1.6f)",
+        "ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.PerspectiveDistanceIncludesEveryCornerAndDepth(2.333333f)",
+        "ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(0)",
+        "ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(45)",
+        "ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(90)",
+        "ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(180)",
+        "ProjectHotfix.Architecture.Tests.SharedCameraFramingTests.ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(270)",
+        "ProjectHotfix.Architecture.Tests.TimedDownTests.AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(-90,0)",
+        "ProjectHotfix.Architecture.Tests.TimedDownTests.AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(90,0)",
+        "ProjectHotfix.Architecture.Tests.TimedDownTests.AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(0,90)",
+        "ProjectHotfix.Architecture.Tests.TimedDownTests.AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(0,-90)",
+        "ProjectHotfix.Architecture.Tests.TimedDownTests.DropkickHasNoDownTimerOrCountAndRealDownSupersedesItOnce",
+        "ProjectHotfix.Architecture.Tests.TimedDownTests.ExpiryOnlyPermitsSupportedRecoveryAndNeverUnlocksItself",
+        "ProjectHotfix.Architecture.Tests.TimedDownTests.InvalidTuningAndClockCannotMutateState",
+        "ProjectHotfix.Architecture.Tests.TimedDownTests.LobbyAlwaysUsesBaseAndDoesNotCount",
+        "ProjectHotfix.Architecture.Tests.TimedDownTests.MatchAccumulatesOncePerEpisodeAndCapsDuration",
+        "ProjectHotfix.Architecture.Tests.TimedDownTests.ResetAndNewEpisodeRejectStaleEventsAndGetUpCompletions",
+        "ProjectHotfix.Architecture.Tests.TimedDownTests.UprightReturnRequiresExpiredTimerRealSupportAndSettledCompletion",
+        "ProjectHotfix.Architecture.Tests.TransportPackageBoundaryTests.HighLevelNetcodeAndUnityOnlineServices_AreAbsent",
+        "ProjectHotfix.Architecture.Tests.TransportPackageBoundaryTests.OnlyTransportModule_ReferencesTheSelectedPackageAssembly",
+        "ProjectHotfix.Architecture.Tests.TransportPackageBoundaryTests.TransportModule_HasNoAdapterImplementationBeforeNet001",
+        "ProjectHotfix.Architecture.Tests.TransportPackageBoundaryTests.TransportPackage_IsLockedAsDirectRegistryDependency",
+        "ProjectHotfix.SimulationHarness.Tests.EditMode.SimulationHarnessEditModeTests.Harness_ExecutesTheRuntimeOwnedSimulationKernel",
+        "ProjectHotfix.SimulationHarness.Tests.EditMode.SimulationHarnessEditModeTests.SimulationAndHarness_HaveNoPresentationRenderingOrUiDependency",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.ActualDownDuringDropkickAlignment_ClosesTheOldPresentation",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.AirborneUnsettledOrBlockedRecovery_DoesNotStart(False,True)",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.AirborneUnsettledOrBlockedRecovery_DoesNotStart(True,False)",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.AirborneUnsettledOrBlockedRecovery_DoesNotStart(False,False)",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.AlignmentNormalNormalization_MatchesEntryClassification",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation(False)",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation(True)",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.DiagonalFall_UsesTheDominantSupportedSide(35,FaceUp)",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.DiagonalFall_UsesTheDominantSupportedSide(55,RightSide)",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.GroundQueryMayReturnANonUnitNormal",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.InterruptedAlignment_CanReassessWithoutAddingADownEpisode",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.InvalidUnsupportedOrUprightOrientation_IsRejectedWithoutMutation",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(-90,70,FaceUp)",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(-90,-70,FaceUp)",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(90,70,FaceDown)",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(90,-70,FaceDown)",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp(False)",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp(True)",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SupportedFall_IsClassifiedAcrossYawAndSlopedGround(-90,0,FaceUp)",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SupportedFall_IsClassifiedAcrossYawAndSlopedGround(90,0,FaceDown)",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SupportedFall_IsClassifiedAcrossYawAndSlopedGround(0,90,LeftSide)",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.RecoveryOrientationTests.SupportedFall_IsClassifiedAcrossYawAndSlopedGround(0,-90,RightSide)",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.ActualDownDuringDropkickRecovery_ReplacesTheRecoveryAndCountsAsDown",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.DownEpisode_UsesSharedGetUpAndIncrementsDownCountOncePerEpisode",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.DropkickRecovery_ReusesGetUpPresentationWithoutCreatingDownEpisode",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.EquivalentCycleSequences_ProduceTheSameFingerprint",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.KernelStep_AdvancesTheReadOnlySnapshot",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.NegativeCycleCount_IsRejectedWithoutMutation",
+        "ProjectHotfix.SimulationHarness.Tests.Unit.SimulationKernelUnitTests.RoundReset_ClearsRecoveryAndDownCount",
+        "ProjectHotfix.C1B005.Tests.C1B005ImportParityTests.ActionPoseReview_IsReadOnlyAndMakesNoAnimationClaim",
+        "ProjectHotfix.C1B005.Tests.C1B005ImportParityTests.C1B005UnityAssetFolder_HasOnlyFbxAndIdentityPrefabSources",
+        "ProjectHotfix.C1B005.Tests.C1B005ImportParityTests.FourViewSilhouetteParity_UsesObservedIouAndBoundedBboxGate",
+        "ProjectHotfix.C1B005.Tests.C1B005ImportParityTests.IdentityPrefab_IsTransformNeutralAndContainsNoGameplayComponents",
+        "ProjectHotfix.C1B005.Tests.C1B005ImportParityTests.ImportedNeutral_HasExactStaticHierarchyBoundsLandmarksAndScope",
+        "ProjectHotfix.C1B005.Tests.C1B005ImportParityTests.InspectionAndEightUnityCaptures_ArePresentAndHashBound",
+        "ProjectHotfix.C1B005.Tests.C1B005ImportParityTests.ModelImporter_UsesTheExactApprovedStaticPreset"
+      ]
+    }
+  ],
+  "wallPhases": [
+    "candidate=False, hands=1, physicsError=0, allArmSkinPenetration=0.139985144, worstTick=48, preContact=0.107645035, settledHang=0.08513236, climbAndExit=0.139985144, stableHangPenetration=0.08789182, maxBoneCorrection=0, recovered=True, assists=1",
+    "candidate=True, hands=1, physicsError=0.1368572, allArmSkinPenetration=0.107645035, worstTick=4, preContact=0.107645035, settledHang=0.00190520287, climbAndExit=0.07434249, stableHangPenetration=0.0845556259, maxBoneCorrection=14.6860933, recovered=True, assists=1",
+    "candidate=False, hands=2, physicsError=0, allArmSkinPenetration=0.139985025, worstTick=48, preContact=0.107645035, settledHang=0.08513236, climbAndExit=0.139985025, stableHangPenetration=0.08789182, maxBoneCorrection=0, recovered=True, assists=1",
+    "candidate=True, hands=2, physicsError=0.1368572, allArmSkinPenetration=0.107645035, worstTick=4, preContact=0.107645035, settledHang=0.00190520287, climbAndExit=0.07434225, stableHangPenetration=0.0845556259, maxBoneCorrection=14.6860933, recovered=True, assists=1",
+    "candidate=False, hands=3, physicsError=0, allArmSkinPenetration=0.13999936, worstTick=48, preContact=0.107645035, settledHang=0.09293151, climbAndExit=0.13999936, stableHangPenetration=0.09293151, maxBoneCorrection=0, recovered=True, assists=1",
+    "candidate=True, hands=3, physicsError=0.146441892, allArmSkinPenetration=0.107645035, worstTick=4, preContact=0.107645035, settledHang=0.00324654579, climbAndExit=0.0391578674, stableHangPenetration=0.06834769, maxBoneCorrection=18.0014248, recovered=True, assists=1"
+  ],
+  "wallCases": [
+    "side=0, y=-0.6, returned=True, high=True, assists=1, hand error=2.54631146E-07, release=ClimbHandoff",
+    "side=1, y=-0.6, returned=True, high=True, assists=1, hand error=4.78290133E-07, release=ClimbHandoff",
+    "side=2, y=-0.6, returned=True, high=True, assists=1, hand error=2.67495551E-07, release=ClimbHandoff",
+    "side=3, y=-0.6, returned=True, high=True, assists=1, hand error=5.383012E-07, release=ClimbHandoff",
+    "side=0, y=-1.75, returned=True, high=True, assists=2, hand error=3.58867482E-07, release=ClimbHandoff",
+    "side=1, y=-1.75, returned=True, high=True, assists=2, hand error=4.95113341E-07, release=ClimbHandoff",
+    "side=2, y=-1.75, returned=True, high=True, assists=2, hand error=3.86282238E-07, release=ClimbHandoff",
+    "side=3, y=-1.75, returned=True, high=True, assists=2, hand error=5.448611E-07, release=ClimbHandoff",
+    "side=0, y=-2.18, returned=True, high=True, assists=2, hand error=3.071953E-07, release=ClimbHandoff",
+    "side=1, y=-2.18, returned=True, high=True, assists=2, hand error=5.333284E-07, release=ClimbHandoff",
+    "side=2, y=-2.18, returned=True, high=True, assists=2, hand error=3.42402615E-07, release=ClimbHandoff",
+    "side=3, y=-2.18, returned=True, high=True, assists=2, hand error=5.333284E-07, release=ClimbHandoff"
+  ],
+  "renderRateResults": [
+    "fps=60, maximumBonePositionDifference=0, recovered=True, assists=1",
+    "fps=15, maximumBonePositionDifference=0, recovered=True, assists=1",
+    "fps=144, maximumBonePositionDifference=0, recovered=True, assists=1"
+  ],
+  "mutualArmEnvelopeResults": [
+    "candidate=False, hands=1, physicsError=0, allArmEnvelopeOverlap=0.0699999854, stableMutualOverlap=0.06999997, maxBoneCorrection=0, maxOffset=0, throws=0/1",
+    "candidate=True, hands=1, physicsError=0, allArmEnvelopeOverlap=0.0699999854, stableMutualOverlap=0.06999997, maxBoneCorrection=15.4225245, maxOffset=0.0225, throws=0/1",
+    "candidate=False, hands=3, physicsError=0, allArmEnvelopeOverlap=0.06999999, stableMutualOverlap=0.06999997, maxBoneCorrection=0, maxOffset=0, throws=1/1",
+    "candidate=True, hands=3, physicsError=0, allArmEnvelopeOverlap=0.07, stableMutualOverlap=0.06999997, maxBoneCorrection=17.11384, maxOffset=0.026250001, throws=1/1"
+  ],
+  "sourceSnapshots": [
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+      "sha256": "68e607fc6a3df8eea27b487672cc4cb8294f0b9b301ded9d14271b1ebc42d945",
+      "snapshot": ".codex_tmp/grab-contact-bounded-20260913/SourceSnapshot/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/GrabPhysicsReview.cs",
+      "sha256": "3503005eec45780b67ce307aa359a66aed7724fa35e59afcf9a464c2d401c9d2",
+      "snapshot": ".codex_tmp/grab-contact-bounded-20260913/SourceSnapshot/Prototypes/PhysicsJump/GrabPhysicsReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/LedgeGrabReview.cs",
+      "sha256": "58c67c7b9a89e0a17de061605c93213f8d0d5bd720b4d826654fc291a6cdad35",
+      "snapshot": ".codex_tmp/grab-contact-bounded-20260913/SourceSnapshot/Prototypes/PhysicsJump/LedgeGrabReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Runtime/Contracts/GrabPresentationState.cs",
+      "sha256": "e7cf9329d1f2e5ab9d5351e13d85907c302e7e2519d34c8d8174564bcb7dd465",
+      "snapshot": ".codex_tmp/grab-contact-bounded-20260913/SourceSnapshot/Runtime/Contracts/GrabPresentationState.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/GrabArmPose.cs",
+      "sha256": "86f04a4736a7fbf8d31c7988bffa553ed18a124fd257b703a6a66b0a2eaee5df",
+      "snapshot": ".codex_tmp/grab-contact-bounded-20260913/SourceSnapshot/Runtime/Presentation/GrabArmPose.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/AutomaticLiftReviewTests.Contact.cs",
+      "sha256": "88f6cac6e638df2b21755359599bd7953875cdbf3e1224939938aba0416bb70a",
+      "snapshot": ".codex_tmp/grab-contact-bounded-20260913/SourceSnapshot/Tests/PlayMode/Physics/AutomaticLiftReviewTests.Contact.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/AutomaticLiftReviewTests.cs",
+      "sha256": "eff666ff2ba35cb4a6e49198c29f6b99e4fd6cfaa63a6140646a1eceebb08be6",
+      "snapshot": ".codex_tmp/grab-contact-bounded-20260913/SourceSnapshot/Tests/PlayMode/Physics/AutomaticLiftReviewTests.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.Contact.cs",
+      "sha256": "f91407786190c9669cd4a875210a1ea61775d4ef091237c3d002222bd9ecd6c5",
+      "snapshot": ".codex_tmp/grab-contact-bounded-20260913/SourceSnapshot/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.Contact.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.Hanging.cs",
+      "sha256": "6f5ee6f2041f29468a01bba024268251b0eeb32b1ad0df86ae508705c7c3dab0",
+      "snapshot": ".codex_tmp/grab-contact-bounded-20260913/SourceSnapshot/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.Hanging.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.cs",
+      "sha256": "be5d4d797f9366e691a5cd96f883a4ce075722a340cbf984c7e036d122c63d3c",
+      "snapshot": ".codex_tmp/grab-contact-bounded-20260913/SourceSnapshot/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.cs"
+    }
+  ],
+  "unchangedAssets": [
+    {
+      "path": "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend",
+      "sha256": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+      "unchanged": true
+    },
+    {
+      "path": "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend",
+      "sha256": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+      "unchanged": true
+    },
+    {
+      "path": ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend",
+      "sha256": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+      "unchanged": true
+    },
+    {
+      "path": ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend",
+      "sha256": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+      "unchanged": true
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim",
+      "sha256": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+      "unchanged": true
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim",
+      "sha256": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes",
+      "sha256": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60",
+      "unchanged": true
+    },
+    {
+      "path": ".codex_tmp/punch-unity-20260906/ApprovedPunch.json",
+      "sha256": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes",
+      "sha256": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a",
+      "unchanged": true
+    }
+  ],
+  "media": {
+    "fps": 60,
+    "framesWritten": 300,
+    "framesDecoded": 300,
+    "seconds": 5,
+    "decodeExit": 0,
+    "video": "/Users/kjh/local_dev/party game/.codex_tmp/grab-contact-bounded-20260913/Media/WallContactCandidate60.mp4",
+    "presentedHands": [
+      2,
+      3
+    ],
+    "capturedAndTestedHands": [
+      1,
+      2,
+      3
+    ]
+  },
+  "documents": {
+    "baseline": "PASS",
+    "workflow": "7/7"
+  },
+  "notCompleted": [
+    "Approach arm/wall penetration",
+    "Climb and release transition penetration",
+    "Reciprocal arm intersection; wrist/forearm-contact choice pending",
+    "Human multiplayer gameplay evaluation",
+    "Default candidate adoption and formal integration",
+    "Wall approach/climb arm transition choice pending"
+  ],
+  "failedExperiments": [
+    {
+      "case": "Unbounded elbow direction review",
+      "reason": "Severe shoulder skin folding; excluded from implementation."
+    },
+    {
+      "case": "Immediate stand-off during acquisition",
+      "reason": "Spent support force on horizontal spacing and lost deepest fall catch; replaced by spacing after vertical settling."
+    }
+  ],
+  "playerBuilds": 0,
+  "commits": 0,
+  "pushes": 0,
+  "pendingUserChoices": [
+    "Allow reciprocal wrist/forearm contact while preserving unilateral torso grab, mutual lift blocking and immediate release.",
+    "Allow unheld arms to fold upward during wall approach/climb transition while retaining load-driven one/two-hand hanging and immediate input."
+  ]
+}

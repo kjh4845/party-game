@@ -4,29 +4,47 @@
 
 | 항목 | 내용 |
 |---|---|
-| 문서 버전 | 1.9.0 C1B Static Interop Baseline + 2026-09-01 r11 Global Fair T-Pose Addendum |
-| 최종 수정일 | 2026-09-01 |
-| 상위 기준 | `01_PRD.md` 1.8.0, `02_SRS.md` 1.8.0 |
+| 문서 버전 | 1.9.0 C1B Static Interop Baseline + 2026-09-04 Action Presentation Addendum |
+| 최종 수정일 | 2026-09-05 |
+| 상위 기준 | `01_PRD.md` 1.8.0 + 2026-09-04 Addendum, `02_SRS.md` 1.8.0 + 동일 Addendum |
 | 기준 | `CHARACTER_TECHNICAL_SPEC.md` 0.12.0, `MAP_DESIGN_GUIDE.md` 1.8.0, `PATCH_DESIGN.md` 0.5.0 |
 | 목적 | 캐릭터·맵·무기·UI의 공통 시각 언어와 Blender→Unity 제작 품질 Gate 정의 |
 
-### 0.0 2026-09-01 r11 Global Fair T-Pose 시각 결정
+### 2026-09-05 공통 Grip·전 주기 변형·다방향 회복 결정
 
-- C1B-002..005의 기술 PASS는 보존하지만, 현 faceted head·egg/peg body·exposed proximal cap·detached-looking
-  limb는 v0.13 시각 방향을 충족하지 못하므로 current visual acceptance를 철회하고 `REWORK_REQUIRED`로 전환한다.
-- r01/r02 technical source·Evidence와 r03..r10 시도는 역사로 보존하지만 current visual acceptance에서는
-  `REWORK_REQUIRED / SUPERSEDED`다. 현재 r11은 round head, visible neck0와 horizontal T-pose를 유지하되,
-  r10에 남아 있던 torso/shoulder/belly/hip의 저주파 다중 bulge를 연속 profile과 전신 fairing으로 제거한다.
-- r11 torso→shoulder→arm은 cap·socket·patch·deep pit 없이 tangent-continuous하고, axilla는 짧고 둥글게 열린다.
-  팔은 capsule 하나와 monotone taper가 소유하며 몸통→골반→다리는 접합선 없이 갈라진다.
-- 표면 승인에서는 Neutral과 단일 소프트 Rake를 함께 본다. 고주파 band·terrace·normal ripple뿐 아니라
-  짧은 간격으로 방향이 반복되는 저주파 bulge도 반려한다. 어깨·허리·배·골반은 구간별 다중 혹이 아니라
-  하나의 넓고 연속적인 볼륨 곡선으로만 남긴다.
-- C1B rework chain의 r11 Neutral/Silhouette/Rake 12-view를 `UG-C1B-NEUTRAL`에서 승인하기 전에는
-  Rig·Pose clip·Animation·FBX·Unity import·Build·Commit/push/LFS 승격을 만들지 않는다.
-- r11 candidate의 Body component1, `227942V/455880E/227940F`, triangle/quad `0/227940`, adjacent angle max
-  `6.843839°`, exact mirror max `1.884956e-7H`, visible T-arm center max deviation `6.694555e-5H`는
-  재현·검토값이지 user visual approval·production topology가 아니다.
+- 총기 Grip은 무기 종류와 좌우에 공통인 팔 뻗기 template 하나다. 동일 template를 실제 잡은 팔에
+  적용하며 왼손·오른손 어느 쪽도 가능하다. 손 점유와 Main/Support 역할은 gameplay 정보이며
+  Pistol/LongGun별 pose나 좌우별 별도 authored clip을 만드는 근거가 아니다. fire/recoil·reload clip0 유지.
+- 리깅 QA는 걷기·뛰기 한 주기의 전 sample frame과 loop 경계에서 어깨·팔꿈치·골반·무릎의 꺾임,
+  자기교차·면 뒤집힘·국소 압축/늘어남과 육안 자연스러움을 함께 확인한다. 한 정지 자세의 PASS로 대체하지 않는다.
+- 회복 진입은 공격 방향이 아니라 Host가 확인한 실제 torso 자세와 지지면 normal을 사용한다.
+  앞·뒤·좌·우 및 대각선·임의 yaw·경사면을 지원하고, 안정 지지나 clearance가 없으면 기다린다.
+- 사용자가 권장안을 선택했다. 옆으로 누우면 현재 몸의 수평 방향을 보존하면서 가까운 앞/뒤 자세로
+  정렬한 뒤 공통 face-up/face-down GetUp을 사용한다. 좌우 전용 GetUp clip은 추가하지 않는다.
+  정렬과 GetUp은 순간이동·즉시 방향 반전 없이 연결하고 Host만 단계·완료를 판정한다.
+- DropkickRecovery와 DownEpisode는 위 시각 경로를 공유하되 gameplay state·DownCount·groggy·Down Trigger는 분리한다.
+  Upright Dropkick settle은 일어나기 없이 locomotion 복귀가 가능하며 떠 있거나 head-down이면 먼저 물리 안정화를 기다린다.
+
+
+### 0.0.1 2026-09-04 Action Presentation 결정
+
+- Idle은 팔을 몸통에 붙이고, Walk는 작은 앞뒤 팔 swing과 보행 leg motion, Sprint는 큰 앞뒤 팔 swing과
+  빠른 leg cadence로 구분한다. 모두 in-place이며 PhysicsRoot를 움직이지 않는다.
+- Firearm Grip은 기존 Pistol Main hand와 LongGun Main+Support hand 관계를 유지하고 해당 팔을 앞으로 뻗는
+  단순 공통 pose로 통일한다.
+- authored Firearm fire/recoil clip은 0이다. Host의 bounded Rigidbody/Joint recoil이 팔과 Weapon을 위로
+  움직이고 spring/damping으로 복귀시키며, Presentation은 이 물리 결과를 그대로 따른다.
+- DropkickRecovery는 non-Down state를 유지한다. physics tumble 뒤 prone이면 Ragdoll 경로의 방향별 GetUp
+  시각 모션을 공유하고 upright이면 바로 locomotion으로 돌아가며 Down cue·DownCount·groggy는 0이다.
+
+### 0.0 2026-09-05 현행 제작·외형 경계
+
+r16 Neutral 외형 방향은 2026-09-02 `UG-C1B-NEUTRAL` 승인 완료. r20은 기존 r16 geometry를 유지한 Blender Generic22(논리20+hip helper2) 리그 검토 후보다. 내부 Neck은 허용하며 가시 목0을 유지한다. 원본 r20의 Action0은 보존하고 별도 후보에서 공식 정적 Pose·보행/Grip·Grab/Wall IK와 팔꿈치 중심 Punch Action2를 검토했다. Unity 게임용 Prefab/Collider/animation 통합은 미완료다. 현재 다음 작업은 `C1BRW-004` 공식 정적 Pose8·lineup 검토이며 `C1BRW-005` static parity와 `C1B-006 / UG-C1B`는 미완료다.
+
+보이는 목0은 외형 제한이며 내부 Neck Bone을 금지하지 않는다. r20의 Chest→Neck→Head와
+hip helper2는 기존 검토 리그로 유지한다. 현재 승인 범위는
+[캐릭터 검토 기록](../artifacts/reports/CHARACTER_REWORK_NEUTRAL_REVIEW.md)을 따른다.
+이전 r11의 수치·render QA는 역사 결과로 보존하며 현재 승인 대기로 표시하지 않는다.
 
 ### 0.1 1.9.0 변경 요약
 
@@ -133,7 +151,7 @@ C1b orthographic·measurement 사용자 Gate를 거쳐야 한다. UI 이미지 �
 - Ragdoll·GetUp의 pose pop 억제
 - gameplay Collider·Anchor에는 영향을 주지 않는 visual deformation
 
-Sprint는 stride·상체 기울기·팔 lag로 기본 이동과 구분하되 별도 stamina 표현은 만들지 않는다.
+Sprint는 Walk보다 큰 앞뒤 팔 swing과 빠른 leg cadence로 구분하되 별도 stamina 표현은 만들지 않는다.
 반복 down은 같은 Round의 `DownCount` 증가에 따라 groggy/recovery가 길어진다는 사실을 Pose와
 UI feedback으로 읽을 수 있게 하되 과도한 화면 효과로 gameplay를 가리지 않는다.
 
@@ -146,21 +164,37 @@ Weapon damage와 Supply admission을 바꾸지 않게 한다.
 
 | Action | Alpha 기능 표현 | Production 표현 | 바꾸면 안 되는 Authority |
 |---|---|---|---|
-| Locomotion·Jump | primitive/procedural body lean·takeoff pose | in-place locomotion·jump clips | PhysicsRoot movement·Jump impulse |
+| Idle·Walk·Sprint·Jump | Idle arms-to-torso, Walk small arm swing+leg motion, Sprint large arm swing+fast leg cadence, takeoff pose | 같은 규칙의 in-place locomotion·jump clips | PhysicsRoot movement·Jump impulse |
 | Ground L/R Punch | 해당 Forearm terminal의 짧은 방향 pose | 좌우 punch clip·additive torso follow | StrikeAnchor sweep·active phase·Hit |
 | Ground/Air hand Grab | Hand/Grab anchor를 향한 procedural reach | reach·brace IK와 held follow | Contact·constraint·GripStress |
 | Air L/R Kick | 해당 lower-leg terminal의 읽히는 kick pose | 좌우 foot kick clip·body counter-pose | KickAnchor sweep·AirAttackToken·Hit |
-| Dropkick | 양발 전방 silhouette와 reduced-steering pose | in-place takeoff·flight·bounded recovery sequence | forward impulse·single AttackAction·dedupe |
+| Dropkick | 양발 전방 silhouette와 reduced-steering pose | in-place takeoff·flight, physics tumble 뒤 orientation-matched shared GetUp 또는 locomotion 복귀 | forward impulse·single AttackAction·dedupe·non-Down state |
 | Lift·Throw | held target 방향 brace와 release pose | lift·throw anticipation/follow-through | constraint·Release·Throw impulse |
-| Pistol semi-auto | 한 Shot의 강한 muzzle·body recoil pose | 짧고 강한 single recoil·settle clip | Ammo·Shot·Projectile·impulse/torque·Hit |
-| LongGun full-auto | hold 중 누적 muzzle rise·brace·bloom pose | sustained fire와 release/gap recovery blend | ShotSequence·RecoilAccumulator·SpreadBloom·Hit |
+| Pistol semi-auto | Main arm forward simple Grip, Host physics single recoil | authored fire/recoil clip 0; Rigidbody/Joint 상승·spring/damping 복귀 | Ammo·Shot·Projectile·impulse/torque·Hit |
+| LongGun full-auto | Main+Support arms forward simple Grip, Host physics cumulative recoil | authored fire/recoil clip 0; Rigidbody/Joint 누적 상승·release/gap 복귀 | ShotSequence·RecoilAccumulator·SpreadBloom·Hit |
 | Ammo 0 | 즉시 forced release와 무상호작용 spent 상태 | SpentPendingCleanup release cue; reload pose 0 | owner release·spent timer·remove·supply cap |
 | Bat·Hammer Melee | swing 방향과 기본 impact cue | 무기별 swing·impact clip | owner·attack window·Weapon sweep·Hit |
 | Down/Ragdoll | Authority physics pose follow | pose-pop 없는 Animator→Ragdoll blend | DownEpisode·DownCount·body state |
-| GetUp | face-up/down 구분과 root follow | in-place get-up clip·Ragdoll→Animator blend | clearance·AuthorityRoot·완료 state |
+| GetUp | front/back/left/right 판별·side 정렬·root follow | Ragdoll Down과 prone DropkickRecovery가 공유하는 face-up/down in-place get-up clip·physics→Animator blend | clearance·AuthorityRoot·완료 state·Down semantic 분리 |
 
-DropkickRecovery의 tumble은 Down/Ragdoll 연출을 재사용해도 semantic Down처럼 skull·groggy·DownCount cue를
-표시하지 않는다. Grounded, GetUp 완료와 Round reset의 AirAttackToken 복원도 별도 power-up처럼 연출하지 않는다.
+DropkickRecovery의 tumble은 Down/Ragdoll 연출을 재사용하고 prone settle 뒤 같은 face-up/down GetUp
+시각 모션을 사용할 수 있다. 그러나 semantic Down처럼 skull·groggy·DownCount cue를 표시하지 않고
+`DropkickRecovery`와 `DownEpisode` state를 합치지 않는다. Grounded, GetUp 완료와 Round reset의
+AirAttackToken 복원도 별도 power-up처럼 연출하지 않는다.
+
+### 2026-09-05 펀치 시각 피드백
+
+후속 r02(준비0.10초)의 동작 모양·준비 속도는 사용자 시각 승인 완료다.
+[승인 기록](../artifacts/reports/R20_PUNCH_VISUAL_APPROVAL_20260905.json)을 기준으로 유지하며 gameplay timing/통합 Gate와 구분한다.
+
+후속 요청은 팔꿈치를 접는 준비만 빠르게 하는 것이다. 현재 r02 검토는 준비0.20→0.10초이며
+확장·회수의 pose/속도를 유지한다. 수치는 animation review START이고 gameplay cadence를 바꾸지 않는다.
+
+기존 검토용 펀치는 때리는 느낌이 부족하다는 사용자 피드백으로 시각 재작업한다.
+팔꿈치를 충분히 접어 준비하고 어깨의 작은 선행 동작 뒤 전완을 빠르게 펴며, 뻗은 상태의 정지를 줄이고
+다시 팔꿈치를 접어 회수한다. 좌우는 같은 원리로 만든다. 총기 Grip과 별도 동작이며 Grab/Wall은 유지한다.
+변경은 animation presentation에 한정하고 Hit·피해·공격 cadence·입력 threshold·gameplay Root Motion을 바꾸지 않는다.
+실제 구간 시간과 관절 각도는 검토 START이며 게임용 Joint limit이나 최종 combat timing 승인이 아니다.
 
 ### 2.2 Animator·Ragdoll Presentation 정책
 
@@ -193,8 +227,8 @@ Korean-only는 Runtime Text Key 구조를 금지하는 뜻이 아니라 Alpha용
 - `AIR-001..002`는 input arbitration, KickAnchor sweep, Dropkick physics·Hit·recovery와 2·3·4인 기능을
   primitive/procedural pose로 검증한다.
 - `ANP-001`은 Action Animation Matrix, authority/presentation phase와 root-motion 0을 고정한다.
-- `ANP-002`는 locomotion·hand·air prototype, `ANP-003`은 Weapon action·Ragdoll·network presentation과
-  2·3·4인 통합을 담당한다.
+- `ANP-002`는 locomotion·hand·air prototype, `ANP-003`은 Firearm forward-arm Grip+physics recoil,
+  Melee action·Ragdoll·network presentation과 2·3·4인 통합을 담당한다.
 - `FIR-001`은 ammo/fire mode/spent, `FIR-002`는 Projectile, `FIR-003`은 recoil/spread authority를
   소유하고 `WPN-005`가 Firearm gameplay를 통합한다. `ANP-003`은 같은 semantic state의 read-only visual만 소유한다.
 - Alpha 기능 통과를 위해 완성된 clip polish, secondary motion, camera accent와 전용 VFX·SFX를 요구하지 않는다.
@@ -305,8 +339,8 @@ Pickup prompt, Patch 문장, 결과와 사용자 설정에 노출하는 경로�
 
 W1 입력 사용자 승인 뒤 Alpha에서는 다음 실제 전투 표현을 제작한다.
 
-- Pistol semi-auto single recoil, 7-shot progression, muzzle feedback와 spent release
-- LongGun full-auto sustained recoil, 30-shot progression, 누적 muzzle rise·SpreadBloom와 recovery
+- Pistol Main arm forward Grip, physics single recoil, 7-shot progression, muzzle feedback와 spent release
+- LongGun Main+Support arms forward Grip, physics sustained recoil, 30-shot progression, 누적 muzzle rise·SpreadBloom와 recovery
 - Host-visible Projectile의 진행 방향·TTL 종료·first impact와 no-pierce/no-ricochet 판독
 - Bat·Hammer swing, impact, damage/knockback와 drop
 - Host 판정 event에 따른 단일 visual/audio response
@@ -316,12 +350,13 @@ Pistol 총 Ammo 7, LongGun 총 Ammo 30과 reload 0은 확정이다. 정확한 ca
 speed/radius/TTL, damage·knockback, recoil/spread/bloom/recovery와 swing timing은 Alpha tuning이다.
 W1 전에는 무기 입력을 시각 asset로 먼저 굳히지 않는다.
 
-- Pistol은 narrow spread와 한 발마다 강한 bounded Host recoil을 짧고 명확한 pose로 표시한다.
-- LongGun은 Host의 deterministic ShotSequence·RecoilAccumulator·SpreadBloom을 따라 hold 중 누적 pose,
-  release 또는 승인 gap 뒤 recovery pose를 표시한다. Visual frame이 bloom 값을 만들지 않는다.
-- Host Rigidbody impulse/torque와 authority Muzzle 방향이 gameplay 기준이다. Camera/Animator recoil은
-  read-only cue이며 Projectile path·Hit를 움직이지 않는다.
-- Projectile, muzzle rise와 recoil pose는 SharedGameplayCamera subject bounds를 키우지 않는다.
+- Pistol Main arm과 LongGun Main+Support arm은 해당 Weapon을 향해 앞으로 뻗은 단순 Grip pose를 유지한다.
+- Host의 deterministic ShotSequence·RecoilAccumulator가 Rigidbody/Joint로 팔과 Weapon을 위로 움직이고,
+  release 또는 승인 gap 뒤 spring/damping으로 복귀시킨다. authored fire/recoil clip과 Animator가 만든
+  별도 recoil pose는 0이며 Visual frame이 bloom 값을 만들지 않는다.
+- Host Rigidbody/Joint impulse·torque와 authority Muzzle 방향이 gameplay 기준이다. Camera cue와 물리 팔
+  움직임은 read-only 결과이며 Projectile path·Hit를 다시 계산하지 않는다.
+- Projectile, muzzle rise와 physics-driven arm/Weapon recoil은 SharedGameplayCamera subject bounds를 키우지 않는다.
 - Projectile은 눈에 보이되 tracer가 다른 Target을 관통하거나 튕긴 것처럼 보이면 안 된다. 첫 blocking
   impact에서 끝나며 Map hit를 Lever·Hazard activation처럼 연출하지 않는다.
 - Ammo 0 forced release 뒤 `SpentPendingCleanup`은 `START 2~4초` 동안 비상호작용 상태로 보이고 제거된다.
@@ -482,11 +517,11 @@ FBX 생성만으로 완료 처리하지 않는다.
 
 ### 9.2 두 단계 Gate
 
-Character rework에는 production Style Gate 앞에 `UG-C1B-NEUTRAL`이 있다. r11의
-Front·Side·Back·ThreeQuarter Neutral/Silhouette/Rake에서 round head·visible neck0·head direct torso attachment,
-horizontal T-pose·tangent-continuous shoulder/axilla·bean torso·U-crotch/leg·rounded terminal을 사용자가 승인하기 전 `C1BRW-004` Pose·Animation과
-`C1BRW-005` FBX/Unity import를 시작하지 않는다. 이 Gate는 pixel-perfect
-comparison이나 production topology 승인이 아니라 현재 Neutral 방향 승인이다.
+Character rework의 `UG-C1B-NEUTRAL`은 r16 Neutral 방향에 대해 2026-09-02 승인 완료다.
+이는 production topology·animation·gameplay rig 승인이 아니다. C1BRW-004의 공식 정적 Pose8·lineup과
+C1BRW-005의 static FBX/Unity parity를 완료하고 UG-C1B에서 결과를 검토한다.
+현재 정적 pose 평가에는 기존 r20을 사용할 수 있으나 authored Action/clip·Root Motion은0이다.
+실제 동작 animation prototype은 후속 ANP-002..003, 실제 peer 표현 검증은 G2 NET이 소유한다.
 
 제작 전 `StylePreflight`:
 
@@ -519,8 +554,9 @@ Preflight sample 승인으로 최종 production asset의 post-import Gate를 대
 
 - v0.13 C1a와 승인 C1b 한 체형
 - C2 Skeleton·Ragdoll·Grab·Sprint·반복 down/GetUp
-- Ground Punch·Grab, 좌우 Air Kick, Dropkick·DropkickRecovery와 Air hand/ledge Grab
-- Pistol single recoil·Spent release, LongGun sustained recoil·SpreadBloom recovery와 visible Projectile first impact
+- Ground Punch·Grab, 좌우 Air Kick, Dropkick·별도 DropkickRecovery와 Air hand/ledge Grab
+- Dropkick prone settle과 Down/Ragdoll이 공유하는 face-up/down GetUp presentation의 state 분리
+- Pistol/LongGun forward-arm Grip·physics recoil·SpreadBloom recovery·Spent release와 visible Projectile first impact
 - 흰색 기본·Paint·Alpha placeholder Cosmetic 3종 또는 승인된 동등 최소 catalog
 - production art가 아닌 InteractiveLobby Greybox의 Ready/Start·Customizer·reconnect 판독
 - 공통 환경 module과 Lethal/Displacement Hazard

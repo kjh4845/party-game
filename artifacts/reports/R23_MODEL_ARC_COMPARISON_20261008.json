@@ -1,0 +1,195 @@
+{
+  "date": "2026-10-08",
+  "status": "USER_REJECTED",
+  "visualApproved": false,
+  "userRequest": "Repair shoulder/axilla shape and bilateral symmetry; compare short side-swing and diagonal-slam attacks",
+  "model": "BlenderSource/Characters/C1B-RW-023-shallow-axilla/CHR_MasterCharacter_C1B_ShallowAxilla_r23.blend",
+  "modelValidation": "BlenderSource/Characters/C1B-RW-023-shallow-axilla/NativeValidation.json",
+  "modelChanges": "35mm maximum posed-volume proposal, lowered outer shoulder cap, filled axillary bridge, exact reflected body coordinates and normals; same topology/head/skeleton",
+  "attacks": {
+    "A": "Bent-arm side sweep: shoulder forward lift, small yaw and mirrored side roll, compact recovery",
+    "B": "Higher diagonal descending sweep; compact side sweep while the other hand holds",
+    "validStrikingRegion": "Actual collision on the rounded terminal/distal forearm, within80mm of the swept terminal; legacyStraight32mm limit preserved",
+    "actualHitGate": "Real collision, active action window, incoming physical contact-normal closing speed and one hit per action/target",
+    "scores": "Existing head2/body-limbs1 and10→6 threshold unchanged",
+    "heldResponse": "No extra torso twist while holding; whole-body hit response capped1Ns for an opponent already held",
+    "controls": "L/R short click strike; hold grab; valid final release throw"
+  },
+  "validation": {
+    "HeldA3": {
+      "passed": 3,
+      "failed": 0,
+      "path": ".codex_tmp/round-strike-20261007/HeldA3/Tests.xml"
+    },
+    "HeldB3": {
+      "passed": 3,
+      "failed": 0,
+      "path": ".codex_tmp/round-strike-20261007/HeldB3/Tests.xml"
+    },
+    "BeforeBalanced": {
+      "passed": 6,
+      "failed": 0,
+      "path": ".codex_tmp/round-strike-20261007/BeforeBalanced/Tests.xml"
+    },
+    "editMode": {
+      "passed": 146,
+      "failed": 0,
+      "path": ".codex_tmp/round-strike-20261007/EditMode.xml"
+    }
+  },
+  "caseMatrix": {
+    "A": [
+      {
+        "name": "LeftBody",
+        "actualHits": 3,
+        "maxSurfaceAngle": 19.22844696044922,
+        "throws": 0
+      },
+      {
+        "name": "RightBody",
+        "actualHits": 3,
+        "maxSurfaceAngle": 19.356691360473633,
+        "throws": 0
+      },
+      {
+        "name": "Head",
+        "actualHits": 3,
+        "maxSurfaceAngle": 19.365026473999023,
+        "throws": 0
+      },
+      {
+        "name": "Far",
+        "actualHits": 0,
+        "maxSurfaceAngle": 19.57565689086914,
+        "throws": 0
+      },
+      {
+        "name": "Wall",
+        "actualHits": 0,
+        "maxSurfaceAngle": 23.365894317626953,
+        "throws": 0
+      },
+      {
+        "name": "GrabPunch",
+        "actualHits": 1,
+        "maxSurfaceAngle": 57.877952575683594,
+        "throws": 1
+      },
+      {
+        "name": "Alternating",
+        "actualHits": 10,
+        "maxSurfaceAngle": 25.014320373535156,
+        "throws": 0
+      },
+      {
+        "name": "Moving",
+        "actualHits": 10,
+        "maxSurfaceAngle": 25.533893585205078,
+        "throws": 0
+      }
+    ],
+    "B": [
+      {
+        "name": "LeftBody",
+        "actualHits": 3,
+        "maxSurfaceAngle": 48.321800231933594,
+        "throws": 0
+      },
+      {
+        "name": "RightBody",
+        "actualHits": 3,
+        "maxSurfaceAngle": 48.35673904418945,
+        "throws": 0
+      },
+      {
+        "name": "Head",
+        "actualHits": 3,
+        "maxSurfaceAngle": 48.320396423339844,
+        "throws": 0
+      },
+      {
+        "name": "Far",
+        "actualHits": 0,
+        "maxSurfaceAngle": 48.31355285644531,
+        "throws": 0
+      },
+      {
+        "name": "Wall",
+        "actualHits": 0,
+        "maxSurfaceAngle": 47.467891693115234,
+        "throws": 0
+      },
+      {
+        "name": "GrabPunch",
+        "actualHits": 1,
+        "maxSurfaceAngle": 57.877952575683594,
+        "throws": 1
+      },
+      {
+        "name": "Alternating",
+        "actualHits": 10,
+        "maxSurfaceAngle": 48.504051208496094,
+        "throws": 0
+      },
+      {
+        "name": "Moving",
+        "actualHits": 10,
+        "maxSurfaceAngle": 47.75777053833008,
+        "throws": 0
+      }
+    ]
+  },
+  "evidenceNote": "Initial full A/B runs failed the held scenario. Corrected held scenarios were rerun natively, passed, and merged into final capture data; unchanged seven scenes retained. Initial failure XML is preserved. Final artifact case matrices cover all8 scenes for each style.",
+  "frameRates": [
+    15,
+    60,
+    144
+  ],
+  "media": [
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/round-strike-20261007/Media/Attack_AB_60.mp4",
+      "frames": 360,
+      "sha256": "80446c84fa455b6126a2dcd8e0ed52be5063f49cc411bd00baa5def9f786b9d3"
+    },
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/round-strike-20261007/Media/Attack_A_Fight_Silent.mp4",
+      "frames": 390,
+      "sha256": "b9e4ca03cd6ac3c30ff8811517abe3d37754d788f5ce429ee649f5ec29bb5828"
+    },
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/round-strike-20261007/Media/Attack_A_Fight_60.mp4",
+      "frames": 390,
+      "sha256": "088acd8bc354b2db6e9ab5762c0f68d44a1bdee864433d1ba0d23189fa312ead"
+    },
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/round-strike-20261007/Media/Attack_B_Fight_Silent.mp4",
+      "frames": 390,
+      "sha256": "b1707df91638027f2f000406ba9cd55f100741d66681bb5117ff7bac07513254"
+    },
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/round-strike-20261007/Media/Attack_B_Fight_60.mp4",
+      "frames": 390,
+      "sha256": "59547013ef6ede818367409cc0516801b174a98bdb5a554c37899b31609efb40"
+    }
+  ],
+  "defaultMenus": [
+    "Project Hotfix/Prototypes/Arc Strike/A - Side Swing",
+    "Project Hotfix/Prototypes/Arc Strike/B - Diagonal Slam"
+  ],
+  "originalR22Preserved": true,
+  "playerBuilds": 0,
+  "commits": 0,
+  "pushes": 0,
+  "sources": {
+    "tools/blender/create_r23_shallow_axilla.py": "9a236f9fc81e4bfeaf60f3feeda4b307ae94016df6ff35ebe8a024e510b7e31b",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs": "bb9bd2480e9ea626cef7280872cfbd9577953e055d1655f1dfea1d547d94b986",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Punch.cs": "32026771338c05bb96ce8e6dfd82eb01235f27151bc4fb8163b5e6c28836ea53",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs": "528a25a9396167e342f25686f63e68993f88c8c803bc8011d2e8b68b5e1dab06",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.cs": "76a601892540f5cb064d9da465375c1428abd6ba2f0feaccfdf2198b2f564632",
+    "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": "afb4684647ccdcd99f6b7c3f772689f91f7627316c992941d798cf0e2c2b27a8",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Arc.cs": "783c356ec68b9d6ee4fabd61e2993f55e1149d38d4b1d319613399b72771bd8d",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Capture.cs": "d7b39f61ab65f3837a909297e2792ca6139e3171c5aefc124f43fe9e35716444"
+  },
+  "userFeedback": "공격 A/B 모두 타격과 피격 느낌이 부족하고 갈비뼈가 들어가 있어 몸통을 전체적으로 두껍게 재구성하도록 요청",
+  "supersededBy": "R24_BODY_IMPACT_REWORK_20261008.json"
+}

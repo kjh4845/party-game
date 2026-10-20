@@ -1,0 +1,174 @@
+{
+  "date": "2026-10-08",
+  "status": "LOCAL_NATURAL_SHOULDER_MOTION_VERIFIED",
+  "visualApproved": false,
+  "request": "팔을 앞으로 뻗을 때 고정된 어깨 대신 어깨와 몸통을 함께 사용하도록 보완",
+  "geometryRevision": "r28 unchanged",
+  "changes": [
+    "실제 팔/손 방향을 따라 쇄골을 앞으로 회전시키고 들어 올려 어깨 시작점 이동",
+    "BodyStrike 펀치는 어깨를 뒤로 준비했다가 기존 가슴 회전과 함께 앞으로 내보내고 접촉 후 회수",
+    "일반 앞쪽 잡기/손 뻗기에 작은 몸통 기울임 추가",
+    "쇄골과 물리 UpperArm 관절 연결점을 같은 고정 스텝에서 갱신; Rigidbody 위치 직접 변경 없음",
+    "취소/메뉴/초기화 시 어깨 자세와 관절 연결점 복귀"
+  ],
+  "changedFiles": [
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Shoulders.cs",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Impact.cs",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.NaturalShoulder.cs"
+  ],
+  "currentSourceHashes": {
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Shoulders.cs": "a340879eb67beb256eb2d1183991b766c7df3c61a05afd3e3d4357a2bf5502a7",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs": "515783237e7ce52b3020aaf97f0bb8f590bc627f65c00a0dcc5a1a18609cb823",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Impact.cs": "d92266e159ae019ef390de7971a31f92afa1f7c153b7c71b26c7dddc3e692952",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.NaturalShoulder.cs": "fd9fdb2c582eefcc409ce4ba02a78bbb6e15c0c237538797a044c19e236dd5b1"
+  },
+  "unchangedGameplaySourceHashes": {
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Punch.cs": "8c439127ea2cd02d2087d8f3cb540b97b354568435489f14efc837871b9efa04",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.cs": "4578818863197339e7f077e0df3317dd7befb0e290ff3b2dfc3ee0ca7e9a4d3b",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs": "fd0c444da4bd05f262b7392a6111324ae144bd65e98d0511dfa526ec3684fb16",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchFeedbackReview.cs": "f0584878d0f8af1aba6292efa4bad9c239fcbc94248007986645b3341c5029e7",
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralJumpPose.cs": "ef81a733b37877b6dfeef3596e004f1ac0a094808d49bbac213014f87bcba688"
+  },
+  "impactCurvesUnchanged": true,
+  "unchangedModel": {
+    "model": "BlenderSource/Characters/C1B-RW-028-cylindrical-upper-arms/CHR_MasterCharacter_C1B_CylindricalArms_r28.blend",
+    "transport": "BlenderSource/Characters/C1B-RW-028-cylindrical-upper-arms/CylindricalCharacter.bytes",
+    "candidateSha256": "214e736547b93c08168ca8c0455c263122108fe641a8a3b2befdb93fce5b131b",
+    "transportSha256": "a2ad7474a6d9678593d5b5bbab30c01c7a306ed139acbd8e33325128f5d9bbaf"
+  },
+  "validation": {
+    "playMode": {
+      "total": 9,
+      "passed": 9,
+      "failed": 0,
+      "tests": [
+        "BodyStrikeReactionsFollowContactAndRecover",
+        "BodyStrikeSuppressionClearsReactionAndPelvisOffset",
+        "CancellationStopsPunchAndRestoresGrabLimits",
+        "CaptureNaturalShoulderMotionComparison",
+        "CapturePhysicalPunchScenarios",
+        "CorrectedContactSurfaceMatchesSkinAndIgnoresRenderInterpolation",
+        "HoldAndThrowNeverBecomePunchAndFreeHandCanPunch",
+        "PhysicalPunchReplayMatches15_60_144Fps",
+        "ShoulderSocketsFollowReachAndResetTogetherWithSkin"
+      ]
+    },
+    "comparison": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "tests": [
+        "CaptureNaturalShoulderMotionComparison"
+      ]
+    },
+    "editMode": {
+      "total": 146,
+      "passed": 146,
+      "failed": 0
+    },
+    "combatScenarios": [
+      {
+        "name": "LeftBody",
+        "maxSkin": 23.477842330932617,
+        "worstActor": 0,
+        "worstTick": 18,
+        "hits": 3
+      },
+      {
+        "name": "RightBody",
+        "maxSkin": 20.60115623474121,
+        "worstActor": 0,
+        "worstTick": 141,
+        "hits": 3
+      },
+      {
+        "name": "Head",
+        "maxSkin": 24.630884170532227,
+        "worstActor": 1,
+        "worstTick": 100,
+        "hits": 3
+      },
+      {
+        "name": "Far",
+        "maxSkin": 23.469980239868164,
+        "worstActor": 0,
+        "worstTick": 75,
+        "hits": 0
+      },
+      {
+        "name": "Wall",
+        "maxSkin": 30.946334838867188,
+        "worstActor": 0,
+        "worstTick": 27,
+        "hits": 0
+      },
+      {
+        "name": "GrabPunch",
+        "maxSkin": 31.483009338378906,
+        "worstActor": 0,
+        "worstTick": 20,
+        "hits": 1
+      },
+      {
+        "name": "Alternating",
+        "maxSkin": 34.8546142578125,
+        "worstActor": 0,
+        "worstTick": 63,
+        "hits": 10
+      },
+      {
+        "name": "Moving",
+        "maxSkin": 34.60797119140625,
+        "worstActor": 0,
+        "worstTick": 63,
+        "hits": 10
+      },
+      {
+        "name": "Exchange",
+        "maxSkin": 44.97132110595703,
+        "worstActor": 0,
+        "worstTick": 87,
+        "hits": 3
+      }
+    ],
+    "motionMeasurements": [
+      "Reach_Before: protraction=0, retraction=0, elevation=0, surface=36.1063232, jointGap=0.00374389533, skinBodyOffset=0.00479652965",
+      "Reach_After: protraction=10, retraction=0, elevation=3.64734221, surface=24.6932163, jointGap=0.003961443, skinBodyOffset=0.005067498",
+      "Punch_Before: protraction=0, retraction=0, elevation=0, surface=32.73685, jointGap=0.04315433, skinBodyOffset=0.0368268639",
+      "Punch_After: protraction=12.9700136, retraction=-3.98417664, elevation=4, surface=34.2986145, jointGap=0.04294654, skinBodyOffset=0.0367705226"
+    ],
+    "frameRates": [
+      "fps=60, maxPhysicalDifference=0, hits=2",
+      "fps=15, maxPhysicalDifference=0, hits=2",
+      "fps=144, maxPhysicalDifference=0, hits=2"
+    ],
+    "correctedContact": [
+      "samples=48",
+      "maximumCorrection=0.0303623546",
+      "maximumContactError=1.95994176E-07"
+    ]
+  },
+  "diagnosticPoseNote": "기존 45/90도 팔 들기 사진은 메시 변형 검사이며 실제 잡기나 펀치 동작을 대표하지 않는다. 이번 비교는 실제 버튼 입력으로 팔을 뻗고 회수하는 장면과 펀치를 촬영한다.",
+  "physicsComparisonNote": "빠른 허공 펀치의 기존 최대 solver gap은 0.04315433m이고 새 동작은 0.04294654m. 이 기존 현상을 제거했다고 주장하지 않으며 비교 검사는 악화 여부를 확인한다.",
+  "media": [
+    "artifacts/previews/r29-shoulder-motion-20261008/Shoulder_Motion_Comparison.mp4",
+    "artifacts/previews/r29-shoulder-motion-20261008/Shoulder_Motion_Comparison.png",
+    "artifacts/previews/r29-shoulder-motion-20261008/Gameplay_NormalSpeed.mp4"
+  ],
+  "comparisonSpeed": "0.5x, left before/right after, identical inputs and camera",
+  "scope": "현재 BodyStrike 로컬 검토 씬. 사용자 시각 승인, Player/네트워크 성능 검증은 포함하지 않음.",
+  "evidence": "artifacts/evidence/r29-shoulder-motion-20261008",
+  "commits": false,
+  "pushes": false,
+  "subsequentVisualReview": {
+    "result": "DEFECTS_CONFIRMED",
+    "report": "ARM_VOLUME_AUDIT_20261008.json",
+    "issues": [
+      "어깨 연결부 접힘",
+      "팔꿈치/전완 단면 감소",
+      "몸통 대비 가는 팔"
+    ],
+    "visualApproved": false
+  }
+}

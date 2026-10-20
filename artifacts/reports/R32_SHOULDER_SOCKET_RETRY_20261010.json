@@ -1,0 +1,470 @@
+{
+  "date": "2026-10-10",
+  "status": "INCOMPLETE_RELOCATED_SOCKET_CANDIDATES_REJECTED",
+  "appliedModelChanges": false,
+  "visualApproved": false,
+  "request": "어깨 관절의 회전 중심과 쇄골·위팔 연결 위치를 바꾸고 연결면을 함께 재구성",
+  "implementedExperiment": {
+    "physicalSocketX": 0.23,
+    "previousSocketX": 0.18,
+    "lateralChangePerSideMeters": 0.05,
+    "physicalSocketY": 0.625,
+    "previousSocketY": 0.622,
+    "upperLength": 0.205,
+    "foreLength": 0.14,
+    "idleOutwardSlope": 0.01,
+    "shoulderDeformationFramesPerSide": 32,
+    "elbowDeformationFramesPerSide": 24,
+    "geometry": "Preserved approved torso silhouette via remeshing; rebuilt shoulder openings and continuous longitudinal arm/shoulder rings.",
+    "curve": "Chest-fixed initial tangent and adaptive cubic shoulder curve; rational elbow curve.",
+    "symmetryPositionError": 0.0
+  },
+  "result": "실제 관절 배치를 변경한 후보를 구현해 Unity에서 재현했지만, 어깨 접합부의 면 뒤집힘을 해소하지 못했다. 기본 모델에 반영하지 않았다.",
+  "partialMeasurement": {
+    "candidate": "CandidateF — rejected",
+    "actualElbowAngles": [
+      120.17345428466797,
+      120.17507934570312
+    ],
+    "areaRetentionRelativeToStraightRaised": {
+      "upper_middle": 0.9993286053134213,
+      "elbow": 0.9989414036066953,
+      "forearm_middle": 0.9991295958794043
+    },
+    "meaning": "Local cross-sectional area proxy, not total arm volume or visual acceptance.",
+    "evidence": "artifacts/evidence/r32-shoulder-sockets-20261010/RejectedSocketLayout-Sections.json"
+  },
+  "candidateValidation": [
+    {
+      "candidate": "CandidateC",
+      "passed": 2,
+      "failed": 0,
+      "failures": [],
+      "evidence": "artifacts/evidence/r32-shoulder-sockets-20261010/CandidateC-PlayMode.xml"
+    },
+    {
+      "candidate": "CandidateE",
+      "passed": 2,
+      "failed": 1,
+      "failures": [
+        {
+          "test": "RevisedShoulderSocketsAndCurveContactsMatchTheRenderedSkin",
+          "message": "  Expected: less than 9.99999975E-05f\n  But was:  0.0096707996f\n"
+        }
+      ],
+      "evidence": "artifacts/evidence/r32-shoulder-sockets-20261010/CandidateE-PlayMode.xml"
+    },
+    {
+      "candidate": "CandidateF",
+      "passed": 2,
+      "failed": 1,
+      "failures": [
+        {
+          "test": "RevisedShoulderSocketsAndCurveContactsMatchTheRenderedSkin",
+          "message": "  Expected: less than 9.99999975E-05f\n  But was:  0.000929830479f\n"
+        }
+      ],
+      "evidence": "artifacts/evidence/r32-shoulder-sockets-20261010/CandidateF-PlayMode.xml"
+    },
+    {
+      "candidate": "CandidateG",
+      "passed": 2,
+      "failed": 1,
+      "failures": [
+        {
+          "test": "RevisedShoulderSocketsAndCurveContactsMatchTheRenderedSkin",
+          "message": "  Expected: less than 9.99999975E-05f\n  But was:  0.000550580502f\n"
+        }
+      ],
+      "evidence": "artifacts/evidence/r32-shoulder-sockets-20261010/CandidateG-PlayMode.xml"
+    }
+  ],
+  "defaultModel": "r28 cylindrical upper arms",
+  "defaultMotion": "r29 natural shoulder motion and approved BodyStrike",
+  "unchangedModelHashes": {
+    "BlenderSource/Characters/C1B-RW-028-cylindrical-upper-arms/CylindricalCharacter.bytes": "a2ad7474a6d9678593d5b5bbab30c01c7a306ed139acbd8e33325128f5d9bbaf",
+    "BlenderSource/Characters/C1B-RW-028-cylindrical-upper-arms/CHR_MasterCharacter_C1B_CylindricalArms_r28.blend": "214e736547b93c08168ca8c0455c263122108fe641a8a3b2befdb93fce5b131b"
+  },
+  "sourceRestoration": {
+    "matchedSourceHashes": 118,
+    "archive": ".codex_tmp/shoulder-anchor-20261010/RejectedImplementation",
+    "manifest": ".codex_tmp/shoulder-anchor-20261010/RejectedImplementation/Manifest.json"
+  },
+  "remaining": [
+    "Shoulder/root interface still has geometric folds during raised-arm and combat poses.",
+    "Curve skin closest-point queries failed the .1 mm matching threshold in several samples despite improved sampling.",
+    "An acceptable final source asset, native/Unity parity, and full combat validation remain incomplete."
+  ],
+  "candidateFiles": ".codex_tmp/shoulder-anchor-20261010",
+  "preliminaryGeometryAudits": {
+    "CandidateC": {
+      "modelSha256": "76ed722e7e06c6c3912c33c95f2a3e0f24e46ec391953c841c4ca55e11b5cee8",
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "poses": [
+        {
+          "pose": "Idle",
+          "maximumAdjacentFaceAngle": 154.3195303937997,
+          "edgesAbove60Degrees": 696,
+          "worstPosition": [
+            0.17431779205799103,
+            0.5790072282155355,
+            0.07297782848278682
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            0.20083333551883698,
+            0.6127281188964844,
+            0.05796061456203461
+          ]
+        },
+        {
+          "pose": "Lift90_Flex0",
+          "maximumAdjacentFaceAngle": 179.44043777673832,
+          "edgesAbove60Degrees": 744,
+          "worstPosition": [
+            0.1650510480006536,
+            0.5458079179128011,
+            0.09217446545759837
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            0.2139238715171814,
+            0.5861111283302307,
+            0.05275382101535797
+          ]
+        },
+        {
+          "pose": "Lift90_Flex120",
+          "maximumAdjacentFaceAngle": 179.94110438024123,
+          "edgesAbove60Degrees": 744,
+          "worstPosition": [
+            0.16416252156098685,
+            0.5444195667902628,
+            0.07314051439364751
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            0.22951866686344147,
+            0.5663951635360718,
+            0.0504845567047596
+          ]
+        },
+        {
+          "pose": "Punch8",
+          "maximumAdjacentFaceAngle": 179.91438570213353,
+          "edgesAbove60Degrees": 660,
+          "worstPosition": [
+            0.15595434606075287,
+            0.5857996741930643,
+            0.09143777439991634
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            0.19749213755130768,
+            0.6007679104804993,
+            0.061700012534856796
+          ]
+        }
+      ]
+    },
+    "CandidateD": {
+      "modelSha256": "8bd02c39129ebd379f572ac14ad50ff8d2635865eef4110e137867497a28f8c2",
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "poses": [
+        {
+          "pose": "Idle",
+          "maximumAdjacentFaceAngle": 179.40012505567478,
+          "edgesAbove60Degrees": 182,
+          "worstPosition": [
+            0.1652683069308599,
+            0.5579678614934286,
+            0.03659739966193835
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            0.21409888565540314,
+            0.5757140517234802,
+            0.04826804995536804
+          ]
+        },
+        {
+          "pose": "Lift90_Flex0",
+          "maximumAdjacentFaceAngle": 179.26144844544658,
+          "edgesAbove60Degrees": 785,
+          "worstPosition": [
+            0.14166949689388275,
+            0.6663026809692383,
+            0.07288760940233867
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            0.13002102077007294,
+            0.6739675998687744,
+            -0.006673868745565414
+          ]
+        },
+        {
+          "pose": "Lift90_Flex120",
+          "maximumAdjacentFaceAngle": 179.96103695717787,
+          "edgesAbove60Degrees": 810,
+          "worstPosition": [
+            0.1594251642624537,
+            0.5500319004058838,
+            0.08960382888714473
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            0.18416666984558105,
+            0.5851218104362488,
+            0.040054772049188614
+          ]
+        },
+        {
+          "pose": "Punch8",
+          "maximumAdjacentFaceAngle": 178.95743520010384,
+          "edgesAbove60Degrees": 577,
+          "worstPosition": [
+            -0.15640022357304892,
+            0.62055903673172,
+            0.08531799912452698
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            -0.20416666567325592,
+            0.617333173751831,
+            0.058647919446229935
+          ]
+        }
+      ]
+    },
+    "CandidateE": {
+      "modelSha256": "cdc6961ae1542eb1c6f5c3ce569855c5f3860de619e534bca637a4cde5e9fa15",
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "poses": [
+        {
+          "pose": "Idle",
+          "maximumAdjacentFaceAngle": 155.40533364561583,
+          "edgesAbove60Degrees": 98,
+          "worstPosition": [
+            0.14748307565848032,
+            0.6569339235623678,
+            -0.0422146866718928
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            0.13805417716503143,
+            0.6567323803901672,
+            -0.04430452361702919
+          ]
+        },
+        {
+          "pose": "Lift90_Flex0",
+          "maximumAdjacentFaceAngle": 178.74100629896066,
+          "edgesAbove60Degrees": 670,
+          "worstPosition": [
+            0.16270858546098074,
+            0.5895664691925049,
+            0.12233569969733556
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            0.1756066530942917,
+            0.6202756762504578,
+            0.06342560052871704
+          ]
+        },
+        {
+          "pose": "Lift90_Flex120",
+          "maximumAdjacentFaceAngle": 179.96710575272922,
+          "edgesAbove60Degrees": 676,
+          "worstPosition": [
+            -0.14298133552074432,
+            0.6517312924067179,
+            0.09565180788437526
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            -0.18833333253860474,
+            0.6842074990272522,
+            0.04065853729844093
+          ]
+        },
+        {
+          "pose": "Punch8",
+          "maximumAdjacentFaceAngle": 179.75193686733644,
+          "edgesAbove60Degrees": 489,
+          "worstPosition": [
+            -0.15620256960391998,
+            0.651806652545929,
+            0.05954504758119583
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            -0.19583332538604736,
+            0.6693798899650574,
+            0.05286335572600365
+          ]
+        }
+      ]
+    },
+    "CandidateF": {
+      "modelSha256": "6a4b4f2e383bce56fd90f556c520a97be79a4e8f053fb81ade553ca3a65c2619",
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "poses": [
+        {
+          "pose": "Idle",
+          "maximumAdjacentFaceAngle": 179.18980277993202,
+          "edgesAbove60Degrees": 198,
+          "worstPosition": [
+            0.1845732976992925,
+            0.5445335110028585,
+            -0.007152302811543147
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            0.24416667222976685,
+            0.5871561169624329,
+            -0.0075337584130465984
+          ]
+        },
+        {
+          "pose": "Lift90_Flex0",
+          "maximumAdjacentFaceAngle": 172.6043175859274,
+          "edgesAbove60Degrees": 382,
+          "worstPosition": [
+            0.16982095936934152,
+            0.5639171401659647,
+            0.11704780161380768
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            0.20083333551883698,
+            0.5848147869110107,
+            0.03656958043575287
+          ]
+        },
+        {
+          "pose": "Lift90_Flex120",
+          "maximumAdjacentFaceAngle": 178.62327228691757,
+          "edgesAbove60Degrees": 394,
+          "worstPosition": [
+            -0.17002836366494498,
+            0.5690862139066061,
+            0.11148267239332199
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            -0.20083333551883698,
+            0.5851694941520691,
+            0.03704553470015526
+          ]
+        },
+        {
+          "pose": "Punch8",
+          "maximumAdjacentFaceAngle": 179.66154690180778,
+          "edgesAbove60Degrees": 350,
+          "worstPosition": [
+            0.17831439276536307,
+            0.5546427170435587,
+            0.06831508378187816
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            0.24416667222976685,
+            0.5902000069618225,
+            -0.018419718369841576
+          ]
+        }
+      ]
+    },
+    "CandidateG": {
+      "modelSha256": "ddce98505f3584a9fbc3cb440e811bc8aa2caf63e58a4e133eb35c8099df3fd2",
+      "boundaryEdges": 4,
+      "nonManifoldEdges": 20,
+      "poses": [
+        {
+          "pose": "Idle",
+          "maximumAdjacentFaceAngle": 180.0,
+          "edgesAbove60Degrees": 140,
+          "worstPosition": [
+            -4.5935754163413854e-08,
+            0.5711145798365275,
+            -0.13327168424924216
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            -7.133760966987639e-08,
+            0.5710693877918805,
+            -0.13575482175500295
+          ]
+        },
+        {
+          "pose": "Lift90_Flex0",
+          "maximumAdjacentFaceAngle": 180.0,
+          "edgesAbove60Degrees": 564,
+          "worstPosition": [
+            2.7491569198900834e-06,
+            0.60182257493337,
+            -0.07802504549423854
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            -7.133760966987639e-08,
+            0.5710693877918805,
+            -0.13575482175500295
+          ]
+        },
+        {
+          "pose": "Lift90_Flex120",
+          "maximumAdjacentFaceAngle": 180.0,
+          "edgesAbove60Degrees": 614,
+          "worstPosition": [
+            4.767121633146114e-06,
+            0.5977524916330973,
+            -0.08572983245054881
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            -7.133760966987639e-08,
+            0.5710693877918805,
+            -0.13575482175500295
+          ]
+        },
+        {
+          "pose": "Punch8",
+          "maximumAdjacentFaceAngle": 180.0,
+          "edgesAbove60Degrees": 710,
+          "worstPosition": [
+            -0.0015986612221846979,
+            0.5778006315231323,
+            -0.11081526676813762
+          ],
+          "degenerateTriangles": 0,
+          "worstMaterialPosition": [
+            1.0259043501066782e-07,
+            0.5718784382421774,
+            -0.1357552638651239
+          ]
+        }
+      ]
+    }
+  },
+  "preliminaryGeometryMeaning": "Offline r28 rotation mapping is only a preliminary inspection, not actual r32 gameplay validation.",
+  "actualUnityGeometryAudit": "artifacts/evidence/r32-shoulder-sockets-20261010/RejectedSocketLayout-SurfaceUnity.json",
+  "restoredValidation": {
+    "passed": 4,
+    "failed": 0,
+    "tests": [
+      "BodyStrikeReactionsFollowContactAndRecover",
+      "CaptureArmVolumeAudit",
+      "PhysicalPunchReplayMatches15_60_144Fps",
+      "ShoulderSocketsFollowReachAndResetTogetherWithSkin"
+    ],
+    "evidence": "artifacts/evidence/r32-shoulder-sockets-20261010/Restored-PlayMode.xml",
+    "meaning": "Restoration of existing r28/r29 behavior; not completion of the requested modeling fix."
+  }
+}

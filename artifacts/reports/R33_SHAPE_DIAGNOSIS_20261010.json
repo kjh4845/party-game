@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-10",
+  "status": "DIAGNOSIS_COMPLETE_NO_MODEL_CHANGES",
+  "modelSha256": "454d01d8c60af92451c0c5063947e68ec9ee1bf54497531477784688eaf3a17c",
+  "findings": {
+    "structure": "머리 별도, 몸통·팔·다리는 단일 연결 메시.",
+    "crossings": "검사한 Idle/팔 들기/120도 팔꿈치 굽힘/펀치 네 자세의 어깨·상부 갈비뼈 및 사타구니에서 공유 정점을 제외한 실제 면 관통0건. 다른 자세 및 공면 접촉의 부재까지 보장하지 않는다.",
+    "torsoAndGroin": "중립 자세의 실제 면에서 계산한 노멀과 저장 노멀 차이가 검사 부위에서 최대0.026도 이하다. 재계산한 노멀 렌더에도 요철이 남으므로 기본 곡면 정리가 필요하다.",
+    "groinPreserved": true,
+    "groinBindToIdleMaximumMeters": 9.254478641196329e-7,
+    "elbow120AreaRatioToStraight": [
+      0.6997899975265859,
+      0.6997849419460365
+    ]
+  },
+  "correctionDirection": [
+    "어깨 폭·팔 외곽·펀치 동작 유지.",
+    "몸통 곡면을 넓고 연속된 형태로 정리하고 국소 채움 경계가 돌출되지 않게 연결.",
+    "사타구니를 골반에서 두 다리로 이어지는 완만한 곡면으로 정리.",
+    "어깨 접힘과 팔꿈치 축소는 별도의 변형/가중치 문제로 검증."
+  ],
+  "verification": "Native 연결 성분 확인, 실제 Unity bake 정점4자세 교차 검사, 중립 노멀 비교, 사타구니 원본/현재 및 bind/idle 비교, 10자세 팔 단면 재측정. 기존 60도 표면 검사 통과는 매끈한 곡면의 보장이 아니다.",
+  "evidence": "artifacts/evidence/r33-shape-diagnosis-20261010",
+  "modelChanged": false,
+  "visualApproved": false
+}

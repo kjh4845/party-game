@@ -1,0 +1,500 @@
+{
+  "status": "NATURAL_GETUP_CANDIDATE_TECHNICALLY_VERIFIED_VISUAL_REVIEW_PENDING",
+  "date": "2026-09-07",
+  "userFeedback": [
+    "Ragdoll should lose its pose-holding force.",
+    "Previous recovery animation looked awkward; stand more naturally."
+  ],
+  "changes": [
+    "PhysicsTumble angular pose drives have zero spring, damper and maximum force.",
+    "10 dynamic bodies, 20kg total; feet collide as part of calves.",
+    "Elbow axes and mirrored flexion directions verified by external impulse.",
+    "Pelvis-based recovery destination and staged torso/weight transfer/final extension.",
+    "Staggered arm timing; authored leg shortening determines visual pelvis drop; bounded partial foot IK."
+  ],
+  "clips": {
+    "count": 2,
+    "secondsEach": 2.35,
+    "nominalFps": 30,
+    "keyTimesEach": 72,
+    "quaternionChannels": 84,
+    "visualPelvisPositionChannels": 3,
+    "gameplayRootCurves": 0,
+    "events": 0
+  },
+  "checks": {
+    "AllPlayMode": {
+      "total": "36",
+      "passed": "36",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "AllEditMode": {
+      "total": "110",
+      "passed": "110",
+      "failed": "0",
+      "skipped": "0"
+    }
+  },
+  "cases": [
+    {
+      "name": "FaceUp",
+      "finalPhase": "None",
+      "worstJoint": "Forearm_L",
+      "recoveries": 1,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.014155751094222069,
+      "speed": 3.5627388954162598,
+      "surfaceAngle": 16.52471351623535,
+      "finalHeight": 0.004106402397155762,
+      "downCount": 1,
+      "handoff": 5.367004405343323e-07,
+      "readyAngle": 0.9544879198074341,
+      "readyDistance": 0.008493236266076565,
+      "readySpeed": 0.01320304349064827,
+      "readyAngular": 0.03834303468465805,
+      "worstStep": 32,
+      "surfaceSamples": 172,
+      "plantedSamples": 46,
+      "plantError": 6.21601827788254e-07,
+      "forearmMotion": 82.03900909423828,
+      "footError": 0.0,
+      "footWeight": 0.993732213973999,
+      "footSamples": 0,
+      "worstLocation": {
+        "x": 0.15603357553482056,
+        "y": 0.6132887005805969,
+        "z": -0.033199019730091095
+      },
+      "worstLegAngles": [
+        20.048025131225586,
+        45.042930603027344,
+        0.0,
+        20.03925132751465,
+        45.0798454284668,
+        0.0
+      ]
+    },
+    {
+      "name": "FaceDown",
+      "finalPhase": "None",
+      "worstJoint": "Calf_L",
+      "recoveries": 1,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.008798654191195965,
+      "speed": 3.8122715950012207,
+      "surfaceAngle": 17.658554077148438,
+      "finalHeight": 0.004086703062057495,
+      "downCount": 1,
+      "handoff": 5.367004405343323e-07,
+      "readyAngle": 0.0,
+      "readyDistance": 0.0005507152527570724,
+      "readySpeed": 0.01322954148054123,
+      "readyAngular": 0.02480079047381878,
+      "worstStep": 176,
+      "surfaceSamples": 172,
+      "plantedSamples": 55,
+      "plantError": 7.316722530958941e-06,
+      "forearmMotion": 101.09314727783203,
+      "footError": 0.0,
+      "footWeight": 0.8895787000656128,
+      "footSamples": 0,
+      "worstLocation": {
+        "x": -0.06879398226737976,
+        "y": 0.025746306404471397,
+        "z": 0.08117399364709854
+      },
+      "worstLegAngles": [
+        -30.42510986328125,
+        46.04928207397461,
+        30.41082763671875,
+        -17.169921875,
+        34.25931930541992,
+        17.195261001586914
+      ]
+    },
+    {
+      "name": "LeftSide",
+      "finalPhase": "None",
+      "worstJoint": "Forearm_L",
+      "recoveries": 1,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.011686181649565697,
+      "speed": 2.6160006523132324,
+      "surfaceAngle": 18.297121047973633,
+      "finalHeight": 0.004109293222427368,
+      "downCount": 1,
+      "handoff": 4.995779363525799e-07,
+      "readyAngle": 1.0697146654129028,
+      "readyDistance": 0.008978907950222492,
+      "readySpeed": 0.013309287838637829,
+      "readyAngular": 0.033931273967027664,
+      "worstStep": 216,
+      "surfaceSamples": 191,
+      "plantedSamples": 43,
+      "plantError": 1.673584364425551e-07,
+      "forearmMotion": 80.47435760498047,
+      "footError": 0.0,
+      "footWeight": 0.8947428464889526,
+      "footSamples": 0,
+      "worstLocation": {
+        "x": -0.00047526866546832025,
+        "y": 0.11614502221345901,
+        "z": 0.014301215298473835
+      },
+      "worstLegAngles": [
+        -19.258270263671875,
+        51.65988540649414,
+        21.11722183227539,
+        -17.109771728515625,
+        34.21954345703125,
+        17.15868377685547
+      ]
+    },
+    {
+      "name": "RightSide",
+      "finalPhase": "None",
+      "worstJoint": "UpperArm_R",
+      "recoveries": 1,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.006727260537445545,
+      "speed": 2.6160006523132324,
+      "surfaceAngle": 19.502925872802734,
+      "finalHeight": 0.004086732864379883,
+      "downCount": 1,
+      "handoff": 4.76837158203125e-07,
+      "readyAngle": 0.4168400168418884,
+      "readyDistance": 0.0010674688965082169,
+      "readySpeed": 0.013270324096083641,
+      "readyAngular": 0.01651647314429283,
+      "worstStep": 110,
+      "surfaceSamples": 185,
+      "plantedSamples": 51,
+      "plantError": 1.787460064406332e-07,
+      "forearmMotion": 110.87553405761719,
+      "footError": 0.0,
+      "footWeight": 0.7846075296401978,
+      "footSamples": 0,
+      "worstLocation": {
+        "x": 0.15370969474315643,
+        "y": 0.6100167632102966,
+        "z": 0.028412332758307457
+      },
+      "worstLegAngles": [
+        -24.99639892578125,
+        32.795326232910156,
+        0.0,
+        -25.063873291015625,
+        -3.15753173828125,
+        0.0
+      ]
+    },
+    {
+      "name": "Ceiling",
+      "finalPhase": "PhysicsTumble",
+      "worstJoint": "Forearm_L",
+      "recoveries": 0,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.014155751094222069,
+      "speed": 3.5627388954162598,
+      "surfaceAngle": 16.52471351623535,
+      "finalHeight": 0.12009038776159286,
+      "downCount": 1,
+      "handoff": 0.0,
+      "readyAngle": 0.0,
+      "readyDistance": 0.0,
+      "readySpeed": 0.0,
+      "readyAngular": 0.0,
+      "worstStep": 32,
+      "surfaceSamples": 480,
+      "plantedSamples": 0,
+      "plantError": 0.0,
+      "forearmMotion": 0.0,
+      "footError": 0.0,
+      "footWeight": 0.0,
+      "footSamples": 0,
+      "worstLocation": {
+        "x": 0.15603357553482056,
+        "y": 0.6132887005805969,
+        "z": -0.033199019730091095
+      },
+      "worstLegAngles": [
+        20.048025131225586,
+        45.042930603027344,
+        0.0,
+        20.03925132751465,
+        45.0798454284668,
+        0.0
+      ]
+    },
+    {
+      "name": "CeilingRemoved",
+      "finalPhase": "None",
+      "worstJoint": "Forearm_L",
+      "recoveries": 1,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.014155751094222069,
+      "speed": 3.5627388954162598,
+      "surfaceAngle": 16.52471351623535,
+      "finalHeight": 0.004106402397155762,
+      "downCount": 1,
+      "handoff": 5.367004405343323e-07,
+      "readyAngle": 0.9544879198074341,
+      "readyDistance": 0.008493236266076565,
+      "readySpeed": 0.01320304349064827,
+      "readyAngular": 0.03834303468465805,
+      "worstStep": 32,
+      "surfaceSamples": 270,
+      "plantedSamples": 46,
+      "plantError": 6.21601827788254e-07,
+      "forearmMotion": 82.03900909423828,
+      "footError": 0.0,
+      "footWeight": 0.993732213973999,
+      "footSamples": 0,
+      "worstLocation": {
+        "x": 0.15603357553482056,
+        "y": 0.6132887005805969,
+        "z": -0.033199019730091095
+      },
+      "worstLegAngles": [
+        20.048025131225586,
+        45.042930603027344,
+        0.0,
+        20.03925132751465,
+        45.0798454284668,
+        0.0
+      ]
+    },
+    {
+      "name": "Reset",
+      "finalPhase": "None",
+      "worstJoint": "Forearm_L",
+      "recoveries": 0,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.014155751094222069,
+      "speed": 3.5627388954162598,
+      "surfaceAngle": 16.52471351623535,
+      "finalHeight": 0.004086285829544067,
+      "downCount": 0,
+      "handoff": 0.0,
+      "readyAngle": 89.20613861083984,
+      "readyDistance": 0.21177829802036285,
+      "readySpeed": 0.026131974533200264,
+      "readyAngular": 0.1668240875005722,
+      "worstStep": 32,
+      "surfaceSamples": 116,
+      "plantedSamples": 14,
+      "plantError": 1.5041364065382368e-07,
+      "forearmMotion": 82.03900909423828,
+      "footError": 0.0,
+      "footWeight": 0.0,
+      "footSamples": 0,
+      "worstLocation": {
+        "x": 0.15603357553482056,
+        "y": 0.6132887005805969,
+        "z": -0.033199019730091095
+      },
+      "worstLegAngles": [
+        20.048025131225586,
+        45.042930603027344,
+        0.0,
+        20.03925132751465,
+        45.0798454284668,
+        0.0
+      ]
+    },
+    {
+      "name": "SideGateLeft",
+      "finalPhase": "None",
+      "worstJoint": "Forearm_L",
+      "recoveries": 1,
+      "aligns": 1,
+      "interruptions": 0,
+      "gap": 0.0033344156108796597,
+      "speed": 2.020604133605957,
+      "surfaceAngle": 15.165395736694336,
+      "finalHeight": 0.004107266664505005,
+      "downCount": 1,
+      "handoff": 4.777675712830387e-07,
+      "readyAngle": 0.9827693700790405,
+      "readyDistance": 0.008687563240528107,
+      "readySpeed": 0.013216906227171421,
+      "readyAngular": 0.03778495267033577,
+      "worstStep": 218,
+      "surfaceSamples": 190,
+      "plantedSamples": 46,
+      "plantError": 0.00012742477701976895,
+      "forearmMotion": 89.62242126464844,
+      "footError": 3.3527612686157227e-08,
+      "footWeight": 1.0,
+      "footSamples": 2,
+      "worstLocation": {
+        "x": -0.0004950932343490422,
+        "y": 0.11702046543359756,
+        "z": 0.014336541295051575
+      },
+      "worstLegAngles": [
+        -22.12896728515625,
+        54.035194396972656,
+        20.953332901000977,
+        -16.36138916015625,
+        32.7227668762207,
+        16.4083194732666
+      ]
+    },
+    {
+      "name": "SideGateRight",
+      "finalPhase": "None",
+      "worstJoint": "Forearm_R",
+      "recoveries": 1,
+      "aligns": 1,
+      "interruptions": 0,
+      "gap": 0.003306469414383173,
+      "speed": 2.002110719680786,
+      "surfaceAngle": 15.231413841247559,
+      "finalHeight": 0.004107445478439331,
+      "downCount": 1,
+      "handoff": 6.557463620993076e-07,
+      "readyAngle": 0.978779137134552,
+      "readyDistance": 0.008665279485285282,
+      "readySpeed": 0.01321367360651493,
+      "readyAngular": 0.037461113184690475,
+      "worstStep": 218,
+      "surfaceSamples": 191,
+      "plantedSamples": 46,
+      "plantError": 2.404478664175258e-06,
+      "forearmMotion": 73.88560485839844,
+      "footError": 0.0,
+      "footWeight": 0.9824740290641785,
+      "footSamples": 0,
+      "worstLocation": {
+        "x": -0.09000161290168762,
+        "y": 0.010676826350390911,
+        "z": 0.05247626081109047
+      },
+      "worstLegAngles": [
+        -22.15814208984375,
+        54.21922302246094,
+        25.904857635498047,
+        -16.649627685546875,
+        33.299285888671875,
+        16.69734764099121
+      ]
+    },
+    {
+      "name": "Interrupted",
+      "finalPhase": "None",
+      "worstJoint": "Forearm_L",
+      "recoveries": 1,
+      "aligns": 0,
+      "interruptions": 1,
+      "gap": 0.014155751094222069,
+      "speed": 3.5627388954162598,
+      "surfaceAngle": 16.52471351623535,
+      "finalHeight": 0.0041062235832214355,
+      "downCount": 1,
+      "handoff": 5.968375376141921e-07,
+      "readyAngle": 0.9528465270996094,
+      "readyDistance": 0.008489261381328106,
+      "readySpeed": 0.013201195746660233,
+      "readyAngular": 0.0382857583463192,
+      "worstStep": 32,
+      "surfaceSamples": 242,
+      "plantedSamples": 46,
+      "plantError": 1.742643718216641e-07,
+      "forearmMotion": 82.00897979736328,
+      "footError": 0.0,
+      "footWeight": 0.9988797903060913,
+      "footSamples": 0,
+      "worstLocation": {
+        "x": 0.15603357553482056,
+        "y": 0.6132887005805969,
+        "z": -0.033199019730091095
+      },
+      "worstLegAngles": [
+        20.048025131225586,
+        45.042930603027344,
+        0.0,
+        20.03925132751465,
+        45.0798454284668,
+        0.0
+      ]
+    }
+  ],
+  "surfaceSamples": 2209,
+  "maximumSurfaceAngle": 19.502925872802734,
+  "maximumJointGapMeters": 0.014155751094222069,
+  "maximumHandPlantErrorMeters": 0.00012742477701976895,
+  "footCorrectionNote": "Partial correction is bounded by reach and angular limits. Full-weight foot samples are not present in every condition; zero full-weight error alone does not imply perfect foot locking.",
+  "media": {
+    "NaturalGetUp": {
+      "gif": "/Users/kjh/local_dev/party game/.codex_tmp/natural-getup-20260907/Review-20260906-190341/Media/NaturalGetUp.gif",
+      "mp4": "/Users/kjh/local_dev/party game/.codex_tmp/natural-getup-20260907/Review-20260906-190341/Media/NaturalGetUp.mp4",
+      "metadata": {
+        "durationSeconds": 8,
+        "fps": 20,
+        "frames": 160,
+        "height": 1130,
+        "width": 1024
+      }
+    },
+    "NaturalSideGetUp": {
+      "gif": "/Users/kjh/local_dev/party game/.codex_tmp/natural-getup-20260907/Review-20260906-190341/Media/NaturalSideGetUp.gif",
+      "mp4": "/Users/kjh/local_dev/party game/.codex_tmp/natural-getup-20260907/Review-20260906-190341/Media/NaturalSideGetUp.mp4",
+      "metadata": {
+        "durationSeconds": 8,
+        "fps": 20,
+        "frames": 160,
+        "height": 588,
+        "width": 1024
+      }
+    },
+    "closeup": {
+      "gif": "/Users/kjh/local_dev/party game/.codex_tmp/natural-getup-20260907/Review-20260906-190341/Media/NaturalGetUpCloseup.gif",
+      "durationSeconds": 6,
+      "sourceFrameRange": [
+        28,
+        127
+      ],
+      "note": "5 seconds of source plus final hold/repeat card; fixed checker floor and shadows clarify contact."
+    }
+  },
+  "rawReview": "/Users/kjh/local_dev/party game/.codex_tmp/natural-getup-20260907/Review-20260906-190341/NaturalGetUpReview.json",
+  "sourceSnapshot": "/Users/kjh/local_dev/party game/.codex_tmp/natural-getup-20260907/Review-20260906-190341/SourceSnapshot",
+  "sourceHashes": {
+    "Runtime/Presentation/GetUpAnimationPose.cs": "385c53f4f45fc7a7dd9b985119fa27056a75b45a5440006fd201be30a10cdd46",
+    "Editor/PhysicsJump/GetUpClipAuthoring.cs": "315e29fe30fd852e83a22ec23c9a94ea86220d3dcadfe1f8dd7d949f504a955e",
+    "Prototypes/PhysicsJump/RagdollRecoveryReview.cs": "82b26d507fc1cf11527bc219d2f5108e019388ca5efa33c7d69f7d648d2aaaf0",
+    "Tests/EditMode/Architecture/GetUpClipTests.cs": "61a8cdfccdab8fcc022b880c25fed5c4e261acc93e449dd66f9120ca5b66441b",
+    "Tests/PlayMode/Physics/GetUpAnimationReviewTests.cs": "23c4c0c1c29271fd68bd4de391da0551b0770e0134fcc69ace6307cb7198b645",
+    "Tests/PlayMode/Physics/RagdollRecoveryReviewTests.cs": "0b994fdf6b7fde1211ab530dd0d5b555d9891a0a4ae1ae8d9624ac674f66e9d9",
+    "Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "eab9a3c0fc249e90f5e0d0b04b2609640840a7ca103ccdcbb50e8cfbfa8ce735",
+    "Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f0ae70cdd275c1ae11f7c87344e8d09db00f562cef4d74960ec06fb4093a5ae3"
+  },
+  "originalAndApprovedHashes": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091"
+  },
+  "documentChecks": {
+    "baseline": "PASS",
+    "workflowTests": 7,
+    "diffCheck": "PASS"
+  },
+  "limitations": [
+    "Naturalness remains a visual review decision.",
+    "Single rigid torso and calf-attached feet are prototype approximations.",
+    "No full mesh-floor/self-intersection, complex terrain, constrained-arm, multiplayer/performance or peer proof.",
+    "Ordinary post-throw collision damage and accumulation remain excluded."
+  ],
+  "playerBuild": false,
+  "commitOrPush": false
+}

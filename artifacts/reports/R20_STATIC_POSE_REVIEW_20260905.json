@@ -1,0 +1,268 @@
+{
+  "ownerTask": "C1BRW-004",
+  "sourceRevision": "r20",
+  "sourceSha256": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+  "generatorSha256": "448acacbfb448a63a57a76384d96c1f9afaac1b6e1ec3a88375f8a1e4936fcfe",
+  "officialPoseCount": 8,
+  "lineupCount": 2,
+  "actionReadinessPoseCount": 5,
+  "preservation": {
+    "r20Unchanged": true,
+    "r16Unchanged": true,
+    "actionCount": 0,
+    "driverCount": 8,
+    "restPoseRestored": true,
+    "sourceSaved": false
+  },
+  "failedGeometryPoses": [],
+  "technicalResult": "PASS",
+  "userVisualApproval": false,
+  "limitations": [
+    "Static pose samples only; no timing/cadence, gameplay, physics or Unity parity tested.",
+    "Angles and lineup spacing are review candidates, not locked gameplay tuning.",
+    "No weapon model or recoil animation created. No Down/GetUp runtime completed.",
+    "Mesh QA detects self-intersection/folds; human review must assess shoulder/hip silhouette."
+  ],
+  "recordedDateLocal": "2026-09-05",
+  "renderCount": 32,
+  "renderHashMatches": 32,
+  "rawReportPath": ".codex_tmp/development-resume-20260905/static-review-r03/StaticPoseReview.json",
+  "rawReportSha256": "978a1513ffa0a1b63b6fccfcaee68f66667b92663425d38584d4a644ff9e448a",
+  "rawOutputPolicy": "LOCAL_REVIEW_ONLY_GIT_IGNORED",
+  "reportScope": "Geometry preflight; static visual user review pending. Not Unity parity or animation completion.",
+  "poses": [
+    {
+      "id": "Neutral",
+      "category": "Official",
+      "geometryResult": "PASS",
+      "images": [
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Neutral_Neutral_Front.png",
+          "sha256": "2dd993a79baa12e5f39fe81e04cd26c78637ed3da2ea83607e882571f709ba83"
+        },
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Neutral_Silhouette_Front.png",
+          "sha256": "f5b1e05ffe6493ad75a50e422efb683df87859756a042a48fcaccad2655cc9a2"
+        },
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Neutral_Neutral_SideLeft.png",
+          "sha256": "406daca5f76e5ce7b1750e47b07d6751d0c4d7e67636e25c941c9087a368c3df"
+        },
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Neutral_Silhouette_SideLeft.png",
+          "sha256": "e5641d94416776944d2de054701a095d649a00e3daa238e57b681786fc1e1cbc"
+        },
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Neutral_Neutral_Back.png",
+          "sha256": "803b31a923aee6c29998b04cf0d4621c680cbdffd1f8aff0177c2f4ff44dcb32"
+        },
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Neutral_Silhouette_Back.png",
+          "sha256": "330e36b4ae2168cbd0b8322325fd10df7d4582d695ec6bff4a95547f5febfd52"
+        },
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Neutral_Neutral_ThreeQuarterRight.png",
+          "sha256": "b446dd3a07bd236bb4d5bc01b959587ed70ff89eee99b4d898d9cdd66ef5d54b"
+        },
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Neutral_Silhouette_ThreeQuarterRight.png",
+          "sha256": "eaba3879b5758933bf93dfc5a57490c624a34fbf30cb451f24d7264f449eab73"
+        }
+      ]
+    },
+    {
+      "id": "BothHandsGrab",
+      "category": "Official",
+      "geometryResult": "PASS",
+      "images": [
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/BothHandsGrab_Neutral_ThreeQuarterRight.png",
+          "sha256": "b6351b0d7ed415df3d16be7233a390d9d4cb088fba097e1d24373696fd22022c"
+        },
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/BothHandsGrab_Silhouette_ThreeQuarterRight.png",
+          "sha256": "b0bcfea27528d2b70068c2aebaef76fc17b2c9903ef2206d860399eee503643b"
+        }
+      ]
+    },
+    {
+      "id": "StrikeReady_L",
+      "category": "Official",
+      "geometryResult": "PASS",
+      "images": [
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/StrikeReady_L_Neutral_ThreeQuarterRight.png",
+          "sha256": "47d0510bf1304180ad5ee771b95b901ad55e93e0a9adbeaf838494381d0c0434"
+        },
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/StrikeReady_L_Silhouette_ThreeQuarterRight.png",
+          "sha256": "1aa2c3e9dae71a84a6a323589c0caa7fdec4f81e12cfb4413be5f26e8b906150"
+        }
+      ]
+    },
+    {
+      "id": "StrikeReady_R",
+      "category": "Official",
+      "geometryResult": "PASS",
+      "images": [
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/StrikeReady_R_Neutral_ThreeQuarterRight.png",
+          "sha256": "226b788f82ffd27ac20dd43e784b6798b0347cc5e4dc3961058858b512c18f69"
+        },
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/StrikeReady_R_Silhouette_ThreeQuarterRight.png",
+          "sha256": "1c977bfeb1ad06ba0ce3a7ef6a8a1d450febd8559604de42b6f72b2c7c6faf62"
+        }
+      ]
+    },
+    {
+      "id": "AirKick_L",
+      "category": "Official",
+      "geometryResult": "PASS",
+      "images": [
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/AirKick_L_Neutral_ThreeQuarterRight.png",
+          "sha256": "db0b7f1af06e945ec67caa846ef926f6ec14690c654bd65ccb82bfddc04fcd5d"
+        },
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/AirKick_L_Silhouette_ThreeQuarterRight.png",
+          "sha256": "560d7ed7e00b7062abdc6092416a4d2aedb7b5f34d533048865ce0670d42ddf2"
+        }
+      ]
+    },
+    {
+      "id": "AirKick_R",
+      "category": "Official",
+      "geometryResult": "PASS",
+      "images": [
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/AirKick_R_Neutral_ThreeQuarterRight.png",
+          "sha256": "c7e18c3eabe43222ad5dc3d5db6b44e4494c966c2e45afbc1ebac34f918e1bbe"
+        },
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/AirKick_R_Silhouette_ThreeQuarterRight.png",
+          "sha256": "40951b87b60b0e49ca58f499e65439bee7499d86fb078c48899ab6427de5aba7"
+        }
+      ]
+    },
+    {
+      "id": "Dropkick",
+      "category": "Official",
+      "geometryResult": "PASS",
+      "images": [
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Dropkick_Neutral_ThreeQuarterRight.png",
+          "sha256": "66357e31fafbeb3b83d955466437067588ecb4935d6f086ac01a863bb9888164"
+        },
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Dropkick_Silhouette_ThreeQuarterRight.png",
+          "sha256": "a428beb3ea88d135f49a781bc4bd21d7ee1a1f912de7ae39d78403e0791b2605"
+        }
+      ]
+    },
+    {
+      "id": "AirHandReach",
+      "category": "Official",
+      "geometryResult": "PASS",
+      "images": [
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/AirHandReach_Neutral_ThreeQuarterRight.png",
+          "sha256": "10f87d94138c7db0d87261893dfa9319a11eb94d7596a432468ffccc3168d0cb"
+        },
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/AirHandReach_Silhouette_ThreeQuarterRight.png",
+          "sha256": "469499df792ab0c029699f7b19cfd038d70f259d5cdeb2d4d6abd21d89066f43"
+        }
+      ]
+    },
+    {
+      "id": "Idle_ArmsToTorso",
+      "category": "ActionReadiness",
+      "geometryResult": "PASS",
+      "images": [
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Idle_ArmsToTorso_Neutral_Front.png",
+          "sha256": "8877ae4e572f7591b69faed422d7cdaa36c90f240a1d6facdd2473bd1c17d90d"
+        },
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Idle_ArmsToTorso_Neutral_ThreeQuarterRight.png",
+          "sha256": "2e038500cc62e053dbe317e303415264efbf2559833f70bbb0886dd33bc044bc"
+        }
+      ]
+    },
+    {
+      "id": "Walk_StrideSample",
+      "category": "ActionReadiness",
+      "geometryResult": "PASS",
+      "images": [
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Walk_StrideSample_Neutral_ThreeQuarterRight.png",
+          "sha256": "fe16a7e680e06e196425feab9aaebae866d0175a951c17c695a73e5f907b9836"
+        }
+      ]
+    },
+    {
+      "id": "Sprint_StrideSample",
+      "category": "ActionReadiness",
+      "geometryResult": "PASS",
+      "images": [
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Sprint_StrideSample_Neutral_ThreeQuarterRight.png",
+          "sha256": "0c4c8fdf6f4794db65c98cc9c9d397b094df41d37c70a141d083bd0818413faa"
+        }
+      ]
+    },
+    {
+      "id": "Pistol_MainArmGrip",
+      "category": "ActionReadiness",
+      "geometryResult": "PASS",
+      "images": [
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Pistol_MainArmGrip_Neutral_ThreeQuarterRight.png",
+          "sha256": "173b7d9e217b8ece7b082e8bf5c5731ca89f51cb07d6f898436fb627ef2f8ee0"
+        }
+      ]
+    },
+    {
+      "id": "LongGun_TwoArmGrip",
+      "category": "ActionReadiness",
+      "geometryResult": "PASS",
+      "images": [
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/LongGun_TwoArmGrip_Neutral_ThreeQuarterRight.png",
+          "sha256": "09cfa5b09d4a1be1b1096a9006636bd9e4ae95cb05e3f80fd60f1917685fcef3"
+        }
+      ]
+    },
+    {
+      "id": "Lineup_Overlap",
+      "category": "Lineup",
+      "geometryResult": "NOT_APPLICABLE",
+      "images": [
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Lineup_Overlap_Neutral_Front.png",
+          "sha256": "dc1f1f4555ea716c42eb9f9a136de686c44481beeb0ff16b64eb94a34e39dec9"
+        },
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Lineup_Overlap_Silhouette_Front.png",
+          "sha256": "5d24cc7012e355f5f70a1b77b733879735e7bae93dc7a42411bd66f1de1521be"
+        }
+      ]
+    },
+    {
+      "id": "Lineup_Spread",
+      "category": "Lineup",
+      "geometryResult": "NOT_APPLICABLE",
+      "images": [
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Lineup_Spread_Neutral_Front.png",
+          "sha256": "32733f6c9bce10992668c590f62a7ebf4f869b945039580091a40b8a0222682d"
+        },
+        {
+          "path": ".codex_tmp/development-resume-20260905/static-review-r03/Lineup_Spread_Silhouette_Front.png",
+          "sha256": "e348f4ca5e1918e512ab720e7098b9ff9634540b87c71cdece842c9886ecfe89"
+        }
+      ]
+    }
+  ]
+}

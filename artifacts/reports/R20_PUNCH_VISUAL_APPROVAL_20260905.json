@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "recordId": "R20-PUNCH-VISUAL-APPROVAL-20260905",
+  "status": "APPROVED",
+  "recordedAtLocal": "2026-09-05T17:57:33.879129+09:00",
+  "timezone": "Asia/Seoul",
+  "userDecision": "좋다 좋다 내가 원하던 거였어",
+  "candidatePath": ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend",
+  "candidateSha256": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+  "scope": [
+    "Current shared L/R elbow-driven punch visual direction",
+    "Preparation 0.20 to 0.10 seconds; unchanged extension and return poses/speed"
+  ],
+  "limitations": [
+    "This approves the presented animation candidate, not gameplay attack cadence, Hit/damage, physics Joint limits or input thresholds.",
+    "Does not close UG-C1B, UG-C2, ANP-002 integration, Unity import or Player Build gates.",
+    "Historical generated reports remain immutable; this record supplies the subsequent user decision."
+  ]
+}

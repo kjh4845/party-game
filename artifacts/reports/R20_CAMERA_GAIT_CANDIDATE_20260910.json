@@ -1,0 +1,1035 @@
+{
+  "status": "ADOPTED_FOR_LOCAL_PROTOTYPE",
+  "completedAtLocal": "2026-09-10T01:30:32.842609+09:00",
+  "userVisualApproval": true,
+  "scope": "Camera-readable gait candidate, constant gameplay movement speeds, native60fps matched shared-camera comparison.",
+  "profile": {
+    "walkSpeed": 0.7,
+    "sprintSpeed": 1.05,
+    "previousCadence": [
+      3,
+      4.5
+    ],
+    "candidateCadence": [
+      2.4,
+      3.6
+    ],
+    "footContactRate": [
+      4.8,
+      7.2
+    ],
+    "stanceFraction": 0.5,
+    "footLiftTarget": 0.018,
+    "pelvisDropRange": [
+      0.01,
+      0.024
+    ],
+    "pelvisSwayAndRollScale": 0.6,
+    "freeArmSwingScale": 0.75,
+    "fullStrideActivationWeight": 1,
+    "turnMinimumStrideScale": 0.65,
+    "combinedShorteningLimit": 0.03,
+    "sharedFixedStepPoseInput": true,
+    "clearStaleGaitAfterExternalPose": true
+  },
+  "steady": {
+    "status": "PASS",
+    "cases": [
+      {
+        "name": "Walk_0_Previous",
+        "surfaceAngle": 42.62933349609375,
+        "reachCorrection": 0.0,
+        "penetration": 0.005881909281015396,
+        "stanceSpeed": 1.5100666132639162e-05,
+        "maxKnee": 66.65088653564453,
+        "footLift": 0.00859854742884636,
+        "strideRange": 0.12700927257537842,
+        "pelvisRange": 0.001854225993156433,
+        "plantedPairs": 137,
+        "stancePairs": 137,
+        "coverage": 1.0,
+        "worstSurfaceStep": 200,
+        "worstSurfacePoint": {
+          "x": 0.08455482870340347,
+          "y": 0.01603034697473049,
+          "z": -0.0018327882280573249
+        }
+      },
+      {
+        "name": "Walk_0_Candidate",
+        "surfaceAngle": 42.7900505065918,
+        "reachCorrection": 0.0007447153329849243,
+        "penetration": 0.005891520529985428,
+        "stanceSpeed": 1.6316771507263184e-05,
+        "maxKnee": 64.62071990966797,
+        "footLift": 0.015475742518901825,
+        "strideRange": 0.1535462737083435,
+        "pelvisRange": 0.0129803866147995,
+        "plantedPairs": 140,
+        "stancePairs": 140,
+        "coverage": 1.0,
+        "worstSurfaceStep": 160,
+        "worstSurfacePoint": {
+          "x": -0.09408273547887802,
+          "y": 0.02137655019760132,
+          "z": -0.0032910953741520643
+        }
+      },
+      {
+        "name": "Walk_45_Previous",
+        "surfaceAngle": 42.62984085083008,
+        "reachCorrection": 0.0,
+        "penetration": 0.005881810560822487,
+        "stanceSpeed": 2.082464015984442e-05,
+        "maxKnee": 66.65081024169922,
+        "footLift": 0.008598579093813896,
+        "strideRange": 0.1270093023777008,
+        "pelvisRange": 0.001854225993156433,
+        "plantedPairs": 137,
+        "stancePairs": 137,
+        "coverage": 1.0,
+        "worstSurfaceStep": 200,
+        "worstSurfacePoint": {
+          "x": 0.08455460518598557,
+          "y": 0.016030335798859596,
+          "z": -0.0018326627323403955
+        }
+      },
+      {
+        "name": "Walk_45_Candidate",
+        "surfaceAngle": 42.789146423339844,
+        "reachCorrection": 0.0007443726062774658,
+        "penetration": 0.005891520529985428,
+        "stanceSpeed": 1.7663887774688192e-05,
+        "maxKnee": 64.6207275390625,
+        "footLift": 0.015475630760192871,
+        "strideRange": 0.15354648232460022,
+        "pelvisRange": 0.0129803866147995,
+        "plantedPairs": 140,
+        "stancePairs": 140,
+        "coverage": 1.0,
+        "worstSurfaceStep": 160,
+        "worstSurfacePoint": {
+          "x": -0.09408265352249146,
+          "y": 0.021376555785536766,
+          "z": -0.0032912108581513166
+        }
+      },
+      {
+        "name": "Walk_90_Previous",
+        "surfaceAngle": 42.629661560058594,
+        "reachCorrection": 0.0,
+        "penetration": 0.005881999619305134,
+        "stanceSpeed": 1.589490238984581e-05,
+        "maxKnee": 66.6509780883789,
+        "footLift": 0.008598582819104195,
+        "strideRange": 0.12700927257537842,
+        "pelvisRange": 0.0018542110919952393,
+        "plantedPairs": 137,
+        "stancePairs": 137,
+        "coverage": 1.0,
+        "worstSurfaceStep": 200,
+        "worstSurfacePoint": {
+          "x": 0.08455464243888855,
+          "y": 0.016030341386795044,
+          "z": -0.0018327372381463647
+        }
+      },
+      {
+        "name": "Walk_90_Candidate",
+        "surfaceAngle": 42.790130615234375,
+        "reachCorrection": 0.0007447153329849243,
+        "penetration": 0.005891596898436546,
+        "stanceSpeed": 1.6388568838010542e-05,
+        "maxKnee": 64.62047576904297,
+        "footLift": 0.015475526452064514,
+        "strideRange": 0.15354633331298828,
+        "pelvisRange": 0.0129803866147995,
+        "plantedPairs": 140,
+        "stancePairs": 140,
+        "coverage": 1.0,
+        "worstSurfaceStep": 160,
+        "worstSurfacePoint": {
+          "x": -0.09408267587423325,
+          "y": 0.02137655019760132,
+          "z": -0.0032910071313381195
+        }
+      },
+      {
+        "name": "Walk_135_Previous",
+        "surfaceAngle": 42.6298713684082,
+        "reachCorrection": 0.0,
+        "penetration": 0.005881734192371368,
+        "stanceSpeed": 1.7793166989577003e-05,
+        "maxKnee": 66.65089416503906,
+        "footLift": 0.008598599582910538,
+        "strideRange": 0.12700927257537842,
+        "pelvisRange": 0.001854225993156433,
+        "plantedPairs": 137,
+        "stancePairs": 137,
+        "coverage": 1.0,
+        "worstSurfaceStep": 200,
+        "worstSurfacePoint": {
+          "x": 0.08455488830804825,
+          "y": 0.016030410304665565,
+          "z": -0.001832135021686554
+        }
+      },
+      {
+        "name": "Walk_135_Candidate",
+        "surfaceAngle": 42.78916549682617,
+        "reachCorrection": 0.0007441937923431396,
+        "penetration": 0.0058914246037602425,
+        "stanceSpeed": 1.8561704564490356e-05,
+        "maxKnee": 64.62079620361328,
+        "footLift": 0.01547575369477272,
+        "strideRange": 0.15354648232460022,
+        "pelvisRange": 0.0129803866147995,
+        "plantedPairs": 140,
+        "stancePairs": 140,
+        "coverage": 1.0,
+        "worstSurfaceStep": 160,
+        "worstSurfacePoint": {
+          "x": -0.09408468753099442,
+          "y": 0.021376609802246094,
+          "z": -0.0032907624263316393
+        }
+      },
+      {
+        "name": "Walk_180_Previous",
+        "surfaceAngle": 42.62965393066406,
+        "reachCorrection": 0.0,
+        "penetration": 0.005881909281015396,
+        "stanceSpeed": 1.7174517779494636e-05,
+        "maxKnee": 66.65081024169922,
+        "footLift": 0.008598567917943,
+        "strideRange": 0.12700951099395752,
+        "pelvisRange": 0.001854225993156433,
+        "plantedPairs": 137,
+        "stancePairs": 137,
+        "coverage": 1.0,
+        "worstSurfaceStep": 200,
+        "worstSurfacePoint": {
+          "x": 0.08455485105514526,
+          "y": 0.01603034883737564,
+          "z": -0.0018327893922105432
+        }
+      },
+      {
+        "name": "Walk_180_Candidate",
+        "surfaceAngle": 42.78986358642578,
+        "reachCorrection": 0.0007447153329849243,
+        "penetration": 0.00589151494204998,
+        "stanceSpeed": 1.6988793504424393e-05,
+        "maxKnee": 64.62071990966797,
+        "footLift": 0.015475675463676453,
+        "strideRange": 0.1535462737083435,
+        "pelvisRange": 0.0129803866147995,
+        "plantedPairs": 140,
+        "stancePairs": 140,
+        "coverage": 1.0,
+        "worstSurfaceStep": 160,
+        "worstSurfacePoint": {
+          "x": -0.09408275038003922,
+          "y": 0.021376552060246468,
+          "z": -0.0032910953741520643
+        }
+      },
+      {
+        "name": "Walk_225_Previous",
+        "surfaceAngle": 42.629783630371094,
+        "reachCorrection": 0.0,
+        "penetration": 0.005881785415112972,
+        "stanceSpeed": 1.8717166312853806e-05,
+        "maxKnee": 66.6507797241211,
+        "footLift": 0.008598513901233673,
+        "strideRange": 0.1270092874765396,
+        "pelvisRange": 0.0018542110919952393,
+        "plantedPairs": 137,
+        "stancePairs": 137,
+        "coverage": 1.0,
+        "worstSurfaceStep": 200,
+        "worstSurfacePoint": {
+          "x": 0.08455479145050049,
+          "y": 0.016030410304665565,
+          "z": -0.0018325248965993524
+        }
+      },
+      {
+        "name": "Walk_225_Candidate",
+        "surfaceAngle": 42.78976058959961,
+        "reachCorrection": 0.0007446557283401489,
+        "penetration": 0.005891600623726845,
+        "stanceSpeed": 1.8566750441095792e-05,
+        "maxKnee": 64.62068176269531,
+        "footLift": 0.015475660562515259,
+        "strideRange": 0.15354636311531067,
+        "pelvisRange": 0.0129803866147995,
+        "plantedPairs": 140,
+        "stancePairs": 140,
+        "coverage": 1.0,
+        "worstSurfaceStep": 160,
+        "worstSurfacePoint": {
+          "x": -0.09408268332481384,
+          "y": 0.0213764701038599,
+          "z": -0.003290777327492833
+        }
+      },
+      {
+        "name": "Walk_270_Previous",
+        "surfaceAngle": 42.63008499145508,
+        "reachCorrection": 0.0,
+        "penetration": 0.005881926044821739,
+        "stanceSpeed": 1.6412937839049846e-05,
+        "maxKnee": 66.65084075927734,
+        "footLift": 0.008598532527685165,
+        "strideRange": 0.12700927257537842,
+        "pelvisRange": 0.0018542110919952393,
+        "plantedPairs": 137,
+        "stancePairs": 137,
+        "coverage": 1.0,
+        "worstSurfaceStep": 200,
+        "worstSurfacePoint": {
+          "x": 0.0845547616481781,
+          "y": 0.01603035256266594,
+          "z": -0.0018327496945858002
+        }
+      },
+      {
+        "name": "Walk_270_Candidate",
+        "surfaceAngle": 42.789615631103516,
+        "reachCorrection": 0.0007447153329849243,
+        "penetration": 0.005891677923500538,
+        "stanceSpeed": 1.6606605640845373e-05,
+        "maxKnee": 64.62063598632812,
+        "footLift": 0.015475578606128693,
+        "strideRange": 0.15354633331298828,
+        "pelvisRange": 0.0129803866147995,
+        "plantedPairs": 140,
+        "stancePairs": 140,
+        "coverage": 1.0,
+        "worstSurfaceStep": 160,
+        "worstSurfacePoint": {
+          "x": -0.09408256411552429,
+          "y": 0.021376540884375572,
+          "z": -0.003290994791314006
+        }
+      },
+      {
+        "name": "Walk_315_Previous",
+        "surfaceAngle": 42.629268646240234,
+        "reachCorrection": 0.0,
+        "penetration": 0.005881831049919128,
+        "stanceSpeed": 1.730239819153212e-05,
+        "maxKnee": 66.65074920654297,
+        "footLift": 0.00859852135181427,
+        "strideRange": 0.1270093023777008,
+        "pelvisRange": 0.001854225993156433,
+        "plantedPairs": 137,
+        "stancePairs": 137,
+        "coverage": 1.0,
+        "worstSurfaceStep": 200,
+        "worstSurfacePoint": {
+          "x": 0.0845547541975975,
+          "y": 0.016030358150601387,
+          "z": -0.0018327994039282203
+        }
+      },
+      {
+        "name": "Walk_315_Candidate",
+        "surfaceAngle": 42.78961181640625,
+        "reachCorrection": 0.0007444173097610474,
+        "penetration": 0.005891640670597553,
+        "stanceSpeed": 1.7349617337458767e-05,
+        "maxKnee": 64.62069702148438,
+        "footLift": 0.015475595369935036,
+        "strideRange": 0.15354645252227783,
+        "pelvisRange": 0.0129803866147995,
+        "plantedPairs": 140,
+        "stancePairs": 140,
+        "coverage": 1.0,
+        "worstSurfaceStep": 160,
+        "worstSurfacePoint": {
+          "x": -0.09408251196146011,
+          "y": 0.02137649990618229,
+          "z": -0.0032910790760070086
+        }
+      },
+      {
+        "name": "Sprint_0_Previous",
+        "surfaceAngle": 41.798831939697266,
+        "reachCorrection": 0.0,
+        "penetration": 0.006771547719836235,
+        "stanceSpeed": 2.957533251901623e-05,
+        "maxKnee": 65.38847351074219,
+        "footLift": 0.009062126278877258,
+        "strideRange": 0.12696337699890137,
+        "pelvisRange": 0.001904129981994629,
+        "plantedPairs": 130,
+        "stancePairs": 130,
+        "coverage": 1.0,
+        "worstSurfaceStep": 252,
+        "worstSurfacePoint": {
+          "x": -0.08465636521577835,
+          "y": 0.01643766276538372,
+          "z": -0.0011121593415737152
+        }
+      },
+      {
+        "name": "Sprint_0_Candidate",
+        "surfaceAngle": 43.30374526977539,
+        "reachCorrection": 0.0008170604705810547,
+        "penetration": 0.007102961651980877,
+        "stanceSpeed": 1.8431717762723565e-05,
+        "maxKnee": 64.6196060180664,
+        "footLift": 0.01631423458456993,
+        "strideRange": 0.15579748153686523,
+        "pelvisRange": 0.013329654932022095,
+        "plantedPairs": 134,
+        "stancePairs": 134,
+        "coverage": 1.0,
+        "worstSurfaceStep": 251,
+        "worstSurfacePoint": {
+          "x": 0.08458631485700607,
+          "y": 0.022234318777918816,
+          "z": -0.005594262387603521
+        }
+      },
+      {
+        "name": "Sprint_45_Previous",
+        "surfaceAngle": 41.798641204833984,
+        "reachCorrection": 0.0,
+        "penetration": 0.006771529093384743,
+        "stanceSpeed": 2.0791025235666893e-05,
+        "maxKnee": 65.3885269165039,
+        "footLift": 0.00906217098236084,
+        "strideRange": 0.12696333229541779,
+        "pelvisRange": 0.001904115080833435,
+        "plantedPairs": 130,
+        "stancePairs": 130,
+        "coverage": 1.0,
+        "worstSurfaceStep": 252,
+        "worstSurfacePoint": {
+          "x": -0.08465645462274551,
+          "y": 0.016437532380223274,
+          "z": -0.001111827790737152
+        }
+      },
+      {
+        "name": "Sprint_45_Candidate",
+        "surfaceAngle": 43.303768157958984,
+        "reachCorrection": 0.0008170455694198608,
+        "penetration": 0.007103055715560913,
+        "stanceSpeed": 1.6388568838010542e-05,
+        "maxKnee": 64.6195297241211,
+        "footLift": 0.01631416752934456,
+        "strideRange": 0.15579761564731598,
+        "pelvisRange": 0.013329654932022095,
+        "plantedPairs": 134,
+        "stancePairs": 134,
+        "coverage": 1.0,
+        "worstSurfaceStep": 251,
+        "worstSurfacePoint": {
+          "x": 0.08458629995584488,
+          "y": 0.022234292700886726,
+          "z": -0.005593708250671625
+        }
+      },
+      {
+        "name": "Sprint_90_Previous",
+        "surfaceAngle": 41.79895782470703,
+        "reachCorrection": 0.0,
+        "penetration": 0.006771689280867577,
+        "stanceSpeed": 2.044787470367737e-05,
+        "maxKnee": 65.38849639892578,
+        "footLift": 0.00906214490532875,
+        "strideRange": 0.12696337699890137,
+        "pelvisRange": 0.001904115080833435,
+        "plantedPairs": 130,
+        "stancePairs": 130,
+        "coverage": 1.0,
+        "worstSurfaceStep": 252,
+        "worstSurfacePoint": {
+          "x": -0.08465639501810074,
+          "y": 0.016437707468867302,
+          "z": -0.001112125813961029
+        }
+      },
+      {
+        "name": "Sprint_90_Candidate",
+        "surfaceAngle": 43.30405044555664,
+        "reachCorrection": 0.0008173882961273193,
+        "penetration": 0.007102975621819496,
+        "stanceSpeed": 1.723404784570448e-05,
+        "maxKnee": 64.61970520019531,
+        "footLift": 0.016314227133989334,
+        "strideRange": 0.15579771995544434,
+        "pelvisRange": 0.013329654932022095,
+        "plantedPairs": 134,
+        "stancePairs": 134,
+        "coverage": 1.0,
+        "worstSurfaceStep": 251,
+        "worstSurfacePoint": {
+          "x": 0.08458635956048965,
+          "y": 0.022234395146369934,
+          "z": -0.005593758076429367
+        }
+      },
+      {
+        "name": "Sprint_135_Previous",
+        "surfaceAngle": 41.79887390136719,
+        "reachCorrection": 0.0,
+        "penetration": 0.006771393120288849,
+        "stanceSpeed": 1.9836776118609123e-05,
+        "maxKnee": 65.38838195800781,
+        "footLift": 0.009062208235263824,
+        "strideRange": 0.12696349620819092,
+        "pelvisRange": 0.001904115080833435,
+        "plantedPairs": 130,
+        "stancePairs": 130,
+        "coverage": 1.0,
+        "worstSurfaceStep": 252,
+        "worstSurfacePoint": {
+          "x": -0.08465635776519775,
+          "y": 0.016437700018286705,
+          "z": -0.0011113956570625305
+        }
+      },
+      {
+        "name": "Sprint_135_Candidate",
+        "surfaceAngle": 43.30373764038086,
+        "reachCorrection": 0.0008166730403900146,
+        "penetration": 0.00710279680788517,
+        "stanceSpeed": 1.968508331628982e-05,
+        "maxKnee": 64.61933898925781,
+        "footLift": 0.016314150765538216,
+        "strideRange": 0.15579499304294586,
+        "pelvisRange": 0.013329237699508667,
+        "plantedPairs": 134,
+        "stancePairs": 134,
+        "coverage": 1.0,
+        "worstSurfaceStep": 251,
+        "worstSurfacePoint": {
+          "x": 0.08458618074655533,
+          "y": 0.022234538570046425,
+          "z": -0.005593282636255026
+        }
+      },
+      {
+        "name": "Sprint_180_Previous",
+        "surfaceAngle": 41.79861068725586,
+        "reachCorrection": 0.0,
+        "penetration": 0.006771553307771683,
+        "stanceSpeed": 2.955928175651934e-05,
+        "maxKnee": 65.38847351074219,
+        "footLift": 0.009062081575393677,
+        "strideRange": 0.12696337699890137,
+        "pelvisRange": 0.001904129981994629,
+        "plantedPairs": 130,
+        "stancePairs": 130,
+        "coverage": 1.0,
+        "worstSurfaceStep": 252,
+        "worstSurfacePoint": {
+          "x": -0.08465635031461716,
+          "y": 0.01643766462802887,
+          "z": -0.0011121580610051751
+        }
+      },
+      {
+        "name": "Sprint_180_Candidate",
+        "surfaceAngle": 43.30384826660156,
+        "reachCorrection": 0.0008170604705810547,
+        "penetration": 0.007102960720658302,
+        "stanceSpeed": 1.8431717762723565e-05,
+        "maxKnee": 64.6196060180664,
+        "footLift": 0.01631423458456993,
+        "strideRange": 0.15579748153686523,
+        "pelvisRange": 0.013329654932022095,
+        "plantedPairs": 134,
+        "stancePairs": 134,
+        "coverage": 1.0,
+        "worstSurfaceStep": 251,
+        "worstSurfacePoint": {
+          "x": 0.08458629995584488,
+          "y": 0.022234320640563965,
+          "z": -0.005594260990619659
+        }
+      },
+      {
+        "name": "Sprint_225_Previous",
+        "surfaceAngle": 41.79838562011719,
+        "reachCorrection": 0.0,
+        "penetration": 0.006771596148610115,
+        "stanceSpeed": 1.9762024749070406e-05,
+        "maxKnee": 65.38858795166016,
+        "footLift": 0.009062305092811584,
+        "strideRange": 0.12696367502212524,
+        "pelvisRange": 0.001904115080833435,
+        "plantedPairs": 130,
+        "stancePairs": 130,
+        "coverage": 1.0,
+        "worstSurfaceStep": 252,
+        "worstSurfacePoint": {
+          "x": -0.08465612679719925,
+          "y": 0.016437755897641182,
+          "z": -0.0011111932108178735
+        }
+      },
+      {
+        "name": "Sprint_225_Candidate",
+        "surfaceAngle": 43.30427932739258,
+        "reachCorrection": 0.0008170157670974731,
+        "penetration": 0.007102969102561474,
+        "stanceSpeed": 1.6340101865353063e-05,
+        "maxKnee": 64.61943054199219,
+        "footLift": 0.016314182430505753,
+        "strideRange": 0.15579752624034882,
+        "pelvisRange": 0.013329654932022095,
+        "plantedPairs": 134,
+        "stancePairs": 134,
+        "coverage": 1.0,
+        "worstSurfaceStep": 251,
+        "worstSurfacePoint": {
+          "x": 0.08458641171455383,
+          "y": 0.02223452366888523,
+          "z": -0.005593298468738794
+        }
+      },
+      {
+        "name": "Sprint_270_Previous",
+        "surfaceAngle": 41.79915237426758,
+        "reachCorrection": 0.0,
+        "penetration": 0.006771611049771309,
+        "stanceSpeed": 1.836145020206459e-05,
+        "maxKnee": 65.38849639892578,
+        "footLift": 0.00906217098236084,
+        "strideRange": 0.12696337699890137,
+        "pelvisRange": 0.001904115080833435,
+        "plantedPairs": 130,
+        "stancePairs": 130,
+        "coverage": 1.0,
+        "worstSurfaceStep": 252,
+        "worstSurfacePoint": {
+          "x": -0.08465639501810074,
+          "y": 0.016437716782093048,
+          "z": -0.0011121382704004645
+        }
+      },
+      {
+        "name": "Sprint_270_Candidate",
+        "surfaceAngle": 43.30409240722656,
+        "reachCorrection": 0.0008173882961273193,
+        "penetration": 0.007103057578206062,
+        "stanceSpeed": 2.9633554731844924e-05,
+        "maxKnee": 64.61952209472656,
+        "footLift": 0.016314227133989334,
+        "strideRange": 0.15579771995544434,
+        "pelvisRange": 0.013329654932022095,
+        "plantedPairs": 134,
+        "stancePairs": 134,
+        "coverage": 1.0,
+        "worstSurfaceStep": 251,
+        "worstSurfacePoint": {
+          "x": 0.0845862627029419,
+          "y": 0.022234385833144188,
+          "z": -0.005593743175268173
+        }
+      },
+      {
+        "name": "Sprint_315_Previous",
+        "surfaceAngle": 41.7975959777832,
+        "reachCorrection": 0.0,
+        "penetration": 0.006771550513803959,
+        "stanceSpeed": 2.1096362615935504e-05,
+        "maxKnee": 65.38861846923828,
+        "footLift": 0.009062256664037704,
+        "strideRange": 0.12696333229541779,
+        "pelvisRange": 0.001904115080833435,
+        "plantedPairs": 130,
+        "stancePairs": 130,
+        "coverage": 1.0,
+        "worstSurfaceStep": 252,
+        "worstSurfacePoint": {
+          "x": -0.08465621620416641,
+          "y": 0.016437582671642303,
+          "z": -0.0011123245349153876
+        }
+      },
+      {
+        "name": "Sprint_315_Candidate",
+        "surfaceAngle": 43.30459976196289,
+        "reachCorrection": 0.000817030668258667,
+        "penetration": 0.007103048264980316,
+        "stanceSpeed": 1.7701677279546857e-05,
+        "maxKnee": 64.61952209472656,
+        "footLift": 0.016314271837472916,
+        "strideRange": 0.15579742193222046,
+        "pelvisRange": 0.013329654932022095,
+        "plantedPairs": 134,
+        "stancePairs": 134,
+        "coverage": 1.0,
+        "worstSurfaceStep": 251,
+        "worstSurfacePoint": {
+          "x": 0.08458638936281204,
+          "y": 0.022234315052628517,
+          "z": -0.005593483801931143
+        }
+      }
+    ]
+  },
+  "candidateSteadySummary": {
+    "surfaceAngle": 43.30459976196289,
+    "reachCorrection": 0.0008173882961273193,
+    "penetration": 0.007103057578206062,
+    "stanceSpeed": 2.9633554731844924e-05,
+    "maxKnee": 64.62079620361328,
+    "minimumSteadyPlantCoverage": 1.0
+  },
+  "transitions": {
+    "status": "PASS",
+    "cases": [
+      {
+        "name": "Transition_0",
+        "surfaceAngle": 43.06208038330078,
+        "reachCorrection": 0.00276164710521698,
+        "penetration": 0.007081104442477226,
+        "stanceSpeed": 0.0,
+        "maxKnee": 0.0,
+        "footLift": 0.0,
+        "strideRange": 0.0,
+        "pelvisRange": 0.0,
+        "plantedPairs": 0,
+        "stancePairs": 0,
+        "coverage": 0.0,
+        "worstSurfaceStep": 113,
+        "worstSurfacePoint": {
+          "x": -0.08458731323480606,
+          "y": 0.021798409521579742,
+          "z": -0.0072550238110125065
+        }
+      },
+      {
+        "name": "Transition_45",
+        "surfaceAngle": 43.107666015625,
+        "reachCorrection": 0.0026514381170272827,
+        "penetration": 0.007483245804905891,
+        "stanceSpeed": 0.0,
+        "maxKnee": 0.0,
+        "footLift": 0.0,
+        "strideRange": 0.0,
+        "pelvisRange": 0.0,
+        "plantedPairs": 0,
+        "stancePairs": 0,
+        "coverage": 0.0,
+        "worstSurfaceStep": 113,
+        "worstSurfacePoint": {
+          "x": -0.08499885350465775,
+          "y": 0.021794378757476807,
+          "z": -0.008238374255597591
+        }
+      },
+      {
+        "name": "Transition_90",
+        "surfaceAngle": 43.1022834777832,
+        "reachCorrection": 0.0026516467332839966,
+        "penetration": 0.007482961751520634,
+        "stanceSpeed": 0.0,
+        "maxKnee": 0.0,
+        "footLift": 0.0,
+        "strideRange": 0.0,
+        "pelvisRange": 0.0,
+        "plantedPairs": 0,
+        "stancePairs": 0,
+        "coverage": 0.0,
+        "worstSurfaceStep": 113,
+        "worstSurfacePoint": {
+          "x": -0.08549147844314575,
+          "y": 0.02179163694381714,
+          "z": -0.007237511221319437
+        }
+      },
+      {
+        "name": "Transition_135",
+        "surfaceAngle": 43.127220153808594,
+        "reachCorrection": 0.002651691436767578,
+        "penetration": 0.007482739165425301,
+        "stanceSpeed": 0.0,
+        "maxKnee": 0.0,
+        "footLift": 0.0,
+        "strideRange": 0.0,
+        "pelvisRange": 0.0,
+        "plantedPairs": 0,
+        "stancePairs": 0,
+        "coverage": 0.0,
+        "worstSurfaceStep": 113,
+        "worstSurfacePoint": {
+          "x": -0.08636683225631714,
+          "y": 0.021785780787467957,
+          "z": -0.007204798515886068
+        }
+      },
+      {
+        "name": "Transition_180",
+        "surfaceAngle": 43.072776794433594,
+        "reachCorrection": 0.002761736512184143,
+        "penetration": 0.007081932388246059,
+        "stanceSpeed": 0.0,
+        "maxKnee": 0.0,
+        "footLift": 0.0,
+        "strideRange": 0.0,
+        "pelvisRange": 0.0,
+        "plantedPairs": 0,
+        "stancePairs": 0,
+        "coverage": 0.0,
+        "worstSurfaceStep": 113,
+        "worstSurfacePoint": {
+          "x": -0.0906621441245079,
+          "y": 0.02178688906133175,
+          "z": -0.0049981288611888885
+        }
+      },
+      {
+        "name": "Transition_225",
+        "surfaceAngle": 43.018733978271484,
+        "reachCorrection": 0.0027616918087005615,
+        "penetration": 0.00708162784576416,
+        "stanceSpeed": 0.0,
+        "maxKnee": 0.0,
+        "footLift": 0.0,
+        "strideRange": 0.0,
+        "pelvisRange": 0.0,
+        "plantedPairs": 0,
+        "stancePairs": 0,
+        "coverage": 0.0,
+        "worstSurfaceStep": 113,
+        "worstSurfacePoint": {
+          "x": -0.0923720970749855,
+          "y": 0.021787064149975777,
+          "z": -0.005071818828582764
+        }
+      },
+      {
+        "name": "Transition_270",
+        "surfaceAngle": 43.00584030151367,
+        "reachCorrection": 0.002761751413345337,
+        "penetration": 0.0070814099162817,
+        "stanceSpeed": 0.0,
+        "maxKnee": 0.0,
+        "footLift": 0.0,
+        "strideRange": 0.0,
+        "pelvisRange": 0.0,
+        "plantedPairs": 0,
+        "stancePairs": 0,
+        "coverage": 0.0,
+        "worstSurfaceStep": 113,
+        "worstSurfacePoint": {
+          "x": -0.08368300646543503,
+          "y": 0.021805910393595695,
+          "z": -0.007256633136421442
+        }
+      },
+      {
+        "name": "Transition_315",
+        "surfaceAngle": 43.03944396972656,
+        "reachCorrection": 0.0027612894773483276,
+        "penetration": 0.007081015966832638,
+        "stanceSpeed": 0.0,
+        "maxKnee": 0.0,
+        "footLift": 0.0,
+        "strideRange": 0.0,
+        "pelvisRange": 0.0,
+        "plantedPairs": 0,
+        "stancePairs": 0,
+        "coverage": 0.0,
+        "worstSurfaceStep": 113,
+        "worstSurfacePoint": {
+          "x": -0.08418413251638412,
+          "y": 0.02180161140859127,
+          "z": -0.007257712539285421
+        }
+      }
+    ]
+  },
+  "integration": {
+    "queryPoseError": 2.470966e-07,
+    "returnPelvisShift": 5.961192e-08,
+    "recoveries": 1
+  },
+  "tests": {
+    "PlayMode-final": {
+      "xml": ".codex_tmp/camera-gait-20260910/PlayMode-final.xml",
+      "passed": 23,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 176.9720698
+    },
+    "FullCycle-final": {
+      "xml": ".codex_tmp/camera-gait-20260910/FullCycle-final.xml",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 137.6278434
+    },
+    "EditMode-final": {
+      "xml": ".codex_tmp/camera-gait-20260910/EditMode-final.xml",
+      "passed": 134,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 0.7012519
+    }
+  },
+  "testScope": "PlayMode23 covers new gait4 plus fast punch5, ragdoll/grab10, shared arena3 and existing jump transition1. Final full-cycle rerun strengthens the same steady test with every60Hz pose over the final second (>one full cycle), in all32 cases; it is not an additional distinct feature test. EditMode134 passed.",
+  "media": {
+    "Candidate60": {
+      "path": ".codex_tmp/camera-gait-20260910/Media/Candidate60.mp4",
+      "sha256": "bb639a66c802b92f18f5f23aeab7ee372b02aa7fa85ab7efcfef343db7b8e8b5",
+      "validation": {
+        "distinctDecodedFrames": 360,
+        "durationSeconds": 6,
+        "fps": 60.000003814697266,
+        "frames": 360,
+        "maximumTimestampDelta": 0.016666666666667496,
+        "minimumTimestampDelta": 0.016666666666666607,
+        "path": ".codex_tmp/camera-gait-20260910/Media/Candidate60.mp4",
+        "status": "PASS"
+      }
+    },
+    "Comparison60": {
+      "path": ".codex_tmp/camera-gait-20260910/Media/Comparison60.mp4",
+      "sha256": "03420ad19e3345732e47078ad0d7dea923e1edcbd2a9112a1311d4b257dffa2e",
+      "validation": {
+        "distinctDecodedFrames": 720,
+        "durationSeconds": 12,
+        "fps": 60,
+        "frames": 720,
+        "maximumTimestampDelta": 0.016666666666667496,
+        "minimumTimestampDelta": 0.01666666666666572,
+        "path": ".codex_tmp/camera-gait-20260910/Media/Comparison60.mp4",
+        "status": "PASS"
+      }
+    }
+  },
+  "capture": {
+    "before": {
+      "status": "PASS",
+      "candidate": false,
+      "frames": 360,
+      "fps": 60,
+      "seconds": 6,
+      "fixture": "Identical staggered walk, stop, sprint, stop commands; same shared camera profile; no synthetic frame interpolation."
+    },
+    "after": {
+      "status": "PASS",
+      "candidate": true,
+      "frames": 360,
+      "fps": 60,
+      "seconds": 6,
+      "fixture": "Identical staggered walk, stop, sprint, stop commands; same shared camera profile; no synthetic frame interpolation."
+    },
+    "assertedRootAndCameraPositionDifferenceMeters": 0.0001,
+    "captureEveryPhysicsStep": true,
+    "comparisonOrder": "previous6s then candidate6s",
+    "nativeFrameRate": 60,
+    "encodedOrientationVerified": true
+  },
+  "sourceSnapshots": {
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralJumpPose.cs": {
+      "snapshot": ".codex_tmp/camera-gait-20260910/SourceSnapshot/Runtime/Presentation/ProceduralJumpPose.cs",
+      "sha256": "b93712c0be462bf6edccd07d185d6f9398a3083e74fcfa29090c6eeedebb50d9"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralFreeArmSwing.cs": {
+      "snapshot": ".codex_tmp/camera-gait-20260910/SourceSnapshot/Runtime/Presentation/ProceduralFreeArmSwing.cs",
+      "sha256": "d27a99b292fe62b975a6621f3efad7b3c6c841ec429eb4e4b718713ea9ca3c80"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpMotor.cs": {
+      "snapshot": ".codex_tmp/camera-gait-20260910/SourceSnapshot/Prototypes/PhysicsJump/PhysicsJumpMotor.cs",
+      "sha256": "884a77e3e880e18b19d963cb568ca7ac9189a56da6140c9ea30c2102344c9497"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpReview.cs": {
+      "snapshot": ".codex_tmp/camera-gait-20260910/SourceSnapshot/Prototypes/PhysicsJump/PhysicsJumpReview.cs",
+      "sha256": "dbe9c41088e426d8efe8a579709ab6dee36fe7bdffe747ff4599d0acc087c1a1"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PunchHitRig.cs": {
+      "snapshot": ".codex_tmp/camera-gait-20260910/SourceSnapshot/Prototypes/PhysicsJump/PunchHitRig.cs",
+      "sha256": "4f32891d759821f396e8b1efeaff7a777315f59203bf3f5ab12e4be5446646b7"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/RagdollRecoveryReview.cs": {
+      "snapshot": ".codex_tmp/camera-gait-20260910/SourceSnapshot/Prototypes/PhysicsJump/RagdollRecoveryReview.cs",
+      "sha256": "5bfa4ebb32a5cfd465a27c695d69c4d9bf865fba250f40bb75f2b856ffbd5963"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/SharedArenaReview.cs": {
+      "snapshot": ".codex_tmp/camera-gait-20260910/SourceSnapshot/Prototypes/PhysicsJump/SharedArenaReview.cs",
+      "sha256": "99b6470f6c3fe93bbdcf2fb4c5c3e84fb7a3376e3e457a39f34a6d0bf003a8cc"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": {
+      "snapshot": ".codex_tmp/camera-gait-20260910/SourceSnapshot/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+      "sha256": "30199e212c7732dd9e58548fa39e31ce4062a8b3e38985d2f832137e94f6fd96"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/CameraGaitReviewTests.cs": {
+      "snapshot": ".codex_tmp/camera-gait-20260910/SourceSnapshot/Tests/PlayMode/Physics/CameraGaitReviewTests.cs",
+      "sha256": "7aefe5ec9d5ffe3bec3a47e9373a9747985fc7fd6afd50292c4b844c4d50eeed"
+    }
+  },
+  "unchangedAssets": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31",
+    "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60",
+    ".codex_tmp/punch-unity-20260906/ApprovedPunch.json": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac",
+    "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a"
+  },
+  "documentationChecks": {
+    "baseline": "PASS",
+    "workflowTests": 7,
+    "diffCheck": "PASS"
+  },
+  "entryMenu": "Project Hotfix > Prototypes > Open Camera Gait Candidate 2/3/4 Players",
+  "defaultBehavior": "Existing Shared Arena menus retain the previous gait pending visual review.",
+  "discardedTrials": [
+    "3.0Hz run and2.2cm lift exceeded surface/target reach limits.",
+    "3.2/3.4Hz run with asymmetric stance failed surface checks.",
+    "3.6Hz symmetric stance passed surface checks but transient reach was improved by ramping stride through full gait activation.",
+    "Landing turns required a shorter visual step while facing catches up.",
+    "Separate render/query timing and stale post-Down gait were corrected with shared step input and topology-aware reset."
+  ],
+  "limitations": [
+    "Sampled technical pass is not user comfort/visual acceptance.",
+    "Stable planted-foot metrics do not promise full locking during acceleration, pivots or airborne transitions.",
+    "No source modeling/rig/weight, damage/Down tuning or movement speed changes.",
+    "Recorded motion is scripted local review, not human multiplayer or peer validation."
+  ],
+  "adoption": {
+    "approvedAtLocal": "2026-09-10T11:17:34.989614+09:00",
+    "userDecision": "그리고 보여줬던 영상에서 후보로 바꾸자 그게 훨씬 자연스럽다",
+    "scope": "Default gait for the current integrated 2/3/4 actor Shared Arena prototype. The reviewed candidate values are unchanged.",
+    "defaultMenu": "Project Hotfix/Prototypes/Open Shared Arena 2/3/4 Players",
+    "previousComparisonMenu": "Project Hotfix/Prototypes/Open Previous Shared Gait 2/3/4 Players",
+    "candidateSettingsChanged": false,
+    "fixed60HzAndSnapshotInterpolationPreserved": true,
+    "validation": {
+      "playModePassed": 6,
+      "playModeTotal": 6,
+      "xml": ".codex_tmp/camera-gait-adoption-20260910/Play.xml",
+      "fpsReplay": ".codex_tmp/camera-gait-adoption-20260910/Replay.json"
+    },
+    "sourceSnapshots": {
+      "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/SharedArenaReview.cs": {
+        "snapshot": ".codex_tmp/camera-gait-adoption-20260910/SourceSnapshot/Prototypes/PhysicsJump/SharedArenaReview.cs",
+        "sha256": "d82cd04b2d559718cea332f6b584b89ff69f3c673464188e198982cbaf977be2"
+      },
+      "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": {
+        "snapshot": ".codex_tmp/camera-gait-adoption-20260910/SourceSnapshot/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+        "sha256": "482d6e12a4fa61448ef4ebacaf5a4e4838f041bbb0a3b90acb581d6cd32f228d"
+      },
+      "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/FrameIndependenceTests.cs": {
+        "snapshot": ".codex_tmp/camera-gait-adoption-20260910/SourceSnapshot/Tests/PlayMode/Physics/FrameIndependenceTests.cs",
+        "sha256": "e726b78c1cfddea1e7ffa51393d06ca5b2bbd5efb904d2d7afb3e305e3d74e1f"
+      }
+    },
+    "productionCharacterGateApproval": false
+  },
+  "currentMovementProfileReport": "artifacts/reports/R20_MOVEMENT_SPEED_REVIEW_20260910.json"
+}

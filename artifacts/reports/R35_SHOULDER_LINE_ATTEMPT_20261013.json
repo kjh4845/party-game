@@ -1,0 +1,185 @@
+{
+  "date": "2026-10-13",
+  "status": "INCOMPLETE_CANDIDATES_REJECTED_BASELINE_PRESERVED",
+  "requestedResult": "원래 어깨 폭과 현재 팔 굵기를 유지하면서 팔-몸통 간격이 작은 매끈한 어깨 연결. 정지 모습과 연속 동작 모두 검증.",
+  "activeModel": "BlenderSource/Characters/C1B-RW-034-fair-body/FairBodyCharacter.bytes",
+  "productionModelReplaced": false,
+  "runtimePunchChanged": false,
+  "baseline": {
+    "newContinuousSweepFrames": 420,
+    "newContinuousSweepMaximumAngleDegrees": 64.04358673095703,
+    "evidence": "artifacts/evidence/r35-shoulder-line-20261013/R34-ContinuousSweep.json"
+  },
+  "candidateO": {
+    "status": "REJECTED",
+    "unityTests": {
+      "total": "10",
+      "passed": "9",
+      "failed": "1"
+    },
+    "sweepMaximumAngleDegrees": 39.471885681152344,
+    "rejectionReasons": [
+      "전투 9상황 중 표면검사 7상황 실패",
+      "일부 팔 단면이 동일한 원본 포즈보다 축소",
+      "중립 자세 겨드랑이 핀홀/세로선 잔존"
+    ],
+    "actualCombat": [
+      {
+        "name": "LeftBody",
+        "maxSkin": 72.29627990722656,
+        "worstTick": 74
+      },
+      {
+        "name": "RightBody",
+        "maxSkin": 66.89171600341797,
+        "worstTick": 162
+      },
+      {
+        "name": "Head",
+        "maxSkin": 85.90325927734375,
+        "worstTick": 161
+      },
+      {
+        "name": "Far",
+        "maxSkin": 139.20518493652344,
+        "worstTick": 74
+      },
+      {
+        "name": "Wall",
+        "maxSkin": 175.23631286621094,
+        "worstTick": 21
+      },
+      {
+        "name": "GrabPunch",
+        "maxSkin": 55.185813903808594,
+        "worstTick": 97
+      },
+      {
+        "name": "Alternating",
+        "maxSkin": 171.8832550048828,
+        "worstTick": 61
+      },
+      {
+        "name": "Moving",
+        "maxSkin": 171.49716186523438,
+        "worstTick": 47
+      },
+      {
+        "name": "Exchange",
+        "maxSkin": 41.021278381347656,
+        "worstTick": 125
+      }
+    ],
+    "evidence": [
+      "artifacts/evidence/r35-shoulder-line-20261013/CandidateO-PlayMode.xml",
+      "artifacts/evidence/r35-shoulder-line-20261013/CandidateO-CombatCapture.json",
+      "artifacts/evidence/r35-shoulder-line-20261013/CandidateO-ActualSections.json",
+      "artifacts/evidence/r35-shoulder-line-20261013/CandidateO-ContinuousSweep.json"
+    ]
+  },
+  "candidateQ": {
+    "status": "REJECTED_PREDICTION_ONLY",
+    "scope": "O에서 실제 기록한 동일 골격 행렬을 재생한 예측. Q 자체의 새 Unity 연속 실행 아님.",
+    "predictedSweepMaximumAngleDegrees": 111.26477454401213,
+    "combatComparison": [
+      {
+        "scenario": "LeftBody",
+        "r34AtSamePalette": 28.654513334298198,
+        "qAtSamePalette": 72.49939619171701
+      },
+      {
+        "scenario": "RightBody",
+        "r34AtSamePalette": 18.55236417569807,
+        "qAtSamePalette": 46.61906175290555
+      },
+      {
+        "scenario": "Head",
+        "r34AtSamePalette": 22.804530270458287,
+        "qAtSamePalette": 85.85543377870586
+      },
+      {
+        "scenario": "Far",
+        "r34AtSamePalette": 28.969314905602605,
+        "qAtSamePalette": 139.09196531299057
+      },
+      {
+        "scenario": "Wall",
+        "r34AtSamePalette": 19.612601269540804,
+        "qAtSamePalette": 37.76663417725312
+      },
+      {
+        "scenario": "GrabPunch",
+        "r34AtSamePalette": 37.327845489398406,
+        "qAtSamePalette": 33.91299867927848
+      },
+      {
+        "scenario": "Alternating",
+        "r34AtSamePalette": 19.447888912297685,
+        "qAtSamePalette": 142.54816920336228
+      },
+      {
+        "scenario": "Moving",
+        "r34AtSamePalette": 34.58052731178445,
+        "qAtSamePalette": 171.58010487679553
+      },
+      {
+        "scenario": "Exchange",
+        "r34AtSamePalette": 22.761551582351366,
+        "qAtSamePalette": 22.999166648126142
+      }
+    ],
+    "evidence": [
+      "artifacts/evidence/r35-shoulder-line-20261013/CandidateQ-SamePaletteCombat.json",
+      "artifacts/evidence/r35-shoulder-line-20261013/CandidateQ-PredictedSweep.json"
+    ]
+  },
+  "geometryExperiments": {
+    "compactRetopologyAndImplicitUnion": "REJECTED",
+    "evidence": "artifacts/evidence/r35-shoulder-line-20261013/CompactImplicitUnion-Rejected.json",
+    "interpretation": "좁은 경계와 위가슴/등까지 넓힌 경계의 후보 모두 불합격. 사용한 곡면과 메시 대응의 실패이며 모든 어깨 설계가 불가능하다는 증명은 아님.",
+    "wideChestBackNeutral": {
+      "status": "REJECTED",
+      "maximumMoveMeters": 0.012,
+      "facesRotatedBeyond90Degrees": 98,
+      "evidence": "artifacts/evidence/r35-shoulder-line-20261013/WideExplicit-Rejected.json",
+      "viewsReviewed": [
+        "Front",
+        "Side",
+        "ThreeQuarter",
+        "Back"
+      ]
+    }
+  },
+  "preservation": {
+    "checkedSourceFiles": 40,
+    "changedSourceFiles": [],
+    "r34Sha256": {
+      "FairBodyCharacter.bytes": "eb7055cb4e47cff3777c25d4dd9d25ecb002a3a1b6363959339ef4ab2d00feaa",
+      "CHR_MasterCharacter_C1B_FairBody_r34.blend": "9909489215a90ed80c0e98d5d96cee49cb035d0f23675f3ada575c1bdd1ac488"
+    }
+  },
+  "notClaimed": [
+    "어깨 수정 완료",
+    "전투 전 포즈 통과",
+    "전신 자기교차 없음",
+    "팔 전체 체적 보존",
+    "새 후보 기본 적용"
+  ],
+  "pending": [],
+  "unresolved": [
+    "중립 자세의 매끈한 어깨-팔 연결",
+    "전투와 연속 들기에서 접힘을 함께 억제",
+    "동일 자세 대비 팔 단면 축소 방지"
+  ],
+  "newDiagnostics": {
+    "sweepTest": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.ShoulderLineSweep.cs",
+    "verificationStatus": "COMPILED_EXISTING_EDITMODE_7_OF_7_PASS",
+    "jointPoseBankFit": "NOT_RUN",
+    "manualOnly": true,
+    "surfaceAngleLimitDegrees": 60,
+    "evidence": [
+      "artifacts/evidence/r35-shoulder-line-20261013/SweepDiagnosticCompile.xml",
+      "artifacts/evidence/r35-shoulder-line-20261013/ValidationCloseout.json"
+    ]
+  }
+}

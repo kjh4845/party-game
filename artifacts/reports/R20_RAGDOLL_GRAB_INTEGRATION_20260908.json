@@ -1,0 +1,122 @@
+{
+  "status": "PASS_LOCAL_PROTOTYPE",
+  "date": "2026-09-08",
+  "userDecision": "잡힌 상태에서도 회복, 잡기는 유지. 실제 지지/안정/기립 공간과 만료된 Down timer가 필요하다. 기존 힘/거리/피로 break는 유지한다.",
+  "implementation": {
+    "bodyCount": 12,
+    "totalMassKg": 20,
+    "pelvisMassKg": 3,
+    "contact": "actual touched body; world contact preserved across collider topology changes, including same-tick release",
+    "heldJumpAssistance": 0.75,
+    "throwImpulseStartNs": 30,
+    "throwApplication": "mass-proportional impulse, one throw on last own hand release; reset/forced break no throw",
+    "uprightReturn": "supported upright held pose settles physically after timer; no lie-down clip",
+    "heldSharedGetUp": "physical bone pose while held; release blends to current clip time over 0.18 seconds",
+    "support": "actual collider ground contact plus validated pelvis/grip-derived standing footprint",
+    "down": "fixed five valid Punch hits; no decay; DownCount increases wait only; limp Tumble no animation/drive; thrown ordinary collisions add no damage"
+  },
+  "tests": {
+    "PlayMode-final": {
+      "path": ".codex_tmp/ragdoll-grab-20260908/PlayMode-final.xml",
+      "passed": 61,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 340.3891994
+    },
+    "Interaction-final": {
+      "path": ".codex_tmp/ragdoll-grab-20260908/Interaction-final.xml",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 47.871155
+    },
+    "EditMode-final": {
+      "path": ".codex_tmp/ragdoll-grab-20260908/EditMode-final.xml",
+      "passed": 118,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 0.58448
+    }
+  },
+  "testOrder": "Full PlayMode61 passed before the final same-tick-release guard. After that guard and its new test, all affected interaction classes14 and full EditMode118 passed. Repeated tests are not counted as new tests.",
+  "capture": {
+    "path": ".codex_tmp/ragdoll-grab-20260908/Capture/Report.json",
+    "status": "PASS",
+    "hits": 5,
+    "recoveries": 1,
+    "throws": 1,
+    "frameCount": 226,
+    "scenario": "actual hold + five confirmed Punch hits, blocked standing-space wait while held, manual release throw, landing and recovery; supported held-upright recovery is verified in a separate two-hand fixture"
+  },
+  "media": {
+    "gif": "/Users/kjh/local_dev/party game/.codex_tmp/ragdoll-grab-20260908/Media/HeldRecoveryAndThrow.gif",
+    "source": "/Users/kjh/local_dev/party game/.codex_tmp/ragdoll-grab-20260908/Capture",
+    "sourceFrames": 226,
+    "fps": 20,
+    "speed": 1,
+    "durationMs": 12300,
+    "encodedFrames": 226,
+    "fixture": "Scripted actual button/move input and physics; automatic facing through movement toward the target. No synthetic hit or Down injection in this sequence."
+  },
+  "sourceSnapshots": {
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/StrikeReviewTarget.cs": {
+      "snapshot": ".codex_tmp/ragdoll-grab-20260908/SourceSnapshot/Prototypes/PhysicsJump/StrikeReviewTarget.cs",
+      "sha256": "9c01cde122d9bcd65a8555107de57916bceceabc1dbf03067066a5128274b6b9"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/GrabPhysicsReview.cs": {
+      "snapshot": ".codex_tmp/ragdoll-grab-20260908/SourceSnapshot/Prototypes/PhysicsJump/GrabPhysicsReview.cs",
+      "sha256": "2480a318681e67bb2ccc98e831fe0a2b327b2e2a77718a5c15acd886b950f4e6"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/RagdollRecoveryReview.cs": {
+      "snapshot": ".codex_tmp/ragdoll-grab-20260908/SourceSnapshot/Prototypes/PhysicsJump/RagdollRecoveryReview.cs",
+      "sha256": "f82d729c99a9929763f886fbae0be44dba5e0a6bac3fbb651fc7a48b51d5b6f4"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/RecoverySupportProbe.cs": {
+      "snapshot": ".codex_tmp/ragdoll-grab-20260908/SourceSnapshot/Prototypes/PhysicsJump/RecoverySupportProbe.cs",
+      "sha256": "e7cc1416169f9f5cb5b3a9559e5b01995d581ec047b0ec16c02fdcbe5cc57f95"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Simulation/CharacterRecoveryStateMachine.cs": {
+      "snapshot": ".codex_tmp/ragdoll-grab-20260908/SourceSnapshot/Runtime/Simulation/CharacterRecoveryStateMachine.cs",
+      "sha256": "e591170d28ccd23abe495095a5160021ccd5ce9b64eba2118218f2ab2bf3c549"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Simulation/TimedDownStateMachine.cs": {
+      "snapshot": ".codex_tmp/ragdoll-grab-20260908/SourceSnapshot/Runtime/Simulation/TimedDownStateMachine.cs",
+      "sha256": "3204fb7918a2617be82393adc2485a06518e0a463e37b66480224187cf46df8f"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/GetUpAnimationPose.cs": {
+      "snapshot": ".codex_tmp/ragdoll-grab-20260908/SourceSnapshot/Runtime/Presentation/GetUpAnimationPose.cs",
+      "sha256": "3ee058546159c2a504f3eda1cc6cdb322894dfe9153bb03093f9497d658b33ba"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/TimedDownTests.cs": {
+      "snapshot": ".codex_tmp/ragdoll-grab-20260908/SourceSnapshot/Tests/EditMode/Architecture/TimedDownTests.cs",
+      "sha256": "de5081d136e4995ea20466f0f656c77ba45ddf24db675d3eece908cfd4c5e0c3"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/RagdollGrabIntegrationTests.cs": {
+      "snapshot": ".codex_tmp/ragdoll-grab-20260908/SourceSnapshot/Tests/PlayMode/Physics/RagdollGrabIntegrationTests.cs",
+      "sha256": "a0676527885214586fa45374332a83ec0e3328a2cb03511696c4101f98ea38ed"
+    }
+  },
+  "unchangedSources": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31"
+  },
+  "transportIdentity": {
+    "path": "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes",
+    "sha256": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60"
+  },
+  "documentationChecks": {
+    "baseline": "PASS",
+    "workflowTests": 7,
+    "gitDiffCheck": "PASS"
+  },
+  "limitations": [
+    "Local articulated prototype remains explicit opt-in; old default profile retained.",
+    "Peer/network, simultaneous human multiplayer, final balance and performance not approved by these fixtures.",
+    "Reach/break/stress rules still apply; flat ground targets can be outside existing short-arm reach.",
+    "Original mesh/rig/weights and GetUp clips unchanged; visual clip reentry code changed."
+  ]
+}

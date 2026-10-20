@@ -1,0 +1,193 @@
+{
+  "status": "PASS_LOCAL_CANDIDATE",
+  "date": "2026-09-09",
+  "pendingUserDecisions": [],
+  "profile": {
+    "punchSourceSeconds": 0.7,
+    "playbackRate": 1.4,
+    "punchSeconds": 0.5,
+    "holdThresholdSeconds": 0.15,
+    "activeSeconds": [
+      0.07142857142857144,
+      0.16666666666666669
+    ],
+    "bodyAndLimbPoints": 1,
+    "headPoints": 2,
+    "initialThreshold": 10,
+    "decreasePerDown": 1,
+    "minimumThreshold": 6,
+    "downWaitSeconds": [
+      1.5,
+      2,
+      2.5,
+      3
+    ],
+    "noTimeDecay": true,
+    "downRehitAddsPointsOrTime": false,
+    "roundResetRestoresThreshold": 10
+  },
+  "hitGeometry": {
+    "source": "approved baked hand center trajectory at 70% of wrist-to-tip bone; segmented at source120Hz; no rendered-bone reads",
+    "sweepRadiusMeters": 0.03,
+    "previousSweepRadiusMeters": 0.045,
+    "queryRig": "separate fixed-step skeleton using immutable bind data and shared gait/punch/grab evaluators; torso/head and ten limb volumes; ragdoll uses physical body colliders",
+    "rigParityBoundMeters": 0.03,
+    "legacyMaximumHitCenterToVisualTipOffsetMeters": 0.1131371,
+    "noAutoHeadAim": true,
+    "counterCasesAtEachHz": [
+      "Body",
+      "Head",
+      "Arm",
+      "Leg",
+      "LateralMiss",
+      "OutOfReach",
+      "LateTarget",
+      "Wall",
+      "UnrelatedTrigger"
+    ],
+    "simulationHz": [
+      30,
+      60,
+      120
+    ]
+  },
+  "speedCapture": {
+    "status": "PASS",
+    "oldSeconds": 0.7,
+    "candidateSeconds": 0.5,
+    "oldPunches": 5,
+    "candidatePunches": 7,
+    "maximumSourceAngleError": 0,
+    "maximumLegacyTipOffsetMeters": 0.1131371
+  },
+  "media": {
+    "gif": ".codex_tmp/punch-precision-20260909/PunchSpeedComparison.gif",
+    "source": ".codex_tmp/punch-precision-20260909/SpeedCapture",
+    "sourceFrames": 120,
+    "fps": 30,
+    "durationMs": 5000,
+    "speed": 1,
+    "finalHoldMs": 1000,
+    "scope": "Animation speed comparison; each actor taps again as soon as its own action is ready. Hit-region integration is verified separately, not displayed in this clip."
+  },
+  "tests": {
+    "PlayMode-final": {
+      "path": ".codex_tmp/punch-precision-20260909/PlayMode-final.xml",
+      "passed": 64,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 356.0114434
+    },
+    "Interaction-final": {
+      "path": ".codex_tmp/punch-precision-20260909/Interaction-final.xml",
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 81.3862229
+    },
+    "Precision-final": {
+      "path": ".codex_tmp/punch-precision-20260909/Precision-final.xml",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 7.8300431
+    },
+    "EditMode-final": {
+      "path": ".codex_tmp/punch-precision-20260909/EditMode-final.xml",
+      "passed": 125,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 0.5652019
+    }
+  },
+  "testOrder": "Full PlayMode64 passed before the added limb query rig. After the limb rig and forward-only contact guard, affected interaction/presentation21 passed. After the Play initialization cache repair, all candidate tests5 passed (includes27 geometry cases across3 rates, pose independence, real sweep threshold handoff/reset, serialization-style clone and speed capture). Full EditMode125 passed after the final menu wiring. Counts overlap; do not sum them as distinct tests.",
+  "entryMenu": "Project Hotfix > Prototypes > Open Articulated Punch Candidate",
+  "aliasMenu": "Project Hotfix > Prototypes > Open Fast Punch Candidate",
+  "previousComparisonMenu": "Project Hotfix > Prototypes > Open Previous Articulated Punch Comparison",
+  "sourceSnapshots": {
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Simulation/GroundHandActionStateMachine.cs": {
+      "path": ".codex_tmp/punch-precision-20260909/SourceSnapshot/Runtime/Simulation/GroundHandActionStateMachine.cs",
+      "sha256": "06cdb86779a66b488e4c3c89a2f0386fcc685998adff482b3c323d99aa64551f"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Simulation/PunchDownAccumulation.cs": {
+      "path": ".codex_tmp/punch-precision-20260909/SourceSnapshot/Runtime/Simulation/PunchDownAccumulation.cs",
+      "sha256": "99f8a3bab1e0e4686060a4f6de958a4b4768bd70b98deba797cbc4d9859de795"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Contracts/HandActionPresentationState.cs": {
+      "path": ".codex_tmp/punch-precision-20260909/SourceSnapshot/Runtime/Contracts/HandActionPresentationState.cs",
+      "sha256": "b58d376c9141f8a9d912a1c40174900ec84ed7e36eb2623af4a3dbf925b28492"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ApprovedPunchPose.cs": {
+      "path": ".codex_tmp/punch-precision-20260909/SourceSnapshot/Runtime/Presentation/ApprovedPunchPose.cs",
+      "sha256": "ffb6208212b9281b1b66fa2872581af32ff7a867e463ecddf2e2e9d727bcf28f"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/HandStrikeReview.cs": {
+      "path": ".codex_tmp/punch-precision-20260909/SourceSnapshot/Prototypes/PhysicsJump/HandStrikeReview.cs",
+      "sha256": "07b078564ea9c96fea86db0aae93181621f2997478ec98ded92c49f4a3898b01"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PunchDownReview.cs": {
+      "path": ".codex_tmp/punch-precision-20260909/SourceSnapshot/Prototypes/PhysicsJump/PunchDownReview.cs",
+      "sha256": "e225113421f87a28d144df1929792bcc7d05ccd102c2a4fc7a4d2beeacb79035"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PunchHurtbox.cs": {
+      "path": ".codex_tmp/punch-precision-20260909/SourceSnapshot/Prototypes/PhysicsJump/PunchHurtbox.cs",
+      "sha256": "7fe893eda61a8536a5f8bddb49c9723933713f9c1ba9de383f50d07c25b5a423"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PunchHitRig.cs": {
+      "path": ".codex_tmp/punch-precision-20260909/SourceSnapshot/Prototypes/PhysicsJump/PunchHitRig.cs",
+      "sha256": "95c2187094a1b85add4be4382a71118d7021e968fb23c629c9369f885cebdeab"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpMotor.cs": {
+      "path": ".codex_tmp/punch-precision-20260909/SourceSnapshot/Prototypes/PhysicsJump/PhysicsJumpMotor.cs",
+      "sha256": "de954d5f1fbad344299bf65a827efede84fdd4558fab237ab309cd24fbde2866"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpReview.cs": {
+      "path": ".codex_tmp/punch-precision-20260909/SourceSnapshot/Prototypes/PhysicsJump/PhysicsJumpReview.cs",
+      "sha256": "79cfe5d546a15690e185789c4ccf2bfe6dc099eb13f2fdb4914cc124cdf039d9"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": {
+      "path": ".codex_tmp/punch-precision-20260909/SourceSnapshot/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+      "sha256": "da7529c3f17262fb3f336ac20dc294664dc5eea20b045c02ac8770a91a265970"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/FastPunchPrecisionTests.cs": {
+      "path": ".codex_tmp/punch-precision-20260909/SourceSnapshot/Tests/PlayMode/Physics/FastPunchPrecisionTests.cs",
+      "sha256": "4b2108b65f9fa177d6b054b1c140f42e557b3a6d522d724561c26edc0fbb7a70"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/GroundHandActionTests.cs": {
+      "path": ".codex_tmp/punch-precision-20260909/SourceSnapshot/Tests/EditMode/Architecture/GroundHandActionTests.cs",
+      "sha256": "b9fdc238831b90885414a932d15df02d709a17f9869a7b03506448ff37ead84a"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/PunchDownAccumulationTests.cs": {
+      "path": ".codex_tmp/punch-precision-20260909/SourceSnapshot/Tests/EditMode/Architecture/PunchDownAccumulationTests.cs",
+      "sha256": "e3a8caedb2e1efe9273d018d7babc3a08b486d20b8ae96b4a47ce476c56286fa"
+    }
+  },
+  "unchangedSources": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31"
+  },
+  "transportIdentity": {
+    "path": "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes",
+    "sha256": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60"
+  },
+  "unchangedPunchLibrary": {
+    "path": ".codex_tmp/punch-unity-20260906/ApprovedPunch.json",
+    "sha256": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac"
+  },
+  "documentationChecks": {
+    "baseline": "PASS",
+    "workflow": "7/7",
+    "gitDiffCheck": "PASS"
+  },
+  "limitations": [
+    "Local prototype; human multiplayer feel, peer synchronization and final performance/balance remain unverified.",
+    "The ten-body-hit threshold integration fixture holds the target position until Down; it is a scoring/physics transition check, not free combat footage.",
+    "Query shapes are anatomical capsule approximations, not exact skinned-surface triangle collision.",
+    "Existing reach/load/stress and recovery gates remain; no head auto-aim or new airborne attack input was added.",
+    "Manual Unity UI Play was not operated; serialization-style clone reinitialization is covered by PlayMode."
+  ]
+}

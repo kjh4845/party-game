@@ -1,0 +1,189 @@
+{
+  "status": "PASS_LOCAL_SHARED_CAMERA_PROTOTYPE",
+  "startedLocalDate": "2026-09-09",
+  "completedAtLocal": "2026-09-10T00:06:24.463660+09:00",
+  "scope": "2/3/4 actor local review, authority-root shared camera, camera-relative movement and development-only controlled actor selection.",
+  "profile": {
+    "yaw": 0,
+    "pitch": 34,
+    "verticalFov": 42,
+    "minimumDollyCU": 8,
+    "maximumDollyCU": 15,
+    "safeViewportMargin": 0.15,
+    "reviewMetersPerCU": 1,
+    "authorityCapsuleHeightMeters": 1,
+    "subjectCenter": [
+      0,
+      0.45,
+      0
+    ],
+    "subjectExtents": [
+      0.45,
+      0.55,
+      0.45
+    ],
+    "focusSeconds": 0.25,
+    "dollySeconds": 0.3,
+    "focusDeadZoneMeters": 0.08,
+    "maximumFocusSpeed": 6,
+    "dollySpeed": 5,
+    "maximumLookAheadMeters": 0.35,
+    "lookAheadSeconds": 0.2,
+    "safetyReserveMeters": 0.5,
+    "safetyPriority": "Required framing may override outward dolly damping; zoom-in is damped and rate limited. Max15 exceeds => diagnostic flag, no unlimited zoom."
+  },
+  "framingCases": [
+    {
+      "players": 2,
+      "aspect": 1.77777779,
+      "dolly": 11.2283716
+    },
+    {
+      "players": 2,
+      "aspect": 1.6,
+      "dolly": 12.1349354
+    },
+    {
+      "players": 2,
+      "aspect": 2.33333325,
+      "dolly": 10.2453651
+    },
+    {
+      "players": 3,
+      "aspect": 1.77777779,
+      "dolly": 11.3415575
+    },
+    {
+      "players": 3,
+      "aspect": 1.6,
+      "dolly": 12.2363815
+    },
+    {
+      "players": 3,
+      "aspect": 2.33333325,
+      "dolly": 10.3103848
+    },
+    {
+      "players": 4,
+      "aspect": 1.77777779,
+      "dolly": 11.3415575
+    },
+    {
+      "players": 4,
+      "aspect": 1.6,
+      "dolly": 12.2363815
+    },
+    {
+      "players": 4,
+      "aspect": 2.33333325,
+      "dolly": 10.3103848
+    }
+  ],
+  "motion": {
+    "status": "PASS",
+    "actors": 4,
+    "frames": 100,
+    "fps": 20,
+    "minDolly": 8,
+    "maxDolly": 11.3729448,
+    "fixture": "Scripted movement; jump request and explicit Down injection for camera framing review, not recorded human multiplayer."
+  },
+  "inputSafety": [
+    "Previous actor movement/sprint/jump neutralized on switch.",
+    "Switch/menu/reset forcibly release grips without throw.",
+    "New actor/closed menu requires an all-mouse-up sample before hand actions; held clicks cannot replay.",
+    "Esc does not pause physics or Down timers; all included Root subjects remain.",
+    "R resets all actors to spawn positions and clears DownCount/point accumulation."
+  ],
+  "tests": {
+    "PlayMode-final": {
+      "xml": ".codex_tmp/shared-arena-20260909/PlayMode-final.xml",
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 16.0381648
+    },
+    "EditMode-final": {
+      "xml": ".codex_tmp/shared-arena-20260909/EditMode-final.xml",
+      "passed": 134,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 0.5749837
+    }
+  },
+  "testCoverage": [
+    "Nine player-count/aspect combinations at genuinely spread physical Root positions.",
+    "Renderer/limb bounds changes and authority input disable do not alter subject framing.",
+    "Mask removal damped; empty roster holds last frame; beyond capacity clamps15 and flags.",
+    "Screen-axis movement/diagonal clamp and finite projection math.",
+    "Actual grip, control switch, mouse rearm, menu continuity, reset spawn positions.",
+    "Four scripted movers, one real jump request, one explicit Down injection, all roots continuously framed.",
+    "Existing fast-punch and ragdoll-grab interaction regression."
+  ],
+  "skinAdoption": {
+    "status": "ADOPTED_FOR_CONTINUED_PROTOTYPE",
+    "date": "2026-09-09",
+    "userInstruction": "이제 다음 계획으로 진행하자 내 의견이 필요하거나 애매하거나 내 승인이 필요하면 얘기하고 진행해",
+    "candidateSource": "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/candidate-r07",
+    "transport": "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes",
+    "transportSha256": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a",
+    "scope": "Use the latest lat-weight candidate for subsequent local prototypes and current review menus; preserve canonical/previous sources.",
+    "finalCharacterGateApproved": false
+  },
+  "media": {
+    "gif": "/Users/kjh/local_dev/party game/.codex_tmp/shared-arena-20260909/Media/SharedCameraMotion.gif",
+    "framingMatrix": "/Users/kjh/local_dev/party game/.codex_tmp/shared-arena-20260909/Media/FramingMatrix.png",
+    "sourceFrames": 100,
+    "fps": 20,
+    "speed": 1,
+    "durationMs": 6000,
+    "finalHoldMs": 1000,
+    "fixture": "Scripted movement; jump request and explicit Down injection for camera framing review, not recorded human multiplayer."
+  },
+  "sourceSnapshots": {
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Simulation/SharedCameraFraming.cs": {
+      "snapshot": ".codex_tmp/shared-arena-20260909/SourceSnapshot/Runtime/Simulation/SharedCameraFraming.cs",
+      "sha256": "ef5006c7c8c22944afa4539737e7dbf569701015fdbeee4bb424c76c13e941d1"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/SharedCameraReview.cs": {
+      "snapshot": ".codex_tmp/shared-arena-20260909/SourceSnapshot/Prototypes/PhysicsJump/SharedCameraReview.cs",
+      "sha256": "f3ba1be570f35314f77e67e39e9e315ed03fee4ad9c3c791293761821d8f215e"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/SharedArenaReview.cs": {
+      "snapshot": ".codex_tmp/shared-arena-20260909/SourceSnapshot/Prototypes/PhysicsJump/SharedArenaReview.cs",
+      "sha256": "ab468c7793c861f9eab7e590abc7970bcc1d04113d279ec54c3b1c00e8953239"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PunchDownReview.cs": {
+      "snapshot": ".codex_tmp/shared-arena-20260909/SourceSnapshot/Prototypes/PhysicsJump/PunchDownReview.cs",
+      "sha256": "3a7302b98d6a50c9eefaa4806012cd16c8b2ed98eb012fec70a40df9b598cf86"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": {
+      "snapshot": ".codex_tmp/shared-arena-20260909/SourceSnapshot/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+      "sha256": "a3c445404e6d4d3909938ef4f354b7a1bee996adcd40658b4611fcdcd186b226"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/SharedCameraFramingTests.cs": {
+      "snapshot": ".codex_tmp/shared-arena-20260909/SourceSnapshot/Tests/EditMode/Architecture/SharedCameraFramingTests.cs",
+      "sha256": "8f7f7ba15b5c07319ce173c8919ea42e3bf6cde136134525b7a566bbf2e4cf4d"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/SharedArenaReviewTests.cs": {
+      "snapshot": ".codex_tmp/shared-arena-20260909/SourceSnapshot/Tests/PlayMode/Physics/SharedArenaReviewTests.cs",
+      "sha256": "4f49ed329923327ea64a052f82584f8757a242a6ee36cb785900709a9e7a4a79"
+    }
+  },
+  "documentationChecks": {
+    "baseline": "PASS",
+    "workflowTests": 7,
+    "diffCheck": "PASS"
+  },
+  "limitations": [
+    "One keyboard/mouse selects one actor at a time; no simultaneous human multiplayer/AI/gamepad implementation.",
+    "No Match/P00/weapon/hazard/OOB/score or production InputAction/UI lifecycle implementation.",
+    "Camera targets are local authority samples; network target replication, spectator/Alive/Forfeit hooks and final cross-peer aspect policy remain.",
+    "Occlusion and lethal-telegraph readability on final map are unverified.",
+    "Final camera comfort/physics/gameplay balance gates remain open."
+  ],
+  "discardedRuns": {
+    "r01": "Missing yield in a newly added coroutine test prevented compilation.",
+    "r02": "Wide-position and contact fixtures changed child Rigidbody positions before clearing transform dirtiness; SyncTransforms restored spawn transforms. Corrected fixture sets both transforms and rigidbody poses and asserts them before testing. Not used as framing evidence."
+  }
+}

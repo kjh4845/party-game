@@ -1,0 +1,17 @@
+{
+  "status": "diagnosed_motion_fix_not_applied",
+  "diagnosticRuns": 19,
+  "testResults": {
+    "Ablations": "Passed",
+    "JointAblations": "Passed"
+  },
+  "runtimeChanged": false,
+  "userVisualApproval": false,
+  "farAttempts": 3,
+  "farHits": 0,
+  "farPoints": 0,
+  "forearmMaximumRequestedSwingDegrees": 76.57350556191501,
+  "forearmLimitDegrees": 4,
+  "diagnosticSourceSha256": "27a619d12b148310a9fc7b2bcf0ced7e7407c3897680b78741ce9a5e5e438294",
+  "report": "artifacts/reports/R20_PHYSICAL_PUNCH_DIAGNOSIS_20260917.md"
+}

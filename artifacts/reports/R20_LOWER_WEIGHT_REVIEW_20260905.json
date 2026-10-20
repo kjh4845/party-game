@@ -1,0 +1,75 @@
+{
+  "complete": true,
+  "candidatePath": ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend",
+  "candidateSha256": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+  "sourceSha256": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+  "generatorSha256": "e2e51d1307cf9cfb7c27bd136b62bd210783393fb0db5d5a5a0dd711b15b8694",
+  "parameters": {
+    "lo": 0.04,
+    "hi": 0.22,
+    "depthBias": 1.0,
+    "fullBlendZ": [
+      0.05,
+      0.125
+    ],
+    "editZMax": 0.175
+  },
+  "changedVertices": 35714,
+  "changedGroups": [
+    "Thigh_L",
+    "Calf_L",
+    "Thigh_R",
+    "Calf_R"
+  ],
+  "maxWeightMirrorDeviation": 5.960464477539063e-08,
+  "maximumInfluences": 4,
+  "geometryUnchanged": true,
+  "bindSkeletonUnchanged": true,
+  "upperWeightsUnchanged": true,
+  "otherWeightGroupsUnchanged": true,
+  "headUnchanged": true,
+  "approvedPunchCurvesUnchanged": true,
+  "approvedPunchPoseMaxVertexDelta": 1.666000468656264e-08,
+  "neutralPoseMaxVertexDelta": 6.664004416739544e-08,
+  "sourceFilesUnchanged": true,
+  "result": "PASS",
+  "userVisualApproval": false,
+  "limitations": [
+    "Sampled surface integrity only; not universal joint limits or dynamic collision validation.",
+    "PlantedIK pelvis down 0.035m: surface minimum 0.0035297829m below neutral baseline, despite stable foot bone anchors.",
+    "Remaining compression and silhouette require visual review; no stretch-ratio acceptance threshold was asserted.",
+    "Jump/Landing clips and Unity physics integration are not implemented by this candidate."
+  ],
+  "date": "2026-09-05",
+  "authorization": "User authorized a separate lower-body weight-only candidate: 만들어봐. Candidate adoption is pending visual review.",
+  "status": "TECHNICAL_PASS_USER_REVIEW",
+  "sampleCount": 92,
+  "sampleGroups": {
+    "crouch": 8,
+    "walk": 36,
+    "sprint": 24,
+    "approvedPunch": 18,
+    "grabWall": 6
+  },
+  "rawEvidence": {
+    "path": ".codex_tmp/lower-weight-20260905/candidate-r02/LowerWeightReview.json",
+    "sha256": "4696d059211f188240bd93ab56786291de1acf9c945fdd6b829e6f269b3d4d74"
+  },
+  "groundCheck": {
+    "candidateSha256": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    "footAnchorErrorsMeters": {
+      "L": 1.426353284647811e-07,
+      "R": 1.426353284647811e-07
+    },
+    "groundMinimumDeltaMeters": -0.003529782872647047,
+    "sourceSaved": false
+  },
+  "groundCheckEvidence": {
+    "path": ".codex_tmp/lower-weight-20260905/candidate-r02/SavedGroundCheck.json",
+    "sha256": "582f6da5e52949f0e5b36278e9cd0541ca5eb48249a2f2c589aa5d515b3cfe7f"
+  },
+  "comparison": {
+    "path": ".codex_tmp/lower-weight-20260905/candidate-r02/LowerWeightBeforeAfter.png",
+    "sha256": "7b34a0d9d9cc7f2e27def57516c198916ae94c9348ad498a305dd529069df0d6"
+  }
+}

@@ -1,0 +1,385 @@
+{
+  "status": "GETUP_ANIMATION_CANDIDATE_VERIFIED",
+  "date": "2026-09-07",
+  "userDecision": {
+    "physicalRecoveryFeel": "Direction confirmed by user",
+    "recoveryAnimation": "Required; missing in earlier physics-only candidate"
+  },
+  "clips": {
+    "FaceUp": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim",
+    "FaceDown": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim",
+    "durationSecondsEach": 1.9,
+    "frameRate": 30,
+    "keyTimesEach": 58,
+    "quaternionChannelsEach": 84,
+    "gameplayRootCurves": 0,
+    "events": 0
+  },
+  "checks": {
+    "AllPlayMode": {
+      "total": "35",
+      "passed": "35",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "AllEditMode-final": {
+      "total": "110",
+      "passed": "110",
+      "failed": "0",
+      "skipped": "0"
+    }
+  },
+  "cases": [
+    {
+      "name": "FaceUp",
+      "finalPhase": "None",
+      "worstJoint": "Head",
+      "recoveries": 1,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.003733866848051548,
+      "speed": 3.1004176139831543,
+      "surfaceAngle": 12.217918395996094,
+      "finalHeight": 0.004105091094970703,
+      "downCount": 1,
+      "handoff": 9.5413986400672e-07,
+      "readyAngle": 0.9176984429359436,
+      "readyDistance": 0.006732574198395014,
+      "readySpeed": 0.00018222644575871527,
+      "readyAngular": 0.09638097882270813,
+      "worstStep": 26,
+      "surfaceSamples": 184,
+      "plantedSamples": 36,
+      "plantError": 2.0131221845076652e-07,
+      "forearmMotion": 99.50126647949219,
+      "worstLocation": {
+        "x": 0.1535423994064331,
+        "y": 0.6010460257530212,
+        "z": 0.03181465342640877
+      }
+    },
+    {
+      "name": "FaceDown",
+      "finalPhase": "None",
+      "worstJoint": "Calf_L",
+      "recoveries": 1,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.0020757040474563837,
+      "speed": 3.106989622116089,
+      "surfaceAngle": 20.12853240966797,
+      "finalHeight": 0.0043219029903411865,
+      "downCount": 1,
+      "handoff": 9.565802656652522e-07,
+      "readyAngle": 3.167006015777588,
+      "readyDistance": 0.023032356053590775,
+      "readySpeed": 0.00017863787070382386,
+      "readyAngular": 0.08104223012924194,
+      "worstStep": 108,
+      "surfaceSamples": 186,
+      "plantedSamples": 36,
+      "plantError": 1.5477897363780357e-07,
+      "forearmMotion": 119.4306411743164,
+      "worstLocation": {
+        "x": -0.2541448771953583,
+        "y": 0.4815617501735687,
+        "z": -0.06942962110042572
+      }
+    },
+    {
+      "name": "LeftSide",
+      "finalPhase": "None",
+      "worstJoint": "UpperArm_L",
+      "recoveries": 1,
+      "aligns": 1,
+      "interruptions": 0,
+      "gap": 0.014354723505675793,
+      "speed": 2.788426160812378,
+      "surfaceAngle": 24.72344398498535,
+      "finalHeight": 0.004307657480239868,
+      "downCount": 1,
+      "handoff": 5.96791039697564e-07,
+      "readyAngle": 3.0736849308013916,
+      "readyDistance": 0.022337470203638077,
+      "readySpeed": 0.00020161316206213087,
+      "readyAngular": 0.087240070104599,
+      "worstStep": 196,
+      "surfaceSamples": 227,
+      "plantedSamples": 36,
+      "plantError": 1.5998159597074846e-07,
+      "forearmMotion": 117.10894775390625,
+      "worstLocation": {
+        "x": 0.2562429904937744,
+        "y": 0.4861995279788971,
+        "z": -0.07895080000162125
+      }
+    },
+    {
+      "name": "RightSide",
+      "finalPhase": "None",
+      "worstJoint": "UpperArm_R",
+      "recoveries": 1,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.014598116278648376,
+      "speed": 2.788483142852783,
+      "surfaceAngle": 16.08497428894043,
+      "finalHeight": 0.004110425710678101,
+      "downCount": 1,
+      "handoff": 8.847074468576466e-07,
+      "readyAngle": 1.0660499334335327,
+      "readyDistance": 0.007582071702927351,
+      "readySpeed": 0.00019910949049517512,
+      "readyAngular": 0.10729588568210602,
+      "worstStep": 100,
+      "surfaceSamples": 193,
+      "plantedSamples": 36,
+      "plantError": 1.3412338262241974e-07,
+      "forearmMotion": 114.27385711669922,
+      "worstLocation": {
+        "x": -0.14960168302059174,
+        "y": 0.600174069404602,
+        "z": 8.55475664138794e-05
+      }
+    },
+    {
+      "name": "Ceiling",
+      "finalPhase": "PhysicsTumble",
+      "worstJoint": "Head",
+      "recoveries": 0,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.003733866848051548,
+      "speed": 3.1004176139831543,
+      "surfaceAngle": 12.217918395996094,
+      "finalHeight": 0.11996186524629593,
+      "downCount": 1,
+      "handoff": 0.0,
+      "readyAngle": 0.0,
+      "readyDistance": 0.0,
+      "readySpeed": 0.0,
+      "readyAngular": 0.0,
+      "worstStep": 26,
+      "surfaceSamples": 480,
+      "plantedSamples": 0,
+      "plantError": 0.0,
+      "forearmMotion": 0.0,
+      "worstLocation": {
+        "x": 0.1535423994064331,
+        "y": 0.6010460257530212,
+        "z": 0.03181465342640877
+      }
+    },
+    {
+      "name": "CeilingRemoved",
+      "finalPhase": "None",
+      "worstJoint": "Head",
+      "recoveries": 1,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.003733866848051548,
+      "speed": 3.1004176139831543,
+      "surfaceAngle": 12.217918395996094,
+      "finalHeight": 0.004105091094970703,
+      "downCount": 1,
+      "handoff": 9.5413986400672e-07,
+      "readyAngle": 0.9176984429359436,
+      "readyDistance": 0.006732574198395014,
+      "readySpeed": 0.00018222644575871527,
+      "readyAngular": 0.09638097882270813,
+      "worstStep": 26,
+      "surfaceSamples": 283,
+      "plantedSamples": 36,
+      "plantError": 2.0131221845076652e-07,
+      "forearmMotion": 99.50126647949219,
+      "worstLocation": {
+        "x": 0.1535423994064331,
+        "y": 0.6010460257530212,
+        "z": 0.03181465342640877
+      }
+    },
+    {
+      "name": "Reset",
+      "finalPhase": "None",
+      "worstJoint": "Head",
+      "recoveries": 0,
+      "aligns": 0,
+      "interruptions": 0,
+      "gap": 0.003733866848051548,
+      "speed": 3.1004176139831543,
+      "surfaceAngle": 12.217918395996094,
+      "finalHeight": 0.004086345434188843,
+      "downCount": 0,
+      "handoff": 0.0,
+      "readyAngle": 89.58464050292969,
+      "readyDistance": 0.430650532245636,
+      "readySpeed": 0.018188735470175743,
+      "readyAngular": 0.10806944221258163,
+      "worstStep": 26,
+      "surfaceSamples": 116,
+      "plantedSamples": 20,
+      "plantError": 2.0131221845076652e-07,
+      "forearmMotion": 99.50126647949219,
+      "worstLocation": {
+        "x": 0.1535423994064331,
+        "y": 0.6010460257530212,
+        "z": 0.03181465342640877
+      }
+    },
+    {
+      "name": "SideGateLeft",
+      "finalPhase": "None",
+      "worstJoint": "Forearm_L",
+      "recoveries": 1,
+      "aligns": 1,
+      "interruptions": 0,
+      "gap": 0.005657185800373554,
+      "speed": 1.4939378499984741,
+      "surfaceAngle": 15.687430381774902,
+      "finalHeight": 0.004103600978851318,
+      "downCount": 1,
+      "handoff": 8.344650268554688e-07,
+      "readyAngle": 0.8996095657348633,
+      "readyDistance": 0.006533888168632984,
+      "readySpeed": 0.00022316334070637822,
+      "readyAngular": 0.09840456396341324,
+      "worstStep": 52,
+      "surfaceSamples": 211,
+      "plantedSamples": 36,
+      "plantError": 0.00032951083267107606,
+      "forearmMotion": 95.52179718017578,
+      "worstLocation": {
+        "x": -0.1505356878042221,
+        "y": 0.6005558371543884,
+        "z": 0.00021031033247709274
+      }
+    },
+    {
+      "name": "SideGateRight",
+      "finalPhase": "None",
+      "worstJoint": "Forearm_R",
+      "recoveries": 1,
+      "aligns": 1,
+      "interruptions": 0,
+      "gap": 0.006124097853899002,
+      "speed": 1.504557728767395,
+      "surfaceAngle": 15.684499740600586,
+      "finalHeight": 0.004104197025299072,
+      "downCount": 1,
+      "handoff": 1.073297426046338e-06,
+      "readyAngle": 0.9082682132720947,
+      "readyDistance": 0.006605749949812889,
+      "readySpeed": 0.00022291824279818684,
+      "readyAngular": 0.09832999110221863,
+      "worstStep": 50,
+      "surfaceSamples": 210,
+      "plantedSamples": 36,
+      "plantError": 0.0001732998207444325,
+      "forearmMotion": 103.22306823730469,
+      "worstLocation": {
+        "x": 0.15068648755550385,
+        "y": 0.6004626154899597,
+        "z": -0.00020424525428097695
+      }
+    },
+    {
+      "name": "Interrupted",
+      "finalPhase": "None",
+      "worstJoint": "Head",
+      "recoveries": 1,
+      "aligns": 0,
+      "interruptions": 1,
+      "gap": 0.003733866848051548,
+      "speed": 3.1004176139831543,
+      "surfaceAngle": 12.217918395996094,
+      "finalHeight": 0.004105091094970703,
+      "downCount": 1,
+      "handoff": 9.5413986400672e-07,
+      "readyAngle": 0.9176984429359436,
+      "readyDistance": 0.006732574198395014,
+      "readySpeed": 0.00018222644575871527,
+      "readyAngular": 0.09638097882270813,
+      "worstStep": 26,
+      "surfaceSamples": 255,
+      "plantedSamples": 36,
+      "plantError": 2.0131221845076652e-07,
+      "forearmMotion": 99.50126647949219,
+      "worstLocation": {
+        "x": 0.1535423994064331,
+        "y": 0.6010460257530212,
+        "z": 0.03181465342640877
+      }
+    }
+  ],
+  "surfaceSamples": 2345,
+  "maximumSurfaceAngle": 24.72344398498535,
+  "maximumPlantTargetErrorMeters": 0.00032951083267107606,
+  "media": {
+    "GetUpAnimation": {
+      "gif": "/Users/kjh/local_dev/party game/.codex_tmp/getup-animation-20260907/Review-20260906-161246/Media/GetUpAnimation.gif",
+      "mp4": "/Users/kjh/local_dev/party game/.codex_tmp/getup-animation-20260907/Review-20260906-161246/Media/GetUpAnimation.mp4",
+      "metadata": {
+        "durationSeconds": 8,
+        "fps": 20,
+        "frames": 160,
+        "height": 1130,
+        "width": 1024
+      }
+    },
+    "SideGetUp": {
+      "gif": "/Users/kjh/local_dev/party game/.codex_tmp/getup-animation-20260907/Review-20260906-161246/Media/SideGetUp.gif",
+      "mp4": "/Users/kjh/local_dev/party game/.codex_tmp/getup-animation-20260907/Review-20260906-161246/Media/SideGetUp.mp4",
+      "metadata": {
+        "durationSeconds": 8,
+        "fps": 20,
+        "frames": 160,
+        "height": 588,
+        "width": 1024
+      }
+    },
+    "closeup": {
+      "gif": "/Users/kjh/local_dev/party game/.codex_tmp/getup-animation-20260907/Review-20260906-161246/Media/GetUpCloseup.gif",
+      "durationSeconds": 5.0,
+      "sourceFrameRange": [
+        30,
+        109
+      ],
+      "description": "Cropped front/back recovery frames, 4 seconds plus final hold/repeat card."
+    }
+  },
+  "rawReview": "/Users/kjh/local_dev/party game/.codex_tmp/getup-animation-20260907/Review-20260906-161246/GetUpAnimationReview.json",
+  "sourceSnapshot": "/Users/kjh/local_dev/party game/.codex_tmp/getup-animation-20260907/Review-20260906-161246/SourceSnapshot",
+  "sourceHashes": {
+    "Runtime/Presentation/GetUpAnimationPose.cs": "80cfc1c60ff0c777944357d632019759a840cf204e3fa5b65280dfea9bf2a138",
+    "Editor/PhysicsJump/GetUpClipAuthoring.cs": "b250b4449a7ecd97452fd5462311a941269fb89f710ca4bc08b1a8e64d99f8e6",
+    "Prototypes/PhysicsJump/RagdollRecoveryReview.cs": "1950aa3c1c8aa2bac29a63f1bbc541b79d72d223b45651fbc5c36e25bc3932ec",
+    "Tests/EditMode/Architecture/GetUpClipTests.cs": "beaec07b3ab3ad525520addbd75878b19339f93dbfc002cf115ee43d50034a24",
+    "Tests/PlayMode/Physics/GetUpAnimationReviewTests.cs": "1cf0ba061642b43c8d950bf5e8410d5dcc4260527e0e79b0cc51b4d91c6179b8",
+    "Tests/PlayMode/Physics/RagdollRecoveryReviewTests.cs": "0544c4b23c53833918a960f24f8d353b1b1805edfb7ac4f2037e9e832481edab",
+    "Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "f4eb35e9ddf81d8661f3417a8c27a11264ad47454f437e330e1b3fea7448a4d7",
+    "Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "680d04b0588c5bdfc622a0dfe569b562fe121e5de399accef32e707d4579e4f0"
+  },
+  "originalAndApprovedHashes": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091"
+  },
+  "documentChecks": {
+    "baseline": "PASS",
+    "workflowTests": 7,
+    "diffCheck": "PASS"
+  },
+  "limitations": [
+    "Candidate animation timing/pose remains subject to visual review.",
+    "Visual hand IK follows queried floor anchors; authority motor supplies motion, not animated hand forces.",
+    "Full skin/terrain contact, constrained arms, attack-to-Down entry, complex intermediate clearance, multiplayer/performance and formal Animator integration remain follow-ups."
+  ],
+  "preserved": [
+    "Original rig/mesh/weights",
+    "Physics recovery direction and real support/clearance authority",
+    "No post-throw ordinary collision damage or accumulation"
+  ],
+  "playerBuild": false,
+  "commitOrPush": false
+}

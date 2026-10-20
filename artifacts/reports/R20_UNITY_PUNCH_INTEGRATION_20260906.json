@@ -1,0 +1,174 @@
+{
+  "status": "UNITY_REVIEW_PRESENTATION_INTEGRATED_GAMEPLAY_PENDING",
+  "date": "2026-09-06",
+  "scope": "Approved punch sampling plus adopted foot-plant gait, hand ownership, airborne continuation, and reset. Not gameplay Hit/Grab or production import.",
+  "reviewDirectory": "/Users/kjh/local_dev/party game/.codex_tmp/punch-unity-20260906/Review-20260905-194810",
+  "checks": {
+    "AllPlayMode-r03": {
+      "total": "23",
+      "passed": "23",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "AllEditMode": {
+      "total": "85",
+      "passed": "85",
+      "failed": "0",
+      "skipped": "0"
+    }
+  },
+  "sourceParity": {
+    "status": "PASS",
+    "samples": 170,
+    "maximumLandmarkErrorMeters": 3.16803039e-07
+  },
+  "combinationCases": [
+    {
+      "name": "IdleLeft",
+      "maximumLegDifference": 0.0,
+      "maximumBodyVelocityDifference": 0.0,
+      "maximumSurfaceAngle": 22.929141998291016,
+      "maximumGroundPenetration": 1.3504177331924438e-08,
+      "maximumFootReachCorrection": 0.0,
+      "endArmDifference": 0.0,
+      "surfaceSamples": 15,
+      "hardEdges": 0,
+      "foldedEdges": 0
+    },
+    {
+      "name": "WalkLeft",
+      "maximumLegDifference": 0.0,
+      "maximumBodyVelocityDifference": 4.097938199036253e-15,
+      "maximumSurfaceAngle": 42.415069580078125,
+      "maximumGroundPenetration": 0.005864599719643593,
+      "maximumFootReachCorrection": 0.0,
+      "endArmDifference": 0.0,
+      "surfaceSamples": 43,
+      "hardEdges": 0,
+      "foldedEdges": 0
+    },
+    {
+      "name": "SprintRight",
+      "maximumLegDifference": 0.0,
+      "maximumBodyVelocityDifference": 4.097938199036253e-15,
+      "maximumSurfaceAngle": 41.20600509643555,
+      "maximumGroundPenetration": 0.006721099838614464,
+      "maximumFootReachCorrection": 0.0,
+      "endArmDifference": 0.0,
+      "surfaceSamples": 43,
+      "hardEdges": 0,
+      "foldedEdges": 0
+    },
+    {
+      "name": "WalkBoth",
+      "maximumLegDifference": 0.0,
+      "maximumBodyVelocityDifference": 4.097938199036253e-15,
+      "maximumSurfaceAngle": 39.6781005859375,
+      "maximumGroundPenetration": 0.005864599719643593,
+      "maximumFootReachCorrection": 0.0,
+      "endArmDifference": 0.0,
+      "surfaceSamples": 15,
+      "hardEdges": 0,
+      "foldedEdges": 0
+    },
+    {
+      "name": "AirContinue",
+      "maximumLegDifference": 0.0,
+      "maximumBodyVelocityDifference": 4.097934387387991e-15,
+      "maximumSurfaceAngle": 34.006168365478516,
+      "maximumGroundPenetration": 0.006566803902387619,
+      "maximumFootReachCorrection": 0.0,
+      "endArmDifference": 0.0,
+      "surfaceSamples": 15,
+      "hardEdges": 0,
+      "foldedEdges": 0
+    },
+    {
+      "name": "OccupiedRight",
+      "maximumLegDifference": 0.0,
+      "maximumBodyVelocityDifference": 4.097938199036253e-15,
+      "maximumSurfaceAngle": 39.6781005859375,
+      "maximumGroundPenetration": 0.005864599719643593,
+      "maximumFootReachCorrection": 0.0,
+      "endArmDifference": 0.0,
+      "surfaceSamples": 15,
+      "hardEdges": 0,
+      "foldedEdges": 0
+    },
+    {
+      "name": "OwnershipTaken",
+      "maximumLegDifference": 0.0,
+      "maximumBodyVelocityDifference": 4.097938199036253e-15,
+      "maximumSurfaceAngle": 0.0,
+      "maximumGroundPenetration": 0.005864599719643593,
+      "maximumFootReachCorrection": 0.0,
+      "endArmDifference": 0.0,
+      "surfaceSamples": 0,
+      "hardEdges": 0,
+      "foldedEdges": 0
+    },
+    {
+      "name": "Reset",
+      "maximumLegDifference": 0.0,
+      "maximumBodyVelocityDifference": 4.097938199036253e-15,
+      "maximumSurfaceAngle": 37.86577224731445,
+      "maximumGroundPenetration": 0.005362458527088165,
+      "maximumFootReachCorrection": 0.0,
+      "endArmDifference": 0.0,
+      "surfaceSamples": 15,
+      "hardEdges": 0,
+      "foldedEdges": 0
+    }
+  ],
+  "surfaceSampleCount": 161,
+  "originalsPreserved": {
+    "punch": {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend",
+      "sha256": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091"
+    },
+    "lowerWeight": {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend",
+      "sha256": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47"
+    },
+    "r16": {
+      "path": "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend",
+      "sha256": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef"
+    },
+    "r20": {
+      "path": "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend",
+      "sha256": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579"
+    }
+  },
+  "sha256": {
+    ".codex_tmp/punch-unity-20260906/ApprovedPunch.json": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac",
+    ".codex_tmp/punch-unity-20260906/Parity.json": "c051673c2b2fb49981a8acb2615a44f9a72d4afe5d5caaa51d3f3e3a498c16e6",
+    ".codex_tmp/punch-unity-20260906/AllPlayMode-r03.xml": "166bc88d0be7835479e4d07b22ade5457481a4d2d0cfdfb7e0a04af459169ee9",
+    ".codex_tmp/punch-unity-20260906/AllEditMode.xml": "cd5330555574e818efed1cf35d03cd3ed603613e7491ccedf5be320a5e1d1f7c",
+    ".codex_tmp/punch-unity-20260906/Review-20260905-194810/PunchIntegration.json": "f67626f960f4374325a3cea19fea4b7096eed6e32cbfd5402e6a59a680c37e4c",
+    ".codex_tmp/punch-unity-20260906/Review-20260905-194810/Media/PunchCombinations.gif": "b5ec5ba153cb2925f7dc147ede8847d59aa148a5ce3660959654871886de562e",
+    ".codex_tmp/punch-unity-20260906/Review-20260905-194810/Media/PunchCombinations.mp4": "1df085d37921c03a04c14d25fbfaea80713750170d84cec1c6b9b1265f520b56",
+    ".codex_tmp/punch-unity-20260906/Review-20260905-194810/Media/PunchCombinations.metadata.json": "58edf7c6e1428492c5f5e5f3d6565cc8ad29743e023a4b43aaf767ed9c8d2122",
+    ".codex_tmp/punch-unity-20260906/Review-20260905-194810/SourceSnapshot/export_c1b_rw020_approved_punch.py": "2873dbfff0d180a2236b768919159e1d5cc33908a4a67fc1432031cb7f5930ba",
+    ".codex_tmp/punch-unity-20260906/Review-20260905-194810/SourceSnapshot/Runtime/Presentation/ProceduralFreeArmSwing.cs": "539582442bd7935d8148016060e4919f16bfe4161eb971c1bc626be82a3ca0a5",
+    ".codex_tmp/punch-unity-20260906/Review-20260905-194810/SourceSnapshot/Runtime/Presentation/ApprovedPunchPose.cs": "e9070a12b1e35a8b0c3b8b0f1bd8c7d293f9e84e5a66a874080c33d54eec2dc7",
+    ".codex_tmp/punch-unity-20260906/Review-20260905-194810/SourceSnapshot/Tests/PlayMode/Physics/ApprovedPunchIntegrationTests.cs": "49dcbbc1e5ee167c21b381271dcbfb3aa359ce2171d65ec06641d60905f59134",
+    ".codex_tmp/punch-unity-20260906/Review-20260905-194810/SourceSnapshot/Prototypes/PhysicsJump/PhysicsJumpReview.cs": "9e14084bc8ea8a991d3b64d749dd3d3b1d7a9020163fac7e1c2581d9afe91ef7"
+  },
+  "limitations": [
+    "No hand tap/hold resolver, contact/hit/damage/impulse or grab load integration. J/K are preview controls.",
+    "Sampling at 120 Hz with quaternion interpolation; 170 direct source pose samples verified.",
+    "Surface QA uses adjacent faces, not complete non-adjacent self-intersection or continuous-time proof.",
+    "Authoritative action state integration, two-character combat and production animation transport remain."
+  ],
+  "discardedRuns": {
+    "Punch-r01": "Ownership test compared pre-set quaternion with normalized Transform value. Corrected expectation to the actual external owner pose.",
+    "AllPlayMode-r02": "Stopped after identifying the same test issue; not evidence of a passing run."
+  },
+  "documentationChecks": {
+    "baseline": "PASS",
+    "workflowTests": "7/7",
+    "artProfiles": "PASS",
+    "artProfileTests": "25/25, 221 assertions",
+    "gitDiffCheck": "PASS"
+  }
+}

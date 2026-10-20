@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "status": "APPROVED",
+  "recordedAtLocal": "2026-09-05T20:30:52.581029+09:00",
+  "userDecision": "그렇게 하자 진행해",
+  "scope": [
+    "Stop authoring dedicated Jump/Landing clips; keep the existing Blender clips as comparison references.",
+    "Implement a local Unity Rigidbody jump prototype with gravity, actual contact-based landing, and simple procedural lower-body poses.",
+    "Retain approved lower-body weights, punch and shared straight-arm firearm grip."
+  ],
+  "limitations": [
+    "Not final jump tuning, full active ragdoll, production prefab approval, multiplayer integration or Player Build approval."
+  ]
+}

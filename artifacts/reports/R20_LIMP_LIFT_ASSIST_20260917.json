@@ -1,0 +1,797 @@
+{
+  "date": "2026-09-17",
+  "status": "LIMP_LIFT_VISUAL_APPROVED_CONTACT_FOLLOWUP_IN_PROGRESS",
+  "authorization": "User approved assistance only while grabbing/lifting a limp target; no mass/inertia removal. Local lift and release-throw candidate, not blanket approval of all Stage 3 work or contact-surface patches.",
+  "stage2Complete": false,
+  "stage3LiftSubsetStarted": true,
+  "stage3Complete": false,
+  "defaultArenaChanged": false,
+  "modelChangedThisTurn": false,
+  "profile": {
+    "targetMassKg": 20,
+    "gravityEnabled": true,
+    "limpAngularPoseDrive": 0,
+    "weightCompensation": 0.8,
+    "rampInSeconds": 0.18,
+    "rampOutSeconds": 0,
+    "targetHeightRiseM": 0.65,
+    "riseDurationSeconds": 0.85,
+    "holderHandDriveMultiplier": 2.5,
+    "upperArmTorqueCapNm": 37.5,
+    "forearmTorqueCapNm": 20,
+    "throwTotalImpulseNs": 30,
+    "throwAddedSpeedCapMps": 3,
+    "throwUpDirectionFactor": 0.35,
+    "per20kgTargetAddedSpeedMps": 1.5
+  },
+  "validation": [
+    {
+      "path": ".codex_tmp/limp-lift-20260917/FinalPlayMode.xml",
+      "sha256": "ac1262a0dc32263136811c492ee7e964b6384d9bcccea856c9a22d6c52981e31",
+      "total": 14,
+      "passed": 14,
+      "failed": 0,
+      "cases": [
+        {
+          "name": "HeldJump_RetainsWeightPenaltyWithoutStackingOrStaleTargets",
+          "result": "Passed"
+        },
+        {
+          "name": "CandidateHoldOwnershipAndCancellationRemainImmediate",
+          "result": "Passed"
+        },
+        {
+          "name": "CandidatePhysicalReplayIsIndependentOfRenderRate",
+          "result": "Passed"
+        },
+        {
+          "name": "AirborneHolderGetsNoGravityCancellation",
+          "result": "Passed"
+        },
+        {
+          "name": "CancellationAndTargetLossNeverThrowOrKeepSupport",
+          "result": "Passed"
+        },
+        {
+          "name": "CaptureLiftReleaseAndValidateSkin",
+          "result": "Passed"
+        },
+        {
+          "name": "EarlyReleaseDoesNotWaitForLiftAndFreeFallRestoresFullGravity",
+          "result": "Passed"
+        },
+        {
+          "name": "EitherHandLiftsWithoutMassOrInertiaChanges",
+          "result": "Passed"
+        },
+        {
+          "name": "LastHandThrowsOnceAndSupportDoesNotStack",
+          "result": "Passed"
+        },
+        {
+          "name": "LiftFourDirectionsAndRelease",
+          "result": "Passed"
+        },
+        {
+          "name": "LiftReleaseReplayMatchesAt15_60_144Fps",
+          "result": "Passed"
+        },
+        {
+          "name": "MutualHoldBlocksAdditionalLift",
+          "result": "Passed"
+        },
+        {
+          "name": "NativeLiftFixtureRunsOncePerFixedStep",
+          "result": "Passed"
+        },
+        {
+          "name": "LowResetRestoresPelvisAndRequiresFreshInput",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "path": ".codex_tmp/limp-lift-20260917/EditMode.xml",
+      "sha256": "d1306864fd3e5de86dd7da998eba71909735e2e53442e5855189d317e584d165",
+      "total": 140,
+      "passed": 140,
+      "failed": 0,
+      "cases": [
+        {
+          "name": "BothSlotsInvalid_ReturnsNoPayloadAndDoesNotRewriteEitherFile",
+          "result": "Passed"
+        },
+        {
+          "name": "CallerValidator_CanRejectCurrentAndSelectCompatibleLastGood",
+          "result": "Passed"
+        },
+        {
+          "name": "ConcurrentRepositoryInstances_SerializeTheSameAddress",
+          "result": "Passed"
+        },
+        {
+          "name": "ConcurrentWrites_OnOneStoreNeverExposeATornEnvelope",
+          "result": "Passed"
+        },
+        {
+          "name": "CorruptCurrentThenSave_PreservesExistingValidLastGood",
+          "result": "Passed"
+        },
+        {
+          "name": "FirstSave_NewRepositoryInstanceReadsExactCurrentWithoutBackup",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidAddressMatrix_IsRejectedWithoutWritingOutsideRoot",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"truncated\",Corrupt)",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"hash\",Corrupt)",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"version\",Corrupt)",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"length\",TooLarge)",
+          "result": "Passed"
+        },
+        {
+          "name": "NonRegularTarget_IsRejectedWithoutReplacement",
+          "result": "Passed"
+        },
+        {
+          "name": "OversizedDeclaredLength_IsRejectedBeforeAllocationAndFallsBack",
+          "result": "Passed"
+        },
+        {
+          "name": "Overwrite_RotatesPriorCurrentIntoLastGood",
+          "result": "Passed"
+        },
+        {
+          "name": "PayloadLimit_AcceptsExactLimitAndRejectsLargerWithoutChangingCurrent",
+          "result": "Passed"
+        },
+        {
+          "name": "PhysicalFileOverLimit_IsRejectedBeforePayloadReadAndFallsBack",
+          "result": "Passed"
+        },
+        {
+          "name": "ReplaceFailure_LeavesCurrentAndLastGoodUnchangedAndCleansPending",
+          "result": "Passed"
+        },
+        {
+          "name": "StalePending_IsIgnoredByReadAndRemovedByNextWrite",
+          "result": "Passed"
+        },
+        {
+          "name": "ThirdWrite_ReplacesExistingLastGoodWithPriorCurrent",
+          "result": "Passed"
+        },
+        {
+          "name": "BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides(\"Assets/Settings/Build Profiles/Windows x64 Development.asset\")",
+          "result": "Passed"
+        },
+        {
+          "name": "BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides(\"Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset\")",
+          "result": "Passed"
+        },
+        {
+          "name": "BuildProfile_InheritsTheSingleGlobalSampleScene(\"Assets/Settings/Build Profiles/Windows x64 Development.asset\")",
+          "result": "Passed"
+        },
+        {
+          "name": "BuildProfile_InheritsTheSingleGlobalSampleScene(\"Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset\")",
+          "result": "Passed"
+        },
+        {
+          "name": "BuildProfileDefines_AreExactMutuallyExclusiveAndDoNotLeakGlobally",
+          "result": "Passed"
+        },
+        {
+          "name": "GlobalStandalonePlayerSettings_UseTheApprovedTemporaryIdentityAndMono",
+          "result": "Passed"
+        },
+        {
+          "name": "WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect(\"Assets/Settings/Build Profiles/Windows x64 Development.asset\",True)",
+          "result": "Passed"
+        },
+        {
+          "name": "WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect(\"Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset\",False)",
+          "result": "Passed"
+        },
+        {
+          "name": "WindowsBuildProfiles_AreExactlyTwoAssetsWithUniqueGuids",
+          "result": "Passed"
+        },
+        {
+          "name": "WindowsX64BuildSupport_IsInstalled",
+          "result": "Passed"
+        },
+        {
+          "name": "ExternalLaunchConsumesAirJumpAndStartsAFreshLandingImpactInterval",
+          "result": "Passed"
+        },
+        {
+          "name": "GetUpFinishesInNeutralBeforeLocomotionHandoff(\"FaceUp\")",
+          "result": "Passed"
+        },
+        {
+          "name": "GetUpFinishesInNeutralBeforeLocomotionHandoff(\"FaceDown\")",
+          "result": "Passed"
+        },
+        {
+          "name": "GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents(\"FaceUp\")",
+          "result": "Passed"
+        },
+        {
+          "name": "GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents(\"FaceDown\")",
+          "result": "Passed"
+        },
+        {
+          "name": "GrabReleaseAndBreak_DoNotCreatePunchOrAutoRegrab",
+          "result": "Passed"
+        },
+        {
+          "name": "IdleHolding_DoesNotAccumulateTimeFatigue",
+          "result": "Passed"
+        },
+        {
+          "name": "SustainedLoad_Breaks_AndLowLoadRecovers",
+          "result": "Passed"
+        },
+        {
+          "name": "DuplicateAndOldEdges_CannotRepeatOrRestartAttack",
+          "result": "Passed"
+        },
+        {
+          "name": "FasterPunchSharesHitClockAndRecoveryWithoutChangingHoldThreshold",
+          "result": "Passed"
+        },
+        {
+          "name": "GroundContextStaysGround_AirContextDoesNotCreatePunch",
+          "result": "Passed"
+        },
+        {
+          "name": "HandsHaveIndependentActions_AndPerActionTargetDeduplication",
+          "result": "Passed"
+        },
+        {
+          "name": "HardwareDurationWinsOverFixedTickRounding(0.147d,True)",
+          "result": "Passed"
+        },
+        {
+          "name": "HardwareDurationWinsOverFixedTickRounding(0.15d,False)",
+          "result": "Passed"
+        },
+        {
+          "name": "HardwareDurationWinsOverFixedTickRounding(0.153d,False)",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidTimestampCannotCorruptPendingHardwareDuration",
+          "result": "Passed"
+        },
+        {
+          "name": "OccupiedHand_CannotStart_AndCancellationRemovesHitEligibility",
+          "result": "Passed"
+        },
+        {
+          "name": "SimultaneousTimedTapsAreIndependentOfHandProcessingOrder",
+          "result": "Passed"
+        },
+        {
+          "name": "Suppress_ResetAndAllUp_DoNotEmitActions",
+          "result": "Passed"
+        },
+        {
+          "name": "Threshold_TapAndHoldAreExclusive(0.12d)",
+          "result": "Passed"
+        },
+        {
+          "name": "Threshold_TapAndHoldAreExclusive(0.15d)",
+          "result": "Passed"
+        },
+        {
+          "name": "Threshold_TapAndHoldAreExclusive(0.18d)",
+          "result": "Passed"
+        },
+        {
+          "name": "InputPackage_IsLockedAsDirectRegistryDependency",
+          "result": "Passed"
+        },
+        {
+          "name": "OnlyInputModule_ReferencesTheSelectedPackageAssembly",
+          "result": "Passed"
+        },
+        {
+          "name": "PlayerSettings_EnableOnlyTheNewInputSystemBackend",
+          "result": "Passed"
+        },
+        {
+          "name": "ProductRuntimeSources_DoNotUseLegacyInputApis",
+          "result": "Passed"
+        },
+        {
+          "name": "MenuAndReset_RearmCannotAuthorizeAThrow",
+          "result": "Passed"
+        },
+        {
+          "name": "ReleaseAdmission_RejectsOldEdgesAgainstANewGrab",
+          "result": "Passed"
+        },
+        {
+          "name": "LocalStorageAssembly_IsANoEngineLeaf",
+          "result": "Passed"
+        },
+        {
+          "name": "LocalStorageRuntimeSources_HaveNoUnityOrNetworkNamespaceDependency",
+          "result": "Passed"
+        },
+        {
+          "name": "Presentation_HasNoDirectOrTransitivePathToSimulation",
+          "result": "Passed"
+        },
+        {
+          "name": "ProjectRuntimeSources_AreOwnedByTheirFolderAssembly",
+          "result": "Passed"
+        },
+        {
+          "name": "RuntimeAssemblies_HaveOnlyApprovedProjectReferences",
+          "result": "Passed"
+        },
+        {
+          "name": "RuntimeAssemblyGraph_HasNoCycles",
+          "result": "Passed"
+        },
+        {
+          "name": "PhysicsPackage_IsBuiltInDirectAndHasNoSecondStack",
+          "result": "Passed"
+        },
+        {
+          "name": "ProductRuntimeSources_DoNotMutateGlobalPhysicsCadence",
+          "result": "Passed"
+        },
+        {
+          "name": "ProjectPhysicsSettings_UseSixtyHertzAutomaticSimulation",
+          "result": "Passed"
+        },
+        {
+          "name": "RuntimePhysicsMutationGuard_CatchesRepresentativeForbiddenCode",
+          "result": "Passed"
+        },
+        {
+          "name": "DownHitsDoNotAccumulateAndCannotReplayAfterRecovery",
+          "result": "Passed"
+        },
+        {
+          "name": "EachDownKeepsRequiredHitsFixedAndConsumesOnlyCurrentHits",
+          "result": "Passed"
+        },
+        {
+          "name": "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(0,10)",
+          "result": "Passed"
+        },
+        {
+          "name": "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(1,9)",
+          "result": "Passed"
+        },
+        {
+          "name": "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(4,6)",
+          "result": "Passed"
+        },
+        {
+          "name": "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(100,6)",
+          "result": "Passed"
+        },
+        {
+          "name": "FirstTenPointEpisodeCountsBodyAndHeadSeparately(Body,10)",
+          "result": "Passed"
+        },
+        {
+          "name": "FirstTenPointEpisodeCountsBodyAndHeadSeparately(Head,5)",
+          "result": "Passed"
+        },
+        {
+          "name": "IndependentAttackersAndOverlappingHandsDedupeWithoutDiscardingReverseOrder",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidProfilesAndIdsAreRejected",
+          "result": "Passed"
+        },
+        {
+          "name": "ResetRejectsOldGenerationAndRestartsAtFirstThreshold",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidProjectionDoesNotEmitNonfiniteCameraTargets",
+          "result": "Passed"
+        },
+        {
+          "name": "PerspectiveDistanceIncludesEveryCornerAndDepth(1.777778f)",
+          "result": "Passed"
+        },
+        {
+          "name": "PerspectiveDistanceIncludesEveryCornerAndDepth(1.6f)",
+          "result": "Passed"
+        },
+        {
+          "name": "PerspectiveDistanceIncludesEveryCornerAndDepth(2.333333f)",
+          "result": "Passed"
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(0)",
+          "result": "Passed"
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(45)",
+          "result": "Passed"
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(90)",
+          "result": "Passed"
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(180)",
+          "result": "Passed"
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(270)",
+          "result": "Passed"
+        },
+        {
+          "name": "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(-90,0)",
+          "result": "Passed"
+        },
+        {
+          "name": "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(90,0)",
+          "result": "Passed"
+        },
+        {
+          "name": "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(0,90)",
+          "result": "Passed"
+        },
+        {
+          "name": "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(0,-90)",
+          "result": "Passed"
+        },
+        {
+          "name": "DropkickHasNoDownTimerOrCountAndRealDownSupersedesItOnce",
+          "result": "Passed"
+        },
+        {
+          "name": "ExpiryOnlyPermitsSupportedRecoveryAndNeverUnlocksItself",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidTuningAndClockCannotMutateState",
+          "result": "Passed"
+        },
+        {
+          "name": "LobbyAlwaysUsesBaseAndDoesNotCount",
+          "result": "Passed"
+        },
+        {
+          "name": "MatchAccumulatesOncePerEpisodeAndCapsDuration",
+          "result": "Passed"
+        },
+        {
+          "name": "ResetAndNewEpisodeRejectStaleEventsAndGetUpCompletions",
+          "result": "Passed"
+        },
+        {
+          "name": "UprightReturnRequiresExpiredTimerRealSupportAndSettledCompletion",
+          "result": "Passed"
+        },
+        {
+          "name": "HighLevelNetcodeAndUnityOnlineServices_AreAbsent",
+          "result": "Passed"
+        },
+        {
+          "name": "OnlyTransportModule_ReferencesTheSelectedPackageAssembly",
+          "result": "Passed"
+        },
+        {
+          "name": "TransportModule_HasNoAdapterImplementationBeforeNet001",
+          "result": "Passed"
+        },
+        {
+          "name": "TransportPackage_IsLockedAsDirectRegistryDependency",
+          "result": "Passed"
+        },
+        {
+          "name": "Harness_ExecutesTheRuntimeOwnedSimulationKernel",
+          "result": "Passed"
+        },
+        {
+          "name": "SimulationAndHarness_HaveNoPresentationRenderingOrUiDependency",
+          "result": "Passed"
+        },
+        {
+          "name": "ActualDownDuringDropkickAlignment_ClosesTheOldPresentation",
+          "result": "Passed"
+        },
+        {
+          "name": "AirborneUnsettledOrBlockedRecovery_DoesNotStart(False,True)",
+          "result": "Passed"
+        },
+        {
+          "name": "AirborneUnsettledOrBlockedRecovery_DoesNotStart(True,False)",
+          "result": "Passed"
+        },
+        {
+          "name": "AirborneUnsettledOrBlockedRecovery_DoesNotStart(False,False)",
+          "result": "Passed"
+        },
+        {
+          "name": "AlignmentNormalNormalization_MatchesEntryClassification",
+          "result": "Passed"
+        },
+        {
+          "name": "AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation(False)",
+          "result": "Passed"
+        },
+        {
+          "name": "AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation(True)",
+          "result": "Passed"
+        },
+        {
+          "name": "DiagonalFall_UsesTheDominantSupportedSide(35,FaceUp)",
+          "result": "Passed"
+        },
+        {
+          "name": "DiagonalFall_UsesTheDominantSupportedSide(55,RightSide)",
+          "result": "Passed"
+        },
+        {
+          "name": "GroundQueryMayReturnANonUnitNormal",
+          "result": "Passed"
+        },
+        {
+          "name": "InterruptedAlignment_CanReassessWithoutAddingADownEpisode",
+          "result": "Passed"
+        },
+        {
+          "name": "InvalidUnsupportedOrUprightOrientation_IsRejectedWithoutMutation",
+          "result": "Passed"
+        },
+        {
+          "name": "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(-90,70,FaceUp)",
+          "result": "Passed"
+        },
+        {
+          "name": "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(-90,-70,FaceUp)",
+          "result": "Passed"
+        },
+        {
+          "name": "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(90,70,FaceDown)",
+          "result": "Passed"
+        },
+        {
+          "name": "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(90,-70,FaceDown)",
+          "result": "Passed"
+        },
+        {
+          "name": "SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp(False)",
+          "result": "Passed"
+        },
+        {
+          "name": "SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp(True)",
+          "result": "Passed"
+        },
+        {
+          "name": "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(-90,0,FaceUp)",
+          "result": "Passed"
+        },
+        {
+          "name": "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(90,0,FaceDown)",
+          "result": "Passed"
+        },
+        {
+          "name": "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(0,90,LeftSide)",
+          "result": "Passed"
+        },
+        {
+          "name": "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(0,-90,RightSide)",
+          "result": "Passed"
+        },
+        {
+          "name": "ActualDownDuringDropkickRecovery_ReplacesTheRecoveryAndCountsAsDown",
+          "result": "Passed"
+        },
+        {
+          "name": "DownEpisode_UsesSharedGetUpAndIncrementsDownCountOncePerEpisode",
+          "result": "Passed"
+        },
+        {
+          "name": "DropkickRecovery_ReusesGetUpPresentationWithoutCreatingDownEpisode",
+          "result": "Passed"
+        },
+        {
+          "name": "EquivalentCycleSequences_ProduceTheSameFingerprint",
+          "result": "Passed"
+        },
+        {
+          "name": "KernelStep_AdvancesTheReadOnlySnapshot",
+          "result": "Passed"
+        },
+        {
+          "name": "NegativeCycleCount_IsRejectedWithoutMutation",
+          "result": "Passed"
+        },
+        {
+          "name": "RoundReset_ClearsRecoveryAndDownCount",
+          "result": "Passed"
+        },
+        {
+          "name": "ActionPoseReview_IsReadOnlyAndMakesNoAnimationClaim",
+          "result": "Passed"
+        },
+        {
+          "name": "C1B005UnityAssetFolder_HasOnlyFbxAndIdentityPrefabSources",
+          "result": "Passed"
+        },
+        {
+          "name": "FourViewSilhouetteParity_UsesObservedIouAndBoundedBboxGate",
+          "result": "Passed"
+        },
+        {
+          "name": "IdentityPrefab_IsTransformNeutralAndContainsNoGameplayComponents",
+          "result": "Passed"
+        },
+        {
+          "name": "ImportedNeutral_HasExactStaticHierarchyBoundsLandmarksAndScope",
+          "result": "Passed"
+        },
+        {
+          "name": "InspectionAndEightUnityCaptures_ArePresentAndHashBound",
+          "result": "Passed"
+        },
+        {
+          "name": "ModelImporter_UsesTheExactApprovedStaticPreset",
+          "result": "Passed"
+        }
+      ]
+    }
+  ],
+  "fpsReplay": "fps=60, maximumPhysicalDifference=0\nfps=15, maximumPhysicalDifference=0\nfps=144, maximumPhysicalDifference=0\n",
+  "oneHand": "hand=1 rise=0.156572953 support=156.959991\nhand=2 rise=0.121788263 support=156.959991\n",
+  "fourDirections": "FaceUp t=0 grips=0 com=(-0.0404244475, 0.119824573, 0.300093) root=(-9.370962E-07, 0.00300003588, -0.24105607) support=0 hand=(-0.195026442, 0.24493359, -0.2640292) upperError=1.14464867 foreError=0.3647685 goal=(0, 0, 0) gap=0 release=\nFaceUp t=20 grips=0 com=(-0.0404244475, 0.119824573, 0.300093) root=(0.006818601, 0.00299999118, -0.200106755) support=0 hand=(-0.215490773, 0.344658256, 0.122203045) upperError=1.49459231 foreError=5.33643627 goal=(-0.215197384, 0.243083447, 0.3862369) gap=0 release=\nFaceUp t=40 grips=2 com=(-0.0392042063, 0.12234734, 0.304135382) root=(0.00837411, 0.00300003588, -0.126371518) support=156.959991 hand=(-0.2099831, 0.252495, 0.1659672) upperError=0.812764645 foreError=4.476867 goal=(-0.200394541, 0.24778448, 0.3598319) gap=0.003039565 release=\nFaceUp t=60 grips=2 com=(-0.023364123, 0.174218923, 0.285543621) root=(0.006454398, 0.00299997628, -0.07159286) support=156.959991 hand=(-0.212440878, 0.339707255, 0.198950812) upperError=2.303641 foreError=11.6316252 goal=(-0.189693078, 0.452236533, 0.299417317) gap=0.003039565 release=\nFaceUp t=80 grips=2 com=(0.0374262519, 0.268439174, 0.294604838) root=(0.00644048443, 0.003000006, -0.07176717) support=156.959991 hand=(-0.14651148, 0.464575678, 0.280083925) upperError=18.313345 foreError=6.939334 goal=(-0.1578592, 0.705338955, 0.296460241) gap=0.003039565 release=\nFaceUp t=100 grips=2 com=(0.0507006161, 0.382087648, 0.399937481) root=(0.00716985343, 0.00299997628, -0.08014592) support=156.959991 hand=(-0.121312439, 0.585352063, 0.364008248) upperError=13.3278885 foreError=9.024467 goal=(-0.132895812, 0.889727235, 0.364347935) gap=0.01490207 release=\nFaceUp t=120 grips=2 com=(0.03714324, 0.45476222, 0.486360729) root=(0.00714091165, 0.003000006, -0.0799027756) support=156.959991 hand=(-0.131083742, 0.6126214, 0.38548398) upperError=6.565775 foreError=6.62916 goal=(-0.176994041, 0.90252465, 0.437659949) gap=0.01490207 release=\nFaceUp t=140 grips=2 com=(0.0423230752, 0.448138237, 0.481180429) root=(0.00704022264, 0.00299997628, -0.07954101) support=156.959991 hand=(-0.0973714441, 0.634370267, 0.382890284) upperError=5.294308 foreError=4.55298948 goal=(-0.164638668, 0.9029812, 0.4459373) gap=0.01490207 release=\nFaceUp t=160 grips=2 com=(0.04505349, 0.381963074, 0.404806) root=(0.007053001, 0.00299999118, -0.07931612) support=156.959991 hand=(-0.07758166, 0.6281711, 0.378090262) upperError=8.307858 foreError=5.95236 goal=(-0.138586685, 0.9029975, 0.425702929) gap=0.01490207 release=\nFaceUp t=180 grips=2 com=(0.0543206446, 0.323704422, 0.312029481) root=(0.007170261, 0.00299999118, -0.07932643) support=156.959991 hand=(-0.08854382, 0.564100266, 0.3728879) upperError=16.030756 foreError=11.0165224 goal=(-0.134405762, 0.9029979, 0.39398247) gap=0.01490207 release=\nFaceUp t=200 grips=2 com=(0.05032388, 0.3395346, 0.341640443) root=(0.007204473, 0.00299993157, -0.07961738) support=156.959991 hand=(-0.110359207, 0.5724857, 0.383020133) upperError=13.8058748 foreError=10.1177711 goal=(-0.1581751, 0.9029979, 0.395797044) gap=0.01490207 release=\nFaceUp t=220 grips=2 com=(0.04727642, 0.391623855, 0.409579575) root=(0.00720935874, 0.003000021, -0.0794783) support=156.959991 hand=(-0.124746419, 0.6149932, 0.3905295) upperError=7.608628 foreError=7.40072775 goal=(-0.200595379, 0.9029979, 0.4157284) gap=0.01490207 release=\nFaceUp t=240 grips=2 com=(0.0436422266, 0.384576142, 0.4437069) root=(0.00718506938, 0.00299996138, -0.07928988) support=156.959991 hand=(-0.123646967, 0.598666549, 0.395534158) upperError=8.698672 foreError=9.009175 goal=(-0.210487738, 0.9029979, 0.424395055) gap=0.01490207 release=\nFaceUp t=260 grips=2 com=(0.0416714139, 0.373488665, 0.40804714) root=(0.00720833, 0.00299997628, -0.07906632) support=156.959991 hand=(-0.127656609, 0.599408269, 0.391501069) upperError=9.778406 foreError=8.811867 goal=(-0.208041, 0.9029979, 0.4095545) gap=0.01490207 release=\nFaceUp t=280 grips=0 com=(0.0762795061, 0.248299986, 0.598894954) root=(0.009737652, 0.00300003588, -0.020286629) support=0 hand=(-0.17051889, 0.234326333, 0.0334623456) upperError=5.693227 foreError=4.57819653 goal=(-0.200993657, 0.9029979, 0.4092917) gap=0.01490207 release=Release\nFaceUp t=300 grips=0 com=(0.09208323, 0.143630311, 0.686145663) root=(0.00767056644, 0.00299996138, -0.02558832) support=0 hand=(-0.181809068, 0.249729171, 0.0283936076) upperError=2.361692 foreError=1.42982244 goal=(-0.200993657, 0.9029979, 0.4092917) gap=0.01490207 release=Release\nFaceUp t=320 grips=0 com=(0.08872398, 0.12151058, 0.587371647) root=(0.00769438874, 0.00299997628, -0.02558438) support=0 hand=(-0.1870119, 0.245771244, -0.006579554) upperError=0.498892069 foreError=0 goal=(-0.200993657, 0.9029979, 0.4092917) gap=0.01490207 release=Release\nFaceUp t=340 grips=0 com=(0.08739149, 0.119985066, 0.5822676) root=(0.00769093446, 0.00300003588, -0.0255514011) support=0 hand=(-0.185477, 0.243625224, 0.000151305925) upperError=0.37325263 foreError=0 goal=(-0.200993657, 0.9029979, 0.4092917) gap=0.01490207 release=Release\nSUMMARY FaceUp rise=0.34125495 grips=2 support=156.959991 throws=1\nFaceDown t=0 grips=0 com=(-0.04424976, 0.120465577, 0.29927966) root=(-9.183019E-07, 0.003000006, -0.241056323) support=0 hand=(-0.194922641, 0.244918078, -0.265410334) upperError=1.14396465 foreError=0.3647685 goal=(0, 0, 0) gap=0 release=\nFaceDown t=20 grips=0 com=(-0.04424976, 0.120465577, 0.29927966) root=(0.00621393835, 0.00299999118, -0.19996728) support=0 hand=(-0.212804183, 0.3450307, 0.120655067) upperError=1.58753788 foreError=3.409812 goal=(-0.1997025, 0.241667077, 0.387385219) gap=0 release=\nFaceDown t=40 grips=2 com=(-0.04371217, 0.123505846, 0.3012659) root=(0.008619978, 0.00299996138, -0.126507118) support=156.959991 hand=(-0.210359275, 0.254870772, 0.163305014) upperError=0.852251351 foreError=2.4248147 goal=(-0.184456229, 0.249773592, 0.355445832) gap=0.005586017 release=\nFaceDown t=60 grips=2 com=(-0.0307399873, 0.176594883, 0.2825395) root=(0.00332391984, 0.00299999118, -0.07955787) support=156.959991 hand=(-0.204763666, 0.345379651, 0.188674331) upperError=1.80531311 foreError=12.2058134 goal=(-0.1719788, 0.461462557, 0.297752768) gap=0.005586017 release=\nFaceDown t=80 grips=2 com=(0.0246022455, 0.2757967, 0.28589192) root=(0.00328426575, 0.00299999118, -0.0797604) support=156.959991 hand=(-0.149886787, 0.472873449, 0.29116118) upperError=17.5929451 foreError=3.83958483 goal=(-0.152334809, 0.7148232, 0.315704554) gap=0.005586017 release=\nFaceDown t=100 grips=2 com=(0.02950387, 0.36944133, 0.382869571) root=(0.004172851, 0.003000006, -0.08899685) support=156.959991 hand=(-0.133950517, 0.5812778, 0.3562509) upperError=12.9585829 foreError=9.012739 goal=(-0.136957109, 0.888513267, 0.373292685) gap=0.0134016424 release=\nFaceDown t=120 grips=2 com=(0.0116145555, 0.43384248, 0.463937819) root=(0.004130296, 0.00299997628, -0.0887408853) support=156.959991 hand=(-0.142088309, 0.6070704, 0.3722936) upperError=6.79322624 foreError=6.57340336 goal=(-0.172313884, 0.899346, 0.439050674) gap=0.0134016424 release=\nFaceDown t=140 grips=2 com=(0.0109324846, 0.430122524, 0.4587862) root=(0.00404679356, 0.00299999118, -0.0884232) support=156.959991 hand=(-0.116764516, 0.6305047, 0.3689674) upperError=5.53167439 foreError=4.4139967 goal=(-0.158859253, 0.8997325, 0.444682777) gap=0.0134016424 release=\nFaceDown t=160 grips=2 com=(0.0127513483, 0.3705122, 0.391117752) root=(0.00402278872, 0.00300003588, -0.08821191) support=156.959991 hand=(-0.10240598, 0.620829463, 0.3643283) upperError=8.873445 foreError=6.42325 goal=(-0.134717643, 0.8997463, 0.42535907) gap=0.0134016424 release=\nFaceDown t=180 grips=2 com=(0.0235860944, 0.324104637, 0.315498382) root=(0.00414257962, 0.00299997628, -0.0883302242) support=156.959991 hand=(-0.121832654, 0.563018262, 0.353961855) upperError=15.7776327 foreError=10.9253511 goal=(-0.125664026, 0.8997466, 0.393445075) gap=0.0134016424 release=\nFaceDown t=200 grips=2 com=(0.0101028662, 0.342166245, 0.342578918) root=(0.004223957, 0.00299999118, -0.08850983) support=156.959991 hand=(-0.15198487, 0.5725193, 0.359038532) upperError=13.5771275 foreError=9.906037 goal=(-0.145620883, 0.8997466, 0.3961186) gap=0.0134016424 release=\nFaceDown t=220 grips=2 com=(-0.0110116955, 0.378402531, 0.393600047) root=(0.004220081, 0.00299996138, -0.08839747) support=156.959991 hand=(-0.1728236, 0.6078562, 0.3671623) upperError=7.577475 foreError=6.954778 goal=(-0.191074252, 0.8997466, 0.41763103) gap=0.0134016424 release=\nFaceDown t=240 grips=2 com=(-0.0252755638, 0.373086333, 0.41305) root=(0.00416151667, 0.00299996138, -0.08818113) support=156.959991 hand=(-0.175268441, 0.601940632, 0.367073774) upperError=8.24045 foreError=8.077036 goal=(-0.199888468, 0.8997466, 0.429488361) gap=0.0134016424 release=\nFaceDown t=260 grips=2 com=(-0.0268044081, 0.365928829, 0.380867332) root=(0.00415900256, 0.00299997628, -0.08804832) support=156.959991 hand=(-0.1834903, 0.6014403, 0.360520065) upperError=9.389551 foreError=8.004654 goal=(-0.19235222, 0.8997466, 0.412899137) gap=0.0134016424 release=\nFaceDown t=280 grips=0 com=(-0.0481955, 0.233195871, 0.5886274) root=(0.004085732, 0.00299999118, -0.02823417) support=0 hand=(-0.185551137, 0.2353487, 0.0226314217) upperError=7.372629 foreError=1.59589744 goal=(-0.195696145, 0.8997466, 0.4054597) gap=0.0134016424 release=Release\nFaceDown t=300 grips=0 com=(-0.0458111726, 0.130973846, 0.7044098) root=(0.00353783253, 0.003000006, -0.0348519534) support=0 hand=(-0.193462789, 0.2503786, -0.0224594772) upperError=2.068773 foreError=1.37171066 goal=(-0.195696145, 0.8997466, 0.4054597) gap=0.0134016424 release=Release\nFaceDown t=320 grips=0 com=(-0.0412472226, 0.124216393, 0.6634294) root=(0.00356811984, 0.00299997628, -0.0348376259) support=0 hand=(-0.191394478, 0.2462691, -0.0514285453) upperError=0.5747108 foreError=0 goal=(-0.195696145, 0.8997466, 0.4054597) gap=0.0134016424 release=Release\nFaceDown t=340 grips=0 com=(-0.0354662947, 0.1241215, 0.6430637) root=(0.00355669181, 0.00299994648, -0.0348063745) support=0 hand=(-0.190628082, 0.242954612, -0.046109926) upperError=0.347178817 foreError=0 goal=(-0.195696145, 0.8997466, 0.4054597) gap=0.0134016424 release=Release\nSUMMARY FaceDown rise=0.321455359 grips=2 support=156.959991 throws=1\nLeftSide t=0 grips=0 com=(-0.0161904972, 0.12144734, 0.0617336258) root=(-0.0003856014, 0.00299997628, -0.2737365) support=0 hand=(-0.195758834, 0.245052442, -0.2910028) upperError=1.14259541 foreError=0.353877425 goal=(0, 0, 0) gap=0 release=\nLeftSide t=20 grips=1 com=(-0.00391287962, 0.121447049, 0.09339376) root=(-0.00175071857, 0.003000006, -0.232759908) support=14.5333366 hand=(-0.1946916, 0.2809243, -0.0182032138) upperError=5.685382 foreError=11.7791853 goal=(-0.193286821, 0.26176393, 0.200917482) gap=0 release=\nLeftSide t=40 grips=2 com=(-0.000884679, 0.187873, 0.104410574) root=(-0.00161628262, 0.003000006, -0.221432313) support=156.959991 hand=(-0.201241955, 0.3758148, -0.0125588477) upperError=4.792088 foreError=14.9594755 goal=(-0.195157841, 0.480497837, 0.195664629) gap=0.00494422764 release=\nLeftSide t=60 grips=2 com=(-0.00275564333, 0.348826379, 0.145264462) root=(-0.00195755716, 0.00299999118, -0.224505529) support=156.959991 hand=(-0.192680418, 0.586348951, 0.07517835) upperError=19.6006069 foreError=7.22074652 goal=(-0.188889414, 0.734109759, 0.231275365) gap=0.00494422764 release=\nLeftSide t=80 grips=2 com=(-0.008071813, 0.420114338, 0.270660222) root=(-0.0038360795, 0.003000021, -0.2356867) support=156.959991 hand=(-0.1866301, 0.636044145, 0.207439557) upperError=8.2764 foreError=5.26226759 goal=(-0.183090523, 0.9185162, 0.410516441) gap=0.00494422764 release=\nLeftSide t=100 grips=2 com=(-0.00202027266, 0.411595345, 0.3110028) root=(-0.00387400459, 0.003000006, -0.23538363) support=156.959991 hand=(-0.190007225, 0.616445661, 0.2160891) upperError=8.293137 foreError=7.91500425 goal=(-0.19325538, 0.9313143, 0.431322932) gap=0.00494422764 release=\nLeftSide t=120 grips=2 com=(0.00330632622, 0.387358874, 0.274318039) root=(-0.00387581647, 0.00299993157, -0.235135525) support=156.959991 hand=(-0.194667056, 0.6207653, 0.21349515) upperError=9.819113 foreError=8.782211 goal=(-0.20084098, 0.931770861, 0.4140835) gap=0.00494422764 release=\nLeftSide t=140 grips=2 com=(0.00416708738, 0.3683191, 0.188325852) root=(-0.003848395, 0.003000021, -0.235098645) support=156.959991 hand=(-0.189473435, 0.6182045, 0.211121708) upperError=10.3381462 foreError=10.5512581 goal=(-0.186910942, 0.931787133, 0.400391549) gap=0.00494422764 release=\nLeftSide t=160 grips=2 com=(0.00578101445, 0.354563326, 0.187091) root=(-0.00392629951, 0.00299999118, -0.235446423) support=156.959991 hand=(-0.181120664, 0.609957457, 0.211770341) upperError=11.67737 foreError=9.26869 goal=(-0.172222942, 0.93178755, 0.408597648) gap=0.00494422764 release=\nLeftSide t=180 grips=2 com=(0.009481524, 0.382657737, 0.2145296) root=(-0.003944605, 0.00299993157, -0.235456914) support=156.959991 hand=(-0.165950418, 0.6383089, 0.21041581) upperError=9.6471405 foreError=5.37342834 goal=(-0.168785825, 0.93178755, 0.411221921) gap=0.00494422764 release=\nLeftSide t=200 grips=2 com=(0.0169604272, 0.376520783, 0.23426716) root=(-0.003943704, 0.00299994648, -0.2353546) support=156.959991 hand=(-0.1663567, 0.6269603, 0.21267125) upperError=9.846686 foreError=7.53206444 goal=(-0.163898, 0.93178755, 0.413534254) gap=0.00494422764 release=\nLeftSide t=220 grips=2 com=(0.0243281238, 0.378642678, 0.223234683) root=(-0.003940917, 0.00299999118, -0.235211283) support=156.959991 hand=(-0.161137462, 0.6298556, 0.212997526) upperError=9.703995 foreError=7.02770424 goal=(-0.160855219, 0.93178755, 0.411463559) gap=0.00494422764 release=\nLeftSide t=240 grips=2 com=(0.0294558257, 0.373095363, 0.19863525) root=(-0.003932727, 0.00299997628, -0.235164508) support=156.959991 hand=(-0.154969513, 0.628749, 0.21366) upperError=9.996993 foreError=7.326914 goal=(-0.157798812, 0.93178755, 0.407435238) gap=0.00494422764 release=\nLeftSide t=260 grips=2 com=(0.0326831229, 0.367659837, 0.196337372) root=(-0.003949368, 0.003000021, -0.2351843) support=156.959991 hand=(-0.14557974, 0.627920032, 0.215354964) upperError=10.0240011 foreError=7.416057 goal=(-0.150841147, 0.93178755, 0.410393357) gap=0.00494422764 release=\nLeftSide t=280 grips=0 com=(0.0209038164, 0.26029253, 0.46410054) root=(0.003544358, 0.00299993157, -0.172726378) support=0 hand=(-0.181505665, 0.2573806, -0.0577495) upperError=11.9439135 foreError=1.64706481 goal=(-0.152995035, 0.93178755, 0.408175856) gap=0.00494422764 release=Release\nLeftSide t=300 grips=0 com=(-0.0133644324, 0.133437827, 0.6507894) root=(0.002138343, 0.00299999118, -0.179009661) support=0 hand=(-0.188962743, 0.24318254, -0.15028578) upperError=2.14383841 foreError=1.40552986 goal=(-0.152995035, 0.93178755, 0.408175856) gap=0.00494422764 release=Release\nLeftSide t=320 grips=0 com=(-0.0120985825, 0.124242425, 0.601195) root=(0.00212768442, 0.00299997628, -0.1789813) support=0 hand=(-0.194007859, 0.246293157, -0.187698662) upperError=0.456282467 foreError=0 goal=(-0.152995035, 0.93178755, 0.408175856) gap=0.00494422764 release=Release\nLeftSide t=340 grips=0 com=(-0.008834915, 0.123917125, 0.570886) root=(0.00213865517, 0.00299996138, -0.178955063) support=0 hand=(-0.193615139, 0.245681763, -0.181023732) upperError=0.47312513 foreError=0 goal=(-0.152995035, 0.93178755, 0.408175856) gap=0.00494422764 release=Release\nSUMMARY LeftSide rise=0.299394965 grips=2 support=156.959991 throws=1\nRightSide t=0 grips=0 com=(-0.0431576446, 0.121354081, 0.5622097) root=(-8.178834E-07, 0.003000021, -0.24105522) support=0 hand=(-0.195261046, 0.24499014, -0.260007143) upperError=1.150106 foreError=0.366907924 goal=(0, 0, 0) gap=0 release=\nRightSide t=20 grips=0 com=(-0.0431410074, 0.121325806, 0.560093045) root=(0.005053287, 0.00299994648, -0.207480818) support=0 hand=(-0.196973458, 0.40624696, 0.1786851) upperError=2.81612039 foreError=1.63466263 goal=(-0.18158491, 0.228956819, 0.5978975) gap=0 release=\nRightSide t=40 grips=0 com=(-0.0432694778, 0.121309258, 0.5583011) root=(0.00524551328, 0.003000006, -0.141750336) support=0 hand=(-0.196356729, 0.2936207, 0.253978074) upperError=3.56886983 foreError=3.17687726 goal=(-0.181458175, 0.232416973, 0.5801258) gap=0 release=\nRightSide t=60 grips=0 com=(-0.043397706, 0.121306457, 0.557725549) root=(0.00414928049, 0.003000021, -0.0313987471) support=0 hand=(-0.191350952, 0.2660795, 0.334127963) upperError=1.90324354 foreError=4.04916859 goal=(-0.1993625, 0.232510582, 0.469064862) gap=0 release=\nRightSide t=80 grips=1 com=(-0.04354289, 0.1213647, 0.558224) root=(0.00262148888, 0.00299994648, 0.0841015652) support=29.0666733 hand=(-0.192846283, 0.2502994, 0.395269245) upperError=1.58803082 foreError=5.283946 goal=(-0.208884746, 0.255987853, 0.368592262) gap=0 release=\nRightSide t=100 grips=2 com=(-0.03334051, 0.146911, 0.5303429) root=(0.00351996114, 0.00299996138, 0.149127513) support=156.959991 hand=(-0.199178919, 0.340474874, 0.408909023) upperError=1.25115132 foreError=7.89211035 goal=(-0.191196784, 0.468044728, 0.27578032) gap=0.000295508653 release=\nRightSide t=120 grips=2 com=(-0.0246817339, 0.240634158, 0.4922788) root=(0.00435249228, 0.00299997628, 0.130535647) support=156.959991 hand=(-0.209037, 0.4822654, 0.451201022) upperError=20.4509 foreError=6.17689466 goal=(-0.184607059, 0.7214184, 0.260175884) gap=0.000576324761 release=\nRightSide t=140 grips=2 com=(-0.0415253267, 0.360059321, 0.5689403) root=(0.00439806236, 0.00299999118, 0.130579889) support=156.959991 hand=(-0.22522451, 0.6133532, 0.5547732) upperError=8.821642 foreError=7.484287 goal=(-0.186926261, 0.895109, 0.395437181) gap=0.00307201222 release=\nRightSide t=160 grips=2 com=(-0.0623039119, 0.4211774, 0.6239284) root=(0.004369528, 0.003000006, 0.130640611) support=156.959991 hand=(-0.217920512, 0.6581582, 0.5458236) upperError=6.82014942 foreError=5.345672 goal=(-0.183523223, 0.9059417, 0.4152756) gap=0.00307201222 release=\nRightSide t=180 grips=2 com=(-0.0669484, 0.385760725, 0.6556282) root=(0.004312819, 0.00299997628, 0.130814835) support=156.959991 hand=(-0.22058633, 0.609038, 0.557666659) upperError=8.273371 foreError=7.498297 goal=(-0.1783731, 0.9063282, 0.432164848) gap=0.00307201222 release=\nRightSide t=200 grips=2 com=(-0.054671146, 0.353632271, 0.6130614) root=(0.004289989, 0.003000021, 0.131065026) support=156.959991 hand=(-0.232900426, 0.5923058, 0.5503793) upperError=11.3650274 foreError=9.24058151 goal=(-0.184930608, 0.906342, 0.414998472) gap=0.00307201222 release=\nRightSide t=220 grips=2 com=(-0.0487174466, 0.3499597, 0.539473653) root=(0.00440340862, 0.003000021, 0.130966753) support=156.959991 hand=(-0.239037484, 0.588936746, 0.542978764) upperError=12.0464125 foreError=9.761482 goal=(-0.172503173, 0.9063423, 0.397106141) gap=0.00307201222 release=\nRightSide t=240 grips=2 com=(-0.06978293, 0.350211859, 0.5481997) root=(0.00442243135, 0.00299999118, 0.1308117) support=156.959991 hand=(-0.249863073, 0.601513743, 0.5433919) upperError=10.6398058 foreError=8.693717 goal=(-0.187878221, 0.9063423, 0.405245274) gap=0.00307201222 release=\nRightSide t=260 grips=2 com=(-0.08731781, 0.374480516, 0.5680448) root=(0.00438659359, 0.00299997628, 0.130809441) support=156.959991 hand=(-0.2543735, 0.6285812, 0.5413129) upperError=7.36029625 foreError=7.29423761 goal=(-0.203139037, 0.9063423, 0.412334919) gap=0.00307201222 release=\nRightSide t=280 grips=0 com=(-0.125582576, 0.2630176, 0.840280056) root=(-0.000579027052, 0.003000006, 0.18976748) support=0 hand=(-0.1972794, 0.23863, 0.201666281) upperError=6.82278967 foreError=2.82777047 goal=(-0.196554646, 0.9063423, 0.415174216) gap=0.00307201222 release=Release\nRightSide t=300 grips=0 com=(-0.182916164, 0.132575884, 1.01055264) root=(-0.0003231519, 0.00299996138, 0.184445962) support=0 hand=(-0.197391242, 0.2471712, 0.177703321) upperError=2.462929 foreError=1.50710845 goal=(-0.196554646, 0.9063423, 0.415174216) gap=0.00307201222 release=Release\nRightSide t=320 grips=0 com=(-0.161674932, 0.123882629, 0.9687101) root=(-0.00031430574, 0.00299999118, 0.184458151) support=0 hand=(-0.190867916, 0.246379763, 0.137928739) upperError=0.486179322 foreError=0 goal=(-0.196554646, 0.9063423, 0.415174216) gap=0.00307201222 release=Release\nRightSide t=340 grips=0 com=(-0.1530491, 0.123695172, 0.9468462) root=(-0.0003194546, 0.00300003588, 0.184488773) support=0 hand=(-0.191710576, 0.244339064, 0.14643544) upperError=0.411168456 foreError=0 goal=(-0.196554646, 0.9063423, 0.415174216) gap=0.00307201222 release=Release\nSUMMARY RightSide rise=0.299929947 grips=2 support=156.959991 throws=1\n",
+  "videoCases": [
+    {
+      "name": "FaceUp",
+      "maximumSkin": 30.382125854492188,
+      "maximumTargetSkin": 15.919492721557617,
+      "maximumRise": 0.34125494956970215,
+      "maxAllBodyColliderClearanceWhileHeldM": 0.2374904453754425
+    },
+    {
+      "name": "FaceDown",
+      "maximumSkin": 30.205846786499023,
+      "maximumTargetSkin": 14.636302947998047,
+      "maximumRise": 0.32145535945892334,
+      "maxAllBodyColliderClearanceWhileHeldM": 0.20491260290145874
+    },
+    {
+      "name": "LeftSide",
+      "maximumSkin": 21.070383071899414,
+      "maximumTargetSkin": 15.425954818725586,
+      "maximumRise": 0.29939496517181396,
+      "maxAllBodyColliderClearanceWhileHeldM": 0.1638745367527008
+    },
+    {
+      "name": "RightSide",
+      "maximumSkin": 33.89875411987305,
+      "maximumTargetSkin": 15.421640396118164,
+      "maximumRise": 0.2999299466609955,
+      "maxAllBodyColliderClearanceWhileHeldM": 0.15943104028701782
+    },
+    {
+      "name": "LeftHand",
+      "maximumSkin": 28.3644962310791,
+      "maximumTargetSkin": 16.842578887939453,
+      "maximumRise": 0.23738719522953033,
+      "maxAllBodyColliderClearanceWhileHeldM": 2.9802322387695312e-08
+    },
+    {
+      "name": "RightHand",
+      "maximumSkin": 23.561792373657227,
+      "maximumTargetSkin": 15.623774528503418,
+      "maximumRise": 0.14857648313045502,
+      "maxAllBodyColliderClearanceWhileHeldM": 5.13419508934021e-05
+    }
+  ],
+  "media": [
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/limp-lift-20260917/Media/LimpLift_OneAndTwoHands_60.mp4",
+      "fps": 60,
+      "decodedFrames": 360,
+      "seconds": 6.0,
+      "decodeExit": 0,
+      "sha256": "b3f37b8f24486a8ccc812a20637ea17068e9f99579cea2de0f55f6d4f058d3ea"
+    },
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/limp-lift-20260917/Media/LimpLift_FourDirections_60.mp4",
+      "fps": 60,
+      "decodedFrames": 360,
+      "seconds": 6.0,
+      "decodeExit": 0,
+      "sha256": "9363b3b22f0b98c54364e064ca5cd27544fa69cc772b01df4d8ec025f0bb3513"
+    }
+  ],
+  "sources": [
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.Lift.cs",
+      "sha256": "08ce4268387e12e5ce4f8267738ac6e10fbfa5896a33ab232d2195f2ddbffc56",
+      "snapshot": ".codex_tmp/limp-lift-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.Lift.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.cs",
+      "sha256": "c339d74a9128e2993d1446aa216406803295a036dd709e84766f3087c41053f0",
+      "snapshot": ".codex_tmp/limp-lift-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs",
+      "sha256": "2e0a76724f5e2c66dc5e97b57aa9dc514f22ebb6bb9b7474eb411dd27dc6d092",
+      "snapshot": ".codex_tmp/limp-lift-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/LimpGrabTargetReview.cs",
+      "sha256": "18a604a111278504162bab1945f1cea54e7886a6e704ec3c4bbb3ee1b1ecacfe",
+      "snapshot": ".codex_tmp/limp-lift-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/LimpGrabTargetReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+      "sha256": "cd3ca89e85dabc858a7cd42c6441fe2d6ce2508884a1675443376c25682e9e21",
+      "snapshot": ".codex_tmp/limp-lift-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LimpLiftCandidateTests.Flow.cs",
+      "sha256": "ba169104c5410d2f9f84cec2b8ad242082e0205ec7f32dc4aa5055c084a54307",
+      "snapshot": ".codex_tmp/limp-lift-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LimpLiftCandidateTests.Flow.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LimpLiftCandidateTests.cs",
+      "sha256": "2365af3acf43bb60441166499adc0fa2f218e55b03de4cc9b4a2550a8d58627c",
+      "snapshot": ".codex_tmp/limp-lift-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LimpLiftCandidateTests.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LimpLiftCandidateTests.Capture.cs",
+      "sha256": "edcd704c4e04ed01343ffa0a05d389475d4bdacc437c50a881e97a97e3e0b057",
+      "snapshot": ".codex_tmp/limp-lift-20260917/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LimpLiftCandidateTests.Capture.cs"
+    }
+  ],
+  "originalAssets": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31",
+    "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60",
+    ".codex_tmp/punch-unity-20260906/ApprovedPunch.json": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac",
+    "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a",
+    "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/candidate-r07/R20_LatWeightCandidate.blend": "8b6a2e5b41f0a6bfc10957d2d3d12a604f16562bd14512b440831723b63abad7"
+  },
+  "knownLimits": [
+    "Hand/skin gap remains. The previous 36.25mm measurement belongs to the earlier grab/drag sample, not a bound for this new lifting trajectory. No local skin-following contact pads added.",
+    "Permanent Down fixture only: no live damage-driven Down/GetUp handover, hazard/OOB integration or multiplayer in this new lab.",
+    "Grounded support uses the lab flat-floor root test; new lab has no jump input. Four airborne velocities disable support; actual held-jump penalty regression is the existing main prototype.",
+    "One-hand targets rotate/droop and can brush the ground; limb and self-contact/collider correspondence are not certified by the surface angle check.",
+    "Lift feel approved on 2026-09-17; rollout to default scenes remains pending."
+  ],
+  "builds": 0,
+  "commits": 0,
+  "pushes": 0,
+  "visualApproval": {
+    "date": "2026-09-17",
+    "userMessage": "이정도면 된것같다 다음단계 진행하자",
+    "scope": "Lift feel accepted; proceed with next isolated skin-contact candidate. No full integration gate promoted."
+  }
+}

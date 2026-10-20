@@ -1,0 +1,140 @@
+{
+  "status": "CAPTURE_FIXED_PREVIOUS_LIMB_VIDEOS_WITHDRAWN",
+  "date": "2026-09-06",
+  "cause": "Repeated bone updates and Camera.Render calls inside one Unity player-loop frame reused stale rendered skin. Background movement made whole-frame uniqueness checks insufficient.",
+  "parity": {
+    "status": "PASS",
+    "firstFrame": 14,
+    "sameFrame": 14,
+    "refreshedFrame": 15,
+    "sameFrameMotion": 0.0,
+    "expectedPoseMotion": 0.0624372698366642,
+    "sameFrameMismatch": 0.0624372698366642,
+    "refreshedMismatch": 0.0
+  },
+  "parityEvidence": {
+    "path": ".codex_tmp/render-fix-20260906/Parity/SkinningCaptureParity.json",
+    "sha256": "e69b002e0d2fd29cd26e4d1417de79e3b11d5e126a004be82bb64d864d1f4c82"
+  },
+  "parityTest": {
+    "path": ".codex_tmp/render-fix-20260906/Parity-r04.xml",
+    "sha256": "d60a7045fe7464ad5d918beb126847b49f729eec104c80643b4b6b3d3854c52b"
+  },
+  "playMode": {
+    "passed": 17,
+    "failed": 0,
+    "evidence": {
+      "path": ".codex_tmp/render-fix-20260906/AllPlayMode-r03.xml",
+      "sha256": "1e36c88eaa3f14c4bb99b74e844b6d65c3aaf8afc52b49f81aec924c25615603"
+    }
+  },
+  "editMode": {
+    "passed": 85,
+    "failed": 0,
+    "evidence": {
+      "path": ".codex_tmp/render-fix-20260906/AllEditMode-r01.xml",
+      "sha256": "c7cfe0fd0a1fbdd567222614727d2175ce4b100c28ea552ae128af89a266c35a"
+    }
+  },
+  "sources": [
+    {
+      "current": {
+        "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/FootContactComparisonTests.cs",
+        "sha256": "bd46ad96a7c188ae9fec445826ec4377d60ec205c23bc66ca6309deec002900d"
+      },
+      "snapshot": {
+        "path": ".codex_tmp/render-fix-20260906/SourceSnapshot/FootContactComparisonTests.cs",
+        "sha256": "bd46ad96a7c188ae9fec445826ec4377d60ec205c23bc66ca6309deec002900d"
+      }
+    },
+    {
+      "current": {
+        "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/JumpTransitionTests.cs",
+        "sha256": "81b3da9f6e10eaa796c17a761926ed16ccdb936ee2a0551f0a90853fd36a645f"
+      },
+      "snapshot": {
+        "path": ".codex_tmp/render-fix-20260906/SourceSnapshot/JumpTransitionTests.cs",
+        "sha256": "81b3da9f6e10eaa796c17a761926ed16ccdb936ee2a0551f0a90853fd36a645f"
+      }
+    },
+    {
+      "current": {
+        "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicsJumpReviewCapture.cs",
+        "sha256": "7e2aef3759819aaae3d6b351b45314926277cdf7f5d65cdfa158a98ddca52bb8"
+      },
+      "snapshot": {
+        "path": ".codex_tmp/render-fix-20260906/SourceSnapshot/PhysicsJumpReviewCapture.cs",
+        "sha256": "7e2aef3759819aaae3d6b351b45314926277cdf7f5d65cdfa158a98ddca52bb8"
+      }
+    },
+    {
+      "current": {
+        "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/SkinningCaptureTests.cs",
+        "sha256": "8003281f586d733067fcc0daeecc1d3d95a3d06abc23d677bb4f0e07e17f5ef9"
+      },
+      "snapshot": {
+        "path": ".codex_tmp/render-fix-20260906/SourceSnapshot/SkinningCaptureTests.cs",
+        "sha256": "8003281f586d733067fcc0daeecc1d3d95a3d06abc23d677bb4f0e07e17f5ef9"
+      }
+    }
+  ],
+  "fixedGif": {
+    "path": ".codex_tmp/render-fix-20260906/Media/FixedCorrected.gif",
+    "sha256": "7b9626582641fb9ae2ce192d16b79d4bfa2de1f2493197748ab20607bcda7f3c"
+  },
+  "fixedVideo": {
+    "path": ".codex_tmp/render-fix-20260906/Media/FixedCorrected.mp4",
+    "sha256": "fffd4a7f3b03aa675f0880a9aa67bebfd12cca7617baad491d0081c9782774a6"
+  },
+  "fixedVideoMetadata": {
+    "path": ".codex_tmp/render-fix-20260906/Media/FixedCorrected.metadata.json",
+    "sha256": "8134b0a6b6c15f16453f65fe9232c98d8b18f00165eaf03f6e088cbda98eca7d"
+  },
+  "comparisonGif": {
+    "path": ".codex_tmp/render-fix-20260906/Media/ComparisonCorrected.gif",
+    "sha256": "fefc7df61237dab495903d6aa7cf82be220ad90e7d38e352b78323f30142548e"
+  },
+  "comparisonVideo": {
+    "path": ".codex_tmp/render-fix-20260906/Media/ComparisonCorrected.mp4",
+    "sha256": "4a6b5bd4d3f0830484e32609b96d581cd9192b275ed0e3f5b74990b7d6fae114"
+  },
+  "comparisonVideoMetadata": {
+    "path": ".codex_tmp/render-fix-20260906/Media/ComparisonCorrected.metadata.json",
+    "sha256": "1cc137018cb10b10ad4a12d3f6ab893389883c056b648b39d09d0d57e509e782"
+  },
+  "transitionGif": {
+    "path": ".codex_tmp/render-fix-20260906/Transitions/Review-20260905-153900/EightDirectionTransitions.gif",
+    "sha256": "3e0f6d8883d650f19ce958fd326248a38a13ed040b165a0b712ea9750794712b"
+  },
+  "airTransitionGif": {
+    "path": ".codex_tmp/render-fix-20260906/Transitions/Review-20260905-153900/AirAndSprintTransitions.gif",
+    "sha256": "9781efc60bcea144ca06b86517072c16fdcac2d4f90204fc254672da707c70fc"
+  },
+  "footNumbers": {
+    "path": ".codex_tmp/render-fix-20260906/FootStyles/Compare-20260905-153847/FootContactComparison.json",
+    "sha256": "75416c945e40b720c72562762dd1e07dbddd71a9cabb6799b50281482a0e8133"
+  },
+  "transitionNumbers": {
+    "path": ".codex_tmp/render-fix-20260906/Transitions/Review-20260905-153900/TransitionReview.json",
+    "sha256": "1937d48479a3f806aba0803df9228e0230ec0b441718498ee92fd366204e12d5"
+  },
+  "mediaPackager": {
+    "path": ".codex_tmp/render-fix-20260906/package_media.py",
+    "sha256": "c8acd70f9efa4ad5950a477f2de3ef5d93891210d35d1ebc11cc2c710f45f7f2"
+  },
+  "transitionPackager": {
+    "path": ".codex_tmp/render-fix-20260906/package_transitions.py",
+    "sha256": "a6e254f7789d35b602c4f6e73eac880019555ccb76ad4457d3db96a2e487edd1"
+  },
+  "withdrawnVisualReports": [
+    "artifacts/reports/R20_UNITY_PHYSICS_JUMP_REVIEW_20260905.md",
+    "artifacts/reports/R20_JUMP_TRANSITION_REVIEW_20260905.md",
+    "artifacts/reports/R20_FOOT_CONTACT_STYLE_REVIEW_20260905.md"
+  ],
+  "gameplayOrModelSettingsChanged": false,
+  "styleChoiceApplied": false,
+  "limitations": [
+    "This fixes Unity review capture, not unimplemented production gameplay or a final locomotion style choice.",
+    "Old CPU measurements are distinct from invalid prior limb-motion video evidence."
+  ]
+}

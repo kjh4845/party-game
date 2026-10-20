@@ -1,0 +1,106 @@
+{
+  "complete": true,
+  "result": "PASS",
+  "candidatePath": ".codex_tmp/jump-landing-20260905/review-r03/R20_JumpLandingAnimationCandidate_r01.blend",
+  "candidateSha256": "4af16ee803d5e71dc26e1095ead31e251e1e554d3985bc8b170de9949c7fee46",
+  "sourcePath": ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend",
+  "sourceSha256": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+  "generatorSha256": "31993dcdc3748482621318f922c987d632337374f740c2e2708571b5f3c0ae7c",
+  "actions": {
+    "Takeoff": "REVIEW_Jump_Takeoff_r01",
+    "Rise": "REVIEW_Jump_Rise_r01",
+    "Apex": "REVIEW_Jump_Apex_r01",
+    "Fall": "REVIEW_Jump_Fall_r01",
+    "Landing": "REVIEW_Jump_Landing_r01"
+  },
+  "phases": [
+    [
+      "Takeoff",
+      0,
+      10
+    ],
+    [
+      "Rise",
+      10,
+      18
+    ],
+    [
+      "Apex",
+      18,
+      22
+    ],
+    [
+      "Fall",
+      22,
+      30
+    ],
+    [
+      "Landing",
+      30,
+      44
+    ]
+  ],
+  "fps": 30,
+  "durationSeconds": 1.4666666666666666,
+  "sampleCount": 93,
+  "renderCount": 90,
+  "maximumMirrorDeltaMeters": 2.6987150723151616e-07,
+  "phaseSeamsMeters": {
+    "Takeoff->Rise": 0.0,
+    "Rise->Apex": 0.0,
+    "Apex->Fall": 0.0,
+    "Fall->Landing": 0.0
+  },
+  "idleClosureMeters": 0.0,
+  "contactMaximumGroundDeltaMeters": 6.984919309616089e-09,
+  "footAnchorMaximumXYDeltaMeters": 1.446641075651694e-07,
+  "preservation": {
+    "geometryWeightsSkeletonUnchanged": true,
+    "approvedPunchCurvesUnchanged": true,
+    "sourceFilesUnchanged": true,
+    "bones": 22,
+    "helperDrivers": 8
+  },
+  "gameplayRootMotion": false,
+  "userVisualApproval": false,
+  "limitations": [
+    "Flat-floor in-place animation prototype; no Unity physics, terrain grounding or game state integration.",
+    "Shared straight-arm Grip L/R/LR tested on three jump poses; continuous layer transitions and weapon physics remain untested.",
+    "Moving jumps, slopes, varying fall height, interruptions and gameplay phase selection remain to be implemented.",
+    "Illustrative preview arc and timing do not set gameplay impulse or input latency."
+  ],
+  "date": "2026-09-05",
+  "status": "TECHNICAL_PASS_VISUAL_REVIEW",
+  "surfaceSampleCount": 201,
+  "supplementalSampleCount": 108,
+  "denseGroundSampleCount": 384,
+  "denseGroundMaximumDeltaMeters": 2.5451648980379105e-05,
+  "rawEvidence": {
+    "path": ".codex_tmp/jump-landing-20260905/review-r03/JumpLandingReview.json",
+    "sha256": "2096951c61265ebad02ef17c8484ff50b29453cf40dadef3c135cdf1a41be93b"
+  },
+  "supplementalEvidence": {
+    "path": ".codex_tmp/jump-landing-20260905/review-r03/InterpolationGripReview.json",
+    "sha256": "6715ad0e960394778ae6ed0f9f2446dad091f50d941e3e36b2f045f75c7150fb"
+  },
+  "supplementalScript": {
+    "path": ".codex_tmp/jump-landing-20260905/verify_interpolation_and_grip_r03.py",
+    "sha256": "4040904320583d0d3dd0e85395fe9b7f5430d57e410b15e67edd8a25d392c125"
+  },
+  "preview": {
+    "path": ".codex_tmp/jump-landing-20260905/review-r03/JumpLandingPreview.gif",
+    "sha256": "43fd38fec3ba884e79d28498136ccea510d15b9b9bf87c19bd1fa29bd53ef3e0"
+  },
+  "contactSheet": {
+    "path": ".codex_tmp/jump-landing-20260905/review-r03/JumpLandingContactSheet.png",
+    "sha256": "947c734aefebdf73641363306ff4a414bd9c8841be47a19d44d454fa15ed23e7"
+  },
+  "previewPackagingScript": {
+    "path": ".codex_tmp/jump-landing-20260905/package_preview.py",
+    "sha256": "9b74957248c79af07cb1da2e39fa6a76074a0eb8e973207fd33c3e96effd89d1"
+  },
+  "lowerWeightApproval": {
+    "path": "artifacts/reports/R20_LOWER_WEIGHT_VISUAL_APPROVAL_20260905.json",
+    "sha256": "49bb0e31f1d998bab11e635fb21ff20cef140a3bb10c9e9012ddf41cbb6d2240"
+  }
+}

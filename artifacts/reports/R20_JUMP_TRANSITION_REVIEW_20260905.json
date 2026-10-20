@@ -1,0 +1,438 @@
+{
+  "status": "LOCAL_TRANSITIONS_VERIFIED",
+  "date": "2026-09-05",
+  "userRequest": "진행해 진행하다가 애매한게 있거나 내 승인이 필요한 부분이 생기면 바로 물어봐 그리고 점프후 모션 전환에 어색함이 없었으면 좋겠어 어느 방향으로 점프를 하던간에",
+  "caseCount": 18,
+  "physicsStepCount": 3780,
+  "physicsHz": 60,
+  "presentationFps": [
+    30,
+    60,
+    120
+  ],
+  "rawEvidence": {
+    "path": ".codex_tmp/jump-transitions-20260905/Review-20260905-123535/TransitionReview.json",
+    "sha256": "7c2e0397bedc722490ba6262efa40269ab6f11b8189bf61fda692b85ae459ab7"
+  },
+  "cases": [
+    {
+      "name": "Forward",
+      "presentationFps": 60,
+      "jumps": 1,
+      "maximumJointDelta": 12.814454078674316,
+      "maximumBoundaryDelta": 9.400476455688477,
+      "maximumYawDelta": 0.0,
+      "maximumFootError": 2.4487940208928194e-07,
+      "maximumGroundPenetration": 3.5390257835388184e-08,
+      "finalGait": 4.522918061411474e-06,
+      "finalSpeed": 0.0,
+      "maximumPhaseAdvance": 0.018825650215148926,
+      "finalPoseDelta": 0.0,
+      "maximumReachCorrection": 0.0,
+      "occupiedArmsPreserved": true
+    },
+    {
+      "name": "ForwardRight",
+      "presentationFps": 60,
+      "jumps": 1,
+      "maximumJointDelta": 12.8148832321167,
+      "maximumBoundaryDelta": 9.401143074035645,
+      "maximumYawDelta": 2.9446611404418945,
+      "maximumFootError": 1.4680668414257525e-07,
+      "maximumGroundPenetration": 2.873130142688751e-07,
+      "finalGait": 4.522918970906176e-06,
+      "finalSpeed": 0.0,
+      "maximumPhaseAdvance": 0.018825650215148926,
+      "finalPoseDelta": 0.0,
+      "maximumReachCorrection": 0.0,
+      "occupiedArmsPreserved": true
+    },
+    {
+      "name": "Right",
+      "presentationFps": 60,
+      "jumps": 1,
+      "maximumJointDelta": 12.815740585327148,
+      "maximumBoundaryDelta": 9.402059555053711,
+      "maximumYawDelta": 5.859952926635742,
+      "maximumFootError": 2.4499271944478096e-07,
+      "maximumGroundPenetration": 2.621673047542572e-07,
+      "finalGait": 4.522918061411474e-06,
+      "finalSpeed": 7.152557373046875e-07,
+      "maximumPhaseAdvance": 0.018825650215148926,
+      "finalPoseDelta": 0.0,
+      "maximumReachCorrection": 0.0,
+      "occupiedArmsPreserved": true
+    },
+    {
+      "name": "BackRight",
+      "presentationFps": 60,
+      "jumps": 1,
+      "maximumJointDelta": 12.816903114318848,
+      "maximumBoundaryDelta": 9.403226852416992,
+      "maximumYawDelta": 5.993132591247559,
+      "maximumFootError": 1.4680668414257525e-07,
+      "maximumGroundPenetration": 2.6775524020195007e-07,
+      "finalGait": 4.522917606664123e-06,
+      "finalSpeed": 7.152557373046875e-07,
+      "maximumPhaseAdvance": 0.018825650215148926,
+      "finalPoseDelta": 0.0,
+      "maximumReachCorrection": 0.0,
+      "occupiedArmsPreserved": true
+    },
+    {
+      "name": "Back",
+      "presentationFps": 60,
+      "jumps": 1,
+      "maximumJointDelta": 12.808944702148438,
+      "maximumBoundaryDelta": 9.394222259521484,
+      "maximumYawDelta": 5.993132591247559,
+      "maximumFootError": 2.4202921622418216e-07,
+      "maximumGroundPenetration": 1.8347054719924927e-07,
+      "finalGait": 4.522918061411474e-06,
+      "finalSpeed": 0.0,
+      "maximumPhaseAdvance": 0.018825650215148926,
+      "finalPoseDelta": 0.0,
+      "maximumReachCorrection": 0.0,
+      "occupiedArmsPreserved": true
+    },
+    {
+      "name": "BackLeft",
+      "presentationFps": 60,
+      "jumps": 1,
+      "maximumJointDelta": 12.811699867248535,
+      "maximumBoundaryDelta": 9.39747428894043,
+      "maximumYawDelta": 5.993001937866211,
+      "maximumFootError": 1.7760690695922676e-07,
+      "maximumGroundPenetration": 2.3795291781425476e-07,
+      "finalGait": 4.522917606664123e-06,
+      "finalSpeed": 7.152557373046875e-07,
+      "maximumPhaseAdvance": 0.018825650215148926,
+      "finalPoseDelta": 0.0,
+      "maximumReachCorrection": 0.0,
+      "occupiedArmsPreserved": true
+    },
+    {
+      "name": "Left",
+      "presentationFps": 60,
+      "jumps": 1,
+      "maximumJointDelta": 12.813047409057617,
+      "maximumBoundaryDelta": 9.398892402648926,
+      "maximumYawDelta": 5.859952926635742,
+      "maximumFootError": 2.4202921622418216e-07,
+      "maximumGroundPenetration": 2.48197466135025e-07,
+      "finalGait": 4.522918061411474e-06,
+      "finalSpeed": 7.152557373046875e-07,
+      "maximumPhaseAdvance": 0.018825650215148926,
+      "finalPoseDelta": 0.0,
+      "maximumReachCorrection": 0.0,
+      "occupiedArmsPreserved": true
+    },
+    {
+      "name": "ForwardLeft",
+      "presentationFps": 60,
+      "jumps": 1,
+      "maximumJointDelta": 12.813719749450684,
+      "maximumBoundaryDelta": 9.399309158325195,
+      "maximumYawDelta": 2.9446611404418945,
+      "maximumFootError": 1.8284308112015424e-07,
+      "maximumGroundPenetration": 1.5506520867347717e-07,
+      "finalGait": 4.522917606664123e-06,
+      "finalSpeed": 0.0,
+      "maximumPhaseAdvance": 0.018825650215148926,
+      "finalPoseDelta": 0.0,
+      "maximumReachCorrection": 0.0,
+      "occupiedArmsPreserved": true
+    },
+    {
+      "name": "AirReverse",
+      "presentationFps": 60,
+      "jumps": 1,
+      "maximumJointDelta": 12.814454078674316,
+      "maximumBoundaryDelta": 6.915027141571045,
+      "maximumYawDelta": 5.993132591247559,
+      "maximumFootError": 8.60050022311043e-08,
+      "maximumGroundPenetration": 2.0582228899002075e-07,
+      "finalGait": 4.522900326264789e-06,
+      "finalSpeed": 7.152557373046875e-07,
+      "maximumPhaseAdvance": 0.018825620412826538,
+      "finalPoseDelta": 0.0,
+      "maximumReachCorrection": 0.0,
+      "occupiedArmsPreserved": true
+    },
+    {
+      "name": "AirTurn90",
+      "presentationFps": 60,
+      "jumps": 1,
+      "maximumJointDelta": 12.814454078674316,
+      "maximumBoundaryDelta": 8.836461067199707,
+      "maximumYawDelta": 3.9954519271850586,
+      "maximumFootError": 1.5844531731090683e-07,
+      "maximumGroundPenetration": 1.317821443080902e-07,
+      "finalGait": 4.522918061411474e-06,
+      "finalSpeed": 7.152557373046875e-07,
+      "maximumPhaseAdvance": 0.018825650215148926,
+      "finalPoseDelta": 0.0,
+      "maximumReachCorrection": 0.0,
+      "occupiedArmsPreserved": true
+    },
+    {
+      "name": "AirStop",
+      "presentationFps": 60,
+      "jumps": 1,
+      "maximumJointDelta": 12.814454078674316,
+      "maximumBoundaryDelta": 5.3836188316345215,
+      "maximumYawDelta": 0.0,
+      "maximumFootError": 8.60050022311043e-08,
+      "maximumGroundPenetration": 3.3527612686157227e-08,
+      "finalGait": 3.096222822400463e-13,
+      "finalSpeed": 0.0,
+      "maximumPhaseAdvance": 0.018434137105941772,
+      "finalPoseDelta": 0.0,
+      "maximumReachCorrection": 0.0,
+      "occupiedArmsPreserved": true
+    },
+    {
+      "name": "SprintLanding",
+      "presentationFps": 60,
+      "jumps": 1,
+      "maximumJointDelta": 13.4171724319458,
+      "maximumBoundaryDelta": 13.192062377929688,
+      "maximumYawDelta": 0.0,
+      "maximumFootError": 2.4191450620492105e-07,
+      "maximumGroundPenetration": 3.725290298461914e-08,
+      "finalGait": 5.9246931414236315e-06,
+      "finalSpeed": 0.0,
+      "maximumPhaseAdvance": 0.029432132840156555,
+      "finalPoseDelta": 0.0,
+      "maximumReachCorrection": 0.0,
+      "occupiedArmsPreserved": true
+    },
+    {
+      "name": "LandingSprint",
+      "presentationFps": 60,
+      "jumps": 1,
+      "maximumJointDelta": 13.24422550201416,
+      "maximumBoundaryDelta": 10.375151634216309,
+      "maximumYawDelta": 0.0,
+      "maximumFootError": 2.4191450620492105e-07,
+      "maximumGroundPenetration": 7.497146725654602e-08,
+      "finalGait": 5.92466176385642e-06,
+      "finalSpeed": 0.0,
+      "maximumPhaseAdvance": 0.029431045055389404,
+      "finalPoseDelta": 0.0,
+      "maximumReachCorrection": 0.0,
+      "occupiedArmsPreserved": true
+    },
+    {
+      "name": "BufferedRejump",
+      "presentationFps": 60,
+      "jumps": 2,
+      "maximumJointDelta": 14.41953182220459,
+      "maximumBoundaryDelta": 9.532910346984863,
+      "maximumYawDelta": 0.0,
+      "maximumFootError": 1.4699563166686858e-07,
+      "maximumGroundPenetration": 3.3993273973464966e-08,
+      "finalGait": 4.515284672379494e-06,
+      "finalSpeed": 0.0,
+      "maximumPhaseAdvance": 0.018652677536010742,
+      "finalPoseDelta": 0.0,
+      "maximumReachCorrection": 0.0,
+      "occupiedArmsPreserved": true
+    },
+    {
+      "name": "OccupiedArms",
+      "presentationFps": 60,
+      "jumps": 1,
+      "maximumJointDelta": 12.814454078674316,
+      "maximumBoundaryDelta": 9.400476455688477,
+      "maximumYawDelta": 0.0,
+      "maximumFootError": 2.4487940208928194e-07,
+      "maximumGroundPenetration": 3.5390257835388184e-08,
+      "finalGait": 4.522918061411474e-06,
+      "finalSpeed": 0.0,
+      "maximumPhaseAdvance": 0.018825650215148926,
+      "finalPoseDelta": 0.0,
+      "maximumReachCorrection": 0.0,
+      "occupiedArmsPreserved": true
+    },
+    {
+      "name": "ResetInAir",
+      "presentationFps": 60,
+      "jumps": 0,
+      "maximumJointDelta": 12.814454078674316,
+      "maximumBoundaryDelta": 5.3836188316345215,
+      "maximumYawDelta": 0.0,
+      "maximumFootError": 1.3783574104309082e-07,
+      "maximumGroundPenetration": 3.5390257835388184e-08,
+      "finalGait": 4.5229435272631235e-06,
+      "finalSpeed": 0.0,
+      "maximumPhaseAdvance": 0.018826380372047424,
+      "finalPoseDelta": 0.0,
+      "maximumReachCorrection": 0.0,
+      "occupiedArmsPreserved": true
+    },
+    {
+      "name": "Forward30fps",
+      "presentationFps": 30,
+      "jumps": 1,
+      "maximumJointDelta": 23.053911209106445,
+      "maximumBoundaryDelta": 19.350563049316406,
+      "maximumYawDelta": 0.0,
+      "maximumFootError": 2.4881481408556283e-07,
+      "maximumGroundPenetration": 5.727633833885193e-08,
+      "finalGait": 4.602885383064859e-06,
+      "finalSpeed": 0.0,
+      "maximumPhaseAdvance": 0.03765133023262024,
+      "finalPoseDelta": 0.0,
+      "maximumReachCorrection": 0.0,
+      "occupiedArmsPreserved": true
+    },
+    {
+      "name": "Forward120fps",
+      "presentationFps": 120,
+      "jumps": 1,
+      "maximumJointDelta": 7.589352607727051,
+      "maximumBoundaryDelta": 6.456447601318359,
+      "maximumYawDelta": 0.0,
+      "maximumFootError": 2.399561367383285e-07,
+      "maximumGroundPenetration": 4.7031790018081665e-08,
+      "finalGait": 4.742955297842855e-06,
+      "finalSpeed": 0.0,
+      "maximumPhaseAdvance": 0.009412825107574463,
+      "finalPoseDelta": 0.0,
+      "maximumReachCorrection": 0.0,
+      "occupiedArmsPreserved": true
+    }
+  ],
+  "playMode": {
+    "passed": 15,
+    "failed": 0,
+    "skipped": 0,
+    "evidence": {
+      "path": ".codex_tmp/jump-transitions-20260905/AllPlayMode-r05.xml",
+      "sha256": "77b8eb3c661f8e4374b2c5b5e11c1b2bcf7230c2a09195a5bf34a57c5e751296"
+    }
+  },
+  "editMode": {
+    "passed": 85,
+    "failed": 0,
+    "evidence": {
+      "path": ".codex_tmp/jump-transitions-20260905/AllEditMode-r02.xml",
+      "sha256": "93eb1b114646ae1026387a36918328ee6143735c2a5be1c9e5db9ff9455bb797"
+    }
+  },
+  "sources": [
+    {
+      "current": {
+        "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpMotor.cs",
+        "sha256": "8a171a1a9024250dc6b1583a5e7bfb14ae9b4867704459662f280effd1580a94"
+      },
+      "snapshot": {
+        "path": ".codex_tmp/jump-transitions-20260905/Review-20260905-123535/SourceSnapshot/Prototypes/PhysicsJump/PhysicsJumpMotor.cs",
+        "sha256": "8a171a1a9024250dc6b1583a5e7bfb14ae9b4867704459662f280effd1580a94"
+      }
+    },
+    {
+      "current": {
+        "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpReview.cs",
+        "sha256": "da2c1cfcaaff0df85afcc1712e896ab322a64506ea30123b6001b7a9a44271af"
+      },
+      "snapshot": {
+        "path": ".codex_tmp/jump-transitions-20260905/Review-20260905-123535/SourceSnapshot/Prototypes/PhysicsJump/PhysicsJumpReview.cs",
+        "sha256": "da2c1cfcaaff0df85afcc1712e896ab322a64506ea30123b6001b7a9a44271af"
+      }
+    },
+    {
+      "current": {
+        "path": "Project hotfix/Assets/ProjectHotfix/Runtime/Contracts/JumpPresentationState.cs",
+        "sha256": "87b2ed9e9a546fbd168bb616464b368af3500f2eb6453cbe6ad74eeff1576220"
+      },
+      "snapshot": {
+        "path": ".codex_tmp/jump-transitions-20260905/Review-20260905-123535/SourceSnapshot/Runtime/Contracts/JumpPresentationState.cs",
+        "sha256": "87b2ed9e9a546fbd168bb616464b368af3500f2eb6453cbe6ad74eeff1576220"
+      }
+    },
+    {
+      "current": {
+        "path": "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralFreeArmSwing.cs",
+        "sha256": "11231a3addcae5664c24d27df9edd2ab747f7f5c1e01277cd983de86280f6673"
+      },
+      "snapshot": {
+        "path": ".codex_tmp/jump-transitions-20260905/Review-20260905-123535/SourceSnapshot/Runtime/Presentation/ProceduralFreeArmSwing.cs",
+        "sha256": "11231a3addcae5664c24d27df9edd2ab747f7f5c1e01277cd983de86280f6673"
+      }
+    },
+    {
+      "current": {
+        "path": "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralJumpPose.cs",
+        "sha256": "731d821f0bad2b9b0747c00bfa057e1743a74c1390671b12305dbd4f9f3cf845"
+      },
+      "snapshot": {
+        "path": ".codex_tmp/jump-transitions-20260905/Review-20260905-123535/SourceSnapshot/Runtime/Presentation/ProceduralJumpPose.cs",
+        "sha256": "731d821f0bad2b9b0747c00bfa057e1743a74c1390671b12305dbd4f9f3cf845"
+      }
+    },
+    {
+      "current": {
+        "path": "Project hotfix/Assets/ProjectHotfix/Runtime/Simulation/PhysicsJumpStateMachine.cs",
+        "sha256": "e3517101f6f611ab5dc07bcdca279fd00d487d5f4678addbc2a492aa6954c2e4"
+      },
+      "snapshot": {
+        "path": ".codex_tmp/jump-transitions-20260905/Review-20260905-123535/SourceSnapshot/Runtime/Simulation/PhysicsJumpStateMachine.cs",
+        "sha256": "e3517101f6f611ab5dc07bcdca279fd00d487d5f4678addbc2a492aa6954c2e4"
+      }
+    },
+    {
+      "current": {
+        "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/JumpTransitionTests.cs",
+        "sha256": "d43518f02709d366e47e1113ea9f8875c65d49ae8c4c5ffcd601ac02741fb5da"
+      },
+      "snapshot": {
+        "path": ".codex_tmp/jump-transitions-20260905/Review-20260905-123535/SourceSnapshot/Tests/PlayMode/Physics/JumpTransitionTests.cs",
+        "sha256": "d43518f02709d366e47e1113ea9f8875c65d49ae8c4c5ffcd601ac02741fb5da"
+      }
+    },
+    {
+      "current": {
+        "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicsJumpReviewCapture.cs",
+        "sha256": "dc607025139beadbc90e036145cab0a7843fe03a12aceec57c8b0fe5f0e37335"
+      },
+      "snapshot": {
+        "path": ".codex_tmp/jump-transitions-20260905/Review-20260905-123535/SourceSnapshot/Tests/PlayMode/Physics/PhysicsJumpReviewCapture.cs",
+        "sha256": "dc607025139beadbc90e036145cab0a7843fe03a12aceec57c8b0fe5f0e37335"
+      }
+    }
+  ],
+  "eightDirectionPreview": {
+    "path": ".codex_tmp/jump-transitions-20260905/Review-20260905-123535/EightDirectionTransitions.gif",
+    "sha256": "3de3239d52e42acb50012932292740f4d1648a54a508ad2479e0c1f6eb3e185d"
+  },
+  "airSprintPreview": {
+    "path": ".codex_tmp/jump-transitions-20260905/Review-20260905-123535/AirAndSprintTransitions.gif",
+    "sha256": "63adbe8395a81dcfa50a743322d0cff495dcf89523c163b7f6538cc31aa9ecf1"
+  },
+  "contactSheet": {
+    "path": ".codex_tmp/jump-transitions-20260905/Review-20260905-123535/TransitionContactSheet.png",
+    "sha256": "b3acbcb9d4e5fae18131498bdc444a2b7a98816b83cd0ae3ea4ee28842df079f"
+  },
+  "packagingScript": {
+    "path": ".codex_tmp/jump-transitions-20260905/package_preview.py",
+    "sha256": "d64b7d272c9867cb895eca7a4a29d32f1561f9859258fe34c7dac405e26184e5"
+  },
+  "approvedWeight": {
+    "path": "artifacts/reports/R20_LOWER_WEIGHT_VISUAL_APPROVAL_20260905.json",
+    "sha256": "49bb0e31f1d998bab11e635fb21ff20cef140a3bb10c9e9012ddf41cbb6d2240"
+  },
+  "jumpPolicy": {
+    "path": "artifacts/reports/R20_PHYSICS_JUMP_DECISION_20260905.json",
+    "sha256": "5aa6f7146a06beb9afc1f9361d89ddc526850507264dcb6fd73167fd77630784"
+  },
+  "jumpClipsCreated": 0,
+  "limitations": [
+    "Flat-floor independent prototype; not a universal animation quality guarantee.",
+    "World-space foot locking and final stride/speed matching remain untuned; IK target error is not a no-sliding measurement.",
+    "Arm availability flags are tested; actual Punch/Grab/Grip ownership integration remains pending.",
+    "Moving-platform/slope foot placement, articulated ragdoll, multiplayer and product camera-axis controls remain pending.",
+    "Surface height sampled every third physics step; exhaustive mesh fold/self-intersection QA was not rerun in Unity."
+  ]
+}

@@ -1,0 +1,989 @@
+{
+  "status": "STAGE_2_CORE_IMPLEMENTED_VISUAL_QA_FAILED_SCOPE_DECISION_PENDING",
+  "date": "2026-09-15",
+  "stage1Approval": "follow_up_proceed_authorized_stage_2",
+  "stage2Complete": false,
+  "stage2UserApproval": "not_requested_as_complete",
+  "pendingDecision": "Approve a separate local shoulder/armpit mesh-shape and weight candidate; current weights/rig tuning have not passed loaded skin QA. Then repeat Stage 2 visual and functional review before requesting Stage 3 approval.",
+  "stage3Started": false,
+  "stage4Started": false,
+  "menu": "Project Hotfix/Prototypes/Open Active Grab Stage 2",
+  "profile": {
+    "massKgPerActor": 20,
+    "bodiesPerActor": 8,
+    "internalJointsPerActor": 7,
+    "solverIterations": 48,
+    "solverVelocityIterations": 16,
+    "shoulderXDegrees": [
+      -25,
+      100
+    ],
+    "shoulderYZDegrees": 15,
+    "walkMps": 1.4,
+    "sprintMps": 2.1,
+    "accelerationMps2": 20,
+    "holdSeconds": 0.15,
+    "palmContactRadiusM": 0.055,
+    "contactRecheckM": 0.06,
+    "gripExtensionBreakM": 0.06,
+    "jointBreakForceN": 2000,
+    "gripStressForceNormalizationN": 250,
+    "heldArmDriveScale": 0.65
+  },
+  "validation": [
+    {
+      "path": ".codex_tmp/active-grab-stage2-20260915/FinalPlayMode.xml",
+      "sha256": "36a37c39db20102c96c1f652b8ddb4e83b948af80ab4775bc25ba4565427ebb9",
+      "total": 17,
+      "passed": 16,
+      "failed": 1,
+      "cases": [
+        {
+          "name": "CapturePhysicalGrabsAndSkin",
+          "result": "Failed",
+          "failure": "  TwoHands: contact=True, maximumSurfaceAngle=179.824173, remainingGrips=0\n  Expected: <empty>\n  But was:  < \"TwoHands: contact=True, maximumSurfaceAngle=179.824173, remainingGrips=0\" >\n"
+        },
+        {
+          "name": "DraggingTransfersForceAndResetRemovesAllConnections",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ExportLoadedShoulderSamplesForWeightReview",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "FacingOppositeDirectionsPreservesReferenceTracking",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "FixedContactReplayDoesNotDependOnRenderRate",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "IdleHoldAndLoadedStressAreDifferent",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "InspectRealUnilateralAndMutualContacts",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "InspectSpawnConstraints",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "NativePairLoopRunsInputAndPhysicsOnce",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "NoContactNoGripAndMenuRequiresFreshInput",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "SharedGripOwnershipAndImmediateReleaseAreIndependent",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "TargetLossAndResetCannotReviveHeldButtons",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "UnilateralTwoHandsReleaseOneAtATime",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "InspectJointTargetsAndSkin",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "MassCollisionPairsAndResetKeepTheLabIsolated",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "NativePhysicsLoopCapturesEveryStep",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "MutualGripBlocksBothActorsInEitherProcessingOrder",
+          "result": "Passed",
+          "failure": null
+        }
+      ]
+    },
+    {
+      "path": ".codex_tmp/active-grab-stage2-20260915/EditMode.xml",
+      "sha256": "4c3fb2272235fe908d757bd4e4f7c89aef029c680f276e05c95648f0a0cc390a",
+      "total": 140,
+      "passed": 140,
+      "failed": 0,
+      "cases": [
+        {
+          "name": "BothSlotsInvalid_ReturnsNoPayloadAndDoesNotRewriteEitherFile",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "CallerValidator_CanRejectCurrentAndSelectCompatibleLastGood",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ConcurrentRepositoryInstances_SerializeTheSameAddress",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ConcurrentWrites_OnOneStoreNeverExposeATornEnvelope",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "CorruptCurrentThenSave_PreservesExistingValidLastGood",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "FirstSave_NewRepositoryInstanceReadsExactCurrentWithoutBackup",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "InvalidAddressMatrix_IsRejectedWithoutWritingOutsideRoot",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"truncated\",Corrupt)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"hash\",Corrupt)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"version\",Corrupt)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "InvalidCurrent_SelectsLastGoodWithoutMutatingFiles(\"length\",TooLarge)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "NonRegularTarget_IsRejectedWithoutReplacement",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "OversizedDeclaredLength_IsRejectedBeforeAllocationAndFallsBack",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Overwrite_RotatesPriorCurrentIntoLastGood",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "PayloadLimit_AcceptsExactLimitAndRejectsLargerWithoutChangingCurrent",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "PhysicalFileOverLimit_IsRejectedBeforePayloadReadAndFallsBack",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ReplaceFailure_LeavesCurrentAndLastGoodUnchangedAndCleansPending",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "StalePending_IsIgnoredByReadAndRemovedByNextWrite",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ThirdWrite_ReplacesExistingLastGoodWithPriorCurrent",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides(\"Assets/Settings/Build Profiles/Windows x64 Development.asset\")",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "BuildProfile_HasNoQualityGraphicsOrPlayerSettingsOverrides(\"Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset\")",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "BuildProfile_InheritsTheSingleGlobalSampleScene(\"Assets/Settings/Build Profiles/Windows x64 Development.asset\")",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "BuildProfile_InheritsTheSingleGlobalSampleScene(\"Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset\")",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "BuildProfileDefines_AreExactMutuallyExclusiveAndDoNotLeakGlobally",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "GlobalStandalonePlayerSettings_UseTheApprovedTemporaryIdentityAndMono",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect(\"Assets/Settings/Build Profiles/Windows x64 Development.asset\",True)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "WindowsBuildProfile_TargetPlatformAndDevelopmentModeAreCorrect(\"Assets/Settings/Build Profiles/Windows x64 Steam Reserved.asset\",False)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "WindowsBuildProfiles_AreExactlyTwoAssetsWithUniqueGuids",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "WindowsX64BuildSupport_IsInstalled",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ExternalLaunchConsumesAirJumpAndStartsAFreshLandingImpactInterval",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "GetUpFinishesInNeutralBeforeLocomotionHandoff(\"FaceUp\")",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "GetUpFinishesInNeutralBeforeLocomotionHandoff(\"FaceDown\")",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents(\"FaceUp\")",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "GetUpHasAuthoredLimbAndTorsoCurvesWithoutRootMotionOrEvents(\"FaceDown\")",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "GrabReleaseAndBreak_DoNotCreatePunchOrAutoRegrab",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "IdleHolding_DoesNotAccumulateTimeFatigue",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "SustainedLoad_Breaks_AndLowLoadRecovers",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "DuplicateAndOldEdges_CannotRepeatOrRestartAttack",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "FasterPunchSharesHitClockAndRecoveryWithoutChangingHoldThreshold",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "GroundContextStaysGround_AirContextDoesNotCreatePunch",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "HandsHaveIndependentActions_AndPerActionTargetDeduplication",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "HardwareDurationWinsOverFixedTickRounding(0.147d,True)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "HardwareDurationWinsOverFixedTickRounding(0.15d,False)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "HardwareDurationWinsOverFixedTickRounding(0.153d,False)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "InvalidTimestampCannotCorruptPendingHardwareDuration",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "OccupiedHand_CannotStart_AndCancellationRemovesHitEligibility",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "SimultaneousTimedTapsAreIndependentOfHandProcessingOrder",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Suppress_ResetAndAllUp_DoNotEmitActions",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Threshold_TapAndHoldAreExclusive(0.12d)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Threshold_TapAndHoldAreExclusive(0.15d)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Threshold_TapAndHoldAreExclusive(0.18d)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "InputPackage_IsLockedAsDirectRegistryDependency",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "OnlyInputModule_ReferencesTheSelectedPackageAssembly",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "PlayerSettings_EnableOnlyTheNewInputSystemBackend",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ProductRuntimeSources_DoNotUseLegacyInputApis",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "MenuAndReset_RearmCannotAuthorizeAThrow",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ReleaseAdmission_RejectsOldEdgesAgainstANewGrab",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "LocalStorageAssembly_IsANoEngineLeaf",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "LocalStorageRuntimeSources_HaveNoUnityOrNetworkNamespaceDependency",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Presentation_HasNoDirectOrTransitivePathToSimulation",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ProjectRuntimeSources_AreOwnedByTheirFolderAssembly",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "RuntimeAssemblies_HaveOnlyApprovedProjectReferences",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "RuntimeAssemblyGraph_HasNoCycles",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "PhysicsPackage_IsBuiltInDirectAndHasNoSecondStack",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ProductRuntimeSources_DoNotMutateGlobalPhysicsCadence",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ProjectPhysicsSettings_UseSixtyHertzAutomaticSimulation",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "RuntimePhysicsMutationGuard_CatchesRepresentativeForbiddenCode",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "DownHitsDoNotAccumulateAndCannotReplayAfterRecovery",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "EachDownKeepsRequiredHitsFixedAndConsumesOnlyCurrentHits",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(0,10)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(1,9)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(4,6)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ExplicitPointProfileUsesRegionAndBoundedEpisodeThreshold(100,6)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "FirstTenPointEpisodeCountsBodyAndHeadSeparately(Body,10)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "FirstTenPointEpisodeCountsBodyAndHeadSeparately(Head,5)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "IndependentAttackersAndOverlappingHandsDedupeWithoutDiscardingReverseOrder",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "InvalidProfilesAndIdsAreRejected",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ResetRejectsOldGenerationAndRestartsAtFirstThreshold",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "InvalidProjectionDoesNotEmitNonfiniteCameraTargets",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "PerspectiveDistanceIncludesEveryCornerAndDepth(1.777778f)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "PerspectiveDistanceIncludesEveryCornerAndDepth(1.6f)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "PerspectiveDistanceIncludesEveryCornerAndDepth(2.333333f)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(0)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(45)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(90)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(180)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ScreenMovementKeepsProjectedDirectionsAndDiagonalSpeed(270)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(-90,0)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(90,0)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(0,90)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "AllFourEntriesUseExistingAlignmentAndInterruptionPreservesEpisode(0,-90)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "DropkickHasNoDownTimerOrCountAndRealDownSupersedesItOnce",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ExpiryOnlyPermitsSupportedRecoveryAndNeverUnlocksItself",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "InvalidTuningAndClockCannotMutateState",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "LobbyAlwaysUsesBaseAndDoesNotCount",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "MatchAccumulatesOncePerEpisodeAndCapsDuration",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ResetAndNewEpisodeRejectStaleEventsAndGetUpCompletions",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "UprightReturnRequiresExpiredTimerRealSupportAndSettledCompletion",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "HighLevelNetcodeAndUnityOnlineServices_AreAbsent",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "OnlyTransportModule_ReferencesTheSelectedPackageAssembly",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "TransportModule_HasNoAdapterImplementationBeforeNet001",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "TransportPackage_IsLockedAsDirectRegistryDependency",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "Harness_ExecutesTheRuntimeOwnedSimulationKernel",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "SimulationAndHarness_HaveNoPresentationRenderingOrUiDependency",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ActualDownDuringDropkickAlignment_ClosesTheOldPresentation",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "AirborneUnsettledOrBlockedRecovery_DoesNotStart(False,True)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "AirborneUnsettledOrBlockedRecovery_DoesNotStart(True,False)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "AirborneUnsettledOrBlockedRecovery_DoesNotStart(False,False)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "AlignmentNormalNormalization_MatchesEntryClassification",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation(False)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "AllRecoveryEntries_KeepEpisodeSemanticsAndLatchOrientation(True)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "DiagonalFall_UsesTheDominantSupportedSide(35,FaceUp)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "DiagonalFall_UsesTheDominantSupportedSide(55,RightSide)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "GroundQueryMayReturnANonUnitNormal",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "InterruptedAlignment_CanReassessWithoutAddingADownEpisode",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "InvalidUnsupportedOrUprightOrientation_IsRejectedWithoutMutation",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(-90,70,FaceUp)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(-90,-70,FaceUp)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(90,70,FaceDown)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "SideAlignment_ChoosesNearestSharedGetUpAndPreservesPlanarHeading(90,-70,FaceDown)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp(False)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "SideAlignment_NeedsReachedTargetAndCurrentSupportBeforeSharedGetUp(True)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(-90,0,FaceUp)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(90,0,FaceDown)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(0,90,LeftSide)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "SupportedFall_IsClassifiedAcrossYawAndSlopedGround(0,-90,RightSide)",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ActualDownDuringDropkickRecovery_ReplacesTheRecoveryAndCountsAsDown",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "DownEpisode_UsesSharedGetUpAndIncrementsDownCountOncePerEpisode",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "DropkickRecovery_ReusesGetUpPresentationWithoutCreatingDownEpisode",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "EquivalentCycleSequences_ProduceTheSameFingerprint",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "KernelStep_AdvancesTheReadOnlySnapshot",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "NegativeCycleCount_IsRejectedWithoutMutation",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "RoundReset_ClearsRecoveryAndDownCount",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ActionPoseReview_IsReadOnlyAndMakesNoAnimationClaim",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "C1B005UnityAssetFolder_HasOnlyFbxAndIdentityPrefabSources",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "FourViewSilhouetteParity_UsesObservedIouAndBoundedBboxGate",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "IdentityPrefab_IsTransformNeutralAndContainsNoGameplayComponents",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ImportedNeutral_HasExactStaticHierarchyBoundsLandmarksAndScope",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "InspectionAndEightUnityCaptures_ArePresentAndHashBound",
+          "result": "Passed",
+          "failure": null
+        },
+        {
+          "name": "ModelImporter_UsesTheExactApprovedStaticPreset",
+          "result": "Passed",
+          "failure": null
+        }
+      ]
+    }
+  ],
+  "videoCases": {
+    "OneHand": {
+      "frames": 240,
+      "finalTrace": "tick=239, grips=0, constraints=0, A=(-0.00170337537, 0.00299996138, -0.684331), B=(0.11357794, 0.003000006, -0.0471944), gap=0.00056932494, force=93.48809, surface=40.40729",
+      "maxSurfaceAngleDegrees": 40.40729,
+      "skinFailureSamples": 0,
+      "tracePath": ".codex_tmp/active-grab-stage2-20260915/OneHand/Trace.txt",
+      "sha256": "c39c6f0b7582edf0dcdc829402a8fd450674c7ec31b322b9c9dd89e532f62280"
+    },
+    "TwoHands": {
+      "frames": 240,
+      "finalTrace": "tick=239, grips=0, constraints=0, A=(-0.000164342608, 0.00299996138, -0.400945455), B=(0.00177805673, 0.003000006, 0.0331719555), gap=0.0039187707, force=507.73407, surface=179.824173",
+      "maxSurfaceAngleDegrees": 179.824173,
+      "skinFailureSamples": 46,
+      "tracePath": ".codex_tmp/active-grab-stage2-20260915/TwoHands/Trace.txt",
+      "sha256": "4616f551be4819ac0dc579658cb352d0c86702f9f00ebe596743df21beacae55"
+    },
+    "Mutual": {
+      "frames": 240,
+      "finalTrace": "tick=239, grips=0, constraints=0, A=(-0.000319289422, 0.00299994648, -0.7811313), B=(0.009576637, 0.00299996138, -0.414979458), gap=0.00181321055, force=45.3296242, surface=40.3045425",
+      "maxSurfaceAngleDegrees": 40.3045425,
+      "skinFailureSamples": 0,
+      "tracePath": ".codex_tmp/active-grab-stage2-20260915/Mutual/Trace.txt",
+      "sha256": "bff5ae3b9a61975c8545b84e249e15c2b3a06d80a4b489cc04f88727d2764b5c"
+    }
+  },
+  "metrics": {
+    "Stress.txt": "idleStress=0, loadedStress=0.9999926, fatigueRelease=True, breaks=4, gap=0.00443531573",
+    "FrameRates.txt": "fps=60, maximumPhysicalPositionDifference=0\nfps=15, maximumPhysicalPositionDifference=0\nfps=144, maximumPhysicalPositionDifference=0\n",
+    "Drag.txt": "tick=0 A=(5.421035E-05, 0.00299997628, -0.107093289) B=(-1.64355981E-06, 0.003000006, 0.250091285) grips=2 force=43.47756\ntick=10 A=(-1.22470483E-05, 0.00299999118, -0.240090728) B=(4.555174E-05, 0.003000006, 0.221048251) grips=2 force=117.199448\ntick=20 A=(-0.0004220993, 0.00299997628, -0.3343397) B=(0.0005708002, 0.003000006, 0.107773364) grips=2 force=117.199448\ntick=30 A=(-0.00135727774, 0.00299997628, -0.4299475) B=(0.00191849517, 0.00299991667, 9.90666449E-05) grips=2 force=117.199448\ntick=40 A=(-0.00153064344, 0.00299994648, -0.535316646) B=(0.004198114, 0.003000021, -0.101875059) grips=2 force=117.199448\ntick=50 A=(-0.00151551713, 0.00299993157, -0.6421846) B=(0.006596449, 0.00300003588, -0.203635707) grips=2 force=117.199448\ntick=60 A=(-0.00200772751, 0.00299997628, -0.746166) B=(0.008685421, 0.003000006, -0.30715996) grips=2 force=117.199448\ntick=70 A=(-0.002453724, 0.00299996138, -0.8494988) B=(0.0105363028, 0.00300003588, -0.411506146) grips=2 force=117.199448\ntick=80 A=(-0.002627324, 0.003000021, -0.953157246) B=(0.0123568978, 0.00299997628, -0.5155393) grips=2 force=117.199448\n",
+    "Facing.txt": "root=(1.47894234E-05, 0.003000006, -0.6082147), L=(-0.170308322, 0.480778247, -0.28360045)/(-0.16995579, 0.553, -0.288199276), R=(0.170393541, 0.4807778, -0.283633024)/(0.170044124, 0.5530001, -0.28823033), Spine=3.349 Chest=3.150 Head=1.079 UpperArm_L=4.798 Forearm_L=2.814 UpperArm_R=4.798 Forearm_R=2.813\nroot=(-1.47854507E-05, 0.003000006, 0.6082146), L=(0.1702951, 0.4807784, 0.283593416)/(0.169942871, 0.5530001, 0.288192153), R=(-0.170406729, 0.48077774, 0.283639759)/(-0.170057014, 0.553, 0.288237274), Spine=3.350 Chest=3.150 Head=1.079 UpperArm_L=4.797 Forearm_L=2.813 UpperArm_R=4.798 Forearm_R=2.814\n"
+  },
+  "media": {
+    "video": "/Users/kjh/local_dev/party game/.codex_tmp/active-grab-stage2-20260915/Media/ActiveGrabStage2_Review_60.mp4",
+    "fps": 60,
+    "framesWritten": 720,
+    "framesDecoded": 720,
+    "seconds": 12,
+    "decodeExit": 0,
+    "caseOrder": [
+      "OneHand",
+      "TwoHands",
+      "Mutual"
+    ],
+    "knownVisualFailure": "TwoHands loaded shoulder skin crease; stage not approved"
+  },
+  "shoulderCloseup": ".codex_tmp/active-grab-stage2-20260915/TwoHands/Shoulder_0.png",
+  "sources": [
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs",
+      "sha256": "48c4d8029f7f19a4207c980be5b9026757635937c859b49c11571a89b1959127",
+      "snapshot": ".codex_tmp/active-grab-stage2-20260915/SourceSnapshot/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.cs",
+      "sha256": "d35bbafa651f45a373e285e5e6c19d0c9665815c9ab354705ac7fbd48077247e",
+      "snapshot": ".codex_tmp/active-grab-stage2-20260915/SourceSnapshot/Prototypes/PhysicsJump/ActiveGrabPairReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ReviewFixedLoop.cs",
+      "sha256": "0b13939819ad7b684c8960c205c9776bd3660b0df1e3edd9258fec015f030e85",
+      "snapshot": ".codex_tmp/active-grab-stage2-20260915/SourceSnapshot/Prototypes/PhysicsJump/ReviewFixedLoop.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+      "sha256": "fb796704546a986290a4b7c3341b0d190225073f4644e874076cbd9212a0bc9e",
+      "snapshot": ".codex_tmp/active-grab-stage2-20260915/SourceSnapshot/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/ActiveGrabStageTwoTests.cs",
+      "sha256": "6ee6ca2c09fcd70efb994714ef80185b29ed619b4fc212b495c54789733cc9b5",
+      "snapshot": ".codex_tmp/active-grab-stage2-20260915/SourceSnapshot/Tests/PlayMode/Physics/ActiveGrabStageTwoTests.cs"
+    }
+  ],
+  "originalAssetHashes": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": {
+      "before": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+      "after": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef"
+    },
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": {
+      "before": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+      "after": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579"
+    },
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": {
+      "before": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+      "after": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47"
+    },
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": {
+      "before": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+      "after": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": {
+      "before": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+      "after": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": {
+      "before": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31",
+      "after": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31"
+    },
+    "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes": {
+      "before": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60",
+      "after": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60"
+    },
+    ".codex_tmp/punch-unity-20260906/ApprovedPunch.json": {
+      "before": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac",
+      "after": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac"
+    },
+    "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes": {
+      "before": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a",
+      "after": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a"
+    }
+  },
+  "changedExistingRuntimePrototypeSources": [
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ReviewFixedLoop.cs"
+  ],
+  "defaultArenaChanged": false,
+  "failedModelExperimentsApplied": false,
+  "playerBuilds": 0,
+  "commits": 0,
+  "pushes": 0,
+  "limitations": [
+    "Loaded shoulder/armpit skin fold fails visual QA (179.824 degrees adjacent surface angle vs 60 gate).",
+    "No all-mesh self-intersection or all-contact skin clearance certification.",
+    "Abrupt full-speed opposed input can release via contact-extension safety before fatigue; feel requires review.",
+    "This lab has no punch, lift/throw, jump, damage, Down/GetUp, wall or multiplayer integration.",
+    "Shared collider-to-skin position may differ slightly while preserving authored bone lengths."
+  ],
+  "documentationValidation": {
+    "baseline": "PASS",
+    "log": ".codex_tmp/active-grab-stage2-20260915/DocValidation.txt",
+    "workflowTestsPassed": 7,
+    "diffWhitespaceCheck": "PASS"
+  },
+  "followUp20260916": {
+    "authorization": "User approved comparison of ForwardReach and AdaptiveReach on existing model before any local model edits",
+    "report": "artifacts/reports/R20_GRAB_MOTION_CANDIDATES_20260916.json",
+    "modelChangesApproved": false,
+    "stage3Started": false,
+    "selectedMotion": "AdaptiveReach",
+    "adoptionRecord": "artifacts/reports/R20_ADAPTIVE_GRAB_ADOPTION_20260916.json"
+  },
+  "shoulderRepairFollowUp": {
+    "report": "artifacts/reports/R20_SHOULDER_REPAIR_LOW_GRAB_20260916.json",
+    "isolatedRepairAuthorizedByFollowUpProceed": true,
+    "skinDeformationPassed": true,
+    "lowRagdollGrabImplemented": true,
+    "contactGapUnresolved": true,
+    "stage2Complete": false,
+    "stage3Started": false
+  }
+}

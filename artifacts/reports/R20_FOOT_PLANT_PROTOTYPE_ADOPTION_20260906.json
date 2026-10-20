@@ -1,0 +1,41 @@
+{
+  "status": "APPROVED_FOR_PROTOTYPE",
+  "date": "2026-09-06",
+  "userDecision": "일단 너가 만든 접지 절충 후보로 진행하고 어느정도 프로토타입이 나왔을때 다시 얘기하자. 그때 좀 애매하면 모델링부터 리깅까지 다시하지 뭐",
+  "approvedSettings": {
+    "walkSpeed": 0.7,
+    "sprintSpeed": 1.05,
+    "walkCadence": 3,
+    "sprintCadence": 4.5,
+    "WorldFootPlant": true
+  },
+  "implementation": "PhysicsJumpReview.Create defaults to the approved paired motor/pose preset; previous settings require explicit false. Main review menu uses the approved default.",
+  "reassessmentTrigger": "First integrated prototype where two characters on the same map can test pursuit, evasion, jumping, and basic striking/grabbing.",
+  "reassessmentChecklist": [
+    "Representative map traversal time and pursuit/evasion response",
+    "Jump/landing transitions with attack/grab distances",
+    "Leg motion/contact and opponent action readability",
+    "Whether tuning suffices or model proportions, leg length, joint placement or weights need revision"
+  ],
+  "modelRigDecision": "Keep approved model and rig now; reconsider with user after prototype playtest. No immediate remodeling or rerigging.",
+  "limits": [
+    "Prototype adoption only; not a guarantee of fun or final character/gameplay gates.",
+    "Up to 6.8 mm surface penetration and terrain/game integration remain."
+  ],
+  "validation": {
+    "PlayMode": "21/21 passed; no candidate-selection environment flag; default preset asserted in existing capture test.",
+    "transitionCapture": "Metrics-only transition run; earlier captured candidate review remains visual evidence.",
+    "sourceNote": "Final edit after test execution changes only the presentation preset comment from candidate to approved."
+  },
+  "sha256": {
+    ".codex_tmp/foot-plant-adoption-20260906/AllPlayMode.xml": "a05755a0ac07907fff222a25f617b46ed4a876cb243b034fd37903070fd772f9",
+    ".codex_tmp/foot-plant-adoption-20260906/SourceSnapshot/Prototypes/PhysicsJump/PhysicsJumpReview.cs": "c9b998418cbea1addc93cd122e60337668867761ac6cb4f245d2f52f668353bf",
+    ".codex_tmp/foot-plant-adoption-20260906/SourceSnapshot/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": "cb46f441db7aa6854ab67e9778c739cd6192274bdf6eb449b9ff15083fab31f3",
+    ".codex_tmp/foot-plant-adoption-20260906/SourceSnapshot/Runtime/Presentation/ProceduralJumpPose.cs": "d16d9b494183d1269612f8894c1e274d8089da66edd1e7b7a0d69ef67c40a0ef",
+    ".codex_tmp/foot-plant-adoption-20260906/SourceSnapshot/Tests/PlayMode/Physics/FootContactComparisonTests.cs": "7f99f89b878cecbbf31051d35667aae90f13f4195d1f3b38e5b5d1e3268e0c58",
+    ".codex_tmp/foot-plant-adoption-20260906/SourceSnapshot/Tests/PlayMode/Physics/ReadableGaitReviewTests.cs": "f40de7fc1e621fbbe32b4263c49673e81962a940c732a727fb7623727635b07a",
+    ".codex_tmp/foot-plant-adoption-20260906/SourceSnapshot/Tests/PlayMode/Physics/WorldFootPlantFeasibilityTests.cs": "857ea27077a81a253b488bddfdf3e096da274324c5fc3924051eab5a0ffe1950",
+    ".codex_tmp/foot-plant-adoption-20260906/SourceSnapshot/Tests/PlayMode/Physics/JumpTransitionTests.cs": "b2619a7340dc7819c6585480c3e872349af1b03dce2efcb48c8931db801d0c6d",
+    ".codex_tmp/foot-plant-adoption-20260906/SourceSnapshot/Tests/PlayMode/Physics/PhysicsJumpReviewCapture.cs": "46b429fdca2e45651f9491a3a6322f1643fa69c01e0fabfd499b2d11faff8440"
+  }
+}

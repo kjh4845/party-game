@@ -4,9 +4,9 @@
 
 | 항목 | 내용 |
 |---|---|
-| 문서 버전 | 1.8.0 Alpha Map·Participation·Minimal UI·Firearm Compatibility Baseline |
-| 최종 수정일 | 2026-08-26 |
-| 상위 기준 | `01_PRD.md` 1.8.0, `02_SRS.md` 1.8.0, `PATCH_DESIGN.md` 0.5.0 |
+| 문서 버전 | 1.8.0 Alpha Map·Participation·Minimal UI·Firearm Compatibility Baseline + 2026-09-04 Presentation Addendum |
+| 최종 수정일 | 2026-09-04 |
+| 상위 기준 | `01_PRD.md` 1.8.0 + 2026-09-04 Addendum, `02_SRS.md` 1.8.0 + 동일 Addendum, `PATCH_DESIGN.md` 0.5.0 |
 | 첫 개별 사양 | `MAP_P00_CONSTRUCTION_DROP.md` 0.7.0 |
 | 목적 | 2·3·4인 공통 맵의 치수, 공간, Hazard, Camera, reset과 검증 원칙 정의 |
 
@@ -244,7 +244,8 @@ action별 별도 geometry나 보이지 않는 보호벽을 만들지 않고 다�
 - LethalHazard의 phase·contact 조건은 action 여부와 무관하다. Dropkick이 valid lethal contact를 만들면 기존 Hazard가 판정한다.
 - Character끼리의 승인 kick impact·knockback은 OOB·Hazard로 이어질 수 있지만 action이 직접 elimination이나 Hazard phase를 선언하지 않는다.
 - `DropkickRecovery`는 발차기 뒤 제어 복귀 상태이며 Down, Stun, Ragdoll Episode 또는 groggy가 아니다.
-  진입 자체로 DownCount를 증가시키거나 Camera subject에서 제외하지 않는다.
+  진입 자체로 DownCount를 증가시키거나 Camera subject에서 제외하지 않는다. Prone settle이면 방향별
+  Ragdoll GetUp 시각 모션만 공유할 수 있고 gameplay state는 합치지 않는다.
 - SharedGameplayCamera는 기존 `ActiveSubjectBounds`와 action velocity를 사용한다. 뻗은 발·Ragdoll limb를
   새 subject bounds로 쓰거나 개인 Camera·action 전용 snap/zoom을 만들지 않는다.
 - AirKick·Dropkick hit, feet/body contact와 action impulse는 Lever·handle·door의 유효 hand relation 또는
@@ -380,8 +381,9 @@ Hammer(sledgehammer)의 기능 silhouette와 실제 전투를 2·3·4인에서 �
   Character collider 중 첫 유효 hit 하나에서 종료하고 pierce·ricochet·gravity는 0이다.
 - blocker에 맞은 projectile은 Character Damage·Knockback을 만들지 않는다. Character hit만 기존 Combat
   attribution을 사용하고 projectile이 OOB·TTL·RoundResult·Round reset에 도달하면 즉시 제거한다.
-- projectile, recoil physics와 visual recoil은 Lever·handle·Crane·Hook·panel·Hazard phase, prop과 다른
-  Weapon을 원격 activation하거나 physics impulse로 움직이지 않는다.
+- projectile과 Firearm forward-arm Grip의 Host Rigidbody/Joint recoil은 Lever·handle·Crane·Hook·panel·
+  Hazard phase, prop과 다른 Weapon을 원격 activation하거나 physics impulse로 움직이지 않는다. authored
+  Firearm fire/recoil animation clip은 0이다.
 - Map의 projectile blocker는 보이는 큰 static/moving mass와 일치하고 얇은 배경 장식·visual cable이
   보이지 않는 shot blocker가 되지 않는다.
 - ammo 0의 Weapon은 마지막 shot 뒤 Host ForcedRelease로 `SpentPendingCleanup`이 된다. `START 2~4초`

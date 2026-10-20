@@ -1,0 +1,122 @@
+{
+  "status": "PASS_LOCAL_PUNCH_INTEGRATION",
+  "decisions": {
+    "timeDecay": false,
+    "downHit": "Impulse only; no accumulation, new DownCount or groggy timer extension",
+    "repeatDown": "Decreasing next-hit threshold independent of increasing groggy duration",
+    "newDown": "Consume current hit accumulation; preserve round DownCount",
+    "roundReset": "Clear accumulation and DownCount"
+  },
+  "missingBeforeThisTurn": "Only duration increase existed; decreasing hit threshold was absent.",
+  "reviewStartProfile": {
+    "firstHits": 5,
+    "reductionPerDown": 1,
+    "minimumHits": 2,
+    "baseSeconds": 1.5,
+    "incrementSeconds": 0.5,
+    "maximumSeconds": 3
+  },
+  "tests": {
+    "PlayMode": {
+      "passed": 40,
+      "failed": 0,
+      "skipped": 0,
+      "xml": "/Users/kjh/local_dev/party game/.codex_tmp/hit-down-20260908/AllPlayMode-before-kind-guard.xml",
+      "scope": "Full regression before the final DownEpisode-kind guard; affected integration tests rerun on final source."
+    },
+    "EditMode": {
+      "passed": 117,
+      "failed": 0,
+      "skipped": 0,
+      "xml": "/Users/kjh/local_dev/party game/.codex_tmp/hit-down-20260908/AllEditMode-final.xml"
+    },
+    "FinalPunchIntegration": {
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "xml": "/Users/kjh/local_dev/party game/.codex_tmp/hit-down-20260908/FinalIntegration.xml"
+    }
+  },
+  "integration": {
+    "status": "PASS",
+    "hitsPerDown": [
+      5,
+      4,
+      3,
+      2
+    ],
+    "recoveries": 4,
+    "preservedAcrossTenSeconds": true,
+    "moveDistance": 0.3987623453140259,
+    "capturedFrames": 140
+  },
+  "sourceSnapshots": {
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Simulation/PunchDownAccumulation.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/hit-down-20260908/SourceSnapshot/PunchDownAccumulation.cs",
+      "sha256": "d07249eecc8a7341b229d5e6011e11b67a370c459542e258fef74c289ad3b1d0"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PunchDownReview.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/hit-down-20260908/SourceSnapshot/PunchDownReview.cs",
+      "sha256": "6d37791589c2912fab1a6c694c104d6d2a44b4234c4866e3cecca8d53372bc89"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/StrikeReviewHurtbox.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/hit-down-20260908/SourceSnapshot/StrikeReviewHurtbox.cs",
+      "sha256": "938abec13abba16f630777e97454bcd5ebbcfdf2ba035029bde5c2e4540af16b"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/HandStrikeReview.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/hit-down-20260908/SourceSnapshot/HandStrikeReview.cs",
+      "sha256": "44c71a66a087ddeb9d44f3bd68ec2b33f4ad927aef30b839e946d01f6b065c2e"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/StrikeReviewTarget.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/hit-down-20260908/SourceSnapshot/StrikeReviewTarget.cs",
+      "sha256": "c39a13e74bd07270011e345f76621242761a54ec8c92309ffd11ba7aa5450b33"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/RagdollRecoveryReview.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/hit-down-20260908/SourceSnapshot/RagdollRecoveryReview.cs",
+      "sha256": "e045edf933476f6211ae1ce657ee9fa577b230bf9c59e237197305effd8cb258"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/hit-down-20260908/SourceSnapshot/PhysicsJumpReviewMenu.cs",
+      "sha256": "23ea2fb480803c5e40703549427459a3d86deddff3a9b84294eced98e4ddd471"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/PunchDownAccumulationTests.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/hit-down-20260908/SourceSnapshot/PunchDownAccumulationTests.cs",
+      "sha256": "74ce4e4630f58f5f1f45b5e59ff83baa6488db585ec4e94f4baf4977acec91c1"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PunchDownReviewTests.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/hit-down-20260908/SourceSnapshot/PunchDownReviewTests.cs",
+      "sha256": "c586418e3812b0553ff3330fee499da28f72c5f2d1a6b017fb40f7d038ae6874"
+    }
+  },
+  "unchangedAssetsAndPose": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/GetUpAnimationPose.cs": "a8ef81d29b40b21bb41c3dfacd4135ae167e12ad8d15cb764a5940f3fcb0cd04",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31"
+  },
+  "media": {
+    "gif": "/Users/kjh/local_dev/party game/.codex_tmp/hit-down-20260908/Media/PunchDownRecovery.gif",
+    "source": "/Users/kjh/local_dev/party game/.codex_tmp/hit-down-20260908/Capture",
+    "sourceFrames": 140,
+    "sourceFps": 20,
+    "sourceSeconds": 7.0,
+    "holdAndRepeatSeconds": 1,
+    "encodedFrames": 127,
+    "durationMs": 8000,
+    "fixture": "Attacker repositioned to range before independent punches; real sweep, physics and recovery."
+  },
+  "docs": {
+    "baseline": "PASS",
+    "workflowTests": 7,
+    "diffCheck": "PASS"
+  },
+  "limitations": [
+    "Local opt-in Punch prototype; no peer integration or manual multi-player playtest.",
+    "Attack-specific weapon/Kick/Dropkick damage and collision-only automatic Down are outside this change.",
+    "START values are not final balance.",
+    "Physical loss of support can delay recovery without extending the groggy timer."
+  ]
+}

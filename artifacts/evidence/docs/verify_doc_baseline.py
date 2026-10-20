@@ -5,6 +5,7 @@ from collections import Counter, defaultdict, deque
 from decimal import Decimal
 from hashlib import sha256
 from pathlib import Path
+import json
 import re
 import sys
 
@@ -20,8 +21,8 @@ ACTIVE_DOCS = [
 VERSION_MARKERS = {
     "docs/01_PRD.md": "1.8.0", "docs/02_SRS.md": "1.8.0",
     "docs/PATCH_DESIGN.md": "0.5.0",
-    "docs/CHARACTER_TECHNICAL_SPEC.md": "0.11.0",
-    "docs/ART_DIRECTION.md": "1.8.0", "docs/UI_UX_FLOW.md": "1.8.0",
+    "docs/CHARACTER_TECHNICAL_SPEC.md": "0.12.0",
+    "docs/ART_DIRECTION.md": "1.9.0", "docs/UI_UX_FLOW.md": "1.8.0",
     "docs/MAP_DESIGN_GUIDE.md": "1.8.0",
     "docs/MAP_P00_CONSTRUCTION_DROP.md": "0.7.0",
     "docs/WEAPON_DESIGN.md": "0.7.0",
@@ -29,8 +30,8 @@ VERSION_MARKERS = {
     "docs/04_IMPLEMENTATION_TRACEABILITY.md": "1.5",
 }
 EXPECTED_PRD_IDS = 31
-EXPECTED_SRS_IDS = 186
-EXPECTED_AT_IDS = 44
+EXPECTED_SRS_IDS = 187
+EXPECTED_AT_IDS = 45
 EXPECTED_POLICY_SRS_IDS = {
     "SRS-UI-005", "SRS-UI-006", "SRS-NET-013", "SRS-NET-014",
     "SRS-NET-015", "SRS-SYS-027", "SRS-APPEAR-023", "SRS-NFR-011",
@@ -116,9 +117,46 @@ def markdown_problems(relative):
     return odd_fence, conflicts, missing_links
 
 
+def character_workflow_problems(texts, task_cells, approval, rig_report):
+    """Compare current execution claims with source records, not historical prose."""
+    problems = []
+    revision = approval["candidate"]["revision"]
+    rig_revision = rig_report["revision"]
+    for name in (
+        "00_DOCUMENT_INDEX", "03_IMPLEMENTATION_PLAN", "04_IMPLEMENTATION_TRACEABILITY",
+        "CHARACTER_TECHNICAL_SPEC", "ART_DIRECTION",
+    ):
+        text = texts[f"docs/{name}.md"]
+        if not re.search(rf"(?<![A-Za-z0-9]){re.escape(revision)}(?![A-Za-z0-9])", text) or not re.search(
+            rf"(?<![A-Za-z0-9]){re.escape(rig_revision)}(?![A-Za-z0-9])", text
+        ):
+            problems.append(f"CURRENT_CHARACTER_MISSING:{name}")
+        if re.search(r"(?:현재|current)\s+r11\b", text, re.IGNORECASE):
+            problems.append(f"STALE_CURRENT_CHARACTER:{name}")
+    gate = task_cells.get(approval["ownerTask"], [])
+    if approval["state"] == "APPROVED" and (
+        len(gate) != 9 or gate[-1] != "PASSED" or revision not in " ".join(gate)
+    ):
+        problems.append("NEUTRAL_APPROVAL_NOT_PROPAGATED")
+    historical = {f"C1B-{number:03d}" for number in range(2, 6)}
+    for task_id, row in task_cells.items():
+        if task_id in historical:
+            continue
+        if historical.intersection(expand_task_refs(row[3])):
+            problems.append(f"ACTIVE_DEPENDS_ON_SUPERSEDED:{task_id}")
+    anp = task_cells.get("ANP-003", [])
+    if len(anp) != 9 or "offline" not in anp[2].lower() or "network" in anp[2].lower():
+        problems.append("ANP_OFFLINE_SCOPE")
+    plan = texts["docs/03_IMPLEMENTATION_PLAN.md"]
+    execution = plan.split("## 11.", 1)[1].split("## 12.", 1)[0]
+    if "Pose·Animation·Unity parity" in execution:
+        problems.append("STATIC_STAGE_CLAIMS_ANIMATION")
+    return problems
+
+
 def main():
     failures = []
-    print("EV-DOC-RAW-VALIDATION 2026-08-26 r06")
+    print("EV-DOC-RAW-VALIDATION current workflow audit 2026-09-05")
     print("COMMAND_KIND=read-only documentation parser; Build=0 Docker=0 Deploy=0")
     missing_docs = [relative for relative in ACTIVE_DOCS if not (ROOT / relative).exists()]
     print(f"ACTIVE_DOCS files={len(ACTIVE_DOCS) - len(missing_docs)}/{len(ACTIVE_DOCS)}")
@@ -136,7 +174,10 @@ def main():
 
     version_mismatch = [
         (relative, marker) for relative, marker in VERSION_MARKERS.items()
-        if marker not in (ROOT / relative).read_text()
+        if not re.search(
+            rf"^\| (?:문서 )?버전 \| `?{re.escape(marker)}(?:\s|\|)",
+            (ROOT / relative).read_text(), re.MULTILINE,
+        )
     ]
     print(f"VERSIONS mismatch={len(version_mismatch)}")
     if version_mismatch:
@@ -229,6 +270,26 @@ def main():
         failures.append("Approved policy tasks")
     if any(value["effort"] not in ALLOWED_EFFORT for value in tasks.values()):
         failures.append("Plan effort")
+
+    try:
+        approval = json.loads((ROOT / "BlenderSource/Characters/C1B-RW-016-preview/NeutralApprovalRecord.json").read_text())
+        rig_report = json.loads((ROOT / "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/RigQAReport.json").read_text())
+        workflow_problems = character_workflow_problems(
+            {relative: (ROOT / relative).read_text() for relative in ACTIVE_DOCS},
+            {task_id: value["cells"] for task_id, value in tasks.items()},
+            approval, rig_report,
+        )
+        for prefix in ("source", "qaReport"):
+            candidate = approval["candidate"]
+            path = ROOT / candidate[prefix + "Path"]
+            if sha256(path.read_bytes()).hexdigest() != candidate[prefix + "Sha256"]:
+                workflow_problems.append("NEUTRAL_APPROVAL_" + prefix.upper() + "_HASH")
+    except (OSError, ValueError, KeyError, IndexError, TypeError) as error:
+        workflow_problems = ["CHARACTER_WORKFLOW_RECORD_INVALID:" + type(error).__name__]
+    print(f"CHARACTER_WORKFLOW problems={len(workflow_problems)}")
+    if workflow_problems:
+        print(f"CHARACTER_WORKFLOW_DETAIL={workflow_problems}")
+        failures.append("Character workflow")
 
     missing_dependencies = []
     edges = defaultdict(set)

@@ -1,0 +1,145 @@
+{
+  "status": "LOCAL_DOWN_STATE_VERIFIED_TRIGGER_DECISION_PENDING",
+  "date": "2026-09-06",
+  "implementation": "Timed down episodes, Match/Lobby counts, cap, identity-guarded existing orientation/get-up phases, opt-in motor/hand action locks and safe release/rearm.",
+  "triggerDecision": {
+    "status": "POST_THROW_COLLISION_DAMAGE_EXCLUDED_ATTACK_DOWN_RULES_PENDING",
+    "automaticTriggerImplemented": false,
+    "earlierProposal": {
+      "recommended": "Accumulate weak punch hits; strong impacts immediately cause Down.",
+      "alternative": "Impact strength alone determines Down."
+    },
+    "confirmedDecision": {
+      "postThrowOrdinaryCollisionDamage": 0,
+      "postThrowCollisionDamageAccumulation": 0,
+      "physicsResponse": "Preserved",
+      "explicitHazardsAndOob": "Existing rules preserved",
+      "independentAttackHits": "Not made immune by this decision"
+    },
+    "pending": "Attack-specific damage/Down rules and damage-free physical Down behavior remain undecided; no collision-driven automatic Down added."
+  },
+  "timing": {
+    "status": "TEST_FIXTURE_ONLY_NOT_GAME_DEFAULT",
+    "baseSeconds": 1.5,
+    "incrementSeconds": 0.5,
+    "maximumSeconds": 3,
+    "productionPolicy": "Explicit profile required; actual tuning fixed after 2/3/4-player playtests."
+  },
+  "checks": {
+    "EditMode": {
+      "total": "108",
+      "passed": "108",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "PlayMode-r01": {
+      "total": "1",
+      "passed": "1",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "AllPlayMode": {
+      "total": "29",
+      "passed": "29",
+      "failed": "0",
+      "skipped": "0"
+    }
+  },
+  "physicsCases": [
+    {
+      "name": "Match",
+      "count": 1,
+      "throws": 0,
+      "jumps": 0,
+      "punches": 0,
+      "grabs": 2,
+      "blockedTravel": 0.0,
+      "rearmed": true,
+      "menuPreserved": false
+    },
+    {
+      "name": "Lobby",
+      "count": 0,
+      "throws": 0,
+      "jumps": 0,
+      "punches": 0,
+      "grabs": 2,
+      "blockedTravel": 0.0,
+      "rearmed": true,
+      "menuPreserved": false
+    },
+    {
+      "name": "QueuedRelease",
+      "count": 1,
+      "throws": 0,
+      "jumps": 0,
+      "punches": 0,
+      "grabs": 2,
+      "blockedTravel": 0.0,
+      "rearmed": true,
+      "menuPreserved": false
+    },
+    {
+      "name": "Reset",
+      "count": 0,
+      "throws": 0,
+      "jumps": 0,
+      "punches": 0,
+      "grabs": 2,
+      "blockedTravel": 0.0,
+      "rearmed": true,
+      "menuPreserved": false
+    },
+    {
+      "name": "Menu",
+      "count": 1,
+      "throws": 0,
+      "jumps": 0,
+      "punches": 0,
+      "grabs": 1,
+      "blockedTravel": 0.0,
+      "rearmed": false,
+      "menuPreserved": true
+    },
+    {
+      "name": "AuthorityDisabled",
+      "count": 1,
+      "throws": 0,
+      "jumps": 0,
+      "punches": 0,
+      "grabs": 2,
+      "blockedTravel": 0.0,
+      "rearmed": true,
+      "menuPreserved": false
+    }
+  ],
+  "raw": "/Users/kjh/local_dev/party game/.codex_tmp/down-state-20260906/DownStateReview.json",
+  "sourceSnapshot": "/Users/kjh/local_dev/party game/.codex_tmp/down-state-20260906/SourceSnapshot",
+  "sourceHashes": {
+    "Runtime/Simulation/CharacterRecoveryStateMachine.cs": "1a89b9ff6604a0bd7f30c8f88d0d6fb3f7da461a45f117f7e311d640ebba6882",
+    "Runtime/Simulation/TimedDownStateMachine.cs": "da1b2281d27f39c4df886e23c239d83d52b02789119e6092c2f8842687e5942f",
+    "Prototypes/PhysicsJump/DownStateReview.cs": "0a2234cd2c6a725b4942d1a2e1e3018fb93420283e5fc95cc0a4d94c573151c4",
+    "Prototypes/PhysicsJump/PhysicsJumpMotor.cs": "774ebd97bca521c9ba65559c8f9de35c7d08c4562021b7fb4685621a99cab5db",
+    "Prototypes/PhysicsJump/HandStrikeReview.cs": "52a6cd03a4d2d79ef23dd94af6fa880d84d040d17afcd4b62013a7667dba3bc1",
+    "Prototypes/PhysicsJump/GrabPhysicsReview.cs": "5adf2a29e03d2759e76e49e8e56151d51b2b305a7b3d9344a5fd6f8e2265fde2",
+    "Tests/EditMode/Architecture/TimedDownTests.cs": "f603bed0ef5e5308304ea8f19757df8ec7754ce07bcbb697ab150ba5371840de",
+    "Tests/PlayMode/Physics/DownStateReviewTests.cs": "4df8ab255d81fd95825ed4c36d344703b0033936fa56325d1b41783edcba88c7"
+  },
+  "documentChecks": {
+    "baseline": "PASS",
+    "workflowTests": 7,
+    "diffCheck": "PASS"
+  },
+  "limitations": [
+    "No automatic damage/impact-to-Down decision yet.",
+    "No physical multibody ragdoll, support/clearance queries, or GetUp animation integration. Tests explicitly supply recovery facts.",
+    "Opt-in test adapter; existing Grab review scene has no new automatic Down behavior.",
+    "No peer replication or production gate completion."
+  ],
+  "preserved": [
+    "Approved rig and modeling files unchanged (four original/candidate hashes checked).",
+    "Grab release throw, partial held-jump assistance, load-only GripStress, footplant and approved punch policy retained."
+  ],
+  "playerBuild": false,
+  "commitOrPush": false
+}

@@ -1,0 +1,105 @@
+{
+  "status": "LOCAL_UNITY_PROTOTYPE_VERIFIED",
+  "date": "2026-09-05",
+  "decision": {
+    "path": "artifacts/reports/R20_PHYSICS_JUMP_DECISION_20260905.json",
+    "sha256": "5aa6f7146a06beb9afc1f9361d89ddc526850507264dcb6fd73167fd77630784"
+  },
+  "sourceApproval": {
+    "path": "artifacts/reports/R20_LOWER_WEIGHT_VISUAL_APPROVAL_20260905.json",
+    "sha256": "49bb0e31f1d998bab11e635fb21ff20cef140a3bb10c9e9012ddf41cbb6d2240"
+  },
+  "transport": {
+    "path": ".codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes",
+    "sha256": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60"
+  },
+  "transportReport": {
+    "path": ".codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.json",
+    "sha256": "140c5c017ea0a457ec9202ad362ad51542548608dd3b7cc316fe7c5b4f71ac3d"
+  },
+  "exporter": {
+    "path": "tools/blender/export_c1b_rw020_physics_review.py",
+    "sha256": "bde6ab82d70a7d5b659b684f7f073dfad98dd96b92f5c30e0c5b77f4cf5a741d"
+  },
+  "unityReview": {
+    "path": ".codex_tmp/unity-physics-jump-20260905/UnityPhysicsReview.json",
+    "sha256": "18e791cb1c24cb97e1fa976d6942d40d12565d2e8ca1d0ec338b03e5cbbbd9c8"
+  },
+  "editMode": {
+    "passed": 85,
+    "failed": 0,
+    "evidence": {
+      "path": ".codex_tmp/unity-physics-jump-20260905/AllEditMode-r02.xml",
+      "sha256": "f4eb93b8b412e1fbee078ebafe49166e2703f1a745e0231c90a7c3f8f9cdb692"
+    }
+  },
+  "playMode": {
+    "passed": 14,
+    "failed": 0,
+    "evidence": {
+      "path": ".codex_tmp/unity-physics-jump-20260905/AllPlayMode-r08.xml",
+      "sha256": "ff31057229f12b96c7229f4cb8ca948b4b249041baca65984f056aedb10472a1"
+    }
+  },
+  "preview": {
+    "path": ".codex_tmp/unity-physics-jump-20260905/UnityPhysicsJumpPreview.gif",
+    "sha256": "0b9c242f0b0af4f04e92dca76870dd51ae9041aac9083da4d2aa24421e4a314e"
+  },
+  "contactSheet": {
+    "path": ".codex_tmp/unity-physics-jump-20260905/UnityPhysicsJumpContactSheet.png",
+    "sha256": "fbbf9d2e9dafecfde584eb48ca8ddd2a97c31cc481cb772bd833103a229a094f"
+  },
+  "sources": [
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Runtime/Contracts/JumpPresentationState.cs",
+      "sha256": "fc651d330842f6da925e52beee483f9279a604684fa256033aa8db39eae3b6e5"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Runtime/Simulation/PhysicsJumpStateMachine.cs",
+      "sha256": "e044f1d61f65b569ce1bcdf003f553186283feda8a17f04f56750ace843ccf52"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralJumpPose.cs",
+      "sha256": "9f539cb1caee5ce52191b3267e3653b701a389ab73476f905199886e7ad41799"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpMotor.cs",
+      "sha256": "d3ef8c3c97b87797ef4eb6cac0171e8bbc5e6ed31e7192f275e7c06e6e92051d"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpReview.cs",
+      "sha256": "e234368a838ad659bc1956b68dd834af8fbdc534d5b1c6450cb3ee83e805511e"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+      "sha256": "43b0e3dc15650b87554d7ac49cef314c03c8f1abc5451b3bdec367e5f090814e"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicsJumpTests.cs",
+      "sha256": "24ae8030e33f1bb9e4b91109689a3c6afbd11dbf8a3fbe9e84f927ed63b928bc"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicsJumpReviewCapture.cs",
+      "sha256": "b01b8d625eeeb47db3fbacc7175f493fd888abddf1c83492bb295e8bab28310f"
+    }
+  ],
+  "physicsSteps": 180,
+  "physicsStepSeconds": 0.01666666753590107,
+  "renderCount": 60,
+  "observedJumpHeightMeters": 0.23188167810440063,
+  "maximumContactSurfaceErrorMeters": 6.193714216351509e-05,
+  "maximumFootTargetErrorMeters": 8.016824722290039e-06,
+  "clips": 0,
+  "bones": 22,
+  "bodyCollider": "single dynamic capsule; locked body rotation",
+  "upperArmLocalRotationsPreserved": true,
+  "fullJointRagdoll": false,
+  "gameplayIntegration": false,
+  "playerBuild": false,
+  "limitations": [
+    "Local review transport, not canonical FBX/prefab parity or production rig approval.",
+    "World-axis movement only; Walk/Sprint and automatic facing are not connected.",
+    "Full terrain foot IK, moving platforms, complete articulated ragdoll, Down/GetUp and multiplayer remain unintegrated.",
+    "Unity mesh fold/self-intersection exhaustive checks were not run; preserved input has previous Blender deformation QA."
+  ]
+}

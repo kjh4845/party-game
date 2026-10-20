@@ -1,0 +1,555 @@
+{
+  "status": "PASS_LOCAL_CANDIDATE",
+  "userRequest": "골반과 하체를 더 사용해 자연스럽게 일어나도록 회복 동작 수정",
+  "scope": "GetUp presentation and two authored clips; physics and handoff unchanged",
+  "tests": {
+    "PlayMode": {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/pelvis-getup-20260908/AllPlayMode-final.xml",
+      "passed": 37,
+      "failed": 0,
+      "skipped": 0
+    },
+    "EditMode": {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/pelvis-getup-20260908/AllEditMode-final.xml",
+      "passed": 112,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "recoveryCapture": "/Users/kjh/local_dev/party game/.codex_tmp/natural-getup-20260907/Review-20260908-011901",
+  "recoveryResults": {
+    "status": "PASS",
+    "cases": [
+      {
+        "name": "FaceUp",
+        "finalPhase": "None",
+        "worstJoint": "Forearm_L",
+        "recoveries": 1,
+        "aligns": 0,
+        "interruptions": 0,
+        "gap": 0.014155751094222069,
+        "speed": 3.5627388954162598,
+        "surfaceAngle": 30.828351974487305,
+        "finalHeight": 0.0041092634201049805,
+        "downCount": 1,
+        "handoff": 5.367004405343323e-07,
+        "readyAngle": 0.9544879198074341,
+        "readyDistance": 0.008493236266076565,
+        "readySpeed": 0.01320304349064827,
+        "readyAngular": 0.03834303468465805,
+        "worstStep": 150,
+        "surfaceSamples": 172,
+        "plantedSamples": 47,
+        "plantError": 2.903613494709134e-05,
+        "forearmMotion": 82.21187591552734,
+        "footError": 4.360340355447079e-08,
+        "footWeight": 1.0,
+        "footSamples": 8,
+        "worstLocation": {
+          "x": 0.00016556901391595602,
+          "y": 0.09260588139295578,
+          "z": -0.025965644046664238
+        },
+        "worstLegAngles": [
+          -56.402740478515625,
+          76.0,
+          31.39015007019043,
+          -51.614013671875,
+          67.86817169189453,
+          28.041919708251953
+        ]
+      },
+      {
+        "name": "FaceDown",
+        "finalPhase": "None",
+        "worstJoint": "Calf_L",
+        "recoveries": 1,
+        "aligns": 0,
+        "interruptions": 0,
+        "gap": 0.008798654191195965,
+        "speed": 3.8122715950012207,
+        "surfaceAngle": 30.79908561706543,
+        "finalHeight": 0.004086822271347046,
+        "downCount": 1,
+        "handoff": 5.367004405343323e-07,
+        "readyAngle": 0.0,
+        "readyDistance": 0.0005507152527570724,
+        "readySpeed": 0.01322954148054123,
+        "readyAngular": 0.02480079047381878,
+        "worstStep": 148,
+        "surfaceSamples": 172,
+        "plantedSamples": 60,
+        "plantError": 1.5744585368793196e-07,
+        "forearmMotion": 102.32328796386719,
+        "footError": 3.2272971566271735e-06,
+        "footWeight": 1.0,
+        "footSamples": 14,
+        "worstLocation": {
+          "x": 0.00015438426635228097,
+          "y": 0.09270086139440536,
+          "z": -0.02682783640921116
+        },
+        "worstLegAngles": [
+          -56.690277099609375,
+          76.0,
+          30.691495895385742,
+          -51.220611572265625,
+          66.85478973388672,
+          27.0098934173584
+        ]
+      },
+      {
+        "name": "LeftSide",
+        "finalPhase": "None",
+        "worstJoint": "Forearm_L",
+        "recoveries": 1,
+        "aligns": 0,
+        "interruptions": 0,
+        "gap": 0.011686181649565697,
+        "speed": 2.6160006523132324,
+        "surfaceAngle": 40.80103302001953,
+        "finalHeight": 0.004112452268600464,
+        "downCount": 1,
+        "handoff": 4.995779363525799e-07,
+        "readyAngle": 1.0697146654129028,
+        "readyDistance": 0.008978907950222492,
+        "readySpeed": 0.013309287838637829,
+        "readyAngular": 0.033931273967027664,
+        "worstStep": 214,
+        "surfaceSamples": 191,
+        "plantedSamples": 43,
+        "plantError": 8.800250361673534e-05,
+        "forearmMotion": 81.11390686035156,
+        "footError": 6.146728992462158e-08,
+        "footWeight": 1.0,
+        "footSamples": 17,
+        "worstLocation": {
+          "x": 0.00022286402236204594,
+          "y": 0.09699025005102158,
+          "z": -0.011952648870646954
+        },
+        "worstLegAngles": [
+          -45.26226806640625,
+          79.74186706542969,
+          32.10680389404297,
+          -45.930999755859375,
+          68.00001525878906,
+          34.12352752685547
+        ]
+      },
+      {
+        "name": "RightSide",
+        "finalPhase": "None",
+        "worstJoint": "UpperArm_R",
+        "recoveries": 1,
+        "aligns": 0,
+        "interruptions": 0,
+        "gap": 0.006727260537445545,
+        "speed": 2.6160006523132324,
+        "surfaceAngle": 30.80214500427246,
+        "finalHeight": 0.0040867626667022705,
+        "downCount": 1,
+        "handoff": 4.76837158203125e-07,
+        "readyAngle": 0.4168400168418884,
+        "readyDistance": 0.0010674688965082169,
+        "readySpeed": 0.013270324096083641,
+        "readyAngular": 0.01651647314429283,
+        "worstStep": 174,
+        "surfaceSamples": 185,
+        "plantedSamples": 60,
+        "plantError": 2.0628321806270833e-07,
+        "forearmMotion": 110.71654510498047,
+        "footError": 4.796265784534626e-07,
+        "footWeight": 1.0,
+        "footSamples": 5,
+        "worstLocation": {
+          "x": 0.00015451537910848856,
+          "y": 0.09270093590021133,
+          "z": -0.026827847585082054
+        },
+        "worstLegAngles": [
+          -56.690277099609375,
+          76.0,
+          30.691490173339844,
+          -51.220611572265625,
+          66.85479736328125,
+          27.009897232055664
+        ]
+      },
+      {
+        "name": "Ceiling",
+        "finalPhase": "PhysicsTumble",
+        "worstJoint": "Forearm_L",
+        "recoveries": 0,
+        "aligns": 0,
+        "interruptions": 0,
+        "gap": 0.014155751094222069,
+        "speed": 3.5627388954162598,
+        "surfaceAngle": 16.52471351623535,
+        "finalHeight": 0.12009038776159286,
+        "downCount": 1,
+        "handoff": 0.0,
+        "readyAngle": 0.0,
+        "readyDistance": 0.0,
+        "readySpeed": 0.0,
+        "readyAngular": 0.0,
+        "worstStep": 32,
+        "surfaceSamples": 480,
+        "plantedSamples": 0,
+        "plantError": 0.0,
+        "forearmMotion": 0.0,
+        "footError": 0.0,
+        "footWeight": 0.0,
+        "footSamples": 0,
+        "worstLocation": {
+          "x": 0.15603357553482056,
+          "y": 0.6132887005805969,
+          "z": -0.033199019730091095
+        },
+        "worstLegAngles": [
+          20.048025131225586,
+          45.042930603027344,
+          0.0,
+          20.03925132751465,
+          45.0798454284668,
+          0.0
+        ]
+      },
+      {
+        "name": "CeilingRemoved",
+        "finalPhase": "None",
+        "worstJoint": "Forearm_L",
+        "recoveries": 1,
+        "aligns": 0,
+        "interruptions": 0,
+        "gap": 0.014155751094222069,
+        "speed": 3.5627388954162598,
+        "surfaceAngle": 30.876062393188477,
+        "finalHeight": 0.0041092634201049805,
+        "downCount": 1,
+        "handoff": 5.367004405343323e-07,
+        "readyAngle": 0.9544879198074341,
+        "readyDistance": 0.008493236266076565,
+        "readySpeed": 0.01320304349064827,
+        "readyAngular": 0.03834303468465805,
+        "worstStep": 360,
+        "surfaceSamples": 270,
+        "plantedSamples": 47,
+        "plantError": 2.903613494709134e-05,
+        "forearmMotion": 82.21187591552734,
+        "footError": 4.360340355447079e-08,
+        "footWeight": 1.0,
+        "footSamples": 8,
+        "worstLocation": {
+          "x": 0.00015997835726011544,
+          "y": 0.09265228360891342,
+          "z": -0.0264133308082819
+        },
+        "worstLegAngles": [
+          -56.574005126953125,
+          76.0,
+          31.031002044677734,
+          -51.51226806640625,
+          67.47331237792969,
+          27.5605411529541
+        ]
+      },
+      {
+        "name": "Reset",
+        "finalPhase": "None",
+        "worstJoint": "Forearm_L",
+        "recoveries": 0,
+        "aligns": 0,
+        "interruptions": 0,
+        "gap": 0.014155751094222069,
+        "speed": 3.5627388954162598,
+        "surfaceAngle": 16.52471351623535,
+        "finalHeight": 0.004086285829544067,
+        "downCount": 0,
+        "handoff": 0.0,
+        "readyAngle": 89.20613861083984,
+        "readyDistance": 0.21177829802036285,
+        "readySpeed": 0.026131974533200264,
+        "readyAngular": 0.1668240875005722,
+        "worstStep": 32,
+        "surfaceSamples": 116,
+        "plantedSamples": 14,
+        "plantError": 1.4563217121121852e-07,
+        "forearmMotion": 82.21187591552734,
+        "footError": 0.0,
+        "footWeight": 0.0,
+        "footSamples": 0,
+        "worstLocation": {
+          "x": 0.15603357553482056,
+          "y": 0.6132887005805969,
+          "z": -0.033199019730091095
+        },
+        "worstLegAngles": [
+          20.048025131225586,
+          45.042930603027344,
+          0.0,
+          20.03925132751465,
+          45.0798454284668,
+          0.0
+        ]
+      },
+      {
+        "name": "SideGateLeft",
+        "finalPhase": "None",
+        "worstJoint": "Forearm_L",
+        "recoveries": 1,
+        "aligns": 1,
+        "interruptions": 0,
+        "gap": 0.0033344156108796597,
+        "speed": 2.020604133605957,
+        "surfaceAngle": 30.925003051757812,
+        "finalHeight": 0.004110544919967651,
+        "downCount": 1,
+        "handoff": 4.777675712830387e-07,
+        "readyAngle": 0.9827693700790405,
+        "readyDistance": 0.008687563240528107,
+        "readySpeed": 0.013216906227171421,
+        "readyAngular": 0.03778495267033577,
+        "worstStep": 188,
+        "surfaceSamples": 190,
+        "plantedSamples": 47,
+        "plantError": 2.410308752587298e-07,
+        "forearmMotion": 90.09088134765625,
+        "footError": 6.510708772111684e-06,
+        "footWeight": 1.0,
+        "footSamples": 11,
+        "worstLocation": {
+          "x": 0.00015986959624569863,
+          "y": 0.09265231341123581,
+          "z": -0.026413312181830406
+        },
+        "worstLegAngles": [
+          -56.57403564453125,
+          76.0,
+          31.031002044677734,
+          -51.51226806640625,
+          67.47330474853516,
+          27.560546875
+        ]
+      },
+      {
+        "name": "SideGateRight",
+        "finalPhase": "None",
+        "worstJoint": "Forearm_R",
+        "recoveries": 1,
+        "aligns": 1,
+        "interruptions": 0,
+        "gap": 0.003306469414383173,
+        "speed": 2.002110719680786,
+        "surfaceAngle": 30.819576263427734,
+        "finalHeight": 0.004110425710678101,
+        "downCount": 1,
+        "handoff": 6.557463620993076e-07,
+        "readyAngle": 0.978779137134552,
+        "readyDistance": 0.008665279485285282,
+        "readySpeed": 0.01321367360651493,
+        "readyAngular": 0.037461113184690475,
+        "worstStep": 190,
+        "surfaceSamples": 191,
+        "plantedSamples": 47,
+        "plantError": 1.892006184789352e-05,
+        "forearmMotion": 77.93276977539062,
+        "footError": 4.280032683823265e-08,
+        "footWeight": 1.0,
+        "footSamples": 9,
+        "worstLocation": {
+          "x": 0.00016560551011934876,
+          "y": 0.09260585159063339,
+          "z": -0.025965606793761253
+        },
+        "worstLegAngles": [
+          -56.402740478515625,
+          76.00000762939453,
+          31.390146255493164,
+          -51.614013671875,
+          67.86817169189453,
+          28.04192352294922
+        ]
+      },
+      {
+        "name": "Interrupted",
+        "finalPhase": "None",
+        "worstJoint": "Forearm_L",
+        "recoveries": 1,
+        "aligns": 0,
+        "interruptions": 1,
+        "gap": 0.014155751094222069,
+        "speed": 3.5627388954162598,
+        "surfaceAngle": 30.87301254272461,
+        "finalHeight": 0.004108905792236328,
+        "downCount": 1,
+        "handoff": 5.968375376141921e-07,
+        "readyAngle": 0.9528465270996094,
+        "readyDistance": 0.008489261381328106,
+        "readySpeed": 0.013201195746660233,
+        "readyAngular": 0.0382857583463192,
+        "worstStep": 300,
+        "surfaceSamples": 242,
+        "plantedSamples": 46,
+        "plantError": 2.2190506854258274e-07,
+        "forearmMotion": 82.18376159667969,
+        "footError": 4.470348358154297e-08,
+        "footWeight": 1.0,
+        "footSamples": 8,
+        "worstLocation": {
+          "x": 0.00015996192814782262,
+          "y": 0.09265226870775223,
+          "z": -0.026413321495056152
+        },
+        "worstLegAngles": [
+          -56.57403564453125,
+          76.0,
+          31.030994415283203,
+          -51.51226806640625,
+          67.47331237792969,
+          27.5605525970459
+        ]
+      }
+    ]
+  },
+  "handoff": {
+    "cases": [
+      {
+        "name": "FaceUp",
+        "postYawRange": 0.0,
+        "postAngularSpeed": 2.540981292042943e-08,
+        "postHeightRange": 0.00018736720085144043,
+        "moveDistance": 0.2727510631084442,
+        "completionStep": 241
+      },
+      {
+        "name": "FaceDown",
+        "postYawRange": 0.6707305908203125,
+        "postAngularSpeed": 0.17933973670005798,
+        "postHeightRange": 0.000179976224899292,
+        "moveDistance": 0.2718679904937744,
+        "completionStep": 241
+      },
+      {
+        "name": "LeftSide",
+        "postYawRange": 0.0,
+        "postAngularSpeed": 1.895071477520105e-08,
+        "postHeightRange": 0.00018727779388427734,
+        "moveDistance": 0.27190592885017395,
+        "completionStep": 281
+      },
+      {
+        "name": "RightSide",
+        "postYawRange": 0.0,
+        "postAngularSpeed": 2.020958476123269e-07,
+        "postHeightRange": 0.00017902255058288574,
+        "moveDistance": 0.27187010645866394,
+        "completionStep": 267
+      }
+    ]
+  },
+  "handoffIdenticalToPriorFix": true,
+  "clipPositionMetrics": [
+    {
+      "clip": "GetUp_FaceUp.anim",
+      "version": "before",
+      "maxLocalPositionOffset": 0.010887459999999988,
+      "localAxisRanges": [
+        0.0,
+        0.0,
+        0.010887459999999988
+      ],
+      "endpointPositionError": 0.0
+    },
+    {
+      "clip": "GetUp_FaceUp.anim",
+      "version": "after",
+      "maxLocalPositionOffset": 0.044221835729036964,
+      "localAxisRanges": [
+        0.000190410763,
+        0.03150429,
+        0.03212499999999999
+      ],
+      "endpointPositionError": 0.0
+    },
+    {
+      "clip": "GetUp_FaceDown.anim",
+      "version": "before",
+      "maxLocalPositionOffset": 0.010887459999999988,
+      "localAxisRanges": [
+        0.0,
+        0.0,
+        0.010887459999999988
+      ],
+      "endpointPositionError": 0.0
+    },
+    {
+      "clip": "GetUp_FaceDown.anim",
+      "version": "after",
+      "maxLocalPositionOffset": 0.044221835729036964,
+      "localAxisRanges": [
+        0.000190410763,
+        0.03150429,
+        0.03212499999999999
+      ],
+      "endpointPositionError": 0.0
+    }
+  ],
+  "unchangedSourceHashes": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/RagdollRecoveryReview.cs": "66653f367d7ee9a45599154e8caa2e177ce67cd3e1f376fe1c449fc1b5a3f706"
+  },
+  "sourceSnapshots": {
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/GetUpAnimationPose.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/pelvis-getup-20260908/SourceSnapshot/GetUpAnimationPose.cs",
+      "sha256": "a8ef81d29b40b21bb41c3dfacd4135ae167e12ad8d15cb764a5940f3fcb0cd04"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/GetUpClipAuthoring.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/pelvis-getup-20260908/SourceSnapshot/GetUpClipAuthoring.cs",
+      "sha256": "315e29fe30fd852e83a22ec23c9a94ea86220d3dcadfe1f8dd7d949f504a955e"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/GetUpClipTests.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/pelvis-getup-20260908/SourceSnapshot/GetUpClipTests.cs",
+      "sha256": "871e613af6933a94a83e44ac97dcdc9f70c66353024671541e15d3738085cbc4"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/pelvis-getup-20260908/SourceSnapshot/GetUp_FaceUp.anim",
+      "sha256": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/pelvis-getup-20260908/SourceSnapshot/GetUp_FaceDown.anim",
+      "sha256": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/RagdollRecoveryReview.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/pelvis-getup-20260908/SourceSnapshot/RagdollRecoveryReview.cs",
+      "sha256": "66653f367d7ee9a45599154e8caa2e177ce67cd3e1f376fe1c449fc1b5a3f706"
+    }
+  },
+  "media": {
+    "before": "/Users/kjh/local_dev/party game/.codex_tmp/natural-getup-20260907/Review-20260907-051332",
+    "after": "/Users/kjh/local_dev/party game/.codex_tmp/natural-getup-20260907/Review-20260908-011901",
+    "frames": [
+      28,
+      117
+    ],
+    "sourceFps": 20,
+    "sourceSeconds": 4.5,
+    "holdAndRepeatSeconds": 1,
+    "gif": "/Users/kjh/local_dev/party game/.codex_tmp/pelvis-getup-20260908/Media/PelvisGetUpComparison.gif",
+    "encodedGifFrames": 69,
+    "gifDurationMs": 5500,
+    "size": [
+      840,
+      902
+    ]
+  },
+  "documentationWorkflowTests": 7,
+  "limitations": [
+    "Visual naturalness remains user review; local prototype tests do not approve production integration.",
+    "Foot contact is bounded partial IK, not continuous full foot lock.",
+    "No original model, rig, weights, player build, commit or push changes."
+  ]
+}

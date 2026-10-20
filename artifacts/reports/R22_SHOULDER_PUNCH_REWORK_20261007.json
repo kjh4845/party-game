@@ -1,0 +1,153 @@
+{
+  "date": "2026-10-07",
+  "status": "USER_REJECTED",
+  "userRequest": "Repair shoulder-to-arm/armpit contour seen from the front and rework the strange punch for physical brawling",
+  "model": {
+    "path": "BlenderSource/Characters/C1B-RW-022-shoulder-contour/CHR_MasterCharacter_C1B_ShoulderContour_r22.blend",
+    "transport": "BlenderSource/Characters/C1B-RW-022-shoulder-contour/ShoulderCharacter.bytes",
+    "review": "BlenderSource/Characters/C1B-RW-022-shoulder-contour/ShoulderContourReview.json",
+    "nativeValidation": "BlenderSource/Characters/C1B-RW-022-shoulder-contour/NativeModelValidation.json",
+    "preserved": "Original r21 source, skeleton, topology, head, lower body and distal arms",
+    "scope": "Local shoulder geometry and existing skin-helper weights"
+  },
+  "punch": {
+    "actionSeconds": 0.4,
+    "preparation": "Compact chest-height guard, reduced elbow fold and no backwards shoulder wind-up",
+    "strikeEndSeconds": {
+      "normal": 0.142,
+      "close": 0.132
+    },
+    "guardSeconds": 0.7,
+    "guardException": "Holding hands keep their grab posture; menu/reset clear all guard drives",
+    "reaction": "Confirmed hit only, bounded root impulse 4 N*s and struck-part impulse within existing cap",
+    "bodyImpulseBudgetNewtonSeconds": 4,
+    "maximumWholeBodyDeltaSpeed": 0.2,
+    "damageRules": "Head2 / body-limbs1, existing10→6 accumulation and down-request boundary preserved"
+  },
+  "validation": {
+    "playMode": {
+      "total": 20,
+      "passed": 20,
+      "failed": 0,
+      "xml": ".codex_tmp/shoulder-punch-rework-20261007/Final/PlayMode.xml"
+    },
+    "editMode": {
+      "total": 146,
+      "passed": 146,
+      "failed": 0,
+      "xml": ".codex_tmp/shoulder-punch-rework-20261007/Final/EditMode.xml"
+    },
+    "frameRates": [
+      15,
+      60,
+      144
+    ],
+    "captureScenarios": [
+      {
+        "name": "LeftBody",
+        "hits": 3,
+        "maxAdjacentSurfaceAngle": 15.021126747131348
+      },
+      {
+        "name": "RightBody",
+        "hits": 3,
+        "maxAdjacentSurfaceAngle": 14.996968269348145
+      },
+      {
+        "name": "Head",
+        "hits": 3,
+        "maxAdjacentSurfaceAngle": 15.651127815246582
+      },
+      {
+        "name": "Far",
+        "hits": 0,
+        "maxAdjacentSurfaceAngle": 17.56690788269043
+      },
+      {
+        "name": "Wall",
+        "hits": 0,
+        "maxAdjacentSurfaceAngle": 20.534500122070312
+      },
+      {
+        "name": "GrabPunch",
+        "hits": 1,
+        "maxAdjacentSurfaceAngle": 23.90660858154297
+      },
+      {
+        "name": "Alternating",
+        "hits": 10,
+        "maxAdjacentSurfaceAngle": 15.78111457824707
+      },
+      {
+        "name": "Moving",
+        "hits": 10,
+        "maxAdjacentSurfaceAngle": 19.435401916503906
+      }
+    ],
+    "guardTimeoutMenuGrabCancel": true,
+    "transportAndNativeValidation": true,
+    "mediaVerification": ".codex_tmp/shoulder-punch-rework-20261007/Final/Media/MediaVerification.json",
+    "guardFollowup": {
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "xml": ".codex_tmp/shoulder-punch-rework-20261007/Final/GuardFollowup.xml"
+    },
+    "uniquePlayModeTests": 21,
+    "documentationBaseline": "PASS"
+  },
+  "sources": {
+    "tools/blender/create_r22_shoulder_contour.py": "addde5cf9847a029bcdfd5f86e1b77ab5933b387eae4e0e479ab323c205dd8e7",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Punch.cs": "e415bd8452f62efed571731e4aea841188936c00f88c7a4da825751e12b1af78",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs": "81da5c3082a1476c639715561eb0fa9b1a9aa23273a9f432e20bbb1257b50bb6",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs": "02fa2d6cf658b26bc89758d9321281645f8d6ec4bb7464ad492d8978a3dd0984",
+    "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": "969b8f4869724d2cbbda026550de772b2db8b7f774c81da185f507656424d35e",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Shoulder.cs": "fb72e959e81483f76021dde53a2cc49f557b8a91cb8a4a871c14da63b24b1c5b",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Flow.cs": "d80dc5741e5644d59882371bc61e143ad590465216bb0fb7e54b23f28c9486dd",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Feel.cs": "d919d991b0a50f67809e0cf194e6485ea4b2cba3ccbcc5c2a05c8be18da4c651",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Snap.cs": "e6928234981ff410be74cb4582e28690f1dde72eb55e3b6606b22da25c741dc1",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.cs": "0e6f89f11f2ad03dc596590896ebd834b804439377641638da5a8a3657222580"
+  },
+  "media": [
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-punch-rework-20261007/Final/Media/Punch_BeforeAfter_60.mp4",
+      "frames": 360,
+      "sha256": "475ea2c0b5b2ec948508ec91e5fcdd2a237450f188ad7a85bb240505624d9606"
+    },
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-punch-rework-20261007/Final/Media/Punch_Brawl_Silent.mp4",
+      "frames": 420,
+      "sha256": "83160433bdb968f089a925104cd858e326634f1e1270e247b99841bcfd3e6d07"
+    },
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-punch-rework-20261007/Final/Media/Punch_Brawl_60.mp4",
+      "frames": 420,
+      "sha256": "05d47aa394175f5d6231ef83f99fa2658387c9c279b683170fadf39b0bc0f43e"
+    },
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-punch-rework-20261007/Final/Media/Punch_BeforeAfter_HalfSpeed.mp4",
+      "frames": 360,
+      "sha256": "01b9b940993492eaaa4edc8aae78eb5e024afa66be2049d907924f42f792620f"
+    }
+  ],
+  "defaultMenu": "Project Hotfix/Prototypes/Open Physical Punch Candidate",
+  "visualApproval": false,
+  "fullGameIntegration": false,
+  "builds": 0,
+  "commits": 0,
+  "pushes": 0,
+  "captureSources": {
+    "tools/blender/create_r22_shoulder_contour.py": "addde5cf9847a029bcdfd5f86e1b77ab5933b387eae4e0e479ab323c205dd8e7",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Punch.cs": "e415bd8452f62efed571731e4aea841188936c00f88c7a4da825751e12b1af78",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs": "b02e92828f9a76b0bc84730c0f16b6ca14a5f880dabe4b25be23b0f3bacd21cf",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs": "02fa2d6cf658b26bc89758d9321281645f8d6ec4bb7464ad492d8978a3dd0984",
+    "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": "969b8f4869724d2cbbda026550de772b2db8b7f774c81da185f507656424d35e",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Shoulder.cs": "8e64264a31efd6275efc89c9cb119b5374ef1744fefe125e08d11bc21deb4b14",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Flow.cs": "d80dc5741e5644d59882371bc61e143ad590465216bb0fb7e54b23f28c9486dd",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Feel.cs": "d919d991b0a50f67809e0cf194e6485ea4b2cba3ccbcc5c2a05c8be18da4c651",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.Snap.cs": "e6928234981ff410be74cb4582e28690f1dde72eb55e3b6606b22da25c741dc1",
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.cs": "0e6f89f11f2ad03dc596590896ebd834b804439377641638da5a8a3657222580"
+  },
+  "userFeedback": "User rejected visible shoulder/axilla form, apparent symmetry and straight punch feel; requested a new proposal",
+  "followupReport": "artifacts/reports/R23_MODEL_ARC_COMPARISON_20261008.json"
+}

@@ -1,0 +1,294 @@
+{
+  "date": "2026-10-10",
+  "status": "APPLIED_BODY_SURFACE_AND_ARM_PLAN_DELIVERED",
+  "visualApproved": false,
+  "selectedCandidate": "CandidateK",
+  "model": {
+    "blend": "BlenderSource/Characters/C1B-RW-034-fair-body/CHR_MasterCharacter_C1B_FairBody_r34.blend",
+    "transport": "BlenderSource/Characters/C1B-RW-034-fair-body/FairBodyCharacter.bytes"
+  },
+  "bodyEdit": {
+    "sourceSha256": "563be29d7a0abc422dbc703cba90e64c21347a8a9a6cd048c318997ba096ed45",
+    "candidateSha256": "9909489215a90ed80c0e98d5d96cee49cb035d0f23675f3ada575c1bdd1ac488",
+    "transportSha256": "eb7055cb4e47cff3777c25d4dd9d25ecb002a3a1b6363959339ef4ab2d00feaa",
+    "controlCageVertices": 9043,
+    "changedVertices": 123202,
+    "maximumNeutralChangeMeters": 0.007056656520618587,
+    "facesRotatedBeyond90DegreesFromSource": 0,
+    "shouldersArmShaftsRigWeightsTopologyHeadPreserved": true,
+    "mirrorError": 0,
+    "visualApproved": false
+  },
+  "nativeValidation": {
+    "passed": true,
+    "shoulderOutlineArmShaftsProtected": true,
+    "legGroundLevelErrorMeters": 0,
+    "headRigWeightsTopologyActionsPreserved": true,
+    "originalPosePositionDeltasPreserved": true,
+    "nativeTransportBasePosePositionsAndNormalsMatch": true,
+    "maximumNativeKeyRoundingError": 2.9802322387695312e-8,
+    "mirrorError": 0,
+    "candidateSha256": "9909489215a90ed80c0e98d5d96cee49cb035d0f23675f3ada575c1bdd1ac488",
+    "transportSha256": "eb7055cb4e47cff3777c25d4dd9d25ecb002a3a1b6363959339ef4ab2d00feaa"
+  },
+  "sourcePreservation": {
+    "sourcePreservation": {
+      "baselineSourceFiles": 118,
+      "unchangedSourceFiles": 117,
+      "onlyChangedSource": "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+      "menuBeforeSha256": "50adb038dda6741170aedeca5045edd9bc7350429e7284cb0e11591b0bb4d83f",
+      "menuAfterSha256": "30aed65ce0839ca4990f11b4e2741d8f3e91225f38a5c0029ea50ea9004ce383"
+    },
+    "acceptedMotionHashes": {
+      "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Shoulders.cs": "a340879eb67beb256eb2d1183991b766c7df3c61a05afd3e3d4357a2bf5502a7",
+      "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs": "515783237e7ce52b3020aaf97f0bb8f590bc627f65c00a0dcc5a1a18609cb823",
+      "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Impact.cs": "d92266e159ae019ef390de7971a31f92afa1f7c153b7c71b26c7dddc3e692952",
+      "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PhysicalPunchCandidateTests.NaturalShoulder.cs": "fd9fdb2c582eefcc409ce4ba02a78bbb6e15c0c237538797a044c19e236dd5b1",
+      "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Punch.cs": "8c439127ea2cd02d2087d8f3cb540b97b354568435489f14efc837871b9efa04",
+      "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.cs": "4578818863197339e7f077e0df3317dd7befb0e290ff3b2dfc3ee0ca7e9a4d3b",
+      "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs": "fd0c444da4bd05f262b7392a6111324ae144bd65e98d0511dfa526ec3684fb16",
+      "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchFeedbackReview.cs": "f0584878d0f8af1aba6292efa4bad9c239fcbc94248007986645b3341c5029e7",
+      "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralJumpPose.cs": "ef81a733b37877b6dfeef3596e004f1ac0a094808d49bbac213014f87bcba688"
+    },
+    "menuCompilePassed": 1,
+    "menuCompileFailed": 0
+  },
+  "frontGapCheck": {
+    "sameCameraFrontScreenshot": true,
+    "shoulderSilhouetteUnchangedAboveRow400": true,
+    "gapRegions": [
+      {
+        "side": "left",
+        "originalBackgroundPixels": 46,
+        "candidateBackgroundPixels": 46
+      },
+      {
+        "side": "right",
+        "originalBackgroundPixels": 47,
+        "candidateBackgroundPixels": 47
+      }
+    ],
+    "meaning": "Raster evidence in these front-view regions, not global 3D minimum distance or visual approval."
+  },
+  "playMode": {
+    "passed": 9,
+    "failed": 0,
+    "tests": [
+      "BodyStrikeReactionsFollowContactAndRecover",
+      "BodyStrikeSuppressionClearsReactionAndPelvisOffset",
+      "CancellationStopsPunchAndRestoresGrabLimits",
+      "CaptureArmVolumeAudit",
+      "CapturePhysicalPunchScenarios",
+      "CorrectedContactSurfaceMatchesSkinAndIgnoresRenderInterpolation",
+      "HoldAndThrowNeverBecomePunchAndFreeHandCanPunch",
+      "PhysicalPunchReplayMatches15_60_144Fps",
+      "ShoulderSocketsFollowReachAndResetTogetherWithSkin"
+    ],
+    "xml": "artifacts/evidence/r34-fair-body-20261010/PlayMode.xml"
+  },
+  "combatScenarios": [
+    {
+      "name": "LeftBody",
+      "maxAdjacentFaceAngle": 39.93110656738281,
+      "hits": 3
+    },
+    {
+      "name": "RightBody",
+      "maxAdjacentFaceAngle": 39.889381408691406,
+      "hits": 3
+    },
+    {
+      "name": "Head",
+      "maxAdjacentFaceAngle": 39.977996826171875,
+      "hits": 3
+    },
+    {
+      "name": "Far",
+      "maxAdjacentFaceAngle": 38.206626892089844,
+      "hits": 0
+    },
+    {
+      "name": "Wall",
+      "maxAdjacentFaceAngle": 44.89604568481445,
+      "hits": 0
+    },
+    {
+      "name": "GrabPunch",
+      "maxAdjacentFaceAngle": 45.497032165527344,
+      "hits": 1
+    },
+    {
+      "name": "Alternating",
+      "maxAdjacentFaceAngle": 59.895259857177734,
+      "hits": 10
+    },
+    {
+      "name": "Moving",
+      "maxAdjacentFaceAngle": 59.863338470458984,
+      "hits": 10
+    },
+    {
+      "name": "Exchange",
+      "maxAdjacentFaceAngle": 40.199947357177734,
+      "hits": 3
+    }
+  ],
+  "geometryValidation": {
+    "bodyConnectedComponents": 1,
+    "boundaryEdges": 0,
+    "nonManifoldEdges": 0,
+    "maximumDegenerateTrianglesInTenCapturedPoses": 0,
+    "crossingChecks": [
+      {
+        "pose": "Idle",
+        "region": "shoulderAndUpperRib",
+        "trianglesChecked": 111840,
+        "properNonAdjacentCrossingPairs": 0,
+        "examplesMaterialCenters": []
+      },
+      {
+        "pose": "Idle",
+        "region": "groin",
+        "trianglesChecked": 53132,
+        "properNonAdjacentCrossingPairs": 0,
+        "examplesMaterialCenters": []
+      },
+      {
+        "pose": "Idle",
+        "region": "midTorso",
+        "trianglesChecked": 101802,
+        "properNonAdjacentCrossingPairs": 0,
+        "examplesMaterialCenters": []
+      },
+      {
+        "pose": "Lift90_Flex0",
+        "region": "shoulderAndUpperRib",
+        "trianglesChecked": 111840,
+        "properNonAdjacentCrossingPairs": 0,
+        "examplesMaterialCenters": []
+      },
+      {
+        "pose": "Lift90_Flex0",
+        "region": "groin",
+        "trianglesChecked": 53132,
+        "properNonAdjacentCrossingPairs": 0,
+        "examplesMaterialCenters": []
+      },
+      {
+        "pose": "Lift90_Flex0",
+        "region": "midTorso",
+        "trianglesChecked": 101802,
+        "properNonAdjacentCrossingPairs": 0,
+        "examplesMaterialCenters": []
+      },
+      {
+        "pose": "Lift90_Flex120",
+        "region": "shoulderAndUpperRib",
+        "trianglesChecked": 111840,
+        "properNonAdjacentCrossingPairs": 0,
+        "examplesMaterialCenters": []
+      },
+      {
+        "pose": "Lift90_Flex120",
+        "region": "groin",
+        "trianglesChecked": 53132,
+        "properNonAdjacentCrossingPairs": 0,
+        "examplesMaterialCenters": []
+      },
+      {
+        "pose": "Lift90_Flex120",
+        "region": "midTorso",
+        "trianglesChecked": 101802,
+        "properNonAdjacentCrossingPairs": 0,
+        "examplesMaterialCenters": []
+      },
+      {
+        "pose": "Punch8",
+        "region": "shoulderAndUpperRib",
+        "trianglesChecked": 111840,
+        "properNonAdjacentCrossingPairs": 0,
+        "examplesMaterialCenters": []
+      },
+      {
+        "pose": "Punch8",
+        "region": "groin",
+        "trianglesChecked": 53132,
+        "properNonAdjacentCrossingPairs": 0,
+        "examplesMaterialCenters": []
+      },
+      {
+        "pose": "Punch8",
+        "region": "midTorso",
+        "trianglesChecked": 101802,
+        "properNonAdjacentCrossingPairs": 0,
+        "examplesMaterialCenters": []
+      }
+    ],
+    "crossingScope": "Current model and four previously captured actual Unity poses; proper non-adjacent triangle crossings only, not every animation pose or coplanar contact."
+  },
+  "renderReview": {
+    "beforeSha256": "454d01d8c60af92451c0c5063947e68ec9ee1bf54497531477784688eaf3a17c",
+    "afterSha256": "eb7055cb4e47cff3777c25d4dd9d25ecb002a3a1b6363959339ef4ab2d00feaa",
+    "geometry": "Transport positions and corrective deltas with recorded Unity neutral matrices; normals recomputed from the actual geometry.",
+    "sameCameraLightMaterialAndSeed": true,
+    "views": [
+      "TorsoFront",
+      "GroinFront",
+      "TorsoThreeQuarter"
+    ]
+  },
+  "previews": "artifacts/previews/r34-fair-body-20261010",
+  "armPlan": "artifacts/reports/SHOULDER_ARM_FIX_PLAN_20261010.ko.txt",
+  "armPlanImplemented": false,
+  "commits": false,
+  "pushes": false,
+  "request": "몸통·사타구니의 실제 곡면을 제대로 정리하고 어깨·팔 변형 해결안을 제시한다.",
+  "implementation": "r33에서 연결된 저밀도 곡면 가이드를 복구하고, 물리적 거리와 면적을 기준으로 2차 곡면을 맞춘다. 높이에 연결된 기존 변형 가중치를 보존하며 앞·뒤 표면을 실제 곡면에 투영해 잔주름을 없앤다. 머리·뼈대·가중치·어깨 폭·팔 몸체·펀치/피격 코드는 유지한다.",
+  "rejectedTrials": [
+    {
+      "candidate": "A",
+      "reason": "Dense and broad curvature ripples were not sufficiently removed."
+    },
+    {
+      "candidate": "B",
+      "reason": "Neutral face rotation/reversal check failed."
+    },
+    {
+      "candidate": "C",
+      "reason": "New visible surface bands and failed nine-scenario surface test."
+    },
+    {
+      "candidate": "D",
+      "reason": "Visible bands on lower torso and legs; not adopted."
+    },
+    {
+      "candidate": "E",
+      "reason": "Fairing scale too small; not selected."
+    },
+    {
+      "candidate": "F",
+      "reason": "Smooth at rest, but torso height drift caused large flexion folds."
+    },
+    {
+      "candidate": "G",
+      "reason": "Normal projection changed upper-rib/shoulder transition; surface failures."
+    },
+    {
+      "candidate": "H",
+      "reason": "Remaining flexion folds at waist/chest transition."
+    },
+    {
+      "candidate": "I",
+      "reason": "9/9 tests passed, but grazing-light render still showed fine wrinkles."
+    },
+    {
+      "candidate": "J",
+      "reason": "Depth projection reached multi-valued armpit surfaces; neutral face check failed."
+    }
+  ],
+  "limits": [
+    "기존 어깨 접힘과 팔꿈치 굽힘 시 축소는 이번 몸통 곡면 수정으로 해결했다고 취급하지 않는다. 별도 해결안에 범위·순서·목표 검증을 기록했다.",
+    "면 관통 검사는 기록한 네 자세의 어깨·상부 갈비뼈·몸통 중간·사타구니 범위이며 모든 애니메이션 자세를 보장하지 않는다.",
+    "기본 로컬 BodyStrike 검토 메뉴에 적용했다. 정식 Player/네트워크 통합 검증이나 사용자 시각 승인으로 취급하지 않는다."
+  ]
+}

@@ -4,11 +4,15 @@
 
 | 항목 | 값 |
 |---|---|
-| 기준일 | 2026-09-01 |
+| 기준일 | 2026-09-05 |
 | 현재 목표 | `Alpha = Vertical Slice`; Steam 제품 통합 전 LAN/direct endpoint 2·3·4인 완성 |
-| 캐릭터 상태 | 역사 C1B-002..005와 r01/r02 기술 source·Evidence는 보존한다. r02 visual·r03·r04·r05·r06·r07·r08·r09·r10은 `REWORK_REQUIRED / SUPERSEDED`. 현재 r11은 r10의 반복되던 몸통 폭·깊이 저주파 굴곡을 연속 profile로 재형성하고 어깨/겨드랑이 broad blend와 전신 fairing을 적용한 connected Mesh다. `227942/455880/227940`, triangle/quad `0/227940`, runtime modifier0, component1/Euler2, boundary/nonmanifold/loose/degenerate·BVH overlap·45° hard edge·90° foldover0, adjacent angle max `6.843839°`, exact mirror max `1.884956e-7H`, visible arm center max deviation `6.694555e-5H`, r10 signed volume 복원, render12·독립 reviewer3 blocker0 `FIT_TO_SHOW`인 `LOCAL_USER_REVIEW / IN_PROGRESS`; 사용자 시각 승인 미기록. 승인 전 Rig·FBX·Unity·Build·Commit·push·LFS0 |
-| 제품 기준 | PRD 1.8.0 → SRS 1.8.0 → Patch Design 0.5.0·분야별 사양 → 구현계획 2.5 → 추적 부록 1.5 |
+| 캐릭터 상태 | r16 Neutral 외형 방향은 2026-09-02 `UG-C1B-NEUTRAL` 승인 완료. r20은 기존 r16 geometry를 유지한 Blender Generic22(논리20+hip helper2) 리그 검토 후보다. 내부 Neck은 허용하며 가시 목0을 유지한다. 원본 r20의 Action0은 보존하고 별도 후보에서 공식 정적 Pose·보행/Grip·Grab/Wall IK와 팔꿈치 중심 Punch Action2를 검토했다. Unity 게임용 Prefab/Collider/animation 통합은 미완료다. 현재 다음 작업은 `C1BRW-004` 공식 정적 Pose8·lineup 검토이며 `C1BRW-005` static parity와 `C1B-006 / UG-C1B`는 미완료다. |
+| 제품 기준 | PRD 1.8.0·2026-09-04 Action Presentation Addendum → SRS 1.8.0·동일 Addendum → Patch Design 0.5.0·분야별 사양 → 구현계획 2.5 → 추적 부록 1.5 |
 | 충돌 처리 | 가장 최근의 명시적 사용자 결정이 최우선이며 상위 문서를 먼저 수정한 뒤 하위 문서에 전파 |
+
+로컬 시제품 최신 검토(2026-09-18): 사용자가 재설계 진행을 요청해 [물리 없는 펀치 원형](../artifacts/reports/R20_PUNCH_REFERENCE_20260918.md)을 제작했다. 준비·몸통/어깨 선행·빠른 뻗기·짧은 타격 자세·회수를 정면/측면 원속도 영상으로 검토한다. 좌우 대칭·접지·원위치 복귀 및 공유 로더 회귀3/3을 확인했으며 사용자 원형 승인을 기다린다. 기존 게임 펀치·판정은 유지했고, 목표 회전속도 기반 물리 추종·단발 피격 반응·난투 조합은 승인 뒤의 단계다. 이전 두 물리 후보는 체감 미승인 상태다.
+
+이전 로컬 시제품 검토(2026-09-13): [잡기 접촉·벽 복귀 후보](../artifacts/reports/R20_GRAB_CONTACT_CANDIDATE_20260913.md)는 별도 후보이며 기본 장면 미채택·관통 해결 미완료다. 상호 잡기 접촉 방식과 벽 접근·복귀 팔 전환 동작은 사용자 답변 대기다.
 
 아래 표에 `현행`으로 표시된 문서만 구현 근거로 사용한다. 이미지와 과거 문구는 현행 문서의
 입력·권한·범위를 바꿀 수 없다.
@@ -36,6 +40,23 @@ PRD·SRS와 충돌하면 상위 문서가 우선한다.
 
 ---
 
+### 2026-09-05 공통 Grip·전 주기 변형·다방향 회복 결정
+
+- 총기 Grip은 무기 종류와 좌우에 공통인 팔 뻗기 template 하나다. 동일 template를 실제 잡은 팔에
+  적용하며 왼손·오른손 어느 쪽도 가능하다. 손 점유와 Main/Support 역할은 gameplay 정보이며
+  Pistol/LongGun별 pose나 좌우별 별도 authored clip을 만드는 근거가 아니다. fire/recoil·reload clip0 유지.
+- 리깅 QA는 걷기·뛰기 한 주기의 전 sample frame과 loop 경계에서 어깨·팔꿈치·골반·무릎의 꺾임,
+  자기교차·면 뒤집힘·국소 압축/늘어남과 육안 자연스러움을 함께 확인한다. 한 정지 자세의 PASS로 대체하지 않는다.
+- 회복 진입은 공격 방향이 아니라 Host가 확인한 실제 torso 자세와 지지면 normal을 사용한다.
+  앞·뒤·좌·우 및 대각선·임의 yaw·경사면을 지원하고, 안정 지지나 clearance가 없으면 기다린다.
+- 사용자가 권장안을 선택했다. 옆으로 누우면 현재 몸의 수평 방향을 보존하면서 가까운 앞/뒤 자세로
+  정렬한 뒤 공통 face-up/face-down GetUp을 사용한다. 좌우 전용 GetUp clip은 추가하지 않는다.
+  정렬과 GetUp은 순간이동·즉시 방향 반전 없이 연결하고 Host만 단계·완료를 판정한다.
+- DropkickRecovery와 DownEpisode는 위 시각 경로를 공유하되 gameplay state·DownCount·groggy·Down Trigger는 분리한다.
+  Upright Dropkick settle은 일어나기 없이 locomotion 복귀가 가능하며 떠 있거나 head-down이면 먼저 물리 안정화를 기다린다.
+
+---
+
 ## 2. 현행 제품 계약 요약
 
 | 영역 | 기준선 |
@@ -55,9 +76,9 @@ PRD·SRS와 충돌하면 상위 문서가 우선한다.
 | Foundation 도구 | Unity 6.3 LTS·Blender 5.2 LTS 계열. 설치된 exact patch와 Unity package manifest/lock은 `FDN-010`에서 고정 |
 | 저장소·배포 기반 | `FDN-011` ignore/attribute/LFS, `ART-001` style profiles, `LIC-001` license/NOTICE, `BLD-001` Windows x64 Build Profile. 자동 Build 0 |
 | 신규 계획 소유 | `INP-006` Match menu input, `UI-007` minimal Match surface, `APT-007` placeholder Cosmetic, `NET-015` Leave/disconnect/Forfeit |
-| 이동 | WASD 화면 축 이동, 이동 방향 자동 회전, Space Jump, Left Shift hold Sprint |
-| Sprint | Lobby·Match 공통, stamina 없음, multiplier는 Alpha tuning profile |
-| AirKick·Dropkick | 공중 발차기와 전신 Dropkick. 기존 OOB·Hazard·Camera·hand-only control 사용, DropkickRecovery는 non-Down |
+| 이동 | WASD 화면 축 이동, 이동 방향 자동 회전, Space Jump. Idle은 팔을 몸통에 붙여 쉬고 Walk는 작은 앞뒤 팔 swing+보행 leg motion |
+| Sprint | Left Shift hold, Lobby·Match 공통, stamina 없음. Walk보다 큰 앞뒤 팔 swing+빠른 leg cadence, multiplier는 Alpha tuning profile |
+| AirKick·Dropkick | 공중 발차기와 전신 Dropkick. 기존 OOB·Hazard·Camera·hand-only control 사용. DropkickRecovery는 non-Down 상태를 유지하고 physics tumble 뒤 방향별 Ragdoll GetUp 시각 모션만 공유 |
 | Action 제작 분리 | `AIR-001..002`가 권한 gameplay를, `ANP-001..003`이 visual-only pose/animation을 소유하며 presentation은 authority를 바꾸지 않음 |
 | 손 | LMB/RMB 독립 Pending→Strike 또는 Strike 없는 GrabSeek. Grab 전에 Punch 0 |
 | Down/Ragdoll | 같은 Round의 진입 횟수마다 groggy duration 증가, base·increment·cap은 tuning, Round reset stack0 |
@@ -83,7 +104,7 @@ PRD·SRS와 충돌하면 상위 문서가 우선한다.
 | Supply·Drop Patch | `PATCH-PROT-009..012`: supply double·second wave와 weapon-hit victim/attacker source weapon forced drop |
 | Firearm | Pistol press당 semi-auto 1발·total7, LongGun hold full-auto·total30, reserve/reload 0 |
 | Projectile | Host swept SphereCast, gravity0·no pierce/ricochet, first blocker/Character hit, TTL·OOB·RoundResult/reset 정리 |
-| Recoil·spread | Host bounded recoil physics+visual; Pistol accurate/strong shot recoil, LongGun deterministic cumulative spread bloom |
+| Firearm Grip·recoil | Pistol의 기존 Main hand, LongGun의 Main+Support hand 수는 유지하되 해당 팔을 앞으로 뻗는 단순 공통 Grip pose 사용. 별도 발사·반동 clip 0, Host bounded Rigidbody/Joint recoil이 팔·무기를 올리고 복귀시키며 LongGun spread bloom은 deterministic 유지 |
 | Ammo 소진 | ammo0→Host ForcedRelease→SpentPendingCleanup 2~4s→remove; cap 포함, 즉시 대체0·다음 pulse |
 | Firearm 구현 소유 | `FIR-001..003`이 ammo/Spent, projectile pool/SphereCast, recoil·spread를 소유하고 WPN-005가 통합 |
 | Round reset | 캐릭터·손·groggy·grab·무기/ammo/projectile/Spent·소품·Hazard 복원, 점수·map·seed·patch 유지 |
@@ -162,16 +183,21 @@ projectile·recoil/spread·Spent, minimal Match UI·Match Esc/Leave/Forfeit, Alp
 2026-08-25~26 사용자 승인 기록이다. 이 결정들을 반영한 Lean 문서 실행 기준선 `UG-DOC`도
 2026-08-26 사용자 확정으로 PASSED다.
 
+2026-09-04 사용자 결정으로 Firearm authored fire/recoil clip은 제거하고 Pistol Main arm·LongGun
+Main+Support arms forward Grip과 Host Rigidbody/Joint recoil을 사용한다. DropkickRecovery는 DownEpisode와
+별도 state로 유지하되 prone settle 뒤 방향별 Ragdoll GetUp 시각 모션만 공유한다.
+
 C1B-005 static parity까지의 현재 상태와 한계는
 [캐릭터 전체 감사](../artifacts/reports/CHARACTER_FULL_AUDIT.md)에 모아 두었다.
 
-그 감사의 기술 PASS는 old geometry 전달 결과로서 역사적으로 유효하지만 최신 사용자 시각 acceptance는 아니다.
-현재 승인 입력은 [Neutral 전면 재작업 검토](../artifacts/reports/CHARACTER_REWORK_NEUTRAL_REVIEW.md)다.
-현재 다음 Gate는 local r11 globally-faired T-pose preview의 `C1BRW-003 / UG-C1B-NEUTRAL`이며, 이 승인 전 Rig·Commit·LFS·Evidence 승격과 Pose clip·Animation·FBX·Unity import·Build를 시작하지 않는다.
+그 감사는 역사 기술 결과다. 현재 진행 상태와 승인 범위의 공통 기록은
+[캐릭터 현재 검토 기록](../artifacts/reports/CHARACTER_REWORK_NEUTRAL_REVIEW.md)이다.
+`C1BRW-003 / UG-C1B-NEUTRAL`은 r16에 대해 2026-09-02 승인됐다. r20 리그를 보존하고,
+2026-09-05 후속 지시에 따라 원본을 저장하지 않는 정적 검토부터 진행한다.
 
-1. 승인 Patch12 실제 기능·2/3/4인 결과 `UG-PATCH12`
-2. `C1BRW-003` local r11 globally-faired T-pose Neutral/Silhouette/Rake `UG-C1B-NEUTRAL` 승인
-3. 승인 r11을 canonical source·LFS·Evidence로 승격하고 Pose·Animation·Unity parity를 재생성한 뒤 `C1B-006 / UG-C1B` exact 최종 승인. Collider/reach·physics feel은 후속 `UG-C2`
+1. `C1BRW-004`: r20을 활용한 공식 정적 Pose8·overlap/spread lineup 검토. 기존 시험 포즈8과 구분
+2. `C1BRW-005`: 승인 Neutral의 static FBX/Unity parity. 임시 평가 Mesh만 반입하며 Rig/Collider/Animation0
+3. `C1B-006 / UG-C1B`: 수치·공식 Pose·Unity 결과 최종 승인. 이후 CHR-001 Prefab과 CHR-002 physics로 진행
 4. Punch/Grab threshold 120·150·180ms 비교 결과
 5. Sprint multiplier·가속 tuning
 6. groggy base duration·increment·cap과 feedback
@@ -179,6 +205,7 @@ C1B-005 static parity까지의 현재 상태와 한계는
 8. WPA-003 Blender→Unity 비교 뒤 네 Weapon exact visual Lock `UG-WEAPON-ART`
 9. Alpha 공식 맵 1개·Greybox 2개와 2/3/4인 결과
 10. Alpha Lobby Greybox·대표 Cosmetic placeholder의 2/3/4인 기능 판독 결과
+11. 승인 Patch12 실제 기능·2/3/4인 결과 `UG-PATCH12`
 
 이 Gate 전에도 Host Ready 제거, Start 조건, ReadyTeal+check+label, no Backend, Alpha direct/G4 Steam
 분리, 사용자 노출 명칭 `패치`와 영구 matchmaking·rank·MMR 제외는 현행 고정 계약이다.

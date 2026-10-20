@@ -5,11 +5,11 @@
 | 항목 | 내용 |
 |---|---|
 | MapId | `MAP_P00_CONSTRUCTION_DROP` |
-| 문서 버전 | 0.7.0 Alpha Greybox·Participation·Minimal UI·Firearm Compatibility Baseline |
-| 최종 수정일 | 2026-08-26 |
-| 상위 기준 | `01_PRD.md` 1.8.0, `02_SRS.md` 1.8.0, `MAP_DESIGN_GUIDE.md` 1.8.0 |
+| 문서 버전 | 0.7.0 Alpha Greybox·Participation·Minimal UI·Firearm Compatibility Baseline + 2026-09-04 Presentation Addendum |
+| 최종 수정일 | 2026-09-10 |
+| 상위 기준 | `01_PRD.md` 1.8.0 + 2026-09-04 Addendum, `02_SRS.md` 1.8.0 + 동일 Addendum, `MAP_DESIGN_GUIDE.md` 1.8.0 + 동일 Addendum |
 | 패치 기준 | `PATCH_DESIGN.md` 0.5.0 |
-| 상태 | 제작 전 — 모든 tuning 수치 `START`, 검증 결과 없음 |
+| 상태 | 로컬 footprint·camera·OOB·정적 가장자리 복귀 preflight 진행 — tuning은 `START`, 정식 P00 Gate 미완료 |
 | 지원 인원 | 2·3·4인, 동일 geometry·Bounds·Hazard·Camera |
 | Topology | `CentralArena + VerticalPressure + FunnelAndControl` |
 
@@ -48,6 +48,12 @@
 - Character Patch01..08과 Weapon Patch09..12를 합친 초기 Patch12 P00 검증을 추가했다.
 - Patch supply·forced drop이 Crane, Hook, Lever, panel·Hazard timing과 Weapon damage를 바꾸지 못하게 했다.
 - 공급·Patch 전용 최종 UI·VFX·SFX 없이 Greybox 기능을 승인하고 후속 표현 port만 남겼다.
+
+### 2026-09-10 로컬 선행 검토
+
+[유한 경기장·카메라·OOB](../artifacts/reports/R20_ARENA_BOUNDARY_REVIEW_20260910.md)는 상판8.8×6.2CU와2/3/4 Spawn, core Collider OOB·동일 tick의 camera 제외·Reset을 검토했고 사용자가 채택했다. 회복 중 살아 있는 대상을 담기 위해 카메라 최대거리를22CU로 비교·채택했다.
+
+[정적 가장자리 복귀](../artifacts/reports/R20_LEDGE_RECOVERY_REVIEW_20260910.md)는 클릭 유지 중 실제 손 접촉, 공중당2회·350ms 보조와 재잡기/피로/해제를 연결한다.1회 상승량 최대1.25CU, 옥상 위0.15CU 목표의 가변 상승은 로컬 START다. 일반 Jump modifier를 사용하지 않으며, Ground 마찰은 보존하고 Air 마찰은0으로 하여 손 없이 벽에 밀착해 정지하는 현상을 막는다. Beam, 움직이는 panel/Hook, Hazard와 Round/peer는 아직 미연결이므로 P00-A/B 전체 PASS는 아니다.
 
 ---
 
@@ -88,8 +94,7 @@ Origin = 중앙 옥상 상판 중심·윗면
 +Z = Camera 화면 위쪽 이동 방향
 ```
 
-`CharacterHeightMeters`는 아직 미측정이다. Greybox는 CU parameter로 다시 생성하고 Scene Root를
-임의 scale하지 않는다.
+제작용 Prefab의 `CharacterHeightMeters`는 아직 LOCKED되지 않았다.2026-09-10 로컬 시제품은 실제 authority capsule 높이1m를 확인해1CU=1m로 검토했다. Greybox는 CU parameter로 다시 생성하고 Scene Root를 임의 scale하지 않는다.
 
 ### 2.1 Top view
 
@@ -209,7 +214,8 @@ local Match menu 또는 reconnect grace 중인 Character도 같은 OOB·Crane·H
 - action 도중 실제 손이 승인 Grab surface와 contact하고 별도 Grab 규칙을 만족한 경우에만 기존
   Ledge Grab·ClimbAssist 후보가 된다. 발·몸 contact나 `DropkickRecovery`만으로 edge를 잡지 않는다.
 - `DropkickRecovery`는 action recovery이며 Down·Stun·Ragdoll Episode가 아니다. 이 상태에 들어간 것만으로
-  DownCount·groggy duration을 늘리거나 Alive Camera subject에서 제외하지 않는다.
+  DownCount·groggy duration을 늘리거나 Alive Camera subject에서 제외하지 않는다. Prone settle 뒤에는
+  방향별 Ragdoll GetUp 시각 모션을 공유할 수 있지만 state·Down Trigger는 합치지 않는다.
 - kick impact가 상대를 OOB로 보내면 기존 OOB route와 attacker attribution을 사용하고 action이 직접
   elimination을 선언하지 않는다.
 
@@ -406,8 +412,10 @@ Weapon supply는 60초 Playing profile에서 끝나며 SuddenDeath의 Hazard cad
 - Spent 제거는 즉시 supply를 만들지 않고 다음 정규 pulse capacity만 비운다.
 - 마지막 shot의 이미 생성된 projectile은 source가 Spent/Removed여도 immutable attacker/source snapshot으로
   hit할 수 있다. 이 delayed hit에서 Patch12 source forced drop은 `NoEligibleTarget`이고 다른 Weapon을 대신 놓지 않는다.
-- Pistol은 accurate/strong per-shot recoil, LongGun은 Host shot ordinal 기반 cumulative deterministic spread
-  bloom을 사용한다. visual recoil은 Camera/P00 authority·projectile 방향을 다시 계산하지 않는다.
+- Pistol Main arm과 LongGun Main+Support arm은 앞으로 뻗은 단순 Grip pose를 사용한다. Pistol은
+  accurate/strong per-shot recoil, LongGun은 Host shot ordinal 기반 cumulative deterministic spread bloom을
+  사용하며 Host Rigidbody/Joint recoil이 팔·Weapon을 올리고 복귀시킨다. authored fire/recoil clip은 0이고
+  이 물리 표현은 Camera/P00 authority·projectile 방향을 다시 계산하지 않는다.
 
 ---
 
@@ -450,7 +458,7 @@ score, selected P00, Match seed와 active Patch는 유지한다. 이전 Round의
 P00은 한 Camera Zone을 사용한다.
 
 - fixed yaw, `START` pitch 34°, vertical FOV 42°
-- Dolly `START 8~15CU`
+- Dolly `START 8~22CU` — 2026-09-10 로컬 검토안 사용자 채택, 필요 시에만 확대
 - gameplay safe margin `START 15%`
 - Alive Character의 고정 ActiveSubjectBounds만 subject로 사용
 - Ragdoll limb, hand, Cosmetic, Weapon, Hook cable과 Guest prediction 제외

@@ -54,7 +54,8 @@ class ArtProfileValidator
   ART001_ALLOWED_CHANGE_PREFIXES = ["artifacts/evidence/G0/ART-001/"].freeze
   ART001_ASSET_EXTENSIONS = %w[.blend .fbx .prefab .mat .unity .png .jpg .jpeg .exr .hdr].freeze
   LOW_POLY_SOURCE_CONTRACT_SHA256 = "24906ddd41b8822d86c2a713027835c3ebe4ecf50656728a09b63a25bf2ef23a"
-  QA_CHECKLIST_CONTENT_SHA256 = "4aa7143c8acb849ce1470079068f106ba4ed1b907c1b1018956525a8ed1c57c1"
+  # 2026-09-05 approved: one mirrored Grip, full-cycle QA, side alignment/shared GetUp.
+  QA_CHECKLIST_CONTENT_SHA256 = "b8e8c89fd768c100bb285b204aed65721b67add61de682e0159489df64f250cb"
   EXPECTED_SOURCE_DOCUMENTS = {
     "LowPolyStyleProfile" => {
       "docs/ART_DIRECTION.md" => "1.8.0",

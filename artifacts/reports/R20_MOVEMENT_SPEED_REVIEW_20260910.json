@@ -1,0 +1,483 @@
+{
+  "status": "ADOPTED_FOR_LOCAL_PROTOTYPE",
+  "createdAtLocal": "2026-09-10T11:42:51.096795+09:00",
+  "userRequest": "매판이 빠르게 진행되어야 하며 현재 이동 속도감이 너무 느리다.",
+  "defaultScale": 2,
+  "recommendedCandidateScale": 2,
+  "userSpeedSelectionPending": false,
+  "profiles": [
+    {
+      "scale": 1,
+      "walkTarget": 0.7,
+      "sprintTarget": 1.05,
+      "acceleration": 10,
+      "walkCadence": 2.4,
+      "sprintCadence": 3.6,
+      "footLift": 0.018,
+      "pelvisBob": 0.014
+    },
+    {
+      "scale": 1.5,
+      "walkTarget": 1.0499999999999998,
+      "sprintTarget": 1.5750000000000002,
+      "acceleration": 15.0,
+      "walkCadence": 3.5999999999999996,
+      "sprintCadence": 5.4,
+      "footLift": 0.016999999999999998,
+      "pelvisBob": 0.013000000000000001
+    },
+    {
+      "scale": 2,
+      "walkTarget": 1.4,
+      "sprintTarget": 2.1,
+      "acceleration": 20,
+      "walkCadence": 4.8,
+      "sprintCadence": 7.2,
+      "footLift": 0.016,
+      "pelvisBob": 0.012
+    }
+  ],
+  "rigAndLocomotion": {
+    "status": "PASS",
+    "cases": [
+      {
+        "scale": 1.0,
+        "walkSpeed": 0.6018999814987183,
+        "sprintSpeed": 0.9518999457359314,
+        "surfaceAngle": 43.29153060913086,
+        "reachCorrection": 0.0007447153329849243,
+        "penetration": 0.007249861024320126,
+        "stanceSpeed": 2.2122860173112713e-05,
+        "coverage": 1.0,
+        "queryPoseError": 0.008050560019910336,
+        "jumps": 1,
+        "landings": 2,
+        "plantedPairs": 109,
+        "stancePairs": 109,
+        "worstSurfaceTick": 308,
+        "worstSurfacePoint": {
+          "x": 0.0845903754234314,
+          "y": 0.021653182804584503,
+          "z": -0.008416875265538692
+        }
+      },
+      {
+        "scale": 1.5,
+        "walkSpeed": 0.9518999457359314,
+        "sprintSpeed": 1.4768998622894287,
+        "surfaceAngle": 42.776371002197266,
+        "reachCorrection": 0.0020277798175811768,
+        "penetration": 0.006668955087661743,
+        "stanceSpeed": 3.4656190109672025e-05,
+        "coverage": 1.0,
+        "queryPoseError": 0.009988452307879925,
+        "jumps": 1,
+        "landings": 2,
+        "plantedPairs": 104,
+        "stancePairs": 104,
+        "worstSurfaceTick": 146,
+        "worstSurfacePoint": {
+          "x": -0.09409094601869583,
+          "y": 0.02114889957010746,
+          "z": -0.005645096302032471
+        }
+      },
+      {
+        "scale": 2.0,
+        "walkSpeed": 1.3018999099731445,
+        "sprintSpeed": 2.0018999576568604,
+        "surfaceAngle": 41.73100662231445,
+        "reachCorrection": 0.00292031466960907,
+        "penetration": 0.00739341601729393,
+        "stanceSpeed": 2.9908767828601412e-05,
+        "coverage": 1.0,
+        "queryPoseError": 0.010606021620333195,
+        "jumps": 1,
+        "landings": 2,
+        "plantedPairs": 97,
+        "stancePairs": 97,
+        "worstSurfaceTick": 160,
+        "worstSurfacePoint": {
+          "x": 0.09340718388557434,
+          "y": 0.021056117489933968,
+          "z": -0.0038017716724425554
+        }
+      }
+    ]
+  },
+  "grabJumpThrow": {
+    "status": "PASS",
+    "cases": [
+      {
+        "scale": 1.5,
+        "travel": 0.9402381181716919,
+        "maxForce": 404.68359375,
+        "maxStress": 0.4529755413532257,
+        "jumps": 1,
+        "throws": 1
+      },
+      {
+        "scale": 2.0,
+        "travel": 1.4092698097229004,
+        "maxForce": 441.3366394042969,
+        "maxStress": 0.5467612743377686,
+        "jumps": 1,
+        "throws": 1
+      }
+    ]
+  },
+  "frameIndependenceAtScale2": {
+    "status": "PASS",
+    "cases": [
+      {
+        "schedule": "60",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "15",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "20",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "30",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "90",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "120",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "144",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "240",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "Jitter",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "Hitch200ms",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "NoRender",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      }
+    ]
+  },
+  "video": {
+    "path": ".codex_tmp/movement-speed-20260910/Media/Comparison60.mp4",
+    "validation": {
+      "distinctDecodedFrames": 1023,
+      "fps": 60.000003814697266,
+      "frames": 1080,
+      "height": 622,
+      "maximumTimestampGapError": 2.6055546609171643e-15,
+      "seconds": 18,
+      "status": "PASS",
+      "width": 960
+    },
+    "sections": "Current / 1.5x / 2x; six seconds each; same static camera and horizontal input timing. No frame retiming.",
+    "walkSeconds": 1.5,
+    "sprintSeconds": 1.5
+  },
+  "validation": {
+    "Rig-r04": {
+      "path": ".codex_tmp/movement-speed-20260910/Rig-r04.xml",
+      "passed": 1,
+      "total": 1
+    },
+    "GrabJump-final": {
+      "path": ".codex_tmp/movement-speed-20260910/GrabJump-final.xml",
+      "passed": 1,
+      "total": 1
+    },
+    "Capture-horizontal": {
+      "path": ".codex_tmp/movement-speed-20260910/Capture-horizontal.xml",
+      "passed": 1,
+      "total": 1
+    },
+    "fixedInputAndFps": {
+      "path": ".codex_tmp/movement-speed-20260910/Capture-Fps-final.xml",
+      "passedTestCases": [
+        "ProjectHotfix.Physics.Tests.FixedInputClockTests.HardwareMouseDurationsSurviveLowFpsAndFixedCatchUp",
+        "ProjectHotfix.Physics.Tests.FrameIndependenceTests.NativePlayerLoopEvaluatesOnceAfterEveryPhysicsTick",
+        "ProjectHotfix.Physics.Tests.FrameIndependenceTests.SameFixedInputHasSameGameplayWithDifferentRenderSchedules"
+      ],
+      "note": "These three input/FPS tests passed. The separate radial-spread camera capture in this run failed its existing maximum-dolly bound and is not counted as a pass. Horizontal comparison capture passed separately."
+    }
+  },
+  "sourceSnapshots": {
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpReview.cs": {
+      "snapshot": ".codex_tmp/movement-speed-20260910/SourceSnapshot/Prototypes/PhysicsJump/PhysicsJumpReview.cs",
+      "sha256": "fea905bd03346fae90bc06267dfa48af1ab24eddf0e6329f2e0f24b828cc6067"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/SharedArenaReview.cs": {
+      "snapshot": ".codex_tmp/movement-speed-20260910/SourceSnapshot/Prototypes/PhysicsJump/SharedArenaReview.cs",
+      "sha256": "5a3a22ae5d5699c71afaf3f155c6280367eeb2721ca12a27e803a4b250029ff7"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": {
+      "snapshot": ".codex_tmp/movement-speed-20260910/SourceSnapshot/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+      "sha256": "434be1006c7a528df3f39f8ab66a9e6f39295dc7f3c18879fb52ed428d394c8d"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/MovementSpeedReviewTests.cs": {
+      "snapshot": ".codex_tmp/movement-speed-20260910/SourceSnapshot/Tests/PlayMode/Physics/MovementSpeedReviewTests.cs",
+      "sha256": "c3944b007109d866a807b6a73bf84894e10f2eba9372f2462293e6521d13d63c"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/CameraGaitReviewTests.cs": {
+      "snapshot": ".codex_tmp/movement-speed-20260910/SourceSnapshot/Tests/PlayMode/Physics/CameraGaitReviewTests.cs",
+      "sha256": "f3d301981a7b6d6235987665b6558f2dfad4559187ad257bb260a6b236b06627"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/FrameIndependenceTests.cs": {
+      "snapshot": ".codex_tmp/movement-speed-20260910/SourceSnapshot/Tests/PlayMode/Physics/FrameIndependenceTests.cs",
+      "sha256": "a68a2e6cfdf11da9f9d726e7c1d795a6720912ef3730ca4281d31734747bba61"
+    }
+  },
+  "unchangedAssets": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31",
+    "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60",
+    ".codex_tmp/punch-unity-20260906/ApprovedPunch.json": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac",
+    "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a"
+  },
+  "scopeNotes": [
+    "Scale 2 is now the shared-arena default, including the 2/3/4 actor menus. Lower profiles remain explicit comparisons.",
+    "The lower-body tempo scales with speed; candidate lift/bob shrink by 1mm at1.5x and2mm at2x. No mesh/rig/weight/clip edit.",
+    "Measured ground speeds are below motor targets due to preserved contact friction.",
+    "All-direction spread reaches the existing camera limit sooner. This is an open integration concern for map dimensions/camera/round pacing; horizontal speed video does not close that gate.",
+    "No actual match-length, multi-device performance or peer test is claimed."
+  ],
+  "playerBuilds": 0,
+  "commits": 0,
+  "pushes": 0,
+  "adoption": {
+    "approvedAtLocal": "2026-09-10T11:51:02.174608+09:00",
+    "userDecision": "2배 후보 적용 (권장) — 걷기 1.40 / 달리기 2.10m/s 설정",
+    "defaultMenu": "Project Hotfix/Prototypes/Open Shared Arena 2/3/4 Players",
+    "previousSpeedMenu": "Project Hotfix/Prototypes/Open Previous Movement Speed Review",
+    "settingsChangedFromCandidate": false,
+    "sourceSnapshots": {
+      "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/SharedArenaReview.cs": {
+        "snapshot": ".codex_tmp/movement-speed-adoption-20260910/SourceSnapshot/Prototypes/PhysicsJump/SharedArenaReview.cs",
+        "sha256": "27cb2831c56fa465fea27c31208a3466cb61009366b20c95a50dd2deaa175bf0"
+      },
+      "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpReview.cs": {
+        "snapshot": ".codex_tmp/movement-speed-adoption-20260910/SourceSnapshot/Prototypes/PhysicsJump/PhysicsJumpReview.cs",
+        "sha256": "fe756660280ffd2786c3e3a70af6d218aa5cbf223d8093ba462e6289e06dd5d0"
+      },
+      "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": {
+        "snapshot": ".codex_tmp/movement-speed-adoption-20260910/SourceSnapshot/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+        "sha256": "975aace433eb76f9108e8be54540c4dee2b496d7384765b8ca007ca9a58140c9"
+      },
+      "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/FrameIndependenceTests.cs": {
+        "snapshot": ".codex_tmp/movement-speed-adoption-20260910/SourceSnapshot/Tests/PlayMode/Physics/FrameIndependenceTests.cs",
+        "sha256": "40e74a1a3d044e7910b9a51a1b13149d64d8dc0fc0c5800fbc063df5fed4e1fd"
+      },
+      "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/CameraGaitReviewTests.cs": {
+        "snapshot": ".codex_tmp/movement-speed-adoption-20260910/SourceSnapshot/Tests/PlayMode/Physics/CameraGaitReviewTests.cs",
+        "sha256": "646b158ad8adceda8b1b1d4959d231b4cb6fc2797dca301f43c25df32e676bd5"
+      },
+      "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/SharedArenaReviewTests.cs": {
+        "snapshot": ".codex_tmp/movement-speed-adoption-20260910/SourceSnapshot/Tests/PlayMode/Physics/SharedArenaReviewTests.cs",
+        "sha256": "cbf2e09152d5377d5e6071d5ca703c85ece81778685463e67859a78b03f24a5a"
+      }
+    },
+    "validation": {
+      "playModePassed": 7,
+      "playModeTotal": 7,
+      "xml": ".codex_tmp/movement-speed-adoption-20260910/Play.xml",
+      "defaultFactoryFpsReplay": ".codex_tmp/movement-speed-adoption-20260910/FrameIndependence/Replay.json",
+      "scope": "Current default input/FPS, static framing and menu/reset checks, fast grab/jump/throw; radial moving camera regression intentionally remains a named previous-speed fixture. The 2x radial camera limit is still open."
+    }
+  }
+}

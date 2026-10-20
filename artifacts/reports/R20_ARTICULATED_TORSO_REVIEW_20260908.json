@@ -1,0 +1,623 @@
+{
+  "status": "PASS_LOCAL_ARTICULATED_CANDIDATE",
+  "default": "Original single torso retained; explicit Articulated Torso / Articulated Punch candidate menus enable new layout.",
+  "bodyCount": 12,
+  "jointCount": 11,
+  "totalMassKg": 20,
+  "torsoMassKg": {
+    "pelvisActor": 3,
+    "spine": 2.5,
+    "chest": 2.5
+  },
+  "limitsDegrees": {
+    "spineFlex": 10,
+    "chestFlex": 12,
+    "torsoLateral": 4,
+    "torsoAxialTwist": "Locked",
+    "head": 20,
+    "upperArmAddedLateral": 4,
+    "thighAddedLateral": 2
+  },
+  "candidateSolver": {
+    "positionIterations": 256,
+    "velocityIterations": 128,
+    "productionProfile": false
+  },
+  "policy": "Fixed 5 Punch hits; durations 1.5/2/2.5/3 START; no time decay; no extra Down damage/count/timer extension; zero pose drives and no animation in limp phase.",
+  "recovery": "Actual chest orientation; distributed mass-weighted support and bounded angular acceleration only in recovery; standing collider settled before handoff.",
+  "reactivation": "Inactive proxies placed at current-heading bind pose before native joint enable; actual entry pose applied before simulation. Six-heading torque-free reactivation test passes.",
+  "tests": {
+    "PlayMode": {
+      "passed": 52,
+      "failed": 0,
+      "skipped": 0,
+      "xml": "/Users/kjh/local_dev/party game/.codex_tmp/articulated-torso-20260908/AllPlayMode-final.xml"
+    },
+    "EditMode": {
+      "passed": 117,
+      "failed": 0,
+      "skipped": 0,
+      "xml": "/Users/kjh/local_dev/party game/.codex_tmp/articulated-torso-20260908/AllEditMode-final.xml"
+    }
+  },
+  "naturalCapture": "/Users/kjh/local_dev/party game/.codex_tmp/articulated-torso-20260908/Review-20260908-054932",
+  "naturalResults": {
+    "status": "PASS",
+    "cases": [
+      {
+        "name": "FaceUp",
+        "finalPhase": "None",
+        "worstJoint": "Calf_R",
+        "recoveries": 1,
+        "aligns": 0,
+        "interruptions": 0,
+        "gap": 0.007845252752304077,
+        "speed": 3.565757989883423,
+        "surfaceAngle": 30.869091033935547,
+        "finalHeight": 0.0040863752365112305,
+        "downCount": 1,
+        "handoff": 5.385074359764985e-07,
+        "readyAngle": 0.0,
+        "readyDistance": 0.002504864474758506,
+        "readySpeed": 0.0034631378948688507,
+        "readyAngular": 0.010677149519324303,
+        "worstStep": 150,
+        "surfaceSamples": 172,
+        "plantedSamples": 34,
+        "plantError": 2.329498158815113e-07,
+        "forearmMotion": 87.52655792236328,
+        "footError": 0.0,
+        "footWeight": 0.8113833069801331,
+        "footSamples": 0,
+        "worstLocation": {
+          "x": 0.0001655970700085163,
+          "y": 0.09260597079992294,
+          "z": -0.025965789332985878
+        },
+        "worstLegAngles": [
+          -56.40277099609375,
+          76.0,
+          31.39013671875,
+          -51.614013671875,
+          67.86817169189453,
+          28.041908264160156
+        ],
+        "worstTorsoAngles": [
+          6.022848606109619,
+          3.999955654144287
+        ],
+        "maximumTorsoFlex": 5.828735828399658
+      },
+      {
+        "name": "FaceDown",
+        "finalPhase": "None",
+        "worstJoint": "Calf_L",
+        "recoveries": 1,
+        "aligns": 0,
+        "interruptions": 0,
+        "gap": 0.00993267074227333,
+        "speed": 3.7316231727600098,
+        "surfaceAngle": 30.859560012817383,
+        "finalHeight": 0.004086434841156006,
+        "downCount": 1,
+        "handoff": 6.597446144951391e-07,
+        "readyAngle": 0.0,
+        "readyDistance": 0.002534380881115794,
+        "readySpeed": 0.003508605994284153,
+        "readyAngular": 0.010800392366945744,
+        "worstStep": 150,
+        "surfaceSamples": 172,
+        "plantedSamples": 52,
+        "plantError": 1.8797956613525457e-07,
+        "forearmMotion": 116.8398666381836,
+        "footError": 0.0,
+        "footWeight": 0.6170986890792847,
+        "footSamples": 0,
+        "worstLocation": {
+          "x": 0.0001655991654843092,
+          "y": 0.09260591119527817,
+          "z": -0.025965789332985878
+        },
+        "worstLegAngles": [
+          -56.40277099609375,
+          76.00000762939453,
+          31.39013671875,
+          -51.614013671875,
+          67.86817169189453,
+          28.041933059692383
+        ],
+        "worstTorsoAngles": [
+          0.31898078322410583,
+          3.999955654144287
+        ],
+        "maximumTorsoFlex": 3.6325690746307373
+      },
+      {
+        "name": "LeftSide",
+        "finalPhase": "None",
+        "worstJoint": "UpperArm_L",
+        "recoveries": 1,
+        "aligns": 0,
+        "interruptions": 0,
+        "gap": 0.013373348861932755,
+        "speed": 3.4973485469818115,
+        "surfaceAngle": 30.92943572998047,
+        "finalHeight": 0.0040864646434783936,
+        "downCount": 1,
+        "handoff": 4.777675712830387e-07,
+        "readyAngle": 0.0,
+        "readyDistance": 0.002602385124191642,
+        "readySpeed": 0.003611805848777294,
+        "readyAngular": 0.011323102749884129,
+        "worstStep": 158,
+        "surfaceSamples": 176,
+        "plantedSamples": 32,
+        "plantError": 1.770297046732594e-07,
+        "forearmMotion": 77.93276977539062,
+        "footError": 0.0,
+        "footWeight": 0.7771246433258057,
+        "footSamples": 0,
+        "worstLocation": {
+          "x": 0.0001599921815795824,
+          "y": 0.09265243262052536,
+          "z": -0.026413321495056152
+        },
+        "worstLegAngles": [
+          -56.57403564453125,
+          76.00000762939453,
+          31.03099822998047,
+          -51.51226806640625,
+          67.47330474853516,
+          27.5605525970459
+        ],
+        "worstTorsoAngles": [
+          6.521615028381348,
+          3.999955654144287
+        ],
+        "maximumTorsoFlex": 14.269857406616211
+      },
+      {
+        "name": "RightSide",
+        "finalPhase": "None",
+        "worstJoint": "UpperArm_R",
+        "recoveries": 1,
+        "aligns": 0,
+        "interruptions": 0,
+        "gap": 0.014772276394069195,
+        "speed": 3.4974467754364014,
+        "surfaceAngle": 30.86827278137207,
+        "finalHeight": 0.004086703062057495,
+        "downCount": 1,
+        "handoff": 3.709049849476287e-07,
+        "readyAngle": 0.0,
+        "readyDistance": 0.002609581220895052,
+        "readySpeed": 0.003620848059654236,
+        "readyAngular": 0.011296150274574757,
+        "worstStep": 156,
+        "surfaceSamples": 176,
+        "plantedSamples": 33,
+        "plantError": 1.6535631175429444e-07,
+        "forearmMotion": 91.96996307373047,
+        "footError": 0.0,
+        "footWeight": 0.9975857734680176,
+        "footSamples": 0,
+        "worstLocation": {
+          "x": 0.0001544233673484996,
+          "y": 0.09270099550485611,
+          "z": -0.026827847585082054
+        },
+        "worstLegAngles": [
+          -56.690277099609375,
+          76.0,
+          30.691495895385742,
+          -51.220611572265625,
+          66.85479736328125,
+          27.009899139404297
+        ],
+        "worstTorsoAngles": [
+          7.0328288078308105,
+          3.999955654144287
+        ],
+        "maximumTorsoFlex": 13.670013427734375
+      },
+      {
+        "name": "Ceiling",
+        "finalPhase": "PhysicsTumble",
+        "worstJoint": "Calf_R",
+        "recoveries": 0,
+        "aligns": 0,
+        "interruptions": 0,
+        "gap": 0.007845252752304077,
+        "speed": 3.565757989883423,
+        "surfaceAngle": 15.590161323547363,
+        "finalHeight": 0.10812042653560638,
+        "downCount": 1,
+        "handoff": 0.0,
+        "readyAngle": 0.0,
+        "readyDistance": 0.0,
+        "readySpeed": 0.0,
+        "readyAngular": 0.0,
+        "worstStep": 50,
+        "surfaceSamples": 480,
+        "plantedSamples": 0,
+        "plantError": 0.0,
+        "forearmMotion": 0.0,
+        "footError": 0.0,
+        "footWeight": 0.0,
+        "footSamples": 0,
+        "worstLocation": {
+          "x": -0.17445790767669678,
+          "y": 0.5971913933753967,
+          "z": -0.07398074120283127
+        },
+        "worstLegAngles": [
+          19.784711837768555,
+          44.92570114135742,
+          0.0,
+          19.794191360473633,
+          44.9088134765625,
+          0.0
+        ],
+        "worstTorsoAngles": [
+          11.042606353759766,
+          5.386672019958496
+        ],
+        "maximumTorsoFlex": 5.828735828399658
+      },
+      {
+        "name": "CeilingRemoved",
+        "finalPhase": "None",
+        "worstJoint": "Calf_R",
+        "recoveries": 1,
+        "aligns": 0,
+        "interruptions": 0,
+        "gap": 0.007845252752304077,
+        "speed": 3.565757989883423,
+        "surfaceAngle": 30.933914184570312,
+        "finalHeight": 0.0040863752365112305,
+        "downCount": 1,
+        "handoff": 5.385074359764985e-07,
+        "readyAngle": 0.0,
+        "readyDistance": 0.002504864474758506,
+        "readySpeed": 0.0034631378948688507,
+        "readyAngular": 0.010677149519324303,
+        "worstStep": 360,
+        "surfaceSamples": 270,
+        "plantedSamples": 34,
+        "plantError": 2.329498158815113e-07,
+        "forearmMotion": 87.52655792236328,
+        "footError": 0.0,
+        "footWeight": 0.8113833069801331,
+        "footSamples": 0,
+        "worstLocation": {
+          "x": 0.0001599773531779647,
+          "y": 0.09265240281820297,
+          "z": -0.02641335316002369
+        },
+        "worstLegAngles": [
+          -56.574005126953125,
+          76.0,
+          31.030994415283203,
+          -51.51226806640625,
+          67.47331237792969,
+          27.560548782348633
+        ],
+        "worstTorsoAngles": [
+          6.521615028381348,
+          3.999955654144287
+        ],
+        "maximumTorsoFlex": 5.828735828399658
+      },
+      {
+        "name": "Reset",
+        "finalPhase": "None",
+        "worstJoint": "Calf_R",
+        "recoveries": 0,
+        "aligns": 0,
+        "interruptions": 0,
+        "gap": 0.007845252752304077,
+        "speed": 3.565757989883423,
+        "surfaceAngle": 15.590161323547363,
+        "finalHeight": 0.0040863752365112305,
+        "downCount": 0,
+        "handoff": 0.0,
+        "readyAngle": 88.90507507324219,
+        "readyDistance": 0.20487546920776367,
+        "readySpeed": 0.03298356384038925,
+        "readyAngular": 0.6486632227897644,
+        "worstStep": 50,
+        "surfaceSamples": 116,
+        "plantedSamples": 14,
+        "plantError": 1.5477897363780357e-07,
+        "forearmMotion": 87.52655792236328,
+        "footError": 0.0,
+        "footWeight": 0.0,
+        "footSamples": 0,
+        "worstLocation": {
+          "x": -0.17445790767669678,
+          "y": 0.5971913933753967,
+          "z": -0.07398074120283127
+        },
+        "worstLegAngles": [
+          19.784711837768555,
+          44.92570114135742,
+          0.0,
+          19.794191360473633,
+          44.9088134765625,
+          0.0
+        ],
+        "worstTorsoAngles": [
+          11.042606353759766,
+          5.386672019958496
+        ],
+        "maximumTorsoFlex": 5.828735828399658
+      },
+      {
+        "name": "SideGateLeft",
+        "finalPhase": "None",
+        "worstJoint": "Forearm_L",
+        "recoveries": 1,
+        "aligns": 1,
+        "interruptions": 0,
+        "gap": 0.007110957987606525,
+        "speed": 1.8145900964736938,
+        "surfaceAngle": 30.929401397705078,
+        "finalHeight": 0.004086434841156006,
+        "downCount": 1,
+        "handoff": 4.182955137821409e-07,
+        "readyAngle": 0.0,
+        "readyDistance": 0.002672787755727768,
+        "readySpeed": 0.0037146166432648897,
+        "readyAngular": 0.011384904384613037,
+        "worstStep": 146,
+        "surfaceSamples": 171,
+        "plantedSamples": 38,
+        "plantError": 1.6239232536463533e-07,
+        "forearmMotion": 86.64905548095703,
+        "footError": 0.0,
+        "footWeight": 0.5112109184265137,
+        "footSamples": 0,
+        "worstLocation": {
+          "x": 0.00015997278387658298,
+          "y": 0.09265238046646118,
+          "z": -0.02641335129737854
+        },
+        "worstLegAngles": [
+          -56.57403564453125,
+          76.00000762939453,
+          31.030994415283203,
+          -51.51226806640625,
+          67.47331237792969,
+          27.560565948486328
+        ],
+        "worstTorsoAngles": [
+          6.521615028381348,
+          3.999955654144287
+        ],
+        "maximumTorsoFlex": 0.0
+      },
+      {
+        "name": "SideGateRight",
+        "finalPhase": "None",
+        "worstJoint": "Forearm_R",
+        "recoveries": 1,
+        "aligns": 1,
+        "interruptions": 0,
+        "gap": 0.006975160911679268,
+        "speed": 1.7968213558197021,
+        "surfaceAngle": 30.866294860839844,
+        "finalHeight": 0.004086315631866455,
+        "downCount": 1,
+        "handoff": 6.58112355722551e-07,
+        "readyAngle": 0.0,
+        "readyDistance": 0.002674593823030591,
+        "readySpeed": 0.00371758546680212,
+        "readyAngular": 0.0113914106041193,
+        "worstStep": 148,
+        "surfaceSamples": 172,
+        "plantedSamples": 39,
+        "plantError": 3.131358971586451e-05,
+        "forearmMotion": 80.51345825195312,
+        "footError": 0.0,
+        "footWeight": 0.8904730677604675,
+        "footSamples": 0,
+        "worstLocation": {
+          "x": 0.00016560812946408987,
+          "y": 0.09260594844818115,
+          "z": -0.025965804234147072
+        },
+        "worstLegAngles": [
+          -56.40277099609375,
+          76.00000762939453,
+          31.3901424407959,
+          -51.614013671875,
+          67.86817169189453,
+          28.041929244995117
+        ],
+        "worstTorsoAngles": [
+          6.022848606109619,
+          3.999955654144287
+        ],
+        "maximumTorsoFlex": 0.0
+      },
+      {
+        "name": "Interrupted",
+        "finalPhase": "None",
+        "worstJoint": "Calf_R",
+        "recoveries": 1,
+        "aligns": 0,
+        "interruptions": 1,
+        "gap": 0.007845252752304077,
+        "speed": 3.565757989883423,
+        "surfaceAngle": 30.932252883911133,
+        "finalHeight": 0.004086494445800781,
+        "downCount": 1,
+        "handoff": 4.2389808641019044e-07,
+        "readyAngle": 0.0,
+        "readyDistance": 0.0025406975764781237,
+        "readySpeed": 0.003516601398587227,
+        "readyAngular": 0.010824051685631275,
+        "worstStep": 300,
+        "surfaceSamples": 242,
+        "plantedSamples": 36,
+        "plantError": 6.772748292860342e-06,
+        "forearmMotion": 81.68629455566406,
+        "footError": 0.0,
+        "footWeight": 0.8104209899902344,
+        "footSamples": 0,
+        "worstLocation": {
+          "x": 0.00015998441085685045,
+          "y": 0.09265241026878357,
+          "z": -0.02641335129737854
+        },
+        "worstLegAngles": [
+          -56.574005126953125,
+          76.0,
+          31.030986785888672,
+          -51.51226806640625,
+          67.47331237792969,
+          27.560564041137695
+        ],
+        "worstTorsoAngles": [
+          6.521615028381348,
+          3.999955654144287
+        ],
+        "maximumTorsoFlex": 5.828735828399658
+      }
+    ]
+  },
+  "punchResults": {
+    "status": "PASS",
+    "hitsPerDown": [
+      5,
+      5,
+      5,
+      5
+    ],
+    "downDurations": [
+      1.5,
+      2.0,
+      2.5,
+      3.0
+    ],
+    "recoveries": 4,
+    "preservedAcrossTenSeconds": true,
+    "moveDistance": 0.3978614807128906,
+    "capturedFrames": 140
+  },
+  "handoffResults": {
+    "cases": [
+      {
+        "name": "FaceUp",
+        "postYawRange": 0.0,
+        "postAngularSpeed": 1.372743696492762e-09,
+        "postHeightRange": 0.00022101402282714844,
+        "moveDistance": 0.27186787128448486,
+        "completionStep": 241
+      },
+      {
+        "name": "FaceDown",
+        "postYawRange": 0.0,
+        "postAngularSpeed": 5.1781739784928504e-08,
+        "postHeightRange": 0.00022733211517333984,
+        "moveDistance": 0.2718677520751953,
+        "completionStep": 241
+      },
+      {
+        "name": "LeftSide",
+        "postYawRange": 0.0,
+        "postAngularSpeed": 8.297020599457028e-07,
+        "postHeightRange": 0.00022327899932861328,
+        "moveDistance": 0.27186819911003113,
+        "completionStep": 250
+      },
+      {
+        "name": "RightSide",
+        "postYawRange": 0.0,
+        "postAngularSpeed": 2.799757092830646e-10,
+        "postHeightRange": 0.00022345781326293945,
+        "moveDistance": 0.2718673050403595,
+        "completionStep": 249
+      }
+    ]
+  },
+  "unchangedSources": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/GetUpAnimationPose.cs": "a8ef81d29b40b21bb41c3dfacd4135ae167e12ad8d15cb764a5940f3fcb0cd04",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31"
+  },
+  "transportIdentity": {
+    "path": "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes",
+    "sha256": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60"
+  },
+  "sourceSnapshots": {
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/RagdollRecoveryReview.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/articulated-torso-20260908/SourceSnapshot/RagdollRecoveryReview.cs",
+      "sha256": "d51bd8024fe482310653aebe4efd7f619d693af05847ccc053981d83d06708f5"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PunchDownReview.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/articulated-torso-20260908/SourceSnapshot/PunchDownReview.cs",
+      "sha256": "b40384f4d51a2336a294c8f4d621c9d3e1d478901096399a2b464f4d8442a333"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/articulated-torso-20260908/SourceSnapshot/PhysicsJumpReviewMenu.cs",
+      "sha256": "dfd282cb68862ff95589c7c2a8ce44ca3e5c4594d720aea22fc7f8f50af63f0a"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/ArticulatedRagdollReviewTests.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/articulated-torso-20260908/SourceSnapshot/ArticulatedRagdollReviewTests.cs",
+      "sha256": "54bb993e635c2f23c9a228a760b542bd1da9b2876865b97392997a0b73c0e453"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/ArticulatedGetUpHandoffTests.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/articulated-torso-20260908/SourceSnapshot/ArticulatedGetUpHandoffTests.cs",
+      "sha256": "eecb008434199543b0ba42dd6aa8245cbd75852101d12528b95ae03e55140ca6"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/ArticulatedPunchDownReviewTests.cs": {
+      "snapshot": "/Users/kjh/local_dev/party game/.codex_tmp/articulated-torso-20260908/SourceSnapshot/ArticulatedPunchDownReviewTests.cs",
+      "sha256": "aed5beaf4c346aceadcd286fd8cc0d52d6d0c7df764a54b0ba1f53c9dea2196b"
+    }
+  },
+  "media": {
+    "comparison": {
+      "before": "/Users/kjh/local_dev/party game/.codex_tmp/natural-getup-20260907/Review-20260908-022855",
+      "after": "/Users/kjh/local_dev/party game/.codex_tmp/articulated-torso-20260908/Review-20260908-054932",
+      "frames": [
+        0,
+        28
+      ],
+      "sourceFps": 20,
+      "sourceSeconds": 1.45,
+      "playbackSpeed": 0.5,
+      "holdAndRepeatSeconds": 1,
+      "expectedDurationMs": 3900,
+      "gif": "/Users/kjh/local_dev/party game/.codex_tmp/articulated-torso-20260908/Media/TorsoPhysicsComparison.gif",
+      "encodedFrames": 30,
+      "durationMs": 3900
+    },
+    "punch": {
+      "source": "/Users/kjh/local_dev/party game/.codex_tmp/articulated-torso-20260908/PunchCapture",
+      "sourceFrames": 140,
+      "sourceFps": 20,
+      "playbackSpeed": 1,
+      "expectedDurationMs": 8000,
+      "gif": "/Users/kjh/local_dev/party game/.codex_tmp/articulated-torso-20260908/Media/ArticulatedPunchRecovery.gif",
+      "fixture": "Scripted input; attacker positioned in range then walks away to clear recovery space.",
+      "encodedFrames": 140,
+      "durationMs": 8000
+    }
+  },
+  "documentationChecks": {
+    "baseline": "PASS",
+    "workflowTests": 7,
+    "diffCheck": "PASS"
+  },
+  "limitations": [
+    "Candidate angular limits preserve current skin; larger flex needs separate rig/weight evaluation.",
+    "Punch fixture positions attacker in range and retreats after Down; not a manual multi-player playtest.",
+    "New segment masses affect local impulse/Grab/Throw feel; final multi-player balance/performance are not approved.",
+    "No original model/weight changes, player build, commit or push."
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "status": "LOCAL_HAND_STRIKE_PROTOTYPE_VERIFIED_GRAB_CONSTRAINT_PENDING",
+  "date": "2026-09-06",
+  "scope": "Ground tap/hold, authority phase/sweep/dedupe/impulse, presentation state consumption, menu/all-up/reset and local target review.",
+  "prototypeTuning": {
+    "status": "START_NOT_FINAL_BALANCE_APPROVAL",
+    "holdThresholdSeconds": 0.15,
+    "comparedPolicyThresholdsSeconds": [
+      0.12,
+      0.15,
+      0.18
+    ],
+    "attackDurationSeconds": 0.7,
+    "activeStartSeconds": 0.1,
+    "activeEndSeconds": 0.2666666666666667,
+    "sweepRadiusMeters": 0.045,
+    "handXmeters": [
+      -0.12,
+      0.12
+    ],
+    "handYmeters": 0.66,
+    "startZmeters": 0.12,
+    "endZmeters": 0.38,
+    "impulseNewtonSeconds": 20,
+    "maximumDeltaSpeedPerHit": 1
+  },
+  "checks": {
+    "AllPlayMode": {
+      "total": "24",
+      "passed": "24",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "Strike-final": {
+      "total": "1",
+      "passed": "1",
+      "failed": "0",
+      "skipped": "0"
+    },
+    "AllEditMode": {
+      "total": "93",
+      "passed": "93",
+      "failed": "0",
+      "skipped": "0"
+    }
+  },
+  "finalRegressionScope": "Full PlayMode24 passed, then the affected18-condition HandStrike test was rerun after initial rearm and stalled-frame tap handling. Full EditMode93 passed on final source.",
+  "reviewDirectory": "/Users/kjh/local_dev/party game/.codex_tmp/hand-strike-20260906/Review-20260905-201626",
+  "caseSummary": [
+    {
+      "name": "LeftTap",
+      "punches": 1,
+      "hits": 1,
+      "maximumSpeed": 0.9018999934196472,
+      "maximumImpulse": 20.0,
+      "maximumDisplacement": 0.07674413919448853,
+      "maximumPresentationTimeError": 0.0,
+      "sawGrabSeek": false
+    },
+    {
+      "name": "RightTap",
+      "punches": 1,
+      "hits": 1,
+      "maximumSpeed": 0.9018999934196472,
+      "maximumImpulse": 20.0,
+      "maximumDisplacement": 0.07674413919448853,
+      "maximumPresentationTimeError": 0.0,
+      "sawGrabSeek": false
+    },
+    {
+      "name": "BothTap",
+      "punches": 2,
+      "hits": 2,
+      "maximumSpeed": 1.9018999338150024,
+      "maximumImpulse": 20.0,
+      "maximumDisplacement": 0.32332152128219604,
+      "maximumPresentationTimeError": 0.0,
+      "sawGrabSeek": false
+    },
+    {
+      "name": "Hold",
+      "punches": 0,
+      "hits": 0,
+      "maximumSpeed": 0.0,
+      "maximumImpulse": 0.0,
+      "maximumDisplacement": 0.0,
+      "maximumPresentationTimeError": 0.0,
+      "sawGrabSeek": true
+    },
+    {
+      "name": "SameFrameTap",
+      "punches": 1,
+      "hits": 1,
+      "maximumSpeed": 0.9018999934196472,
+      "maximumImpulse": 20.0,
+      "maximumDisplacement": 0.07674413919448853,
+      "maximumPresentationTimeError": 0.0,
+      "sawGrabSeek": false
+    },
+    {
+      "name": "StalledFrameTap",
+      "punches": 0,
+      "hits": 0,
+      "maximumSpeed": 0.0,
+      "maximumImpulse": 0.0,
+      "maximumDisplacement": 0.0,
+      "maximumPresentationTimeError": 0.0,
+      "sawGrabSeek": false
+    },
+    {
+      "name": "Wall",
+      "punches": 1,
+      "hits": 0,
+      "maximumSpeed": 0.0,
+      "maximumImpulse": 0.0,
+      "maximumDisplacement": 0.0,
+      "maximumPresentationTimeError": 0.0,
+      "sawGrabSeek": false
+    },
+    {
+      "name": "Miss",
+      "punches": 1,
+      "hits": 0,
+      "maximumSpeed": 0.0,
+      "maximumImpulse": 0.0,
+      "maximumDisplacement": 0.0,
+      "maximumPresentationTimeError": 0.0,
+      "sawGrabSeek": false
+    },
+    {
+      "name": "Occupied",
+      "punches": 0,
+      "hits": 0,
+      "maximumSpeed": 0.0,
+      "maximumImpulse": 0.0,
+      "maximumDisplacement": 0.0,
+      "maximumPresentationTimeError": 0.0,
+      "sawGrabSeek": false
+    },
+    {
+      "name": "MenuCancel",
+      "punches": 1,
+      "hits": 0,
+      "maximumSpeed": 0.0,
+      "maximumImpulse": 0.0,
+      "maximumDisplacement": 0.0,
+      "maximumPresentationTimeError": 0.0,
+      "sawGrabSeek": false
+    },
+    {
+      "name": "Rearm",
+      "punches": 1,
+      "hits": 1,
+      "maximumSpeed": 0.9018999934196472,
+      "maximumImpulse": 20.0,
+      "maximumDisplacement": 0.07674413919448853,
+      "maximumPresentationTimeError": 0.0,
+      "sawGrabSeek": false
+    },
+    {
+      "name": "Reset",
+      "punches": 0,
+      "hits": 0,
+      "maximumSpeed": 0.0,
+      "maximumImpulse": 0.0,
+      "maximumDisplacement": 0.0,
+      "maximumPresentationTimeError": 0.0,
+      "sawGrabSeek": false
+    },
+    {
+      "name": "NoAuthority",
+      "punches": 0,
+      "hits": 0,
+      "maximumSpeed": 0.0,
+      "maximumImpulse": 0.0,
+      "maximumDisplacement": 0.0,
+      "maximumPresentationTimeError": 0.0,
+      "sawGrabSeek": false
+    },
+    {
+      "name": "NoPresentation",
+      "punches": 1,
+      "hits": 1,
+      "maximumSpeed": 0.9018999934196472,
+      "maximumImpulse": 20.0,
+      "maximumDisplacement": 0.07674413919448853,
+      "maximumPresentationTimeError": 0.0,
+      "sawGrabSeek": false
+    },
+    {
+      "name": "UnavailableTarget",
+      "punches": 1,
+      "hits": 0,
+      "maximumSpeed": 0.0,
+      "maximumImpulse": 0.0,
+      "maximumDisplacement": 0.0,
+      "maximumPresentationTimeError": 0.0,
+      "sawGrabSeek": false
+    },
+    {
+      "name": "RemovedTarget",
+      "punches": 1,
+      "hits": 0,
+      "maximumSpeed": 0.0,
+      "maximumImpulse": 0.0,
+      "maximumDisplacement": 0.0,
+      "maximumPresentationTimeError": 0.0,
+      "sawGrabSeek": false
+    },
+    {
+      "name": "Reattack",
+      "punches": 2,
+      "hits": 2,
+      "maximumSpeed": 0.9018999934196472,
+      "maximumImpulse": 20.0,
+      "maximumDisplacement": 0.07674413919448853,
+      "maximumPresentationTimeError": 0.0,
+      "sawGrabSeek": false
+    },
+    {
+      "name": "MultipleColliders",
+      "punches": 1,
+      "hits": 1,
+      "maximumSpeed": 0.9018999934196472,
+      "maximumImpulse": 20.0,
+      "maximumDisplacement": 0.07674413919448853,
+      "maximumPresentationTimeError": 0.0,
+      "sawGrabSeek": false
+    }
+  ],
+  "physicsSteps": 3240,
+  "captureFrames": 480,
+  "next": "Physical GrabSeek contact selection, bounded joint, release/break and one-hand Grab plus opposite-hand Punch.",
+  "limitations": [
+    "No Damage/Down, physical Grab/Lift/Throw, air attack resolver, final InputAction map, network or production prefab/anchors.",
+    "Input snapshots are locally quantized at physics ticks; ambiguous long-frame down/up pairs are discarded rather than guessed as taps.",
+    "Occlusion prevents hit behind walls; mesh wall-contact pose is not implemented.",
+    "Local ordered sequence guard is not a peer packet loss/reorder integration test.",
+    "Prototype tuning and prior foot surface residual remain subject to integrated playtest."
+  ],
+  "sha256": {
+    ".codex_tmp/hand-strike-20260906/AllPlayMode.xml": "bbedf57ede94a9019935cdc4235a7644bc4a047913f8121f88b61f108f52207e",
+    ".codex_tmp/hand-strike-20260906/Strike-final.xml": "9ec828d68ce933cf51de3d4517ce974580350b5ab6bffc3483ccaa3ffbb785cf",
+    ".codex_tmp/hand-strike-20260906/AllEditMode.xml": "9e704963b7c8e2aff2a866317783b2114758354610c3d0b6a23c7efbcc2c57c9",
+    ".codex_tmp/hand-strike-20260906/Review-20260905-201626/HandStrikeReview.json": "4b43bffc3d77acb01db4714da7b9a06d0df01fff216ff1579722b63923c4bc16",
+    ".codex_tmp/hand-strike-20260906/Review-20260905-201626/Media/HandStrike.gif": "c232e5b6880c27505a5f02190fbbf0ecefb296579b52712ba20562d201712fc8",
+    ".codex_tmp/hand-strike-20260906/Review-20260905-201626/Media/HandStrike.mp4": "79dc85cb5fdb2d376e38ef086953a6ee8a670e8949eca595133c16c6c0ddf8d3",
+    ".codex_tmp/hand-strike-20260906/Review-20260905-201626/Media/HandStrike.metadata.json": "54b5d68ee08f104daafd82af379b546720b90f07dfbff0e427e6987d7c84b518",
+    ".codex_tmp/hand-strike-20260906/Review-20260905-201626/SourceSnapshot/Runtime/Contracts/HandActionPresentationState.cs": "d1b33c70a28c463a4b44cd9f96539b4de4a9183b00a2a2d798f6f9e4daf606fa",
+    ".codex_tmp/hand-strike-20260906/Review-20260905-201626/SourceSnapshot/Runtime/Simulation/GroundHandActionStateMachine.cs": "21abd818648776a816f03ca31ca3ba4d170ae473bad8cb607f0b899f592de85e",
+    ".codex_tmp/hand-strike-20260906/Review-20260905-201626/SourceSnapshot/Runtime/Presentation/ApprovedPunchPose.cs": "f8c3cb477c68eb1281c0e576c7fc159308fcbf7df2aa37255aedfed802ec5ab1",
+    ".codex_tmp/hand-strike-20260906/Review-20260905-201626/SourceSnapshot/Tests/PlayMode/Physics/HandStrikeReviewTests.cs": "e8d9b91073e7fdbaa6a51a70915256bc338b4b44c02547786a244898ab97dd6b",
+    ".codex_tmp/hand-strike-20260906/Review-20260905-201626/SourceSnapshot/Tests/EditMode/Architecture/GroundHandActionTests.cs": "161b3d949557c1eec3df97a5c3501d987f4d2c777dea6541f80353b24f5a62aa",
+    ".codex_tmp/hand-strike-20260906/Review-20260905-201626/SourceSnapshot/Prototypes/PhysicsJump/StrikeReviewTarget.cs": "d90820e6cf189d78cee2231bdc5f3086aa04f7502278ba3e49c352d841f6c224",
+    ".codex_tmp/hand-strike-20260906/Review-20260905-201626/SourceSnapshot/Prototypes/PhysicsJump/PhysicsJumpReview.cs": "780fd180ca11374b6e851f74d1caf5dbb1ccf454a0e11edc28991765660f3061",
+    ".codex_tmp/hand-strike-20260906/Review-20260905-201626/SourceSnapshot/Prototypes/PhysicsJump/PhysicsJumpMotor.cs": "36d1a4eaebbecba2889c0dc9060e7e069fbd129dc82c0c20a9f6bc32cbfed077",
+    ".codex_tmp/hand-strike-20260906/Review-20260905-201626/SourceSnapshot/Prototypes/PhysicsJump/HandStrikeReview.cs": "b102a2f16d04ba0fe3542d117ee207bfc9878dc6bf358ab976d9f23acebafdf2",
+    ".codex_tmp/hand-strike-20260906/Review-20260905-201626/SourceSnapshot/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": "bbc5e74b1a25f1812b3a5b8ae1d3573cedeb806bf84bb50cfa9314eca952f009"
+  },
+  "documentationChecks": {
+    "baseline": "PASS",
+    "workflow": "7/7",
+    "artProfiles": "PASS",
+    "artProfileTests": "25/25, 221 assertions",
+    "gitDiffCheck": "PASS"
+  },
+  "originalsPreserved": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47"
+  }
+}

@@ -4,11 +4,34 @@
 
 | 항목 | 내용 |
 |---|---|
-| 문서 버전 | 0.7.0 Alpha Minimal UI·Participation·Firearm·Weapon Combat Baseline |
-| 최종 수정일 | 2026-08-26 |
-| 상위 기준 | `01_PRD.md` 1.8.0, `02_SRS.md` 1.8.0 |
+| 문서 버전 | 0.7.0 Alpha Minimal UI·Participation·Firearm·Weapon Combat Baseline + 2026-09-04 Grip/Recoil Addendum |
+| 최종 수정일 | 2026-09-04 |
+| 상위 기준 | `01_PRD.md` 1.8.0 + 2026-09-04 Addendum, `02_SRS.md` 1.8.0 + 동일 Addendum |
 | 기준 | `CHARACTER_TECHNICAL_SPEC.md` 0.12.0, `ART_DIRECTION.md` 1.9.0, `PATCH_DESIGN.md` 0.5.0 |
 | 상태 | 네 무기 archetype·권한 보급·총기 발사 구조·초기 Patch12 결정, W1 세부·balance와 exact visual Lock 대기 |
+
+### 2026-09-05 공통 Grip·전 주기 변형·다방향 회복 결정
+
+- 총기 Grip은 무기 종류와 좌우에 공통인 팔 뻗기 template 하나다. 동일 template를 실제 잡은 팔에
+  적용하며 왼손·오른손 어느 쪽도 가능하다. 손 점유와 Main/Support 역할은 gameplay 정보이며
+  Pistol/LongGun별 pose나 좌우별 별도 authored clip을 만드는 근거가 아니다. fire/recoil·reload clip0 유지.
+- 리깅 QA는 걷기·뛰기 한 주기의 전 sample frame과 loop 경계에서 어깨·팔꿈치·골반·무릎의 꺾임,
+  자기교차·면 뒤집힘·국소 압축/늘어남과 육안 자연스러움을 함께 확인한다. 한 정지 자세의 PASS로 대체하지 않는다.
+- 회복 진입은 공격 방향이 아니라 Host가 확인한 실제 torso 자세와 지지면 normal을 사용한다.
+  앞·뒤·좌·우 및 대각선·임의 yaw·경사면을 지원하고, 안정 지지나 clearance가 없으면 기다린다.
+- 사용자가 권장안을 선택했다. 옆으로 누우면 현재 몸의 수평 방향을 보존하면서 가까운 앞/뒤 자세로
+  정렬한 뒤 공통 face-up/face-down GetUp을 사용한다. 좌우 전용 GetUp clip은 추가하지 않는다.
+  정렬과 GetUp은 순간이동·즉시 방향 반전 없이 연결하고 Host만 단계·완료를 판정한다.
+- DropkickRecovery와 DownEpisode는 위 시각 경로를 공유하되 gameplay state·DownCount·groggy·Down Trigger는 분리한다.
+  Upright Dropkick settle은 일어나기 없이 locomotion 복귀가 가능하며 떠 있거나 head-down이면 먼저 물리 안정화를 기다린다.
+
+
+### 0.0 2026-09-04 Firearm Grip·Recoil 결정
+
+- Pistol의 기존 Main hand와 LongGun의 기존 Main+Support hand 관계는 유지한다.
+- Firearm Grip은 해당 팔을 앞으로 뻗는 단순 공통 pose로 통일한다.
+- 별도 authored fire/recoil animation clip은 만들지 않는다. Host의 bounded Rigidbody/Joint recoil이 팔과
+  Weapon을 위로 움직이고 승인 spring/damping으로 복귀시킨다.
 
 ### 0.1 0.7.0 변경 요약
 
@@ -78,6 +101,7 @@ Host-confirmed AmmoRemaining, FireMode, ShotSequence, projectile와 Spent 정보
 
 - 왼손과 오른손 어느 쪽도 Main hand가 될 수 있다.
 - 필요하면 반대손 Support Grip을 사용한다.
+- Firearm은 Main/Support hand 수를 유지하되 해당 팔을 앞으로 뻗는 단순 공통 Grip pose를 사용한다.
 - 별도 Hand Mesh 없이 Forearm terminal cap과 손잡이가 소폭 겹쳐 잡힌 인상을 만든다.
 - Character collider, mass, base reach와 `ActiveSubjectBounds`를 바꾸지 않는다.
 - AuthorityHost가 pickup/grab, owner, fire/swing, hit, damage, knockback와 drop을 판정한다.
@@ -261,8 +285,8 @@ Patch가 Weapon Damage, ammo, cadence, 동시 상한과 Hazard timing을 변경�
 
 | Weapon | Grip·형태 Gate |
 |---|---|
-| Pistol / M1911-inspired | 좌·우 한손 Main Grip, compact 앞뒤 silhouette, body 관통, drop·reacquire |
-| LongGun / AK-47-inspired | Main+Support reach, stock·receiver·barrel 방향, Chest·Head 관통, drop·reacquire |
+| Pistol / M1911-inspired | 좌·우 한손 Main arm forward Grip, compact 앞뒤 silhouette, body 관통, drop·reacquire |
+| LongGun / AK-47-inspired | Main+Support arms forward Grip, stock·receiver·barrel 방향, Chest·Head 관통, drop·reacquire |
 | Bat / baseball bat | 한손·양손 간격, handle→barrel taper, swing 준비 envelope, loose collision |
 | Hammer / sledgehammer | 한손·양손 간격, 양면 head 방향, center of mass, loose collision |
 
@@ -419,22 +443,26 @@ W1 뒤 Pistol과 LongGun은 다음을 구현한다.
 - 새 supply만 SuddenDeath 진입에 취소한다. 이미 Held/Loose인 총기와 SuddenDeath 전에 발사됐거나 그 안에서
   승인된 projectile은 동일 fire·hit·TTL/OOB 규칙을 계속 사용한다.
 
-### 5.3 Authority recoil·visual recoil·spread
+### 5.3 Authority physics recoil·forward-arm Grip·spread
 
 - Host는 accepted shot마다 profile 상한 안의 bounded recoil physics를 weapon/holder relation에 한 번 적용한다.
-- visual recoil·muzzle pose는 Host shot event를 읽는 Presentation이며 projectile direction, Character Root,
+- Pistol Main arm과 LongGun Main+Support arm은 앞으로 뻗은 단순 공통 Grip pose를 유지한다.
+- 별도 authored fire/recoil animation clip은 0이다. Host Rigidbody/Joint recoil이 Grip arm과 Weapon을 위로
+  움직이고 승인 spring/damping으로 복귀시킨다.
+- 물리 팔·Weapon 움직임과 muzzle cue는 Host shot event의 결과이며 projectile direction, Character Root,
   Weapon authority와 map control을 다시 계산하거나 바꾸지 않는다.
 - Pistol은 낮은 기본 spread의 accurate shot과 한 발마다 읽히는 강한 per-shot recoil을 사용한다.
 - LongGun은 hold full-auto 동안 shot ordinal 기반 deterministic spread bloom을 누적한다. Client frame rate,
   wall clock과 local random은 spread 결과를 바꾸지 않는다.
 - LongGun bloom 증가·상한·release 뒤 decay/reset, 두 총기의 recoil magnitude·recovery와 fire cadence exact 값은
   2·3·4인 Alpha `START` tuning이지만 semi/full-auto·7/30·no-reload 구조를 바꾸지 않는다.
-- recoil physics·visual recoil·spread가 Lever·Hazard·prop에 remote impulse를 만들거나 새 shot/Hit Trigger를 합성하는 경로는 0이다.
+- forward-arm Grip의 recoil physics·spread가 Lever·Hazard·prop에 remote impulse를 만들거나 새 shot/Hit
+  Trigger를 합성하는 경로는 0이다.
 
 ### Pistol
 
 - M1911-inspired compact low-poly silhouette를 사용하되 실물 slide/control/marking을 복제하지 않는다.
-- 한손 사용을 기본으로 검증한다.
+- 한손 Main arm을 Weapon 방향으로 앞으로 뻗는 단순 Grip pose를 기본으로 검증한다.
 - 좌·우 어느 손에서도 muzzle이 Forearm·몸통을 향하지 않는다.
 - 공용 Camera에서 작은 silhouette와 fire 방향이 읽힌다.
 - valid press edge당 1발, total 7과 no-reload·Spent 전환을 검증한다.
@@ -444,7 +472,7 @@ W1 뒤 Pistol과 LongGun은 다음을 구현한다.
 ### LongGun
 
 - AK-47-inspired stock·receiver·barrel·curved-magazine mass를 사용하되 실물 receiver 치수와 각인을 복제하지 않는다.
-- Main+Support Grip을 기본 후보로 검증한다.
+- Main+Support 두 팔을 Weapon 방향으로 앞으로 뻗는 단순 Grip pose를 검증한다.
 - Support hand가 Joint limit 안에서 닿고 Sprint·회전 중 팔이 분리되지 않는다.
 - 긴 barrel이 벽·Crane·다른 Character를 시각적으로 통과하지 않게 한다.
 - held WeaponUse 동안 full-auto, total 30과 deterministic cumulative spread bloom을 검증한다.

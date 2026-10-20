@@ -6,8 +6,8 @@
 |---|---|
 | 문서명 | Product Requirements Document |
 | 프로젝트명 | `Project Hotfix` (가칭) |
-| 문서 버전 | 1.8.0 Product Baseline |
-| 기준일 | 2026-08-26 |
+| 문서 버전 | 1.8.0 Product Baseline + 2026-09-04 Action Presentation Addendum |
+| 기준일 | 2026-09-05 |
 | 개발 형태 | 솔로 개발, 고정 출시일 없음 |
 | 현재 목표 | `Alpha = Vertical Slice` |
 | 후속 문서 | `docs/02_SRS.md`, `docs/03_IMPLEMENTATION_PLAN.md` |
@@ -15,6 +15,49 @@
 
 이 문서는 제품이 무엇인지, Alpha에서 무엇을 완성하는지, 무엇을 만들지 않는지를 정하는
 최상위 기준선이다. 하위 문서는 이 범위를 구체화할 수 있지만 다른 제품을 만들 수 없다.
+
+### 2026-09-05 공통 Grip·전 주기 변형·다방향 회복 결정
+
+- 총기 Grip은 무기 종류와 좌우에 공통인 팔 뻗기 template 하나다. 동일 template를 실제 잡은 팔에
+  적용하며 왼손·오른손 어느 쪽도 가능하다. 손 점유와 Main/Support 역할은 gameplay 정보이며
+  Pistol/LongGun별 pose나 좌우별 별도 authored clip을 만드는 근거가 아니다. fire/recoil·reload clip0 유지.
+- 리깅 QA는 걷기·뛰기 한 주기의 전 sample frame과 loop 경계에서 어깨·팔꿈치·골반·무릎의 꺾임,
+  자기교차·면 뒤집힘·국소 압축/늘어남과 육안 자연스러움을 함께 확인한다. 한 정지 자세의 PASS로 대체하지 않는다.
+- 회복 진입은 공격 방향이 아니라 Host가 확인한 실제 torso 자세와 지지면 normal을 사용한다.
+  앞·뒤·좌·우 및 대각선·임의 yaw·경사면을 지원하고, 안정 지지나 clearance가 없으면 기다린다.
+- 사용자가 권장안을 선택했다. 옆으로 누우면 현재 몸의 수평 방향을 보존하면서 가까운 앞/뒤 자세로
+  정렬한 뒤 공통 face-up/face-down GetUp을 사용한다. 좌우 전용 GetUp clip은 추가하지 않는다.
+  정렬과 GetUp은 순간이동·즉시 방향 반전 없이 연결하고 Host만 단계·완료를 판정한다.
+- DropkickRecovery와 DownEpisode는 위 시각 경로를 공유하되 gameplay state·DownCount·groggy·Down Trigger는 분리한다.
+  Upright Dropkick settle은 일어나기 없이 locomotion 복귀가 가능하며 떠 있거나 head-down이면 먼저 물리 안정화를 기다린다.
+
+
+### 2026-09-05 점프 표현 변경
+
+사용자 결정으로 전용 Jump/착지 authored clip 제작을 중단한다. 기존 Blender Action5는 비교 자료로 보존한다.
+점프·낙하·착지 판정은 Unity Rigidbody·중력·실제 접촉이 담당하고, 공중 다리 접기와 충격에 따른 착지 압축은
+읽기 전용 물리 상태를 따르는 간단한 procedural 하체 pose로 표현한다. 승인 펀치·공통 총기 Grip과 팔 행동은 유지한다.
+준비 clip 종료 대기나 Animation Event에 의한 점프 impulse 지연은0이다.
+후속 사용자 요청으로 앞뒤·좌우·대각선 점프와 공중 방향 변경에서도 착지→Idle/Walk/Sprint가
+자연스럽게 이어져야 한다. 보행 phase 재시작·순간 방향 반전·착지 clip 대기로 인한 이동 차단은 하지 않는다.
+
+### 2026-09-05 외형·내부 리그 적용 범위
+
+사용자가 기존 Neck 제한은 외형에 관한 것임을 명확히 했다. 보이는 목과 별도 목 외형은 0이며,
+머리를 지지하는 내부 `Chest → Neck → Head` Bone은 허용한다. r20의 내부 Neck은 이 외형 계약의 위반이 아니다.
+9월 4일 Idle/Walk/Sprint·Firearm clip0·Dropkick/shared GetUp 결정은 유지한다.
+이번 문서 동기화·후속 작업 지시는 리그/포즈 결과의 시각 승인이나 UG-C1B·Player Build 승인을 대신하지 않는다.
+
+### 0.0 2026-09-04 Action Presentation 결정
+
+- `Idle`은 양팔을 몸통에 붙여 쉬는 pose, `Walk`는 작은 앞뒤 팔 swing과 보행 leg motion, `Sprint`는
+  큰 앞뒤 팔 swing과 더 빠른 leg cadence를 사용한다. 세 동작은 모두 in-place다.
+- Firearm Grip은 Pistol의 기존 Main hand와 LongGun의 기존 Main+Support hand 수를 유지하되, 해당 팔을
+  앞으로 뻗는 단순 공통 pose로 표현한다.
+- Pistol·LongGun의 별도 authored fire/recoil animation clip은 만들지 않는다. Host의 bounded Unity
+  Rigidbody/Joint recoil이 Grip pose의 팔과 Weapon을 위로 움직이고 승인 spring/damping으로 복귀시킨다.
+- `DropkickRecovery`는 `DownEpisode`와 분리된 non-Down gameplay state를 유지한다. 물리 tumble 뒤 실제로
+  누운 경우에만 Ragdoll 경로의 face-up/face-down GetUp 시각 모션을 공유하며 DownCount·groggy·Down Trigger는 0이다.
 
 ### 0.1 1.8.0 개정 요약
 
@@ -87,7 +130,7 @@
 
 ### 1.3 핵심 재미
 
-1. **기본 난투**: 이동, 점프, Sprint, 양손 Punch·Grab, 공중 Kick·Dropkick, 들기·던지기와 무기 사용만으로 재미가 난다.
+1. **기본 난투**: 이동, 점프, Sprint, 양손 Punch·Grab, 공중 Kick·Dropkick, 잡은 대상 던지기와 무기 사용만으로 재미가 난다.
 2. **환경 활용**: 링아웃과 맵 내부의 고유 `LethalHazard`를 모두 공격 수단으로 사용한다.
 3. **규칙 변화**: 2인에서는 패자, 3·4인에서는 최초 탈락자가 `Trigger → Effect` 패치를 만들고 최대 세 개가 누적된다.
 4. **대기 없는 놀이**: 접속 직후 Lobby에서도 같은 캐릭터와 조작으로 친구와 논다.
@@ -191,8 +234,8 @@ Host Leave·Loss는 어느 phase에서든 Session을 종료한다.
 | `WASD` | 공용 카메라 화면 축 기준 이동과 이동 방향 자동 회전 |
 | `Left Shift` hold | Lobby·Match 공통 Sprint |
 | `Space` | Jump |
-| `LMB` | Ground quick tap은 왼손 Punch, Airborne quick tap은 왼발 Kick, hold는 왼손 Grab/Release |
-| `RMB` | Ground quick tap은 오른손 Punch, Airborne quick tap은 오른발 Kick, hold는 오른손 Grab/Release |
+| `LMB` | Ground quick tap은 왼손 Punch, Airborne quick tap은 왼발 Kick, hold는 왼손 Grab, 잡은 뒤 release는 Throw |
+| `RMB` | Ground quick tap은 오른손 Punch, Airborne quick tap은 오른발 Kick, hold는 오른손 Grab, 잡은 뒤 release는 Throw |
 | `C` | Lobby 어디서든 CharacterCustomizer 진입 요청 |
 | `E` | Guest만 자신의 Ready/CancelReady 전환 |
 | `Tab` | Match의 점수·활성 패치 Overlay |
@@ -220,7 +263,11 @@ LMB/RMB가 모두 Release된 것을 확인할 때까지 Hand·Weapon Input을 �
 
 - threshold 전에 놓으면 한 번의 Strike로 확정한다.
 - threshold까지 유지하면 Strike 없이 GrabSeek로 전환한다.
-- 유효 대상에 닿으면 Grabbing, 버튼을 놓으면 Release한다.
+- 유효 대상에 닿으면 Grabbing이다. 잡은 동적 대상을 버튼을 놓아 던진다(사용자 결정 2026-09-06). 별도 들기 키나 들기 완료 조건은 없다.
+- 같은 대상을 양손으로 잡으면 한 손 release는 그 손만 해제하고, 마지막 손 release에서 bounded Throw impulse를 한 번 적용한다. 서로 다른 대상은 각 손 release로 독립 처리한다.
+- 2026-09-17 사용자 결정: 쓰러진 상대도 잡아서 들어 올릴 수 있어야 한다. Down 자체로 무중력화하지 않고, 지지된 캐릭터가 실제로 잡고 들어 올리거나 들고 있는 동안에만 대상 중력의 일부를 위쪽 힘으로 보조한다. 질량·관성과 힘없는 관절 상태는 유지하며 보조는 대상당 한 번만 적용한다.
+- 마지막 손 release·강제 취소·유효 접촉/대상 상실·보유자 공중 전환에서 들기 보조를 즉시 중단한다. 상호 잡기는 자동 들기를 막고, 상대를 잡고 뛰는 높이는 혼자보다 낮게 유지한다. 보조 비율은 검토 후보의 tuning 값이다.
+- 대상 미획득·메뉴·Reset·Grip break·대상/손 제어권 상실은 Throw를 만들지 않는다. 벽/ledge 고정 잡기와 WeaponUse의 별도 계약은 이 동적 대상 규칙으로 덮어쓰지 않는다.
 - 대상에 닿기 전 GrabSeek를 놓아도 Punch로 되돌리지 않는다.
 - 시작 후보는 150ms이며 120·150·180ms를 Alpha에서 비교해 tuning profile에 고정한다.
 
@@ -269,6 +316,15 @@ Kick/Dropkick이 우선하며 WeaponUse를 같은 tap/chord로 해석하지 않�
 - 다음 Round baseline reset에서 모든 플레이어의 stack을 0으로 만든다.
 - Lobby Ragdoll은 항상 BaseDuration을 사용하고 Match용 groggy stack을 증가시키지 않는다.
 
+2026-09-09 확정 정책: [빠른 펀치·부위별 누적 후보](../artifacts/reports/R20_FAST_PUNCH_PRECISION_20260909.md)는 몸통·팔다리1점, 머리2점으로 누적한다. 넉다운 기준은10→9→8→7→6점에서 멈추며 기존 groggy 대기 시간 증가도 유지한다. 누적은 시간이 지나도 감소하지 않고 새 Down에서 소비하며, Round reset은 누적과 DownCount를 초기화한다. Down 중 추가 타격은 물리 반응만 적용하고 점수·Count·timer를 늘리지 않는다. 머리 보너스는 실제 머리 접촉에만 적용한다. 기존 항상5회 고정은 이전 비교 정책이다.
+
+2026-09-08 이전 피격 정책: 유효 공격의 넉다운용 피격 누적은 시간이 지나도 감소하지 않는다. 넉다운까지 필요한 총 타격 수는 DownCount와 관계없이 고정한다. 새 Down에서 현재 피격 누적만 소비하고, 반복 Down에서는 groggy 대기 시간만 상한까지 증가시킨다. Down 중 추가 타격은 물리 반응만 적용하며 새 누적·DownCount 증가·timer 연장은 없다. 다음 Round에서 누적과 DownCount를 초기화한다. 넉다운 대기 중에는 authored pose/animation이나 자세 복원력 없이 중력·충돌·관절 연결에 맡겨 힘 풀린 인형처럼 눕는다. 대기 종료 뒤 유효 지지/공간이 확보되면 기존 방향별 GetUp으로 회복한다.
+
+후속 사용자 결정: 잡힌 캐릭터도 넉다운 대기 시간이 끝나고 지지/기립 공간이 확보되면 잡기를 유지한 채 회복할 수 있다. 회복을 이유로 자동 release/Throw하거나 groggy timer를 늘리지 않는다. 실제 힘·거리·피로·대상 상실에 따른 기존 Grab break는 유지한다.
+
+앞·뒤·좌·우 어떤 방향의 Down도 실제 torso·지지면 판별 뒤 회복한다. 옆으로 누운 경우에는
+현재 수평 방향을 보존해 앞/뒤로 정렬하고 공통 GetUp을 사용한다. 안정 지지·공간이 없으면 기다린다.
+
 ### 4.6 공용 카메라
 
 - Lobby와 Match는 한 개의 `SharedGameplayCamera`를 사용한다.
@@ -282,12 +338,12 @@ Kick/Dropkick이 우선하며 WeaponUse를 같은 tap/chord로 해석하지 않�
 
 Alpha는 다음 최소 상태를 같은 Authority action/state에서 읽어 표현한다.
 
-- locomotion과 Jump takeoff·airborne·landing phase
+- in-place Idle(팔을 몸통에 붙임)·Walk(작은 팔 swing+보행 leg)·Sprint(큰 팔 swing+빠른 leg cadence)와 Jump takeoff·airborne·landing phase
 - 왼손·오른손 Punch
 - 왼발·오른발 Air Kick
-- Dropkick·DropkickRecovery·physics tumble
-- Grab·Lift·Throw
-- Weapon Fire·Melee Swing
+- Dropkick·별도 non-Down `DropkickRecovery`·physics tumble과 방향별 shared GetUp presentation
+- Grab·release Throw(별도 Lift 조작0)
+- Firearm forward-arm Grip·physics recoil과 Melee Swing
 - Ragdoll·GetUp
 
 Animation, visual pose와 blend는 gameplay action·hit·impulse·Collider·Down을 확정하지 않는다. Gameplay
@@ -303,8 +359,9 @@ Dropkick 방향, Grab과 Weapon attack 원인을 구분할 수 있어야 한다.
 - 이동·Sprint·Jump
 - 좌우 손 Punch, Grab과 Release
 - Airborne 좌우 Kick과 dual-click Dropkick
-- 상대·소품·무기 들기와 이동 관성을 이용한 던지기
+- 상대·소품 잡기와 release 시 이동 관성을 유지하는 던지기; 무기 입력은 W1 계약에 따른다
 - 충격에 따른 Stun, Down과 Ragdoll
+- 사용자 결정: 던져진 캐릭터의 후속 일반 물리 충돌은 추가 Damage와 피해 누적에서 제외한다. 벽·바닥·일반 물체/캐릭터에 연속으로 부딪혀도 충돌 피해를 더하지 않는다. 물리 반응은 유지하며 기존 명시적 Hazard·OOB 탈락 규칙을 피해 면역으로 바꾸지 않는다.
 - 움직이는 소품과 맵 장치의 물리 조작
 
 ### 5.2 탈락 경로
@@ -325,6 +382,8 @@ Dropkick 방향, Grab과 Weapon attack 원인을 구분할 수 있어야 한다.
   role로 삼은 brand-free low-poly 장총이다. 정확 복제, 제조사 trade dress, logo·각인·serial은 사용하지 않는다.
 - `Bat`은 logo 없는 low-poly baseball bat, `Hammer`는 logo 없는 low-poly construction sledgehammer다.
 - 좌우 손 Main Grip과 필요한 Support Grip, Pickup, Held, Use, Drop, loose physics와 Reacquire를 검증한다.
+  Pistol Main hand와 LongGun Main+Support hand 수는 유지하되 Firearm Grip의 해당 팔은 앞으로 뻗는 단순
+  공통 pose를 사용한다.
 - 발사·Swing·Impact·탄약·피해·Stun·Ragdoll·ringout attribution은 AuthorityHost가 판정한다.
 - 무기는 Character collider, 기본 hand reach, mass baseline과 Camera subject bounds를 바꾸지 않는다.
 - Round reset은 떨어진 무기, ownership과 일시 weapon state를 맵 baseline으로 복원한다.
@@ -347,10 +406,12 @@ swept SphereCast해 첫 Map blocker 또는 Character hit 하나에서 종료한�
 `START`, pierce·ricochet·다중 Character hit 0이며 TTL·Projectile OOB·RoundResult·reset에서 제거한다.
 Projectile·recoil은 Lever·Crane·Hook·Panel·Hazard phase와 prop을 원격 작동하거나 impulse로 움직이지 않는다.
 
-Recoil은 Host Unity physics와 Presentation을 결합한다. Pistol은 좁은 base spread와 강한 single-shot
-recoil을 사용한다. LongGun은 연사 중 bounded `RecoilAccumulator`와 `SpreadBloom`을 deterministic
-`ShotSequence`로 누적해 지속 연사일수록 덜 정확해지고, release 또는 승인 gap에서 회복한다. Animator와
-camera cue는 Host recoil state를 read-only로 표시하며 Shot 방향·Hit·Rigidbody authority를 바꾸지 않는다.
+Recoil은 Host Unity physics가 직접 표현한다. Pistol은 좁은 base spread와 강한 single-shot recoil을
+사용하고, LongGun은 연사 중 bounded `RecoilAccumulator`와 `SpreadBloom`을 deterministic `ShotSequence`로
+누적해 지속 연사일수록 덜 정확해지고 release 또는 승인 gap에서 회복한다. 별도 authored fire/recoil
+animation clip은 0이다. Host의 bounded Rigidbody/Joint impulse·torque가 앞으로 뻗은 Grip pose의 팔과
+Weapon을 위로 움직이고 승인 spring/damping으로 복귀시킨다. 이 움직임과 camera cue는 Shot 방향·Hit·
+Rigidbody authority를 다시 계산하지 않는다.
 
 LMB/RMB의 Punch·Grab과 실제 WeaponUse·Drop을 구분하는 `W1` 입력 결정은 Alpha 안의 선행 Gate다.
 `Context Hand`, `Weapon Mode`, `Separate Use` 비교 결과를 사용자에게 제시하고 하나를 승인받은 뒤
@@ -719,8 +780,9 @@ Steam 참가 코드는 별도 Backend에 저장하는 임의 code가 아니다. 
   construction sledgehammer로 구분한다. 실제 모델명·제조사명·logo·각인은 사용자에게 노출하지 않는다.
 - Low-poly silhouette는 공용 Camera에서 Pistol의 한손 짧은 body, LongGun의 긴 양손 body, Bat의
   tapered barrel과 Sledgehammer의 큰 head를 서로 구분하게 한다.
-- Hybrid animation은 locomotion/jump, 좌우 Punch·Air Kick, Dropkick/Recovery, Grab/Lift/Throw,
-  Weapon fire/swing와 Ragdoll/GetUp을 포함하고 Authority state를 read-only로 표현한다.
+- Hybrid presentation은 locomotion/jump, 좌우 Punch·Air Kick, Dropkick과 별도 non-Down Recovery,
+  Grab/release Throw(별도 Lift 조작0), Firearm forward-arm Grip+physics recoil, Melee swing와 Ragdoll/shared GetUp을 포함한다.
+  DropkickRecovery와 DownEpisode는 같은 GetUp 시각 모션을 사용할 수 있지만 gameplay state는 합치지 않는다.
 - 패치 전용 icon·animation·VFX·SFX와 보급 전용 완성 연출은 Alpha 기능 검증 뒤 semantic event를 사용해 후속 제작한다.
 - Alpha Audio는 BGM 0곡과 기본 combat·weapon·environment SFX만 사용한다. UI·Patch·Supply 전용
   audio polish와 Music은 post-Alpha다.
@@ -749,7 +811,7 @@ Alpha는 BGM과 사용자-facing audio channel control이 0이고 승인된 기�
 | `PRD-F-001` | Match는 총 2~4인이며 2·3·4인을 각각 검증한다. | Alpha |
 | `PRD-F-002` | WASD, Left Shift Sprint, Space와 Ground/Air context의 좌우 tap·hold·dual chord input을 Lobby·Match에서 제공한다. | Prototype |
 | `PRD-F-003` | Ground tap은 좌우 Punch, Air single tap은 chord close 뒤 좌우 Kick, Air dual down-edge chord는 즉시 Dropkick, chord 전 hold threshold는 Grab이며 episode당 Air attack은 1회다. | Prototype |
-| `PRD-F-004` | AuthorityHost가 실제 Down/Ragdoll 진입별 groggy stack을 판정하되 DropkickRecovery/tumble은 Down이 아니며 Round reset에서 모두 baseline으로 복원한다. | Prototype |
+| `PRD-F-004` | AuthorityHost가 실제 Down/Ragdoll 진입별 groggy stack과 다방향 회복을 판정하되 DropkickRecovery/tumble은 Down이 아니며 Round reset에서 모두 baseline으로 복원한다. | Prototype |
 | `PRD-F-005` | 한 개의 Host 계산 SharedGameplayCamera를 플레이어·관전자가 사용한다. | Prototype |
 | `PRD-F-006` | OOB와 맵 고유 LethalHazard가 모두 기본 탈락 경로로 성립한다. | Prototype |
 | `PRD-F-007` | Round는 60초·Sudden Death를 사용하고 4점 선취로 Match 승자를 정한다. | Prototype |

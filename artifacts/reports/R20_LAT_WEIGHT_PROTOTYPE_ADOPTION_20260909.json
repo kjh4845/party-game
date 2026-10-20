@@ -1,0 +1,10 @@
+{
+  "status": "ADOPTED_FOR_CONTINUED_PROTOTYPE",
+  "date": "2026-09-09",
+  "userInstruction": "이제 다음 계획으로 진행하자 내 의견이 필요하거나 애매하거나 내 승인이 필요하면 얘기하고 진행해",
+  "candidateSource": "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/candidate-r07",
+  "transport": "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes",
+  "transportSha256": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a",
+  "scope": "Use the latest lat-weight candidate for subsequent local prototypes and current review menus; preserve canonical/previous sources.",
+  "finalCharacterGateApproved": false
+}

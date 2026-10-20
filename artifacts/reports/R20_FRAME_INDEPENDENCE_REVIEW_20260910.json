@@ -1,0 +1,401 @@
+{
+  "status": "PASS_LOCAL_FRAME_INDEPENDENCE",
+  "completedAtLocal": "2026-09-10T02:56:26.992009+09:00",
+  "scope": "Local Unity prototype, fixed 60Hz simulation with variable render schedules; not device performance or network determinism certification.",
+  "timing": {
+    "physicsHz": 60,
+    "fixedDeltaSeconds": 0.016666668,
+    "maximumAllowedTimestepSeconds": 0.33333334,
+    "inputMode": "ProcessEventsInFixedUpdate",
+    "tapHoldBoundarySeconds": 0.15,
+    "mouseDurationsFromOriginalEventTimestamps": true,
+    "renderAdvancesSimulation": false
+  },
+  "replay": {
+    "status": "PASS",
+    "cases": [
+      {
+        "schedule": "60",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "15",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "20",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "30",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "90",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "120",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "144",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "240",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "Jitter",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "Hitch200ms",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      },
+      {
+        "schedule": "NoRender",
+        "ticks": 1080,
+        "punches": 10,
+        "hits": 10,
+        "throws": 1,
+        "downs": 1,
+        "recoveries": 1,
+        "rootError": 0.0,
+        "velocityError": 0.0,
+        "rotationError": 0.0,
+        "gaitError": 0.0,
+        "cameraError": 0.0,
+        "boneError": 0.0,
+        "boneRotationError": 0.0,
+        "ragdollError": 0.0,
+        "ragdollRotationError": 0.0,
+        "ragdollVelocityError": 0.0,
+        "ragdollAngularError": 0.0
+      }
+    ]
+  },
+  "maximumObservedErrors": {
+    "rootError": 0.0,
+    "velocityError": 0.0,
+    "rotationError": 0.0,
+    "gaitError": 0.0,
+    "cameraError": 0.0,
+    "boneError": 0.0,
+    "boneRotationError": 0.0,
+    "ragdollError": 0.0,
+    "ragdollRotationError": 0.0,
+    "ragdollVelocityError": 0.0,
+    "ragdollAngularError": 0.0
+  },
+  "nativeInputTest": {
+    "renderFps": [
+      15,
+      20,
+      30,
+      60,
+      120,
+      144,
+      240
+    ],
+    "bothHands": true,
+    "durationsSeconds": [
+      0.147,
+      0.153,
+      0.01
+    ],
+    "edgesPerSchedule": 12,
+    "punchesPerSchedule": 4,
+    "thresholdBoundaryUnitTests": [
+      0.147,
+      0.15,
+      0.153
+    ]
+  },
+  "nativePlayerLoopTest": {
+    "frameClockFps": [
+      15,
+      120
+    ],
+    "onePoseEvaluationPerPhysicsTick": true,
+    "snapshotAfterPhysics": true,
+    "emptyRosterFreezesCamera": true
+  },
+  "validation": {
+    "Play-r04": {
+      "path": ".codex_tmp/frame-independence-20260910/Play-r04.xml",
+      "total": 30,
+      "passed": 30,
+      "failed": 0,
+      "durationSeconds": 253.7474352
+    },
+    "Play-final": {
+      "path": ".codex_tmp/frame-independence-20260910/Play-final.xml",
+      "total": 32,
+      "passed": 32,
+      "failed": 0,
+      "durationSeconds": 23.3200265
+    },
+    "Fps-final": {
+      "path": ".codex_tmp/frame-independence-20260910/Fps-final.xml",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "durationSeconds": 5.9396796
+    },
+    "Edit-final": {
+      "path": ".codex_tmp/frame-independence-20260910/Edit-final.xml",
+      "total": 139,
+      "passed": 139,
+      "failed": 0,
+      "durationSeconds": 0.6901914
+    }
+  },
+  "uniquePlayModeTests": 40,
+  "sourceSnapshots": {
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ReviewFixedLoop.cs": {
+      "snapshot": ".codex_tmp/frame-independence-20260910/SourceSnapshot/Prototypes/PhysicsJump/ReviewFixedLoop.cs",
+      "sha256": "7ffb93fc8abb4b3ed289b22dac337d24078ff2222c161431975471fc15ea894c"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ReviewInputClock.cs": {
+      "snapshot": ".codex_tmp/frame-independence-20260910/SourceSnapshot/Prototypes/PhysicsJump/ReviewInputClock.cs",
+      "sha256": "7ad684f7a9ea47d571801c6fbd081da35dbf1d551a69d555445554252747ed75"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/FixedReviewPose.cs": {
+      "snapshot": ".codex_tmp/frame-independence-20260910/SourceSnapshot/Prototypes/PhysicsJump/FixedReviewPose.cs",
+      "sha256": "0a14e386106de559a7384f630cbbd101f5ab4e11a7243c59f0d1c56973d24305"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpReview.cs": {
+      "snapshot": ".codex_tmp/frame-independence-20260910/SourceSnapshot/Prototypes/PhysicsJump/PhysicsJumpReview.cs",
+      "sha256": "a2b5ac1b95e3947ad9ff1f2839534f993b27f4f49e3a44a0ad2da30db2c2dfa6"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/SharedArenaReview.cs": {
+      "snapshot": ".codex_tmp/frame-independence-20260910/SourceSnapshot/Prototypes/PhysicsJump/SharedArenaReview.cs",
+      "sha256": "96ae5a69d696696a444ffb9810d5325447e9c1191c71b2622bb00295ccb0dea8"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/SharedCameraReview.cs": {
+      "snapshot": ".codex_tmp/frame-independence-20260910/SourceSnapshot/Prototypes/PhysicsJump/SharedCameraReview.cs",
+      "sha256": "720cf577bedf995112e6f04ebe338d392edd0e0ec2708d9b8677d4c0dfd28673"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/HandStrikeReview.cs": {
+      "snapshot": ".codex_tmp/frame-independence-20260910/SourceSnapshot/Prototypes/PhysicsJump/HandStrikeReview.cs",
+      "sha256": "ed96e624904b44f84adc698761f3b5c1a849172bf111e69e39a71b07026f9f84"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/RagdollRecoveryReview.cs": {
+      "snapshot": ".codex_tmp/frame-independence-20260910/SourceSnapshot/Prototypes/PhysicsJump/RagdollRecoveryReview.cs",
+      "sha256": "b3f017e081eb8b207eaef42376468c18a9c79a9fd261916e1940fdd8477e9e2a"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PunchHitRig.cs": {
+      "snapshot": ".codex_tmp/frame-independence-20260910/SourceSnapshot/Prototypes/PhysicsJump/PunchHitRig.cs",
+      "sha256": "f513f87a99ca5e0e97fcec9853d177fdc436eabdfffa0cc92870c1dd93aa0195"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Simulation/GroundHandActionStateMachine.cs": {
+      "snapshot": ".codex_tmp/frame-independence-20260910/SourceSnapshot/Runtime/Simulation/GroundHandActionStateMachine.cs",
+      "sha256": "1639f1a3763cac95415f30f2e9767a1ba796c63e4098f315af0543bef33b6568"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/GetUpAnimationPose.cs": {
+      "snapshot": ".codex_tmp/frame-independence-20260910/SourceSnapshot/Runtime/Presentation/GetUpAnimationPose.cs",
+      "sha256": "e1c74bfd546d9abae430ce6780d58858733791938aa15b1c299b08751eac08f6"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/FrameIndependenceTests.cs": {
+      "snapshot": ".codex_tmp/frame-independence-20260910/SourceSnapshot/Tests/PlayMode/Physics/FrameIndependenceTests.cs",
+      "sha256": "2c626a91504a626ea4426e8d255b7aad8f281c2a6d39935d97dbf012c91af51b"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/ProjectHotfix.Physics.Tests.PlayMode.asmdef": {
+      "snapshot": ".codex_tmp/frame-independence-20260910/SourceSnapshot/Tests/PlayMode/Physics/ProjectHotfix.Physics.Tests.PlayMode.asmdef",
+      "sha256": "c49daaca392985c2a86a7fe6583740cc469f72b784ba43ffabfff52bff177fc2"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/GroundHandActionTests.cs": {
+      "snapshot": ".codex_tmp/frame-independence-20260910/SourceSnapshot/Tests/EditMode/Architecture/GroundHandActionTests.cs",
+      "sha256": "46f4fa9cb7a90270c53463891b917bd071d411e9d4fb91d5cc745a9ab29456c3"
+    }
+  },
+  "beforeSnapshots": ".codex_tmp/frame-independence-20260910/Before",
+  "unchangedAssets": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31",
+    "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60",
+    ".codex_tmp/punch-unity-20260906/ApprovedPunch.json": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac",
+    "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a"
+  },
+  "limitations": [
+    "Same fixed-tick input replay on this Unity/PhysX environment; cross-hardware bitwise determinism is not claimed.",
+    "Render smoothness and physical input/display latency vary with hardware and FPS.",
+    "200ms hitch stays below the existing 333ms maximum allowed timestep. Sustained overload or longer stalls can slow simulation relative to wall time.",
+    "Production peer transport and real-device multiplayer performance remain future gates."
+  ],
+  "scopePreserved": {
+    "mainGaitUnchanged": true,
+    "cameraGaitVisualApproval": false,
+    "meshRigWeightsClipsUnchanged": true,
+    "gameplayTuningUnchanged": true,
+    "playerBuilds": 0,
+    "commits": 0,
+    "pushes": 0
+  }
+}

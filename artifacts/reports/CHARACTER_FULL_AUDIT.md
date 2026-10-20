@@ -1,5 +1,12 @@
 # Project Hotfix 캐릭터 전체 감사
 
+> **2026-09-05 현황 갱신:** 아래 본문은 r11 시점까지의 역사 감사/결정 기록이다. 본문의 “현재 r11”·“승인 전 Rig0”는
+> 당시 상태이며 현재 실행 조건이 아니다. r16 Neutral 방향은 2026-09-02 승인됐고 r20 Blender 리그 후보가 존재한다.
+> 최신 상태·승인 범위·다음 작업은 [캐릭터 현재 검토 기록](CHARACTER_REWORK_NEUTRAL_REVIEW.md)을 따른다.
+> 내부 Neck은 외형 제한 대상이 아니며, 실제 동작 clip·현재 Unity parity·UG-C1B는 미완료다.
+
+---
+
 > **역사·superseded 범위 공지:** 이 보고서 본문의 `C1B-002..005 PASS`는 old faceted/part-based START
 > Blockout과 그 Pose·FBX/Unity 전달이 당시 기술 완료조건을 충족했다는 역사 감사다. 최신 캐릭터 시각 acceptance가
 > 아니며, 해당 결과의 current status는 `REWORK_REQUIRED`다. 현재 입력은 round head·visible neck0·bean torso/continuous leg,

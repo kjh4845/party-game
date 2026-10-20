@@ -1,0 +1,54 @@
+{
+  "complete": true,
+  "candidatePath": ".codex_tmp/elbow-punch-20260905/review-r01/R20_ElbowPunchAnimationCandidate_r01.blend",
+  "candidateSha256": "201351af7d52fa36ae2cf419473e3fadb3b3857838b25f70f14738c6166e39e6",
+  "generatorSha256": "19d6d8d817faf96b6c85499f14049983cc3ad86773fd9743a17271baa845aeab",
+  "sampleCount": 98,
+  "renderCount": 100,
+  "actions": {
+    "L": "REVIEW_ElbowPunch_L_r01",
+    "R": "REVIEW_ElbowPunch_R_r01"
+  },
+  "framesPerSecond": 30,
+  "durationSeconds": 0.8,
+  "timing": {
+    "L": {
+      "chamberElbowDegrees": 111.776018446502,
+      "strikeElbowDegrees": 12.990903688148363,
+      "recoilElbowDegrees": 101.95283355200048,
+      "extensionSeconds": 0.13333333333333333,
+      "elbowExtensionExcursionDegrees": 98.78511475835363
+    },
+    "R": {
+      "chamberElbowDegrees": 111.776018446502,
+      "strikeElbowDegrees": 12.990903688148363,
+      "recoilElbowDegrees": 101.95283355200048,
+      "extensionSeconds": 0.13333333333333333,
+      "elbowExtensionExcursionDegrees": 98.78511475835363
+    }
+  },
+  "loopClosure": {
+    "L": 0.0,
+    "R": 0.0
+  },
+  "mirrorMaximumVertexDelta": 2.7314279645418166e-07,
+  "authoredCurveScope": "Active-side Clavicle, UpperArm, Forearm, HandLogical quaternion only; 16 curves per Action",
+  "sourcePreservation": {
+    "r16Unchanged": true,
+    "r20Unchanged": true,
+    "rigBoneCount": 22,
+    "helperDriverCount": 8,
+    "geometryWeightsChanged": false
+  },
+  "result": "PASS",
+  "userVisualApproval": false,
+  "limitations": [
+    "Review timing is START; no gameplay attack cadence, Hit or damage changed.",
+    "Only animation articulation changed; previous Grab/Wall and common Firearm Grip remain separate.",
+    "Reopened Blender Action sampled at frames and half frames; no FBX/Unity import."
+  ],
+  "rawReportPath": ".codex_tmp/elbow-punch-20260905/review-r01/ElbowPunchReview.json",
+  "rawReportSha256": "a08e5ee2dd5735f0034567b7e7da877e27380208179af2a20cd89dac647f7b5b",
+  "maxSurfaceAdjacentAngleDegrees": 21.017769321504026,
+  "previousPunchVisualStatus": "REWORK_REQUIRED / SUPERSEDED by user elbow-motion feedback; prior technical PASS preserved"
+}

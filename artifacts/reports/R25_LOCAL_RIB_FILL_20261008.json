@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-08",
+  "status": "USER_REJECTED_SURFACE_FINISH",
+  "visualApproved": false,
+  "direction": "r24 모델 전체 재구성은 거절. r24 펀치는 승인. r23 원래 형태로 돌아가 갈비뼈 옆면만 보충하여 팔과 몸통 사이 공간을 줄임.",
+  "model": "BlenderSource/Characters/C1B-RW-025-local-rib-fill/CHR_MasterCharacter_C1B_LocalRibFill_r25.blend",
+  "transport": "BlenderSource/Characters/C1B-RW-025-local-rib-fill/LocalRibCharacter.bytes",
+  "nativeValidation": {
+    "passed": true,
+    "baseVersion": "r23",
+    "bodyVertices": 227942,
+    "changedVertices": 55242,
+    "maximumLateralBindChangeMeters": 0.030000001192092896,
+    "allOriginalYAndZCoordinatesPreserved": true,
+    "headRigTopologyAndAllWeightsPreserved": true,
+    "outsideRibPatchExactlyPreserved": true,
+    "bodyMirrorMaxMeters": 0.0,
+    "sourceAndTransportMatch": true,
+    "approvedCombatSourcesUnchanged": true,
+    "approvedCombatHashes": {
+      "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.cs": "9472c49a0e120e2dbf14bcf2d77806c8d7597680703d94c3121cc146a8d2fbb8",
+      "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Punch.cs": "8c439127ea2cd02d2087d8f3cb540b97b354568435489f14efc837871b9efa04",
+      "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveUpperBodyReview.Impact.cs": "e1c5dfe2b17606a27f29b9d3b2fee811c1913850d35e70abd539650df7191ddf",
+      "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ActiveGrabPairReview.cs": "4578818863197339e7f077e0df3317dd7befb0e290ff3b2dfc3ee0ca7e9a4d3b",
+      "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchReview.cs": "fd0c444da4bd05f262b7392a6111324ae144bd65e98d0511dfa526ec3684fb16",
+      "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicalPunchFeedbackReview.cs": "f0584878d0f8af1aba6292efa4bad9c239fcbc94248007986645b3341c5029e7",
+      "Project hotfix/Assets/ProjectHotfix/Runtime/Presentation/ProceduralJumpPose.cs": "ef81a733b37877b6dfeef3596e004f1ac0a094808d49bbac213014f87bcba688"
+    },
+    "candidateSha256": "58ec5cac11191a578fe4dc6d7d2b1e48d2339bfde356cd0b69b0ef6b7dc5a017",
+    "transportSha256": "da181e18ed26d75ba041a3a4b483a726e39ec4cdbd503be1aadc499364af1cc5"
+  },
+  "geometryChange": "원래 몸체의 갈비뼈 영역 X좌표만 좌우 바깥쪽으로 최대 0.03m 이동. Y/Z 좌표, 머리, 어깨 윗면, 팔 끝/다리, 뼈대, 모든 가중치와 topology는 보존. 앞뒤 가장자리에는 부드러운 감쇠를 적용.",
+  "approvedCombatUnchanged": true,
+  "validation": {
+    "tests": [
+      {
+        "name": "BodyStrikeReactionsFollowContactAndRecover",
+        "result": "Passed",
+        "failure": null
+      },
+      {
+        "name": "CapturePhysicalPunchScenarios",
+        "result": "Failed",
+        "failure": "  LeftBody skin 179.9031\nRightBody skin 179.972\nGrabPunch skin 178.5643\n  Expected: <empty>\n  But was:  < \"LeftBody skin 179.9031\", \"RightBody skin 179.972\", \"GrabPunch skin 178.5643\" >\n"
+      },
+      {
+        "name": "CaptureRibcageRaisedArmEnvelope",
+        "result": "Passed",
+        "failure": null
+      },
+      {
+        "name": "CaptureShoulderFrontAndPunchPoses",
+        "result": "Passed",
+        "failure": null
+      }
+    ],
+    "raisedArms": [
+      "armRaise=45, maximumAdjacentFaceAngle=10.1289654",
+      "armRaise=90, maximumAdjacentFaceAngle=34.48648"
+    ],
+    "punchSurface": "maximumAdjacentFaceAngle=31.09604",
+    "cases": [
+      {
+        "name": "LeftBody",
+        "hits": 3,
+        "throws": 0,
+        "maxSkin": 179.90309143066406
+      },
+      {
+        "name": "RightBody",
+        "hits": 3,
+        "throws": 0,
+        "maxSkin": 179.97203063964844
+      },
+      {
+        "name": "GrabPunch",
+        "hits": 1,
+        "throws": 1,
+        "maxSkin": 178.56427001953125
+      }
+    ]
+  },
+  "originalBaselineCases": [
+    {
+      "name": "LeftBody",
+      "hits": 3,
+      "maxSkin": 179.91152954101562
+    },
+    {
+      "name": "GrabPunch",
+      "hits": 1,
+      "maxSkin": 179.42733764648438
+    }
+  ],
+  "knownLimit": "강한 피격/잡고 치기에서 전체 표면 각도 검사는 실패한다. 원래 r23을 그대로 실행한 대조군에서도 LeftBody/GrabPunch 검사가 동일하게 실패했다. 정면·45도/90도 팔 들기·허공 펀치와 피격 상태 동작 검사는 통과했지만 전체 접촉 표면 검사가 통과했다고 주장하지 않는다. 이번 원본 복구/국소 채움 범위를 넘어 펀치나 전신 skin을 변경하지 않았다.",
+  "menus": [
+    "Project Hotfix/Prototypes/Open Body Impact Candidate",
+    "Project Hotfix/Prototypes/Open Physical Punch Candidate"
+  ],
+  "evidence": "artifacts/evidence/r25-local-rib-fill-20261008",
+  "media": [
+    "artifacts/previews/r25-local-rib-fill-20261008/Original_RibFill_Close.png",
+    "artifacts/previews/r25-local-rib-fill-20261008/Original_RibFill_Front.png",
+    "artifacts/previews/r25-local-rib-fill-20261008/Original_RibFill_ThreeQuarter.png"
+  ],
+  "builds": false,
+  "commits": false,
+  "pushes": false,
+  "userFeedback": "채운 갈비뼈가 매끈하지 않다고 평가하고, 베이맥스처럼 매끈하고 둥근 몸을 요청했다.",
+  "supersededBy": "R26_SMOOTH_BODY_20261008.json"
+}

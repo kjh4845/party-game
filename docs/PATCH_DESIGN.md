@@ -4,11 +4,11 @@
 
 | 항목 | 값 |
 |---|---|
-| 문서 버전 | `0.5.0 Approved Disconnect·Forfeit·Alpha UI Boundary` |
-| 기준일 | 2026-08-26 |
+| 문서 버전 | `0.5.0 Approved Disconnect·Forfeit·Alpha UI Boundary + 2026-09-04 Action Presentation Addendum` |
+| 기준일 | 2026-09-04 |
 | 사용자 노출명 | `패치` |
 | 적용 단계 | Prototype Patch 12, Alpha Patch 20 확장 기반 |
-| 기준 문서 | `docs/01_PRD.md` 1.8.0, `docs/02_SRS.md` 1.8.0, `docs/03_IMPLEMENTATION_PLAN.md` 2.5 |
+| 기준 문서 | `docs/01_PRD.md` 1.8.0 + 2026-09-04 Addendum, `docs/02_SRS.md` 1.8.0 + 동일 Addendum, `docs/03_IMPLEMENTATION_PLAN.md` 2.5 + 동일 Addendum |
 | 승인 상태 | `UG-PATCH12-DESIGN` PASSED · Patch12·Ground/Air Action·Firearm Runtime·Disconnect/Forfeit 경계 사용자 승인 2026-08-26 |
 
 이 문서는 승인된 첫 12개 패치와 이를 실행하는 최소 Runtime 계약을 정의한다. Alpha에서는
@@ -162,10 +162,12 @@ Knockback, Ammo, Fire·Swing cadence와 새 Hit를 만들지 않는다.
 - Guest는 Projectile을 보간·표현할 수 있지만 spawn, path, sweep, first hit, Damage·Knockback과
   `TRG-ATTACK-HIT-CONFIRMED` 결과를 확정하지 않는다.
 
-Recoil은 Host physics와 Presentation을 분리하는 Hybrid다.
+Recoil은 Host physics가 단순 Firearm Grip pose의 팔과 Weapon을 직접 움직이는 Hybrid다.
 
-- Host는 Shot마다 bounded Character/Weapon Rigidbody impulse·torque와 authority Muzzle 방향을 계산한다.
-  Animator·camera cue는 이 semantic recoil state를 read-only로 따른다.
+- Pistol Main arm과 LongGun Main+Support arm은 앞으로 뻗은 단순 공통 Grip pose를 사용한다.
+- Host는 Shot마다 bounded Character/Weapon Rigidbody/Joint impulse·torque와 authority Muzzle 방향을 계산한다.
+  별도 authored fire/recoil animation clip은 0이고 물리 팔·Weapon 움직임과 camera cue가 semantic recoil
+  state를 따른다.
 - Pistol은 좁은 base spread와 강한 single-shot recoil을 사용한다.
 - LongGun은 연속 수락 Shot마다 bounded `RecoilAccumulator`와 `SpreadBloom`을 누적한다. Shot 방향은
   deterministic `ShotSequence`와 Host profile에서 계산하며 button release 또는 승인 gap 뒤에 회복한다.
@@ -722,7 +724,8 @@ Reconnect Client는 Offer를 다시 뽑거나 과거 Effect를 replay하지 않�
 - Firearm Hit는 visible Host Projectile의 swept SphereCast first Hit만 사용한다. pierce·ricochet·Projectile
   map-control activation과 Guest Hit 결과 주장은 0이다.
 - Pistol은 narrow spread·strong single recoil, LongGun은 deterministic ShotSequence 기반 bounded
-  RecoilAccumulator·SpreadBloom과 release/gap recovery를 사용한다. Recoil animation은 read-only다.
+  RecoilAccumulator·SpreadBloom과 release/gap recovery를 사용한다. 두 Firearm은 forward-arm Grip에서
+  Host Rigidbody/Joint recoil로만 올라가며 authored fire/recoil clip은 0이다.
 - 기본 반복 투하는 2인 `10/22초·cap2`, 3인 `8/16초·cap2`, 4인 `6/12초·cap3` START profile을 사용한다.
   Round마다 네 종류의 결정적 shuffle bag을 쓰고 실제 admission만 cursor를 소비한다.
 - `EFF-HIT-KNOCKBACK`은 Weapon Damage를 바꾸지 않고 기존 Hit knockback 결과만 보정한다.

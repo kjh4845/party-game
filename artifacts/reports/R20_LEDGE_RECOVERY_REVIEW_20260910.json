@@ -1,0 +1,329 @@
+{
+  "status": "IMPLEMENTED_IN_LOCAL_PROTOTYPE",
+  "completedAtLocal": "2026-09-10T14:04:34.179420+09:00",
+  "authorization": "User approved the8.8x6.2CU/22m arena and asked to proceed with ledge recovery.",
+  "profile": {
+    "movementScale": 2,
+    "maximumClimbAssistsPerAirEpisode": 2,
+    "cooldownSeconds": 0.35,
+    "maximumRiseCU": 1.25,
+    "targetApexAboveRoofCU": 0.15,
+    "stableGroundRearmSeconds": 0.1,
+    "grabHoldSeconds": 0.15,
+    "reachSeconds": 0.12,
+    "contactSpring": 12000,
+    "contactDamper": 600,
+    "maximumSupportForcePerHandN": 2000,
+    "groundFrictionPreserved": true,
+    "airFriction": 0,
+    "profileStatus": "START; actual return feel remains tunable."
+  },
+  "behavior": [
+    "Only tagged static colliders and unobstructed reachable hand contacts are admitted. No world snap.",
+    "Click hold uses bounded body support force and load-driven GripStress; input release/invalid surface/overreach/menu/Down/OOB/reset drop without throwing the map.",
+    "Space while a valid surface is held performs one owner-level assist. Both hands share the same2-use budget and350ms cooldown.",
+    "Launch target is bounded by roof clearance; prior fall speed is not reused as later landing impact and ordinary air-jump/coyote cannot be reopened.",
+    "As body rises beyond hand reach the grip releases; a deeper return requires explicit up/down hand input for a fresh contact before another assist.",
+    "Actual ground support for100ms with no surface grip rearms the air budget; reset clears it.",
+    "Air capsule friction0 prevents motor pressure from pinning an ungrabbed character against a vertical wall; ground material is restored."
+  ],
+  "recovery": [
+    {
+      "side": 0,
+      "hands": 1,
+      "assists": 1,
+      "acquisitions": 1,
+      "breaks": 1,
+      "initialHeight": -0.6000000238418579,
+      "recoverySeconds": 0.7333333492279053,
+      "maximumForce": 1751.221923828125,
+      "maximumStress": 0.38801005482673645,
+      "handError": 2.633124154272082e-07,
+      "rootApex": 0.12048828601837158,
+      "lastRelease": "ReachBreak",
+      "recovered": true
+    },
+    {
+      "side": 1,
+      "hands": 2,
+      "assists": 1,
+      "acquisitions": 1,
+      "breaks": 1,
+      "initialHeight": -0.6000000238418579,
+      "recoverySeconds": 0.7333333492279053,
+      "maximumForce": 1751.2222900390625,
+      "maximumStress": 0.38800981640815735,
+      "handError": 5.009649726162024e-07,
+      "rootApex": 0.1204879879951477,
+      "lastRelease": "ReachBreak",
+      "recovered": true
+    },
+    {
+      "side": 2,
+      "hands": 1,
+      "assists": 1,
+      "acquisitions": 1,
+      "breaks": 1,
+      "initialHeight": -0.6000000238418579,
+      "recoverySeconds": 0.7333333492279053,
+      "maximumForce": 1751.221923828125,
+      "maximumStress": 0.38801005482673645,
+      "handError": 2.590617214082158e-07,
+      "rootApex": 0.12048828601837158,
+      "lastRelease": "ReachBreak",
+      "recovered": true
+    },
+    {
+      "side": 3,
+      "hands": 2,
+      "assists": 1,
+      "acquisitions": 1,
+      "breaks": 1,
+      "initialHeight": -0.6000000238418579,
+      "recoverySeconds": 0.7333333492279053,
+      "maximumForce": 1751.2222900390625,
+      "maximumStress": 0.38800981640815735,
+      "handError": 5.040580504100944e-07,
+      "rootApex": 0.12048789858818054,
+      "lastRelease": "ReachBreak",
+      "recovered": true
+    },
+    {
+      "side": 0,
+      "hands": 3,
+      "assists": 2,
+      "acquisitions": 4,
+      "breaks": 4,
+      "initialHeight": -1.75,
+      "recoverySeconds": 1.2500001192092896,
+      "maximumForce": 1751.2222900390625,
+      "maximumStress": 0.17285437881946564,
+      "handError": 2.6697625798988156e-07,
+      "rootApex": 0.1193181574344635,
+      "lastRelease": "ReachBreak",
+      "recovered": true
+    },
+    {
+      "side": 1,
+      "hands": 3,
+      "assists": 2,
+      "acquisitions": 4,
+      "breaks": 4,
+      "initialHeight": -1.75,
+      "recoverySeconds": 1.2500001192092896,
+      "maximumForce": 1751.2222900390625,
+      "maximumStress": 0.17285452783107758,
+      "handError": 6.20861840161524e-07,
+      "rootApex": 0.11931616067886353,
+      "lastRelease": "ReachBreak",
+      "recovered": true
+    },
+    {
+      "side": 2,
+      "hands": 3,
+      "assists": 2,
+      "acquisitions": 4,
+      "breaks": 4,
+      "initialHeight": -1.75,
+      "recoverySeconds": 1.2500001192092896,
+      "maximumForce": 1751.2222900390625,
+      "maximumStress": 0.17285437881946564,
+      "handError": 3.401253252377501e-07,
+      "rootApex": 0.11931851506233215,
+      "lastRelease": "ReachBreak",
+      "recovered": true
+    },
+    {
+      "side": 3,
+      "hands": 3,
+      "assists": 2,
+      "acquisitions": 4,
+      "breaks": 4,
+      "initialHeight": -1.75,
+      "recoverySeconds": 1.2500001192092896,
+      "maximumForce": 1751.2222900390625,
+      "maximumStress": 0.17285452783107758,
+      "handError": 5.687872999260435e-07,
+      "rootApex": 0.11931601166725159,
+      "lastRelease": "ReachBreak",
+      "recovered": true
+    },
+    {
+      "side": 0,
+      "hands": 3,
+      "assists": 2,
+      "acquisitions": 4,
+      "breaks": 4,
+      "initialHeight": -2.180000066757202,
+      "recoverySeconds": 1.3333333730697632,
+      "maximumForce": 2000.0,
+      "maximumStress": 0.4316823184490204,
+      "handError": 3.3848931479951716e-07,
+      "rootApex": 0.11039456725120544,
+      "lastRelease": "ReachBreak",
+      "recovered": true
+    },
+    {
+      "side": 1,
+      "hands": 3,
+      "assists": 2,
+      "acquisitions": 4,
+      "breaks": 4,
+      "initialHeight": -2.180000066757202,
+      "recoverySeconds": 1.3333333730697632,
+      "maximumForce": 2000.0,
+      "maximumStress": 0.43168219923973083,
+      "handError": 7.016216159172473e-07,
+      "rootApex": 0.11039543151855469,
+      "lastRelease": "ReachBreak",
+      "recovered": true
+    },
+    {
+      "side": 2,
+      "hands": 3,
+      "assists": 2,
+      "acquisitions": 4,
+      "breaks": 4,
+      "initialHeight": -2.180000066757202,
+      "recoverySeconds": 1.3333333730697632,
+      "maximumForce": 2000.0,
+      "maximumStress": 0.431682288646698,
+      "handError": 3.9649410155107034e-07,
+      "rootApex": 0.11039447784423828,
+      "lastRelease": "ReachBreak",
+      "recovered": true
+    },
+    {
+      "side": 3,
+      "hands": 3,
+      "assists": 2,
+      "acquisitions": 4,
+      "breaks": 4,
+      "initialHeight": -2.180000066757202,
+      "recoverySeconds": 1.3333333730697632,
+      "maximumForce": 2000.0,
+      "maximumStress": 0.43168219923973083,
+      "handError": 7.016216159172473e-07,
+      "rootApex": 0.11039558053016663,
+      "lastRelease": "ReachBreak",
+      "recovered": true
+    }
+  ],
+  "initialDownwardSpeeds": {
+    "nearAndMiddleMps": 2,
+    "lowestMps": 6.5
+  },
+  "frameRates": [
+    "60: 0",
+    "15: 0",
+    "144: 0"
+  ],
+  "validation": {
+    "Play-r01": {
+      "path": ".codex_tmp/ledge-recovery-20260910/Play-r01.xml",
+      "passed": 27,
+      "total": 27
+    },
+    "FastFall-final": {
+      "path": ".codex_tmp/ledge-recovery-20260910/FastFall-final.xml",
+      "passed": 6,
+      "total": 6
+    },
+    "Edit-final": {
+      "path": ".codex_tmp/ledge-recovery-20260910/Edit-final.xml",
+      "passed": 140,
+      "total": 140
+    }
+  },
+  "uniquePlayModeTests": 27,
+  "sourceSnapshots": {
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/LedgeGrabReview.cs": {
+      "snapshot": ".codex_tmp/ledge-recovery-20260910/SourceSnapshot/Prototypes/PhysicsJump/LedgeGrabReview.cs",
+      "sha256": "8ee89c536e433e08a542af2e694260ec07769e724dc8263b84c929edf6aba098"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ReviewGrabSurface.cs": {
+      "snapshot": ".codex_tmp/ledge-recovery-20260910/SourceSnapshot/Prototypes/PhysicsJump/ReviewGrabSurface.cs",
+      "sha256": "3685c1fc486f84acde408ff362ef56f9e5235465b987aa21f59b2bf10fd32b2c"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/LedgeRecoveryReview.cs": {
+      "snapshot": ".codex_tmp/ledge-recovery-20260910/SourceSnapshot/Prototypes/PhysicsJump/LedgeRecoveryReview.cs",
+      "sha256": "6aee05c8b2020e6e9c9694567ed3d2345ba4a3f5f68b4f6f969d55ff90503968"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/GrabPhysicsReview.cs": {
+      "snapshot": ".codex_tmp/ledge-recovery-20260910/SourceSnapshot/Prototypes/PhysicsJump/GrabPhysicsReview.cs",
+      "sha256": "990424432e871fbaf671d161c841f3fd745b2f94cdb8fbe209fcbacc24a7a950"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/HandStrikeReview.cs": {
+      "snapshot": ".codex_tmp/ledge-recovery-20260910/SourceSnapshot/Prototypes/PhysicsJump/HandStrikeReview.cs",
+      "sha256": "73ec6e31ac2e56b609dfdc53000996adccce5f58a0d2435b3ae38c8046ac017a"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpMotor.cs": {
+      "snapshot": ".codex_tmp/ledge-recovery-20260910/SourceSnapshot/Prototypes/PhysicsJump/PhysicsJumpMotor.cs",
+      "sha256": "56f1405b56903db2dab9aa1a4a667b91dc695dbe83686ac6b7ff1d3fdcfd21c8"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ReviewFixedLoop.cs": {
+      "snapshot": ".codex_tmp/ledge-recovery-20260910/SourceSnapshot/Prototypes/PhysicsJump/ReviewFixedLoop.cs",
+      "sha256": "51f08f182787ed3d6b46fd848ec34d9fa84f1b0436f5d076a8868c32fbfc3808"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/ArenaBoundaryReview.cs": {
+      "snapshot": ".codex_tmp/ledge-recovery-20260910/SourceSnapshot/Prototypes/PhysicsJump/ArenaBoundaryReview.cs",
+      "sha256": "eb1fb7c6a7992102c810858cd08ca46e4e1f15a8073b0b53c4d1106534e730d5"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Runtime/Simulation/PhysicsJumpStateMachine.cs": {
+      "snapshot": ".codex_tmp/ledge-recovery-20260910/SourceSnapshot/Runtime/Simulation/PhysicsJumpStateMachine.cs",
+      "sha256": "98b3341d1697c603f50c34a8671bfe295d5e922f164bc31cbf55fc9a8414e887"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs": {
+      "snapshot": ".codex_tmp/ledge-recovery-20260910/SourceSnapshot/Editor/PhysicsJump/PhysicsJumpReviewMenu.cs",
+      "sha256": "88f484ea04fdefa75e63f1c20166a80115269bff1e236e8eacff3b11be654222"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.cs": {
+      "snapshot": ".codex_tmp/ledge-recovery-20260910/SourceSnapshot/Tests/PlayMode/Physics/LedgeRecoveryReviewTests.cs",
+      "sha256": "0102f32579db2e34ba4cb75854ab9eb42343a195438a11667b59f079f75fc76b"
+    },
+    "Project hotfix/Assets/ProjectHotfix/Tests/EditMode/Architecture/ExternalLaunchTests.cs": {
+      "snapshot": ".codex_tmp/ledge-recovery-20260910/SourceSnapshot/Tests/EditMode/Architecture/ExternalLaunchTests.cs",
+      "sha256": "a3b47591360e88669fa6dfd3864d9c191f2cd75beb097ec61a1fb622caa63f34"
+    }
+  },
+  "unchangedAssets": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31",
+    "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60",
+    ".codex_tmp/punch-unity-20260906/ApprovedPunch.json": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac",
+    "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a"
+  },
+  "defaultMenu": "Project Hotfix/Prototypes/Open Shared Arena 2/3/4 Players",
+  "reviewMenu": "Project Hotfix/Prototypes/Open Ledge Recovery Review",
+  "notImplemented": [
+    "Moving-surface/Hook/tilting-panel grips and Beam geometry",
+    "Crane/Lever/Hazard, weapon supply, Round/score/timer/SuddenDeath and peer",
+    "Final character, map and comfort gates or human multiplayer trials"
+  ],
+  "playerBuilds": 0,
+  "commits": 0,
+  "pushes": 0,
+  "media": {
+    "path": ".codex_tmp/ledge-recovery-20260910/Media/LedgeRecovery60-final.mp4",
+    "validation": {
+      "distinctDecodedFrames": 360,
+      "fps": 60,
+      "frames": 360,
+      "height": 622,
+      "maximumTimestampGapError": 8.291978215169138e-16,
+      "seconds": 6,
+      "status": "PASS",
+      "width": 960
+    },
+    "disclosure": "Two scripted initial falls, a single-hand return and a low two-hand regrip return. Native60fps, no retiming. Human response time is not measured."
+  },
+  "documentValidation": {
+    "status": "PASS",
+    "log": ".codex_tmp/ledge-recovery-20260910/DocumentValidation.txt",
+    "workflowTestsPassed": 7
+  }
+}

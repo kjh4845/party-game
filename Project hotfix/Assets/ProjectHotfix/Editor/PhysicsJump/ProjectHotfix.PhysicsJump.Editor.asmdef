@@ -1,0 +1,21 @@
+{
+  "name": "ProjectHotfix.PhysicsJump.Editor",
+  "rootNamespace": "ProjectHotfix.PhysicsJump.Editor",
+  "references": [
+    "ProjectHotfix.PhysicsJump.Prototype",
+    "ProjectHotfix.Simulation",
+    "ProjectHotfix.Presentation",
+    "ProjectHotfix.Contracts"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

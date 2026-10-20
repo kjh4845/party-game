@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "recordId": "R20-LOWER-WEIGHT-APPROVAL-20260905",
+  "status": "APPROVED",
+  "recordedAtLocal": "2026-09-05T19:24:59.263327+09:00",
+  "userDecision": "접지 보정은 unity에서 하는거지? 수정 후보로 더 진행하자",
+  "candidatePath": ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend",
+  "candidateSha256": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+  "scope": [
+    "Adopt the reviewed lower-body weight candidate as the separate working source for subsequent Jump/Landing animation prototypes.",
+    "Preserve original r16/r20 and previously approved punch."
+  ],
+  "limitations": [
+    "Does not approve unmade Jump/Landing clips or final Unity collision/grounding.",
+    "Historical candidate files and technical reports remain immutable; this record supplies the subsequent user decision."
+  ]
+}

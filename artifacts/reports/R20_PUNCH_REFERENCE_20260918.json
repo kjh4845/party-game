@@ -1,0 +1,156 @@
+{
+  "date": "2026-09-18",
+  "status": "STAGE_ONE_REFERENCE_POSE_VISUAL_REVIEW_PENDING",
+  "authorization": "User asked to proceed with the proposed sequence; first approve the motion reference before implementing physical following and impact response.",
+  "referenceOnly": true,
+  "visualApproved": false,
+  "physicalTrackingImplemented": false,
+  "physicalHitResponseImplemented": false,
+  "defaultArenaChanged": false,
+  "existingPhysicalPunchSourceHashesUnchanged": true,
+  "sharedFactoryChange": "Only LoadSkin access visibility changed from private to internal; implementation unchanged.",
+  "durationSeconds": 0.4,
+  "referenceTimesSeconds": {
+    "preparationEnd": 0.085,
+    "proximalLeadEnd": 0.105,
+    "strikeEnd": 0.15,
+    "nominalImpactPoseEnd": 0.167,
+    "recoilEnd": 0.19,
+    "withdrawalEnd": 0.25,
+    "restoredIdle": 0.35
+  },
+  "poseLibrary": {
+    "path": ".codex_tmp/punch-reference-20260918/ReferencePose.json",
+    "sha256": "d15668cd93fde70fa1510fc7c3b6d3d7877f6b639f6408e511b9f1287a4d4c3c",
+    "sampleRate": 120,
+    "framesPerSide": 49,
+    "bones": 24
+  },
+  "validation": {
+    "path": ".codex_tmp/punch-reference-20260918/Reference1.xml",
+    "sha256": "222caa72365c0d2b7d58f2610a35ccea05b48151d697a52cbff6335fcf34c3aa",
+    "passed": 3,
+    "total": 3,
+    "tests": [
+      {
+        "name": "CaptureReferenceFrontAndSide",
+        "result": "Passed"
+      },
+      {
+        "name": "ReferenceIsIsolatedMirroredAndFeetStayPlanted",
+        "result": "Passed"
+      },
+      {
+        "name": "SharedCharacterFactoryRetainsItsPhysicsPath",
+        "result": "Passed"
+      }
+    ]
+  },
+  "quality": {
+    "mirror": 4.656613e-10,
+    "footTargetError": 9.002571e-08,
+    "armLengthChange": 0.0,
+    "restRotationDelta": 0.0,
+    "repeatPositionDelta": 0.0,
+    "maxSurfaceAngle": 21.0310783,
+    "floorSkinDelta": -9.033829e-08,
+    "maxTipStep120Hz": 0.1049713,
+    "rigidbodies": 0.0,
+    "colliders": 0.0
+  },
+  "sampledAngularSpeed": [
+    {
+      "side": 0,
+      "sampledWorldAngularSpeedRadS": {
+        "UpperArm_L": 33.589067630035885,
+        "Forearm_L": 62.64306349151547,
+        "UpperArm_R": 17.806839498582413,
+        "Forearm_R": 17.806839498582054
+      }
+    },
+    {
+      "side": 1,
+      "sampledWorldAngularSpeedRadS": {
+        "UpperArm_L": 17.806839498582413,
+        "Forearm_L": 17.806839498582054,
+        "UpperArm_R": 33.589067630035885,
+        "Forearm_R": 62.64306349151547
+      }
+    }
+  ],
+  "media": [
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/punch-reference-20260918/Media/PunchReference_FrontSide_60.mp4",
+      "fps": 60,
+      "decodedFrames": 180,
+      "seconds": 3.0,
+      "referenceOnly": true,
+      "audio": false,
+      "sha256": "2a3fa5ae720aa24877bbc63f8fbaab1a8931edbd8cd296af6dd85a1374c4d74b"
+    },
+    {
+      "path": "/Users/kjh/local_dev/party game/.codex_tmp/punch-reference-20260918/Media/PunchReference_HalfSpeed.mp4",
+      "fps": 30,
+      "decodedFrames": 180,
+      "seconds": 6.0,
+      "referenceOnly": true,
+      "audio": false,
+      "sha256": "fd22336d207976357221d5f11382770c0452878fbd951f8635ca70109f0d8d43"
+    }
+  ],
+  "sources": [
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpReview.cs",
+      "sha256": "8db6964ba4d7a2fc6f1c6e8ff4911bbd8d864d1f9d75d88d22debcefb89d5cbf",
+      "snapshot": ".codex_tmp/punch-reference-20260918/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PhysicsJumpReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PunchMotionReferenceReview.cs",
+      "sha256": "4eead42cd7833d2c09a2930e18b46e77170b311f9b50161323e6489ae87bfec8",
+      "snapshot": ".codex_tmp/punch-reference-20260918/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/PunchMotionReferenceReview.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PunchMotionReferenceMenu.cs",
+      "sha256": "2c15c1d35221b24ea77a555c3df4887b36400f4ef789d847eec31b461e0f7671",
+      "snapshot": ".codex_tmp/punch-reference-20260918/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Editor/PhysicsJump/PunchMotionReferenceMenu.cs"
+    },
+    {
+      "path": "Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PunchMotionReferenceTests.cs",
+      "sha256": "1a31f3577fa2faccbc44947fd916af413bbb1807925b62d1cab87170a51bc1ab",
+      "snapshot": ".codex_tmp/punch-reference-20260918/SourceSnapshot_Review1/Project hotfix/Assets/ProjectHotfix/Tests/PlayMode/Physics/PunchMotionReferenceTests.cs"
+    }
+  ],
+  "originalAssetHashes": {
+    "BlenderSource/Characters/C1B-RW-016-preview/CHR_MasterCharacter_C1B_NeutralRework_r16.blend": "9b80276e97aa84f3d2a4ef7689b4ebd241f84124494ec8ff0ca51cc119a676ef",
+    "BlenderSource/Characters/C1B-RW-020-helper-rig-preview/CHR_MasterCharacter_C1B_Rig_r20.blend": "8d509c816f4095726d092ed7211fe3a6dfa70cbc940f6cc3799543a30cc04579",
+    ".codex_tmp/lower-weight-20260905/candidate-r02/R20_LowerWeightCandidate_r01.blend": "21a2eac95095e04a441b86486511b9805509920dfba1b9b21b65f2ca469add47",
+    ".codex_tmp/punch-preparation-20260905/review-r02/R20_ElbowPunchAnimationCandidate_r02.blend": "943ee808a0d1f8a1075ef9c5615444a1f2c28bba6597b51c94ab821ae58ca091",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceUp.anim": "0ba7ecc7c30ebd03a4f385ec6aed7705112fb2c02cddb9c1595ad01a1903fdd5",
+    "Project hotfix/Assets/ProjectHotfix/Prototypes/PhysicsJump/Resources/ReviewGetUp/GetUp_FaceDown.anim": "f6ebc13f3b86f9c100c038b537338b11ffe63924c12d848c739e0969ba6c3d31",
+    "/Users/kjh/local_dev/party game/.codex_tmp/unity-physics-jump-20260905/ApprovedCharacter.bytes": "dae9a7142bcf3d7e8a3857d36a4b3e6344a67c72599c28ef2e165b074f3a0d60",
+    ".codex_tmp/punch-unity-20260906/ApprovedPunch.json": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac",
+    "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes": "8008749ff2441fe39d1ea933ada3f5e2e1a5d6f083e736bac50736fd7867004a",
+    "/Users/kjh/local_dev/party game/.codex_tmp/lat-weight-20260909/candidate-r07/R20_LatWeightCandidate.blend": "8b6a2e5b41f0a6bfc10957d2d3d12a604f16562bd14512b440831723b63abad7"
+  },
+  "reviewModelHashes": {
+    "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-reach-20260916/candidate-r02/R20_ShoulderBlendCandidate.blend": "40730ebda748729eb4df512b9827e2569dd15ff094dd9df9270122b7451cc1e5",
+    "/Users/kjh/local_dev/party game/.codex_tmp/shoulder-reach-20260916/candidate-r02/ShoulderCharacter.bytes": "21c9c8079eb2be506e2daf822c19f1af3db99a638a4d6470d45e11fb5b4b79a5"
+  },
+  "originalPunchLibrary": {
+    "path": ".codex_tmp/punch-unity-20260906/ApprovedPunch.json",
+    "sha256": "df4fa89f89ff78159858efa53a2736862e0f02647569744740a32e35134055ac"
+  },
+  "documents": {
+    "baseline": "PASS",
+    "workflow": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.026s\n\nOK\n"
+  },
+  "knownLimits": [
+    "Visual reference only: zero rigidbodies and colliders, no score, no opponent, no physics or impact validation.",
+    "Reference angular speed reaches about 62.64 rad/s at 120 Hz sampling; physical cap/torque saturation and following remain phase-two work.",
+    "Surface-angle and floor checks do not certify whole-body self-intersection freedom.",
+    "Gameplay timing, normal-hit response, low-FPS physical replay and live Down/recovery integration are not approved by this reference."
+  ],
+  "builds": 0,
+  "commits": 0,
+  "pushes": 0
+}
