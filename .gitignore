@@ -21,6 +21,11 @@ __pycache__/
 # Local pose reviews must be approved before publication.
 /BlenderSource/Characters/C1B-RW-020-helper-rig-preview/PoseTests/*.png
 
+# Regenerable playback pages and their frame sequences stay local.
+# Keep curated stills directly under the r43 preview directory.
+/BlenderSource/Characters/C1B-RW-043-gb-body/preview/*/
+/BlenderSource/Characters/C1B-RW-046-slim-body/preview*/
+
 # Unity generated directories (the project lives below the repository root)
 **/[Ll]ibrary/
 **/[Tt]emp/
@@ -62,3 +67,8 @@ sysinfo.txt
 !**/ProjectSettings/**
 !**/Packages/manifest.json
 !**/Packages/packages-lock.json
+
+# Temporary Unity test-runner scenes and crash dumps are not project sources.
+/Project hotfix/Assets/InitTestScene*.unity
+/Project hotfix/Assets/InitTestScene*.unity.meta
+**/mono_crash.*.json
