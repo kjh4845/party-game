@@ -156,6 +156,36 @@ namespace ProjectHotfix.PhysicsJump
             }
             return text;
         }
+        // A punch on the body lying knocked out makes it flinch (2026-10-24 review: the lying body needed more action):
+        // for FlinchSeconds the hands, feet and head are pulled in toward the trunk and up at FlinchAcceleration (fading
+        // out, mostly up: FlinchLift), the upper arms and thighs at half that; then for FlinchReleaseSeconds they are
+        // pushed back out at FlinchRelease of that, lifted a little off the floor's friction, and it is limp again. Pulled
+        // mostly inward and released flat, a few hits curled it into a ball that stayed (limp, nothing opens it again)
+        // and the next punches missed. Forces, not joint drives: the knocked-out body keeps
+        // no drive (MaximumLimpDriveSpring), and the joint limits bend elbows and knees the right way.
+        public float FlinchSeconds = .12f, FlinchReleaseSeconds = .18f, FlinchAcceleration = 26f, FlinchLift = 1.5f, FlinchRelease = .8f, FlinchReleaseLift = .35f;
+        private float _flinchAge = -1, _flinchStrength;
+        public int Flinches { get; private set; }
+        public void Flinch(float strength) { if (!Active) return; _flinchAge = 0; _flinchStrength = Mathf.Clamp01(strength); Flinches++; }
+        private void StepFlinch(float seconds)
+        {
+            if (_flinchAge < 0) return;
+            if (!Active || Down.State.Phase != RecoveryPresentationPhase.PhysicsTumble || _flinchAge >= FlinchSeconds + FlinchReleaseSeconds) { _flinchAge = -1; return; }
+            var release = _flinchAge >= FlinchSeconds;
+            var fade = release ? Mathf.Sin(Mathf.PI * (_flinchAge - FlinchSeconds) / FlinchReleaseSeconds) : 1 - _flinchAge / FlinchSeconds;
+            var accel = FlinchAcceleration * _flinchStrength * (release ? FlinchRelease * fade : fade * fade);
+            var chest = _links.FirstOrDefault(l => l.Bone.name == "Chest"); var center = chest != null ? (chest.Body.worldCenterOfMass + Actor.Motor.Body.worldCenterOfMass) * .5f : Actor.Motor.Body.worldCenterOfMass;
+            foreach (var link in _links)
+            {
+                var name = link.Bone.name;
+                var share = name.StartsWith("Forearm") || name.StartsWith("Calf") || name == "Head" ? 1f : name.StartsWith("UpperArm") || name.StartsWith("Thigh") ? .5f : 0f;
+                if (share <= 0 || link.Body.isKinematic) continue;
+                var inward = Vector3.ProjectOnPlane(center - link.Body.worldCenterOfMass, Vector3.up); inward = inward.sqrMagnitude > 1e-6f ? inward.normalized : Vector3.zero;
+                var direction = release ? (-inward + Vector3.up * FlinchReleaseLift).normalized : (inward + Vector3.up * FlinchLift).normalized;
+                link.Body.AddForce(direction * accel * share, ForceMode.Acceleration);
+            }
+            _flinchAge += seconds;
+        }
         public int CopyDynamicBodies(Rigidbody[] destination)
         {
             if (destination == null || destination.Length < _links.Count + 1) throw new ArgumentException("Body buffer is too small.", nameof(destination));
@@ -674,6 +704,7 @@ namespace ProjectHotfix.PhysicsJump
             if (state.Phase != RecoveryPresentationPhase.SharedGetUp || _animationStarted) _roomHold = _roomPushTimer = 0;
             if (_animationStarted) _scootSeconds = 0;
             StepScoot(seconds);
+            StepFlinch(seconds);
             // The planted get-up, once moving, is not given up because someone steps into its room (that made a rising
             // body grabbable again, 2026-10-21): it keeps shoving them off instead (ClearRoom above).
             if (movingRecovery && (!sample.HasSupport || !sample.Clear && !FeetPlantedGetUp))

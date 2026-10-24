@@ -20,7 +20,7 @@ namespace ProjectHotfix.PhysicsJump
         public float FlashIntensity=.5f,BurstSize=.15f,HeadShake=.018f;
         private AudioSource _source;
         private readonly AudioClip[] _clips=new AudioClip[2];
-        private sealed class FlashState {public Material Material;public Color Emission;public bool HadKeyword;public int Age;}
+        private sealed class FlashState {public Material Material;public Color Emission;public bool HadKeyword;public int Age;public float Scale=1;}
         private sealed class BurstState {public Transform Transform;public Vector3 Point;public float Roll,Scale;public int Age;}
         private readonly List<FlashState> _flashes=new List<FlashState>();
         private readonly List<BurstState> _bursts=new List<BurstState>();
@@ -43,11 +43,22 @@ namespace ProjectHotfix.PhysicsJump
             return samples;
         }
         public void Confirm(bool head,bool audible,Camera view)=>Confirm(head,audible,view,null,null,Vector3.zero,Vector3.forward,1);
-        // An uncounted hit (on a body getting up) gets only a small burst and a quiet thud: no hit-stop, flash or shake.
-        public void Confirm(bool head,bool audible,Camera view,ActiveUpperBodyReview attacker,ActiveUpperBodyReview target,Vector3 point,Vector3 direction,float strength,bool counted=true)
+        // An uncounted hit on a body getting up gets only a small burst and a quiet thud: no hit-stop, flash or shake.
+        // One on a body lying knocked out (lying) lands like a hit, hit-stop, burst and thud, with a softer flash and no
+        // shake, though it still counts for nothing (2026-10-24 review: the soft cue had no punch to it).
+        public float LyingFlashScale=.5f;
+        public void Confirm(bool head,bool audible,Camera view,ActiveUpperBodyReview attacker,ActiveUpperBodyReview target,Vector3 point,Vector3 direction,float strength,bool counted=true,bool lying=false)
         {
             ConfirmedCues++;
-            if(!counted){if(Burst&&target!=null)StartBurst(point,.35f);if(audible)Play(false,.5f,view);return;}
+            if(!counted&&!lying){if(Burst&&target!=null)StartBurst(point,.35f);if(audible)Play(false,.5f,view);return;}
+            if(lying)
+            {
+                if(HitStop&&attacker!=null&&target!=null){attacker.Actor.FixedPose.HoldPresentation(HitStopTicks,HitStopCatchUpTicks);target.Actor.FixedPose.HoldPresentation(HitStopTicks,HitStopCatchUpTicks);HitStops++;}
+                if(Flash&&target!=null)foreach(var skin in target.Actor.Pose.GetComponentsInChildren<SkinnedMeshRenderer>())StartFlash(skin.sharedMaterial,LyingFlashScale);
+                if(Burst&&target!=null)StartBurst(point,Mathf.Clamp(strength,.5f,1.3f));
+                if(audible)Play(head,Mathf.Lerp(.8f,1.15f,Mathf.InverseLerp(.65f,1.3f,strength)),view);
+                return;
+            }
             if(HitStop&&attacker!=null&&target!=null)
             {
                 attacker.Actor.FixedPose.HoldPresentation(HitStopTicks,HitStopCatchUpTicks);
@@ -74,12 +85,12 @@ namespace ProjectHotfix.PhysicsJump
             }
             _source.PlayOneShot(_clips[index],Volume*loudness);
         }
-        private void StartFlash(Material material)
+        private void StartFlash(Material material,float scale=1)
         {
             if(material==null)return;
             var existing=_flashes.Find(f=>f.Material==material);
-            if(existing!=null){existing.Age=0;return;}
-            _flashes.Add(new FlashState{Material=material,HadKeyword=material.IsKeywordEnabled("_EMISSION"),
+            if(existing!=null){existing.Age=0;existing.Scale=scale;return;}
+            _flashes.Add(new FlashState{Material=material,HadKeyword=material.IsKeywordEnabled("_EMISSION"),Scale=scale,
                 Emission=material.HasProperty("_EmissionColor")?material.GetColor("_EmissionColor"):Color.black});
             material.EnableKeyword("_EMISSION");
         }
@@ -136,7 +147,7 @@ namespace ProjectHotfix.PhysicsJump
                     _flashes.RemoveAt(i);continue;
                 }
                 var k=1-f.Age/(float)FlashTicks;
-                f.Material.SetColor("_EmissionColor",f.Emission+Color.white*(FlashIntensity*k*k));
+                f.Material.SetColor("_EmissionColor",f.Emission+Color.white*(FlashIntensity*f.Scale*k*k));
             }
             for(var i=_bursts.Count-1;i>=0;i--)
             {

@@ -170,7 +170,9 @@ namespace ProjectHotfix.PhysicsJump
             if(rootSpeed>0)
             {
                 if(travel!=Vector3.zero){var back=travel*Vector3.Dot(rootPush,travel);rootPush=back+(rootPush-back)*DownedSlideShare;}
-                if(rootPush.sqrMagnitude>1e-8f)rig.HoldOff(rootPush,rootSpeed*Mathf.Clamp01(rootPush.magnitude/Mathf.Max(rootSpeed,1e-4f)));
+                // Bent down punching (LowStriking) the root's motion into the body is only stopped, not turned back: raised to
+                // the separation speed every tick it bounced off the body's legs and back in with each stroke (2026-10-24).
+                if(rootPush.sqrMagnitude>1e-8f)rig.HoldOff(rootPush,rig.LowStriking?0:rootSpeed*Mathf.Clamp01(rootPush.magnitude/Mathf.Max(rootSpeed,1e-4f)));
             }
         }
 

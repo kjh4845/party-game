@@ -63,6 +63,16 @@ namespace ProjectHotfix.PhysicsJump
         // it is only pushed at this share of a normal hit, with a soft cue. 2026-10-24: the same for a body lying knocked
         // out (the attacker bends down to it, ActiveGrabPairReview.AimLowStrike).
         public float RisingHitScale=.5f;
+        // A body lying knocked out takes a full-strength punch on the part hit and a bounce off the floor instead of the
+        // sideways push: a punch from above pressed it into the floor and it barely moved, and the half push and soft cue
+        // of a rising hit had no punch to it (2026-10-24 review). Lifted off the floor the sideways push slid it out of
+        // reach after a hit or two. The bounce is up to LyingHitBounce (m/s) where it was hit, falling to LyingHitBounceFar
+        // of that over LyingHitSpread (m), so the struck part jumps and the rest follows; then it flinches
+        // (RagdollRecoveryReview.Flinch). Still nothing counts.
+        public float LyingHitBounce=.8f,LyingHitBounceFar=.25f,LyingHitSpread=.25f;
+        // Striking from above, the forearm's lower half meets a lying body as often as the fist does and reads as the
+        // same blow: its striking end reaches LyingTipReachScale times as far (2026-10-24: 8 of 16 contacts were refused).
+        public float LyingTipReachScale=2f;
         public const float MinimumFacingDot=.25f;
         public int RejectedGlancing {get;private set;}
         public int RejectedOutsideTip {get;private set;}
@@ -244,7 +254,7 @@ namespace ProjectHotfix.PhysicsJump
                 for(var c=0;c<collision.contactCount;c++)
                 {
                     var contact=collision.GetContact(c);var tip=ownRig.HandPosition(side);var distance=Vector3.Distance(tip,contact.point);
-                    var reach=ownRig.StrikeStyle!=ActiveUpperBodyReview.ReviewStrikeStyle.Straight?.08f*ownRig.ArmReachScale:TipRadius;
+                    var reach=(ownRig.StrikeStyle!=ActiveUpperBodyReview.ReviewStrikeStyle.Straight?.08f*ownRig.ArmReachScale:TipRadius)*(targetRig.GettingUp?1:LyingTipReachScale);
                     if(distance>reach+ContactTolerance){RejectedOutsideTip++;continue;}
                     var incoming=_tipVelocity[player,side]-other.GetPointVelocity(contact.point);var closing=Vector3.Dot(incoming,-contact.normal);
                     if(closing<MinimumClosingSpeed){RejectedMotion++;continue;}
@@ -330,13 +340,23 @@ namespace ProjectHotfix.PhysicsJump
         private void RisingHit(int player,int side,Candidate hit,PunchHitRegion region,ulong action)
         {
             var target=1-player;var targetRig=_pair.Players[target].Rig;var power=Mathf.InverseLerp(.35f,3.5f,hit.Closing);
-            var impulse=Mathf.Min(MaximumPartImpulse,hit.Body.mass*Mathf.Lerp(PartSpeedMin,PartSpeedMax,power))*RisingHitScale;
+            var lying=!targetRig.GettingUp;var scale=lying?1:RisingHitScale;
+            var impulse=Mathf.Min(MaximumPartImpulse,hit.Body.mass*Mathf.Lerp(PartSpeedMin,PartSpeedMax,power))*scale;
             hit.Body.AddForceAtPosition(hit.Direction*impulse,hit.Point,ForceMode.Impulse);
             var flat=Vector3.ProjectOnPlane(hit.Direction,Vector3.up);
-            var shove=flat.sqrMagnitude>.01f?flat.normalized*Mathf.Lerp(KnockbackMin,KnockbackMax,power)*RisingHitScale:Vector3.zero;
-            foreach(var body in _pair.KnockdownBodies(targetRig))body.AddForce(shove,ForceMode.VelocityChange);
+            var shove=lying?Vector3.zero:flat.sqrMagnitude>.01f?flat.normalized*Mathf.Lerp(KnockbackMin,KnockbackMax,power)*RisingHitScale:Vector3.zero;
+            var bodies=_pair.KnockdownBodies(targetRig);
+            foreach(var body in bodies)
+            {
+                if(!lying){body.AddForce(shove,ForceMode.VelocityChange);continue;}
+                var near=Mathf.Exp(-Mathf.Pow(Vector3.Distance(body.worldCenterOfMass,hit.Point)/LyingHitSpread,2));
+                var bounce=Vector3.up*LyingHitBounce*Mathf.Lerp(.6f,1,power)*Mathf.Lerp(LyingHitBounceFar,1,near);
+                body.AddForce(bounce,ForceMode.VelocityChange);shove+=bounce/bodies.Length;
+            }
+            if(lying)targetRig.Knockdown.Flinch(Mathf.Lerp(.6f,1,power));
             _pair.Players[player].Rig.ReceivePunchImpact(side);
-            _feedback.Confirm(false,_pair.ReadKeyboard&&!_pair.ManualStep,_pair.View,_pair.Players[player].Rig,targetRig,hit.Point,hit.Direction,RisingHitScale,false);
+            var strength=_pair.Players[player].Rig.StrikeStyle==ActiveUpperBodyReview.ReviewStrikeStyle.BodyStrike?Mathf.Lerp(.65f,1.3f,power):1;
+            _feedback.Confirm(false,_pair.ReadKeyboard&&!_pair.ManualStep,_pair.View,_pair.Players[player].Rig,targetRig,hit.Point,hit.Direction,lying?strength:RisingHitScale,false,lying);
             _hits.Add(new Hit{tick=_pair.Tick,action=action,attacker=player,target=target,side=side,points=0,total=_scores[target].Points,region=region.ToString(),part=hit.Body.name,position=hit.Point,normal=hit.Normal,strikeDirection=hit.Direction,sourceAge=(float)_states[player].SourcePunchAge(side),tipDistance=hit.Distance,endTipDistance=hit.EndDistance,closingSpeed=hit.Closing,impulse=impulse,bodyImpulse=shove.magnitude*targetRig.TotalMass,sweptClosingSpeed=hit.SweptClosing,incomingClosingSpeed=hit.IncomingClosing,counted=false});
             if(_pair.ReadKeyboard)Debug.Log($"Physical punch: P{player+1} {(side==0?"L":"R")} → P{target+1} {region} while down — not counted",_pair);
         }
