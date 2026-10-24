@@ -1,0 +1,19 @@
+{
+  "name": "ProjectHotfix.PhysicsJump.Prototype",
+  "rootNamespace": "ProjectHotfix.PhysicsJump",
+  "references": [
+    "ProjectHotfix.Contracts",
+    "ProjectHotfix.Simulation",
+    "ProjectHotfix.Presentation",
+    "Unity.InputSystem"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

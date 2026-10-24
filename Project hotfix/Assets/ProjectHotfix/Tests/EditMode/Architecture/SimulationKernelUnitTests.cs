@@ -40,5 +40,79 @@ namespace ProjectHotfix.SimulationHarness.Tests.Unit
             Assert.Throws<ArgumentOutOfRangeException>(() => harness.RunAuthorityCycles(-1));
             Assert.That(harness.StateFingerprint, Is.Zero);
         }
+
+        [Test]
+        public void DropkickRecovery_ReusesGetUpPresentationWithoutCreatingDownEpisode()
+        {
+            var recovery = new CharacterRecoveryStateMachine();
+
+            recovery.BeginDropkickRecovery();
+
+            Assert.That(recovery.Kind, Is.EqualTo(CharacterRecoveryKind.DropkickRecovery));
+            Assert.That(recovery.PresentationPhase,
+                Is.EqualTo(RecoveryPresentationPhase.PhysicsTumble));
+            Assert.That(recovery.IsDownEpisode, Is.False);
+            Assert.That(recovery.DownCount, Is.Zero);
+            Assert.That(recovery.BlocksNewAttacks, Is.True);
+
+            recovery.BeginSharedGetUp(RecoveryOrientation.FaceUp);
+
+            Assert.That(recovery.PresentationPhase,
+                Is.EqualTo(RecoveryPresentationPhase.SharedGetUp));
+            Assert.That(recovery.GetUpOrientation, Is.EqualTo(RecoveryOrientation.FaceUp));
+            Assert.That(recovery.DownCount, Is.Zero);
+
+            recovery.CompleteRecovery();
+
+            Assert.That(recovery.Kind, Is.EqualTo(CharacterRecoveryKind.None));
+            Assert.That(recovery.BlocksNewAttacks, Is.False);
+        }
+
+        [Test]
+        public void DownEpisode_UsesSharedGetUpAndIncrementsDownCountOncePerEpisode()
+        {
+            var recovery = new CharacterRecoveryStateMachine();
+
+            Assert.That(recovery.TryBeginDownEpisode(), Is.True);
+            Assert.That(recovery.TryBeginDownEpisode(), Is.False);
+            Assert.That(recovery.Kind, Is.EqualTo(CharacterRecoveryKind.DownEpisode));
+            Assert.That(recovery.IsDownEpisode, Is.True);
+            Assert.That(recovery.DownCount, Is.EqualTo(1U));
+
+            recovery.BeginSharedGetUp(RecoveryOrientation.FaceDown);
+
+            Assert.That(recovery.PresentationPhase,
+                Is.EqualTo(RecoveryPresentationPhase.SharedGetUp));
+            Assert.That(recovery.GetUpOrientation, Is.EqualTo(RecoveryOrientation.FaceDown));
+            Assert.That(recovery.DownCount, Is.EqualTo(1U));
+        }
+
+        [Test]
+        public void ActualDownDuringDropkickRecovery_ReplacesTheRecoveryAndCountsAsDown()
+        {
+            var recovery = new CharacterRecoveryStateMachine();
+            recovery.BeginDropkickRecovery();
+
+            Assert.That(recovery.TryBeginDownEpisode(), Is.True);
+            Assert.That(recovery.Kind, Is.EqualTo(CharacterRecoveryKind.DownEpisode));
+            Assert.That(recovery.IsDownEpisode, Is.True);
+            Assert.That(recovery.DownCount, Is.EqualTo(1U));
+        }
+
+        [Test]
+        public void RoundReset_ClearsRecoveryAndDownCount()
+        {
+            var recovery = new CharacterRecoveryStateMachine();
+            recovery.TryBeginDownEpisode();
+            recovery.BeginSharedGetUp(RecoveryOrientation.FaceUp);
+
+            recovery.ResetRound();
+
+            Assert.That(recovery.Kind, Is.EqualTo(CharacterRecoveryKind.None));
+            Assert.That(recovery.PresentationPhase, Is.EqualTo(RecoveryPresentationPhase.None));
+            Assert.That(recovery.GetUpOrientation, Is.Null);
+            Assert.That(recovery.DownCount, Is.Zero);
+            Assert.That(recovery.BlocksNewAttacks, Is.False);
+        }
     }
 }

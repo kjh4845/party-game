@@ -59,3 +59,5 @@
 *.hdr filter=lfs diff=lfs merge=lfs -text
 *.tif filter=lfs diff=lfs merge=lfs -text
 *.tiff filter=lfs diff=lfs merge=lfs -text
+# Current game character transport (r46 slim body, read by the Unity prototypes).
+BlenderSource/Characters/C1B-RW-046-slim-body/*.bytes filter=lfs diff=lfs merge=lfs -text
