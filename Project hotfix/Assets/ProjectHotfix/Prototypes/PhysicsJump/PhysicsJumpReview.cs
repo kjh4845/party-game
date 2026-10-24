@@ -31,8 +31,16 @@ namespace ProjectHotfix.PhysicsJump
         public static string LatWeightTransportPath => Path.GetFullPath(Path.Combine(
             Application.dataPath, "../../.codex_tmp/lat-weight-20260909/Selected/LatCharacter.bytes"));
 
-        public static string PunchTransportPath => Path.GetFullPath(Path.Combine(
-            Application.dataPath, "../../.codex_tmp/punch-unity-20260906/ApprovedPunch.json"));
+        // Every rig needs the approved punch library; it is kept in the repository (BlenderSource/Punch), the old local
+        // export under .codex_tmp only as a fallback.
+        public static string PunchTransportPath
+        {
+            get
+            {
+                var kept = Path.GetFullPath(Path.Combine(Application.dataPath, "../../BlenderSource/Punch/ApprovedPunch.json"));
+                return File.Exists(kept) ? kept : Path.GetFullPath(Path.Combine(Application.dataPath, "../../.codex_tmp/punch-unity-20260906/ApprovedPunch.json"));
+            }
+        }
 
         public bool TryPreviewPunch(int side)
         {

@@ -16,7 +16,7 @@ namespace ProjectHotfix.Physics.Tests
         private const float Dt=1f/60;
         private Scene _scene;private ActiveGrabPairReview _pair;
         private string Output=>Environment.GetEnvironmentVariable("PARTY_POLISH_OUTPUT") ?? Path.GetFullPath(Path.Combine(Application.dataPath,"../../.codex_tmp/punch-drive-compact-20260917"));
-        private string Model=>Environment.GetEnvironmentVariable("PARTY_POLISH_MODEL") ?? Path.GetFullPath(Path.Combine(Application.dataPath,"../../BlenderSource/Characters/C1B-RW-022-shoulder-contour/ShoulderCharacter.bytes"));
+        private string Model=>Environment.GetEnvironmentVariable("PARTY_POLISH_MODEL") ?? Path.GetFullPath(Path.Combine(Application.dataPath,"../../BlenderSource/Characters/C1B-RW-046-slim-body/R43Character.bytes"));
         private void Create(float distance=.5f,float targetDrop=0,bool wall=false)
         {
             Directory.CreateDirectory(Output);_scene=SceneManager.CreateScene("Physical punch",new CreateSceneParameters(LocalPhysicsMode.Physics3D));
