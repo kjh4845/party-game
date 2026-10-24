@@ -68,6 +68,10 @@ namespace ProjectHotfix.PhysicsJump
             public readonly Hand[] Hands={new Hand(),new Hand()};
             public Vector2 Move;
             public bool Sprint;
+            // Set while down; until the player acts again it keeps the heading it stood up with (see MovePlayer).
+            public bool HoldHeading,HeadingHeld;public Vector3 HeldHeading;
+            // Seconds since a hand last reached, held or carried (ActiveGrabPairReview.Downed).
+            public float HandsIdleSeconds;
             public int Acquisitions,Releases,Breaks;
             public int PalmTouches,RejectedArmTouches;
             public float ClosestRejectedTouch=float.PositiveInfinity;
@@ -279,7 +283,9 @@ namespace ProjectHotfix.PhysicsJump
             for(var p=0;p<2;p++)
             {
                 var player=Players[p];if(!Active(player))continue;
-                if(player.Rig.RagdollActive){StepClimbRagdoll(p,seconds);StepDropkick(p,seconds);StepHeldWake(p,seconds);player.Rig.StepKnockdown(seconds);continue;}
+                if(player.Rig.RagdollActive){IgnoreDownedWithRoot(p,false,true);player.HoldHeading=true;player.HeadingHeld=false;StepClimbRagdoll(p,seconds);StepDropkick(p,seconds);StepHeldWake(p,seconds);player.Rig.StepKnockdown(seconds);continue;}
+                player.HandsIdleSeconds=player.Hands.Any(h=>h.Phase!=HandPhase.Idle)?0:player.HandsIdleSeconds+seconds;
+                SeparateFromDowned(p);
                 var body=player.Rig.Actor.Motor.Body;
                 for(var side=0;side<2;side++)
                 {
@@ -297,6 +303,7 @@ namespace ProjectHotfix.PhysicsJump
                 }
                 var lowHeight=player.Hands.Where(h=>h.Phase==HandPhase.Seeking||h.Phase==HandPhase.Holding).Select(h=>h.MotionTargetLocal.y).DefaultIfEmpty(1).Min();
                 player.Rig.LowReachRequest=(ExternalTarget!=null||Active(Players[1-p])&&Players[1-p].Rig.KnockedDown)&&Motion==GrabMotion.AdaptiveReach?Mathf.Clamp01((.42f-lowHeight)/.22f):0;
+                if(AimLowStrike(p))player.Rig.LowReachRequest=1;
                 player.Rig.ReferenceReachFraction=Motion==GrabMotion.Original?1f:.96f;
                 MovePlayer(p,seconds);player.Rig.Step(seconds);
             }
@@ -382,7 +389,7 @@ namespace ProjectHotfix.PhysicsJump
             var owner=Players[player];var hand=owner.Hands[side];var touch=_touches[player,side];
             if(Suppressed||!Active(owner)||hand.Phase!=HandPhase.Seeking||touch.Tick!=Tick-1||touch.Body==null&&!touch.World||(touch.Rig==null&&touch.LowTarget==null&&!touch.World)||(touch.LowTarget!=null&&!touch.LowTarget.Available)||touch.Collider==null||!touch.Collider.enabled||touch.Collider.isTrigger||!touch.Collider.gameObject.activeInHierarchy)return;
             if(touch.World){AcquireWorld(player,side,touch);return;}
-            if(touch.Rig!=null&&touch.Rig.RagdollActive&&touch.Rig.WokeInHands)return;
+            if(touch.Rig!=null&&touch.Rig.RagdollActive&&(touch.Rig.WokeInHands||touch.Rig.GettingUp))return;
             var point=touch.Surface!=null?touch.Surface.Position:touch.Body.position+touch.Body.rotation*touch.LocalPoint;
             if(Vector3.Distance(owner.Rig.HandPosition(side),point)>PalmContactRadius+.005f)return;
             var body=owner.Rig.Find("Forearm_"+(side==0?"L":"R")).Body;
@@ -430,24 +437,35 @@ namespace ProjectHotfix.PhysicsJump
             var velocity=momentum/mass;var horizontal=new Vector3(velocity.x,0,velocity.z);
             var input=Suppressed?Vector2.zero:Vector2.ClampMagnitude(player.Move,1);var speed=player.Sprint?SprintSpeed:WalkSpeed;
             var desired=new Vector3(input.x,0,input.y)*speed;
-            var force=input.sqrMagnitude>.0001f?Vector3.ClampMagnitude((desired-horizontal)*rig.TotalMass/seconds,rig.TotalMass*Acceleration)
+            if(PushDowned(index,desired))desired*=DownedPushDrag;
+            var shoved=rig.Shoved;
+            var force=input.sqrMagnitude>.0001f?(shoved?ActiveUpperBodyReview.ShovedDrive:1)*Vector3.ClampMagnitude((desired-horizontal)*rig.TotalMass/seconds,rig.TotalMass*Acceleration)
                 // After a punch shove the feet dig in harder, so the knockback reads
                 // as one decisive step back instead of a long slide.
                 // While striking, the feet stop any slide within a step (both ways, so no net travel is
                 // added): the arm's ~10 m/s extension otherwise slid the attacker ~1.3 cm back.
-                :rig.IsStriking&&!rig.ImpactReactionActive?Vector3.ClampMagnitude(-horizontal*rig.TotalMass/seconds,600)
+                :rig.IsStriking&&!rig.ImpactReactionActive&&!shoved?Vector3.ClampMagnitude(-horizontal*rig.TotalMass/seconds,600)
                 :Vector3.ClampMagnitude(-horizontal*rig.TotalMass*(rig.ImpactReactionActive?7:3),rig.ImpactReactionActive?160:80);
+            force=EasePressIntoDowned(index,force);
             rig.Supported=Grounded(rig)&&body.linearVelocity.y<.5f;rig.Sprinting=player.Sprint;
             var opponent=Players[1-index];var range=Active(opponent)&&!opponent.Rig.RagdollActive?Vector3.ProjectOnPlane(opponent.Rig.Actor.Motor.Body.position-body.position,Vector3.up).magnitude:float.PositiveInfinity;
             rig.WalkArmSwingScale=Mathf.InverseLerp(.8f,1.3f,range);
             StepJumpAndClimb(index,seconds);
             body.AddForce(force*(rig.Supported?1:.3f)*rig.ImpactMovementControl,ForceMode.Force);
-            if(!Suppressed&&rig.Supported)body.AddForce(rig.BodyStrikeAcceleration*rig.TotalMass,ForceMode.Force);
+            if(!Suppressed&&rig.Supported)body.AddForce(rig.BodyStrikeAcceleration*rig.TotalMass*(shoved?ActiveUpperBodyReview.ShovedDrive:1),ForceMode.Force);
             // The local two-player lab faces the opponent, allowing backpedal/strafe while holding;
             // a character holding a wall faces the wall.
             var walls=WorldGripPoints(player);
             if(walls.Length==0&&ExternalTarget==null&&!Active(Players[1-index]))return;
-            var direction=(walls.Length>0?walls.Aggregate(Vector3.zero,(sum,p)=>sum+p)/walls.Length:ExternalTarget!=null?ExternalTarget.Center:Players[1-index].Rig.Actor.Motor.Body.position)-body.position;direction.y=0;
+            // After getting up it keeps the heading it stood up with until the player moves, sprints or uses a hand: a
+            // face-up get-up stands facing its feet, often away from the opponent, and the facing torque then spun it
+            // round on the spot (2026-10-21 review: "돌아보는거 없애").
+            if(input.sqrMagnitude>.0001f||player.Sprint||rig.IsStriking||player.Hands.Any(h=>h.Button||h.Phase!=HandPhase.Idle))player.HoldHeading=false;
+            // Held, it is still turned back to that heading: switching the facing torque off let a hit right after
+            // standing spin it freely (2026-10-21 review).
+            if(!player.HoldHeading)player.HeadingHeld=false;
+            else if(!player.HeadingHeld){player.HeldHeading=Vector3.ProjectOnPlane(body.rotation*Vector3.forward,Vector3.up);player.HeadingHeld=true;}
+            var direction=player.HoldHeading&&walls.Length==0?player.HeldHeading:(walls.Length>0?walls.Aggregate(Vector3.zero,(sum,p)=>sum+p)/walls.Length:ExternalTarget!=null?ExternalTarget.Center:Players[1-index].Rig.Actor.Motor.Body.position)-body.position;direction.y=0;
             // Carrying a downed body overhead: its root is right above, so face the walk input instead
             // (or hold the current heading) and throw where the carrier is facing.
             if(walls.Length==0&&player.Hands.Any(h=>h.Phase==HandPhase.Holding&&h.TargetRig!=null&&h.TargetRig.KnockedDown))
@@ -529,10 +547,11 @@ namespace ProjectHotfix.PhysicsJump
         public void ResetReview()
         {
             ReleaseEveryone("Reset");Array.Clear(_touches,0,_touches.Length);
+            for(var p=0;p<Players.Length;p++)IgnoreDownedWithRoot(p,false,true);
             PhysicalPunches?.Reset();
             SkinContacts?.Dispose();SkinContacts=null;
             StandingContacts?.Dispose();StandingContacts=null;
-            foreach(var player in Players){EndClimbHolds(player);player.ClimbAge=-1;player.Rig.ResetReview();player.Mutual=false;}
+            foreach(var player in Players){EndClimbHolds(player);player.ClimbAge=-1;player.Rig.ResetReview();player.Mutual=false;player.HoldHeading=player.HeadingHeld=false;}
             if(ExternalTarget!=null)ExternalTarget.ResetFixture();
             MaximumGripGap=MaximumGripForce=0;Physics.SyncTransforms();
         }

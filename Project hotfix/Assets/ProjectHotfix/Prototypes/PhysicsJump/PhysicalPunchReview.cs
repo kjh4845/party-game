@@ -23,6 +23,8 @@ namespace ProjectHotfix.PhysicsJump
             public ulong tick,action;public int attacker,target,side,points,total;
             public string region,part;public Vector3 position,normal,strikeDirection;
             public float sourceAge,tipDistance,endTipDistance,closingSpeed,impulse,bodyImpulse,sweptClosingSpeed,incomingClosingSpeed;
+            // False for a hit on a body getting up: it lands but adds nothing (RisingHitScale).
+            public bool counted=true;
         }
         private readonly ActiveGrabPairReview _pair;
         private readonly PhysicalPunchFeedbackReview _feedback;
@@ -57,6 +59,10 @@ namespace ProjectHotfix.PhysicsJump
         private readonly double[] _lastHitTime={double.NegativeInfinity,double.NegativeInfinity};
         private readonly int[] _comboHits=new int[2];
         public float PartSpeedMin=2.2f,PartSpeedMax=3.4f,MaximumPartImpulse=25;
+        // 2026-10-21: a body getting up can be hit but nothing counts (no accumulation, no knockdown, no combo);
+        // it is only pushed at this share of a normal hit, with a soft cue. 2026-10-24: the same for a body lying knocked
+        // out (the attacker bends down to it, ActiveGrabPairReview.AimLowStrike).
+        public float RisingHitScale=.5f;
         public const float MinimumFacingDot=.25f;
         public int RejectedGlancing {get;private set;}
         public int RejectedOutsideTip {get;private set;}
@@ -162,7 +168,7 @@ namespace ProjectHotfix.PhysicsJump
             var ownRig=_pair.Players[player].Rig;
             if(other==ownRig.Actor.Motor.Body||ownRig.Links.Any(l=>l.Body==other))return;
             if(other==null||other.isKinematic){CollectBlock(player,own,collision);return;}
-            if(!ActorAvailable(1-player))return;
+            if(!ActorAvailable(1-player)){if(UncountedTarget(1-player))RisingContact(player,own,other,collision);return;}
             var targetRig=_pair.Players[1-player].Rig;
             if(other!=targetRig.Actor.Motor.Body&&!targetRig.Links.Any(l=>l.Body==other))return;
             var target=1-player;
@@ -223,6 +229,31 @@ namespace ProjectHotfix.PhysicsJump
                 }
             }
         }
+        // Down, lying or getting up: hits land but count for nothing (RisingHit).
+        private bool UncountedTarget(int p)=>_pair.Players[p].Rig!=null&&_pair.Players[p].Rig.isActiveAndEnabled&&_pair.Players[p].Rig.KnockedDown;
+        // A fist meeting a body that is down (its knockdown ragdoll, not the standing links): the striking end
+        // closing on it is an uncounted hit candidate (RisingHit). Simpler than the standing gate: no swept pose history.
+        private void RisingContact(int player,Rigidbody own,Rigidbody other,Collision collision)
+        {
+            var ownRig=_pair.Players[player].Rig;var targetRig=_pair.Players[1-player].Rig;
+            if(!_pair.KnockdownBodies(targetRig).Contains(other))return;
+            for(var side=0;side<2;side++)
+            {
+                if(!CanHit(player,side)||!Available(player,side)||_pair.Players[player].Hands[side].Connection!=null||own!=ownRig.Find("Forearm_"+(side==0?"L":"R")).Body)continue;
+                PhysicalContactsInWindow++;
+                for(var c=0;c<collision.contactCount;c++)
+                {
+                    var contact=collision.GetContact(c);var tip=ownRig.HandPosition(side);var distance=Vector3.Distance(tip,contact.point);
+                    var reach=ownRig.StrikeStyle!=ActiveUpperBodyReview.ReviewStrikeStyle.Straight?.08f*ownRig.ArmReachScale:TipRadius;
+                    if(distance>reach+ContactTolerance){RejectedOutsideTip++;continue;}
+                    var incoming=_tipVelocity[player,side]-other.GetPointVelocity(contact.point);var closing=Vector3.Dot(incoming,-contact.normal);
+                    if(closing<MinimumClosingSpeed){RejectedMotion++;continue;}
+                    var previous=_candidates[player,side];
+                    if(previous==null||distance<previous.Distance)
+                        _candidates[player,side]=new Candidate{Player=player,Side=side,Part=-1,Body=other,Point=contact.point,Normal=contact.normal,Direction=incoming.sqrMagnitude>.0001f?incoming.normalized:_forward[player],Distance=distance,EndDistance=distance,Closing=closing,SweptClosing=closing,IncomingClosing=closing};
+                }
+            }
+        }
         private void CollectBlock(int player,Rigidbody own,Collision collision)
         {
             var rig=_pair.Players[player].Rig;
@@ -246,9 +277,11 @@ namespace ProjectHotfix.PhysicsJump
                 {_pair.Players[player].Rig.ReceivePunchImpact(side,true);BlockedContacts++;}
                 _blocked[player,side]=false;
                 var hit=_candidates[player,side];_candidates[player,side]=null;var target=1-player;
-                if(hit==null||_pair.Suppressed||!Available(player,side)||!ActorAvailable(target)||hit.Body==null||hit.Body.isKinematic||_threshold[target]||!CanHit(player,side))continue;
+                if(hit==null||_pair.Suppressed||!Available(player,side)||!ActorAvailable(target)&&!UncountedTarget(target)||hit.Body==null||hit.Body.isKinematic||_threshold[target]||!CanHit(player,side))continue;
                 if(!_states[player].TryConfirmHit(side,target+1))continue;
-                var region=hit.Body==_pair.Players[target].Rig.Find("Head").Body?PunchHitRegion.Head:PunchHitRegion.Body;var action=_states[player].ActionId(side);
+                var action=_states[player].ActionId(side);
+                if(UncountedTarget(target)){RisingHit(player,side,hit,hit.Body.name.StartsWith("Head")?PunchHitRegion.Head:PunchHitRegion.Body,action);continue;}
+                var region=hit.Body==_pair.Players[target].Rig.Find("Head").Body?PunchHitRegion.Head:PunchHitRegion.Body;
                 var targetKnockdown=_pair.Players[target].Rig.Knockdown;
                 var downCount=targetKnockdown!=null?targetKnockdown.Down.State.DownCount:0u;
                 var result=_scores[target].Receive(_generation,player+1,action,false,region,downCount);if(result==PunchDownResult.Rejected)continue;
@@ -294,6 +327,19 @@ namespace ProjectHotfix.PhysicsJump
                 if(_pair.ReadKeyboard)Debug.Log($"Physical punch: P{player+1} {(side==0?"L":"R")} → P{target+1} {region}, {pointsAtHit}"+(knockdown?" — KNOCKDOWN":_threshold[target]?" — Down request recorded; transition is the next review stage.":""),_pair);
             }
         }
+        private void RisingHit(int player,int side,Candidate hit,PunchHitRegion region,ulong action)
+        {
+            var target=1-player;var targetRig=_pair.Players[target].Rig;var power=Mathf.InverseLerp(.35f,3.5f,hit.Closing);
+            var impulse=Mathf.Min(MaximumPartImpulse,hit.Body.mass*Mathf.Lerp(PartSpeedMin,PartSpeedMax,power))*RisingHitScale;
+            hit.Body.AddForceAtPosition(hit.Direction*impulse,hit.Point,ForceMode.Impulse);
+            var flat=Vector3.ProjectOnPlane(hit.Direction,Vector3.up);
+            var shove=flat.sqrMagnitude>.01f?flat.normalized*Mathf.Lerp(KnockbackMin,KnockbackMax,power)*RisingHitScale:Vector3.zero;
+            foreach(var body in _pair.KnockdownBodies(targetRig))body.AddForce(shove,ForceMode.VelocityChange);
+            _pair.Players[player].Rig.ReceivePunchImpact(side);
+            _feedback.Confirm(false,_pair.ReadKeyboard&&!_pair.ManualStep,_pair.View,_pair.Players[player].Rig,targetRig,hit.Point,hit.Direction,RisingHitScale,false);
+            _hits.Add(new Hit{tick=_pair.Tick,action=action,attacker=player,target=target,side=side,points=0,total=_scores[target].Points,region=region.ToString(),part=hit.Body.name,position=hit.Point,normal=hit.Normal,strikeDirection=hit.Direction,sourceAge=(float)_states[player].SourcePunchAge(side),tipDistance=hit.Distance,endTipDistance=hit.EndDistance,closingSpeed=hit.Closing,impulse=impulse,bodyImpulse=shove.magnitude*targetRig.TotalMass,sweptClosingSpeed=hit.SweptClosing,incomingClosingSpeed=hit.IncomingClosing,counted=false});
+            if(_pair.ReadKeyboard)Debug.Log($"Physical punch: P{player+1} {(side==0?"L":"R")} → P{target+1} {region} while down — not counted",_pair);
+        }
         // A running dropkick's feet met the opponent (ActiveGrabPairReview.Dropkick). Stronger than any punch:
         // a standing target is knocked down along the kick, a body already down is shoved further.
         public float DropkickKnockback=2.6f,DropkickLift=.6f;
@@ -301,15 +347,16 @@ namespace ProjectHotfix.PhysicsJump
         {
             var target=1-player;var targetRig=_pair.Players[target].Rig;
             if(_pair.Suppressed||targetRig==null||!targetRig.isActiveAndEnabled)return;
+            var rising=targetRig.GettingUp;
             var flat=Vector3.ProjectOnPlane(direction,Vector3.up).normalized;
             var strength=Mathf.Lerp(.85f,1.2f,Mathf.InverseLerp(1,4,closing));
             var shove=flat*DropkickKnockback*strength+Vector3.up*DropkickLift;
             var head=!targetRig.RagdollActive&&part==targetRig.Find("Head").Body;
-            if(targetRig.RagdollActive)foreach(var body in _pair.KnockdownBodies(targetRig))body.AddForce(shove*.6f,ForceMode.VelocityChange);
+            if(targetRig.RagdollActive)foreach(var body in _pair.KnockdownBodies(targetRig))body.AddForce(shove*(rising?.6f*RisingHitScale:.6f),ForceMode.VelocityChange);
             else if(targetRig.DownProtected)targetRig.ApplyKnockback(shove);
             else{if(targetRig.BeginKnockdown(shove))_scores[target].ConsumeDown();}
-            _feedback.Confirm(head,_pair.ReadKeyboard&&!_pair.ManualStep,_pair.View,_pair.Players[player].Rig,targetRig,point,flat,strength*1.3f);
-            _hits.Add(new Hit{tick=_pair.Tick,attacker=player,target=target,side=-1,points=0,total=_scores[target].Points,region="Dropkick",part=part.name,position=point,strikeDirection=flat,closingSpeed=closing,bodyImpulse=shove.magnitude*targetRig.TotalMass});
+            _feedback.Confirm(head,_pair.ReadKeyboard&&!_pair.ManualStep,_pair.View,_pair.Players[player].Rig,targetRig,point,flat,rising?RisingHitScale:strength*1.3f,!rising);
+            _hits.Add(new Hit{tick=_pair.Tick,attacker=player,target=target,side=-1,points=0,total=_scores[target].Points,region="Dropkick",part=part.name,position=point,strikeDirection=flat,closingSpeed=closing,bodyImpulse=shove.magnitude*targetRig.TotalMass*(rising?.6f*RisingHitScale:1),counted=!rising});
             if(_pair.ReadKeyboard)Debug.Log($"Dropkick: P{player+1} → P{target+1} {part.name}",_pair);
         }
         public void Suppress()

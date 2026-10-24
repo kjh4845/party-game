@@ -24,8 +24,11 @@ namespace ProjectHotfix.PhysicsJump
         public float KnockdownVariation = 1f;
         // After a knockdown's get-up no new Down starts for GetUpProtectionSeconds (hits only push); the rig's own
         // punch, grab or dropkick ends it early (2026-10-20: stops chained knockdowns such as a dropkick landing the
-        // moment the body stands).
-        public float GetUpProtectionSeconds = .6f;
+        // moment the body stands; 2026-10-21: .6 -> .3 s, the rise itself is now protected).
+        public float GetUpProtectionSeconds = .3f;
+        // Any get-up in motion (rolling over, waiting for room, rising) cannot be hit, kicked or grabbed (2026-10-21):
+        // lying still it can, the get-up once started always finishes.
+        public bool GettingUp => RagdollActive && Knockdown.Rising;
         private float _downProtection;
         public bool DownProtected => _downProtection > 0 && !RagdollActive;
         public void EndDownProtection() => _downProtection = 0;
@@ -56,6 +59,11 @@ namespace ProjectHotfix.PhysicsJump
                 ragdoll.ChestRadius = profile.HasTorsoColliderRadii ? profile.RagdollChestRadius : .12f; ragdoll.PelvisRadius = .10f;
                 ragdoll.UpperArmRadius = profile.UpperArmRadius; ragdoll.ForearmRadius = profile.ForearmRadius;
             }
+            // Fitted to the r46 skin (2026-10-22: a landing fist and a stepping foot sank up to 4-6 cm into the downed
+            // body's sides, and the 2.5 cm calves sat inside 4-5.5 cm skin): side capsules fill the torso's width without
+            // adding depth (the .15 round torso propped itself up, above), the pelvis lies across the hips.
+            ragdoll.ChestSideRadius = .085f; ragdoll.ChestSideOffset = .058f; ragdoll.SpineRadius = .105f; ragdoll.SpineSideRadius = .095f; ragdoll.SpineSideOffset = .065f;
+            ragdoll.PelvisAcrossRadius = .075f; ragdoll.PelvisAcrossHalfWidth = .17f; ragdoll.ThighRadius = .055f; ragdoll.CalfRadius = .045f; ragdoll.HeadLength = .29f;
             ragdoll.DownBaseSeconds = 2.5; ragdoll.DownIncrementSeconds = .5; ragdoll.DownMaximumSeconds = 4;
             ragdoll.GetUpSpeed = 2;
             // Fully limp (every joint drive off) and grippy enough to roll and catch on the floor rather

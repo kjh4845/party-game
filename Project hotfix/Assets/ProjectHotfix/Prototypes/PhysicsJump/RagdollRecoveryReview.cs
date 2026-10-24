@@ -82,6 +82,10 @@ namespace ProjectHotfix.PhysicsJump
         // Body proxy radii and Down timing, set before Bind. Defaults are the approved r20 arena values.
         public float SpineRadius = .10f, ChestRadius = .105f, HeadRadius = .12f, UpperArmRadius = .045f, ForearmRadius = .043f,
             ThighRadius = .045f, CalfRadius = .025f, PelvisRadius = .12f;
+        // Skin-fitted head length (along the head bone, crown side) and torso (set before Bind; 0 = off, the r20 round proxies). The torso is wide and shallow: the round
+        // spine/chest proxies match its depth, a capsule each side (radius, sideways offset) fills out its width, and
+        // the pelvis becomes one capsule across the hips (radius, half width) so it no longer pokes out front and back.
+        public float HeadLength = .24f, SpineSideRadius, SpineSideOffset, ChestSideRadius, ChestSideOffset, PelvisAcrossRadius, PelvisAcrossHalfWidth;
         public double DownBaseSeconds = 1.5, DownIncrementSeconds = .5, DownMaximumSeconds = 3;
         // Plays the GetUp (and the upright return) this many times faster than authored.
         public float GetUpSpeed = 1;
@@ -95,6 +99,25 @@ namespace ProjectHotfix.PhysicsJump
             ? _links.Single(l => l.Bone.name == "Chest").Body.rotation * _chestToActor : Actor.Motor.Body.rotation;
         private Vector3 _pelvisLocal, _getUpEntryPelvis;
         public GetUpAnimationPose GetUpPose { get; private set; }
+        // The presentation bone a ragdoll body stands for (its frame matches the body's while the body lies; during the
+        // get-up clip the bone shows where the visible limb is). Null for the root.
+        // The root has no bone of its own: it rides the pelvis bone, held where it was against it when the clip began.
+        // The ragdoll body a skin bone rides on: its own link, else the nearest linked ancestor, else the root.
+        public Rigidbody BodyForBone(Transform bone)
+        {
+            for (var b = bone; b != null && b != Actor.Pose.transform; b = b.parent)
+                foreach (var link in _links) if (link.Bone == b) return link.Body;
+            return Actor.Motor.Body;
+        }
+        public bool TryPresentationFrame(Rigidbody body, out Matrix4x4 bodyToPose)
+        {
+            bodyToPose = Matrix4x4.identity;
+            if (body == Actor.Motor.Body) { if (!_bones.TryGetValue("Pelvis", out var pelvis)) return false; bodyToPose = pelvis.localToWorldMatrix * _rootInPelvis * body.transform.worldToLocalMatrix; return true; }
+            foreach (var link in _links) if (link.Body == body) { bodyToPose = link.Bone.localToWorldMatrix * link.Body.transform.worldToLocalMatrix; return true; }
+            return false;
+        }
+        private Matrix4x4 _rootInPelvis = Matrix4x4.identity;
+        public bool GetUpPosePlaying => GetUpPose != null && GetUpPose.Playing;
         public float GetUpAge { get; private set; }
         private bool _animationStarted;
         private Quaternion _getUpEntryRotation;
@@ -161,6 +184,7 @@ namespace ProjectHotfix.PhysicsJump
         }
         private readonly List<Link> _links = new List<Link>();
         private readonly List<Collider> _colliders = new List<Collider>();
+        public IReadOnlyList<Collider> Colliders => _colliders;
         private readonly Dictionary<string, Transform> _bones = new Dictionary<string, Transform>();
         private readonly Dictionary<string, Vector3> _restPositions = new Dictionary<string, Vector3>();
         private readonly Dictionary<string, Quaternion> _restRotations = new Dictionary<string, Quaternion>();
@@ -171,37 +195,160 @@ namespace ProjectHotfix.PhysicsJump
         private RecoverySupportProbe _probe;
         private Vector3 _floorPoint, _standingRoot;
         private Quaternion _standingRotation;
-        private float _uprightSeconds, _tumbleReadySeconds, _alignSeconds, _blockedSeconds;
+        private float _uprightSeconds, _tumbleReadySeconds, _alignSeconds, _blockedSeconds, _proppedSeconds, _clearTimer;
         // Shove (m/s) given to a standing character in the way; a downed one gets the smaller BodyPush. Only a static
         // blocker (a wall) makes the downed body shift itself instead.
-        public float RoomPushSpeed = 2f, RoomBodyPush = .6f, RoomPushInterval = .4f, RoomRadius = .32f;
+        // A loose prop (crate) gets RoomPropPush, a downed character RoomBodyPush, every RoomPushInterval. A standing
+        // character is nudged every tick it is in the way instead, at RoomNudgeMin plus RoomNudgeGain per metre it is
+        // inside, up to RoomNudgeMax (2026-10-21: the old 1.6 m/s shove threw a player standing over the body ~.9 m).
+        public float RoomBodyPush = .6f, RoomPropPush = 1.2f, RoomPushInterval = .4f, RoomRadius = .32f;
+        public float RoomNudgeMin = .3f, RoomNudgeGain = 4f, RoomNudgeMax = .8f;
         public int RoomPushes { get; private set; }
+        // Ticks a standing character was nudged while this body still lay without moving (should stay 0).
+        public int LyingNudges { get; private set; }
+        // Rolling over, waiting for room or in the get-up itself (any recovery that has started moving).
+        public bool Rising => Active && (Down.State.Phase == RecoveryPresentationPhase.AligningToGetUp || Down.State.Phase == RecoveryPresentationPhase.SharedGetUp || Down.State.Phase == RecoveryPresentationPhase.UprightReturn);
         private readonly Collider[] _roomOverlaps = new Collider[16];
+        // Characters nudged this tick (by either room check), each once; cleared at the start of every recovery step.
         private readonly HashSet<ActiveUpperBodyReview> _roomPushed = new HashSet<ActiveUpperBodyReview>();
-        // Characters within RoomRadius of the standing spot are shoved off; a static blocker only counts (and shifts the
-        // downed body) while the get-up is still waiting for room.
-        private void ClearRoom(Vector3 standingRoot, bool waiting)
+        // Characters within RoomRadius of the standing spot are nudged off; a static blocker only counts (and makes the
+        // downed body scoot clear) while the get-up is still waiting for room. Props move and walls count on `interval` ticks.
+        // A standing character is only nudged once the body is getting up, never while it still lies there (2026-10-22: a
+        // knocked-out body that pushed a puncher off read as the knockout itself shoving).
+        private void ClearRoom(Vector3 standingRoot, bool waiting, bool interval)
         {
-            var own = Actor.GetComponentInParent<ActiveUpperBodyReview>();
             var count = gameObject.scene.GetPhysicsScene().OverlapCapsule(standingRoot + Vector3.up * (RoomRadius + .01f), standingRoot + Vector3.up * .83f, RoomRadius, _roomOverlaps, ~0, QueryTriggerInteraction.Ignore);
-            var wall = Vector3.zero; _roomPushed.Clear();
+            var wall = Vector3.zero; var nudged = false;
+            for (var i = 0; i < count; i++) if (!(waiting && StandingCharacter(_roomOverlaps[i])) && ShoveFromRoom(_roomOverlaps[i], standingRoot, RoomRadius, waiting, standingRoot.y, true, interval, ref wall) && RoomRig(_roomOverlaps[i]) != null) nudged = true;
+            if (interval && !nudged && wall.sqrMagnitude > .0001f) Scoot(wall);
+        }
+        // One collider in the room the get-up needs (`radius` around `from`), moved away from `from` when `act`: a standing
+        // character is nudged (every tick, harder the deeper it stands in), while a downed body (RoomBodyPush) and a loose prop
+        // (RoomPropPush) are pushed and a fixed blocker (when `fixedCounts`) adds its push-out to `wall` only on `interval`
+        // ticks. Returns whether it was in the way at all (own parts and the floor are not).
+        private bool ShoveFromRoom(Collider other, Vector3 from, float radius, bool fixedCounts, float floorY, bool act, bool interval, ref Vector3 wall)
+        {
+            if (other == _locomotion || _colliders.Contains(other)) return false;
+            if (other.attachedRigidbody == null && other.bounds.max.y <= floorY + .05f) return false;
+            var away = from - other.ClosestPoint(from); away.y = 0;
+            if (away.sqrMagnitude < .0001f) away = Vector3.ProjectOnPlane(from - other.bounds.center, Vector3.up);
+            away = -away.normalized;
+            var rig = RoomRig(other);
+            if (rig != null && rig == Actor.GetComponentInParent<ActiveUpperBodyReview>()) return false;
+            if (!act) return true;
+            if (rig != null && !rig.RagdollActive)
+            {
+                if (!_roomPushed.Add(rig)) return true;
+                var inside = radius - Vector3.ProjectOnPlane(from - other.ClosestPoint(from), Vector3.up).magnitude;
+                if (!rig.Shoved) RoomPushes++;
+                if (!_animationStarted && Down.State.Phase != RecoveryPresentationPhase.AligningToGetUp && Down.State.Phase != RecoveryPresentationPhase.UprightReturn) LyingNudges++;
+                rig.NudgeFromRoom(away, Mathf.Clamp(RoomNudgeMin + Mathf.Max(0, inside) * RoomNudgeGain, RoomNudgeMin, RoomNudgeMax));
+            }
+            else if (!interval) return true;
+            else if (other.attachedRigidbody != null && !other.attachedRigidbody.isKinematic) { other.attachedRigidbody.AddForce(away * (rig != null ? RoomBodyPush : RoomPropPush), ForceMode.VelocityChange); RoomPushes++; }
+            else if (other.attachedRigidbody == null && fixedCounts) wall -= away;
+            return true;
+        }
+        private static bool StandingCharacter(Collider other) { var rig = RoomRig(other); return rig != null && !rig.RagdollActive; }
+        private static ActiveUpperBodyReview RoomRig(Collider other)
+        {
+            var hurtbox = other.GetComponentInParent<StrikeReviewHurtbox>();
+            return other.GetComponentInParent<ActiveUpperBodyReview>() ?? (hurtbox != null && hurtbox.ActorRoot != null ? hurtbox.ActorRoot.GetComponentInParent<ActiveUpperBodyReview>() : null);
+        }
+        // Only characters, who keep being shoved, stand in the standing spot (nothing fixed or loose): once the wait for
+        // room runs out the get-up goes ahead anyway (2026-10-21: someone pressing in kept the body down for good).
+        private bool OnlyCharactersInRoom(Vector3 standingRoot)
+        {
+            var count = gameObject.scene.GetPhysicsScene().OverlapCapsule(standingRoot + Vector3.up * (RoomRadius + .01f), standingRoot + Vector3.up * .83f, RoomRadius, _roomOverlaps, ~0, QueryTriggerInteraction.Ignore);
+            var wall = Vector3.zero; var any = false;
             for (var i = 0; i < count; i++)
             {
-                var other = _roomOverlaps[i]; if (other == _locomotion || _colliders.Contains(other)) continue;
-                var away = standingRoot - other.ClosestPoint(standingRoot); away.y = 0;
-                if (away.sqrMagnitude < .0001f) away = Vector3.ProjectOnPlane(standingRoot - other.bounds.center, Vector3.up);
-                away = -away.normalized;
-                var hurtbox = other.GetComponentInParent<StrikeReviewHurtbox>();
-                var rig = other.GetComponentInParent<ActiveUpperBodyReview>() ?? (hurtbox != null && hurtbox.ActorRoot != null ? hurtbox.ActorRoot.GetComponentInParent<ActiveUpperBodyReview>() : null);
-                if (rig != null && rig == own) continue;
-                if (rig != null && !rig.RagdollActive) { if (_roomPushed.Add(rig)) { rig.ApplyKnockback(away * RoomPushSpeed); RoomPushes++; } }
-                else if (other.attachedRigidbody != null && !other.attachedRigidbody.isKinematic) { other.attachedRigidbody.AddForce(away * RoomBodyPush, ForceMode.VelocityChange); RoomPushes++; }
-                else if (other.attachedRigidbody == null && waiting && other.bounds.max.y > standingRoot.y + .05f) wall -= away;
+                if (!ShoveFromRoom(_roomOverlaps[i], standingRoot, RoomRadius, true, standingRoot.y, false, false, ref wall)) continue;
+                if (RoomRig(_roomOverlaps[i]) == null) return false;
+                any = true;
             }
-            if (_roomPushed.Count > 0 || wall.sqrMagnitude < .0001f) return;
-            var shift = wall.normalized * RoomBodyPush + Vector3.up * .4f;
-            foreach (var link in _links) if (!link.Body.isKinematic) link.Body.AddForce(shift, ForceMode.VelocityChange);
-            Actor.Motor.Body.AddForce(shift, ForceMode.VelocityChange);
+            return any;
+        }
+        // A fixed blocker (box, wall) moves the downed body instead: it slides along the floor away from it at
+        // RoomScootSpeed for a moment (2026-10-21; the old .4 m/s hop flung a body caught under a box).
+        public float RoomScootSpeed = .8f, RoomScootSeconds = .3f;
+        public int RoomScoots { get; private set; }
+        private Vector3 _scoot; private float _scootSeconds;
+        private void Scoot(Vector3 direction) { _scoot = Vector3.ProjectOnPlane(direction, Vector3.up).normalized; _scootSeconds = RoomScootSeconds; RoomScoots++; }
+        private void StepScoot(float seconds)
+        {
+            if (_scootSeconds <= 0) return;
+            _scootSeconds -= seconds; var goal = _scoot * RoomScootSpeed;
+            foreach (var target in _links.Select(l => l.Body).Append(Actor.Motor.Body))
+            {
+                if (target.isKinematic) continue;
+                var velocity = target.linearVelocity; target.AddForce(new Vector3(goal.x - velocity.x, 0, goal.z - velocity.z), ForceMode.VelocityChange);
+            }
+        }
+        // Before the planted get-up starts it needs room for more than its standing spot: both hand plants and the
+        // trunk's path from the pelvis up over that spot. While a thing is there (at most RoomHoldSeconds) it waits:
+        // loose props are nudged and fixed blockers make the body scoot clear (2026-10-21 review: rising beside someone,
+        // the arm and chest went through them). A standing character does not hold it: the knockout ends and the body
+        // gets straight up, shoving them off as it rises (ClearRoom, and the walker kept off the rising body by
+        // ActiveGrabPairReview.SeparateFromDowned). 2026-10-22 review: lying still while shoving read as the knockout pushing.
+        public float RoomHoldSeconds = 1.2f;
+        private float _roomHold, _roomPushTimer;
+        private readonly HashSet<Collider> _roomFound = new HashSet<Collider>();
+        private bool HoldForRoom(float seconds, Vector3 pelvis, Vector3[] anchors, bool[] planted)
+        {
+            if (!FeetPlantedGetUp || _roomHold >= RoomHoldSeconds) return false;
+            var scene = gameObject.scene.GetPhysicsScene(); _roomFound.Clear();
+            void Gather(int count) { for (var i = 0; i < count; i++) _roomFound.Add(_roomOverlaps[i]); }
+            Gather(scene.OverlapCapsule(_standingRoot + Vector3.up * .31f, _standingRoot + Vector3.up * .85f, .3f, _roomOverlaps, ~0, QueryTriggerInteraction.Ignore));
+            // Wide enough for the arms beside the trunk as well, elbows out face down (at .2 m an arm rose into a box by
+            // the hip; at .3 a face-down elbow still brushed a wall).
+            Gather(scene.OverlapCapsule(pelvis + Vector3.up * .36f, _standingRoot + Vector3.up * .7f, .34f, _roomOverlaps, ~0, QueryTriggerInteraction.Ignore));
+            for (var side = 0; side < 2; side++) if (planted[side]) Gather(scene.OverlapSphere(anchors[side] + Vector3.up * .12f, .1f, _roomOverlaps, ~0, QueryTriggerInteraction.Ignore));
+            var line = new Vector3(_standingRoot.x, pelvis.y, _standingRoot.z) - pelvis;
+            var push = (_roomPushTimer -= seconds) <= 0; var wall = Vector3.zero; var blocked = false;
+            foreach (var other in _roomFound)
+            {
+                if (StandingCharacter(other)) continue;
+                var point = other.bounds.center; var along = line.sqrMagnitude > .0001f ? Mathf.Clamp01(Vector3.Dot(point - pelvis, line) / line.sqrMagnitude) : 0;
+                var from = pelvis + line * along;
+                if (ShoveFromRoom(other, from, .34f, true, _floorPoint.y, true, push, ref wall)) blocked = true;
+            }
+            if (!blocked) return false;
+            if (push) { _roomPushTimer = RoomPushInterval; if (wall.sqrMagnitude > .0001f) Scoot(wall); }
+            _roomHold += seconds; return true;
+        }
+        // Still no room beside the trunk once the wait for room is over (boxed in on both sides): the arm on a cramped
+        // side does not plant and push but stays tucked against the body (its elbow flared into the box, 2026-10-21).
+        // Only checked when the wait ran out without making room; the probe reaches .4 m out, where a flared elbow goes.
+        private bool ArmCramped(Vector3 pelvis, Vector3 outward)
+        {
+            var chest = _bones["Chest"].position; outward = Vector3.ProjectOnPlane(outward, Vector3.up).normalized * .3f;
+            var count = gameObject.scene.GetPhysicsScene().OverlapCapsule(pelvis + outward + Vector3.up * .1f, new Vector3(chest.x, pelvis.y, chest.z) + outward + Vector3.up * .1f, .1f, _roomOverlaps, ~0, QueryTriggerInteraction.Ignore);
+            var wall = Vector3.zero;
+            for (var i = 0; i < count; i++) if (ShoveFromRoom(_roomOverlaps[i], pelvis, .1f, true, _floorPoint.y, false, false, ref wall)) return true;
+            return false;
+        }
+        // A hand plants only on open floor: the first surface under the planned point must be the floor the body lies
+        // on (not another character, a box top or a crate) with nothing else around the palm; failing that, points
+        // pulled in toward the body and along it are tried, and with none the hand stays free (2026-10-21).
+        private static readonly Vector2[] AnchorTries = { Vector2.zero, new Vector2(.06f, 0), new Vector2(.12f, 0), new Vector2(.06f, .08f), new Vector2(.06f, -.08f) };
+        private readonly RaycastHit[] _anchorHits = new RaycastHit[16];
+        private bool TryFloorAnchor(Vector3 planned, Vector3 inward, Vector3 along, out Vector3 anchor)
+        {
+            var scene = gameObject.scene.GetPhysicsScene();
+            foreach (var offset in AnchorTries)
+            {
+                var point = planned + inward * offset.x + along * offset.y;
+                var count = scene.Raycast(point + Vector3.up * .5f, Vector3.down, _anchorHits, 1f, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
+                var best = float.PositiveInfinity; RaycastHit floor = default;
+                for (var i = 0; i < count; i++) if (_anchorHits[i].distance < best && _anchorHits[i].collider != _locomotion && !_colliders.Contains(_anchorHits[i].collider)) { floor = _anchorHits[i]; best = floor.distance; }
+                if (floor.collider == null || floor.normal.y < .7f || Mathf.Abs(floor.point.y - _floorPoint.y) > .05f) continue;
+                var overlaps = scene.OverlapSphere(floor.point + Vector3.up * .06f, .05f, _roomOverlaps, ~0, QueryTriggerInteraction.Ignore); var open = true;
+                for (var i = 0; i < overlaps && open; i++) open = _roomOverlaps[i] == floor.collider || _roomOverlaps[i] == _locomotion || _colliders.Contains(_roomOverlaps[i]);
+                if (!open) continue;
+                anchor = floor.point + floor.normal * .01f; return true;
+            }
+            anchor = planned; return false;
         }
         private uint _motorReset;
         private ulong _sequence;
@@ -222,16 +369,17 @@ namespace ProjectHotfix.PhysicsJump
             _pelvisLocal = transform.InverseTransformPoint(_bones["Pelvis"].position);
             _locomotion = actor.GetComponent<CapsuleCollider>();
             _torso = actor.gameObject.AddComponent<CapsuleCollider>(); _torso.radius = PelvisRadius; _torso.height = _splitTorso ? .26f : .55f; _torso.center = new Vector3(0, _splitTorso ? .20f : .415f, 0); _torso.enabled = false; _torso.contactOffset = .002f;
+            if (_splitTorso && PelvisAcrossRadius > 0) { _torso.direction = 0; _torso.radius = PelvisAcrossRadius; _torso.height = 2 * Mathf.Max(PelvisAcrossRadius, PelvisAcrossHalfWidth); }
             _colliders.Add(_torso);
             _proxyRoot = new GameObject("RagdollCandidatePhysics"); SceneManager.MoveGameObjectToScene(_proxyRoot, actor.gameObject.scene);
             _proxyRoot.AddComponent<StrikeReviewHurtbox>().ActorRoot = actor.transform;
             if (_splitTorso)
             {
-                AddLink("Spine", "Chest", null, 2.5f, SpineRadius, 0, 10f);
-                AddLink("Chest", "Neck", "Spine", 2.5f, ChestRadius, 0, 12f);
+                AddLink("Spine", "Chest", null, 2.5f, SpineRadius, 0, 10f); AddSides("Spine", SpineSideRadius, SpineSideOffset);
+                AddLink("Chest", "Neck", "Spine", 2.5f, ChestRadius, 0, 12f); AddSides("Chest", ChestSideRadius, ChestSideOffset);
                 _chestToActor = Quaternion.Inverse(_bones["Chest"].rotation) * actor.transform.rotation;
             }
-            AddLink("Head", null, _splitTorso ? "Chest" : null, 3f, HeadRadius, .24f, _splitTorso ? 20f : RelaxedRagdoll ? 10f : 5f);
+            AddLink("Head", null, _splitTorso ? "Chest" : null, 3f, HeadRadius, HeadLength, _splitTorso ? 20f : RelaxedRagdoll ? 10f : 5f);
             foreach (var side in new[] { "L", "R" })
             {
                 AddLink("UpperArm_" + side, "Forearm_" + side, _splitTorso ? "Chest" : null, 1.25f, UpperArmRadius, 0, RelaxedRagdoll ? 30f : 5f);
@@ -328,6 +476,17 @@ namespace ProjectHotfix.PhysicsJump
                 }
             }
             return (p1 + d1 * s - (p2 + d2 * t)).magnitude;
+        }
+        // Two more capsules on the link's body, beside the round proxy (bone x = sideways), spanning the same length.
+        private void AddSides(string name, float radius, float offset)
+        {
+            if (radius <= 0) return;
+            var body = _links.Single(l => l.Bone.name == name).Body; var main = body.GetComponent<CapsuleCollider>();
+            foreach (var sign in new[] { -1f, 1f })
+            {
+                var side = body.gameObject.AddComponent<CapsuleCollider>(); side.direction = 2; side.radius = radius; side.height = Mathf.Max(radius * 2, main.height);
+                side.center = main.center + Vector3.right * sign * offset; side.contactOffset = .002f; side.enabled = false; _colliders.Add(side);
+            }
         }
         private void AddLink(string name, string tipName, string parentName, float mass, float radius, float length, float limit)
         {
@@ -477,7 +636,10 @@ namespace ProjectHotfix.PhysicsJump
                 var gap = Vector3.Distance(link.Body.transform.TransformPoint(link.Joint.anchor), link.Joint.connectedBody.transform.TransformPoint(link.Joint.connectedAnchor)); if (gap > MaximumJointGap) { MaximumJointGap = gap; WorstJoint = link.Bone.name; WorstGapPhase=state.Phase; WorstGapGetUpAge=GetUpAge; WorstGapDownCount=state.DownCount; }
                 MaximumSpeed = Mathf.Max(MaximumSpeed, link.Body.linearVelocity.magnitude, body.linearVelocity.magnitude);
             }
-            ConfigureMuscleDrive(state.Phase == RecoveryPresentationPhase.PhysicsTumble);
+            // Waiting for room (the get-up phase before its clip starts) the body stays as limp as it lay: the recovery drive
+            // pulls every joint to the bind pose, so the legs straightened out stiffly while it waited (2026-10-21). Rolling
+            // onto a face keeps that drive: a knee left bent propped the body up and the roll never finished.
+            ConfigureMuscleDrive(state.Phase == RecoveryPresentationPhase.PhysicsTumble || state.Phase == RecoveryPresentationPhase.SharedGetUp && !_animationStarted);
             if (state.Phase == RecoveryPresentationPhase.PhysicsTumble && TumbleHoldSpring <= 0)
                 foreach (var link in _links) MaximumLimpDriveSpring = Mathf.Max(MaximumLimpDriveSpring, link.Joint.angularXDrive.positionSpring, link.Joint.angularYZDrive.positionSpring);
             _probe.CheckDistributedSupport=HasIncomingGrips;
@@ -487,7 +649,15 @@ namespace ProjectHotfix.PhysicsJump
                 && Actor.GetComponent<StrikeReviewTarget>().TryGripStandingRoot(Quaternion.LookRotation(horizontalForward.normalized,Vector3.up),out var gripRoot))
                 _probe.StandingReference=gripRoot;
             var movingRecovery = state.Phase == RecoveryPresentationPhase.AligningToGetUp || state.Phase == RecoveryPresentationPhase.SharedGetUp || state.Phase == RecoveryPresentationPhase.UprightReturn;
+            // A still body propped on a limb (on its side on an arm, say) has no floor right under its centre of mass, so the
+            // probe found no support and it lay there for good (2026-10-21 side-lying review). After 1.5 s like that, any
+            // part's floor contact counts as support until the get-up starts (at .5 s it also caught bodies about to find
+            // the floor by themselves and sent them through a slower roll). The 1.5 s counts during the Down wait too, so a
+            // body that lay propped through its knockout gets up the moment it ends (2026-10-22: it lay 1.5 s more).
+            if (state.Phase != RecoveryPresentationPhase.PhysicsTumble) _proppedSeconds = 0;
+            if (FeetPlantedGetUp && _proppedSeconds > 1.5f) _probe.CheckDistributedSupport = true;
             var sample = movingRecovery ? _probe.EvaluateDuringGetUp(seconds, _floorPoint) : _probe.Evaluate(seconds);
+            if (state.Phase == RecoveryPresentationPhase.PhysicsTumble && !HoldTumble && !sample.HasSupport && body.linearVelocity.magnitude < .3f) _proppedSeconds += seconds;
             LastSupportSample=sample;
             // No room to stand because someone stands over the body: after a moment the get-up shoves them off,
             // again every RoomPushInterval until there is room (2026-10-20 review: otherwise standing next to a
@@ -497,10 +667,18 @@ namespace ProjectHotfix.PhysicsJump
             var waitingForRoom = state.Phase == RecoveryPresentationPhase.PhysicsTumble && sample.HasSupport && !sample.Clear;
             var rising = state.Phase == RecoveryPresentationPhase.AligningToGetUp || state.Phase == RecoveryPresentationPhase.SharedGetUp || state.Phase == RecoveryPresentationPhase.UprightReturn;
             _blockedSeconds = FeetPlantedGetUp && state.CanStartGetUp && !HoldTumble && (waitingForRoom || rising) ? _blockedSeconds + seconds : 0;
-            if (_blockedSeconds > .3f) { _blockedSeconds -= RoomPushInterval; ClearRoom(waitingForRoom ? sample.StandingRoot : _standingRoot, waitingForRoom); }
-            if (movingRecovery && (!sample.HasSupport || !sample.Clear))
+            _roomPushed.Clear();
+            if (_blockedSeconds <= 0) _clearTimer = 0;
+            // From the moment the Down wait ends (2026-10-21: it used to wait .3 s more before making room).
+            if (_blockedSeconds > 0) { var interval = (_clearTimer -= seconds) <= 0; if (interval) _clearTimer = RoomPushInterval; ClearRoom(waitingForRoom ? sample.StandingRoot : _standingRoot, waitingForRoom, interval); }
+            if (state.Phase != RecoveryPresentationPhase.SharedGetUp || _animationStarted) _roomHold = _roomPushTimer = 0;
+            if (_animationStarted) _scootSeconds = 0;
+            StepScoot(seconds);
+            // The planted get-up, once moving, is not given up because someone steps into its room (that made a rising
+            // body grabbable again, 2026-10-21): it keeps shoving them off instead (ClearRoom above).
+            if (movingRecovery && (!sample.HasSupport || !sample.Clear && !FeetPlantedGetUp))
             { state.TryInterruptGetUp(state.RoundGeneration, state.EpisodeId); _animationStarted = false; GetUpAge = 0; GetUpPose?.Cancel(true); if(_standingColliderPrepared) PrepareStandingCollider(false); ConfigureMuscleDrive(true); _uprightSeconds = 0; Interruptions++; }
-            if (state.Phase == RecoveryPresentationPhase.PhysicsTumble && state.CanStartGetUp && sample.Stable && sample.Clear && !HoldTumble)
+            if (state.Phase == RecoveryPresentationPhase.PhysicsTumble && state.CanStartGetUp && sample.Stable && (sample.Clear || FeetPlantedGetUp && sample.HasSupport && OnlyCharactersInRoom(sample.StandingRoot)) && !HoldTumble)
             {
                 if((HasIncomingGrips || UprightReturnWithoutGrip) && Vector3.Dot(ObservedTorsoRotation*Vector3.up,sample.Normal)>0
                     && (!RecoveryOrientationResolver.TryClassify(ObservedTorsoRotation,sample.Normal,out _)
@@ -523,7 +701,8 @@ namespace ProjectHotfix.PhysicsJump
             // A loose, self-colliding body can come to rest curled on its side, which neither the face-up/down
             // GetUp nor the upright return above accepts (it was left lying for good, 2026-10-17). Once it may
             // get up and has been lying still on supported ground for 1.5 s, it returns upright from there.
-            _tumbleReadySeconds=state.Phase==RecoveryPresentationPhase.PhysicsTumble&&state.CanStartGetUp&&!HoldTumble?_tumbleReadySeconds+seconds:0;
+            // Lying still through the Down wait counts as well, so it rolls and rises as the knockout ends (2026-10-22).
+            _tumbleReadySeconds=state.Phase==RecoveryPresentationPhase.PhysicsTumble&&!HoldTumble&&(state.CanStartGetUp||body.linearVelocity.magnitude<.3f)?_tumbleReadySeconds+seconds:0;
             // Lying on a side or curled but lying: roll to the nearer of face down / face up and get up from there.
             if(FeetPlantedGetUp&&_tumbleReadySeconds>.8f&&sample.HasSupport&&body.linearVelocity.magnitude<.3f
                 &&RecoveryOrientationResolver.TryClassify(ObservedTorsoRotation,sample.Normal,out _)
@@ -579,7 +758,8 @@ namespace ProjectHotfix.PhysicsJump
                 _alignSeconds += seconds;
                 var aligned = ReadyAngle < AlignmentToleranceDegrees && body.angularVelocity.magnitude < .7f
                     || FeetPlantedGetUp && (ReadyAngle < 20f && body.angularVelocity.magnitude < .3f || _alignSeconds > 1f && ReadyAngle < 35f || _alignSeconds > 2f && ReadyAngle < 60f);
-                if (state.TryFinishAlignment(state.RoundGeneration, state.EpisodeId, sample.HasSupport, sample.Clear, aligned)) _alignSeconds = 0;
+                // Planted: someone in the way does not hold the roll; HoldForRoom shoves them off before rising.
+                if (state.TryFinishAlignment(state.RoundGeneration, state.EpisodeId, sample.HasSupport, sample.Clear || FeetPlantedGetUp, aligned)) _alignSeconds = 0;
             }
             if (state.Phase == RecoveryPresentationPhase.SharedGetUp)
             {
@@ -598,21 +778,28 @@ namespace ProjectHotfix.PhysicsJump
                         destination = new Vector3(stand.x, _floorPoint.y, stand.z);
                     }
                     var footSupport = _probe.EvaluateDuringGetUp(seconds, destination);
-                    if (!footSupport.HasSupport || !footSupport.Clear) { state.TryInterruptGetUp(state.RoundGeneration,state.EpisodeId); ConfigureMuscleDrive(true); return; }
+                    // A blocked standing spot is first cleared by HoldForRoom (shove or scoot); only when that runs out does the
+                    // planted get-up fall back to waiting on the floor, unless only characters are in the way (it rises through them).
+                    if (!footSupport.HasSupport || !footSupport.Clear && (!FeetPlantedGetUp || _roomHold >= RoomHoldSeconds && !OnlyCharactersInRoom(footSupport.StandingRoot))) { state.TryInterruptGetUp(state.RoundGeneration,state.EpisodeId); ConfigureMuscleDrive(true); return; }
                     _floorPoint = footSupport.Point; _standingRoot = footSupport.StandingRoot; _getUpEntryPelvis = pelvis;
-                    var anchors = new Vector3[2]; var valid = true;
+                    var anchors = new Vector3[2]; var planted = new[] { true, true }; var valid = true;
                     for (var side = 0; side < 2; side++)
                     {
                         var planned = body.position+body.rotation*GetUpAnimationPose.AuthoredHandLocalTarget(side,up);
+                        if (FeetPlantedGetUp) { planted[side] = TryFloorAnchor(planned, body.rotation * (side == 0 ? Vector3.right : Vector3.left), body.rotation * Vector3.up, out anchors[side]); continue; }
                         var ray = planned + Vector3.up * .5f;
                         if (gameObject.scene.GetPhysicsScene().Raycast(ray, Vector3.down, out var hit, 1f, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore)) anchors[side] = hit.point + hit.normal * .01f;
                         else valid = false;
                     }
                     if (!valid) { state.TryInterruptGetUp(state.RoundGeneration,state.EpisodeId); ConfigureMuscleDrive(true); return; }
+                    if (HoldForRoom(seconds, pelvis, anchors, planted)) return;
+                    if (FeetPlantedGetUp && _roomHold >= RoomHoldSeconds) for (var side = 0; side < 2; side++) if (planted[side] && ArmCramped(pelvis, body.rotation * (side == 0 ? Vector3.left : Vector3.right))) planted[side] = false;
+                    _roomHold = 0; _roomPushTimer = 0;
                     _animationStarted = true; GetUpAge = 0; _getUpEntryRotation = body.rotation; _getUpEntryCom = body.worldCenterOfMass;
-                    if (Environment.GetEnvironmentVariable("PARTY_KO_DEBUG") == "1") Debug.Log($"GETUP {Actor.name} faceUp={up} alignments={AlignmentStarts} torsoFwdY={(ObservedTorsoRotation*Vector3.forward).y:F2} torsoUpY={(ObservedTorsoRotation*Vector3.up).y:F2}");
+                    if (Environment.GetEnvironmentVariable("PARTY_KO_DEBUG") == "1") Debug.Log($"GETUP {Actor.name} faceUp={up} alignments={AlignmentStarts} torsoFwdY={(ObservedTorsoRotation*Vector3.forward).y:F2} torsoUpY={(ObservedTorsoRotation*Vector3.up).y:F2} planted={planted[0]}/{planted[1]} pushes={RoomPushes} scoots={RoomScoots}");
                     Actor.FixedPose?.RestoreForEvaluation();
-                    GetUpPose.Begin(up, anchors[0], anchors[1], _standingRoot, _standingRotation);
+                    if (_bones.TryGetValue("Pelvis", out var pelvisBone)) _rootInPelvis = pelvisBone.worldToLocalMatrix * body.transform.localToWorldMatrix;
+                    GetUpPose.Begin(up, anchors[0], anchors[1], _standingRoot, _standingRotation, planted[0], planted[1]);
                 }
                 if (UseGetUpAnimation) GetUpAge += seconds * GetUpSpeed;
                 var sitUp = FeetPlantedGetUp && state.GetUpOrientation == RecoveryOrientation.FaceUp;
@@ -632,7 +819,11 @@ namespace ProjectHotfix.PhysicsJump
                     if (rootGoal.y < _standingRoot.y) pelvis.y += _standingRoot.y - rootGoal.y;
                     goalCom = pelvis + rotation * (body.centerOfMass - _pelvisLocal);
                 }
-                var acceleration = (goalCom - body.worldCenterOfMass) * 35f - body.linearVelocity * 10f - Physics.gravity;
+                // Catching up the rising goal the body coasted ~2.5 cm past standing height, lifting the planted feet off the
+                // floor until the clip ended and snapped them down (2026-10-21 review): above the goal, rising is braked hard.
+                var damping = body.linearVelocity * 10f;
+                if (body.worldCenterOfMass.y > goalCom.y && body.linearVelocity.y > 0) damping.y = body.linearVelocity.y * RiseOvershootBrake;
+                var acceleration = (goalCom - body.worldCenterOfMass) * 35f - damping - Physics.gravity;
                 var boundedAcceleration=Vector3.ClampMagnitude(acceleration,25f);
                 ApplyRecoveryAcceleration(boundedAcceleration);
                 foreach (var link in _links) link.Joint.angularXDrive = link.Joint.angularYZDrive = RecoveryDrive(link);
@@ -640,6 +831,7 @@ namespace ProjectHotfix.PhysicsJump
 
             }
         }
+        public float RiseOvershootBrake = 60f;
         private void ApplyRecoveryAcceleration(Vector3 acceleration)
         {
             var body=Actor.Motor.Body;
@@ -752,6 +944,7 @@ namespace ProjectHotfix.PhysicsJump
             if (!fromReset)
             {
                 body.linearVelocity = momentum / 20f;
+                if (Environment.GetEnvironmentVariable("PARTY_KO_DEBUG") == "1") Debug.Log($"HANDOFF v={body.linearVelocity:F2} fwd={(body.rotation*Vector3.forward):F2}");
             }
             body.collisionDetectionMode = _collisionMode; body.maxAngularVelocity = _maxAngularVelocity; body.angularDamping = _angularDamping; body.maxDepenetrationVelocity = _depenetrationVelocity; body.interpolation = _interpolation; body.solverIterations = _solverIterations; body.solverVelocityIterations = _solverVelocityIterations; body.ResetCenterOfMass(); body.ResetInertiaTensor();
             foreach (var pair in _bones) { pair.Value.localPosition = _restPositions[pair.Key]; pair.Value.localRotation = _restRotations[pair.Key]; }

@@ -52,7 +52,7 @@ namespace ProjectHotfix.Physics.Tests
         {var go=GameObject.CreatePrimitive(PrimitiveType.Cube);SceneManager.MoveGameObjectToScene(go,_scene);go.name=name;go.transform.position=p;go.transform.localScale=scale;return go;}
         private void Tick(){_pair.Step(Dt);_scene.GetPhysicsScene().Simulate(Dt);_pair.CapturePhysics();}
         private void Buttons(int player,int mask)=>_pair.Buttons(player,(mask&1)!=0,(mask&2)!=0);
-        [UnityTearDown] public IEnumerator Cleanup(){if(_scene.IsValid()&&_scene.isLoaded){var op=SceneManager.UnloadSceneAsync(_scene);while(!op.isDone)yield return null;}}
+        [UnityTearDown] public IEnumerator Cleanup(){if(_scene.IsValid()&&_scene.isLoaded){var op=SceneManager.UnloadSceneAsync(_scene);while(!op.isDone)yield return null;}yield return UnloadSkinQueries();}
         private IEnumerator Photo(string file)
         {
             _pair.Present(1);yield return null;var rt=new RenderTexture(960,640,24);rt.Create();var image=new Texture2D(960,640,TextureFormat.RGB24,false);_pair.View.targetTexture=rt;_pair.View.aspect=1.5f;_pair.View.orthographicSize=.8f;_pair.View.Render();var old=RenderTexture.active;RenderTexture.active=rt;image.ReadPixels(new Rect(0,0,960,640),0,0);image.Apply();RenderTexture.active=old;File.WriteAllBytes(Path.Combine(Output,file+".png"),image.EncodeToPNG());_pair.View.targetTexture=null;rt.Release();UnityEngine.Object.Destroy(rt);UnityEngine.Object.Destroy(image);

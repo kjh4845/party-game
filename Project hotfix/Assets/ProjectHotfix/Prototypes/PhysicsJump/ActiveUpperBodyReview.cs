@@ -258,6 +258,14 @@ namespace ProjectHotfix.PhysicsJump
         }
 
         public Link Find(string name) => _links.First(link => link.Name == name);
+        // The body a skin bone rides on while standing: its own link, else the nearest linked ancestor, else the root
+        // (legs and hips move with the root capsule).
+        public Rigidbody BodyForBone(Transform bone)
+        {
+            for (var b = bone; b != null && b != Actor.Pose.transform; b = b.parent)
+                foreach (var link in _links) if (link.Bone == b) return link.Body;
+            return Actor.Motor.Body;
+        }
         public Vector3 HandPosition(int side) => Find("Forearm_" + (side == 0 ? "L" : "R")).Body.position +
             Find("Forearm_" + (side == 0 ? "L" : "R")).Body.rotation *
             (_goals["HandLogical_" + (side == 0 ? "L" : "R")].localPosition + Vector3.back * _terminalLength);
@@ -372,6 +380,7 @@ namespace ProjectHotfix.PhysicsJump
             ApplyCombatGuard(seconds);
             for(var side=0;side<2;side++)if(_punchReference[side])ApplyJointSpacePunch(side);
             ApplyImpactReaction(seconds);
+            _shoveSeconds = Mathf.Max(0, _shoveSeconds - seconds);
             foreach (var link in _links)
             {
                 var parentGoal = link.ParentName == null ? _goalRoot : _goals[link.ParentName];
@@ -438,8 +447,11 @@ namespace ProjectHotfix.PhysicsJump
         private void ApplyLowReachReference(float seconds)
         {
             if(LowReachRequest<=0&&LowReachWeight<=0&&!_lowReachWasActive)return;
-            LowReachWeight=Mathf.MoveTowards(LowReachWeight,Mathf.Clamp01(LowReachRequest),seconds*3);
-            var drop=.025f*LowReachWeight;var lean=35*LowReachWeight;
+            // A low strike bends in at LowStrikeBendRate and LowStrikeLean deep (ActiveUpperBodyReview.LowStrike).
+            var striking=LowStriking;var request=Mathf.Clamp01(LowReachRequest);
+            LowReachWeight=Mathf.MoveTowards(LowReachWeight,request,seconds*(striking&&request>LowReachWeight?LowStrikeBendRate:3));
+            _lowReachLean=Mathf.MoveTowards(_lowReachLean,striking?LowStrikeLean:35,seconds*200);
+            var drop=.025f*LowReachWeight;var lean=_lowReachLean*LowReachWeight;_lowReachDrop=drop;
             _goals["Pelvis"].localPosition=_referencePelvisPosition+Vector3.down*drop;
             _goals["Pelvis"].rotation=Quaternion.AngleAxis(lean*.7f,_goalRoot.right)*_goals["Pelvis"].rotation;
             var spine=Find("Spine");var chest=Find("Chest");
@@ -526,7 +538,7 @@ namespace ProjectHotfix.PhysicsJump
                 _punchReference[side]=_punchEntryPending[side]=false;_punchSourceAge[side]=0;
                 if(_punchLimits[side]){var joint=Find("UpperArm_"+(side==0?"L":"R")).Joint;joint.angularYLimit=joint.angularZLimit=new SoftJointLimit{limit=15};joint.highAngularXLimit=new SoftJointLimit{limit=_punchOriginalHighX[side]};_punchLimits[side]=false;}
             }
-            LowReachRequest=0;LowReachWeight=0;
+            LowReachRequest=0;LowReachWeight=0;ClearLowStrike();
             if(_lowReachWasActive)
             {
                 var spine=Find("Spine");var chest=Find("Chest");spine.Joint.connectedAnchor=spine.StartConnectedAnchor;

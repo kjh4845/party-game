@@ -10,13 +10,14 @@ namespace ProjectHotfix.PhysicsJump
         public float LiftHeight=.65f,LiftDuration=.85f;
         [Range(0,.9f)] public float LimpWeightCompensation=.80f;
         public float ThrowImpulse=30f,MaximumThrowAddedSpeed=3f;
-        // Fight review (physical punch candidate): throws strong enough to carry a body off a ledge,
-        // ~6 m/s added with more loft. The lift/drag comparisons keep the 30 N·s / 1.5 m/s baseline.
+        // Fight review (physical punch candidate): a throw finishes a ring-out near the edge, not across the arena
+        // (2026-10-22: 4.5 m/s flew a body ~2.6 m from the release, now 3 m/s; retuned once a map exists). A moving
+        // thrower's own speed still carries over. The lift/drag comparisons keep the 30 N·s / 1.5 m/s baseline.
         public float ThrowLoft=.35f;
         // A knocked-down body is carried overhead (hand goal in the lifter's frame: half width, height
         // above the feet, forward). Standing opponents are only held, never lifted or thrown (2026-10-17).
         public float OverheadHalfWidth=.12f,OverheadHeight=.95f,OverheadForward=.12f;
-        public void UseFightThrows(){ThrowImpulse=120f;MaximumThrowAddedSpeed=4.5f;ThrowLoft=.5f;}
+        public void UseFightThrows(){ThrowImpulse=120f;MaximumThrowAddedSpeed=3f;ThrowLoft=.5f;}
         public float LiftSupportForce {get;private set;}
         public int Throws {get;private set;}
         public Vector3 LastThrowAddedVelocity {get;private set;}

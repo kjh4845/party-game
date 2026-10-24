@@ -43,9 +43,11 @@ namespace ProjectHotfix.PhysicsJump
             return samples;
         }
         public void Confirm(bool head,bool audible,Camera view)=>Confirm(head,audible,view,null,null,Vector3.zero,Vector3.forward,1);
-        public void Confirm(bool head,bool audible,Camera view,ActiveUpperBodyReview attacker,ActiveUpperBodyReview target,Vector3 point,Vector3 direction,float strength)
+        // An uncounted hit (on a body getting up) gets only a small burst and a quiet thud: no hit-stop, flash or shake.
+        public void Confirm(bool head,bool audible,Camera view,ActiveUpperBodyReview attacker,ActiveUpperBodyReview target,Vector3 point,Vector3 direction,float strength,bool counted=true)
         {
             ConfirmedCues++;
+            if(!counted){if(Burst&&target!=null)StartBurst(point,.35f);if(audible)Play(false,.5f,view);return;}
             if(HitStop&&attacker!=null&&target!=null)
             {
                 attacker.Actor.FixedPose.HoldPresentation(HitStopTicks,HitStopCatchUpTicks);
@@ -56,7 +58,10 @@ namespace ProjectHotfix.PhysicsJump
                 foreach(var skin in target.Actor.Pose.GetComponentsInChildren<SkinnedMeshRenderer>())StartFlash(skin.sharedMaterial);
             if(Burst&&target!=null)StartBurst(point,Mathf.Clamp(strength,.5f,1.3f));
             if(Shake&&head&&view!=null){_shakeAge=0;_shakeAmplitude=HeadShake*Mathf.Clamp(strength,.5f,1.3f);_shakeView=view;}
-            if(!audible)return;
+            if(audible)Play(head,Mathf.Lerp(.8f,1.15f,Mathf.InverseLerp(.65f,1.3f,strength)),view);
+        }
+        private void Play(bool head,float loudness,Camera view)
+        {
             if(_source==null)
             {
                 _source=gameObject.AddComponent<AudioSource>();_source.playOnAwake=false;_source.spatialBlend=0;
@@ -67,7 +72,7 @@ namespace ProjectHotfix.PhysicsJump
             {
                 var pcm=Samples(head);_clips[index]=AudioClip.Create(head?"Review head contact":"Review body contact",pcm.Length,1,SampleRate,false);_clips[index].SetData(pcm,0);
             }
-            _source.PlayOneShot(_clips[index],Volume*Mathf.Lerp(.8f,1.15f,Mathf.InverseLerp(.65f,1.3f,strength)));
+            _source.PlayOneShot(_clips[index],Volume*loudness);
         }
         private void StartFlash(Material material)
         {

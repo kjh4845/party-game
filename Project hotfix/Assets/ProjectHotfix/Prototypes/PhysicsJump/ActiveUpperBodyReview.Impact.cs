@@ -106,6 +106,14 @@ namespace ProjectHotfix.PhysicsJump
                 _settleLean=0;RestoreCombatLimits();return;
             }
             EnsureCombatLimits();_bodyStrikePose=true;
+            // Bent down by the low reach (a grab or a low strike): the combat limits must hold that bend plus the stroke's lean.
+            var low=_lowReachLean*LowReachWeight;
+            if(low>0)
+            {
+                var spineLimit=Mathf.Max(24,low*.7f+14);var chestLimit=Mathf.Max(26,low*.3f+3);
+                Find("Spine").Joint.lowAngularXLimit=new SoftJointLimit{limit=-spineLimit};Find("Spine").Joint.highAngularXLimit=new SoftJointLimit{limit=spineLimit};
+                Find("Chest").Joint.lowAngularXLimit=new SoftJointLimit{limit=-chestLimit};Find("Chest").Joint.highAngularXLimit=new SoftJointLimit{limit=chestLimit};
+            }
             var lean=0f;var twist=0f;var coil=0f;var brace=0f;
             for(var side=0;side<2;side++)if(_punchReference[side])
             {
@@ -137,7 +145,9 @@ namespace ProjectHotfix.PhysicsJump
             _settleLean=ImpactReactionActive?0:lean;
             SetJointGoal(Find("Spine"),Quaternion.AngleAxis(-lean+BraceAngle*brace,Vector3.right));
             SetJointGoal(Find("Chest"),Quaternion.AngleAxis(Mathf.Clamp(twist,-22,22),Vector3.up));
-            var yaw=-twist*.32f;var drop=.012f*coil;
+            // The chest's share of the low-reach bend, which SetJointGoal just replaced (ApplyLowReachReference).
+            if(low>0)Find("Chest").Goal.rotation=Quaternion.AngleAxis(low*.3f,_goalRoot.right)*Find("Chest").Goal.rotation;
+            var yaw=-twist*.32f;var drop=.012f*coil+_lowReachDrop;
             var pelvis=_goals["Pelvis"];
             pelvis.localPosition=_referencePelvisPosition+Vector3.down*drop;
             pelvis.rotation=Quaternion.AngleAxis(yaw,_goalRoot.up)*pelvis.rotation;
@@ -147,9 +157,11 @@ namespace ProjectHotfix.PhysicsJump
         private void RestoreBodyStrikePose()
         {
             if(!_bodyStrikePose)return;
-            _goals["Pelvis"].localPosition=_referencePelvisPosition;
-            Find("Spine").Joint.connectedAnchor=Find("Spine").StartConnectedAnchor;
-            Actor.Pose.AdditionalPelvisDrop=Actor.Pose.AdditionalPelvisYaw=0;
+            // Still bent by the low reach: keep its pelvis drop and hinge anchor.
+            _goals["Pelvis"].localPosition=_referencePelvisPosition+Vector3.down*_lowReachDrop;
+            var spine=Find("Spine");
+            spine.Joint.connectedAnchor=_lowReachDrop>0?Quaternion.Inverse(Actor.Motor.Body.rotation)*(spine.Goal.position-Actor.Motor.Body.position):spine.StartConnectedAnchor;
+            Actor.Pose.AdditionalPelvisDrop=_lowReachDrop;Actor.Pose.AdditionalPelvisYaw=0;
             _bodyStrikePose=false;
         }
         // Elbow targets stay near 95 degrees: past ~105 the forearm skin meets the
@@ -166,6 +178,7 @@ namespace ProjectHotfix.PhysicsJump
         {
             var sign=side==0?-1:1;var held=_handActive[1-side]||_gripPosture[1-side];
             var path=held?BodyStrikeArmPath.Current:BodyArmPath;
+            UpdateLowStrikePitch(side,upper);var low=_lowStrike[side]&&_punchReference[side];
             float lift,yaw,roll,flex,recover;
             if(path==BodyStrikeArmPath.Straight)
             {
@@ -184,7 +197,8 @@ namespace ProjectHotfix.PhysicsJump
                 // The current chamber-and-extend, started a little wider so it reads as swinging in.
                 var strike=StrikeCurve((t-.065f)/.085f);recover=Smooth((t-.215f)/.175f);
                 lift=Mathf.Lerp(50,Mathf.Lerp(84,76,_punchCompact[side]),strike);
-                yaw=Mathf.Lerp(-sign*32,sign*22,strike);
+                // A low strike ends turned onto its target instead of crossing in (positive yaw turns the arm left).
+                yaw=Mathf.Lerp(-sign*32,low?-_lowStrikeAim[side]:sign*22,strike);
                 roll=Mathf.Lerp(sign*24,-sign*18,strike);
                 flex=Mathf.Lerp(80,Mathf.Lerp(28,45,_punchCompact[side]),strike);
             }
@@ -196,6 +210,8 @@ namespace ProjectHotfix.PhysicsJump
                 roll=Mathf.Lerp(sign*(held?18:28),-sign*22,strike);
                 flex=Mathf.Lerp(ChamberFlex,held?62:Mathf.Lerp(25,45,_punchCompact[side]),strike);
             }
+            // At a body lying in front the stroke is pitched down onto it (ActiveUpperBodyReview.LowStrike).
+            lift-=_lowStrikePitch[side];
             var restLift=LoweredCarriage?LoweredLift:35;var restYaw=LoweredCarriage?0:sign*6;var restFlex=LoweredCarriage?LoweredFlex:GuardFlex;
             Quaternion upperTarget,lowerTarget;
             if(LoweredCarriage&&!held)
