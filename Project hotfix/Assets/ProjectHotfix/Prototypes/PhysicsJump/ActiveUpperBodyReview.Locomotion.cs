@@ -10,7 +10,13 @@ namespace ProjectHotfix.PhysicsJump
     // Only free arms swing: a reaching, holding, punching or guarding arm keeps its own goal.
     public sealed partial class ActiveUpperBodyReview
     {
-        public float WalkArmSwing = 24f, RunArmSwing = 40f, WalkElbow = 12f, RunElbow = 85f, RunLean = 12f;
+        public float WalkArmSwing = 24f, RunArmSwing = 40f, WalkElbow = 12f, RunElbow = 45f, RunLean = 12f;
+        // The run's arm shape (2026-10-28 review, seen from behind in third person: "달릴 때 팔이 W 모양"). At RunElbow 85
+        // the elbows stayed bent 74-84 deg, the upper arms hung 12-22 deg out to the sides and swung 50 back but only 20
+        // forward, so the forearms rose behind the back and both elbows stuck out: a W. Now the elbow bends RunElbow plus
+        // RunElbowForward as the arm comes forward (a pump, straighter behind), the upper arms are tucked RunArmTuck deg in
+        // toward the body and the swing is biased RunArmForward deg forward.
+        public float RunElbowForward = 20f, RunArmTuck = 10f, RunArmForward = 12f;
         // Shoulder extension while running (deg behind the bind; the standing limit is 25): the pumping arm
         // must get behind the body, or both bent arms hover in front (2026-10-20: "팔의 앞뒤 움직임이 어색").
         public float RunArmBackLimit = 55f;
@@ -82,12 +88,15 @@ namespace ProjectHotfix.PhysicsJump
                 // Opposite the same-side foot: forward while that foot is back (its stride ~ cos of the contact phase).
                 // The run leads the arm phase a little: even the stronger drive trails the pump by ~45 deg.
                 var phase = Mathf.Repeat(pose.GaitPhase - .25f + side * .5f + .1f * run, 1f);
-                var forwardSwing = -Mathf.Cos(phase * Mathf.PI * 2f) * swing * free;
+                var pump = -Mathf.Cos(phase * Mathf.PI * 2f);
+                var forwardSwing = (pump * swing + RunArmForward * run * gait) * free;
                 var suffix = side == 0 ? "L" : "R";
                 var upper = Find("UpperArm_" + suffix); var forearm = Find("Forearm_" + suffix);
+                // Running, the upper arm is brought in toward the body (about the facing axis at the shoulder).
+                if (run * gait > .01f) SwingForward(upper.Goal, forward, forearm.Goal.position, side == 0 ? right : -right, RunArmTuck * run * gait * free);
                 // Symmetric about the hanging arm: the hand comes up to the chest in front and passes the hip behind.
                 SwingForward(upper.Goal, upper.Goal.rotation * upper.Joint.axis, forearm.Goal.position, forward, forwardSwing);
-                SwingForward(forearm.Goal, forearm.Goal.rotation * forearm.Joint.axis, GoalHand(side), forward, elbow * free);
+                SwingForward(forearm.Goal, forearm.Goal.rotation * forearm.Joint.axis, GoalHand(side), forward, (elbow + RunElbowForward * run * gait * Mathf.Max(0, pump)) * free);
             }
         }
 
