@@ -17,6 +17,8 @@ namespace ProjectHotfix.Simulation
             public ulong ActionId, GrabRelationId;
             public int GrabTargetId;
             public double SeekTime;
+            // Press-to-punch: a press during the strike, waiting for its hit window to end.
+            public bool Queued;
             public readonly HashSet<int> HitTargets = new HashSet<int>();
         }
         private readonly Hand[] _hands = { new Hand(), new Hand() };
@@ -34,6 +36,11 @@ namespace ProjectHotfix.Simulation
         public int PunchCount { get; private set; }
         public int ConfirmedHitCount { get; private set; }
         public bool Armed => _armed;
+        // Press-to-punch (2026-10-28 review: "펀치를 막 때려야 되는데 안 나간다"): a press starts the punch at once
+        // instead of on a release under HoldThresholdSeconds; held past that, the punch turns into a grab seek. A press
+        // during a punch fires the next one as soon as the current hit window ends (or at once in its recovery).
+        // groundedAtPress then means "may punch": false only where a press must be a grab (hanging on a wall).
+        public bool PunchOnPress { get; set; }
 
         public GroundHandActionStateMachine(double holdThresholdSeconds = .15, double punchPlaybackRate = 1,
             double activeStartSourceSeconds = ActiveStart, double activeEndSourceSeconds = ActiveEnd)
@@ -76,6 +83,13 @@ namespace ProjectHotfix.Simulation
             {
                 if ((hand.Phase == HandIntentPhase.GroundPending || hand.Phase == HandIntentPhase.AirPending)
                     && now - hand.PressTime >= HoldThresholdSeconds - 1e-9) { hand.Phase = HandIntentPhase.GrabSeek; hand.SeekTime = hand.PressTime + HoldThresholdSeconds; }
+                if (PunchOnPress && hand.Phase == HandIntentPhase.Punch)
+                {
+                    if (hand.Down && !hand.Queued && now - hand.PressTime >= HoldThresholdSeconds - 1e-9)
+                    { hand.Phase = HandIntentPhase.GrabSeek; hand.SeekTime = hand.PressTime + HoldThresholdSeconds; hand.HitTargets.Clear(); continue; }
+                    if (hand.Queued && (now - hand.AttackTime) * PunchPlaybackRate >= ActiveEndSourceSeconds - 1e-9)
+                    { hand.Queued = false; StartPunch(hand, now); continue; }
+                }
                 if (hand.Phase == HandIntentPhase.Punch && (now - hand.AttackTime) * PunchPlaybackRate >= AttackDuration - 1e-9)
                     hand.Phase = HandIntentPhase.Idle;
             }
@@ -105,6 +119,18 @@ namespace ProjectHotfix.Simulation
             if (down == hand.Down) return false;
             hand.Down = down;
             if (!handAvailable) { CancelHand(side); return false; }
+            if (down && PunchOnPress)
+            {
+                if (hand.Phase == HandIntentPhase.Punch)
+                {
+                    if ((now - hand.AttackTime) * PunchPlaybackRate > ActiveEndSourceSeconds + 1e-9) { hand.PressTime = now; StartPunch(hand, now); return true; }
+                    hand.Queued = true; hand.PressTime = now; return false;
+                }
+                if (hand.Phase != HandIntentPhase.Idle) return false;
+                hand.PressTime = now;
+                if (!groundedAtPress) { hand.Phase = HandIntentPhase.AirPending; return false; }
+                StartPunch(hand, now); return true;
+            }
             if (down)
             {
                 if (hand.Phase != HandIntentPhase.Idle) return false;
@@ -114,12 +140,16 @@ namespace ProjectHotfix.Simulation
             }
             if (hand.Phase == HandIntentPhase.GroundPending)
             {
-                hand.Phase = HandIntentPhase.Punch; hand.AttackTime = now;
-                hand.ActionId = ++_nextActionId; hand.HitTargets.Clear(); PunchCount++;
+                StartPunch(hand, now);
                 return true;
             }
             if (hand.Phase != HandIntentPhase.Punch) { hand.Phase = HandIntentPhase.Idle; hand.GrabTargetId = 0; }
             return false;
+        }
+        private void StartPunch(Hand hand, double now)
+        {
+            hand.Phase = HandIntentPhase.Punch; hand.AttackTime = now;
+            hand.ActionId = ++_nextActionId; hand.HitTargets.Clear(); PunchCount++;
         }
 
         public bool TryConfirmHit(int side, int targetId)
@@ -127,7 +157,7 @@ namespace ProjectHotfix.Simulation
             if (!_armed || !Active(side) || targetId == 0 || !_hands[side].HitTargets.Add(targetId)) return false;
             ConfirmedHitCount++; return true;
         }
-        public void CancelHand(int side) { _hands[side].Phase = HandIntentPhase.Idle; _hands[side].GrabTargetId = 0; _hands[side].HitTargets.Clear(); }
+        public void CancelHand(int side) { _hands[side].Phase = HandIntentPhase.Idle; _hands[side].GrabTargetId = 0; _hands[side].HitTargets.Clear(); _hands[side].Queued = false; }
         public void Suppress()
         {
             _armed = false;

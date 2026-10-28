@@ -113,8 +113,6 @@ namespace ProjectHotfix.PhysicsJump
         public float WalkSpeed=1.4f,SprintSpeed=2.1f,Acceleration=20f;
         public float HoldThreshold=.15f,PalmContactRadius=.055f,GripBreakForce=2000f;
         public float SpawnSeparation=.5f;
-        // Climb test scenes: the camera follows player 1 from FollowOffset at FollowSize instead of framing both players.
-        public bool FollowFirstPlayer;public Vector3 FollowOffset=new Vector3(-2.6f,.6f,-1.9f);public float FollowSize=1.35f;
         public float ReachHalfWidth=.17f;
         public GrabMotion Motion=GrabMotion.Original;
         public string SkinTransportPath;
@@ -128,6 +126,9 @@ namespace ProjectHotfix.PhysicsJump
         public bool EnableStandingSkinContacts;
         public StandingSkinContactReview StandingContacts {get;private set;}
         public bool EnablePhysicalPunch;
+        // Playable scenes: a click punches at once (PhysicalPunchReview.PunchOnPress). The reviewed captures keep the
+        // punch on a short release.
+        public bool PunchOnPress;
         public ActiveUpperBodyReview.ReviewStrikeStyle StrikeStyle;
         public PhysicalPunchReview PhysicalPunches {get;private set;}
         public LimpGrabTargetReview.Orientation FixtureOrientation;
@@ -201,8 +202,9 @@ namespace ProjectHotfix.PhysicsJump
                 var keys=Keyboard.current;
                 if(keys.escapeKey.wasPressedThisFrame)SetSuppressed(!Suppressed);
                 if(keys.rKey.wasPressedThisFrame)ResetReview();
-                Players[0].Move=new Vector2((keys.dKey.isPressed?1:0)-(keys.aKey.isPressed?1:0),(keys.wKey.isPressed?1:0)-(keys.sKey.isPressed?1:0));
-                Players[1].Move=new Vector2((keys.rightArrowKey.isPressed?1:0)-(keys.leftArrowKey.isPressed?1:0),(keys.upArrowKey.isPressed?1:0)-(keys.downArrowKey.isPressed?1:0));
+                if(ThirdPerson)ReadLook();
+                Players[0].Move=ViewMove(new Vector2((keys.dKey.isPressed?1:0)-(keys.aKey.isPressed?1:0),(keys.wKey.isPressed?1:0)-(keys.sKey.isPressed?1:0)));
+                Players[1].Move=ViewMove(new Vector2((keys.rightArrowKey.isPressed?1:0)-(keys.leftArrowKey.isPressed?1:0),(keys.upArrowKey.isPressed?1:0)-(keys.downArrowKey.isPressed?1:0)));
                 Players[0].Sprint=keys.leftShiftKey.isPressed;Players[1].Sprint=keys.rightShiftKey.isPressed;
                 Players[0].Jump=keys.spaceKey.isPressed;Players[1].Jump=keys.rightCtrlKey.isPressed;
                 AimHeightOffset=(keys.uKey.isPressed?.14f:0)-(keys.jKey.isPressed?.14f:0);
@@ -261,6 +263,10 @@ namespace ProjectHotfix.PhysicsJump
             StandingContacts?.Step();
             if(EnablePhysicalPunch&&PhysicalPunches==null)PhysicalPunches=new PhysicalPunchReview(this);
             if(!EnablePhysicalPunch&&PhysicalPunches!=null){PhysicalPunches.Suppress();PhysicalPunches=null;}
+            if(PhysicalPunches!=null)PhysicalPunches.PunchOnPress=PunchOnPress;
+            // Third person: player 1 steps sideways and back at full stride (the review gait shortens a stride off the
+            // facing to .65 of it, and the feet slid on every strafe and diagonal).
+            if(ThirdPerson&&Active(Players[0]))Players[0].Rig.Actor.Pose.TurnStrideMinimum=1;
             GateRunningHands();
             PhysicalPunches?.BeforeStep(seconds);
             foreach(var player in Players)if(!Suppressed&&!player.Hands.Any(h=>h.Button))player.InputArmed=true;
@@ -318,6 +324,7 @@ namespace ProjectHotfix.PhysicsJump
                 player.Rig.ReferenceReachFraction=Motion==GrabMotion.Original?1f:.96f;
                 MovePlayer(p,seconds);CarryClimber(p);PoseClimbLegs(p);player.Rig.Step(seconds);
             }
+            TrackCameraRoot();
         }
         // A knocked-down rig's body is its ragdoll (RagdollRecoveryReview proxies outside the rig's
         // hierarchy). Resolve those bodies back to the rig so it can be grabbed, lifted and thrown.
@@ -467,11 +474,12 @@ namespace ProjectHotfix.PhysicsJump
             // The local two-player lab faces the opponent, allowing backpedal/strafe while holding;
             // a character holding a wall faces the wall.
             var walls=WorldGripPoints(player);
-            if(walls.Length==0&&ExternalTarget==null&&!Active(Players[1-index]))return;
+            var looking=ThirdPerson&&index==0;
+            if(walls.Length==0&&ExternalTarget==null&&!Active(Players[1-index])&&!looking)return;
             // After getting up it keeps the heading it stood up with until the player moves, sprints or uses a hand: a
             // face-up get-up stands facing its feet, often away from the opponent, and the facing torque then spun it
             // round on the spot (2026-10-21 review: "돌아보는거 없애").
-            if(input.sqrMagnitude>.0001f||player.Sprint||rig.IsStriking||player.Hands.Any(h=>h.Button||h.Phase!=HandPhase.Idle))player.HoldHeading=false;
+            if(input.sqrMagnitude>.0001f||player.Sprint||rig.IsStriking||player.Hands.Any(h=>h.Button||h.Phase!=HandPhase.Idle)||looking&&_lookMoved)player.HoldHeading=false;
             // Held, it is still turned back to that heading: switching the facing torque off let a hit right after
             // standing spin it freely (2026-10-21 review).
             if(!player.HoldHeading)player.HeadingHeld=false;
@@ -481,9 +489,13 @@ namespace ProjectHotfix.PhysicsJump
             // (or hold the current heading) and throw where the carrier is facing.
             if(walls.Length==0&&player.Hands.Any(h=>h.Phase==HandPhase.Holding&&h.TargetRig!=null&&h.TargetRig.KnockedDown))
                 direction=input.sqrMagnitude>.0001f?new Vector3(input.x,0,input.y):body.rotation*Vector3.forward;
+            // Third person: player 1 faces where the mouse looks, carrying a body too (it is thrown that way).
+            var viewTurn=LookTurn(index,out var view,out var viewRate)&&walls.Length==0;
+            if(viewTurn)direction=view;
             if(direction.sqrMagnitude>.001f)
             {
                 var error=Vector3.SignedAngle(body.rotation*Vector3.forward,direction,Vector3.up)*Mathf.Deg2Rad;
+                if(viewTurn){ApplyLookTurn(rig,error,viewRate);return;}
                 var acceleration=Mathf.Clamp(error*80-body.angularVelocity.y*16,-100,100);
                 // The root is only 8 kg now. Rotate the articulated character's
                 // inertia, not just that root's much smaller inertia tensor.
@@ -568,13 +580,9 @@ namespace ProjectHotfix.PhysicsJump
             if(ExternalTarget!=null)ExternalTarget.ResetFixture();
             MaximumGripGap=MaximumGripForce=0;Physics.SyncTransforms();
         }
-        private void FrameCamera()
+        private void FrameCamera(float alpha=1)
         {
-            if(FollowFirstPlayer&&Players!=null&&Active(Players[0]))
-            {
-                View.orthographicSize=FollowSize;
-                View.transform.SetPositionAndRotation(Players[0].Rig.Actor.Motor.Body.position+Vector3.up*.82f+FollowOffset,Quaternion.LookRotation(-FollowOffset));return;
-            }
+            if(ThirdPerson&&Players!=null&&Active(Players[0])){FrameThirdPerson(alpha);return;}
             if(Players==null||!Active(Players[0])||(ExternalTarget==null&&!Active(Players[1])))return;
             var center=(Players[0].Rig.Actor.Motor.Body.position+(ExternalTarget!=null?ExternalTarget.Center:Players[1].Rig.Actor.Motor.Body.position))*.5f+Vector3.up*(ExternalTarget!=null?.32f:.5f);
             View.transform.SetPositionAndRotation(center+new Vector3(2.3f,1.05f,1.9f),Quaternion.LookRotation(-new Vector3(2.3f,1.05f,1.9f)));
@@ -582,11 +590,12 @@ namespace ProjectHotfix.PhysicsJump
         private void LateUpdate()
         {
             if(!Ready||ManualStep)return;
+            LockCursor();
             Present(ReviewFixedLoop.RenderAlpha);
         }
         public void Present(float alpha)
         {
-            foreach(var player in Players)if(Active(player))player.Rig.Actor.FixedPose.Present(alpha);if(ExternalTarget!=null)ExternalTarget.Present(alpha);FrameCamera();
+            foreach(var player in Players)if(Active(player))player.Rig.Actor.FixedPose.Present(alpha);if(ExternalTarget!=null)ExternalTarget.Present(alpha);FrameCamera(alpha);
             if(_feedback==null)_feedback=GetComponent<PhysicalPunchFeedbackReview>();
             if(_feedback!=null)_feedback.Present(View);
         }

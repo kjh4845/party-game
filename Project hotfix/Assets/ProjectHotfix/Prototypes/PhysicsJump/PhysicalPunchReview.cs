@@ -85,6 +85,8 @@ namespace ProjectHotfix.PhysicsJump
         private void Log(int player,int side,string outcome,float distance=float.NaN,float facing=float.NaN,float closing=float.NaN,string part=null)
         {if(ContactLog!=null)ContactLog.Add($"{_pair.Tick}\tP{player}\t{(side==0?"L":"R")}\t{outcome}\tage={_states[player].SourcePunchAge(side)/PlaybackRate:F3}\tphase={_states[player].Phase(side)}\tdist={distance:F3}\tfacing={facing:F2}\tclosing={closing:F2}\tpart={part}");}
         public GroundHandActionStateMachine State(int player)=>_states[player];
+        // Press-to-punch (GroundHandActionStateMachine.PunchOnPress): set by the pair every step.
+        public bool PunchOnPress {get=>_states[0].PunchOnPress;set{foreach(var state in _states)state.PunchOnPress=value;}}
         public PunchDownAccumulation Score(int player)=>_scores[player];
         public bool ThresholdPending(int player)=>_threshold[player];
         public int ConfirmedCues=>_feedback!=null?_feedback.ConfirmedCues:0;
@@ -137,6 +139,9 @@ namespace ProjectHotfix.PhysicsJump
         {
             if(_buttons[player,side]==down)return;_buttons[player,side]=down;
             var rig=_pair.Players[player].Rig;var grounded=ActorAvailable(player)&&rig.Actor.Motor.Body.position.y<.065f&&rig.Actor.Motor.Body.linearVelocity.y<.5f;
+            // Pressed to punch, anywhere the feet are (a ledge top, a jump; the old fixed floor height refused every punch
+            // on top of a wall), except hanging on a wall: there a press is the next grab.
+            if(PunchOnPress)grounded=ActorAvailable(player)&&!(_pair.Players[player].Climbing&&!rig.Supported);
             _states[player].Receive(++_sequence[player],side,down,_time,grounded,Available(player,side),held);
         }
         public void Acquired(int player,int side)=>_states[player].TryBeginGrab(side,2-player);

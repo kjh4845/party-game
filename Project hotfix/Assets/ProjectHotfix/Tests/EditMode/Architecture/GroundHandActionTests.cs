@@ -126,5 +126,65 @@ namespace ProjectHotfix.Architecture.Tests
             s.Receive(3, 0, true, .1, true, true); s.Receive(4, 0, false, .15, true, true); s.Advance(.26);
             s.CancelHand(0); Assert.That(s.TryConfirmHit(0, 1), Is.False);
         }
+    
+        // Press-to-punch (2026-10-28): the playable scenes' punch clock (PhysicalPunchReview: hit window ends at .25 s).
+        private static GroundHandActionStateMachine PressPunch() => new GroundHandActionStateMachine(.15, 1.75, .1575, .4375) { PunchOnPress = true };
+
+        [Test] public void PressStartsThePunchAtOnceAndAShortTapKeepsIt()
+        {
+            var s = PressPunch();
+            Assert.That(s.Receive(1, 0, true, 1, true, true), Is.True);
+            Assert.That(s.Phase(0), Is.EqualTo(HandIntentPhase.Punch)); Assert.That(s.PunchAge(0), Is.EqualTo(0).Within(1e-9));
+            Assert.That(s.Receive(2, 0, false, 1.05, true, true), Is.False);
+            s.Advance(1.2); Assert.That(s.Phase(0), Is.EqualTo(HandIntentPhase.Punch)); Assert.That(s.PunchCount, Is.EqualTo(1));
+        }
+
+        [Test] public void HeldPastTheThresholdThePunchTurnsIntoAGrab()
+        {
+            var s = PressPunch();
+            s.Receive(1, 0, true, 1, true, true); s.Advance(1.149);
+            Assert.That(s.Phase(0), Is.EqualTo(HandIntentPhase.Punch));
+            s.Advance(1.15); Assert.That(s.Phase(0), Is.EqualTo(HandIntentPhase.GrabSeek));
+            Assert.That(s.TryBeginGrab(0, 2), Is.True);
+            s.Receive(2, 0, false, 1.5, true, true); Assert.That(s.Phase(0), Is.EqualTo(HandIntentPhase.Idle));
+            Assert.That(s.PunchCount, Is.EqualTo(1));
+        }
+
+        [Test] public void MashedPressInsideTheHitWindowFiresAsItEnds()
+        {
+            var s = PressPunch();
+            s.Receive(1, 0, true, 1, true, true); s.Receive(2, 0, false, 1.05, true, true);
+            var first = s.ActionId(0);
+            Assert.That(s.Receive(3, 0, true, 1.1, true, true), Is.False);
+            s.Receive(4, 0, false, 1.14, true, true);
+            s.Advance(1.24); Assert.That(s.ActionId(0), Is.EqualTo(first));
+            s.Advance(1.25); Assert.That(s.ActionId(0), Is.Not.EqualTo(first)); Assert.That(s.PunchAge(0), Is.EqualTo(0).Within(1e-9));
+            Assert.That(s.PunchCount, Is.EqualTo(2));
+        }
+
+        [Test] public void PressInTheRecoveryRestartsAtOnce()
+        {
+            var s = PressPunch();
+            s.Receive(1, 0, true, 1, true, true); s.Receive(2, 0, false, 1.05, true, true);
+            Assert.That(s.Receive(3, 0, true, 1.3, true, true), Is.True);
+            Assert.That(s.PunchAge(0), Is.EqualTo(0).Within(1e-9)); Assert.That(s.PunchCount, Is.EqualTo(2));
+        }
+
+        [Test] public void WherePunchingIsRefusedAPressOnlyGrabs()
+        {
+            var s = PressPunch();
+            Assert.That(s.Receive(1, 0, true, 1, false, true), Is.False);
+            Assert.That(s.Phase(0), Is.EqualTo(HandIntentPhase.AirPending));
+            s.Advance(1.15); Assert.That(s.Phase(0), Is.EqualTo(HandIntentPhase.GrabSeek));
+            Assert.That(s.PunchCount, Is.EqualTo(0));
+        }
+
+        [Test] public void CancelDropsAQueuedPunch()
+        {
+            var s = PressPunch();
+            s.Receive(1, 0, true, 1, true, true); s.Receive(2, 0, false, 1.05, true, true); s.Receive(3, 0, true, 1.1, true, true);
+            s.CancelHand(0); s.Receive(4, 0, false, 1.12, true, true); s.Advance(1.3);
+            Assert.That(s.Phase(0), Is.EqualTo(HandIntentPhase.Idle)); Assert.That(s.PunchCount, Is.EqualTo(1));
+        }
     }
 }
