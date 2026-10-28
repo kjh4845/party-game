@@ -69,6 +69,9 @@ namespace ProjectHotfix.Presentation
         private float ShorteningLimit => SprintShorteningLimit < 0f ? CombinedShorteningLimit : Mathf.Lerp(CombinedShorteningLimit, SprintShorteningLimit, _sprintBlend);
         public float TurnStrideMinimum = 1f;
         public bool UseStepState, ResetAfterExternalPose;
+        // Set from outside for one pose (a wall climb, ActiveGrabPairReview.Climb; defaults change nothing): a leg
+        // shortening that replaces the airborne tuck (negative = none) and the feet shifted forward.
+        public float TuckOverride = -1f, FootForwardOffset;
         public float MaximumFootTargetError { get; private set; }
         public float MaximumReachCorrection { get; private set; }
 
@@ -147,6 +150,7 @@ namespace ProjectHotfix.Presentation
                 _easedTuck = Mathf.Lerp(_easedTuck, easedGoal, 1f - Mathf.Exp(-deltaTime / JumpTuckEase));
                 _tuck = _easedTuck;
             }
+            if (TuckOverride >= 0f) _tuck = _easedTuck = TuckOverride;
             foreach (var name in LowerBones)
             {
                 var bone = _bones[name]; bone.localPosition = _positions[name]; bone.localRotation = _rotations[name];
@@ -258,6 +262,7 @@ namespace ProjectHotfix.Presentation
                     target += _plantOffsets[i];
                 }
                 else { _planted[i] = false; _plantOffsets[i] = Vector3.zero; }
+                target += transform.forward * FootForwardOffset;
                 var a = Vector3.Distance(thigh.position, calf.position);
                 var b = Vector3.Distance(calf.position, foot.position);
                 var delta = target - thigh.position;

@@ -94,7 +94,13 @@ namespace ProjectHotfix.Physics.Tests
         // How far the last two GetUp cases are tipped from the side onto the back (tan of the angle; PARTY_GETUP_TILT).
         private static float GetUpTilt=>float.TryParse(Environment.GetEnvironmentVariable("PARTY_GETUP_TILT"),System.Globalization.NumberStyles.Float,System.Globalization.CultureInfo.InvariantCulture,out var value)?value:.2f;
         private static readonly Vector3[] KOShoves={new Vector3(0,0,1.2f),new Vector3(0,0,-1.2f),new Vector3(1.2f,0,0),new Vector3(-1.2f,0,0),new Vector3(1.2f,0,1.2f),new Vector3(0,.4f,2.2f)};
-        private static readonly Vector3[] KOSame=Enumerable.Repeat(new Vector3(0,0,1.2f),8).ToArray();private int _climbTick=-1,_topTick=-1;
+        private static readonly Vector3[] KOSame=Enumerable.Repeat(new Vector3(0,0,1.2f),8).ToArray();private int _climbTick=-1,_topTick=-1;private bool _overTry;
+        // The cycle tick the climber lets go at the top (the jump leaves at 5): PARTY_CLIMB_RELEASE, for the timing window.
+        private static int ClimbRelease=>int.TryParse(Environment.GetEnvironmentVariable("PARTY_CLIMB_RELEASE"),out var r)?r:6;
+        // The cycle tick forward input starts in a top attempt (PARTY_CLIMB_MOVE, 99 = never) and the stick amount (PARTY_CLIMB_STICK).
+        private static int ClimbMove=>int.TryParse(Environment.GetEnvironmentVariable("PARTY_CLIMB_MOVE"),out var m)?m:5;
+        private static bool ClimbMoveSet=>Environment.GetEnvironmentVariable("PARTY_CLIMB_MOVE")!=null;
+        private static float ClimbStick=>float.TryParse(Environment.GetEnvironmentVariable("PARTY_CLIMB_STICK"),System.Globalization.NumberStyles.Float,System.Globalization.CultureInfo.InvariantCulture,out var k)?k:.6f;
         private const float HighWall=1.6f;
         // Root-to-root distance at which the Dropkick scene taps (PARTY_KICK_AT).
         private static int RiseKickDelay=>int.TryParse(Environment.GetEnvironmentVariable("PARTY_RISE_KICK_DELAY"),out var value)?value:5;
@@ -421,33 +427,38 @@ namespace ProjectHotfix.Physics.Tests
             }
             if(mode=="WallClimbHigh")
             {
-                // A wall twice the body's height: walk up with the hands raised until they catch the face and the
-                // body hangs, then jump about every .75 s: each hop lets go and catches the wall higher up, and a
-                // jump with the hands on the top edge pulls over (leaning forward throughout). Let go on top.
-                var rig=_pair.Players[0].Rig;var climber=rig.Actor.Motor.Body;var hanging=rig.ClimbingRagdoll;
+                // A plain wall 1.6 times the body's height (2026-10-25: any face holds; the player climbs by repetition):
+                // walk up with the grab buttons held until the hands catch the face ahead, then repeat jump (Space; it goes
+                // after a .08 s crouch), let go of the grabs, grab again (the hands catch the face at the top of the jump and the climber is held there).
+                // With the hands on the top (no assist over it): jump, let go as it leaves (the crouch takes 5 ticks) and move in.
+                var rig=_pair.Players[0].Rig;var climber=rig.Actor.Motor.Body;var climbing=_pair.Players[0].Climbing;
                 if(tick==15)Buttons(0,3);
-                if(hanging&&_climbTick<0)_climbTick=tick;
-                if(_topTick<0&&!rig.RagdollActive&&climber.position.y>HighWall-.05f)_topTick=tick;
-                if(_topTick>=0&&tick==_topTick+10)Buttons(0,0);
-                _pair.Players[0].Jump=hanging&&tick>=_climbTick+40&&(tick-_climbTick)%45<2;
+                if(climbing&&_climbTick<0)_climbTick=tick;
+                if(_topTick<0&&!rig.RagdollActive&&!climbing&&climber.position.y>HighWall-.05f)_topTick=tick;
+                var cycle=_climbTick>=0&&_topTick<0?(tick-_climbTick-30)%45:-1;
+                if(cycle==0)_overTry=climbing&&climber.position.y>HighWall-.55f;
+                _pair.Players[0].Jump=cycle>=0&&cycle<2;
+                if(cycle==(_overTry?ClimbRelease:7))Buttons(0,0);if(cycle==(_overTry?44:10))Buttons(0,3);
                 var approach=tick>=40&&_climbTick<0&&-.70f-climber.position.z>.30f;
-                _pair.Players[0].Move=approach?new Vector2(0,.35f):_climbTick>=0&&(_topTick<0||tick<_topTick+60)?new Vector2(0,.6f):Vector2.zero;return;
+                _pair.Players[0].Move=approach?new Vector2(0,.35f):_overTry&&cycle>=ClimbMove?new Vector2(0,ClimbStick):_topTick>=0&&tick<_topTick+60?new Vector2(0,.6f):Vector2.zero;return;
             }
             if(mode=="WallClimb")
             {
-                // Raise both hands toward the ledge (grab), walk in until they catch it, jump while holding and
-                // keep pressing forward: the arms pull the body up and over. Let go once standing on top.
+                // Raise both hands toward the ledge (grab), walk in until they catch it, jump holding on and keep pressing
+                // forward, let go as the jump leaves: no assist, the jump over the top edge and the walk land it on top.
                 var climber=_pair.Players[0].Rig.Actor.Motor.Body;
-                // Keep holding until standing on top again (the climb itself is a hanging ragdoll).
                 var rigNow=_pair.Players[0].Rig;
-                if(tick==15)Buttons(0,3);if(_topTick<0&&!rigNow.RagdollActive&&climber.position.y>LedgeHeight-.03f)_topTick=tick;if(_topTick>=0&&tick==_topTick+10||tick==480)Buttons(0,0);
+                if(tick==15)Buttons(0,3);if(_topTick<0&&!rigNow.RagdollActive&&!_pair.Players[0].Climbing&&climber.position.y>LedgeHeight-.03f)_topTick=tick;
                 var holding=_pair.Players[0].Hands.Count(h=>h.Phase==ActiveGrabPairReview.HandPhase.Holding);
-                if((holding>0||rigNow.ClimbingRagdoll)&&_climbTick<0)_climbTick=tick;
-                _pair.Players[0].Jump=_climbTick>=0&&tick>=_climbTick+30&&(rigNow.ClimbingRagdoll||tick<_climbTick+34)&&(tick-_climbTick-30)%45<2;
+                if((holding>0||_pair.Players[0].Climbing)&&_climbTick<0)_climbTick=tick;
+                var lowCycle=_climbTick>=0&&tick>=_climbTick+30&&_topTick<0?(tick-_climbTick-30)%45:-1;
+                _pair.Players[0].Jump=lowCycle>=0&&lowCycle<2&&_pair.Players[0].Climbing;
+                if(lowCycle==ClimbRelease)Buttons(0,0);if(lowCycle==44)Buttons(0,3);
                 // Stop short of the face (z -.70) until both hands are above the top, then step in.
                 var handsUp=_pair.Players[0].Rig.HandPosition(0).y>LedgeHeight+.03f&&_pair.Players[0].Rig.HandPosition(1).y>LedgeHeight+.03f;
                 var approach=holding==0&&_climbTick<0&&(-.70f-climber.position.z>.45f||handsUp);
                 // Lean forward while hanging (it only acts once the chest is over the top) and walk on after.
+                if(ClimbMoveSet&&lowCycle>=0){_pair.Players[0].Move=lowCycle>=ClimbMove?new Vector2(0,ClimbStick):Vector2.zero;return;}
                 _pair.Players[0].Move=tick>=40&&approach||_climbTick>=0&&tick>=_climbTick+30&&(_topTick<0||tick<_topTick+60)?new Vector2(0,.6f):Vector2.zero;return;
             }
             if(mode=="Knockout")
@@ -498,7 +509,7 @@ namespace ProjectHotfix.Physics.Tests
             var modes=Environment.GetEnvironmentVariable("PARTY_CAPTURE_CASES")?.Split(',')??new[]{"LeftBody","RightBody","Head","Far","Wall","GrabPunch","Alternating","Moving"};
             foreach(var mode in modes)
             {
-                _stage=0;_releaseTick=-1;_gripTick=-1;_throwTick=-1;_throwCount=0;_throwDistance=-1;_heldParts.Clear();_riseGrabPressed=_grabbedWhileRising=_risingKickIgnored=false;_risingTicks=0;_riseKickDowns=-1;Array.Clear(_lowSpotHits,0,3);Array.Clear(_lowPunchGap,0,12);_lowCamera=_lowCameraCenter=default;_lowFistMin=float.PositiveInfinity;_lowLeanMax=0;_lowDownsAtStart=_lowPointsAtStart=-1;_risePoints=-1;_pushDrift=-1;_pushDepth=0;_pushInside=0;_skinDeepest=0;_skinInside=0;_skinWhere="";_downTick=-1;_kickTick=-1;_koRestHeight=-1;_upTick=-1;_protectHeld=_protectExpired=false;_zoom=.8f;_climbTick=-1;_topTick=-1;
+                _stage=0;_releaseTick=-1;_gripTick=-1;_throwTick=-1;_throwCount=0;_throwDistance=-1;_heldParts.Clear();_riseGrabPressed=_grabbedWhileRising=_risingKickIgnored=false;_risingTicks=0;_riseKickDowns=-1;Array.Clear(_lowSpotHits,0,3);Array.Clear(_lowPunchGap,0,12);_lowCamera=_lowCameraCenter=default;_lowFistMin=float.PositiveInfinity;_lowLeanMax=0;_lowDownsAtStart=_lowPointsAtStart=-1;_risePoints=-1;_pushDrift=-1;_pushDepth=0;_pushInside=0;_skinDeepest=0;_skinInside=0;_skinWhere="";_downTick=-1;_kickTick=-1;_koRestHeight=-1;_upTick=-1;_protectHeld=_protectExpired=false;_zoom=.8f;_climbTick=-1;_topTick=-1;_overTry=false;
                 Create(mode=="GrabStanding"?.5f:mode=="Solo"||mode=="WallClimb"||mode=="WallClimbHigh"?3f:mode=="Gait"||mode=="DropkickMiss"||mode=="Jump"?9f:mode=="Dropkick"||mode=="DropkickRise"||mode=="Protect"?3f:mode=="PunchRise"||mode=="PunchDowned"||mode=="PressRise"||mode=="PushDown"||mode=="PushLegs"?1.6f:mode=="RunDown"?3.2f:mode=="StandOver"?1.6f:mode=="KOVariety"||mode=="KORandom"||mode=="GetUp"?3f:mode=="Crowd"?2f:mode=="Far"?FarSeparation:mode=="GrabPunch"?.5f:(mode=="Head"?.42f:.38f)+Spacing,mode=="Head"?.22f:0,mode=="Wall");
                 // Ledge LedgeHeight high, its face .8 m ahead of the climber (roots at z -1.5 and 1.5).
                 if(mode=="WallClimbHigh"){Block("High wall",new Vector3(0,HighWall*.5f,.4f),new Vector3(3f,HighWall,2.2f));UnityEngine.Physics.SyncTransforms();}
@@ -511,7 +522,7 @@ namespace ProjectHotfix.Physics.Tests
                     if((mode=="PushDown"||mode=="RunDown"||mode=="PushLegs"||mode=="PressRise"||mode=="StandOver")&&_pair.Players[1].Rig.RagdollActive&&tick%2==0)
                     {var (_,inside,deepest,where)=SkinGapNow(renderers);_skinInside=Mathf.Max(_skinInside,inside);if(deepest>_skinDeepest){_skinDeepest=deepest;_skinWhere=$"t{tick} {where}";}}
                     var punch=_pair.PhysicalPunches;clip.maxSkin=Mathf.Max(clip.maxSkin,angle);clip.frames[tick]=new Frame{tick=tick,punches=punch.State(0).PunchCount,hits=punch.Hits.Count,points=punch.Score(1).Points,grips=_pair.LogicalGrips,throws=_pair.Throws,cues=punch.ConfirmedCues,sourceAge=(float)punch.State(0).SourcePunchAge(mode=="RightBody"||mode=="GrabPunch"?1:0),skin=angle,tip=_pair.Players[0].Rig.HandPosition(mode=="RightBody"||mode=="GrabPunch"?1:0),root=_pair.Players[0].Rig.Actor.Motor.Body.position,targetRoot=_pair.Players[1].Rig.Actor.Motor.Body.position,targetDown=_pair.Players[1].Rig.KnockedDown,knockdowns=_pair.Players[1].Rig.Knockdowns,climbs=_pair.Players[0].Climbs,boneHandL=Bone(0,"HandLogical_L"),boneHandR=Bone(0,"HandLogical_R"),boneForearmL=Bone(0,"Forearm_L"),boneForearmR=Bone(0,"Forearm_R")};
-                    _pair.Present(1);var center=(mode=="KOVariety"||mode=="KORandom"||mode=="GetUp"?_pair.Players[1].Rig.Actor.Motor.Body.position:mode=="Solo"||mode=="WallClimb"||mode=="WallClimbHigh"||mode=="Gait"||mode=="DropkickMiss"||mode=="Jump"?_pair.Players[0].Rig.Actor.Motor.Body.position:(_pair.Players[0].Rig.Actor.Motor.Body.position+_pair.Players[1].Rig.Actor.Motor.Body.position)*.5f)+Vector3.up*.52f;var offset=mode=="WallClimbHigh"?new Vector3(-2.6f,.6f,-1.9f):mode=="Gait"||mode=="GetUp"||mode=="Jump"||mode.StartsWith("Dropkick")||mode=="PunchRise"||mode=="PunchDowned"||mode=="PressRise"||mode=="PushDown"||mode=="RunDown"||mode=="PushLegs"?new Vector3(2.6f,.6f,0):mode=="WallClimb"?new Vector3(-2.2f,.8f,-1.7f):new Vector3(mode=="RightBody"||mode=="GrabPunch"?2.3f:-2.3f,1.05f,1.25f);if(mode=="WallClimb")_pair.View.orthographicSize=1.05f;if(mode.StartsWith("Dropkick")){_pair.View.orthographicSize=1.1f;center-=Vector3.up*.15f;}if(mode=="DropkickRise"||mode=="PunchRise"||mode=="PunchDowned"||mode=="PressRise"||mode=="PushDown"||mode=="RunDown"||mode=="PushLegs"){center=(_pair.Players[0].Rig.Actor.Motor.Body.position+Bone(1,"Pelvis"))*.5f;center.y=.45f;_pair.View.orthographicSize=1.2f;}if(mode=="WallClimbHigh"){_pair.View.orthographicSize=1.35f;center+=Vector3.up*.3f;}if(mode=="PunchDowned"){var spotIndex=tick<LowSpotStart?-1:(tick-LowSpotStart)/LowSpotTicks;var spotAt=tick-LowSpotStart-spotIndex*LowSpotTicks;if(spotIndex>=0&&spotAt==100){var a0=_pair.Players[0].Rig.Actor.Motor.Body.position;var to=Vector3.ProjectOnPlane(Bone(1,"Chest")-a0,Vector3.up).normalized;_lowCameraCenter=a0+to*.35f;_lowCameraCenter.y=.4f;_lowCamera=Vector3.Cross(Vector3.up,to)*-2.6f+Vector3.up*.5f;}else if(spotIndex<0||spotAt<100){if(tick==0||spotIndex>=0&&spotAt==0){_lowCameraCenter=Bone(1,"Pelvis");_lowCameraCenter.y=.4f;}_lowCamera=new Vector3(2.2f,1.4f,-1.8f);}center=_lowCameraCenter;offset=_lowCamera;_pair.View.orthographicSize=spotIndex>=0&&spotAt>=100?.85f:1.3f;}if(mode=="KOVariety"||mode=="KORandom"){center-=Vector3.up*.35f;_pair.View.orthographicSize=.75f;}if(mode=="Crowd"){center=Bone(1,"Pelvis");center.y=.45f;offset=new Vector3(1.4f,1.7f,2.2f);_pair.View.orthographicSize=.85f;}if(mode=="GetUp"){center=(Bone(1,"Head")+Bone(1,"Foot_L")+Bone(1,"Foot_R"))/3;center.y=.42f;_pair.View.orthographicSize=.62f;if(Environment.GetEnvironmentVariable("PARTY_GETUP_VIEW")=="quarter"){offset=new Vector3(1.9f,1.5f,-1.4f);_pair.View.orthographicSize=.7f;}}if(mode.StartsWith("Grab")&&mode!="GrabPunch"){var span=Vector3.Distance(_pair.Players[0].Rig.Actor.Motor.Body.position,_pair.Players[1].Rig.Actor.Motor.Body.position);_zoom=Mathf.Max(_zoom,Mathf.Clamp(.45f+span*.45f,.8f,2.6f));_pair.View.orthographicSize=_zoom;}_pair.View.transform.SetPositionAndRotation(center+offset,Quaternion.LookRotation(-offset));
+                    _pair.Present(1);var center=(mode=="KOVariety"||mode=="KORandom"||mode=="GetUp"?_pair.Players[1].Rig.Actor.Motor.Body.position:mode=="Solo"||mode=="WallClimb"||mode=="WallClimbHigh"||mode=="Gait"||mode=="DropkickMiss"||mode=="Jump"?_pair.Players[0].Rig.Actor.Motor.Body.position:(_pair.Players[0].Rig.Actor.Motor.Body.position+_pair.Players[1].Rig.Actor.Motor.Body.position)*.5f)+Vector3.up*.52f;var offset=mode=="WallClimbHigh"?new Vector3(-2.6f,.6f,-1.9f):mode=="Gait"||mode=="GetUp"||mode=="Jump"||mode.StartsWith("Dropkick")||mode=="PunchRise"||mode=="PunchDowned"||mode=="PressRise"||mode=="PushDown"||mode=="RunDown"||mode=="PushLegs"?new Vector3(2.6f,.6f,0):mode=="WallClimb"?new Vector3(-2.2f,.8f,-1.7f):new Vector3(mode=="RightBody"||mode=="GrabPunch"?2.3f:-2.3f,1.05f,1.25f);if(mode=="WallClimb")_pair.View.orthographicSize=1.05f;if(mode.StartsWith("Dropkick")){_pair.View.orthographicSize=1.1f;center-=Vector3.up*.15f;}if(mode=="DropkickRise"||mode=="PunchRise"||mode=="PunchDowned"||mode=="PressRise"||mode=="PushDown"||mode=="RunDown"||mode=="PushLegs"){center=(_pair.Players[0].Rig.Actor.Motor.Body.position+Bone(1,"Pelvis"))*.5f;center.y=.45f;_pair.View.orthographicSize=1.2f;}if(mode=="WallClimbHigh"){_pair.View.orthographicSize=1.35f;center+=Vector3.up*.3f;}if((mode=="WallClimb"||mode=="WallClimbHigh")&&Environment.GetEnvironmentVariable("PARTY_CLIMB_VIEW")=="side"){offset=new Vector3(2.4f,.02f,.15f);_pair.View.orthographicSize=.8f;center=_pair.Players[0].Rig.Actor.Motor.Body.position+Vector3.up*.45f;}if(mode=="PunchDowned"){var spotIndex=tick<LowSpotStart?-1:(tick-LowSpotStart)/LowSpotTicks;var spotAt=tick-LowSpotStart-spotIndex*LowSpotTicks;if(spotIndex>=0&&spotAt==100){var a0=_pair.Players[0].Rig.Actor.Motor.Body.position;var to=Vector3.ProjectOnPlane(Bone(1,"Chest")-a0,Vector3.up).normalized;_lowCameraCenter=a0+to*.35f;_lowCameraCenter.y=.4f;_lowCamera=Vector3.Cross(Vector3.up,to)*-2.6f+Vector3.up*.5f;}else if(spotIndex<0||spotAt<100){if(tick==0||spotIndex>=0&&spotAt==0){_lowCameraCenter=Bone(1,"Pelvis");_lowCameraCenter.y=.4f;}_lowCamera=new Vector3(2.2f,1.4f,-1.8f);}center=_lowCameraCenter;offset=_lowCamera;_pair.View.orthographicSize=spotIndex>=0&&spotAt>=100?.85f:1.3f;}if(mode=="KOVariety"||mode=="KORandom"){center-=Vector3.up*.35f;_pair.View.orthographicSize=.75f;}if(mode=="Crowd"){center=Bone(1,"Pelvis");center.y=.45f;offset=new Vector3(1.4f,1.7f,2.2f);_pair.View.orthographicSize=.85f;}if(mode=="GetUp"){center=(Bone(1,"Head")+Bone(1,"Foot_L")+Bone(1,"Foot_R"))/3;center.y=.42f;_pair.View.orthographicSize=.62f;if(Environment.GetEnvironmentVariable("PARTY_GETUP_VIEW")=="quarter"){offset=new Vector3(1.9f,1.5f,-1.4f);_pair.View.orthographicSize=.7f;}}if(mode.StartsWith("Grab")&&mode!="GrabPunch"){var span=Vector3.Distance(_pair.Players[0].Rig.Actor.Motor.Body.position,_pair.Players[1].Rig.Actor.Motor.Body.position);_zoom=Mathf.Max(_zoom,Mathf.Clamp(.45f+span*.45f,.8f,2.6f));_pair.View.orthographicSize=_zoom;}_pair.View.transform.SetPositionAndRotation(center+offset,Quaternion.LookRotation(-offset));
                     yield return null;_pair.View.Render();var old=RenderTexture.active;RenderTexture.active=rt;image.ReadPixels(new Rect(0,0,800,600),0,0);image.Apply();RenderTexture.active=old;File.WriteAllBytes(Path.Combine(folder,$"Frame_{tick:D4}.png"),image.EncodeToPNG());
                 }
                 clip.hits=_pair.PhysicalPunches.Hits.ToArray();results.Add(clip);if(_pair.PhysicalPunches.ContactLog!=null)File.WriteAllLines(Path.Combine(Output,mode+"_Contacts.tsv"),_pair.PhysicalPunches.ContactLog);File.WriteAllText(Path.Combine(Output,"Capture.json"),JsonUtility.ToJson(new Report{clips=results.ToArray()},true));
@@ -539,6 +550,7 @@ namespace ProjectHotfix.Physics.Tests
                     else if(_throwDistance<.5f)failures.Add(mode+$" held {string.Join("+",_heldParts)}: throw carried only {_throwDistance:F2} m");
                     if(clip.frames[ticks-1].targetDown)failures.Add(mode+" thrown body did not get up");
                 }
+                if(mode.StartsWith("WallClimb"))Debug.Log($"{mode}: wall jumps {_pair.Players[0].WallJumps} (over the top {_pair.Players[0].TopJumps}), climbs {_pair.Players[0].Climbs}, on top t{_topTick}, root y {clip.frames[ticks-1].root.y:F2}");
                 if(mode=="WallClimbHigh"&&(clip.frames[ticks-1].climbs<1||clip.frames[ticks-1].root.y<HighWall-.05f))failures.Add(mode+" did not climb the high wall");
                 if(mode=="WallClimb"&&(clip.frames[ticks-1].climbs<1||clip.frames[ticks-1].root.y<LedgeHeight-.05f))failures.Add(mode+" did not climb the ledge");
                 // Running hands only dropkick (2026-10-20): no punch while running; a landed kick knocks the target down,

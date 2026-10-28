@@ -27,6 +27,8 @@ namespace ProjectHotfix.PhysicsJump
             public bool RollingHands;
             // A grip on static level geometry (a wall or ledge): no B body, LocalB is the world point.
             public bool World;
+            // A wall grip: the holding forearm slides frictionless until it lets go (its own material put back then).
+            public Collider SlidingHand;public PhysicsMaterial SlidingHandMaterial;
             public bool Valid=>Joint!=null&&A!=null&&!A.isKinematic&&A.gameObject.activeInHierarchy&&(World||B!=null&&!B.isKinematic&&B.gameObject.activeInHierarchy);
             public Vector3 PointA=>A.position+A.rotation*LocalA;
             public Vector3 PointB=>World?LocalB:B.position+B.rotation*LocalB;
@@ -81,15 +83,14 @@ namespace ProjectHotfix.PhysicsJump
             public bool Jump;
             internal bool JumpPrevious;
             internal float ClimbAge=-1;
-            // Climb on the ragdoll: one world joint per holding forearm, the ledge top and the way over it.
-            internal readonly ConfigurableJoint[] ClimbHolds=new ConfigurableJoint[2];
-            internal readonly float[] ClimbHoldTop=new float[2];
-            internal readonly Collider[] ClimbHoldSurface=new Collider[2];
-            internal Vector3 ClimbForward;
+            // Powered climb (ActiveGrabPairReview.Climb): the wall held, its outward normal, the step under way and the
+            // hand moves of that step (from/to world points, start and length in seconds into the step).
             internal Collider ClimbWall;
+            internal Vector3 ClimbNormal;
             internal bool ClimbSession;
-            internal float ClimbFree,ClimbGrabWait;
-            public int Hops;
+            internal float ClimbFreeTime,ClimbJumpAge=-1;internal Vector3 ClimbWallPoint;internal float ClimbPull;internal bool ClimbPullReady;internal float ClimbWindup=-1,ClimbLaunchAge=-1;internal bool ClimbLaunchGrounded,ClimbHangValid,ClimbLegsPosed;internal Vector3 ClimbHangGoal;internal float ClimbLegTuck,ClimbLegTuckSpeed,ClimbLegForward,ClimbLegForwardSpeed,ClimbLegClock=-1;internal Vector3 ClimbLastVelocity;internal bool ClimbLegsLive;internal bool ClimbTopHeld,ClimbTopJump;internal float ClimbOverAge=-1;
+            public int WallJumps,TopJumps;
+            public bool Climbing=>ClimbSession;
             public int Climbs,Jumps;
             internal bool DropkickHit;
             public int DropkickHits;
@@ -112,6 +113,8 @@ namespace ProjectHotfix.PhysicsJump
         public float WalkSpeed=1.4f,SprintSpeed=2.1f,Acceleration=20f;
         public float HoldThreshold=.15f,PalmContactRadius=.055f,GripBreakForce=2000f;
         public float SpawnSeparation=.5f;
+        // Climb test scenes: the camera follows player 1 from FollowOffset at FollowSize instead of framing both players.
+        public bool FollowFirstPlayer;public Vector3 FollowOffset=new Vector3(-2.6f,.6f,-1.9f);public float FollowSize=1.35f;
         public float ReachHalfWidth=.17f;
         public GrabMotion Motion=GrabMotion.Original;
         public string SkinTransportPath;
@@ -267,7 +270,10 @@ namespace ProjectHotfix.PhysicsJump
                 if(!hand.Button){if(hand.Connection!=null)Release(p,side,"Release",false);hand.MustRelease=false;hand.Age=0;hand.Phase=HandPhase.Idle;}
                 else if(Suppressed||hand.MustRelease)hand.Phase=HandPhase.AwaitRelease;
                 else if(hand.Connection==null)
-                {if(!hand.Previous)hand.Age=0;hand.Age+=seconds;hand.Phase=PhysicalPunches!=null?(PhysicalPunches.State(p).Phase(side)==HandIntentPhase.GrabSeek?HandPhase.Seeking:HandPhase.Idle):hand.Age+1e-6f>=HoldThreshold?HandPhase.Seeking:HandPhase.Idle;}
+                {if(!hand.Previous)hand.Age=0;hand.Age+=seconds;hand.Phase=PhysicalPunches!=null?(PhysicalPunches.State(p).Phase(side)==HandIntentPhase.GrabSeek?HandPhase.Seeking:HandPhase.Idle):hand.Age+1e-6f>=HoldThreshold?HandPhase.Seeking:HandPhase.Idle;
+                // Airborne on a wall (just let go of it) a press is a grab at once: no punch to tell it from, and waiting the
+                // hold threshold the climber fell past the wall before the hands reached for it (2026-10-25).
+                if(Players[p].ClimbSession&&!Players[p].Rig.Supported)hand.Phase=HandPhase.Seeking;}
                 if(hand.Connection!=null&&(!hand.Connection.Valid||hand.TargetCollider==null||!hand.TargetCollider.enabled||hand.TargetCollider.isTrigger||ExternalTarget!=null&&ExternalTarget.Owns(hand.TargetBody)&&!ExternalTarget.Available))Release(p,side,"ContactLost",true);
                 hand.Previous=hand.Button;
             }
@@ -283,21 +289,24 @@ namespace ProjectHotfix.PhysicsJump
             for(var p=0;p<2;p++)
             {
                 var player=Players[p];if(!Active(player))continue;
-                if(player.Rig.RagdollActive){IgnoreDownedWithRoot(p,false,true);player.HoldHeading=true;player.HeadingHeld=false;StepClimbRagdoll(p,seconds);StepDropkick(p,seconds);StepHeldWake(p,seconds);player.Rig.StepKnockdown(seconds);continue;}
+                if(player.Rig.RagdollActive){IgnoreDownedWithRoot(p,false,true);player.HoldHeading=true;player.HeadingHeld=false;if(player.ClimbSession)EndClimbHolds(player);StepDropkick(p,seconds);StepHeldWake(p,seconds);player.Rig.StepKnockdown(seconds);continue;}
                 player.HandsIdleSeconds=player.Hands.Any(h=>h.Phase!=HandPhase.Idle)?0:player.HandsIdleSeconds+seconds;
-                SeparateFromDowned(p);
+                SeparateFromDowned(p);StepClimb(p,seconds);
                 var body=player.Rig.Actor.Motor.Body;
                 for(var side=0;side<2;side++)
                 {
                     var hand=player.Hands[side];var active=hand.Phase==HandPhase.Seeking||hand.Phase==HandPhase.Holding;
                     var target=MotionTarget(p,side,active,seconds);
+                    if(!active&&ClimbReachTarget(p,side,out var reach)){active=true;target=reach;}
                     player.Rig.SetHandTarget(side,active,target);
                     player.Rig.SetGripPosture(side,Motion!=GrabMotion.AdaptiveReach&&hand.Phase==HandPhase.Holding);
                     // The skin point can transfer a one-hand load through a
                     // longer lever than the old trunk hull. Retain the lift goal
                     // with bounded arm torque, without increasing weight support.
                     var liftDrive=SkinContacts!=null&&player.Hands.Count(h=>h.Button&&!h.MustRelease)==1?3f:2.5f;
-                    player.Rig.SetHandDriveScale(side,hand.Phase==HandPhase.Holding?(EnableLiftThrow?liftDrive:.65f):1f);
+                    // A climber's wall grip only places the hand (the root is carried, ActiveGrabPairReview.Climb): the lift drive
+                    // pulled the arm against the springy hold and it shook.
+                    player.Rig.SetHandDriveScale(side,hand.Phase==HandPhase.Holding?(player.ClimbSession&&hand.Connection!=null&&hand.Connection.World?ClimbHandDrive:EnableLiftThrow?liftDrive:.65f):1f);
                     player.Rig.SetOverheadReach(side,active);
                     PhysicalPunches?.ApplyReference(p,side);
                 }
@@ -305,7 +314,7 @@ namespace ProjectHotfix.PhysicsJump
                 player.Rig.LowReachRequest=(ExternalTarget!=null||Active(Players[1-p])&&Players[1-p].Rig.KnockedDown)&&Motion==GrabMotion.AdaptiveReach?Mathf.Clamp01((.42f-lowHeight)/.22f):0;
                 if(AimLowStrike(p))player.Rig.LowReachRequest=1;
                 player.Rig.ReferenceReachFraction=Motion==GrabMotion.Original?1f:.96f;
-                MovePlayer(p,seconds);player.Rig.Step(seconds);
+                MovePlayer(p,seconds);CarryClimber(p);PoseClimbLegs(p);player.Rig.Step(seconds);
             }
         }
         // A knocked-down rig's body is its ragdoll (RagdollRecoveryReview proxies outside the rig's
@@ -501,7 +510,8 @@ namespace ProjectHotfix.PhysicsJump
                 var hand=Players[p].Hands[side];if(hand.Connection==null)continue;
                 // A carry loads the grip joint by design: that load is not a pull-off, and the swinging
                 // limp body may stretch it further before it counts as lost.
-                var carry=hand.LiftRise>0&&hand.TargetRig!=null&&hand.TargetRig.KnockedDown;
+                // So does a climber's wall grip (its hold is moved along the step).
+                var carry=hand.LiftRise>0&&hand.TargetRig!=null&&hand.TargetRig.KnockedDown||Players[p].ClimbSession&&hand.Connection.World;
                 if(!hand.Connection.Valid||!float.IsFinite(hand.Connection.Force)||hand.Connection.Gap>(carry?.15f:.06f))Release(p,side,"ContactLost",true);
                 else if(!carry&&hand.Stress.Step(_stepSeconds,hand.Connection.Force/250f))Release(p,side,"GripStress",true);
             }
@@ -524,6 +534,7 @@ namespace ProjectHotfix.PhysicsJump
                         connection.Joint.xMotion=connection.Joint.yMotion=connection.Joint.zMotion=ConfigurableJointMotion.Free;
                         Destroy(connection.Joint);
                     }
+                    if(connection.SlidingHand!=null)connection.SlidingHand.sharedMaterial=connection.SlidingHandMaterial;
                     _connections.Remove(connection);
                 }
                 owner.Releases++;if(broken)owner.Breaks++;owner.LastRelease=reason;
@@ -557,6 +568,11 @@ namespace ProjectHotfix.PhysicsJump
         }
         private void FrameCamera()
         {
+            if(FollowFirstPlayer&&Players!=null&&Active(Players[0]))
+            {
+                View.orthographicSize=FollowSize;
+                View.transform.SetPositionAndRotation(Players[0].Rig.Actor.Motor.Body.position+Vector3.up*.82f+FollowOffset,Quaternion.LookRotation(-FollowOffset));return;
+            }
             if(Players==null||!Active(Players[0])||(ExternalTarget==null&&!Active(Players[1])))return;
             var center=(Players[0].Rig.Actor.Motor.Body.position+(ExternalTarget!=null?ExternalTarget.Center:Players[1].Rig.Actor.Motor.Body.position))*.5f+Vector3.up*(ExternalTarget!=null?.32f:.5f);
             View.transform.SetPositionAndRotation(center+new Vector3(2.3f,1.05f,1.9f),Quaternion.LookRotation(-new Vector3(2.3f,1.05f,1.9f)));
