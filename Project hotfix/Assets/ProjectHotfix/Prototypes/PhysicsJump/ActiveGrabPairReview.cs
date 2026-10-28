@@ -118,6 +118,8 @@ namespace ProjectHotfix.PhysicsJump
         public float ReachHalfWidth=.17f;
         public GrabMotion Motion=GrabMotion.Original;
         public string SkinTransportPath;
+        // Saved scenes keep the path relative to the repository root so they open on any clone.
+        private string ResolvedSkinPath=>string.IsNullOrEmpty(SkinTransportPath)||System.IO.Path.IsPathRooted(SkinTransportPath)?SkinTransportPath:System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.dataPath,"../..",SkinTransportPath));
         public LimpGrabTargetReview ExternalTarget;
         public bool UseLimpTargetFixture;
         public bool MatchHandEnvelope;
@@ -153,7 +155,7 @@ namespace ProjectHotfix.PhysicsJump
             Players=new Player[2];
             for(var index=0;index<2;index++)
             {
-                var rig=ActiveUpperBodyReview.CreateInteractionRig(gameObject.scene,new Vector3(0,.025f,(index==0?-1:1)*SpawnSeparation*.5f),Quaternion.Euler(0,index==0?0:180,0),SkinTransportPath);
+                var rig=ActiveUpperBodyReview.CreateInteractionRig(gameObject.scene,new Vector3(0,.025f,(index==0?-1:1)*SpawnSeparation*.5f),Quaternion.Euler(0,index==0?0:180,0),ResolvedSkinPath);
                 rig.StrikeStyle=StrikeStyle;
                 rig.transform.SetParent(transform,true);rig.name="Physical Player "+(index+1);
                 if(MatchHandEnvelope)rig.MatchHandSkinEnvelope();
@@ -172,7 +174,7 @@ namespace ProjectHotfix.PhysicsJump
             if(UseLimpTargetFixture)
             {
                 Players[1].Rig.gameObject.SetActive(false);
-                ExternalTarget=LimpGrabTargetReview.Create(gameObject.scene,string.IsNullOrEmpty(SkinTransportPath)?PhysicsJumpReview.LatWeightTransportPath:SkinTransportPath,FixtureOrientation);
+                ExternalTarget=LimpGrabTargetReview.Create(gameObject.scene,string.IsNullOrEmpty(SkinTransportPath)?PhysicsJumpReview.LatWeightTransportPath:ResolvedSkinPath,FixtureOrientation);
             }
             Ready=true;Physics.SyncTransforms();CapturePhysics();
         }

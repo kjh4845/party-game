@@ -195,7 +195,7 @@ MonoBehaviour:
   FollowSize: 1.05
   ReachHalfWidth: 0.17
   Motion: 2
-  SkinTransportPath: /Users/kjh/local_dev/partygame/BlenderSource/Characters/C1B-RW-046-slim-body/R43Character.bytes
+  SkinTransportPath: BlenderSource/Characters/C1B-RW-046-slim-body/R43Character.bytes
   ExternalTarget: {fileID: 0}
   UseLimpTargetFixture: 0
   MatchHandEnvelope: 1

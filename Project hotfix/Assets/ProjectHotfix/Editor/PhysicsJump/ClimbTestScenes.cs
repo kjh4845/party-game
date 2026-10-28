@@ -26,7 +26,8 @@ namespace ProjectHotfix.PhysicsJump.Editor
         private static void Create(string name,float height,Material material,float view)
         {
             var scene=EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Single);
-            var skin=System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.dataPath,"../../BlenderSource/Characters/C1B-RW-046-slim-body/R43Character.bytes"));
+            // Relative to the repository root (resolved at Play), so the saved scene works on any clone.
+            const string skin="BlenderSource/Characters/C1B-RW-046-slim-body/R43Character.bytes";
             var review=ActiveGrabPairReview.Create(scene,3f,ActiveGrabPairReview.GrabMotion.AdaptiveReach,skin,matchHandEnvelope:true);
             review.EnableStandingSkinContacts=review.EnableLiftThrow=review.EnablePhysicalPunch=true;
             review.UseStrikeStyle(ActiveUpperBodyReview.ReviewStrikeStyle.BodyStrike);review.UseFightThrows();
