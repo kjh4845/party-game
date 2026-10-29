@@ -14,6 +14,9 @@ namespace ProjectHotfix.PhysicsJump
         // Launch (m/s added along the facing and up) and the stiff flight. The body turns to look to the side of
         // the clicked hand and lies back feet first (DropkickLean deg from upright), reaching that in
         // DropkickTurnSeconds (2026-10-20 review: fly looking left or right, not face first).
+        // Out of a running jump the flight keeps the jump's rise plus DropkickAirUp, between DropkickAirMinimumUp and
+        // DropkickUp (no second jump on top of the first).
+        public float DropkickAirUp = 1f, DropkickAirMinimumUp = 1.2f;
         public float DropkickForward = 1.2f, DropkickUp = 2.4f, DropkickLean = 80f, DropkickTurnSeconds = .18f, DropkickHoldSeconds = .45f, DropkickStiffness = 400f;
         private Quaternion _dropkickTarget; private bool _dropkickTurning;
 
@@ -24,6 +27,7 @@ namespace ProjectHotfix.PhysicsJump
             var root = Actor.Motor.Body;
             var direction = Vector3.ProjectOnPlane(root.rotation * Vector3.forward, Vector3.up).normalized;
             var run = Mathf.Max(0, Vector3.Dot(root.linearVelocity, direction));
+            var up = Supported ? DropkickUp : Mathf.Clamp(root.linearVelocity.y + DropkickAirUp, DropkickAirMinimumUp, DropkickUp);
             if (!EnterRagdoll(false)) return false;
             EndDownProtection(); Dropkicking = true; DropkickAge = 0; root.constraints = RigidbodyConstraints.None;
             Knockdown.TumbleHoldSpring = DropkickStiffness;
@@ -32,7 +36,7 @@ namespace ProjectHotfix.PhysicsJump
             for (var i = 0; i < count; i++) { mass += bodies[i].mass; center += bodies[i].mass * bodies[i].worldCenterOfMass; }
             center /= mass;
             // One rigid launch about the centre of mass: the body rotates back (head back, feet forward up).
-            var launch = direction * (run + DropkickForward) + Vector3.up * DropkickUp;
+            var launch = direction * (run + DropkickForward) + Vector3.up * up;
             // Yaw a quarter turn toward the clicked side, then lean about the new facing so the head goes back.
             var yaw = Quaternion.AngleAxis(side == 0 ? -90f : 90f, Vector3.up); var face = yaw * direction;
             var lean = Vector3.Dot(Vector3.Cross(face, Vector3.up), -direction) >= 0 ? DropkickLean : -DropkickLean;

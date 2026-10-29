@@ -298,9 +298,9 @@ namespace ProjectHotfix.PhysicsJump
         public float OverheadArmLimit=165f;
         private readonly bool[] _overheadReach=new bool[2];
         public void SetOverheadReach(int side,bool on)=>_overheadReach[side]=on;
-        public void SetPunchReference(int side,bool active,float sourceAge,float compactness=0)
+        public void SetPunchReference(int side,bool active,float sourceAge,float compactness=0,float hook=0)
         {
-            if(active&&!_punchReference[side]){EndDownProtection();_strikeTouchAge[side]=-1;_plantStarted[side]=false;_punchEntryPending[side]=true;_punchCompact[side]=Mathf.Clamp01(compactness);_punchOriginalHighX[side]=Find("UpperArm_"+(side==0?"L":"R")).Joint.highAngularXLimit.limit;}
+            if(active&&!_punchReference[side]){EndDownProtection();_strikeTouchAge[side]=-1;_plantStarted[side]=false;_punchEntryPending[side]=true;_punchCompact[side]=Mathf.Clamp01(compactness);_punchHook[side]=Mathf.Clamp01(hook);_punchOriginalHighX[side]=Find("UpperArm_"+(side==0?"L":"R")).Joint.highAngularXLimit.limit;}
             if(!active)_punchBlocked[side]=false;
             _punchReference[side]=active;_punchSourceAge[side]=sourceAge;
         }
@@ -371,7 +371,7 @@ namespace ProjectHotfix.PhysicsJump
             _rightPower = RightPowered ? Mathf.MoveTowards(_rightPower, 1, seconds * 5) : 0;
             _goalRoot.SetPositionAndRotation(Actor.Motor.Body.position, Actor.Motor.Body.rotation);
             foreach (var pair in _goals) pair.Value.localRotation = _rest[pair.Key];
-            ApplyLowReachReference(seconds);
+            ApplyLowReachReference(seconds);ApplyKickLean();
             ApplyPunchBodyReference();
             ApplyNaturalReachTorso();
             ApplyShoulderMotion(seconds);
@@ -381,6 +381,8 @@ namespace ProjectHotfix.PhysicsJump
             for(var side=0;side<2;side++)if(_punchReference[side])ApplyJointSpacePunch(side);
             ApplyImpactReaction(seconds);
             _shoveSeconds = Mathf.Max(0, _shoveSeconds - seconds);
+            _wobble = Mathf.MoveTowards(_wobble, 0, WobbleDecay * seconds);
+            _kickDriveHold = KickLean > 0 ? KickTrunkHold : Mathf.Max(0, _kickDriveHold - seconds);
             foreach (var link in _links)
             {
                 var parentGoal = link.ParentName == null ? _goalRoot : _goals[link.ParentName];
@@ -439,10 +441,30 @@ namespace ProjectHotfix.PhysicsJump
                 ApplyPunchVelocity(link,seconds);
                 var reaction=HitReactionScale(link,seconds);drive.positionSpring*=reaction;drive.maximumForce*=reaction;
                 ApplyImpactReactionDrive(link,ref drive);
+                ApplyWobbleDrive(link,ref drive);
+                if(_kickDriveHold>0&&(link.Name=="Spine"||link.Name=="Chest"||link.Name=="Head")){var k=Mathf.Lerp(1,KickTrunkDrive,_kickDriveHold/KickTrunkHold);drive.positionSpring*=k;drive.positionDamper*=Mathf.Sqrt(k);drive.maximumForce*=k;}
                 link.Joint.slerpDrive = drive;
             }
             ApplyFistDrive(seconds);
             Steps++;
+        }
+        // Jump kick lean (PhysicalPunchReview.JumpKick): the trunk tips back KickLean degrees while the feet go out, so the
+        // short legs read as a kick. Set every step by the punch review; 0 leaves the pose alone.
+        // The trunk is driven KickTrunkDrive times as hard while it leans, fading over KickTrunkHold s after: at the normal
+        // drive it reached the lean ~.15 s late, after the feet had already met the target, and the kick read as sitting in
+        // the air; dropped at once, the swing back up carried on into a 15 deg bow after landing (2026-10-30 review).
+        public float KickLean,KickTrunkDrive=3f,KickTrunkHold=.3f;private bool _kickLeanWasActive;private float _kickDriveHold;
+        private void ApplyKickLean()
+        {
+            if(KickLean<=0&&!_kickLeanWasActive)return;
+            var lean=Mathf.Clamp(KickLean,0,45);var spine=Find("Spine");var chest=Find("Chest");
+            _goals["Pelvis"].rotation=Quaternion.AngleAxis(-lean*.7f,_goalRoot.right)*_goals["Pelvis"].rotation;
+            chest.Goal.rotation=Quaternion.AngleAxis(-lean*.3f,_goalRoot.right)*chest.Goal.rotation;
+            var spineLimit=Mathf.Max(10,lean*.7f+3);var chestLimit=Mathf.Max(12,lean*.3f+3);
+            spine.Joint.lowAngularXLimit=new SoftJointLimit{limit=-spineLimit};spine.Joint.highAngularXLimit=new SoftJointLimit{limit=spineLimit};
+            chest.Joint.lowAngularXLimit=new SoftJointLimit{limit=-chestLimit};chest.Joint.highAngularXLimit=new SoftJointLimit{limit=chestLimit};
+            if(LowReachWeight<=0)Actor.Pose.AdditionalPelvisPitch=-lean*.7f;
+            _kickLeanWasActive=KickLean>0;
         }
         private void ApplyLowReachReference(float seconds)
         {

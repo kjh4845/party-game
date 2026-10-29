@@ -72,6 +72,12 @@ namespace ProjectHotfix.Presentation
         // Set from outside for one pose (a wall climb, ActiveGrabPairReview.Climb; defaults change nothing): a leg
         // shortening that replaces the airborne tuck (negative = none) and the feet shifted forward.
         public float TuckOverride = -1f, FootForwardOffset;
+        // Jump kick (prototype): both feet swing toward KickTarget (root-local; x is mirrored for the left foot) by
+        // KickWeight, about the hip at the leg's own length, so a straight leg stays straight on the way out and back. A
+        // straight-line blend drew the feet in past the hip and folded the knees ~100 deg on the way down, and the old
+        // target above the hip read as a sit (2026-10-30 review). Neutral at 0.
+        public float KickWeight;
+        public Vector3 KickTarget = new Vector3(.09f, .15f, .15f);
         // Share of the thigh's swing the HipDeform_ helpers follow (the hip band of the skin). The source rig's quarter.
         public float HipDeformFollow = .25f;
         // Time constant (s) of the direction the strides are laid along; 0 = the travel velocity as it is. Running, the body's
@@ -196,7 +202,7 @@ namespace ProjectHotfix.Presentation
                 pelvis.rotation = Quaternion.AngleAxis(-support * Mathf.Lerp(1.5f,2.5f,_sprintBlend)*PelvisRollScale, transform.forward) * pelvis.rotation;
             }
             MaximumFootTargetError = 0f;
-            if(AdditionalPelvisPitch!=0)pelvis.rotation=Quaternion.AngleAxis(Mathf.Clamp(AdditionalPelvisPitch,0,40),transform.right)*pelvis.rotation;
+            if(AdditionalPelvisPitch!=0)pelvis.rotation=Quaternion.AngleAxis(Mathf.Clamp(AdditionalPelvisPitch,-40,40),transform.right)*pelvis.rotation;
             if(AdditionalPelvisYaw!=0)pelvis.rotation=Quaternion.AngleAxis(Mathf.Clamp(AdditionalPelvisYaw,-12,12),transform.up)*pelvis.rotation;
             MaximumReachCorrection = 0f;
             for (var i = 0; i < 2; i++)
@@ -275,6 +281,7 @@ namespace ProjectHotfix.Presentation
                 }
                 else { _planted[i] = false; _plantOffsets[i] = Vector3.zero; }
                 target += transform.forward * FootForwardOffset;
+                if (KickWeight > 0f) target = thigh.position + Vector3.Slerp(target - thigh.position, transform.TransformPoint(new Vector3((i == 0 ? -1f : 1f) * Mathf.Abs(KickTarget.x), KickTarget.y, KickTarget.z)) - thigh.position, Mathf.Clamp01(KickWeight));
                 var a = Vector3.Distance(thigh.position, calf.position);
                 var b = Vector3.Distance(calf.position, foot.position);
                 var delta = target - thigh.position;

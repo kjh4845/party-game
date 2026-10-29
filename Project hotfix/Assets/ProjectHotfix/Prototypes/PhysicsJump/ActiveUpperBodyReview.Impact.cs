@@ -55,7 +55,7 @@ namespace ProjectHotfix.PhysicsJump
         public void ClearImpactReaction()
         {
             ResetShoulderMotion();
-            _impactAge=-1;_impactStrength=0;_impactPart=null;_hitReaction.Clear();
+            _impactAge=-1;_impactStrength=0;_impactPart=null;_hitReaction.Clear();_wobble=0;
             foreach(var link in _links)
             {link.Joint.slerpDrive=link.Drive;link.Joint.targetRotation=Quaternion.identity;link.Joint.targetAngularVelocity=Vector3.zero;}
             RestoreBodyStrikePose();
@@ -179,6 +179,8 @@ namespace ProjectHotfix.PhysicsJump
         public enum BodyStrikeArmPath { Current, Straight, Swing, Merged }
         public BodyStrikeArmPath BodyArmPath=BodyStrikeArmPath.Merged;
         public bool LoweredCarriage=true;
+        // Close-range hook (Merged path), in the same joint terms as the stroke above.
+        public float HookChamberLift=50,HookLift=55,HookYawOut=60,HookYawIn=10,HookRollStart=60,HookRollEnd=60,HookFlex=95;
         private const float LoweredLift=8,LoweredFlex=18,RetractLift=45,RetractYaw=10;
         private void ApplyBodyStrikeArm(int side,Link upper,Link forearm,float t)
         {
@@ -202,11 +204,14 @@ namespace ProjectHotfix.PhysicsJump
             {
                 // The current chamber-and-extend, started a little wider so it reads as swinging in.
                 var strike=StrikeCurve((t-.065f)/.085f);recover=Smooth((t-.215f)/.175f);
-                lift=Mathf.Lerp(50,Mathf.Lerp(84,76,_punchCompact[side]),strike);
+                // Pressed against the opponent the straight-ish stroke runs past its body; the hook keeps the elbow bent and
+                // sweeps the fist in from the side instead (HookLift..HookFlex at full hook).
+                var hook=low?0:_punchHook[side];
+                lift=Mathf.Lerp(Mathf.Lerp(50,HookChamberLift,hook),Mathf.Lerp(Mathf.Lerp(84,76,_punchCompact[side]),HookLift,hook),strike);
                 // A low strike ends turned onto its target instead of crossing in (positive yaw turns the arm left).
-                yaw=Mathf.Lerp(-sign*32,low?-_lowStrikeAim[side]:sign*22,strike);
-                roll=Mathf.Lerp(sign*24,-sign*18,strike);
-                flex=Mathf.Lerp(80,Mathf.Lerp(28,45,_punchCompact[side]),strike);
+                yaw=Mathf.Lerp(-sign*Mathf.Lerp(32,HookYawOut,hook),low?-_lowStrikeAim[side]:sign*Mathf.Lerp(22,HookYawIn,hook),strike);
+                roll=Mathf.Lerp(sign*Mathf.Lerp(24,HookRollStart,hook),-sign*Mathf.Lerp(18,HookRollEnd,hook),strike);
+                flex=Mathf.Lerp(Mathf.Lerp(80,HookFlex,hook),Mathf.Lerp(Mathf.Lerp(28,45,_punchCompact[side]),HookFlex,hook),strike);
             }
             else
             {
@@ -367,6 +372,35 @@ namespace ProjectHotfix.PhysicsJump
                 SetJointGoal(Find("UpperArm_"+(side==0?"L":"R")),Quaternion.AngleAxis(22*amount,Vector3.right)*Quaternion.AngleAxis(sign*12*amount,Vector3.forward));
                 SetJointGoal(Find("Forearm_"+(side==0?"L":"R")),Quaternion.AngleAxis(55*amount,Vector3.right));
             }
+        }
+        // Wobble (2026-10-29 review: hits should read loose and funny). Each hit adds to it (AddWobble, at most 1) and it
+        // drains at WobbleDecay per second; while it lasts the arms and head lose strength down to WobbleDrive and the
+        // trunk half as much, so the arms flap and the head lolls. A punching arm keeps its strength: a punch thrown back
+        // through the wobble still lands.
+        public float WobbleDecay=2.5f,WobbleDrive=.25f,WobbleFling=1.2f;
+        private float _wobble;
+        public float Wobble=>_wobble;
+        public void AddWobble(float amount,Vector3 direction)
+        {
+            if(amount<=0)return;_wobble=Mathf.Min(1,_wobble+amount);
+            direction=Vector3.ProjectOnPlane(direction,Vector3.up);if(direction.sqrMagnitude<1e-6f)return;direction.Normalize();
+            // The free arms are thrown out with the blow, each to its own side and up.
+            var side=Vector3.Cross(Vector3.up,direction);
+            for(var s=0;s<2;s++)
+            {
+                if(_punchReference[s]||_handActive[s])continue;
+                var fling=(direction+side*(s==0?-1:1)*.8f+Vector3.up*.6f).normalized*WobbleFling*amount;
+                Find("Forearm_"+(s==0?"L":"R")).Body.AddForce(fling,ForceMode.VelocityChange);
+            }
+        }
+        private void ApplyWobbleDrive(Link link,ref JointDrive drive)
+        {
+            if(_wobble<=0)return;
+            var arm=link.Name.StartsWith("UpperArm")||link.Name.StartsWith("Forearm");
+            if(arm&&_punchReference[link.Name.EndsWith("_L")?0:1])return;
+            var share=arm||link.Name=="Head"?1:.5f;
+            var scale=Mathf.Lerp(1,WobbleDrive,_wobble*share);
+            drive.positionSpring*=scale;drive.maximumForce*=scale;
         }
         private void ApplyImpactReactionDrive(Link link,ref JointDrive drive)
         {

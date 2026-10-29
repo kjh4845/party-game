@@ -100,6 +100,28 @@ namespace ProjectHotfix.PhysicsJump
             return true;
         }
 
+        // A lucky punch (PhysicalPunchReview.LuckyChance): not a knockdown, a tumble (no Down, no points spent) thrown
+        // along velocityChange and spun at spin (rad/s); it gets up by the tumble get-up.
+        public int Launches { get; private set; }
+        public bool BeginLaunch(Vector3 velocityChange, Vector3 spin)
+        {
+            if (!EnterRagdoll(false)) return false;
+            Actor.Motor.Body.constraints = RigidbodyConstraints.None;
+            // The limp ragdoll caps spin at LimpMaximumSpin.
+            spin = Vector3.ClampMagnitude(spin, LimpMaximumSpin);
+            var bodies = new Rigidbody[16]; var count = Knockdown.CopyDynamicBodies(bodies);
+            var mass = 0f; var center = Vector3.zero;
+            for (var i = 0; i < count; i++) { mass += bodies[i].mass; center += bodies[i].mass * bodies[i].worldCenterOfMass; }
+            center /= mass;
+            for (var i = 0; i < count; i++)
+            {
+                bodies[i].AddForce(velocityChange + Vector3.Cross(spin, bodies[i].worldCenterOfMass - center), ForceMode.VelocityChange);
+                bodies[i].AddTorque(spin, ForceMode.VelocityChange);
+            }
+            Launches++;
+            return true;
+        }
+
         // velocityChange: the confirmed strike's shove, applied to every ragdoll body.
         public bool BeginKnockdown(Vector3 velocityChange)
         {

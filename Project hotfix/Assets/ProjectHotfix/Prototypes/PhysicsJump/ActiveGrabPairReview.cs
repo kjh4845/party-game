@@ -93,6 +93,8 @@ namespace ProjectHotfix.PhysicsJump
             public bool Climbing=>ClimbSession;
             public int Climbs,Jumps;
             internal bool DropkickHit;
+            // Jumped (Space) out of a run and not landed yet: only then does a press dropkick (ActiveGrabPairReview.Dropkick).
+            internal bool RunJump;internal float RunJumpAge;
             public int DropkickHits;
         }
 

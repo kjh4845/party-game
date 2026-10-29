@@ -10,6 +10,9 @@ namespace ProjectHotfix.PhysicsJump
         private readonly Quaternion[,] _impactTarget=new Quaternion[2,2];
         private readonly Dictionary<Link,Quaternion> _punchPreviousTarget=new Dictionary<Link,Quaternion>();
         private readonly float[] _punchCompact=new float[2];
+        // How much of the close-range hook a punch uses (0 = the normal stroke), fixed when it starts (PhysicalPunchReview).
+        private readonly float[] _punchHook=new float[2];
+        public float PunchHook(int side)=>_punchReference[side]?_punchHook[side]:0;
         private readonly float[] _guardRemaining=new float[2],_guardWeight=new float[2];
         private readonly Dictionary<Rigidbody,float> _hitReaction=new Dictionary<Rigidbody,float>();
         public bool PunchHasContact(int side)=>_punchReference[side]&&_punchImpactAge[side]>=0;

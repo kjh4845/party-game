@@ -21,7 +21,7 @@ namespace ProjectHotfix.Physics.Tests
         // Extra stand-off (m) for the close-range scenes: start apart and stop the approach that much
         // further out. PARTY_SPACING, default 0 (the original touching distances).
         private static float Spacing=>float.TryParse(Environment.GetEnvironmentVariable("PARTY_SPACING"),System.Globalization.NumberStyles.Float,System.Globalization.CultureInfo.InvariantCulture,out var value)?value:0;
-        private int _downTick=-1,_kickTick=-1;private float _koRestHeight=-1;private int _upTick=-1;private bool _protectHeld,_protectExpired;private float _zoom=.8f;private Vector2 _carry;
+        private int _downTick=-1,_kickTick=-1,_jumpTick=-1;private float _koRestHeight=-1;private int _upTick=-1;private bool _protectHeld,_protectExpired;private float _zoom=.8f;private Vector2 _carry;
         private const int KOCycle=200,CrowdCycle=540,CrowdCases=8;private bool _riseGrabPressed,_grabbedWhileRising,_risingKickIgnored;private int _risingTicks,_riseKickDowns=-1,_risePoints=-1;private Vector3 _pushStart;private int _stage,_releaseTick=-1,_gripTick=-1,_throwTick=-1,_throwCount;private Vector3 _throwFrom;private float _throwDistance=-1;private readonly HashSet<string> _heldParts=new HashSet<string>();private float _pushDrift=-1,_pushDepth,_skinDeepest;private int _pushInside,_skinInside;private string _skinWhere="";private GameObject _crowdProp;private bool _crowdArrived;private readonly int[] _crowdInside=new int[8];private GameObject _crowdProp2;private SkinnedMeshRenderer[] _crowdRenderers;
         private const int LowSpotTicks=190,LowSpotStart=60;private readonly int[] _lowSpotHits=new int[3];private float _lowFistMin=float.PositiveInfinity,_lowLeanMax;private readonly float[] _lowPunchGap=new float[12];private Vector3 _lowCamera,_lowCameraCenter;private int _lowDownsAtStart=-1,_lowPointsAtStart=-1;
         // Crowd: the most skin vertices of the downed body (every 4th) inside the prop or the walker's capsule in any one
@@ -102,7 +102,9 @@ namespace ProjectHotfix.Physics.Tests
         private static bool ClimbMoveSet=>Environment.GetEnvironmentVariable("PARTY_CLIMB_MOVE")!=null;
         private static float ClimbStick=>float.TryParse(Environment.GetEnvironmentVariable("PARTY_CLIMB_STICK"),System.Globalization.NumberStyles.Float,System.Globalization.CultureInfo.InvariantCulture,out var k)?k:.6f;
         private const float HighWall=1.6f;
-        // Root-to-root distance at which the Dropkick scene taps (PARTY_KICK_AT).
+        // Running-jump dropkicks (2026-10-30): ticks from the jump to the tap, and the rising-target case's jump distance.
+        private const int KickJumpPress=6,RiseJumpPress=4;private const float RiseJumpDistance=1f;
+        // Root-to-root distance at which the Dropkick scene jumps (PARTY_KICK_AT).
         private static int RiseKickDelay=>int.TryParse(Environment.GetEnvironmentVariable("PARTY_RISE_KICK_DELAY"),out var value)?value:5;
         private static float RisePunchDistance=>float.TryParse(Environment.GetEnvironmentVariable("PARTY_RISE_PUNCH_AT"),System.Globalization.NumberStyles.Float,System.Globalization.CultureInfo.InvariantCulture,out var value)?value:.9f;
         private static float RiseStepIn=>float.TryParse(Environment.GetEnvironmentVariable("PARTY_RISE_STEP_IN"),System.Globalization.NumberStyles.Float,System.Globalization.CultureInfo.InvariantCulture,out var value)?value:.6f;
@@ -401,21 +403,27 @@ namespace ProjectHotfix.Physics.Tests
                 // lands and pushes it a little but counts for nothing; the target keeps rising.
                 var rig=_pair.Players[1].Rig;var runner=_pair.Players[0];if(tick==5)rig.BeginKnockdown(new Vector3(0,0,1.2f));
                 if(rig.RagdollActive&&rig.Knockdown.Rising&&_risingTicks++==0)Debug.Log($"DropkickRise rising from t{tick}");
-                // Walk up to ~2 m and wait; RiseKickDelay ticks into the rise, sprint in and kick from .7 m so the legs land on
-                // the crouching body (from farther they fly over it).
+                // Walk up to ~2 m and wait; RiseKickDelay ticks into the rise, sprint in, jump at RiseJumpDistance and kick
+                // RiseJumpPress ticks later so the legs land on the crouching body (from farther they fly over it). Only a
+                // running jump dropkicks (2026-10-30).
                 var delta=Bone(1,"Pelvis")-runner.Rig.Actor.Motor.Body.position;delta.y=0;var go=_risingTicks>RiseKickDelay;
+                runner.Jump=tick==_jumpTick;
                 if(!go&&_kickTick<0){runner.Sprint=false;runner.Move=tick>30&&delta.magnitude>2?new Vector2(delta.x,delta.z).normalized*.6f:Vector2.zero;return;}
-                if(_kickTick<0&&go&&delta.magnitude<.7f){_kickTick=tick;Buttons(0,1);_riseKickDowns=rig.Knockdowns;}
+                if(_jumpTick<0&&go&&delta.magnitude<RiseJumpDistance){_jumpTick=tick+1;}
+                if(_kickTick<0&&_jumpTick>=0&&tick==_jumpTick+RiseJumpPress){_kickTick=tick;Buttons(0,1);_riseKickDowns=rig.Knockdowns;}
                 if(_kickTick>=0&&tick==_kickTick+2)Buttons(0,0);
                 if(_kickTick>=0&&(tick-_kickTick)%10==0&&tick-_kickTick<=40)Debug.Log($"DropkickRise t{tick} kick+{tick-_kickTick} target rising {rig.GettingUp} downs {rig.Knockdowns} leg contacts {runner.DropkickHits}");
                 runner.Sprint=_kickTick<0||tick<=_kickTick+2;runner.Move=runner.Sprint?new Vector2(delta.x,delta.z).normalized:Vector2.zero;return;
             }
             if(mode=="Dropkick"||mode=="DropkickMiss")
             {
-                // Run (Shift) at the opponent and tap a hand at ~1 m: a dropkick, never a punch. The miss runs at a
-                // far opponent and kicks the air with the right hand (the left-hand kick looks left, the right one right). Then stand still and watch the landing and get-up.
+                // Run (Shift) at the opponent, jump at ~1.2 m and tap a hand KickJumpPress ticks later: a dropkick, never a
+                // punch (only a running jump dropkicks, 2026-10-30). The miss runs at a far opponent and kicks the air with the
+                // right hand (the left-hand kick looks left, the right one right). Then stand still and watch the landing and get-up.
                 var runner=_pair.Players[0];var delta=_pair.Players[1].Rig.Actor.Motor.Body.position-runner.Rig.Actor.Motor.Body.position;delta.y=0;
-                if(_kickTick<0&&tick>=10&&(mode=="Dropkick"?delta.magnitude<KickDistance:tick>=80)){_kickTick=tick;Buttons(0,mode=="DropkickMiss"?2:1);}
+                runner.Jump=tick==_jumpTick;
+                if(_jumpTick<0&&tick>=10&&(mode=="Dropkick"?delta.magnitude<KickDistance:tick>=80))_jumpTick=tick+1;
+                if(_kickTick<0&&_jumpTick>=0&&tick==_jumpTick+KickJumpPress){_kickTick=tick;Buttons(0,mode=="DropkickMiss"?2:1);}
                 if(_kickTick>=0&&tick==_kickTick+2)Buttons(0,0);
                 runner.Sprint=tick>=10&&(_kickTick<0||tick<=_kickTick+2);runner.Move=runner.Sprint?new Vector2(delta.x,delta.z).normalized:Vector2.zero;return;
             }
@@ -509,7 +517,7 @@ namespace ProjectHotfix.Physics.Tests
             var modes=Environment.GetEnvironmentVariable("PARTY_CAPTURE_CASES")?.Split(',')??new[]{"LeftBody","RightBody","Head","Far","Wall","GrabPunch","Alternating","Moving"};
             foreach(var mode in modes)
             {
-                _stage=0;_releaseTick=-1;_gripTick=-1;_throwTick=-1;_throwCount=0;_throwDistance=-1;_heldParts.Clear();_riseGrabPressed=_grabbedWhileRising=_risingKickIgnored=false;_risingTicks=0;_riseKickDowns=-1;Array.Clear(_lowSpotHits,0,3);Array.Clear(_lowPunchGap,0,12);_lowCamera=_lowCameraCenter=default;_lowFistMin=float.PositiveInfinity;_lowLeanMax=0;_lowDownsAtStart=_lowPointsAtStart=-1;_risePoints=-1;_pushDrift=-1;_pushDepth=0;_pushInside=0;_skinDeepest=0;_skinInside=0;_skinWhere="";_downTick=-1;_kickTick=-1;_koRestHeight=-1;_upTick=-1;_protectHeld=_protectExpired=false;_zoom=.8f;_climbTick=-1;_topTick=-1;_overTry=false;
+                _stage=0;_releaseTick=-1;_gripTick=-1;_throwTick=-1;_throwCount=0;_throwDistance=-1;_heldParts.Clear();_riseGrabPressed=_grabbedWhileRising=_risingKickIgnored=false;_risingTicks=0;_riseKickDowns=-1;Array.Clear(_lowSpotHits,0,3);Array.Clear(_lowPunchGap,0,12);_lowCamera=_lowCameraCenter=default;_lowFistMin=float.PositiveInfinity;_lowLeanMax=0;_lowDownsAtStart=_lowPointsAtStart=-1;_risePoints=-1;_pushDrift=-1;_pushDepth=0;_pushInside=0;_skinDeepest=0;_skinInside=0;_skinWhere="";_downTick=-1;_kickTick=-1;_jumpTick=-1;_koRestHeight=-1;_upTick=-1;_protectHeld=_protectExpired=false;_zoom=.8f;_climbTick=-1;_topTick=-1;_overTry=false;
                 Create(mode=="GrabStanding"?.5f:mode=="Solo"||mode=="WallClimb"||mode=="WallClimbHigh"?3f:mode=="Gait"||mode=="DropkickMiss"||mode=="Jump"?9f:mode=="Dropkick"||mode=="DropkickRise"||mode=="Protect"?3f:mode=="PunchRise"||mode=="PunchDowned"||mode=="PressRise"||mode=="PushDown"||mode=="PushLegs"?1.6f:mode=="RunDown"?3.2f:mode=="StandOver"?1.6f:mode=="KOVariety"||mode=="KORandom"||mode=="GetUp"?3f:mode=="Crowd"?2f:mode=="Far"?FarSeparation:mode=="GrabPunch"?.5f:(mode=="Head"?.42f:.38f)+Spacing,mode=="Head"?.22f:0,mode=="Wall");
                 // Ledge LedgeHeight high, its face .8 m ahead of the climber (roots at z -1.5 and 1.5).
                 if(mode=="WallClimbHigh"){Block("High wall",new Vector3(0,HighWall*.5f,.4f),new Vector3(3f,HighWall,2.2f));UnityEngine.Physics.SyncTransforms();}
@@ -553,9 +561,9 @@ namespace ProjectHotfix.Physics.Tests
                 if(mode.StartsWith("WallClimb"))Debug.Log($"{mode}: wall jumps {_pair.Players[0].WallJumps} (over the top {_pair.Players[0].TopJumps}), climbs {_pair.Players[0].Climbs}, on top t{_topTick}, root y {clip.frames[ticks-1].root.y:F2}");
                 if(mode=="WallClimbHigh"&&(clip.frames[ticks-1].climbs<1||clip.frames[ticks-1].root.y<HighWall-.05f))failures.Add(mode+" did not climb the high wall");
                 if(mode=="WallClimb"&&(clip.frames[ticks-1].climbs<1||clip.frames[ticks-1].root.y<LedgeHeight-.05f))failures.Add(mode+" did not climb the ledge");
-                // Running hands only dropkick (2026-10-20): no punch while running; a landed kick knocks the target down,
-                // and the kicker is standing again by the end.
-                if(mode.StartsWith("Dropkick")&&(clip.frames[ticks-1].punches!=0||_pair.Players[0].Rig.Dropkicks!=1))failures.Add(mode+" running tap was not exactly one dropkick");
+                // A running jump's press only dropkicks (2026-10-20, in the air since 2026-10-30): no punch; a landed kick
+                // knocks the target down, and the kicker is standing again by the end.
+                if(mode.StartsWith("Dropkick")&&(clip.frames[ticks-1].punches!=0||_pair.Players[0].Rig.Dropkicks!=1))failures.Add(mode+" running jump tap was not exactly one dropkick");
                 if(mode=="Dropkick"&&(!clip.hits.Any(h=>h.region=="Dropkick")||!clip.frames.Any(f=>f.targetDown)))failures.Add(mode+" did not knock the target down");
                 // Knocked out = fully limp (every ragdoll drive 0) and lying on the floor, not propped on its feet.
                 if(mode=="Knockout")

@@ -4,29 +4,35 @@ using UnityEngine;
 
 namespace ProjectHotfix.PhysicsJump
 {
-    // While running (Shift held at speed) the hands do not punch or grab: a fresh press of either button is
-    // a dropkick instead (2026-10-20 review). Only the flying legs can hit, once per dropkick.
+    // Running (Shift held at speed) on the ground the hands punch and grab as at a walk; in a jump out of the run a
+    // fresh press of either button is a dropkick instead of the standing jump kick (2026-10-30 review, replacing the
+    // 2026-10-20 rule that every running press was a dropkick: chasing a runner and clicking flew a dropkick when a
+    // punch was wanted). It takes a jump: feet lifted off by a bump in a run do not count (a chase into the target flew
+    // one unasked). Only the flying legs can hit, once per dropkick.
     public sealed partial class ActiveGrabPairReview
     {
         public float RunningMinimumSpeed=1.2f;
+        // A running jump still reads as supported for a few ticks after the push; past this it has landed.
+        public float RunJumpTakeoff=.15f;
         // Leg surface within this of the opponent's colliders, closing at least this fast, is a hit.
         public float DropkickContactDistance=.03f,DropkickMinimumClosing=1f,DropkickHitWindow=.7f;
         private readonly Rigidbody[] _kickTargetBodies=new Rigidbody[16];
 
         public bool Running(int index)
         {
-            var player=Players[index];if(!Active(player)||player.Rig.RagdollActive||!player.Sprint||!player.Rig.Supported)return false;
+            var player=Players[index];if(!Active(player)||player.Rig.RagdollActive||!player.Sprint||!player.Rig.Supported&&player.ClimbSession)return false;
             var velocity=player.Rig.Actor.Motor.Body.linearVelocity;velocity.y=0;
             return velocity.magnitude>=RunningMinimumSpeed;
         }
 
-        // Before the hand intents are read: a running player's buttons are taken away from punch and grab.
+        // Before the hand intents are read: a running player's buttons in the air are taken away from punch and grab.
         private void GateRunningHands()
         {
             for(var p=0;p<2;p++)
             {
                 var player=Players[p];
-                if(Suppressed||!Running(p)||!player.Hands.Any(h=>h.Button))continue;
+                if(player.RunJump){player.RunJumpAge+=_stepSeconds;if(!Active(player)||player.Rig.RagdollActive||player.Rig.Supported&&player.RunJumpAge>RunJumpTakeoff)player.RunJump=false;}
+                if(Suppressed||!player.RunJump||player.Rig.Supported||!Running(p)||!player.Hands.Any(h=>h.Button))continue;
                 var pressed=Array.FindIndex(player.Hands,h=>h.Button&&!h.Previous&&!h.MustRelease);
                 player.InputArmed=false;
                 for(var side=0;side<2;side++){var hand=player.Hands[side];if(hand.Connection!=null)Release(p,side,"Running",false);hand.MustRelease=hand.Button;}

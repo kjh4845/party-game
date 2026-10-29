@@ -142,7 +142,7 @@ namespace ProjectHotfix.PhysicsJump
             if(!rig.Supported)return;
             body.AddForce(Vector3.up*JumpSpeed,ForceMode.VelocityChange);
             foreach(var link in rig.Links)link.Body.AddForce(Vector3.up*JumpSpeed,ForceMode.VelocityChange);
-            player.Jumps++;
+            player.Jumps++;player.RunJump=Running(index);player.RunJumpAge=0;
         }
 
         // ---- Powered climb ----

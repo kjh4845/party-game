@@ -131,6 +131,11 @@ namespace ProjectHotfix.PhysicsJump
         public float MaximumSpeed { get; private set; }
         public int AlignmentStarts { get; private set; }
         public float AlignmentToleranceDegrees = 10f;
+        // Rolled the wrong way and lying still more than AlignmentRestartDegrees off the target for AlignmentRestartSeconds,
+        // the roll starts over from the way the body now lies (2026-10-30: a running-jump dropkicker rolled to 173 deg
+        // off its face-down target and lay there for good).
+        public float AlignmentRestartDegrees = 90f, AlignmentRestartSeconds = 1f;
+        public int AlignmentRestarts { get; private set; }
         public int Interruptions { get; private set; }
         public float ReadyAngle, ReadyDistance, ReadySpeed, ReadyAngular;
         public float MaximumHandoffBoneShift { get; private set; }
@@ -225,7 +230,7 @@ namespace ProjectHotfix.PhysicsJump
         private RecoverySupportProbe _probe;
         private Vector3 _floorPoint, _standingRoot;
         private Quaternion _standingRotation;
-        private float _uprightSeconds, _tumbleReadySeconds, _alignSeconds, _blockedSeconds, _proppedSeconds, _clearTimer;
+        private float _uprightSeconds, _tumbleReadySeconds, _alignSeconds, _alignStuckSeconds, _blockedSeconds, _proppedSeconds, _clearTimer;
         // Shove (m/s) given to a standing character in the way; a downed one gets the smaller BodyPush. Only a static
         // blocker (a wall) makes the downed body shift itself instead.
         // A loose prop (crate) gets RoomPropPush, a downed character RoomBodyPush, every RoomPushInterval. A standing
@@ -583,7 +588,7 @@ namespace ProjectHotfix.PhysicsJump
         {
             if (Active || !(down ? Down.TryBeginDown(Down.State.RoundGeneration, ++_sequence) : Down.State.TryBeginDropkickRecovery(Down.State.RoundGeneration, ++_sequence))) return false;
             if (!down) Down.RefreshLock();
-            var body = Actor.Motor.Body; var momentum = body.mass * body.linearVelocity; _uprightSeconds = 0; _alignSeconds = 0;
+            var body = Actor.Motor.Body; var momentum = body.mass * body.linearVelocity; _uprightSeconds = 0; _alignSeconds = _alignStuckSeconds = 0;
             if (_splitTorso)
             {
                 // Re-enabling a joint rebuilds its reference frame. Put inactive
@@ -790,7 +795,12 @@ namespace ProjectHotfix.PhysicsJump
                 var aligned = ReadyAngle < AlignmentToleranceDegrees && body.angularVelocity.magnitude < .7f
                     || FeetPlantedGetUp && (ReadyAngle < 20f && body.angularVelocity.magnitude < .3f || _alignSeconds > 1f && ReadyAngle < 35f || _alignSeconds > 2f && ReadyAngle < 60f);
                 // Planted: someone in the way does not hold the roll; HoldForRoom shoves them off before rising.
-                if (state.TryFinishAlignment(state.RoundGeneration, state.EpisodeId, sample.HasSupport, sample.Clear || FeetPlantedGetUp, aligned)) _alignSeconds = 0;
+                if (state.TryFinishAlignment(state.RoundGeneration, state.EpisodeId, sample.HasSupport, sample.Clear || FeetPlantedGetUp, aligned)) _alignSeconds = _alignStuckSeconds = 0;
+                else
+                {
+                    _alignStuckSeconds = ReadyAngle > AlignmentRestartDegrees && body.angularVelocity.magnitude < .3f ? _alignStuckSeconds + seconds : 0;
+                    if (_alignStuckSeconds > AlignmentRestartSeconds && state.TryInterruptGetUp(state.RoundGeneration, state.EpisodeId)) { _alignSeconds = _alignStuckSeconds = 0; AlignmentRestarts++; }
+                }
             }
             if (state.Phase == RecoveryPresentationPhase.SharedGetUp)
             {
