@@ -1,7 +1,7 @@
-mesh 42594 vertices 85184 triangles
+mesh 42842 vertices 85680 triangles
 {
- "vertices": 42594,
- "triangles": 85184,
+ "vertices": 42842,
+ "triangles": 85680,
  "shoulderPivot": [
   0.162,
   0.0,
@@ -12,7 +12,7 @@ mesh 42594 vertices 85184 triangles
  "terminal": 0.06,
  "rigTipFromShoulder": 0.4450000000000001,
  "r40RigTipFromShoulder": 0.3805,
- "legCentreX": 0.135,
+ "legCentreX": 0.127,
  "idleArmDirection": [
   0.27563735581699916,
   -0.9612616959383189,
@@ -22,9 +22,27 @@ mesh 42594 vertices 85184 triangles
   0.051000000000000004,
   0.0445
  ],
- "maxDroppedWeight": 2.220446049250313e-16
+ "maxDroppedWeight": 2.220446049250313e-16,
+ "hipHelper": [
+  0.12,
+  0.2,
+  0.2,
+  0.3,
+  0.04
+ ],
+ "buildEnv": {
+  "ARCH": "0.188,0,0.18,0.0284,0.165,0.0435,0.135,0.0537,0.095,0.0585,0.05,0.06,0,0.06,-0.03,0.06",
+  "ARCH_K": ".07",
+  "LEG_TOE_IN": ".016,.11,.19,.42",
+  "NECK_K": ".07",
+  "R43_HIP_HELPER": ".12,.20,.20,.30,.04",
+  "R43_LEG_X": ".127",
+  "RELAX_OUT": "55",
+  "SLIM": "1,.75",
+  "SLIM_KEEP_LEGS": ".06,.34"
+ }
 }
-wrote /Users/kjh/local_dev/partygame/BlenderSource/Characters/C1B-RW-046-slim-body/R43CharacterBase.bytes 3333 KB
+wrote /Users/kjh/local_dev/partygame/BlenderSource/Characters/C1B-RW-046-slim-body/R43CharacterBase.bytes 3353 KB
 Blender 5.2.0 LTS (hash fbe6228777e7 built 2026-07-14 01:31:22)
 
 Blender quit

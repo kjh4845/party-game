@@ -56,6 +56,16 @@ RELAX_IT = int(os.environ.get('R43_RELAX_IT', 40))
 FADE_RINGS = int(os.environ.get('R43_FADE_RINGS', 8))
 RELAX_RINGS = int(os.environ.get('R43_RELAX_RINGS', 4))
 RELAX_LIMIT = float(os.environ.get('R43_RELAX_LIMIT', .02))
+# R43_CORR_IRON=deg,limit,iterations,rings (2026-10-29 review: a sharp crease at the front of the shoulder where the arm
+# leaves the torso, worst with the arm swung forward; the tangential relax above slides skin along a fold but cannot
+# fill a valley). Unset: off. Set: after the fit, skin whose neighbouring triangles bend more than deg past their rest
+# angle is smoothed in full (normal included) for iterations steps, easing out over rings rings, each vertex at most
+# limit metres.
+IRON = [float(v) for v in os.environ['R43_CORR_IRON'].split(',')] if 'R43_CORR_IRON' in os.environ else None
+# R43_CORR_IRON_REFS=e0_a0,e30_a0,...: only these shoulder references are ironed (ironing the arm swung back left ripples
+# over the shoulder). Unset: every reference.
+IRON_REFS = set(os.environ['R43_CORR_IRON_REFS'].split(',')) if 'R43_CORR_IRON_REFS' in os.environ else None
+IRON_FADE = int(os.environ.get('R43_CORR_IRON_FADE', 10))
 
 
 def to_blender(p):
@@ -228,6 +238,46 @@ def fit_relax(P0, zone):
     return P
 
 
+def fold_vertices(P, deg):
+    tn, _ = tri_normals(P)
+    ang = np.degrees(np.arccos(np.clip((tn[TRI_PAIRS[:, 0]] * tn[TRI_PAIRS[:, 1]]).sum(1), -1, 1)))
+    bad_t = np.zeros(len(tri), bool)
+    bad_t[TRI_PAIRS[ang - REST_PAIR_ANGLE > deg].ravel()] = True
+    m = np.zeros(n, bool)
+    m[tri[bad_t].ravel()] = True
+    return m
+
+
+def fit_iron(P0, zone):
+    """Full Laplacian smoothing of creased skin, each vertex at most IRON limit from where it was. The smoothing is full on
+    the crease and its first rings and eases to nothing over the next IRON rings (a hard edge to the smoothed patch left a
+    step round the upper arm like a sleeve's edge), and once more over IRON_FADE rings inside the zone border."""
+    deg_, limit, iterations, rings = IRON
+    soft = int(rings)
+    P = P0.copy()
+    for _ in range(int(iterations)):
+        core = fold_vertices(P, deg_) & zone
+        if not core.any():
+            break
+        w, cur = np.zeros(n), core
+        for k in range(soft + 3):
+            w = np.where(cur & (w == 0), max(0.0, 1 - max(0, k - 2) / soft), w)
+            cur = dilate(cur, 1)
+        w *= zone
+        acc = np.zeros_like(P)
+        np.add.at(acc, src, P[dst])
+        P += .5 * (acc / deg[:, None] - P) * w[:, None]
+        dd = P - P0
+        dl = np.linalg.norm(dd, axis=1)
+        far = dl > limit
+        P[far] = P0[far] + dd[far] * (limit / dl[far])[:, None]
+    inside, fade = zone.copy(), np.zeros(n)
+    for _ in range(IRON_FADE):
+        inside = inside & ~dilate(~inside, 1)
+        fade[inside] += 1 / IRON_FADE
+    return P0 + (P - P0) * fade[:, None]
+
+
 def pose_with_upper(side, direction_u, flex=0.0):
     """Both arms at idle, `side` upper arm turned to direction (Unity, chest frame = root here)."""
     world = T.idle_world()
@@ -266,6 +316,10 @@ SHOULDER_REFS = [(0, 0), (-10, 90)] + [(e_, 0) for e_ in (30, 60, 90, 120, 150)]
                 [(e_, 45) for e_ in (45, 90, 135)] + [(e_, 90) for e_ in (45, 90, 135)] + \
                 [(e_, -45) for e_ in (45, 90)] + [(e_, 180) for e_ in (30, 60)]
 ELBOW_REFS = [0, 30, 60, 90, 120, 145]
+# R43_CORR_EXTRA_REFS=elev,az;elev,az: more shoulder references (2026-10-29: the run swings the arm 20-35 deg forward, between
+# the e0 and e30/e60 references).
+if 'R43_CORR_EXTRA_REFS' in os.environ:
+    SHOULDER_REFS += [tuple(int(float(v)) for v in pair.split(',')) for pair in os.environ['R43_CORR_EXTRA_REFS'].split(';')]
 refs = []
 for side in (1, 0):
     for elev, az in SHOULDER_REFS:
@@ -280,6 +334,7 @@ for side in (0, 1):
     SHARE[side] = sum(dense[:, I[nm + s_]] * fr for nm, fr in (('ShoulderBlendInner_', .25), ('ShoulderBlend_', .5),
                       ('ShoulderBlendOuter_', .75), ('UpperArm_', 1.0), ('Forearm_', 1.0)))
 print('references', len(refs), flush=True)
+print('settings', json.dumps({k: os.environ[k] for k in sorted(os.environ) if k.startswith('R43_CORR') or k in ('SLIM', 'SLIM_KEEP_LEGS', 'NECK_K', 'ARCH_K')}), flush=True)
 
 rest_normals = body['normals']
 deltas, records = [], []
@@ -308,6 +363,8 @@ for ref in refs:
         move = zone
         ring = np.zeros(n, bool)
         fitted = fit_relax(fit_normal(P_b, field, grads, zone), zone)
+        if IRON is not None and (IRON_REFS is None or ref['name'][3:] in IRON_REFS):
+            fitted = fit_iron(fitted, zone)
     elif KIND == 'relax':
         move = zone
         ring = np.zeros(n, bool)

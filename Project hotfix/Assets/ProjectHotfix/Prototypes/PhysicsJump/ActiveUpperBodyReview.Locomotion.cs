@@ -10,13 +10,25 @@ namespace ProjectHotfix.PhysicsJump
     // Only free arms swing: a reaching, holding, punching or guarding arm keeps its own goal.
     public sealed partial class ActiveUpperBodyReview
     {
-        public float WalkArmSwing = 24f, RunArmSwing = 40f, WalkElbow = 12f, RunElbow = 45f, RunLean = 12f;
+        public float WalkArmSwing = 24f, RunArmSwing = 45f, WalkElbow = 12f, RunElbow = 55f, RunLean = 12f;
         // The run's arm shape (2026-10-28 review, seen from behind in third person: "달릴 때 팔이 W 모양"). At RunElbow 85
         // the elbows stayed bent 74-84 deg, the upper arms hung 12-22 deg out to the sides and swung 50 back but only 20
         // forward, so the forearms rose behind the back and both elbows stuck out: a W. Now the elbow bends RunElbow plus
         // RunElbowForward as the arm comes forward (a pump, straighter behind), the upper arms are tucked RunArmTuck deg in
         // toward the body and the swing is biased RunArmForward deg forward.
-        public float RunElbowForward = 20f, RunArmTuck = 10f, RunArmForward = 12f;
+        // 2026-10-29 review ("뒤로도 팔꿈치를 굽힌 상태에서 뒤로도 팔이 가야", then "뒷 각도는 R2", "앞으로 나가는 각도는 좀
+        // 줄여도", picked 10 deg): the elbow stays bent 55 deg and bends RunElbowBack more as the arm swings back, so the
+        // forearm no longer swings out straight behind; the forward half of the swing is RunArmForwardSwingShare of
+        // RunArmSwing. Measured running: upper arm 10 deg forward to 51 back (was 34 forward, 36 back).
+        public float RunElbowForward = 10f, RunArmTuck = 10f, RunArmForward = 2f;
+        // Extra elbow bend as the arm swings back (deg), and the forward half of the run's swing as a share of RunArmSwing.
+        public float RunElbowBack = 35f, RunArmForwardSwingShare = .55f;
+        // The bent forearm points straight ahead (2026-10-29 review: "전완을 정면으로"): running, it pointed 2-22 deg out
+        // (median 14). Only lining the elbow hinge up with the body's side axis left it 11 deg out: the upper arm hangs a
+        // little out from the shoulder and the bent forearm keeps that slant. So the upper arm is twisted about its own length
+        // (the elbow stays put) by the angle that leaves the bent forearm with no sideways slant, at most RunArmTwistMax
+        // (the shoulder's twist limit is 15).
+        public float RunArmTwistMax = 15f;
         // Shoulder extension while running (deg behind the bind; the standing limit is 25): the pumping arm
         // must get behind the body, or both bent arms hover in front (2026-10-20: "팔의 앞뒤 움직임이 어색").
         public float RunArmBackLimit = 55f;
@@ -89,14 +101,16 @@ namespace ProjectHotfix.PhysicsJump
                 // The run leads the arm phase a little: even the stronger drive trails the pump by ~45 deg.
                 var phase = Mathf.Repeat(pose.GaitPhase - .25f + side * .5f + .1f * run, 1f);
                 var pump = -Mathf.Cos(phase * Mathf.PI * 2f);
-                var forwardSwing = (pump * swing + RunArmForward * run * gait) * free;
+                var forwardSwing = (pump * swing * (pump > 0 ? Mathf.Lerp(1, RunArmForwardSwingShare, run) : 1) + RunArmForward * run * gait) * free;
                 var suffix = side == 0 ? "L" : "R";
                 var upper = Find("UpperArm_" + suffix); var forearm = Find("Forearm_" + suffix);
                 // Running, the upper arm is brought in toward the body (about the facing axis at the shoulder).
                 if (run * gait > .01f) SwingForward(upper.Goal, forward, forearm.Goal.position, side == 0 ? right : -right, RunArmTuck * run * gait * free);
                 // Symmetric about the hanging arm: the hand comes up to the chest in front and passes the hip behind.
                 SwingForward(upper.Goal, upper.Goal.rotation * upper.Joint.axis, forearm.Goal.position, forward, forwardSwing);
-                SwingForward(forearm.Goal, forearm.Goal.rotation * forearm.Joint.axis, GoalHand(side), forward, (elbow + RunElbowForward * run * gait * Mathf.Max(0, pump)) * free);
+                var bend = (elbow + (RunElbowForward * Mathf.Max(0, pump) + RunElbowBack * Mathf.Max(0, -pump)) * run * gait) * free;
+                if (run * gait > .01f) PointForearmAhead(upper.Goal, forearm, GoalHand(side), forward, right, bend, RunArmTwistMax * run * gait * free);
+                SwingForward(forearm.Goal, forearm.Goal.rotation * forearm.Joint.axis, GoalHand(side), forward, bend);
             }
         }
 
@@ -105,6 +119,26 @@ namespace ProjectHotfix.PhysicsJump
             if (_runArmDrive <= 0 || _punchReference[side] || _handActive[side] || _gripPosture[side] || _guardWeight[side] > 0) return;
             var gain = Mathf.Lerp(1, RunArmDriveGain, _runArmDrive);
             drive.positionSpring *= gain; drive.maximumForce *= gain; drive.positionDamper *= Mathf.Sqrt(gain);
+        }
+
+        // Twists the upper arm goal about its own length (shoulder to elbow, so the elbow stays put), by at most limit
+        // degrees, to the angle at which the forearm, once bent by bend degrees the way SwingForward bends it, has the least
+        // sideways slant (along side).
+        private static void PointForearmAhead(Transform upper, Link forearm, Vector3 hand, Vector3 forward, Vector3 side, float bend, float limit)
+        {
+            var length = forearm.Goal.position - upper.position;
+            if (length.sqrMagnitude < 1e-8f || limit <= 0) return;
+            var axis = length.normalized; var hinge = forearm.Goal.rotation * forearm.Joint.axis; var straight = hand - forearm.Goal.position;
+            var sign = Vector3.Dot(Vector3.Cross(hinge, straight), forward) >= 0 ? 1 : -1;
+            var bent = Quaternion.AngleAxis(bend * sign, hinge) * straight;
+            float Slant(float twist) => Mathf.Abs(Vector3.Dot(Quaternion.AngleAxis(twist, axis) * bent, side));
+            var best = 0f; var least = Slant(0);
+            for (var twist = -limit; twist <= limit + 1e-3f; twist += limit / 12) { var s = Slant(twist); if (s < least - 1e-6f) { least = s; best = twist; } }
+            // Refine around the best step.
+            for (var step = limit / 24; step > .05f; step *= .5f)
+                foreach (var twist in new[] { best - step, best + step })
+                    if (Mathf.Abs(twist) <= limit && Slant(twist) < least) { least = Slant(twist); best = twist; }
+            upper.rotation = Quaternion.AngleAxis(best, axis) * upper.rotation;
         }
 
         // Rotates a goal about its hinge so that its tip moves forward by degrees (backward when negative).

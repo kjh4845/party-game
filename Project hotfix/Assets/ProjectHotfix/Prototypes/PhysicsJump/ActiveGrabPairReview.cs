@@ -129,6 +129,9 @@ namespace ProjectHotfix.PhysicsJump
         // Playable scenes: a click punches at once (PhysicalPunchReview.PunchOnPress). The reviewed captures keep the
         // punch on a short release.
         public bool PunchOnPress;
+        // Playable scenes: player 1's legs stay nearly planted through a body strike (2026-10-29 review, mix B: pelvis
+        // .10 of the twist, no wind-up drop, half the forward thrust, the upper body leaning 1.2x).
+        public bool LightPunchLegs;
         public ActiveUpperBodyReview.ReviewStrikeStyle StrikeStyle;
         public PhysicalPunchReview PhysicalPunches {get;private set;}
         public LimpGrabTargetReview.Orientation FixtureOrientation;
@@ -267,6 +270,7 @@ namespace ProjectHotfix.PhysicsJump
             // Third person: player 1 steps sideways and back at full stride (the review gait shortens a stride off the
             // facing to .65 of it, and the feet slid on every strafe and diagonal).
             if(ThirdPerson&&Active(Players[0]))Players[0].Rig.Actor.Pose.TurnStrideMinimum=1;
+            if(LightPunchLegs&&Active(Players[0])){var rig=Players[0].Rig;rig.PunchPelvisTwist=.10f;rig.PunchCoilDrop=0;rig.LungeScale=.15f;rig.PunchLeanGain=1.2f;}
             GateRunningHands();
             PhysicalPunches?.BeforeStep(seconds);
             foreach(var player in Players)if(!Suppressed&&!player.Hands.Any(h=>h.Button))player.InputArmed=true;

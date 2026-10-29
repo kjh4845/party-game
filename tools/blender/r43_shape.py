@@ -82,6 +82,19 @@ _t = np.clip((TORSO[:, 0] - _top[0]) / max(_top[1] - _top[0], 1e-6), 0, 1)
 _t = _t * _t * (3 - 2 * _t)
 TORSO[:, 2] *= 1 + _t * (_top[2] / SLIM[1] - 1)
 ARCH[:, 1] *= _gap
+# LEG_TOE_IN=dx,z0,z1 (2026-10-29 review, third person from the front: the legs read bow-legged): both edges of each leg
+# (the torso's side, which is the leg's outside, and the crotch arch, its inside) move dx in toward the middle up to knee
+# height z0, easing to nothing by z1 (the crotch), so the lower leg shifts in as a whole and the leg straightens instead
+# of curving (moving the floor most and fading early bent the legs more). An optional fourth value is where the outside
+# stops easing (default z1): faded by the crotch it left the side bulging out at the hip (the outside narrowed 0.9 cm from
+# the hip down to the knee), so it eases over the hips into the waist instead. Unset: the reviewed shape.
+if 'LEG_TOE_IN' in os.environ:
+    _toe = env('LEG_TOE_IN', '0,.09,.17')
+    _dx, _z0, _z1 = _toe[:3]
+    _z1o = _toe[3] if len(_toe) > 3 else _z1
+    _w = lambda z, z1: 1 - np.clip((z - _z0) / (z1 - _z0), 0, 1) ** 2 * (3 - 2 * np.clip((z - _z0) / (z1 - _z0), 0, 1))
+    TORSO[:, 1] -= _dx * _w(np.maximum(TORSO[:, 0], 0), _z1o)
+    ARCH[:, 1] = np.maximum(0, ARCH[:, 1] - _dx * _w(np.maximum(ARCH[:, 0], 0), _z1))
 PIVOT[0] *= SLIM[0]
 
 

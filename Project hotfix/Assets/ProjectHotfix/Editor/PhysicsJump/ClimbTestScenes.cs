@@ -9,6 +9,7 @@ namespace ProjectHotfix.PhysicsJump.Editor
     // BodyStrike), on open ground or with a wall between the two players, a .55 m ledge or a 1.6 m wall as in the
     // WallClimb / WallClimbHigh captures. Player 1: mouse to look, WASD relative to the view, click to punch, hold to grab,
     // Space to jump; player 2: arrows (relative to player 1's view), N/M, right Ctrl. R resets, Esc frees the cursor.
+    // Player 1's legs stay nearly planted when punching (LightPunchLegs, 2026-10-29).
     public static class ClimbTestScenes
     {
         private const string Folder="Assets/ProjectHotfix/Scenes";
@@ -33,7 +34,7 @@ namespace ProjectHotfix.PhysicsJump.Editor
             var review=ActiveGrabPairReview.Create(scene,separation,ActiveGrabPairReview.GrabMotion.AdaptiveReach,skin,matchHandEnvelope:true);
             review.EnableStandingSkinContacts=review.EnableLiftThrow=review.EnablePhysicalPunch=true;
             review.UseStrikeStyle(ActiveUpperBodyReview.ReviewStrikeStyle.BodyStrike);review.UseFightThrows();
-            review.ThirdPerson=review.PunchOnPress=true;
+            review.ThirdPerson=review.PunchOnPress=review.LightPunchLegs=true;
             if(height>0)
             {
                 // Faces .8 m in front of each player (spawned at z -1.5 and 1.5), 3 m wide.

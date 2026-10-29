@@ -115,6 +115,20 @@ namespace ProjectHotfix.Physics.Tests
             yield return null;
         }
 
+        [UnityTest] public IEnumerator LightPunchLegsKeepTheHipsStillAndTheReach()
+        {
+            foreach(var gap in new[]{.32f,.55f})for(var side=0;side<2;side++)
+            {
+                Create(gap);_pair.LightPunchLegs=true;var pose=_pair.Players[0].Rig.Actor.Pose;float yaw=0,drop=0;
+                _pair.SubmitPhysicalHandEdge(0,side,true);Tick();_pair.SubmitPhysicalHandEdge(0,side,false,Dt);
+                for(var i=0;i<40;i++){Tick();yaw=Mathf.Max(yaw,Mathf.Abs(pose.AdditionalPelvisYaw));drop=Mathf.Max(drop,pose.AdditionalPelvisDrop);}
+                Debug.Log($"TPS light legs {gap:F2} {(side==0?"L":"R")}: hits {_pair.PhysicalPunches.Hits.Count}, pelvis yaw max {yaw:F1} deg, drop {drop*100:F1} cm");
+                Assert.That(_pair.PhysicalPunches.Hits.Count,Is.EqualTo(1),"the reach is kept");
+                Assert.That(yaw,Is.LessThan(3f));Assert.That(drop,Is.LessThan(.001f));
+                yield return Cleanup();
+            }
+        }
+
         [UnityTest] public IEnumerator ClickPunchesAtOnceEvenOnALedgeTop()
         {
             // On the floor: the punch is on in the tick the press arrives.

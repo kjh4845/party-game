@@ -101,6 +101,9 @@ for side, s in ((1, 'R'), (-1, 'L')):
         W[k, :3, 3] = pivot_u
 # Legs: centre of the r43 leg (outer torso edge and arch gap at the ground).
 leg_x = .5 * (shape.TORSO[np.argmin(np.abs(shape.TORSO[:, 0] - .03)), 1] + shape.ARCH[-1, 1])
+# R43_LEG_X: keep the leg bones at this x (m) whatever the leg skin's shape (LEG_TOE_IN moves only the skin).
+if 'R43_LEG_X' in os.environ:
+    leg_x = float(os.environ['R43_LEG_X'])
 for s, sign in (('L', -1), ('R', 1)):
     for b in ('Thigh_', 'Calf_', 'Foot_', 'HipDeform_'):
         W[I[b + s], 0, 3] = sign * leg_x
@@ -131,16 +134,29 @@ Wt[:, I['Chest']] = che * keep
 Wt[:, I['Neck']] = neck
 Wt[:, I['Head']] = head
 # legs
-leg = 1 - smooth(.13, .22, z)
 foot = 1 - smooth(.02, .05, z)
 calf = (1 - smooth(.08, .12, z)) * (1 - foot)
 thigh = 1 - foot - calf
+# R43_HIP_HELPER=t0,t1,h0,h1,seam (2026-10-29 review, third person from behind: the skin under the hips swung back with
+# a kicked-back leg, the whole lower torso corner peeling off with it). Unset: the leg follows its bone fully below .13,
+# blending to the trunk by .22, split left/right at x = 0. Set: the leg bones only up to t0..t1; above that up to h0..h1
+# the hip band follows HipDeform_ (the rig turns it a quarter of the thigh, ProceduralJumpPose), and within seam of
+# x = 0 the band fades to the pelvis so the two sides never pull one seam apart.
+hip_cfg = [float(v) for v in os.environ['R43_HIP_HELPER'].split(',')] if 'R43_HIP_HELPER' in os.environ else None
+if hip_cfg is None:
+    leg, hip = 1 - smooth(.13, .22, z), np.zeros(len(P))
+else:
+    t0, t1, h0, h1, seam = hip_cfg
+    leg = 1 - smooth(t0, t1, z)
+    hip = np.clip((1 - smooth(h0, h1, z)) - leg, 0, 1) * smooth(0, seam, np.abs(x))
 for s, mask in (('R', x >= 0), ('L', x < 0)):
     m = leg * mask
-    Wt[:, :] *= (1 - m)[:, None]
+    h = hip * mask
+    Wt[:, :] *= (1 - m - h)[:, None]
     Wt[:, I['Thigh_' + s]] += m * thigh
     Wt[:, I['Calf_' + s]] += m * calf
     Wt[:, I['Foot_' + s]] += m * foot
+    Wt[:, I['HipDeform_' + s]] += h
 # arms
 # Surface graph: the rotation share is smoothed along the skin as one scalar per side and only
 # then turned into bone weights, so every vertex keeps <= 4 influences (trunk + two adjacent
@@ -252,6 +268,10 @@ report = {
     'maxDroppedWeight': float(1 - np.sort(Wt, 1)[:, -4:].sum(1).min()),
     'boneWorld': {n: [round(float(v), 4) for v in W[i, :3, 3]] for i, n in enumerate(names)},
 }
+if hip_cfg is not None:
+    report['hipHelper'] = hip_cfg
+# Every shape/weight setting that differs from the script defaults, so the transport can be rebuilt exactly.
+report['buildEnv'] = {k: v for k, v in sorted(os.environ.items()) if k.startswith(('R43_', 'SLIM', 'ARCH', 'NECK', 'LEG', 'TORSO', 'PIVOT', 'ARM_', 'CARVE', 'RELAX_OUT'))}
 (OUT / 'BuildReport.json').write_text(json.dumps(report, indent=1))
 print(json.dumps({k: v for k, v in report.items() if k != 'boneWorld'}, indent=1))
 print('wrote', path, path.stat().st_size // 1024, 'KB')

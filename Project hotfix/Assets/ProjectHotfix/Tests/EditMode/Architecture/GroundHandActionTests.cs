@@ -150,24 +150,54 @@ namespace ProjectHotfix.Architecture.Tests
             Assert.That(s.PunchCount, Is.EqualTo(1));
         }
 
-        [Test] public void MashedPressInsideTheHitWindowFiresAsItEnds()
+        [Test] public void SameHandWaitsItsCooldownAndKeepsOnlyALatePress()
         {
             var s = PressPunch();
             s.Receive(1, 0, true, 1, true, true); s.Receive(2, 0, false, 1.05, true, true);
-            var first = s.ActionId(0);
-            Assert.That(s.Receive(3, 0, true, 1.1, true, true), Is.False);
-            s.Receive(4, 0, false, 1.14, true, true);
-            s.Advance(1.24); Assert.That(s.ActionId(0), Is.EqualTo(first));
-            s.Advance(1.25); Assert.That(s.ActionId(0), Is.Not.EqualTo(first)); Assert.That(s.PunchAge(0), Is.EqualTo(0).Within(1e-9));
-            Assert.That(s.PunchCount, Is.EqualTo(2));
+            Assert.That(s.Receive(3, 0, true, 1.1, true, true), Is.False, "too early: dropped");
+            s.Receive(4, 0, false, 1.12, true, true); s.Advance(1.45);
+            Assert.That(s.PunchCount, Is.EqualTo(1));
+            Assert.That(s.Receive(5, 0, true, 1.5, true, true), Is.True, "ready again after .4 s");
+            s.Receive(6, 0, false, 1.52, true, true);
+            Assert.That(s.Receive(7, 0, true, 1.8, true, true), Is.False, "within .15 s of ready: kept");
+            s.Receive(8, 0, false, 1.82, true, true);
+            s.Advance(1.89); Assert.That(s.PunchCount, Is.EqualTo(2));
+            s.Advance(1.9); Assert.That(s.PunchCount, Is.EqualTo(3)); Assert.That(s.PunchAge(0), Is.EqualTo(0).Within(1e-9));
         }
 
-        [Test] public void PressInTheRecoveryRestartsAtOnce()
+        [Test] public void TheOtherHandFollowsAfterTheGap()
         {
             var s = PressPunch();
-            s.Receive(1, 0, true, 1, true, true); s.Receive(2, 0, false, 1.05, true, true);
-            Assert.That(s.Receive(3, 0, true, 1.3, true, true), Is.True);
-            Assert.That(s.PunchAge(0), Is.EqualTo(0).Within(1e-9)); Assert.That(s.PunchCount, Is.EqualTo(2));
+            s.Receive(1, 0, true, 1, true, true);
+            Assert.That(s.Receive(2, 1, true, 1.01, true, true), Is.False, "too early for the other hand: dropped");
+            s.Receive(3, 1, false, 1.02, true, true);
+            Assert.That(s.Receive(4, 1, true, 1.06, true, true), Is.False, "kept for the gap's end");
+            s.Advance(1.19); Assert.That(s.PunchCount, Is.EqualTo(1));
+            s.Advance(1.2); Assert.That(s.PunchCount, Is.EqualTo(2)); Assert.That(s.Phase(1), Is.EqualTo(HandIntentPhase.Punch));
+        }
+
+        [TestCase(true, 16)] [TestCase(false, 8)]
+        public void AnAutoClickerIsHeldToTheCap(bool bothHands, int cap)
+        {
+            var s = PressPunch(); ulong seq = 0;
+            for (var tick = 0; tick < 180; tick++)
+            {
+                var now = 1 + tick / 60.0; var down = tick % 2 == 0;
+                for (var side = 0; side < (bothHands ? 2 : 1); side++) s.Receive(++seq, side, down, now, true, true);
+                s.Advance(now);
+            }
+            Assert.That(s.PunchCount, Is.LessThanOrEqualTo(cap), "3 s: 2.5/s for one hand, 5/s alternating");
+            Assert.That(s.PunchCount, Is.GreaterThanOrEqualTo(cap - 2));
+        }
+
+        [Test] public void APressDroppedByTheCooldownStillGrabsWhenHeld()
+        {
+            var s = PressPunch();
+            s.Receive(1, 0, true, 1, true, true); s.Receive(2, 0, false, 1.02, true, true);
+            s.Receive(3, 0, true, 1.05, true, true);
+            s.Advance(1.19); Assert.That(s.Phase(0), Is.EqualTo(HandIntentPhase.Punch));
+            s.Advance(1.2); Assert.That(s.Phase(0), Is.EqualTo(HandIntentPhase.GrabSeek));
+            Assert.That(s.PunchCount, Is.EqualTo(1));
         }
 
         [Test] public void WherePunchingIsRefusedAPressOnlyGrabs()
@@ -182,8 +212,8 @@ namespace ProjectHotfix.Architecture.Tests
         [Test] public void CancelDropsAQueuedPunch()
         {
             var s = PressPunch();
-            s.Receive(1, 0, true, 1, true, true); s.Receive(2, 0, false, 1.05, true, true); s.Receive(3, 0, true, 1.1, true, true);
-            s.CancelHand(0); s.Receive(4, 0, false, 1.12, true, true); s.Advance(1.3);
+            s.Receive(1, 0, true, 1, true, true); s.Receive(2, 0, false, 1.05, true, true); s.Receive(3, 0, true, 1.3, true, true);
+            s.CancelHand(0); s.Receive(4, 0, false, 1.32, true, true); s.Advance(1.5);
             Assert.That(s.Phase(0), Is.EqualTo(HandIntentPhase.Idle)); Assert.That(s.PunchCount, Is.EqualTo(1));
         }
     }

@@ -88,6 +88,11 @@ namespace ProjectHotfix.PhysicsJump
         // attacker into reach after two punches). .3 since the locomotion brake no longer counts
         // the punching arm, which used to cancel part of the thrust.
         public float BraceAngle=3,LungeScale=.3f;
+        // How much of a body strike the hips and legs carry (2026-10-29 review, third person: the legs twisted and stepped
+        // back with every punch). PunchPelvisTwist is the pelvis's share of the chest twist (the spine takes the rest of the
+        // reviewed .32 so the upper body turns as before), PunchCoilDrop the pelvis drop of the wind-up (m), LungeScale above
+        // the forward thrust, PunchLeanGain the extra upper-body lean that makes up for a smaller thrust.
+        public float PunchPelvisTwist=.32f,PunchCoilDrop=.012f,PunchLeanGain=1;
         private float _settleLean;private const float SettleRate=20;
         private void ApplyBodyStrikeTorso()
         {
@@ -143,11 +148,12 @@ namespace ProjectHotfix.PhysicsJump
             // Leaving a stroke, never drop the lean faster than SettleRate.
             if(LoweredCarriage&&!ImpactReactionActive)lean=Mathf.Max(lean,Mathf.MoveTowards(_settleLean,0,SettleRate*_stepSeconds));
             _settleLean=ImpactReactionActive?0:lean;
-            SetJointGoal(Find("Spine"),Quaternion.AngleAxis(-lean+BraceAngle*brace,Vector3.right));
+            lean*=PunchLeanGain;
+            SetJointGoal(Find("Spine"),Quaternion.AngleAxis(Mathf.Clamp(twist,-22,22)*Mathf.Max(0,.32f-PunchPelvisTwist),Vector3.up)*Quaternion.AngleAxis(-lean+BraceAngle*brace,Vector3.right));
             SetJointGoal(Find("Chest"),Quaternion.AngleAxis(Mathf.Clamp(twist,-22,22),Vector3.up));
             // The chest's share of the low-reach bend, which SetJointGoal just replaced (ApplyLowReachReference).
             if(low>0)Find("Chest").Goal.rotation=Quaternion.AngleAxis(low*.3f,_goalRoot.right)*Find("Chest").Goal.rotation;
-            var yaw=-twist*.32f;var drop=.012f*coil+_lowReachDrop;
+            var yaw=-twist*PunchPelvisTwist;var drop=PunchCoilDrop*coil+_lowReachDrop;
             var pelvis=_goals["Pelvis"];
             pelvis.localPosition=_referencePelvisPosition+Vector3.down*drop;
             pelvis.rotation=Quaternion.AngleAxis(yaw,_goalRoot.up)*pelvis.rotation;

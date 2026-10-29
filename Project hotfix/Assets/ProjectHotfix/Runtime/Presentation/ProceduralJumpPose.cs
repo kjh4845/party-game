@@ -72,6 +72,16 @@ namespace ProjectHotfix.Presentation
         // Set from outside for one pose (a wall climb, ActiveGrabPairReview.Climb; defaults change nothing): a leg
         // shortening that replaces the airborne tuck (negative = none) and the feet shifted forward.
         public float TuckOverride = -1f, FootForwardOffset;
+        // Share of the thigh's swing the HipDeform_ helpers follow (the hip band of the skin). The source rig's quarter.
+        public float HipDeformFollow = .25f;
+        // Time constant (s) of the direction the strides are laid along; 0 = the travel velocity as it is. Running, the body's
+        // sway swung that direction a little from side to side every step and the ~.15 m stride put each foot ~3 cm out of
+        // its lane, so the legs splayed and read bow-legged from the front (2026-10-29 review).
+        public float StrideDirectionEase;
+        // How far a slightly bent knee follows the source's rest knee direction (slightly outward) before the bend turns it
+        // forward. 1 = the reviewed blend; 0 = the knee always bends straight forward.
+        public float RestKneePole = 1f;
+        private Vector3 _strideDirection;
         public float MaximumFootTargetError { get; private set; }
         public float MaximumReachCorrection { get; private set; }
 
@@ -108,7 +118,7 @@ namespace ProjectHotfix.Presentation
             {
                 _resetVersion = state.ResetVersion;
                 _compression = _tuck = _easedTuck = _gaitWeight = _gaitPhase = _sprintBlend = 0f;
-                _travel = Vector3.zero;
+                _travel = _strideDirection = Vector3.zero;
                 for (var i = 0; i < 2; i++) { _planted[i] = false; _plantOffsets[i] = Vector3.zero; }
                 _previousRootRotation = transform.rotation;
             }
@@ -116,6 +126,8 @@ namespace ProjectHotfix.Presentation
             _previousRootRotation = transform.rotation;
             var horizontal = new Vector3(state.VelocityX, 0f, state.VelocityZ);
             _travel = Vector3.Lerp(_travel, horizontal, 1f - Mathf.Exp(-12f * deltaTime));
+            var travelDirection = _travel / Mathf.Max(.2f, _travel.magnitude);
+            _strideDirection = StrideDirectionEase > 0f ? Vector3.Lerp(_strideDirection, travelDirection, 1f - Mathf.Exp(-deltaTime / StrideDirectionEase)) : travelDirection;
             _sprintBlend = Mathf.Lerp(_sprintBlend, state.Sprinting ? 1f : 0f, 1f - Mathf.Exp(-10f * deltaTime));
             var referenceSpeed = Mathf.Max(.01f, Mathf.Lerp(WalkReferenceSpeed, SprintReferenceSpeed, _sprintBlend));
             var cadence = Mathf.Max(.01f, Mathf.Lerp(WalkCadence, SprintCadence, _sprintBlend));
@@ -234,7 +246,7 @@ namespace ProjectHotfix.Presentation
                     stride *= activation;
                     lift *= activation;
                 }
-                var directionOfTravel = _travel / Mathf.Max(.2f, _travel.magnitude);
+                var directionOfTravel = StrideDirectionEase > 0f ? _strideDirection : _travel / Mathf.Max(.2f, _travel.magnitude);
                 if (readable)
                 {
                     // Account for the raised swing-side hip during weight transfer.
@@ -273,7 +285,7 @@ namespace ProjectHotfix.Presentation
                 // At rest the source knees bend slightly outward. Preserve that
                 // plane at zero compression rather than introducing a new Idle.
                 var pole = Vector3.Slerp(transform.TransformDirection(_restKneeDirections[i]), transform.forward,
-                    Mathf.Clamp01((pelvisDrop + _tuck + lift) / .01f));
+                    1f - RestKneePole * (1f - Mathf.Clamp01((pelvisDrop + _tuck + lift) / .01f)));
                 var bend = Vector3.ProjectOnPlane(pole, direction).normalized;
                 var projection = (a*a + distance*distance - b*b) / (2f*distance);
                 var height = Mathf.Sqrt(Mathf.Max(0f, a*a - projection*projection));
@@ -287,15 +299,15 @@ namespace ProjectHotfix.Presentation
                 var localDelta = Quaternion.Inverse(_rotations[thigh.name]) * thigh.localRotation;
                 var helper = _bones["HipDeform_" + side];
                 var angle = Mathf.DeltaAngle(0f, 2f * Mathf.Atan2(localDelta.x, localDelta.w) * Mathf.Rad2Deg);
-                helper.localRotation = _rotations[helper.name] * Quaternion.AngleAxis(angle * .25f, Vector3.right);
+                helper.localRotation = _rotations[helper.name] * Quaternion.AngleAxis(angle * HipDeformFollow, Vector3.right);
                 var pelvisDelta = pelvis.rotation * Quaternion.Inverse(transform.rotation * _pelvisRestRotation);
-                helper.position += pelvisDelta * transform.TransformVector(new Vector3(0f, .0005f, .0025f)) * (angle / -25f);
+                helper.position += pelvisDelta * transform.TransformVector(new Vector3(0f, .0005f, .0025f)) * (angle / -25f) * (HipDeformFollow / .25f);
             }
         }
 
         public void ResetTransientGait()
         {
-            _compression=_tuck=_easedTuck=_gaitWeight=_gaitPhase=_sprintBlend=0f;_travel=Vector3.zero;
+            _compression=_tuck=_easedTuck=_gaitWeight=_gaitPhase=_sprintBlend=0f;_travel=_strideDirection=Vector3.zero;
             for(var i=0;i<2;i++){_planted[i]=false;_plantOffsets[i]=Vector3.zero;}
             _previousRootRotation=transform.rotation;
         }

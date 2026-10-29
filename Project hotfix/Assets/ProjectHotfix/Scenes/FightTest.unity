@@ -119,7 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &1211052512
+--- !u!1 &1062156161
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,8 +127,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1211052514}
-  - component: {fileID: 1211052513}
+  - component: {fileID: 1062156163}
+  - component: {fileID: 1062156162}
   m_Layer: 0
   m_Name: Active Grab - Stage 2 - Press Play
   m_TagString: Untagged
@@ -136,13 +136,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1211052513
+--- !u!114 &1062156162
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211052512}
+  m_GameObject: {fileID: 1062156161}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb441ea34b73d4498b711c6f6928d1b7, type: 3}
@@ -200,6 +200,7 @@ MonoBehaviour:
   EnableStandingSkinContacts: 1
   EnablePhysicalPunch: 1
   PunchOnPress: 1
+  LightPunchLegs: 1
   StrikeStyle: 3
   FixtureOrientation: 0
   AimHeightOffset: 0
@@ -256,13 +257,13 @@ MonoBehaviour:
   LookTurnStiffness: 250
   LookTurnDamping: 32
   LookTurnMaxAcceleration: 600
---- !u!4 &1211052514
+--- !u!4 &1062156163
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211052512}
+  m_GameObject: {fileID: 1062156161}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -275,4 +276,4 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1211052514}
+  - {fileID: 1062156163}
