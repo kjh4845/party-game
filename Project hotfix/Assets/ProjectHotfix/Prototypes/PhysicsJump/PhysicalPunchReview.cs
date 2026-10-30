@@ -68,7 +68,9 @@ namespace ProjectHotfix.PhysicsJump
         // fighting, not trapped: its count starts again, so an exchange never builds to a break.
         // For ChainBreakGrace s after a break no hit on that target lands (the other hand's punch already on its way met it
         // before it had moved and started the next chain at once).
-        public int ChainBreakHits=3;public float ChainBreakSpeed=2.6f,ChainBreakLift=.3f,ChainBreakGrace=.4f;
+        // ChainBreakSpeed was 2.6: a chest hit's own knockback reached ~5 m/s (pushed 1.8 m), but a glancing upper-arm hit
+        // got only the 2.6 floor and stopped at .8 m while the attacker walked straight back in (2026-10-30 probe).
+        public int ChainBreakHits=3;public float ChainBreakSpeed=4f,ChainBreakLift=.3f,ChainBreakGrace=.4f;
         private readonly double[] _breakGraceEnd={double.NegativeInfinity,double.NegativeInfinity};
         public int ChainBreaks {get;private set;}
         // 2026-10-29 review: an exchange should swing and be fun, with luck in it, and a player being hit must have answers.
@@ -211,6 +213,10 @@ namespace ProjectHotfix.PhysicsJump
         // Pressed close (root separation HookFar..HookNear m) a body strike becomes a short hook (ActiveUpperBodyReview.Hook*):
         // the straight stroke ran past the body and only its mid forearm touched (2026-10-28: every punch at .27 m missed).
         public float HookFar=.36f,HookNear=.30f;
+        // The hook only goes at an opponent in front: it fades from HookFacingFull to none at HookFacingNone degrees off the
+        // body's facing (2026-10-30 probe: 27 of 33 hits on a player circling a masher were point-blank hooks landing up to
+        // ~45 deg off, so sidestepping never got out of them).
+        public float HookFacingFull=20f,HookFacingNone=35f;
         // The chest-high hook meets the opponent's arm on the way in and closes at only ~2 m/s, so its push was weak
         // (2026-10-29 review: "좀 더 밀어내면 맛이"). A hook counts as at least HookPowerFloor of full power and pushes
         // HookKnockbackScale times as far.
@@ -298,7 +304,11 @@ namespace ProjectHotfix.PhysicsJump
             {
                 var separation=_pair.Players[1-player].Rig.Actor.Motor.Body.position-rig.Actor.Motor.Body.position;separation.y=0;
                 compact=Mathf.SmoothStep(0,1,Mathf.InverseLerp(.46f,.34f,separation.magnitude));
-                if(rig.StrikeStyle==ActiveUpperBodyReview.ReviewStrikeStyle.BodyStrike)hook=Mathf.SmoothStep(0,1,Mathf.InverseLerp(HookFar,HookNear,separation.magnitude));
+                if(rig.StrikeStyle==ActiveUpperBodyReview.ReviewStrikeStyle.BodyStrike)
+                {
+                    var off=Vector3.Angle(Vector3.ProjectOnPlane(rig.Actor.Motor.Body.rotation*Vector3.forward,Vector3.up),separation);
+                    hook=Mathf.SmoothStep(0,1,Mathf.InverseLerp(HookFar,HookNear,separation.magnitude))*Mathf.SmoothStep(0,1,Mathf.InverseLerp(HookFacingNone,HookFacingFull,off));
+                }
             }
             rig.SetPunchReference(side,active,(float)_states[player].SourcePunchAge(side),compact,hook);
             if(active){rig.SetHandTarget(side,false,Vector3.zero);rig.SetGripPosture(side,false);rig.SetHandDriveScale(side,3);}

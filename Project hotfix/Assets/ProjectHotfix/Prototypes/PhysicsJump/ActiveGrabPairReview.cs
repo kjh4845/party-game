@@ -95,6 +95,8 @@ namespace ProjectHotfix.PhysicsJump
             internal bool DropkickHit;
             // Jumped (Space) out of a run and not landed yet: only then does a press dropkick (ActiveGrabPairReview.Dropkick).
             internal bool RunJump;internal float RunJumpAge;
+            // The heading the body turns to while a punch is out (MovePlayer, StrikeTurnRate).
+            internal Vector3 StrikeHeading;
             public int DropkickHits;
         }
 
@@ -113,6 +115,12 @@ namespace ProjectHotfix.PhysicsJump
         public float MaximumGripGap {get;private set;}
         public float MaximumGripForce {get;private set;}
         public float WalkSpeed=1.4f,SprintSpeed=2.1f,Acceleration=20f;
+        // While a punch is out the body turns at most this fast (deg/s; 0 = free), so a sidestep takes the target out of
+        // the punch (2026-10-30 escape probe: circling round a masher was hit as often as standing still).
+        public float StrikeTurnRate=90f;
+        // While a punch is out the walk/run speed is scaled by this (2026-10-30 probe: a masher walking in at full speed
+        // stayed in reach 8.6 s of 10 however the target moved).
+        public float StrikeMoveScale=.5f;
         public float HoldThreshold=.15f,PalmContactRadius=.055f,GripBreakForce=2000f;
         public float SpawnSeparation=.5f;
         public float ReachHalfWidth=.17f;
@@ -459,7 +467,7 @@ namespace ProjectHotfix.PhysicsJump
             var momentum=body.mass*body.linearVelocity;var mass=body.mass;
             foreach(var link in rig.Links){if(rig.IsStrikingArm(link))continue;momentum+=link.Body.mass*link.Body.linearVelocity;mass+=link.Body.mass;}
             var velocity=momentum/mass;var horizontal=new Vector3(velocity.x,0,velocity.z);
-            var input=Suppressed?Vector2.zero:Vector2.ClampMagnitude(player.Move,1);var speed=player.Sprint?SprintSpeed:WalkSpeed;
+            var input=Suppressed?Vector2.zero:Vector2.ClampMagnitude(player.Move,1);var speed=(player.Sprint?SprintSpeed:WalkSpeed)*(rig.IsStriking?StrikeMoveScale:1);
             var desired=new Vector3(input.x,0,input.y)*speed;
             if(PushDowned(index,desired))desired*=DownedPushDrag;
             var shoved=rig.Shoved;
@@ -498,6 +506,16 @@ namespace ProjectHotfix.PhysicsJump
             // Third person: player 1 faces where the mouse looks, carrying a body too (it is thrown that way).
             var viewTurn=LookTurn(index,out var view,out var viewRate)&&walls.Length==0;
             if(viewTurn)direction=view;
+            // A punch commits the body: the heading it turns to follows the aim at StrikeTurnRate at most, from where the
+            // body faced when the punch went out.
+            var forward=Vector3.ProjectOnPlane(body.rotation*Vector3.forward,Vector3.up);
+            if(rig.IsStriking&&StrikeTurnRate>0&&walls.Length==0&&direction.sqrMagnitude>.001f&&player.StrikeHeading.sqrMagnitude>.5f)
+            {
+                var limited=Vector3.RotateTowards(player.StrikeHeading,Vector3.ProjectOnPlane(direction,Vector3.up),StrikeTurnRate*Mathf.Deg2Rad*seconds,0).normalized;
+                viewRate=Vector3.SignedAngle(player.StrikeHeading,limited,Vector3.up)*Mathf.Deg2Rad/seconds;
+                player.StrikeHeading=direction=limited;
+            }
+            else if(forward.sqrMagnitude>1e-6f)player.StrikeHeading=forward.normalized;
             if(direction.sqrMagnitude>.001f)
             {
                 var error=Vector3.SignedAngle(body.rotation*Vector3.forward,direction,Vector3.up)*Mathf.Deg2Rad;
