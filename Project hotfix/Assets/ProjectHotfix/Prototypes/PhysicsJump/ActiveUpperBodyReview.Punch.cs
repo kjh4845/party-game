@@ -17,6 +17,7 @@ namespace ProjectHotfix.PhysicsJump
         private readonly Dictionary<Rigidbody,float> _hitReaction=new Dictionary<Rigidbody,float>();
         public bool PunchHasContact(int side)=>_punchReference[side]&&_punchImpactAge[side]>=0;
         public bool IsStriking=>_punchReference[0]||_punchReference[1];
+        public bool IsStrikingSide(int side)=>_punchReference[side];
         public bool IsStrikingArm(Link link)=>(link.Name.StartsWith("UpperArm")||link.Name.StartsWith("Forearm"))&&_punchReference[link.Name.EndsWith("_L")?0:1];
         public void ReceivePunchImpact(int side,bool blocked=false)
         {

@@ -97,6 +97,8 @@ namespace ProjectHotfix.PhysicsJump
             internal bool RunJump;internal float RunJumpAge;
             // The heading the body turns to while a punch is out (MovePlayer, StrikeTurnRate).
             internal Vector3 StrikeHeading;
+            // The hand of a punch thrown out of a run with no other punch out: it keeps the run speed (StrikeMoveScale), -1 none.
+            internal int RunPunchSide=-1;internal readonly bool[] StrikeSideWas=new bool[2];
             public int DropkickHits;
         }
 
@@ -120,6 +122,8 @@ namespace ProjectHotfix.PhysicsJump
         public float StrikeTurnRate=90f;
         // While a punch is out the walk/run speed is scaled by this (2026-10-30 probe: a masher walking in at full speed
         // stayed in reach 8.6 s of 10 however the target moved).
+        // Except a single punch thrown out of a run: it keeps the run's speed and rams the body in (scaled, the run punch
+        // pushed .32 m like a walking one instead of .83 m). A second punch started while it is out is a mash and slows.
         public float StrikeMoveScale=.5f;
         public float HoldThreshold=.15f,PalmContactRadius=.055f,GripBreakForce=2000f;
         public float SpawnSeparation=.5f;
@@ -467,7 +471,15 @@ namespace ProjectHotfix.PhysicsJump
             var momentum=body.mass*body.linearVelocity;var mass=body.mass;
             foreach(var link in rig.Links){if(rig.IsStrikingArm(link))continue;momentum+=link.Body.mass*link.Body.linearVelocity;mass+=link.Body.mass;}
             var velocity=momentum/mass;var horizontal=new Vector3(velocity.x,0,velocity.z);
-            var input=Suppressed?Vector2.zero:Vector2.ClampMagnitude(player.Move,1);var speed=(player.Sprint?SprintSpeed:WalkSpeed)*(rig.IsStriking?StrikeMoveScale:1);
+            var running=Running(index);
+            for(var side=0;side<2;side++)
+            {
+                var on=rig.IsStrikingSide(side);
+                if(on&&!player.StrikeSideWas[side])player.RunPunchSide=running&&!rig.IsStrikingSide(1-side)?side:-1;
+                player.StrikeSideWas[side]=on;
+            }
+            if(player.RunPunchSide>=0&&!rig.IsStrikingSide(player.RunPunchSide))player.RunPunchSide=-1;
+            var input=Suppressed?Vector2.zero:Vector2.ClampMagnitude(player.Move,1);var speed=(player.Sprint?SprintSpeed:WalkSpeed)*(rig.IsStriking&&player.RunPunchSide<0?StrikeMoveScale:1);
             var desired=new Vector3(input.x,0,input.y)*speed;
             if(PushDowned(index,desired))desired*=DownedPushDrag;
             var shoved=rig.Shoved;
